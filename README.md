@@ -488,14 +488,26 @@ para manter atualizado o menu.
 ### Frameworks / bibliotecas
 
 - [React](https://reactjs.org/)
+- [Configuração inicial (vídeo)](https://youtu.be/38iZjr-jH5E)
 
-### ferramentas
+### Ferramentas
 
 - [npm-scripts](https://docs.npmjs.com/misc/scripts)
 - [Babel](https://babeljs.io/)
 - [webpack](https://webpack.js.org/)
 
+### Rotas
+
+- [React Router](https://reactrouter.com/web/guides/quick-start)
+
 ### PWA
 
 - [Seu primeiro Progressive Web App - Google developers](https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/?hl=es)
 - [Progressive Web Apps - codigofacilito.com](https://codigofacilito.com/articulos/progressive-apps)
+
+### Deploy
+
+- [Opções de deploy com Create React App](https://create-react-app.dev/docs/deployment/)
+  - [Netlify (vídeo)](https://drive.google.com/file/d/1hzlB8dl4m0OnLLY2-WpjSLcU7eYTURRk/view)
+  - [Heroku (vídeo)](https://drive.google.com/file/d/1eqx6yuwJnAU-R83ta89tgEem7ABZigNG/view)
+  - [Vercel (vídeo)](https://drive.google.com/file/d/1Q9q1iVnRrWeEhGRns0r5OOeiqloQug8y/view)
