@@ -441,48 +441,6 @@ rapidamente aos clientes.
 
 ---
 
-#### [Historia de usuário 5] Administrador(a) de loja deve administrar seus funcionários
-
-Eu como administrador(a) de loja quero gerenciar os usuários da
-plataforma para manter atualizado as informações de meus funcionários.
-
-##### Critérios de aceitação
-
-- Ver lista de funcionários.
-- Adicionar funcionários.
-- Excluir funcionários.
-- Atualizar dados dos funcionários.
-
-##### Definição de pronto
-
-- Você deve ter recebido _code review_ de pelo menos uma parceira.
-- Fez _testes_ unitários e, além disso, testou seu produto manualmente.
-- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
-- Você deu deploy de seu aplicativo e marcou sua versão (tag git).
-
----
-
-#### [História de usuário 6] Administrador(a) de loja deve administrar os produtos
-
-Eu como administrador(a) de loja quero gerenciar os produtos
-para manter atualizado o menu.
-
-##### Critérios de aceitação
-
-- Ver lista de produtos.
-- Adicionar produtos.
-- Excluir produtos.
-- Atualizar dados de produtos.
-
-##### Definição de pronto
-
-- Você deve ter recebido _code review_ de pelo menos uma parceira.
-- Fez _testes_ unitários e, além disso, testou seu produto manualmente.
-- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
-- Você deu deploy de seu aplicativo e marcou sua versão (tag git).
-
----
-
 ## 6. Pistas, tips e leituras complementares
 
 ### Frameworks / bibliotecas
