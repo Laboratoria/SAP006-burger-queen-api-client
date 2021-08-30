@@ -82,6 +82,10 @@ Estas são as informações que temos do cliente:
 > | Bebida gaseificada 500ml | 7      |
 > | Bebida gaseificada 750ml | 10     |
 >
+> **Importante:** Os clientes podem escolher entre hambúrgueres de carne bovina,
+> frango ou vegetariano. Além disso, por um adicional de R\$ 1,00 , eles podem
+> adicionar queijo **ou** ovo.
+>
 > Nossos clientes são bastante indecisos, por isso é muito comum que eles mudem o
 > seu pedido várias vezes antes de finalizar.
 
