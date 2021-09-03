@@ -3,7 +3,7 @@ $background-gray: #535659;
 $light-gray: #D3D3D3;
 $dark-yellow-btn: #FF8C00;
 
-.login-content{
+.register-content{
   background-color: $background-gray;
   height: 100vh;
 }
@@ -13,16 +13,10 @@ header{
   flex-direction: column;
 }
 
-.login-bg{
-  background-size: cover 20%;
-  background-position:  -50px 0, 0 -25px;
-
-}
-
 .logo{
   height: 28vh;
   width: 28vh;
-  margin: -20% auto 0 auto;
+  margin: -25% auto 0 auto;
 }
 
 form {
@@ -30,7 +24,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 60%;
-  margin: 8% auto;
+  margin: 0% auto;
 
   div {
     position: relative;
@@ -84,12 +78,12 @@ form {
 
     font-size: 210%;
 
-    margin: 0 auto 4% auto;
+    margin: -5% auto 4% auto;
   }
 
   p {
     color: white;
-    margin: 4% auto;
+    margin: -1% auto;
     font-size: 190%;
 
     a {
