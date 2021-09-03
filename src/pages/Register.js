@@ -48,12 +48,12 @@ export function Register () {
           <img src={inputRole} alt='Role'/>
         </div>
         <div>
-          <input type='text' required/>
-          <label> Restaurante </label>
+          <input type='text' disabled/>
+          <label> Combos Burger </label>
           <img src={inputRestaurant} alt='Restaurant'/>
         </div>
         <button> Entrar </button>
-        <p> Ou <Link to = '/register'> registre-se </Link> </p>
+        <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
       </form>
     </main>
   </div>

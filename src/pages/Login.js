@@ -8,6 +8,7 @@ import notShowPassword from '../assets/icons/input-password-not-show.png';
 import '../styles/Login.scss'
 
 export function Login () {
+
   return (
   <div className = 'login-content'>
     <header>
@@ -22,13 +23,13 @@ export function Login () {
           <img src={inputEmail} alt='Email'/>
         </div>
         <div>
-          <input type='text' required/>
+          <input type='text' required id='input-password'/>
           <label> Senha </label>
           <img src={inputPassword} alt='Password'/>
           <img className = 'show-or-not-password' src={notShowPassword} alt='Senha Oculta'/>
         </div>
         <button> Entrar </button>
-        <p> Ou <Link to = '-/'> registre-se </Link> </p>
+        <p> Ou <Link to = '/register'> registre-se </Link> </p>
       </form>
     </main>
   </div>

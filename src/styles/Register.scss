@@ -6,91 +6,92 @@ $dark-yellow-btn: #FF8C00;
 .register-content{
   background-color: $background-gray;
   height: 100vh;
-}
 
-header{
-  display: flex;
-  flex-direction: column;
-}
+  header{
+    display: flex;
+    flex-direction: column;
+  }
 
-.logo{
-  height: 28vh;
-  width: 28vh;
-  margin: -25% auto 0 auto;
-}
+  .logo{
+    height: 28vh;
+    width: 28vh;
+    margin: -25% auto 0 auto;
+  }
 
-form {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  margin: 0% auto;
-
-  div {
+  form {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin: 0 auto 10% auto;
+    width: 60%;
+    margin: 0% auto;
 
-    input {
-      line-height: 5vh;
-  
-      border-bottom: black solid 2.5pt;
-      padding-left: 10%;
-  
-      font-size: 200%;
+    div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0 auto 10% auto;
+
+      input {
+        line-height: 5vh;
+    
+        border-bottom: black solid 2.5pt;
+        padding-left: 10%;
+    
+        font-size: 200%;
+        color: white;
+      }
+
+      label {
+        position: absolute;
+        bottom: 25%;
+        left: 10%;
+        font-size: 190%;
+        color: white;
+      }
+
+      input:valid ~ label,
+      input:focus ~ label {
+        bottom: 85%;
+        font-size: 160%;
+        color: $light-gray;
+      }
+
+      img {
+        position: absolute;
+        bottom: 30%;
+        height: 3vh;
+        width: 3vh;
+      }
+
+      .show-or-not-password {
+        left: 90%;
+      }
+
+    }
+
+    button {
+      width: 90%;
+      height: 6vh;
+
+      background-color: $dark-yellow-btn;
+
+      font-size: 210%;
+
+      margin: -5% auto 4% auto;
+    }
+
+    p {
       color: white;
+      margin: -1% auto;
+      font-size: 170%;
+
+      a {
+        text-decoration: none;
+        color: $dark-yellow-btn;
+      }
     }
 
-    label {
-      position: absolute;
-      bottom: 25%;
-      left: 10%;
-      font-size: 190%;
-      color: white;
-    }
-
-    input:valid ~ label,
-    input:focus ~ label {
-      bottom: 85%;
-      color: $light-gray;
-    }
-
-    img {
-      position: absolute;
-      bottom: 30%;
-      height: 3vh;
-      width: 3vh;
-    }
-
-    .show-or-not-password {
-      left: 90%;
-    }
-
-  }
-
-  button {
-    width: 90%;
-    height: 6vh;
-
-    background-color: $dark-yellow-btn;
-
-    font-size: 210%;
-
-    margin: -5% auto 4% auto;
-  }
-
-  p {
-    color: white;
-    margin: -1% auto;
-    font-size: 190%;
-
-    a {
-      text-decoration: none;
-      color: $dark-yellow-btn;
-    }
   }
 
 }
-
