@@ -1,0 +1,67 @@
+:root{
+  --white: #FFF;
+  --black: #000000;
+  --green: #A0A603;
+  --yellow: #D97904;
+  --red: #BF0404;
+  --dark-red: #590202;
+}
+
+
+
+.container-bg{
+  width:100vw;
+  height:100vh;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index: -10;
+
+}
+
+.bg-login{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+ 
+}
+
+.container-login{
+  display:flex;
+  flex-direction: column;
+  width:100vw;
+  height:100vh;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.logo{
+  width:12rem;
+  margin-bottom: 3rem;
+}
+
+.form-control{
+  width:18rem;
+}
+
+.input{
+  background-color:var(--white);
+}
+
+.text{
+  color:var(--white);
+  margin-right:5px;
+  font-size: 18px;
+}
+
+.link{
+  text-decoration: none;
+  color:var(--yellow);
+  font-size: 18px;
+}
+
+.link:hover{
+  color:var(--red);
+}
+

@@ -1,0 +1,19 @@
+:root{
+  --white: #FFF;
+  --black: #000000;
+  --green: #A0A603;
+  --yellow: #D97904;
+  --red: #BF0404;
+  --dark-red: #590202;
+}
+
+.radio-btn{
+  background-color:transparent;
+  border:1px solid white;
+  
+}
+
+.radio-btn:active, .radio-btn:focus, .radio-btn:hover, .radio-btn:checked{
+  background-color:var(--yellow) !important;
+}
+
