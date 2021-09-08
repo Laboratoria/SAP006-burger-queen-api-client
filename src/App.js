@@ -1,16 +1,38 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
-import Login from './pages/Login/index';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Page404 from './pages/Page404/index';
+import Initial from './pages/Initial';
+
+import { verifyPassword, verifyName } from './service';
 
 function App() {
   return (
-    <Container component="article" maxWidth="sm">
-      <Typography variant="h3" component="h1" align="center"> Welcome to Krusty Krab! </Typography>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Initial />
+          <Login />
+        </Route>
 
-      <Login />
+        <Route exact path="/register">
+          <Initial />
+          <Register verifyForms={{ password: verifyPassword, name: verifyName }} />
+        </Route>
 
-    </Container>
+        <Route>
+          <Page404 />
+        </Route>
+      </Switch>
+
+    </Router>
+
   );
 }
+
+// function sendUserForm(datas) {
+//   console.log(datas);
+// }
 
 export default App;
