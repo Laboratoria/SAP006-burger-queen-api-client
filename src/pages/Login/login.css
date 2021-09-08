@@ -59,6 +59,7 @@
   text-decoration: none;
   color:var(--yellow);
   font-size: 18px;
+  transition: all 1s;
 }
 
 .link:hover{

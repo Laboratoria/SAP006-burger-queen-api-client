@@ -1,23 +1,51 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
+  "env": {
+    "browser": true,
+    "es6": true,
+    "es2021": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:react/recommended",
+    "react-app",
+    "prettier"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "jest", "prettier"],
+  "rules": {
+    "linebreak-style": 0,
+    "prefer-destructuring": 0,
+    "import/extensions": 0,
+    "import/prefer-default-export": 0,
+    "import/no-unresolved": [2, { "caseSensitive": false }],
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": {
+          "multiline": true,
+          "minProperties": 3
         },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-    }
-    
+        "ImportDeclaration": "never",
+        "ExportDeclaration": {
+          "multiline": true,
+          "minProperties": 3
+        }
+      }
+    ]
+  }
 }

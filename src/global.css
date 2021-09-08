@@ -1,5 +1,4 @@
 
-
 * {
   margin: 0;
   padding: 0;
@@ -30,10 +29,11 @@ h2{
   background-color:var(--yellow);
   border:none;
   box-shadow: none;
+  transition: all 1s;
 }
 
 
-#btn-register:hover, #btn-signin:hover{
+#btn-register:hover, #btn-signin:hover, #btn-signin:focus, #btn-register:active, #btn-signin:active{
   background-color: var(--red);
   box-shadow: none;
 }
