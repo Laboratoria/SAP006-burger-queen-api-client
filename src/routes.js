@@ -6,8 +6,7 @@ import Hall from './pages/Hall';
 import Kitchen from './pages/Kitchen';
 import Register from './pages/Register';
 
-const Routes = () => {
-	return (
+const Routes = () => 
 		<Switch>
 			<Route path="/" component={Login} exact />
 			<Route path="/cadastro" component={Register} />
@@ -22,7 +21,7 @@ const Routes = () => {
 				)}
 			/>
 		</Switch>
-	);
-};
+	;
+;
 
 export default Routes;
