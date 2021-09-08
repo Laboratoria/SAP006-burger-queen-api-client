@@ -68,6 +68,31 @@ $dark-yellow-btn: #FF8C00;
         left: 90%;
       }
 
+      form {
+        width: 100%;
+        flex-direction: row;
+        margin: 3% auto 8%;
+        border-bottom: black solid 2.5pt;
+
+        div {
+          margin: 0 0 2% 10%;
+        }
+
+        label,
+        input:valid ~ label,
+        input:focus ~ label{
+          left: 30%;
+          bottom: 0%;
+          font-size: 180%;
+          color: white;
+        }
+
+        input[type='radio'] {
+          height: 2.5vh;
+          width: 2.5vh;
+        }
+      }
+
     }
 
     button {

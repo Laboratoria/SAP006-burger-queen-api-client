@@ -5,6 +5,9 @@ import inputEmail from '../assets/icons/input-email.png';
 import inputPassword from '../assets/icons/input-password.png';
 import notShowPassword from '../assets/icons/input-password-not-show.png';
 
+import { Button } from '../components/Button.js'
+import { InputUserData } from '../components/UserData';
+
 import '../styles/Login.scss'
 
 export function Login () {
@@ -17,18 +20,30 @@ export function Login () {
     </header>
     <main>
       <form>
-        <div>
-          <input type='text' required/>
-          <label> Email </label>
-          <img src={inputEmail} alt='Email'/>
-        </div>
-        <div>
-          <input type='text' required id='input-password'/>
-          <label> Senha </label>
-          <img src={inputPassword} alt='Password'/>
-          <img className = 'show-or-not-password' src={notShowPassword} alt='Senha Oculta'/>
-        </div>
-        <button> Entrar </button>
+        <InputUserData 
+          inputType='email'
+          inputValue=''
+          inputOnChange={(e) => setEmailLogin(e.target.value)}
+          labelText='Email'
+          iconSRC={inputEmail}
+          iconAlt='Email'
+          eyeClass='display-none'
+        />
+        <InputUserData 
+          inputType='password'
+          inputValue=''
+          inputOnChange={(e) => e.target.value}
+          labelText='Senha'
+          iconSRC={inputPassword}
+          iconAlt='Password'
+          eyeClass='show-or-not-password'
+          passwordStatusSRC={notShowPassword}
+          passwordStatusAlt='Hidden Password'
+        />
+        <Button
+          buttonType = 'button'
+          buttonText = 'Entrar'
+        />
         <p> Ou <Link to = '/register'> registre-se </Link> </p>
       </form>
     </main>

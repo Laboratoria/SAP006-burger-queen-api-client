@@ -5,8 +5,8 @@ import { Register } from './pages/Register';
 function App () {
   return (
     <BrowserRouter>
-      <Route path='/' exact={true} component= {Login} />
-      <Route path='/register' component= {Register} />
+      <Route path='/' exact={true} component={Login} />
+      <Route path='/register' component={Register} />
     </BrowserRouter> 
   )
 }
