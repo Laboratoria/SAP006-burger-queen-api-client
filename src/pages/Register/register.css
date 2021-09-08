@@ -10,6 +10,7 @@
 .radio-btn{
   background-color:transparent;
   border:1px solid white;
+  transition: all 1s;
   
 }
 
