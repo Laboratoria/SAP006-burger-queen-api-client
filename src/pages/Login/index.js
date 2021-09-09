@@ -99,7 +99,7 @@ export default function Login() {
       <div className="container-login">
         <img src={logo} className="logo" alt="logo"></img>
         <h2 className="mb-4">LOGIN</h2>
-        <Form Form noValidate onSubmit={handleSubmit}>
+        <Form noValidate onSubmit={handleSubmit}>
           <Form.Group className="mb-4" controlId="formBasicEmail">
             <Form.Control
               className={` ${errorEmail ? 'is-invalid' : ''}`}
