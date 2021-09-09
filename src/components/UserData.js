@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function InputUserData ({
+export function InputContentUserData ({
   inputType,
   inputValue,
   inputOnChange,
@@ -31,6 +31,30 @@ export function InputUserData ({
         src={passwordStatusSRC}
         alt={passwordStatusAlt}
       />
+    </div>
+  )
+}
+
+export function InputRadioUserData ({
+  inputType,
+  inputValue,
+  inputChecked,
+  inputOnChange,
+  labelText
+}) {
+  return (
+    <div>
+      <input 
+        type={inputType}
+        name='role'
+        required
+        value={inputValue}
+        checked={inputChecked}
+        onChange={inputOnChange}
+      />
+      <label> 
+        {labelText}
+      </label>
     </div>
   )
 }

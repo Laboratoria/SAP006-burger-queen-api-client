@@ -1,38 +1,53 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import loginRegisterBg from '../assets/images/login-bg.jpg';
+import { useHistory } from 'react-router-dom';
+
+import { Header } from '../components/Header'
+import { Button } from '../components/Button'
+import { InputContentUserData } from '../components/UserData';
+
+import '../styles/Login.scss'
+
+import loginBg from '../assets/images/login-bg.jpg';
 import logoCombosBurger from '../assets/images/logo-combos-burger.png';
 import inputEmail from '../assets/icons/input-email.png';
 import inputPassword from '../assets/icons/input-password.png';
 import notShowPassword from '../assets/icons/input-password-not-show.png';
 
-import { Button } from '../components/Button.js'
-import { InputUserData } from '../components/UserData';
-
-import '../styles/Login.scss'
-
 export function Login () {
+
+  const history = useHistory();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function navigateToOrdersSection () {
+    history.push('/orders')
+  }
 
   return (
   <div className = 'login-content'>
-    <header>
-      <img className = 'login-bg' src={loginRegisterBg} alt='Ilustração de Background'/>
-      <img className = 'logo' src={logoCombosBurger} alt='Logo Combos Burguer'/>
-    </header>
+    <Header
+      headerBackgroundClassName='login-bg'
+      headerBackgroundSRC={loginBg}
+      headerLogoClassName='logo'
+      headerLogoSRC={logoCombosBurger}
+    />
     <main>
       <form>
-        <InputUserData 
+        <InputContentUserData 
           inputType='email'
-          inputValue=''
-          inputOnChange={(e) => setEmailLogin(e.target.value)}
+          inputValue={email}
+          inputOnChange={(e) => setEmail(e.target.value)}
           labelText='Email'
           iconSRC={inputEmail}
           iconAlt='Email'
           eyeClass='display-none'
         />
-        <InputUserData 
+        <InputContentUserData 
           inputType='password'
-          inputValue=''
-          inputOnChange={(e) => e.target.value}
+          inputValue={password}
+          inputOnChange={(e) => setPassword(e.target.value)}
           labelText='Senha'
           iconSRC={inputPassword}
           iconAlt='Password'
@@ -43,6 +58,7 @@ export function Login () {
         <Button
           buttonType = 'button'
           buttonText = 'Entrar'
+          buttonEvent = {navigateToOrdersSection}
         />
         <p> Ou <Link to = '/register'> registre-se </Link> </p>
       </form>
