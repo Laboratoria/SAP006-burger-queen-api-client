@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-import { showOrNotShowPassword } from '../services/LoginAndRegister';
-import { moveLabelUpEvenWhenInputValueIsInvalid } from '../services/LoginAndRegister'
+import { showOrNotShowPassword } from './Functions';
+import { moveLabelUpEvenWhenInputValueIsInvalid } from './Functions'
 
-import { Header } from '../components/Header'
-import { Button } from '../components/Button'
-import { InputContentUserData } from '../components/UserData';
-import { InputRadioUserData } from '../components/UserData';
+import { Header } from '../../components/Header'
+import { Button } from '../../components/Button'
+import { InputContentUserData } from '../../components/UserData';
+import { InputRadioUserData } from '../../components/UserData';
 
-import '../styles/LoginAndRegister.scss'
+import '../../styles/Auth.scss'
 
-import registerBg from '../assets/images/register-bg.jpg';
-import logoCombosBurger from '../assets/images/logo-combos-burger.png';
-import inputName from '../assets/icons/input-name.png';
-import inputEmail from '../assets/icons/input-email.png';
-import inputPassword from '../assets/icons/input-password.png';
-import inputRole from '../assets/icons/input-role.png';
+import registerBg from '../../assets/images/register-bg.jpg';
+import logoCombosBurger from '../../assets/images/logo-combos-burger.png';
+import inputName from '../../assets/icons/input-name.png';
+import inputEmail from '../../assets/icons/input-email.png';
+import inputPassword from '../../assets/icons/input-password.png';
+import inputRole from '../../assets/icons/input-role.png';
 
 export function Register () {
 
