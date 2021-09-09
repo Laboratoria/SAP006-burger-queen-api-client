@@ -1,7 +1,7 @@
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Login } from './pages/Login';
-import { Register } from './pages/Register';
-import { Orders } from './pages/Orders'
+import { Login } from './pages/auth/Login';
+import { Register } from './pages/auth/Register';
+import { Orders } from './pages/currentOrders/Orders'
 
 function App () {
   return (
