@@ -1,0 +1,175 @@
+
+$background-gray: #535659;
+$light-gray: #D3D3D3;
+$dark-yellow-btn: #FF8C00;
+
+.login-and-register-content{
+  background-color: $background-gray;
+  height: 100vh;
+
+  header{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo{
+    height: 28vh;
+    width: 28vh;
+  }
+
+  form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    
+    div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0 auto 10% auto;
+
+      input {
+        line-height: 5vh;
+    
+        border-bottom: black solid 2.5pt;
+        padding-left: 10%;
+    
+        font-size: 200%;
+        color: white;
+      }
+
+      label {
+        position: absolute;
+        bottom: 25%;
+        left: 10%;
+        font-size: 190%;
+        color: white;
+      }
+
+      input:valid ~ label,
+      input:focus ~ label,
+      .move-label-up ~ label {
+        bottom: 85%;
+        font-size: 160%;
+        color: $light-gray;
+      }
+
+      img, .show-or-not-password {
+        position: absolute;
+        bottom: 30%;
+        height: 3vh;
+        width: 3vh;
+      }
+
+      .show-or-not-password {
+        bottom: -2%;
+        left: 90%;
+
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 3vh;
+      }
+
+      .not-show-password{
+        background-image: url('../assets/icons/input-password-not-show.png');
+      }
+
+      .show-password{
+        background-image: url('../assets/icons/input-password-show.png');
+      }
+
+    }
+
+    button {
+      width: 90%;
+      height: 6vh;
+
+      background-color: $dark-yellow-btn;
+
+      font-size: 210%;
+
+      cursor: pointer;
+    }
+
+    p {
+      color: white;
+      font-size: 170%;
+
+      a {
+        text-decoration: none;
+        color: $dark-yellow-btn;
+      }
+    }
+
+  }
+
+}
+
+.login-content {
+  .logo{
+    margin: -20% auto 0 auto;
+  }
+
+  form {
+    margin: 10% auto;
+  }
+
+  button {
+    margin: 0 auto 4% auto;
+  }
+
+  p {
+    margin: 4% auto;
+  }
+}
+
+.register-content {
+  .logo{
+    margin: -25% auto 0 auto;
+  }
+
+  form {
+    margin: 0% auto;
+
+    fieldset {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      margin: 0 auto 8%;
+      border-bottom: black solid 2.5pt;
+
+      img {
+        bottom:50%;
+        left: 0;
+      }
+
+      div {
+        margin: 0 6% 0 8%;
+      }
+
+      label,
+      input:valid ~ label,
+      input:focus ~ label {
+        left: 30%;
+        bottom: -10%;
+        font-size: 180%;
+        color: white;
+      }
+
+      input[type='radio'] {
+        height: 2.5vh;
+        width: 2.5vh;
+      }
+    }
+  }
+
+  button {
+    margin: -5% auto 4% auto;
+  }
+
+  p {
+    margin: -1% auto;
+  }
+}

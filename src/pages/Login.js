@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
+import { showOrNotShowPassword } from '../services/LoginAndRegister';
+import { moveLabelUpEvenWhenInputValueIsInvalid } from '../services/LoginAndRegister'
+
 import { Header } from '../components/Header'
 import { Button } from '../components/Button'
 import { InputContentUserData } from '../components/UserData';
 
-import '../styles/Login.scss'
+import '../styles/LoginAndRegister.scss'
 
 import loginBg from '../assets/images/login-bg.jpg';
 import logoCombosBurger from '../assets/images/logo-combos-burger.png';
 import inputEmail from '../assets/icons/input-email.png';
 import inputPassword from '../assets/icons/input-password.png';
-import notShowPassword from '../assets/icons/input-password-not-show.png';
 
 export function Login () {
 
@@ -26,7 +28,7 @@ export function Login () {
   }
 
   return (
-  <div className = 'login-content'>
+  <div className = 'login-and-register-content login-content'>
     <Header
       headerBackgroundClassName='login-bg'
       headerBackgroundSRC={loginBg}
@@ -36,9 +38,10 @@ export function Login () {
     <main>
       <form>
         <InputContentUserData 
+          inputId='email'
           inputType='email'
           inputValue={email}
-          inputOnChange={(e) => setEmail(e.target.value)}
+          inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
           labelText='Email'
           iconSRC={inputEmail}
           iconAlt='Email'
@@ -47,13 +50,12 @@ export function Login () {
         <InputContentUserData 
           inputType='password'
           inputValue={password}
-          inputOnChange={(e) => setPassword(e.target.value)}
+          inputOnChange={(event) => setPassword(event.target.value)}
           labelText='Senha'
           iconSRC={inputPassword}
           iconAlt='Password'
-          eyeClass='show-or-not-password'
-          passwordStatusSRC={notShowPassword}
-          passwordStatusAlt='Hidden Password'
+          eyeClass='show-or-not-password not-show-password'
+          buttonEvent={(event) => showOrNotShowPassword(event)}
         />
         <Button
           buttonType = 'button'

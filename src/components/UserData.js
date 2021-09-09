@@ -8,8 +8,7 @@ export function InputContentUserData ({
   iconSRC,
   iconAlt,
   eyeClass,
-  passwordStatusSRC,
-  passwordStatusAlt
+  buttonEvent
 }) {
   return (
     <div>
@@ -26,31 +25,34 @@ export function InputContentUserData ({
         src={iconSRC} 
         alt={iconAlt}
       />
-      <img 
+      <button
         className={eyeClass}
-        src={passwordStatusSRC}
-        alt={passwordStatusAlt}
+        onClick={buttonEvent}
       />
     </div>
   )
 }
 
 export function InputRadioUserData ({
+  inputId,
   inputType,
   inputValue,
   inputChecked,
   inputOnChange,
+  inputOnKeyUp,
   labelText
 }) {
   return (
     <div>
       <input 
+        id={inputId}
         type={inputType}
         name='role'
         required
         value={inputValue}
         checked={inputChecked}
         onChange={inputOnChange}
+        onKeyPress={inputOnKeyUp}
       />
       <label> 
         {labelText}

@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
+import { showOrNotShowPassword } from '../services/LoginAndRegister';
+import { moveLabelUpEvenWhenInputValueIsInvalid } from '../services/LoginAndRegister'
+
 import { Header } from '../components/Header'
 import { Button } from '../components/Button'
 import { InputContentUserData } from '../components/UserData';
 import { InputRadioUserData } from '../components/UserData';
 
-import '../styles/Register.scss'
+import '../styles/LoginAndRegister.scss'
 
 import registerBg from '../assets/images/register-bg.jpg';
 import logoCombosBurger from '../assets/images/logo-combos-burger.png';
@@ -15,7 +18,6 @@ import inputName from '../assets/icons/input-name.png';
 import inputEmail from '../assets/icons/input-email.png';
 import inputPassword from '../assets/icons/input-password.png';
 import inputRole from '../assets/icons/input-role.png';
-import notShowPassword from '../assets/icons/input-password-not-show.png';
 
 export function Register () {
 
@@ -32,7 +34,7 @@ export function Register () {
   }
 
   return (
-  <div className = 'register-content'>
+  <div className = 'login-and-register-content register-content'>
     <Header
       headerBackgroundClassName='register-bg'
       headerBackgroundSRC={registerBg}
@@ -53,7 +55,7 @@ export function Register () {
         <InputContentUserData 
           inputType='email'
           inputValue={email}
-          inputOnChange={(e) => setEmail(e.target.value)}
+          inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
           labelText='Email'
           iconSRC={inputEmail}
           iconAlt='Email'
@@ -66,23 +68,21 @@ export function Register () {
           labelText='Senha'
           iconSRC={inputPassword}
           iconAlt='Password'
-          eyeClass='show-or-not-password'
-          passwordStatusSRC={notShowPassword}
-          passwordStatusAlt='Hidden Password'
+          eyeClass='show-or-not-password not-show-password'
+          buttonEvent={(event) => showOrNotShowPassword(event)}
         />
-        <InputContentUserData 
+        <InputContentUserData
           inputType='password'
           inputValue={confirmPassword}
           inputOnChange={(e) => setConfirmPassword(e.target.value)}
           labelText='Confirme a Senha'
           iconSRC={inputPassword}
           iconAlt='Password'
-          eyeClass='show-or-not-password'
-          passwordStatusSRC={notShowPassword}
-          passwordStatusAlt='Hidden Password'
+          eyeClass='show-or-not-password not-show-password'
+          buttonEvent={(event) => showOrNotShowPassword(event)}
         />
         <div>
-          <form>
+          <fieldset>
             <img src={inputRole} alt='Role'/>
             <InputRadioUserData 
               inputType='radio'
@@ -98,7 +98,7 @@ export function Register () {
               inputOnChange={(e) => setRole(e.target.value)}
               labelText='Cozinha'
             />
-          </form>
+          </fieldset>
         </div>
         <Button
           buttonType = 'button'

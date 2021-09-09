@@ -1,1 +1,0 @@
-const URL = 'lab-api-bq.herokuapp.com';
