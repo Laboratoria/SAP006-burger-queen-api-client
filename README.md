@@ -7,7 +7,8 @@
 - [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
 - [4. Considerações gerais](#4-considerações-gerais)
 - [5. Critérios de aceitação mínimos do projeto](#5-critérios-de-aceitação-mínimos-do-projeto)
-- [6. Pistas, tips e leituras complementares](#6-pistas-tips-e-leituras-complementares)
+- [6. Hacker Edition](#6-hacker-edition)
+- [7. Pistas, tips e leituras complementares](#7-pistas-tips-e-leituras-complementares)
 
 ---
 
@@ -326,9 +327,6 @@ Web que seja **mobile-first**.
 Precisamos pensar bem sobre o UX para aqueles que vão receber os pedidos, o
 tamanho e a aparência dos botões, a visibilidade do estado atual do pedido, etc.
 
-A aplicação deve seguir 80% ou mais das pontuações de Performance, Progressive
-Web App, Accessibility e Best Practices do Lighthouse.
-
 O aplicativo deve fazer uso de `npm-scripts` e ter scripts `start`, `test`,
 `build` e `deploy`, que são responsáveis por inicializar, rodar os testes,
 empacotar e fazer deploy do aplicativo, respectivamente.
@@ -350,7 +348,7 @@ este _backlog_ que é o resultado do seu trabalho com o cliente até hoje.
 
 ---
 
-#### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
+#### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema
 
 Eu, como garçom/garçonete quero entrar no sistema de pedidos.
 
@@ -445,12 +443,32 @@ rapidamente aos clientes.
 
 ---
 
-## 6. Pistas, tips e leituras complementares
+## 6. Hacker Edition
+
+A aplicação deve seguir 80% ou mais das pontuações de Performance, Progressive
+Web App, Accessibility e Best Practices do Lighthouse.
+
+## 7. Pistas, tips e leituras complementares
 
 ### Frameworks / bibliotecas
 
 - [React](https://reactjs.org/)
 - [Configuração inicial (vídeo)](https://youtu.be/38iZjr-jH5E)
+
+### Frameworks / bibliotecas de CSS
+
+- CSS-in-JS:
+  - [styled-components](https://styled-components.com/)
+  - [aphrodite](https://github.com/Khan/aphrodite)
+
+- Pré-processador:
+  - [SASS](https://sass-lang.com/)
+
+- CSS:
+  - [CSS modules](https://github.com/css-modules/css-modules)
+
+- Components:
+  - [Material-ui](https://material-ui.com/pt/)
 
 ### Ferramentas
 
