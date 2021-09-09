@@ -38,7 +38,6 @@ export function Login () {
     <main>
       <form>
         <InputContentUserData 
-          inputId='email'
           inputType='email'
           inputValue={email}
           inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}

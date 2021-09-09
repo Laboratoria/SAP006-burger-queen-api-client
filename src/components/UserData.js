@@ -34,7 +34,6 @@ export function InputContentUserData ({
 }
 
 export function InputRadioUserData ({
-  inputId,
   inputType,
   inputValue,
   inputChecked,
@@ -45,7 +44,6 @@ export function InputRadioUserData ({
   return (
     <div>
       <input 
-        id={inputId}
         type={inputType}
         name='role'
         required
