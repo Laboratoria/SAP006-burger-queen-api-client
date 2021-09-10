@@ -7,11 +7,11 @@ const path = () => {
     if (role() === "hall") {
         return "/salao"
     }
-    return "/cozinha"
-
+     return "/cozinha" 
+           
 }
 
-const PublicRoute = props => isAuthenticated()
+const PublicRoute = props => isAuthenticated() 
     ? <Redirect to={path()} />
     : <Route {...props} />
 

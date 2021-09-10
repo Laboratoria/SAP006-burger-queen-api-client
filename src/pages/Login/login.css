@@ -37,8 +37,8 @@
 }
 
 .logo{
-  width:12rem;
-  margin-bottom: 3rem;
+  width:13rem;
+  margin-bottom: 2rem;
 }
 
 .form-control{
@@ -55,6 +55,9 @@
   font-size: 18px;
 }
 
+.link-register{
+  margin-bottom:6rem;
+}
 .link{
   text-decoration: none;
   color:var(--yellow);
