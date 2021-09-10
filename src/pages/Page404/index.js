@@ -4,7 +4,7 @@ import './notFound.css';
 
 function Page404() {
   return (
-    <main className="container flex flex--centro flex--coluna">
+    <main className="container-404">
       <h1 className="notFound-text">
         Ops, Esta página existe apenas na sua imaginação!
       </h1>

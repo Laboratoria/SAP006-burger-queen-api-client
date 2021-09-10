@@ -2,8 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login/login';
 import Register from './pages/Register/register';
+import Table from './pages/Table/table';
 import Page404 from './pages/Page404/index';
 import Initial from './pages/Initial';
+import Pedidos from './pages/Pedidos/index';
 
 function Routes() {
   return (
@@ -17,6 +19,14 @@ function Routes() {
         <Route exact path="/register">
           <Initial />
           <Register />
+        </Route>
+
+        <Route exact path="/table">
+          <Table />
+        </Route>
+
+        <Route exact path="/table/pedidos">
+          <Pedidos />
         </Route>
 
         <Route>

@@ -8,20 +8,15 @@
     box-sizing: border-box;
 }
 
-body{
-    background-color: #03e5b7;
-    background-image: linear-gradient(315deg, #03e5b7 0%, #037ade 74%); 
-    height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.container {
+.container-404 {
     display: flex;
     margin: 0;
     padding: 3rem;
     flex-direction: column;
     align-items: center;
-    
+    background-color: #03e5b7;
+    background-image: linear-gradient(315deg, #03e5b7 0%, #037ade 74%); 
+    height: 100vh;  
 }
 
 .bob-gif {

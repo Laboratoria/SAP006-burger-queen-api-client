@@ -26,5 +26,7 @@ module.exports = {
     'react/jsx-one-expression-per-line': 0,
     'react/object-curly-newline': 0,
     'react/prop-types': 0,
+    'linebreak-style': 0,
+    'eslint react/prop-types': 0,
   },
 };
