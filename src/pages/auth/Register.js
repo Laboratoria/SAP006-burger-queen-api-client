@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import { showOrNotShowPassword } from './Functions';
 import { moveLabelUpEvenWhenInputValueIsInvalid } from './Functions'
+import { processRegisterAnEmployeeRequest } from './Functions';
 
 import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
@@ -19,7 +20,7 @@ import inputEmail from '../../assets/icons/input-email.png';
 import inputPassword from '../../assets/icons/input-password.png';
 import inputRole from '../../assets/icons/input-role.png';
 
-export function Register () {
+export const Register = () => {
 
   const history = useHistory();
 
@@ -29,9 +30,7 @@ export function Register () {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState ('');
 
-  function navigateToOrdersSection () {
-    history.push('/orders')
-  }
+  const userData = {name, email, password, confirmPassword, role}
 
   return (
   <div className = 'login-and-register-content register-content'>
@@ -47,7 +46,7 @@ export function Register () {
           inputType='text'
           inputValue={name}
           inputOnChange={(e) => setName(e.target.value)}
-          labelText='Nome'
+          labelText='Nome Completo'
           iconSRC={inputName}
           iconAlt='Name'
           eyeClass='display-none'
@@ -101,9 +100,9 @@ export function Register () {
           </fieldset>
         </div>
         <Button
-          buttonType = 'button'
+          buttonType = 'submit'
           buttonText = 'Registrar'
-          buttonEvent = {navigateToOrdersSection}
+          buttonEvent = {(event) => processRegisterAnEmployeeRequest(event, {userData})}
         />
         <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
       </form>

@@ -16,6 +16,7 @@ export function InputContentUserData ({
         type={inputType}
         required
         value={inputValue}
+        autoComplete='off'
         onChange={inputOnChange}
       />
       <label> 

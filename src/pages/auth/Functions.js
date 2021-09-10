@@ -1,4 +1,7 @@
-export function showOrNotShowPassword (event) {
+import { registerAnEmployee } from "../../services/auth";
+
+
+export const showOrNotShowPassword = (event) => {
   const inputToHideOrShow = event.target.previousElementSibling.previousElementSibling.previousElementSibling;
   const eyeClass =  event.target.classList
   if (event.target.classList[1] === 'not-show-password'){
@@ -12,8 +15,13 @@ export function showOrNotShowPassword (event) {
   }
 }
 
-export function moveLabelUpEvenWhenInputValueIsInvalid (event) {
+export const moveLabelUpEvenWhenInputValueIsInvalid = (event) => {
   if (event.target.value.length >= 1) {
     event.target.classList.add('move-label-up')
   }
+}
+
+export const processRegisterAnEmployeeRequest = (event, {userData}) => {
+  const inputToHighlight = registerAnEmployee(event, {userData});
+  console.log(inputToHighlight)
 }
