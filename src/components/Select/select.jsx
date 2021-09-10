@@ -15,21 +15,29 @@ function Select({
   optionDisabled,
   labelClassName,
   labelHtmlFor,
-  labelText
+  labelText,
 }) {
-
   return (
     <>
       <label className={labelClassName} htmlFor={labelHtmlFor}>{labelText}</label>
-      <select name={selectName} className={selectClassName} value={selectValue} onChange={selectOnChange}>
-        <option className={optionClassName} disabled={optionDisabled} value={optionValue1}>{optionText1}</option>
+      <select
+        name={selectName}
+        className={selectClassName}
+        value={selectValue}
+        onChange={selectOnChange}
+      >
+        <option
+          className={optionClassName}
+          disabled={optionDisabled}
+          value={optionValue1}
+        >
+          {optionText1}
+        </option>
         <option className={optionClassName} value={optionValue2}>{optionText2}</option>
         <option className={optionClassName} value={optionValue3}>{optionText3}</option>
       </select>
     </>
-  )
-
+  );
 }
 
-
-export default Select
+export default Select;

@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 // import Routes from './components/router';
 
 import './index.css';
-import App from './App';
+import Routes from './Routes';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Routes />
   </React.StrictMode>,
   document.getElementById('root'),
   //   <BrowserRouter>

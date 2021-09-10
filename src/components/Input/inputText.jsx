@@ -9,18 +9,21 @@ function InputTxt({
   labelClassName,
   labelHtmlFor,
   labelText,
-  inputOnClick
+  inputOnClick,
 }) {
-
   return (
     <>
       <label className={labelClassName} htmlFor={labelHtmlFor}>{labelText}</label>
-      <input onClick={inputOnClick} type={inputType} placeholder={inputPlaceholder} value={inputValue} onChange={inputOnChange}
-       className={inputClassName}/>
+      <input
+        onClick={inputOnClick}
+        type={inputType}
+        placeholder={inputPlaceholder}
+        value={inputValue}
+        onChange={inputOnChange}
+        className={inputClassName}
+      />
     </>
-  )
-
+  );
 }
 
-
-export default InputTxt
+export default InputTxt;

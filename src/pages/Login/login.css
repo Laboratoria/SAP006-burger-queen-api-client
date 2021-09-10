@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white; 
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.Login-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login{
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff8c;
+    border-radius: 1.5rem;
+    z-index: 3;
+    max-width: fit-content;
+    box-shadow: 1px 1px 10px #888888;
+}
+.LoginInput {
+    padding: 1rem;
+    display: flex;
+    border-radius: 2rem;
+    margin: 0.5rem;
+    width: 30rem;
+    outline: none;
+}
+
+.Login-container button {
+    padding: 5px 20px ;
+    border-radius: 15px;
+    background-color: #f38a8aeb;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: .2s;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}

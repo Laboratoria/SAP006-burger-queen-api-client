@@ -1,13 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Login from './pages/Login/login';
+import Register from './pages/Register/register';
 import Page404 from './pages/Page404/index';
 import Initial from './pages/Initial';
 
-import { verifyPassword, verifyName } from './service';
-
-function App() {
+function Routes() {
   return (
     <Router>
       <Switch>
@@ -18,7 +16,7 @@ function App() {
 
         <Route exact path="/register">
           <Initial />
-          <Register verifyForms={{ password: verifyPassword, name: verifyName }} />
+          <Register />
         </Route>
 
         <Route>
@@ -31,8 +29,4 @@ function App() {
   );
 }
 
-// function sendUserForm(datas) {
-//   console.log(datas);
-// }
-
-export default App;
+export default Routes;

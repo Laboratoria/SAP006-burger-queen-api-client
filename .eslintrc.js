@@ -25,5 +25,6 @@ module.exports = {
     'react/no-else-return': 0,
     'react/jsx-one-expression-per-line': 0,
     'react/object-curly-newline': 0,
+    'react/prop-types': 0,
   },
 };

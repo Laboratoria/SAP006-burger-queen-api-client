@@ -1,11 +1,19 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
+// import styled from 'styled-components';
+
+// const Title = styled.h1`
+//   color: grey;
+//   padding: 3rem;
+// `;
 
 function Initial() {
   return (
-    <Container component="article" maxWidth="sm">
-      <Typography variant="h3" component="h1" align="center"> Welcome to Krusty Krab! </Typography>
-    </Container>
+    <main className="container flex flex--centro flex--coluna">
+      <h1 className="notFound-text">
+        Bem-vindo ao Siri Cascudo!
+      </h1>
+
+    </main>
 
   );
 }
