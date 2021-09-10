@@ -1,0 +1,6 @@
+.form-input {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+}
