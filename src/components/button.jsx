@@ -1,16 +1,17 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/prop-types */
 import React from 'react';
 
-
 function Button({
-    buttonOnClick,
-    buttonText
+  // eslint-disable-next-line react/prop-types
+  buttonOnClick,
+  buttonText,
 
 }) {
-    return (
-        <>
-        <button onClick={buttonOnClick} >{buttonText}</button>
-        </>
-    )
+  return (
+
+    <button onClick={buttonOnClick}>{buttonText}</button>
+  );
 }
 
-export default Button
+export default Button;

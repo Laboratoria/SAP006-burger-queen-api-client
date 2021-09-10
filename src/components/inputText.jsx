@@ -1,3 +1,5 @@
+/* eslint-disable */
+/*
 import React from 'react';
 
 function InputTxt({
@@ -24,3 +26,4 @@ function InputTxt({
 
 
 export default InputTxt
+*/
