@@ -1,13 +1,15 @@
 import React from 'react';
-import concha from '../../img/concha.png';
+import Bob from '../../img/bob.gif';
+import './notFound.css';
 
 function Page404() {
   return (
-    <main className="container flez flex--centro flex--coluna">
-      <p className="notFound-text">
-        Ops, this page doesnt exist!
-      </p>
-      <img className="logo-exist" src={concha} alt="logo-concha" />
+    <main className="container-404">
+      <h1 className="notFound-text">
+        Ops, Esta página existe apenas na sua imaginação!
+      </h1>
+
+      <img className="bob-gif" src={Bob} alt="Spongebob-imagination" />
     </main>
 
   );

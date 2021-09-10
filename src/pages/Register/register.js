@@ -1,12 +1,10 @@
-import React, {useState} from 'react'
-import Button from '../../components/button'
-import InputTxt from '../../components/inputText'
-import Select from '../../components/select' 
-import '../Registro/registro.css';
+import React, { useState } from 'react';
+import Button from '../../components/Button/button';
+import InputTxt from '../../components/Input/inputText';
+import Select from '../../components/Select/select';
+import './register.css';
 
-function Registro() {
-
-
+function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,27 +12,28 @@ function Registro() {
 
   const postCad = (e) => {
     e.preventDefault();
-    if(email === "" || password === ""){
-      console.log("ruim")
-    }else{
+    if (email === '' || password === '') {
+      console.log('ruim');
+    } else {
       fetch('https://lab-api-bq.herokuapp.com/users/', {
-      method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: `email=${email}&password=${password}&role=${role}&restaurant=BurgerHunger&name=${name}`
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        if (json.id === undefined) {
-        }else{
-          console.log("cadastrado");
-        }
+        method: 'POST',
+        headers: {
+          // eslint-disable-next-line quote-props
+          'accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `email=${email}&password=${password}&role=${role}&restaurant=The Krust Krab&name=${name}`,
       })
+        .then((response) => response.json())
+        .then((json) => {
+          // eslint-disable-next-line no-empty
+          if (json.id === undefined) {
+          } else {
+            console.log('cadastrado');
+          }
+        });
     }
-    
-  }
+  };
 
   return (
     <div className="Cadastro">
@@ -44,7 +43,7 @@ function Registro() {
           inputType="text"
           inputPlaceholder="Digite seu nome"
           inputValue={name}
-          inputOnChange={(event) => setName(event.target.value)}         
+          inputOnChange={(event) => setName(event.target.value)}
           inputClassName="cadInput"
         />
 
@@ -69,7 +68,7 @@ function Registro() {
           selectValue={role}
           selectOnChange={(event) => setRole(event.target.value)}
           selectClassName="cadInput cardSelect"
-          optionValue1=''
+          optionValue1=""
           optionValue2="salao"
           optionValue3="cozinha"
           optionText1="Cargo"
@@ -83,14 +82,13 @@ function Registro() {
           buttonOnClick={(e) => postCad(e)}
           buttonText="Cadastrar"
           btnClassName="btnForm"
-          
+
         />
-       
-        
+
       </form>
-      
+
     </div>
   );
 }
 
-export default Registro;
+export default Register;

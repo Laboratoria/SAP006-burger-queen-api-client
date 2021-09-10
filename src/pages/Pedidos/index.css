@@ -1,0 +1,79 @@
+:root {
+    
+  
+    --bg--menu--yellow--color: #FFE98D; 
+  };
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.all-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.menu-um{
+    background-color: var(--bg--menu--yellow--color);
+    width: 420px;
+    height: 444px;
+    margin-top: 250px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px rgb(160, 159, 159);
+
+}
+
+.finish-menu{
+    background-color: var(--bg--menu--yellow--color);
+    width: 420px;
+    height: 444px;
+    margin-top: 250px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px rgb(160, 159, 159);
+}
+.cash-register{
+width: 100px;
+height: 100px;
+background: red;
+}
+.breakfast-menu{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+
+.container-food{
+    font-size: 6px;
+    width: 160px;
+    height: 180px;
+    background-color: #F5F3EF;
+    border-radius: 22px;
+    margin: 25px;
+
+}
+
+.add-button {
+    background: #F47C6C;
+    width: 70px;
+    height: 20px;
+    border: none;
+    border-radius: 10px;
+    color: #ffff;
+    margin-top: 30px;
+    margin-left: 50px;
+
+}
+
+.img-food{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-left: 25%;
+
+}
