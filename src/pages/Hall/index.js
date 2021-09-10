@@ -1,8 +1,16 @@
 import React from 'react';
 
-export default function Hall () {
+import ButtonLogout from '../../components/ButtonLogout';
+
+export default function Hall() {
+
+
+
 	return (
-		<h1>Salão</h1>
+		<>
+			<h1>Salão</h1>
+			<ButtonLogout />
+		</>
 	)
 };
 

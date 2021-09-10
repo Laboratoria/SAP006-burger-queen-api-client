@@ -7,6 +7,9 @@
   --dark-red: #590202;
 }
 
+
+
+
 .radio-btn{
   background-color:transparent;
   border:1px solid white;
@@ -14,7 +17,17 @@
   
 }
 
-.radio-btn:active, .radio-btn:focus, .radio-btn:hover, .radio-btn:checked{
+.radio-btn:active, .radio-btn:focus, .radio-btn:hover, .hall:checked{
   background-color:var(--yellow) !important;
+  
 }
+.radio-btn:active::after, .radio-btn:focus::after, .radio-btn:hover::after, .hall:checked::after{
+  background-color:var(--yellow) !important;
+  
+}
+.radio-btn:active::before, .radio-btn::before, .radio-btn:hover::before, .hall:checked::before{
+  background-color:var(--yellow) !important;
+  
+}
+
 
