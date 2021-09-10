@@ -23,7 +23,7 @@ function Registro() {
         'accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: `email=${email}&password=${password}&role=${role}&restaurant=BurgerHunger&name=${name}`
+      body: `email=${email}&password=${password}&role=${role}&restaurant=KrustyKrab&name=${name}`
     })
       .then((response) => response.json())
       .then((json) => {

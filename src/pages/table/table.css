@@ -15,14 +15,16 @@ header {
    width: 100%;
    height: 130px;
    position: fixed;
+   top: 0;
     
 }
 .back-log{
-    width: 80px;
-    height: 80px;
-    background-color: red;
+    width: 120px;
+    height: 130px;
+   
     margin-left: 90%;
     display: flex;
+    margin-bottom: 35px;
 
 }
 
@@ -38,7 +40,7 @@ header {
     width: 168px;
     height: 168px;
     border-radius: 50%;
-    margin-top: 200px;
+    margin-top: 100px;
 }
 .yellow-circle{
     display: flex;
@@ -151,3 +153,59 @@ header {
       opacity: 0;
     }
   }
+
+  @media screen and (max-width: 1024px) {
+    header {
+      width: 100%;
+      height: 180px;
+      margin-left: -8px;
+       
+   }
+   .back-log{
+    width: 180px;
+    height: 180px;
+   
+    margin-left: 80%;
+    display: flex;
+    margin-bottom: 35px;
+
+}
+
+.all-table{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+}
+.all-table-left {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-left: 220px;
+ 
+}
+.table-middle{
+  margin-left: -140px;
+
+}
+.all-table-rigth{
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  margin-left: 655px;
+  margin-top: 100px;
+  
+}
+.rigth-table-middle{
+  margin-left: 145px;
+
+}
+.title-table{
+  display: flex;
+  position: absolute;
+  margin-top: 50px;
+  margin: 0 auto;
+}
+   
+ }

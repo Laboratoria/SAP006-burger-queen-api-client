@@ -6,11 +6,12 @@ function Button({
   // eslint-disable-next-line react/prop-types
   buttonOnClick,
   buttonText,
+  buttonClass,
 
 }) {
   return (
 
-    <button onClick={buttonOnClick}>{buttonText}</button>
+    <button onClick={buttonOnClick} className={buttonClass}>{buttonText}</button>
   );
 }
 

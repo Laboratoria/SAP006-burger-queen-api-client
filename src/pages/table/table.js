@@ -3,6 +3,8 @@
 import React from 'react';
 import '../table/table.css';
 import Mesa from '../../components/mesa'
+import Header from '../../components/header'
+import Logo from '../../img/logo-img.png';
 
 function Table() {
 
@@ -12,42 +14,44 @@ const routerPedidos = () => {
 
 
   return (
+    
       <div className="container">
-          <header>
-          <div class="bubble-1 bubble-container anim bubble-animation-x">
-            <div class="bubble bubble-animation-y"></div>
-         </div>
- 
-          <div class="bubble-2 bubble-container anim bubble-animation-x">
-             <div class="bubble bubble-animation-y"></div>
-          </div>
-
-        <div class="bubble-3 bubble-container anim bubble-animation-x">
-          <div class="bubble bubble-animation-y"></div>
-        </div>
- 
-        <div class="bubble-4 bubble-container anim bubble-animation-x">
-           <div class="bubble bubble-animation-y"></div>
-          </div>
-
-<div class="bubble-5 bubble-container anim bubble-animation-x">
-  <div class="bubble bubble-animation-y"></div>
-</div>
-  <div className="back-log">
-  </div>
-    </header>
-
-    <div>
-         <div>
+    <Header />
+    <main>
+    <p className="title-table">Escolha a mesa para realizar o pedido</p>
+    <div className="all-table">
+    <div className="all-table-left">
+         <div className="table">
           <Mesa />
          </div>
-         <div>
+         <div className="table-middle">
         <Mesa />
          </div>
-         <div>
+         <div className="table">
          <Mesa />
          </div>
+    </div>
+    <div className="all-table-rigth">
+         <div className="right-table">
+          <Mesa />
          </div>
+         <div className="rigth-table-middle">
+        <Mesa />
+         </div>
+         <div className="rigth-table">
+         <Mesa />
+         </div>
+    </div>
+   
+
+
+    </div>
+   
+
+
+    </main>
+
+  
    
       </div>
   );
