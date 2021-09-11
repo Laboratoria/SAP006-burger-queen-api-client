@@ -43,6 +43,7 @@ export const Register = () => {
     <main>
       <form>
         <InputContentUserData 
+          inputData='name'
           inputType='text'
           inputValue={name}
           inputOnChange={(e) => setName(e.target.value)}
@@ -52,6 +53,7 @@ export const Register = () => {
           eyeClass='display-none'
         />
         <InputContentUserData 
+          inputData='email'
           inputType='email'
           inputValue={email}
           inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
@@ -61,6 +63,7 @@ export const Register = () => {
           eyeClass='display-none'
         />
        <InputContentUserData 
+          inputData='password'
           inputType='password'
           inputValue={password}
           inputOnChange={(e) => setPassword(e.target.value)}
@@ -71,6 +74,7 @@ export const Register = () => {
           buttonEvent={(event) => showOrNotShowPassword(event)}
         />
         <InputContentUserData
+          inputData='password'
           inputType='password'
           inputValue={confirmPassword}
           inputOnChange={(e) => setConfirmPassword(e.target.value)}
@@ -84,6 +88,7 @@ export const Register = () => {
           <fieldset>
             <img src={inputRole} alt='Role'/>
             <InputRadioUserData 
+              inputData='role'
               inputType='radio'
               inputValue='room'
               inputChecked={role === 'room'}
@@ -91,6 +96,7 @@ export const Register = () => {
               labelText='Salão'
             />
             <InputRadioUserData 
+              inputData='role'
               inputType='radio'
               inputValue='kitchen'
               inputChecked={role === 'kitchen'}

@@ -105,6 +105,14 @@ $dark-yellow-btn: #FF8C00;
 
   }
 
+  .input-content-is-wrong {
+    border-bottom: $dark-yellow-btn solid 3pt;
+    box-shadow: 0 5px 5px -5px #333;
+
+    input{
+      border-bottom: 0pt;
+    }
+  }
 }
 
 .login-content {
@@ -137,28 +145,30 @@ $dark-yellow-btn: #FF8C00;
       width: 100%;
       display: flex;
       flex-direction: row;
-      margin: 0 auto 8%;
-      border-bottom: black solid 2.5pt;
+      padding: 0;
 
       img {
-        bottom:60%;
+        bottom:50%;
         left: 0;
       }
 
       div {
-        margin: 0 6% 0 8%;
+        margin: 2% 0 4% 0;
+        bottom:10%;
+        border-bottom: black solid 2.5pt;
       }
 
       label,
       input:valid ~ label,
       input:focus ~ label {
-        left: 30%;
-        bottom: -10%;
+        left: 45%;
+        bottom: 25%;
         font-size: 180%;
         color: white;
       }
 
       input[type='radio'] {
+        margin: 0 0 7% 25%;
         height: 2.5vh;
         width: 2.5vh;
       }

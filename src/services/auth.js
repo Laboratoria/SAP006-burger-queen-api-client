@@ -4,24 +4,24 @@ export const registerAnEmployee = (event, {userData}) => {
   event.preventDefault();
     if (userData.name.length < 7) {   
       console.log('Por favor, digite um nome válido.')
-      return 'highlightNameInput'
+      return 'name'
     }
     else if (!userData.email.includes('@')) {
       console.log('Por favor, digite um email válido.')
-      return 'highlightEmailInput'
+      return 'email'
     }
     else if (userData.password.length < 6) {
       console.log('A senha deve ser composta por no mínimo SEIS caracteres.')
-      return 'highlightPasswordInput'
-    }
-    else if (userData.role === '') {
-      console.log('Por favor, selecione uma função.')
-      return 'highlighRoleInput'
+      return 'password'
     }
     else if (userData.password !== userData.confirmPassword) {
       console.log('As senhas não conferem.')
-      return 'highlightPasswordInput'
+      return 'password'
     } 
+    else if (userData.role === '') {
+      console.log('Por favor, selecione uma função.')
+      return 'role'
+    }
     else {
       fetch(apiToRegister, {
         method: 'POST',

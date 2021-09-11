@@ -22,6 +22,13 @@ export const moveLabelUpEvenWhenInputValueIsInvalid = (event) => {
 }
 
 export const processRegisterAnEmployeeRequest = (event, {userData}) => {
-  const inputToHighlight = registerAnEmployee(event, {userData});
-  console.log(inputToHighlight)
+  const variableWithError = registerAnEmployee(event, {userData});
+  const variablesWithoutError = Object.keys(userData).filter((input) => input !== variableWithError);
+
+  document.querySelectorAll(`[data-input="${variableWithError}"]`)
+  .forEach(element => element.parentNode.classList.add('input-content-is-wrong'));
+  variablesWithoutError.forEach((input) => {
+    document.querySelectorAll(`[data-input="${input}"]`)
+    .forEach(element => element.parentNode.classList.remove('input-content-is-wrong'));
+  })
 }

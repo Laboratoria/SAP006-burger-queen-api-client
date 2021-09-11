@@ -1,6 +1,7 @@
 import React from 'react';
 
 export function InputContentUserData ({
+  inputData,
   inputType,
   inputValue,
   inputOnChange,
@@ -13,6 +14,7 @@ export function InputContentUserData ({
   return (
     <div>
       <input 
+        data-input={inputData}
         type={inputType}
         required
         value={inputValue}
@@ -35,6 +37,7 @@ export function InputContentUserData ({
 }
 
 export function InputRadioUserData ({
+  inputData,
   inputType,
   inputValue,
   inputChecked,
@@ -45,6 +48,7 @@ export function InputRadioUserData ({
   return (
     <div>
       <input 
+        data-input={inputData}
         type={inputType}
         name='role'
         required
