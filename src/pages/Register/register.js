@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button/button';
-import InputTxt from '../../components/Input/inputText';
+import InputTxt from '../../components/Input/inputTxt';
 import Select from '../../components/Select/select';
+import Jellyfish from '../../img/jellyfish.png';
 import './register.css';
 
 function Register() {
@@ -36,58 +38,66 @@ function Register() {
   };
 
   return (
-    <div className="Cadastro">
-      <form className="FormCadastro">
+    <main className="ocean-container">
+      <div className="register-container">
+        <form className="register-form">
+          <h1 className="txt-register"> cadastre-se</h1>
 
-        <InputTxt
-          inputType="text"
-          inputPlaceholder="Digite seu nome"
-          inputValue={name}
-          inputOnChange={(event) => setName(event.target.value)}
-          inputClassName="cadInput"
-        />
+          <InputTxt
+            inputType="text"
+            inputPlaceholder="Digite seu nome"
+            inputValue={name}
+            inputOnChange={(event) => setName(event.target.value)}
+            inputClassName="input-register"
+          />
 
-        <InputTxt
-          inputType="text"
-          inputPlaceholder="Digite seu E-mail"
-          inputValue={email}
-          inputOnChange={(event) => setEmail(event.target.value)}
-          inputClassName="cadInput"
-        />
+          <InputTxt
+            inputType="text"
+            inputPlaceholder="Digite seu E-mail"
+            inputValue={email}
+            inputOnChange={(event) => setEmail(event.target.value)}
+            inputClassName="input-register"
+          />
 
-        <InputTxt
-          inputType="password"
-          inputPlaceholder="Digite sua senha"
-          inputValue={password}
-          inputOnChange={(event) => setPassword(event.target.value)}
-          inputClassName="cadInput"
-        />
+          <InputTxt
+            inputType="password"
+            inputPlaceholder="Crie uma senha"
+            inputValue={password}
+            inputOnChange={(event) => setPassword(event.target.value)}
+            inputClassName="input-register"
+          />
 
-        <Select
-          selectName="ordenar"
-          selectValue={role}
-          selectOnChange={(event) => setRole(event.target.value)}
-          selectClassName="cadInput cardSelect"
-          optionValue1=""
-          optionValue2="salao"
-          optionValue3="cozinha"
-          optionText1="Cargo"
-          optionText2="Garçom/Garçonete"
-          optionText3="Cozinheiro(a)"
-          optionClassName="cadInputOption"
-          optionDisabled
-        />
+          <Select
+            selectName="ordenar"
+            selectValue={role}
+            selectOnChange={(event) => setRole(event.target.value)}
+            selectClassName="register-option"
+            optionValue1=""
+            optionValue2="salao"
+            optionValue3="cozinha"
+            optionText1="Cargo"
+            optionText2="Garçom/Garçonete"
+            optionText3="Cozinheiro(a)"
+            optionClassName="input-option-select"
+            optionDisabled
+          />
 
-        <Button
-          buttonOnClick={(e) => postCad(e)}
-          buttonText="Cadastrar"
-          btnClassName="btnForm"
+          <Button
+            buttonOnClick={(e) => postCad(e)}
+            buttonText="Cadastrar"
+            btnClassName="btnForm"
+          />
+        </form>
+      </div>
+      <div className="Jelly-div">
+        <Link to="/">
+          <img className="jellyfish" src={Jellyfish} alt="jellyfish-btn" />
+          <div className="secret-text">Voltar</div>
+        </Link>
+      </div>
 
-        />
+    </main>
 
-      </form>
-
-    </div>
   );
 }
 

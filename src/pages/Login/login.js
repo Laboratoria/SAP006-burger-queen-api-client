@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button/button';
-import InputTxt from '../../components/Input/InputTxt';
+import InputTxt from '../../components/Input/inputTxt';
 import './login.css';
 
 function Login() {
@@ -49,8 +49,8 @@ function Login() {
   return (
 
     <div className="Login-container">
-      <form className="login">
-        <h1>Login</h1>
+      <form className="login-form">
+        <h1 className="txt-login">login</h1>
         <InputTxt
           inputType="text"
           inputPlaceholder=" Digite seu E-mail"

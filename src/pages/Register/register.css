@@ -1,3 +1,98 @@
-.Cadastro button {
-    background-color: red;
+.ocean-container{
+    background-color: #03e5b7;
+    background-image: linear-gradient(315deg, #03e5b7 0%, #037ade 74%); 
+    height: 100vh;
+}
+
+.register-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+.txt-register {
+    margin-bottom: 2rem;
+    color: #000000ad;
+}
+
+.register-container button {
+    padding: 5px 20px ;
+    border-radius: 15px;
+    background-color: #f38a8aeb;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: .2s;
+}
+
+.register-container button:hover{
+    background-color: #ff6161eb;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.secret-text{
+    color: black;
+    display: none;
+
+}
+.secret-text:hover + div {
+    display: block;
+}
+
+.register-form {
+    margin-top: 7rem;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff8c;
+    border-radius: 1.5rem;
+    z-index: 3;
+    max-width: fit-content;
+    box-shadow: 1px 1px 10px #888888;
+}
+
+.input-register{
+    padding: 1rem;
+    display: flex;
+    border-radius: 2rem;
+    margin: 0.5rem;
+    width: 30rem;
+    outline: none;
+    border: none;
+    box-shadow: 1px 1px 10px #888888;
+}
+
+.register-option{
+   
+    margin: 1rem;
+    padding: 5px 20px ;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+}
+
+.input-option-select{
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.Jelly-div{
+    display: flex;
+    padding: 0 3rem;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.jellyfish {
+    width: 6.5rem;
+    -webkit-transition: -webkit-transform .5s ease;
+    transition: transform .5s ease;
+}
+
+.jellyfish:hover{
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+
 }

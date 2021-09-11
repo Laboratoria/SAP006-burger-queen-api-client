@@ -1,9 +1,14 @@
 .Login-container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    background-color: #03e5b7;
+    background-image: linear-gradient(315deg, #03e5b7 0%, #037ade 74%); 
+    height: 100vh;  
 }
 
-.login{
+.login-form{
     padding: 4rem;
     display: flex;
     flex-direction: column;
@@ -14,6 +19,10 @@
     max-width: fit-content;
     box-shadow: 1px 1px 10px #888888;
 }
+.txt-login {
+    margin-bottom: 2rem;
+    color: #000000ad;
+}
 .LoginInput {
     padding: 1rem;
     display: flex;
@@ -21,6 +30,8 @@
     margin: 0.5rem;
     width: 30rem;
     outline: none;
+    border: none;
+    box-shadow: 1px 1px 10px #888888;
 }
 
 .Login-container button {
@@ -31,6 +42,12 @@
     cursor: pointer;
     color: white;
     transition: .2s;
+}
+
+.Login-container button:hover{
+    background-color: #ff6161eb;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .btn-container {
