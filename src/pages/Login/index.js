@@ -5,7 +5,7 @@ import logo from '../../img/logo.png';
 import background from '../../img/bg-login3.png';
 import { loginRedirection, validationInputs } from '../../services';
 import ErrorMessage from '../../components/ErrorMessage';
-import './login.css'
+import './login.scss'
 
 export default function Login() {
   const url = 'https://lab-api-bq.herokuapp.com/auth';

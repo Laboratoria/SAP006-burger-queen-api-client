@@ -24,7 +24,7 @@
   "rules": {
     "linebreak-style": 0,
     "prefer-destructuring": 0,
-    // "react/prop-types": 0,
+   // "react/prop-types": 0,
     "import/extensions": 0,
     "import/prefer-default-export": 0,
     "import/no-unresolved": [2, { "caseSensitive": false }],

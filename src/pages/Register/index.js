@@ -6,7 +6,7 @@ import { loginRedirection, validationInputs } from '../../services';
 import ErrorMessage from '../../components/ErrorMessage';
 import ButtonDefault from '../../components/ButtonDefault';
 
-import './register.css';
+import './register.scss';
 
 const Register = () => {
 
