@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import logo from '../../img/logo.png';
 import background from '../../img/bg-login3.png';
+import ButtonDefault from '../../components/ButtonDefault';
 import { loginRedirection, validationInputs } from '../../services';
 import ErrorMessage from '../../components/ErrorMessage';
 import './login.scss'
+import Loader from '../../components/Loader';
 
 export default function Login() {
+  const [loading, setLoading] = useState(false);
+
   const url = 'https://lab-api-bq.herokuapp.com/auth';
 
   const history = useHistory();
@@ -20,7 +24,7 @@ export default function Login() {
     email: '',
     password: '',
   });
-  
+
   const onChange = (e) => {
     const { value, name } = e.target;
     setValues({
@@ -52,6 +56,7 @@ export default function Login() {
       Object.keys(errorsObject).length === 0 &&
       errorsObject.constructor === Object
     ) {
+      setLoading(true);
       const loginData = {
         method: 'POST',
         headers: {
@@ -74,12 +79,16 @@ export default function Login() {
           }
         })
         .then((role) => {
-          loginRedirection(role, history);
+          setTimeout(() => {
+            loginRedirection(role, history)
+          },
+            1000)
         })
         .catch(() => {
           const userNotFound = {
             userPassword: 'Usuário e/ou senha incorreto(s).',
           };
+          setLoading(false);
           setErrors(userNotFound);
           setErrorEmail(true);
           setErrorPassword(true);
@@ -89,63 +98,66 @@ export default function Login() {
 
   return (
     <>
+      {loading ? <Loader /> : false}
       <div className="container-bg">
-        <img src={background} className="bg-login" alt="background"></img>
+        <img src={background} alt="background"></img>
       </div>
 
-      <div className="container-login">
+      <section className="container-login">
         <img src={logo} className="logo" alt="logo"></img>
-        <h2 className="mb-4">LOGIN</h2>
-        <Form noValidate onSubmit={handleSubmit}>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
-            <Form.Control
-              className={` ${errorEmail ? 'is-invalid' : ''}` }
-              type="email"
-              placeholder="Email"
-              onChange={onChange}
-              value={values.email}
-              name="email"
-              required
-              
-            />
+        <h2>LOGIN</h2>
+        <div className="form-wrapper">
+          <Form noValidate onSubmit={handleSubmit}>
+            <Form.Group className="mb-4" controlId="formBasicEmail">
+              <Form.Control
+                className={` ${errorEmail ? 'is-invalid' : ''}`}
+                type="email"
+                placeholder="Email"
+                onChange={onChange}
+                value={values.email}
+                name="email"
+                required
+
+              />
+
+            </Form.Group>
             {errors.userEmail && (
               <ErrorMessage>{errors.userEmail}</ErrorMessage>
             )}
-          </Form.Group>
 
-          <Form.Group className="mb-4" controlId="formBasicPassword">
-            <Form.Control
-              className={` ${errorPassword ? 'is-invalid' : ''}`}
-              type="password"
-              placeholder="Senha"
-              onChange={onChange}
-              value={values.password}
-              name="password"
-              required
-            />
+            <Form.Group className="mb-4" controlId="formBasicPassword">
+              <Form.Control
+                className={` ${errorPassword ? 'is-invalid' : ''}`}
+                type="password"
+                placeholder="Senha"
+                onChange={onChange}
+                value={values.password}
+                name="password"
+                required
+              />
+
+            </Form.Group>
             {errors.userPassword && (
-             	<ErrorMessage>{errors.userPassword}</ErrorMessage>
+              <ErrorMessage>{errors.userPassword}</ErrorMessage>
             )}
-          </Form.Group>
-          <div className="col text-center">
-            <Button
-              id="btn-signin"
-              className="mb-4 btn-default"
-              variant="primary"
-              type="submit"
-              size="lg"
-            >
-              ENTRAR
-            </Button>
-          </div>
-          <div className=" d-flex justify-content-center link-register">
-            <p className="text">PRIMEIRO ACESSO?</p>
-            <a href="/cadastro" className=" link d-inline-flex">
-              CADASTRE-SE
-            </a>
-          </div>
-        </Form>
-      </div>
+            <div>
+              <ButtonDefault
+                id="btn-signin"
+                className="btn-default margin-bottom-2"
+
+              >
+                ENTRAR
+              </ButtonDefault>
+            </div>
+            <div className=" link-register">
+              <span className="text">PRIMEIRO ACESSO?</span>
+              <a href="/cadastro" >
+                CADASTRE-SE
+              </a>
+            </div>
+          </Form>
+        </div>
+      </section>
     </>
   );
 }
