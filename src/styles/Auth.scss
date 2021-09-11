@@ -36,11 +36,16 @@ $dark-yellow-btn: #FF8C00;
         border-bottom: black solid 2.5pt;
         padding-left: 10%;
     
-        font-size: 200%;
+        font-size: 180%;
         color: white;
       }
 
+      ::placeholder{
+        color:white;
+      }
+
       label {
+        display: none;
         position: absolute;
         bottom: 25%;
         left: 10%;
@@ -49,8 +54,8 @@ $dark-yellow-btn: #FF8C00;
       }
 
       input:valid ~ label,
-      input:focus ~ label,
       .move-label-up ~ label {
+        display: block;
         bottom: 85%;
         font-size: 160%;
         color: $light-gray;
@@ -105,6 +110,13 @@ $dark-yellow-btn: #FF8C00;
 
   }
 
+  .auth-error-message {
+    margin: -9% auto -5%;
+    visibility: hidden;
+    font-size: 130%;
+    color: #ffc299;
+  }
+
   .input-content-is-wrong {
     border-bottom: $dark-yellow-btn solid 3pt;
     box-shadow: 0 5px 5px -5px #333;
@@ -112,6 +124,10 @@ $dark-yellow-btn: #FF8C00;
     input{
       border-bottom: 0pt;
     }
+  }
+
+  .input-content-is-wrong ~ .auth-error-message {
+    visibility: visible;
   }
 }
 
@@ -148,12 +164,12 @@ $dark-yellow-btn: #FF8C00;
       padding: 0;
 
       img {
-        bottom:50%;
+        bottom: 70%;
         left: 0;
       }
 
-      div {
-        margin: 2% 0 4% 0;
+      div div {
+        margin: 8% 0 0% 0;
         bottom:10%;
         border-bottom: black solid 2.5pt;
       }
@@ -161,7 +177,8 @@ $dark-yellow-btn: #FF8C00;
       label,
       input:valid ~ label,
       input:focus ~ label {
-        left: 45%;
+        display: block;
+        left: 40%;
         bottom: 25%;
         font-size: 180%;
         color: white;
@@ -172,11 +189,17 @@ $dark-yellow-btn: #FF8C00;
         height: 2.5vh;
         width: 2.5vh;
       }
+
+      .auth-error-message {
+        margin: -1% 40%;
+        width: 120%;
+
+      }
     }
   }
 
   button {
-    margin: -5% auto 4% auto;
+    margin: -14% auto 4% auto;
   }
 
   p {

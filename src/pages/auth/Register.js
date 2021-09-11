@@ -10,6 +10,7 @@ import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
 import { InputContentUserData } from '../../components/UserData';
 import { InputRadioUserData } from '../../components/UserData';
+import { AuthModal } from '../../components/Modal'
 
 import '../../styles/Auth.scss'
 
@@ -45,26 +46,32 @@ export const Register = () => {
         <InputContentUserData 
           inputData='name'
           inputType='text'
+          inputPlaceholder='Nome Completo'
           inputValue={name}
           inputOnChange={(e) => setName(e.target.value)}
           labelText='Nome Completo'
           iconSRC={inputName}
           iconAlt='Name'
           eyeClass='display-none'
+          errorMessage='Por favor, insira um nome válido.'
         />
         <InputContentUserData 
           inputData='email'
           inputType='email'
+          inputPlaceholder='Email'
           inputValue={email}
           inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
           labelText='Email'
           iconSRC={inputEmail}
           iconAlt='Email'
           eyeClass='display-none'
+          errorMessage='Por favor, insira um email válido.'
         />
        <InputContentUserData 
           inputData='password'
+          inputConfirmPassword='confirmPassword'
           inputType='password'
+          inputPlaceholder='Senha'
           inputValue={password}
           inputOnChange={(e) => setPassword(e.target.value)}
           labelText='Senha'
@@ -72,10 +79,13 @@ export const Register = () => {
           iconAlt='Password'
           eyeClass='show-or-not-password not-show-password'
           buttonEvent={(event) => showOrNotShowPassword(event)}
+          errorMessage='A senha deve conter ao menos 6 caracteres.'
         />
         <InputContentUserData
           inputData='password'
+          inputConfirmPassword='confirmPassword'
           inputType='password'
+          inputPlaceholder='Confirme a Senha'
           inputValue={confirmPassword}
           inputOnChange={(e) => setConfirmPassword(e.target.value)}
           labelText='Confirme a Senha'
@@ -83,6 +93,7 @@ export const Register = () => {
           iconAlt='Password'
           eyeClass='show-or-not-password not-show-password'
           buttonEvent={(event) => showOrNotShowPassword(event)}
+          errorMessage='A senha deve conter ao menos 6 caracteres.'
         />
         <div>
           <fieldset>
@@ -94,6 +105,7 @@ export const Register = () => {
               inputChecked={role === 'room'}
               inputOnChange={(e) => setRole(e.target.value)}
               labelText='Salão'
+              errorMessage='Por favor, escolha um setor.'
             />
             <InputRadioUserData 
               inputData='role'
@@ -112,6 +124,9 @@ export const Register = () => {
         />
         <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
       </form>
+      <AuthModal 
+        modalMessage = 'eba'
+      />
     </main>
   </div>
   )

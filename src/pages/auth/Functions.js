@@ -24,11 +24,18 @@ export const moveLabelUpEvenWhenInputValueIsInvalid = (event) => {
 export const processRegisterAnEmployeeRequest = (event, {userData}) => {
   const variableWithError = registerAnEmployee(event, {userData});
   const variablesWithoutError = Object.keys(userData).filter((input) => input !== variableWithError);
-
-  document.querySelectorAll(`[data-input="${variableWithError}"]`)
-  .forEach(element => element.parentNode.classList.add('input-content-is-wrong'));
+ 
   variablesWithoutError.forEach((input) => {
     document.querySelectorAll(`[data-input="${input}"]`)
     .forEach(element => element.parentNode.classList.remove('input-content-is-wrong'));
   })
+
+  document.querySelectorAll(`[data-input="${variableWithError}"], [data-input-confirm-password="${variableWithError}"]`)
+  .forEach(element => { 
+    element.parentNode.classList.add('input-content-is-wrong')
+    if(variableWithError === 'confirmPassword') {
+     element.parentNode.nextSibling.textContent = 'As senhas não conferem.'
+    }
+  });
+  
 }
