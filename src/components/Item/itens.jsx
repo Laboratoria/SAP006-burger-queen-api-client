@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import Button from './button';
+import Button from '../Button/button';
 
 function Item({
   divClassName,

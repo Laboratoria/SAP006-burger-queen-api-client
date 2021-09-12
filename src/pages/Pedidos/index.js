@@ -1,7 +1,7 @@
 /* eslint-disable */
 import '../Pedidos/index.css';
-import Header from '../../components/header'
-import Item from '../../components/itens'
+import Header from '../../components/Header/header'
+import Item from '../../components/Item/itens'
 import { useState, useEffect } from 'react';
 import CoffeImg from "../../img/coffe-item.png";
  

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Button from '../../components/Button/button';
 import InputTxt from '../../components/Input/inputTxt';
 import './login.css';
 
 function Login() {
+  const routeHistory = useHistory();
   const salao = () => {
-    console.log('salao');
+    routeHistory.push('/table');
   };
   const cozinha = () => {
     console.log('cozinha');
@@ -18,7 +19,7 @@ function Login() {
   function loginBtn(e) {
     e.preventDefault();
     if (email === '' || password === '') {
-      console.log('nao pode');
+      console.log('erro');
     } else {
       fetch('https://lab-api-bq.herokuapp.com/auth', {
         method: 'POST',
@@ -40,7 +41,7 @@ function Login() {
           } else if (tokenUser !== null && idUser !== null && json.role === 'salao') {
             salao();
           } else {
-            console.log('nada deu bom');
+            console.log('erro');
           }
         });
     }
@@ -67,7 +68,7 @@ function Login() {
           inputClassName="LoginInput"
         />
 
-        <div className="btn-container">
+        <div className="btn-container-login">
           <Button
             // eslint-disable-next-line react/jsx-no-bind
             buttonOnClick={loginBtn}
