@@ -4,13 +4,14 @@ import { useHistory } from 'react-router-dom';
 
 import { showOrNotShowPassword } from './Functions';
 import { moveLabelUpEvenWhenInputValueIsInvalid } from './Functions'
-import { processRegisterAnEmployeeRequest } from './Functions';
+import { processAuthRequest } from './Functions';
+
+import { AuthSignin } from '../../services/auth';
 
 import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
 import { InputContentUserData } from '../../components/UserData';
 import { InputRadioUserData } from '../../components/UserData';
-import { AuthModal } from '../../components/Modal'
 
 import '../../styles/Auth.scss'
 
@@ -24,6 +25,10 @@ import inputRole from '../../assets/icons/input-role.png';
 export const Register = () => {
 
   const history = useHistory();
+
+ function navigateTo (path) {
+  history.push(path);
+ }
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -120,13 +125,10 @@ export const Register = () => {
         <Button
           buttonType = 'submit'
           buttonText = 'Registrar'
-          buttonEvent = {(event) => processRegisterAnEmployeeRequest(event, {userData})}
+          buttonEvent = {(event) => processAuthRequest(AuthSignin, event, {userData}, navigateTo)}
         />
         <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
       </form>
-      <AuthModal 
-        modalMessage = 'eba'
-      />
     </main>
   </div>
   )

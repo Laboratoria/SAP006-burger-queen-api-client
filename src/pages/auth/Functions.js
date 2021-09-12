@@ -1,6 +1,3 @@
-import { registerAnEmployee } from "../../services/auth";
-
-
 export const showOrNotShowPassword = (event) => {
   const inputToHideOrShow = event.target.previousElementSibling.previousElementSibling.previousElementSibling;
   const eyeClass =  event.target.classList
@@ -21,8 +18,8 @@ export const moveLabelUpEvenWhenInputValueIsInvalid = (event) => {
   }
 }
 
-export const processRegisterAnEmployeeRequest = (event, {userData}) => {
-  const variableWithError = registerAnEmployee(event, {userData});
+export const processAuthRequest = (authFunction, event, {userData}, navigateTo) => {
+  const variableWithError = authFunction(event, {userData}, navigateTo);
   const variablesWithoutError = Object.keys(userData).filter((input) => input !== variableWithError);
  
   variablesWithoutError.forEach((input) => {
@@ -38,4 +35,10 @@ export const processRegisterAnEmployeeRequest = (event, {userData}) => {
     }
   });
   
+}
+
+export const closeAuthModal = (event, navigateTo, path) => {
+  event.target.parentNode.style.display = 'none'
+  event.target.parentNode.parentNode.style.display = 'none'
+  navigateTo(path)
 }

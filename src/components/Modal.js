@@ -1,9 +1,13 @@
 import React from 'react';
 
-import { Button } from './Button';
-
 export function AuthModal ({
 modalMessage,
+buttonClass,
+buttonEvent,
+buttonText,
+buttonIIClass,
+buttonIIEvent,
+buttonIIText
 }) {
   return (
     <section className='modal-background'>
@@ -11,7 +15,12 @@ modalMessage,
         <p>
           {modalMessage}
         </p>
-        <Button />
+        <button className={buttonClass} onClick={buttonEvent}>
+          {buttonText}
+        </button>
+        <button className={buttonIIClass} onClick={buttonIIEvent}>
+          {buttonIIText}
+        </button>
       </div>
     </section>
   )
