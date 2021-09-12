@@ -1,5 +1,7 @@
 // import './App.css';
 
+import './pages/signUp/style.css';
+
 function App() {
   return (
     <div className="App">
@@ -7,7 +9,6 @@ function App() {
         <h1> Hello Word</h1>
       </header>
     </div>
-
   );
 }
 
