@@ -4,7 +4,7 @@ import Login from './pages/Login/login';
 import Register from './pages/Register/register';
 import Table from './pages/Table/table';
 import Page404 from './pages/Page404/index';
-import Initial from './pages/Initial';
+// import Initial from './pages/Initial';
 import Pedidos from './pages/Pedidos/index';
 
 function Routes() {
@@ -12,12 +12,10 @@ function Routes() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Initial />
           <Login />
         </Route>
 
         <Route exact path="/register">
-          <Initial />
           <Register />
         </Route>
 
