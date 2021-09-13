@@ -1,21 +1,19 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react';
-import {Button} from 'react-bootstrap';
+import './buttonDefault.scss'
 
 export default function ButtonDefault({
- children, id, className, variant, type, size, onclick 
+ children, className, onclick 
 }) {
   return (
-    <Button
-    id={id}
+    <button
+    type="button"
     className={className}
-    variant={variant}
-    type={type}
-    size={size}
     onClick={onclick}
+    data-testid="button"
   >
     {children}
-  </Button>
+  </button>
   )
 }

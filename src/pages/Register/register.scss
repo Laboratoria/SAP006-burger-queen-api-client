@@ -1,13 +1,3 @@
-:root{
-  --white: #FFF;
-  --black: #000000;
-  --green: #A0A603;
-  --yellow: #D97904;
-  --red: #BF0404;
-  --dark-red: #590202;
-}
-
-
 
 
 .radio-btn{
@@ -21,13 +11,10 @@
   background-color:var(--yellow) !important;
   
 }
-.radio-btn:active::after, .radio-btn:focus::after, .radio-btn:hover::after, .hall:checked::after{
-  background-color:var(--yellow) !important;
-  
-}
-.radio-btn:active::before, .radio-btn::before, .radio-btn:hover::before, .hall:checked::before{
-  background-color:var(--yellow) !important;
-  
-}
 
+.radio-wrapper{
+  p{
+    align-self: start;
+  }
+}
 

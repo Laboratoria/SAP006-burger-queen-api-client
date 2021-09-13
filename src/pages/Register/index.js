@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Form, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import background from '../../img/bg-login3.png';
 import { loginRedirection, validationInputs } from '../../services';
 import ErrorMessage from '../../components/ErrorMessage';
 import ButtonDefault from '../../components/ButtonDefault';
+import ButtonRadio from '../../components/ButtonRadio';
+import Loader from '../../components/Loader';
+
 
 import './register.scss';
 
 const Register = () => {
+	const [loading, setLoading] = useState(false);
 
 	const apiURL = 'https://lab-api-bq.herokuapp.com';
 	const apiUsers = `${apiURL}/users`;
@@ -34,6 +38,7 @@ const Register = () => {
 			...values,
 			[name]: value,
 		});
+
 
 		setErrorName(false);
 		setErrorEmail(false);
@@ -65,6 +70,8 @@ const Register = () => {
 			Object.keys(errorsObject).length === 0 &&
 			errorsObject.constructor === Object
 		) {
+			setLoading(true);
+
 			const requestOptions = {
 				method: 'POST',
 				headers: {
@@ -76,25 +83,42 @@ const Register = () => {
 			fetch(apiUsers, requestOptions)
 				.then((response) => response.json())
 				.then((userData) => {
+					// eslint-disable-next-line eqeqeq
+					if (userData.code == '403') {
+						throw new Error();
+					}
+
 					localStorage.setItem('name', userData.name);
 					localStorage.setItem('token', userData.token);
 					localStorage.setItem('role', userData.role);
 					return userData.role;
 				})
 				.then((role) => {
-					loginRedirection(role, history);
+					setTimeout(() => {
+						loginRedirection(role, history)
+					},
+						2000)
+				})
+				.catch(() => {
+					setLoading(false);
+					setErrors({
+						...errors,
+						fail: `Ocorreu um erro, tente novamente.`,
+					});
+
 				});
 		}
 	};
 
 	return (
 		<>
+			{loading ? <Loader /> : false}
 			<div className="container-bg">
 				<img src={background} className="bg-login" alt="background"></img>
 			</div>
 
-			<div className="container-login">
-				<h2 className="mb-4">CADASTRO</h2>
+			<section className="container-login">
+				<h2>CADASTRO</h2>
 				<Form noValidate onSubmit={handleSubmit}>
 					<Form.Group className="mb-4">
 						<Form.Control
@@ -126,7 +150,7 @@ const Register = () => {
 						)}
 					</Form.Group>
 
-					<Form.Group className="mb-4" >
+					<Form.Group >
 						<Form.Control
 							className={` ${errorPassword ? 'is-invalid' : ''}`}
 							type="password"
@@ -140,51 +164,30 @@ const Register = () => {
 							<ErrorMessage>{errors.userPassword}</ErrorMessage>
 						)}
 					</Form.Group>
+					<div className="radio-wrapper">
+						<ButtonRadio onChange={onChange} />
+						{errors.role && (
+							<ErrorMessage>{errors.role}</ErrorMessage>
+						)}
+					</div>
 
-
-					<ToggleButtonGroup className=" d-flex justify-content-center" name="role" type="radio"  >
-						<ToggleButton
-							type="radio"
-							variant="secondary"
-							name="role"
-							value="hall"
-							id="hall"
-							onChange={onChange}
-							className="radio-btn"
-						>
-							Salão
-						</ToggleButton>
-						<ToggleButton
-							type="radio"
-							variant="secondary"
-							name="role"
-							value="kitchen"
-							id="kitchen"
-							onChange={onChange}
-							className="radio-btn"
-						>
-							Cozinha
-						</ToggleButton>
-					</ToggleButtonGroup>
-					{errors.role && (
-						<ErrorMessage>{errors.role}</ErrorMessage>
+					{errors.fail && (
+						<ErrorMessage >{errors.fail}</ErrorMessage>
 					)}
-
-
-					<div className="col text-center">
+					<div>
 						<ButtonDefault
 							id="btn-register"
-							className="mb-4 mt-4"
-							variant="primary"
-							type="submit"
-							size="lg"
+							className="btn-default margin-bottom-4 margin-top-2"
 							onClick={(event) => handleSubmit(event)}
 						>
 							CADASTRAR
 						</ButtonDefault>
 					</div>
 				</Form>
-			</div>
+
+			</section>
+
+
 		</>
 	);
 };
