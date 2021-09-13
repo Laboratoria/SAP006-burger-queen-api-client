@@ -3,8 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 import Button from '../../components/Button/button';
 import InputTxt from '../../components/Input/inputTxt';
 import './login.css';
+// import Error from '../../components/Errors/errors';
 
 function Login() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [visibleInput, setVisibleInput] = useState(false);
   const routeHistory = useHistory();
   const salao = () => {
     routeHistory.push('/table');
@@ -19,7 +22,7 @@ function Login() {
   function loginBtn(e) {
     e.preventDefault();
     if (email === '' || password === '') {
-      console.log('erro');
+      setVisibleInput(true);
     } else {
       fetch('https://lab-api-bq.herokuapp.com/auth', {
         method: 'POST',
@@ -41,7 +44,7 @@ function Login() {
           } else if (tokenUser !== null && idUser !== null && json.role === 'salao') {
             salao();
           } else {
-            console.log('erro');
+            setIsModalVisible(true);
           }
         });
     }
@@ -58,6 +61,7 @@ function Login() {
           inputValue={email}
           inputOnChange={(event) => setEmail(event.target.value)}
           inputClassName="LoginInput"
+          data-testid="emailTest"
         />
 
         <InputTxt
@@ -66,22 +70,30 @@ function Login() {
           inputValue={password}
           inputOnChange={(event) => setPassword(event.target.value)}
           inputClassName="LoginInput"
+          data-testid="passwordTest"
         />
 
+        <Button
+          // eslint-disable-next-line react/jsx-no-bind
+          buttonOnClick={loginBtn}
+          buttonText="Login"
+          btnClassName="btnForm"
+        />
+        {isModalVisible ? (
+          <div className="error-msg">
+            <h1> Usuário não encontrado </h1>
+          </div>
+        ) : null}
+        {visibleInput ? (
+          <div className="error-msg">
+            <h1> Preencha todos os campos </h1>
+          </div>
+        ) : null}
+
         <div className="btn-container-login">
-          <Button
-            // eslint-disable-next-line react/jsx-no-bind
-            buttonOnClick={loginBtn}
-            buttonText="Login"
-            btnClassName="btnForm"
-
-          />
-
+          <h3> Não tem uma conta?   </h3>
           <Link to="/register">
-            <Button
-              buttonText="Cadastrar"
-              btnClassName="btnForm"
-            />
+            <h3 className="btnRegister"> Cadastre-se </h3>
           </Link>
         </div>
 
