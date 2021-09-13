@@ -3,7 +3,7 @@
 // import {
 //   render, screen, fireEvent,
 // } from '@testing-library/react';
-// import Login, { loginBtn } from './login';
+// import Login from './login';
 
 // // test('renders learn react link', () => {
 // //   render(<Login />);

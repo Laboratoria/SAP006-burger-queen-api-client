@@ -23,7 +23,7 @@
     border: none;
     cursor: pointer;
     color: white;
-    width: 30rem;
+    width: 20rem;
     margin: 0.5rem;
     transition: .2s;
 }
@@ -60,7 +60,7 @@
     display: flex;
     border-radius: 2rem;
     margin: 0.5rem;
-    width: 30rem;
+    width: 20rem;
     outline: none;
     border: none;
     box-shadow: 1px 1px 10px #888888;

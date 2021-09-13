@@ -31,14 +31,13 @@ header {
 
 .table-button{
     display: flex;
- 
     position: relative;
 }
 .red-circle{
     display: flex;
     background-color: var(--bg--circle--red--color);
-    width: 168px;
-    height: 168px;
+    width: 128px;
+    height: 128px;
     border-radius: 50%;
     margin-top: 100px;
 }
@@ -48,8 +47,8 @@ header {
     align-items: center;
     margin: 0 auto;
     background-color: var(--bg--circle--yellow--color);
-    width: 126px;
-    height: 126px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     margin-top: 12%;
     margin-left: 20px;
@@ -172,6 +171,7 @@ header {
 }
 
 .all-table{
+  position: fixed;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -181,7 +181,7 @@ header {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 250px;
   margin-left: 220px;
  
 }
@@ -194,7 +194,7 @@ header {
   position: absolute;
   flex-direction: column;
   margin-left: 655px;
-  margin-top: 100px;
+  margin-top: 250px;
   
 }
 .rigth-table-middle{
@@ -204,8 +204,47 @@ header {
 .title-table{
   display: flex;
   position: absolute;
-  margin-top: 50px;
+  margin-top: 230px;
+  margin-left: 35%;
+
+}
+.table-button{
+  display: flex;
+  position: relative;
+ 
+}
+.red-circle{
+  display: flex;
+  background-color: var(--bg--circle--red--color);
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  margin-top: 40px;
+}
+.yellow-circle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
+  background-color: var(--bg--circle--yellow--color);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin-top: 12%;
+  margin-left: 16px;
+}
+.little-circle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #74827B;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  margin-top: 4%;
+  margin-left: 25px;
+
 }
    
  }

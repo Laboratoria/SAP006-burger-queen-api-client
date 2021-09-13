@@ -1,8 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 import '../Table/table.css';
-import Mesa from '../../components/mesa';
-import Header from '../../components/header';
+import Mesa from '../../components/Table/mesa';
+import Header from '../../components/Header/header';
 
 // import Mesa from '../../components/mesa';
 // import Header from '../../components/header';
@@ -11,9 +11,9 @@ import Header from '../../components/header';
 // import './table.css';
 
 function Table() {
-// const routerPedidos = () => {
-//     history.push('/table/pedidos')
-// }
+ const routerPedidos = () => {
+    history.push('/table/pedidos')
+}
 
   return (
 

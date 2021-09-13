@@ -28,10 +28,10 @@
     display: flex;
     border-radius: 2rem;
     margin: 0.5rem;
-    width: 30rem;
+    width: 20rem;
     outline: none;
     border: none;
-    box-shadow: 1px 1px 10px #888888;
+    box-shadow: 1px 1px 1px #e0e0e0;
 }
 
 .Login-container button {
@@ -41,7 +41,7 @@
     border: none;
     cursor: pointer;
     color: white;
-    width: 30rem;
+    width: 20rem;
     margin: 0.5rem;
     transition: .2s;
 }
@@ -52,7 +52,8 @@
     transform: scale(1.1);
 }
 
-.btn-container {
+.btn-container-login {
+    width: 250px;
     display: flex;
     justify-content: space-evenly;
     padding: 1rem;
@@ -62,11 +63,17 @@
     margin-top: 2rem;
 }
 
-.btnRegister{
+.btnRegister {
     color: #000000ad;
     transition: .2s
 }
 
-.btnRegister:hover{
+.btnRegister:hover {
     color: #ff6161;
+}
+
+.error-msg {
+    color: red;
+    font-size: 09px;
+
 }
