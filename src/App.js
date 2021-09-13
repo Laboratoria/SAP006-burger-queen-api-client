@@ -1,4 +1,4 @@
-// import './App.css';
+import "./index.css";
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login/index.js";
