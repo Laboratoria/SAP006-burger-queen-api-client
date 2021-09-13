@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
-import Home from './pages/home.jsx';
-import Login from './pages/login.jsx';
-import SignUp from './pages/signup.jsx';
-import Menu from './pages/menu.jsx';
-import Kitchen from './pages/kitchen.jsx';
-import Orders from './pages/orders.jsx';
-
+import Home from './pages/home/home.jsx';
+import Login from './pages/login/login.jsx';
+import SignUp from './pages/signup/signup.jsx';
+import Menu from './pages/menu/menu.jsx'
+import Kitchen from './pages/kitchen/kitchen';
+import Orders from './pages/orders/orders';
+import NotFound from './pages/notfound/notfound';
 const App = () => {
   return (
     <Router>
@@ -18,6 +18,7 @@ const App = () => {
           <Route path='/menu' component={Menu} />
           <Route path='/kitchen' component={Kitchen} />
           <Route path='/orders' component={Orders} />
+          <Route component={NotFound} />
         </Switch>
       </div>
     </Router>
