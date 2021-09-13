@@ -7,10 +7,12 @@ import Table from './pages/Table/table';
 import Page404 from './pages/Page404/index';
 // import Initial from './pages/Initial';
 import Pedidos from './pages/Pedidos/index';
+import GlobalStyle from './components/GlobalStyle';
 
 function Routes() {
   return (
     <Router>
+      <GlobalStyle />
       <Switch>
         <Route exact path="/">
           <Login />

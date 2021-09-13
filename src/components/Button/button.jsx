@@ -5,13 +5,13 @@ import React from 'react';
 function Button({
   // eslint-disable-next-line react/prop-types
   buttonOnClick,
-  buttonText,
   buttonClass,
+  children,
 
 }) {
   return (
 
-    <button onClick={buttonOnClick} className={buttonClass}>{buttonText}</button>
+    <button onClick={buttonOnClick} className={buttonClass}>{children}</button>
   );
 }
 

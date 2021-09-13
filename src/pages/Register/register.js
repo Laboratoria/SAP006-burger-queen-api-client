@@ -5,6 +5,7 @@ import InputTxt from '../../components/Input/inputTxt';
 import Select from '../../components/Select/select';
 import Jellyfish from '../../img/jellyfish.png';
 import './register.css';
+import Logo from '../../img/logo-img.png';
 
 function Register() {
   const routeHistory = useHistory();
@@ -44,6 +45,9 @@ function Register() {
   return (
     <main className="ocean-container">
       <div className="register-container">
+        <div className="logo-register">
+          <img className="register-img" src={Logo} alt="Logo The Krusty Krab" />
+        </div>
         <form className="register-form">
           <h1 className="txt-register"> cadastre-se</h1>
 
@@ -88,9 +92,9 @@ function Register() {
 
           <Button
             buttonOnClick={(e) => postCad(e)}
-            buttonText="Cadastrar"
             btnClassName="btnForm"
-          />
+          > Cadastrar
+          </Button>
         </form>
       </div>
       <div className="Jelly-div">
