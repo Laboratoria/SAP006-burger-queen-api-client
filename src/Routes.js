@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login/login';
 import Register from './pages/Register/register';
+// eslint-disable-next-line import/no-unresolved
 import Table from './pages/Table/table';
 import Page404 from './pages/Page404/index';
 // import Initial from './pages/Initial';

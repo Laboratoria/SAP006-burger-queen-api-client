@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Button from '../../components/Button/button';
 import InputTxt from '../../components/Input/inputTxt';
 import Select from '../../components/Select/select';
@@ -7,6 +7,10 @@ import Jellyfish from '../../img/jellyfish.png';
 import './register.css';
 
 function Register() {
+  const routeHistory = useHistory();
+  const routerRegister = () => {
+    routeHistory.push('/');
+  };
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +35,7 @@ function Register() {
           // eslint-disable-next-line no-empty
           if (json.id === undefined) {
           } else {
-            console.log('cadastrado');
+            routerRegister();
           }
         });
     }

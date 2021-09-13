@@ -28,10 +28,11 @@
     display: flex;
     border-radius: 2rem;
     margin: 0.5rem;
-    width: 30rem;
+    height: 30px;
+    width: 250px;
     outline: none;
     border: none;
-    box-shadow: 1px 1px 10px #888888;
+    box-shadow: 1px 1px 1px #e0e0e0;
 }
 
 .Login-container button {
@@ -50,8 +51,10 @@
     transform: scale(1.1);
 }
 
-.btn-container {
+.btn-container-login {
+    width: 250px;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     padding: 1rem;
 }
