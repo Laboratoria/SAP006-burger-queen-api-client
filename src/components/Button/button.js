@@ -1,3 +1,4 @@
+import './style.css';
 function Button({
     btnId,
     btnType,

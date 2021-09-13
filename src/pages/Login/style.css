@@ -1,0 +1,117 @@
+body {
+  background-color: #f2d055;
+  justify-content: center;
+}
+
+a {
+  margin-right: 9%;
+}
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 12% auto;
+}
+
+.logoMagic {
+  width: 25%;
+  margin-top: auto;
+  margin-right: 7%;
+  z-index: -1;
+}
+
+.input-login {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.input-email {
+  margin-bottom: 13px;
+}
+
+.container-login {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 4%;
+  background-color: #ffffff;
+  border-radius: 5%;
+  width: 16%;
+  height: 5%;
+  box-shadow: 0px 4px 20px 4px rgb(73 73 73 / 25%);
+}
+
+@media (min-width: 1400px) {
+  .container-login {
+    padding: 6%;
+    font-size: 30px;
+  }
+
+  .logoMagic {
+    width: 27%;
+    margin-top: auto;
+    margin-left: 5%;
+    z-index: -1;
+  }
+
+  .goBtn {
+    width: 48%;
+    padding: 11px;
+    border-radius: 16px;
+    font-family: "Kaisei Tokumin", serif;
+    font-size: 30px;
+  }
+
+  .registerBtn {
+    width: 115%;
+    padding: 13px;
+    border-radius: 16px;
+    font-family: "Kaisei Tokumin", serif;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-login {
+    width: 23%;
+  }
+  .logoMagic {
+    width: 32%;
+    margin-top: 2%;
+    margin-left: 1%;
+    z-index: -1;
+  }
+}
+
+@media (max-width: 596px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+  .container-login {
+    width: 44%;
+    padding: 9%;
+  }
+}
+
+@media (max-width: 496px) {
+  body {
+    justify-content: center;
+  }
+
+  .container-login {
+    width: 50%;
+    padding: 9%;
+    margin: auto;
+  }
+
+  .logoMagic {
+    position: inherit;
+    width: 55%;
+    margin-top: 2%;
+    margin-left: 22%;
+    z-index: -1;
+  }
+}
