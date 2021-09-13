@@ -5,7 +5,7 @@ import './buttonRadio.scss'
 
 export default function ButtonRadio({ onChange }) {
   return (
-    <div className="switch-field margin-top-2">
+    <div className="switch-field">
       <input type="radio"
 							variant="secondary"
 							name="role"

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
 import background from '../../img/bg-login3.png';
 import { loginRedirection, validationInputs } from '../../services';
 import ErrorMessage from '../../components/ErrorMessage';
@@ -10,6 +9,7 @@ import Loader from '../../components/Loader';
 
 
 import './register.scss';
+import Input from '../../components/Input';
 
 const Register = () => {
 	const [loading, setLoading] = useState(false);
@@ -119,39 +119,37 @@ const Register = () => {
 
 			<section className="container-login">
 				<h2>CADASTRO</h2>
-				<Form noValidate onSubmit={handleSubmit}>
-					<Form.Group className="mb-4">
-						<Form.Control
+				<form>
+					<fieldset className="margin-input">
+						<Input
 							className={` ${errorName ? 'is-invalid' : ''}`}
 							type="text"
 							placeholder="Nome completo"
 							onChange={onChange}
 							value={values.name}
 							name="name"
-							required
 						/>
 						{errors.userName && (
 							<ErrorMessage>{errors.userName}</ErrorMessage>
 						)}
-					</Form.Group>
+					</fieldset>
 
-					<Form.Group className="mb-4" controlId="formBasicEmail">
-						<Form.Control
+					<fieldset className="margin-input">
+						<Input
 							className={` ${errorEmail ? 'is-invalid' : ''}`}
 							type="email"
 							placeholder="Email"
 							onChange={onChange}
 							value={values.email}
 							name="email"
-							required
 						/>
 						{errors.userEmail && (
 							<ErrorMessage>{errors.userEmail}</ErrorMessage>
 						)}
-					</Form.Group>
+					</fieldset>
 
-					<Form.Group >
-						<Form.Control
+					<fieldset className="margin-input" >
+						<Input
 							className={` ${errorPassword ? 'is-invalid' : ''}`}
 							type="password"
 							placeholder="Senha"
@@ -163,7 +161,7 @@ const Register = () => {
 						{errors.userPassword && (
 							<ErrorMessage>{errors.userPassword}</ErrorMessage>
 						)}
-					</Form.Group>
+					</fieldset>
 					<div className="radio-wrapper">
 						<ButtonRadio onChange={onChange} />
 						{errors.role && (
@@ -178,12 +176,12 @@ const Register = () => {
 						<ButtonDefault
 							id="btn-register"
 							className="btn-default margin-bottom-4 margin-top-2"
-							onClick={(event) => handleSubmit(event)}
+							onclick={handleSubmit}
 						>
 							CADASTRAR
 						</ButtonDefault>
 					</div>
-				</Form>
+				</form>
 
 			</section>
 

@@ -1,20 +1,11 @@
 
-
-.radio-btn{
-  background-color:transparent;
-  border:1px solid white;
-  transition: all 1s;
-  
-}
-
-.radio-btn:active, .radio-btn:focus, .radio-btn:hover, .hall:checked{
-  background-color:var(--yellow) !important;
-  
-}
-
 .radio-wrapper{
   p{
     align-self: start;
   }
+}
+
+.margin-input{
+  margin-bottom:1.7rem;
 }
 
