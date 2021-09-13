@@ -1,7 +1,25 @@
 
+import Routes from './Routes'
+
+import { 
+  BrowserRouter as Router, 
+  Link, 
+} from 'react-router-dom';
+
+
 function App() {
   return (
-    <h1>Hello World</h1>
+    <Router>
+      <Routes> 
+        <h1>Vixi!</h1>
+
+        <Link to='/'>Login</Link>
+        <Link to='/register'>Cadastro</Link>
+     
+      </Routes>
+    </Router>
+ 
+
   );
 }
 
