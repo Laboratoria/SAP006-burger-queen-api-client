@@ -57,6 +57,7 @@ function Login() {
           inputValue={email}
           inputOnChange={(event) => setEmail(event.target.value)}
           inputClassName="LoginInput"
+          data-testid="emailTest"
         />
 
         <InputTxt
@@ -65,22 +66,20 @@ function Login() {
           inputValue={password}
           inputOnChange={(event) => setPassword(event.target.value)}
           inputClassName="LoginInput"
+          data-testid="passwordTest"
+        />
+
+        <Button
+          // eslint-disable-next-line react/jsx-no-bind
+          buttonOnClick={loginBtn}
+          buttonText="Login"
+          btnClassName="btnForm"
         />
 
         <div className="btn-container">
-          <Button
-            // eslint-disable-next-line react/jsx-no-bind
-            buttonOnClick={loginBtn}
-            buttonText="Login"
-            btnClassName="btnForm"
-
-          />
-
+          <h3> Não tem uma conta?   </h3>
           <Link to="/register">
-            <Button
-              buttonText="Cadastrar"
-              btnClassName="btnForm"
-            />
+            <h3 className="btnRegister"> Cadastre-se </h3>
           </Link>
         </div>
 

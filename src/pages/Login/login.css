@@ -35,12 +35,14 @@
 }
 
 .Login-container button {
-    padding: 5px 20px ;
-    border-radius: 15px;
+    padding: 1rem ;
+    border-radius: 2rem;
     background-color: #f38a8aeb;
     border: none;
     cursor: pointer;
     color: white;
+    width: 30rem;
+    margin: 0.5rem;
     transition: .2s;
 }
 
@@ -52,6 +54,19 @@
 
 .btn-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: 1rem;
+    flex-direction: row;
+    width: 22rem;
+    color: #000000ad;
+    margin-top: 2rem;
+}
+
+.btnRegister{
+    color: #000000ad;
+    transition: .2s
+}
+
+.btnRegister:hover{
+    color: #ff6161;
 }

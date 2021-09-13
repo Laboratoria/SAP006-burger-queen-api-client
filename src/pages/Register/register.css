@@ -17,12 +17,14 @@
 }
 
 .register-container button {
-    padding: 5px 20px ;
-    border-radius: 15px;
+    padding: 1rem;
+    border-radius: 2rem;
     background-color: #f38a8aeb;
     border: none;
     cursor: pointer;
     color: white;
+    width: 30rem;
+    margin: 0.5rem;
     transition: .2s;
 }
 
