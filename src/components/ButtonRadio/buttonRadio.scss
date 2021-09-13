@@ -25,6 +25,7 @@
     width: 1px;
     border: 0;
     overflow: hidden;
+    
 
   }
 
@@ -34,7 +35,7 @@
     line-height: 1;
     text-align: center;
     padding: 0.8rem 3rem;
-    margin-right: -1px;
+    // margin-right: -1px;
     border: 1px solid var(--white);
     transition: all 0.5s ease-in-out;
 
@@ -54,6 +55,14 @@
 
   input:checked + label {
     background-color:var(--yellow);
+    border: 1px solid var(--yellow);
+   
+  }
+
+  input:hover + label {
+    background-color:var(--yellow);
+    border: 1px solid var(--yellow);
+   
   }
 
 }

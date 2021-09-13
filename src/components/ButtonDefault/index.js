@@ -8,8 +8,10 @@ export default function ButtonDefault({
 }) {
   return (
     <button
+    type="button"
     className={className}
     onClick={onclick}
+    data-testid="button"
   >
     {children}
   </button>

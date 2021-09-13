@@ -28,8 +28,7 @@ export default function Login() {
   const onChange = (e) => {
     const { value, name } = e.target;
     setValues({
-      ...values,
-      [name]: value,
+      ...values, [name]: value,
     });
 
     setErrorEmail(false);
