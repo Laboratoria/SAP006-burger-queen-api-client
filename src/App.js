@@ -7,7 +7,6 @@ import Menu from './pages/menu/menu.jsx'
 import Kitchen from './pages/kitchen/kitchen';
 import Orders from './pages/orders/orders';
 import NotFound from './pages/notfound/notfound';
-
 const App = () => {
   return (
     <Router>
