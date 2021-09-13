@@ -9,19 +9,19 @@ function alertApears() {
 const signUp = () => {
     return (
     <main>
-      <div className="form">
-    <form className="form-input">  
-      <h1>Bem Vindo!</h1> 
+    <form className="form">  
+      <h1 style={{textAlign:"center"}}>Bem Vindo!</h1>
+      <section className="form-input"> 
       <Input placeholder="Nome"></Input>
       <Input placeholder="Email"></Input>
       <Input placeholder="Senha"></Input>
+      </section>
       <hr width="150px"></hr>
       <p>Selecione seu cargo:</p>
       <label><input type="radio" name="workingOptions" value="Atendente"></input>Atendente</label>
       <label><input type="radio" name="workingOptions" value="Cozinheiro(a)"></input>Cozinheiro(a)</label>
-      <Button btnText="Cadastrar" btnOnClick={alertApears} />
+      <Button btnClass="registerBtn" btnText="Cadastrar" btnOnClick={alertApears} />
     </form>
-      </div>
     </main>
     );
 }
