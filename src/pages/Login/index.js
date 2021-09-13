@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
 import logo from '../../img/logo.png';
 import background from '../../img/bg-login3.png';
 import ButtonDefault from '../../components/ButtonDefault';
@@ -8,6 +7,7 @@ import { loginRedirection, validationInputs } from '../../services';
 import ErrorMessage from '../../components/ErrorMessage';
 import './login.scss'
 import Loader from '../../components/Loader';
+import Input from '../../components/Input';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -106,10 +106,10 @@ export default function Login() {
         <img src={logo} className="logo" alt="logo"></img>
         <h2>LOGIN</h2>
         <div className="form-wrapper">
-          <Form noValidate onSubmit={handleSubmit}>
-            <Form.Group className="mb-4" controlId="formBasicEmail">
-              <Form.Control
-                className={` ${errorEmail ? 'is-invalid' : ''}`}
+          <form>
+            <fieldset className="margin-input">
+              <Input
+                className={`  ${errorEmail ? 'is-invalid' : ''}`}
                 type="email"
                 placeholder="Email"
                 onChange={onChange}
@@ -118,32 +118,31 @@ export default function Login() {
                 required
 
               />
+              {errors.userEmail && (
+                <ErrorMessage>{errors.userEmail}</ErrorMessage>
+              )}
+            </fieldset>
 
-            </Form.Group>
-            {errors.userEmail && (
-              <ErrorMessage>{errors.userEmail}</ErrorMessage>
-            )}
-
-            <Form.Group className="mb-4" controlId="formBasicPassword">
-              <Form.Control
-                className={` ${errorPassword ? 'is-invalid' : ''}`}
+            <fieldset className="margin-input">
+              <Input
+                className={` ${errorPassword ? 'teste' : ''}`}
                 type="password"
                 placeholder="Senha"
                 onChange={onChange}
                 value={values.password}
                 name="password"
-                required
-              />
 
-            </Form.Group>
-            {errors.userPassword && (
-              <ErrorMessage>{errors.userPassword}</ErrorMessage>
-            )}
+              />
+              {errors.userPassword && (
+                <ErrorMessage>{errors.userPassword}</ErrorMessage>
+              )}
+            </fieldset>
+
             <div>
               <ButtonDefault
                 id="btn-signin"
                 className="btn-default margin-bottom-2"
-
+                onclick={handleSubmit}
               >
                 ENTRAR
               </ButtonDefault>
@@ -154,7 +153,7 @@ export default function Login() {
                 CADASTRE-SE
               </a>
             </div>
-          </Form>
+          </form>
         </div>
       </section>
     </>
