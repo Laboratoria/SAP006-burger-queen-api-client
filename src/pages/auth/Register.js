@@ -4,6 +4,9 @@ import { useHistory } from 'react-router-dom';
 
 import { showOrNotShowPassword } from './Functions';
 import { moveLabelUpEvenWhenInputValueIsInvalid } from './Functions'
+import { processAuthRequest } from './Functions';
+
+import { AuthSignin } from '../../services/auth';
 
 import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
@@ -19,9 +22,13 @@ import inputEmail from '../../assets/icons/input-email.png';
 import inputPassword from '../../assets/icons/input-password.png';
 import inputRole from '../../assets/icons/input-role.png';
 
-export function Register () {
+export const Register = () => {
 
   const history = useHistory();
+
+ function navigateTo (path) {
+  history.push(path);
+ }
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -29,9 +36,7 @@ export function Register () {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState ('');
 
-  function navigateToOrdersSection () {
-    history.push('/orders')
-  }
+  const userData = {name, email, password, confirmPassword, role}
 
   return (
   <div className = 'login-and-register-content register-content'>
@@ -44,25 +49,34 @@ export function Register () {
     <main>
       <form>
         <InputContentUserData 
+          inputData='name'
           inputType='text'
+          inputPlaceholder='Nome Completo'
           inputValue={name}
           inputOnChange={(e) => setName(e.target.value)}
-          labelText='Nome'
+          labelText='Nome Completo'
           iconSRC={inputName}
           iconAlt='Name'
           eyeClass='display-none'
+          errorMessage='Por favor, insira um nome válido.'
         />
         <InputContentUserData 
+          inputData='email'
           inputType='email'
+          inputPlaceholder='Email'
           inputValue={email}
           inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
           labelText='Email'
           iconSRC={inputEmail}
           iconAlt='Email'
           eyeClass='display-none'
+          errorMessage='Por favor, insira um email válido.'
         />
        <InputContentUserData 
+          inputData='password'
+          inputConfirmPassword='confirmPassword'
           inputType='password'
+          inputPlaceholder='Senha'
           inputValue={password}
           inputOnChange={(e) => setPassword(e.target.value)}
           labelText='Senha'
@@ -70,9 +84,13 @@ export function Register () {
           iconAlt='Password'
           eyeClass='show-or-not-password not-show-password'
           buttonEvent={(event) => showOrNotShowPassword(event)}
+          errorMessage='A senha deve conter ao menos 6 caracteres.'
         />
         <InputContentUserData
+          inputData='password'
+          inputConfirmPassword='confirmPassword'
           inputType='password'
+          inputPlaceholder='Confirme a Senha'
           inputValue={confirmPassword}
           inputOnChange={(e) => setConfirmPassword(e.target.value)}
           labelText='Confirme a Senha'
@@ -80,18 +98,22 @@ export function Register () {
           iconAlt='Password'
           eyeClass='show-or-not-password not-show-password'
           buttonEvent={(event) => showOrNotShowPassword(event)}
+          errorMessage='A senha deve conter ao menos 6 caracteres.'
         />
         <div>
           <fieldset>
             <img src={inputRole} alt='Role'/>
             <InputRadioUserData 
+              inputData='role'
               inputType='radio'
               inputValue='room'
               inputChecked={role === 'room'}
               inputOnChange={(e) => setRole(e.target.value)}
               labelText='Salão'
+              errorMessage='Por favor, escolha um setor.'
             />
             <InputRadioUserData 
+              inputData='role'
               inputType='radio'
               inputValue='kitchen'
               inputChecked={role === 'kitchen'}
@@ -101,9 +123,9 @@ export function Register () {
           </fieldset>
         </div>
         <Button
-          buttonType = 'button'
+          buttonType = 'submit'
           buttonText = 'Registrar'
-          buttonEvent = {navigateToOrdersSection}
+          buttonEvent = {(event) => processAuthRequest(AuthSignin, event, {userData}, navigateTo)}
         />
         <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
       </form>

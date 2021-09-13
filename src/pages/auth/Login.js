@@ -4,6 +4,9 @@ import { useHistory } from 'react-router-dom';
 
 import { showOrNotShowPassword } from './Functions';
 import { moveLabelUpEvenWhenInputValueIsInvalid } from './Functions'
+import { processAuthRequest } from './Functions';
+
+import { AuthLogin } from '../../services/auth';
 
 import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
@@ -20,12 +23,16 @@ export function Login () {
 
   const history = useHistory();
 
+  function navigateTo (path) {
+    history.push(path);
+  }
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function navigateToOrdersSection () {
-    history.push('/orders')
-  }
+  const userData = {email, password};
+
+    
 
   return (
   <div className = 'login-and-register-content login-content'>
@@ -38,16 +45,21 @@ export function Login () {
     <main>
       <form>
         <InputContentUserData 
+          inputData='email'
           inputType='email'
+          inputPlaceholder='Email'
           inputValue={email}
           inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
           labelText='Email'
           iconSRC={inputEmail}
           iconAlt='Email'
           eyeClass='display-none'
+          errorMessage='Por favor, insira um email válido.'
         />
         <InputContentUserData 
+          inputData='password'
           inputType='password'
+          inputPlaceholder='Senha'
           inputValue={password}
           inputOnChange={(event) => setPassword(event.target.value)}
           labelText='Senha'
@@ -55,11 +67,12 @@ export function Login () {
           iconAlt='Password'
           eyeClass='show-or-not-password not-show-password'
           buttonEvent={(event) => showOrNotShowPassword(event)}
+          errorMessage='A senha deve conter ao menos 6 caracteres.'
         />
         <Button
           buttonType = 'button'
           buttonText = 'Entrar'
-          buttonEvent = {navigateToOrdersSection}
+          buttonEvent = {(event) => processAuthRequest(AuthLogin, event, {userData}, navigateTo)} 
         />
         <p> Ou <Link to = '/register'> registre-se </Link> </p>
       </form>
