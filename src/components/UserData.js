@@ -11,37 +11,31 @@ export function InputContentUserData ({
   iconSRC,
   iconAlt,
   eyeClass,
-  buttonEvent,
-  errorMessage
+  buttonEvent
 }) {
   return (
     <div>
-      <div>
-        <input 
-          data-input={inputData}
-          data-input-confirm-password={inputConfirmPassword}
-          type={inputType}
-          required
-          placeholder={inputPlaceholder}
-          value={inputValue}
-          autoComplete='off'
-          onChange={inputOnChange}
-        />
-        <label> 
-          {labelText}
-        </label>
-        <img 
-          src={iconSRC} 
-          alt={iconAlt}
-        />
-        <button
-          className={eyeClass}
-          onClick={buttonEvent}
-        />
-      </div>
-      <p className='auth-error-message'>
-        {errorMessage}
-      </p>
+      <input 
+        data-input={inputData}
+        data-input-confirm-password={inputConfirmPassword}
+        type={inputType}
+        required
+        placeholder={inputPlaceholder}
+        value={inputValue}
+        autoComplete='off'
+        onChange={inputOnChange}
+      />
+      <label> 
+        {labelText}
+      </label>
+      <img 
+        src={iconSRC} 
+        alt={iconAlt}
+      />
+      <button
+        className={eyeClass}
+        onClick={buttonEvent}
+      />
     </div>
   )
 }

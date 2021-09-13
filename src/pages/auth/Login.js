@@ -4,12 +4,13 @@ import { useHistory } from 'react-router-dom';
 
 import { showOrNotShowPassword } from './Functions';
 import { moveLabelUpEvenWhenInputValueIsInvalid } from './Functions'
-import { processAuthRequest } from './Functions';
 
-import { AuthLogin } from '../../services/auth';
+import { authLogin } from '../../services/auth';
+import { navigateTo } from '../../services/routes';
 
-import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
+import { AuthModal } from '../../components/Modal';
+import { Header } from '../../components/Header'
 import { InputContentUserData } from '../../components/UserData';
 
 import '../../styles/Auth.scss'
@@ -22,17 +23,13 @@ import inputPassword from '../../assets/icons/input-password.png';
 export function Login () {
 
   const history = useHistory();
-
-  function navigateTo (path) {
-    history.push(path);
-  }
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const userData = {email, password};
 
-    
+  const [authErrorModal, setAuthErrorModal] = useState(false);
+  const [authSucessModal, setAuthSucessModal] = useState(false);
+  const setAuthModals = {setAuthErrorModal, setAuthSucessModal}
 
   return (
   <div className = 'login-and-register-content login-content'>
@@ -54,7 +51,6 @@ export function Login () {
           iconSRC={inputEmail}
           iconAlt='Email'
           eyeClass='display-none'
-          errorMessage='Por favor, insira um email válido.'
         />
         <InputContentUserData 
           inputData='password'
@@ -67,16 +63,36 @@ export function Login () {
           iconAlt='Password'
           eyeClass='show-or-not-password not-show-password'
           buttonEvent={(event) => showOrNotShowPassword(event)}
-          errorMessage='A senha deve conter ao menos 6 caracteres.'
         />
         <Button
           buttonType = 'button'
           buttonText = 'Entrar'
-          buttonEvent = {(event) => processAuthRequest(AuthLogin, event, {userData}, navigateTo)} 
+          buttonEvent = {(event) => authLogin(event, {userData}, {setAuthModals})}
         />
         <p> Ou <Link to = '/register'> registre-se </Link> </p>
       </form>
     </main>
+    <section>
+        {authSucessModal ? (
+          <AuthModal 
+            modalMessage = 'Cadastro realizado com sucesso!'
+            buttonText = 'OK'
+            buttonEvent = {() => navigateTo(history, '/orders', setAuthSucessModal)}
+            buttonIIClass = 'display-none'
+          />
+        ): null}
+      </section>
+      <section>
+        {authErrorModal ? (
+          <AuthModal 
+            modalMessage = 'Usuário não encontrade. Verifique seus dados :)'
+            buttonText = 'Tente novamente'
+            buttonEvent = {() => navigateTo(history, '/', setAuthErrorModal)}
+            buttonIIText = 'Crie uma nova conta'
+            buttonIIEvent = {() => navigateTo(history, '/register', setAuthErrorModal)}
+          />
+        ): null}
+      </section>
   </div>
   )
 }

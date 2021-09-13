@@ -4,12 +4,14 @@ import { useHistory } from 'react-router-dom';
 
 import { showOrNotShowPassword } from './Functions';
 import { moveLabelUpEvenWhenInputValueIsInvalid } from './Functions'
-import { processAuthRequest } from './Functions';
 
-import { AuthSignin } from '../../services/auth';
+import { navigateTo } from '../../services/routes';
+import { authSignin } from '../../services/auth';
 
-import { Header } from '../../components/Header'
-import { Button } from '../../components/Button'
+import { AuthErrorMessages } from '../../components/ErrorMessages';
+import { AuthModal } from '../../components/Modal';
+import { Button } from '../../components/Button';
+import { Header } from '../../components/Header';
 import { InputContentUserData } from '../../components/UserData';
 import { InputRadioUserData } from '../../components/UserData';
 
@@ -26,110 +28,139 @@ export const Register = () => {
 
   const history = useHistory();
 
- function navigateTo (path) {
-  history.push(path);
- }
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState ('');
+  const userData = {name, email, password, confirmPassword, role};
 
-  const userData = {name, email, password, confirmPassword, role}
+  const [authErrorModal, setAuthErrorModal] = useState(false);
+  const [authSucessModal, setAuthSucessModal] = useState(false);
+  const setAuthModals = {setAuthErrorModal, setAuthSucessModal}
+
+  const [nameErrorInput, setNameErrorInput] = useState(false);
+  const [emailErrorInput, setEmailErrorInput] = useState(false);
+  const [passwordErrorInput, setPasswordErrorInput] = useState(false);
+  const [confirmPasswordErrorInput, setConfirmPasswordErrorInput] = useState(false);
+  const [roleErrorInput, setRoleErrorInput] = useState(false);
+
+  const setAuthInputs = {setNameErrorInput, setEmailErrorInput, setPasswordErrorInput,
+    setConfirmPasswordErrorInput, setRoleErrorInput}
 
   return (
-  <div className = 'login-and-register-content register-content'>
-    <Header
-      headerBackgroundClassName='register-bg'
-      headerBackgroundSRC={registerBg}
-      headerLogoClassName='logo'
-      headerLogoSRC={logoCombosBurger}
-    />
-    <main>
-      <form>
+    <div className = 'login-and-register-content register-content'>
+      <Header
+        headerBackgroundClassName='register-bg'
+        headerBackgroundSRC={registerBg}
+        headerLogoClassName='logo'
+        headerLogoSRC={logoCombosBurger}
+      />
+      <main>
+        <form>
+          <InputContentUserData 
+            inputData='name'
+            inputType='text'
+            inputPlaceholder='Nome Completo'
+            inputValue={name}
+            inputOnChange={(e) => setName(e.target.value)}
+            labelText='Nome Completo'
+            iconSRC={inputName}
+            iconAlt='Name'
+            eyeClass='display-none'
+          />
+          {nameErrorInput ? (
+          <AuthErrorMessages
+            textErrorMessage='Por favor, insira um nome válido.'
+          />
+          ): null}
+          <InputContentUserData 
+            inputData='email'
+            inputType='email'
+            inputPlaceholder='Email'
+            inputValue={email}
+            inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
+            labelText='Email'
+            iconSRC={inputEmail}
+            iconAlt='Email'
+            eyeClass='display-none'
+          />
         <InputContentUserData 
-          inputData='name'
-          inputType='text'
-          inputPlaceholder='Nome Completo'
-          inputValue={name}
-          inputOnChange={(e) => setName(e.target.value)}
-          labelText='Nome Completo'
-          iconSRC={inputName}
-          iconAlt='Name'
-          eyeClass='display-none'
-          errorMessage='Por favor, insira um nome válido.'
-        />
-        <InputContentUserData 
-          inputData='email'
-          inputType='email'
-          inputPlaceholder='Email'
-          inputValue={email}
-          inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
-          labelText='Email'
-          iconSRC={inputEmail}
-          iconAlt='Email'
-          eyeClass='display-none'
-          errorMessage='Por favor, insira um email válido.'
-        />
-       <InputContentUserData 
-          inputData='password'
-          inputConfirmPassword='confirmPassword'
-          inputType='password'
-          inputPlaceholder='Senha'
-          inputValue={password}
-          inputOnChange={(e) => setPassword(e.target.value)}
-          labelText='Senha'
-          iconSRC={inputPassword}
-          iconAlt='Password'
-          eyeClass='show-or-not-password not-show-password'
-          buttonEvent={(event) => showOrNotShowPassword(event)}
-          errorMessage='A senha deve conter ao menos 6 caracteres.'
-        />
-        <InputContentUserData
-          inputData='password'
-          inputConfirmPassword='confirmPassword'
-          inputType='password'
-          inputPlaceholder='Confirme a Senha'
-          inputValue={confirmPassword}
-          inputOnChange={(e) => setConfirmPassword(e.target.value)}
-          labelText='Confirme a Senha'
-          iconSRC={inputPassword}
-          iconAlt='Password'
-          eyeClass='show-or-not-password not-show-password'
-          buttonEvent={(event) => showOrNotShowPassword(event)}
-          errorMessage='A senha deve conter ao menos 6 caracteres.'
-        />
-        <div>
-          <fieldset>
-            <img src={inputRole} alt='Role'/>
-            <InputRadioUserData 
-              inputData='role'
-              inputType='radio'
-              inputValue='room'
-              inputChecked={role === 'room'}
-              inputOnChange={(e) => setRole(e.target.value)}
-              labelText='Salão'
-              errorMessage='Por favor, escolha um setor.'
-            />
-            <InputRadioUserData 
-              inputData='role'
-              inputType='radio'
-              inputValue='kitchen'
-              inputChecked={role === 'kitchen'}
-              inputOnChange={(e) => setRole(e.target.value)}
-              labelText='Cozinha'
-            />
-          </fieldset>
-        </div>
-        <Button
-          buttonType = 'submit'
-          buttonText = 'Registrar'
-          buttonEvent = {(event) => processAuthRequest(AuthSignin, event, {userData}, navigateTo)}
-        />
-        <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
-      </form>
-    </main>
-  </div>
+            inputData='password'
+            inputConfirmPassword='confirmPassword'
+            inputType='password'
+            inputPlaceholder='Senha'
+            inputValue={password}
+            inputOnChange={(e) => setPassword(e.target.value)}
+            labelText='Senha'
+            iconSRC={inputPassword}
+            iconAlt='Password'
+            eyeClass='show-or-not-password not-show-password'
+            buttonEvent={(event) => showOrNotShowPassword(event)}
+          />
+          <InputContentUserData
+            inputData='password'
+            inputConfirmPassword='confirmPassword'
+            inputType='password'
+            inputPlaceholder='Confirme a Senha'
+            inputValue={confirmPassword}
+            inputOnChange={(e) => setConfirmPassword(e.target.value)}
+            labelText='Confirme a Senha'
+            iconSRC={inputPassword}
+            iconAlt='Password'
+            eyeClass='show-or-not-password not-show-password'
+            buttonEvent={(event) => showOrNotShowPassword(event)}
+          />
+          <div>
+            <fieldset>
+              <img src={inputRole} alt='Role'/>
+              <InputRadioUserData 
+                inputData='role'
+                inputType='radio'
+                inputValue='room'
+                inputChecked={role === 'room'}
+                inputOnChange={(e) => setRole(e.target.value)}
+                labelText='Salão'
+              />
+              <InputRadioUserData 
+                inputData='role'
+                inputType='radio'
+                inputValue='kitchen'
+                inputChecked={role === 'kitchen'}
+                inputOnChange={(e) => setRole(e.target.value)}
+                labelText='Cozinha'
+              />
+            </fieldset>
+          </div>
+          <Button
+            buttonType = 'submit'
+            buttonText = 'Registrar'
+            buttonEvent = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs})}
+          />
+          <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
+        </form>
+      </main>
+      <section>
+        {authSucessModal ? (
+          <AuthModal 
+            modalMessage = 'Cadastro realizado com sucesso!'
+            buttonText = 'OK'
+            buttonEvent = {() => navigateTo(history, '/orders', setAuthSucessModal)}
+            buttonIIClass = 'display-none'
+          />
+        ): null}
+      </section>
+      <section>
+        {authErrorModal ? (
+          <AuthModal 
+            modalMessage = 'Este email já está cadastrado no sistema.'
+            buttonText = 'Cadastre um novo email.'
+            buttonEvent = {() => navigateTo(history, '/register', setAuthErrorModal)}
+            buttonIIText = 'Entre com uma conta já existente.'
+            buttonIIEvent = {() => navigateTo(history, '/', setAuthErrorModal)}
+          />
+        ): null}
+      </section>
+    </div>
   )
 }
