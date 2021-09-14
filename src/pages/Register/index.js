@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import background from '../../img/bg-login3.png';
+import arrow from '../../img/arrow.png'
 import { loginRedirection, validationInputs } from '../../services';
 import ErrorMessage from '../../components/ErrorMessage';
 import ButtonDefault from '../../components/ButtonDefault';
@@ -47,7 +48,10 @@ const Register = () => {
 		})
 
 	};
-
+	
+	const goBack = () => {
+		loginRedirection('/', history)
+	}
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -114,10 +118,14 @@ const Register = () => {
 		<>
 			{loading ? <Loader /> : false}
 			<div className="container-bg">
-				<img src={background} className="bg-login" alt="background"></img>
+				<img src={background} className="bg-login" alt="background"/>
 			</div>
-
+			<button className="margin-1 goback-btn" onClick={goBack}>
+				<img src={arrow} alt="arrow"/>
+			</button>
+			
 			<section className="container-login">
+				
 				<h2>CADASTRO</h2>
 				<div className="form-wrapper">
 					<form>

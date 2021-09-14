@@ -1,5 +1,5 @@
 :root {
-  --stroke:#333030;
+  --stroke:#464242;
 }
 
 li{
@@ -8,15 +8,15 @@ li{
   .border-link{
     width: 80%;
     height:40%;
-    border:4px solid white;
+    border:3px solid white;
     border-radius:5px;
   }
 }
 
   div {
     & .item-aside{
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     border:1px solid var(--stroke);
     border-radius:5px;
     display:flex;

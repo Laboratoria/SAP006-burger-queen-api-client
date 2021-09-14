@@ -11,13 +11,8 @@
   --yellow: #d97904;
   --red: #bf0404;
   --dark-red: #590202;
-  --stroke:#333030;
+  --stroke:#464242;
 
-}
-
-body {
-  font-family: "Roboto Condensed", sans-serif;
-  letter-spacing: 1.7px;
 }
 
 $_DIRECTIONS: (top right bottom left);
@@ -34,12 +29,23 @@ $_DIRECTIONS: (top right bottom left);
   }
 }
 
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 1.7px;
+  width:100vw;
+  height: 100vh;
+}
+
+
+
 h2 {
   color: var(--white);
 }
 
 
-.error-text {
-  color: red;
-  margin-bottom: -0.4rem;
+.pages-container{
+  width:100vw;
+  height: 100vh;
+  padding:2rem 3rem;
 }
+

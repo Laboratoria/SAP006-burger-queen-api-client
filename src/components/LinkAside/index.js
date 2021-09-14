@@ -4,7 +4,7 @@ import './linkAside.scss'
 
 export default function LinkAside() {
   return (
-    <li className="margin-bottom-2 margin-left-2">
+    <li>
       <a href>
       <div className="item-aside burger">
         <div className="border-link">
