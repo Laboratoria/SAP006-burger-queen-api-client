@@ -1,7 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom";
-import Button from "../components/button";
-import Input from "../components/input";
+import Button from "../../components/button";
+import Input from "../../components/input";
+import "./Login.css";
 
 const Login = () => {
 return (

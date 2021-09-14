@@ -1,7 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom";
-import Button from "../components/button.js";
-import Input from "../components/input.js";
+import Button from "../../components/button";
+import Input from "../../components/input";
+import './Register.css'
 
 
 const Register = () => {
