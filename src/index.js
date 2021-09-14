@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import Login from './pages/Login.js';
+import Login from './pages/login/Login';
 import Register from './pages/Register.js';
 import Hall from './pages/Hall';
 import Kitchen from './pages/Kitchen.js';
@@ -18,6 +18,7 @@ ReactDOM.render (
     <Route path='/' component={Login} exact />
     <Route path='/Register' component={Register} />
     <Route path='/Login' component={Login} />
+    <Route path='/Hall' component={Hall} exact />
     
 
 </Switch>
