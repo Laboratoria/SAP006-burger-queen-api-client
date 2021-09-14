@@ -4,13 +4,13 @@ import React from 'react';
 import './buttonDefault.scss'
 
 export default function ButtonDefault({
- children, className, onclick 
+ children, className, onClick
 }) {
   return (
     <button
     type="button"
     className={className}
-    onClick={onclick}
+    onClick={onClick}
     data-testid="button"
   >
     {children}

@@ -1,37 +1,32 @@
-:root{
-  --white: #FFF;
+:root {
+  --white: #fff;
   --black: #000000;
-  --green: #A0A603;
-  --yellow: #D97904;
-  --red: #BF0404;
+  --green: #a0a603;
+  --yellow: #d97904;
+  --red: #bf0404;
   --dark-red: #590202;
-
 }
 
-
-
-.btn-default{
- 
+.btn-default {
   letter-spacing: 1.6px;
   font-size: 1.2rem;
   padding: 0.5rem 1rem;
-  color:white;
-  background-color:var(--yellow);
-  border:none;
+  color: white;
+  background-color: var(--yellow);
+  border: none;
   border-radius: 4px;
-  cursor:pointer;
+  cursor: pointer;
   transition: all 1s;
 
   &:focus {
     background-color: var(--red);
   }
 
-  &:hover{
+  &:hover {
     background-color: var(--red);
   }
 
-  &:active{
+  &:active {
     background-color: var(--red);
   }
-
 }

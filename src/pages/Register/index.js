@@ -127,70 +127,71 @@ const Register = () => {
 			<section className="container-login">
 				
 				<h2>CADASTRO</h2>
-				<form>
-					<fieldset className="margin-input">
-						<Input
-							className={` ${errorName ? 'is-invalid' : ''}`}
-							type="text"
-							placeholder="Nome completo"
-							onChange={onChange}
-							value={values.name}
-							name="name"
-						/>
-						{errors.userName && (
-							<ErrorMessage>{errors.userName}</ErrorMessage>
-						)}
-					</fieldset>
+				<div className="form-wrapper">
+					<form>
+						<fieldset className="margin-input">
+							<Input
+								className={` ${errorName ? 'is-invalid' : ''}`}
+								type="text"
+								placeholder="Nome completo"
+								onChange={onChange}
+								value={values.name}
+								name="name"
+							/>
+							{errors.userName && (
+								<ErrorMessage>{errors.userName}</ErrorMessage>
+							)}
+						</fieldset>
 
-					<fieldset className="margin-input">
-						<Input
-							className={` ${errorEmail ? 'is-invalid' : ''}`}
-							type="email"
-							placeholder="Email"
-							onChange={onChange}
-							value={values.email}
-							name="email"
-						/>
-						{errors.userEmail && (
-							<ErrorMessage>{errors.userEmail}</ErrorMessage>
-						)}
-					</fieldset>
+						<fieldset className="margin-input">
+							<Input
+								className={` ${errorEmail ? 'is-invalid' : ''}`}
+								type="email"
+								placeholder="Email"
+								onChange={onChange}
+								value={values.email}
+								name="email"
+							/>
+							{errors.userEmail && (
+								<ErrorMessage>{errors.userEmail}</ErrorMessage>
+							)}
+						</fieldset>
 
-					<fieldset className="margin-input" >
-						<Input
-							className={` ${errorPassword ? 'is-invalid' : ''}`}
-							type="password"
-							placeholder="Senha"
-							onChange={onChange}
-							value={values.password}
-							name="password"
-							required
-						/>
-						{errors.userPassword && (
-							<ErrorMessage>{errors.userPassword}</ErrorMessage>
-						)}
-					</fieldset>
-					<div className="radio-wrapper">
-						<ButtonRadio onChange={onChange} />
-						{errors.role && (
-							<ErrorMessage>{errors.role}</ErrorMessage>
-						)}
-					</div>
+						<fieldset className="margin-input" >
+							<Input
+								className={` ${errorPassword ? 'is-invalid' : ''}`}
+								type="password"
+								placeholder="Senha"
+								onChange={onChange}
+								value={values.password}
+								name="password"
+								required
+							/>
+							{errors.userPassword && (
+								<ErrorMessage>{errors.userPassword}</ErrorMessage>
+							)}
+						</fieldset>
+						<div className="radio-wrapper">
+							<ButtonRadio onChange={onChange} />
+							{errors.role && (
+								<ErrorMessage>{errors.role}</ErrorMessage>
+							)}
+						</div>
 
-					{errors.fail && (
-						<ErrorMessage >{errors.fail}</ErrorMessage>
-					)}
-					<div>
-						<ButtonDefault
-							id="btn-register"
-							className="btn-default margin-bottom-4 margin-top-2"
-							onclick={handleSubmit}
-						>
-							CADASTRAR
-						</ButtonDefault>
-					</div>
-				</form>
-
+						{errors.fail && (
+							<ErrorMessage >{errors.fail}</ErrorMessage>
+						)}
+						<div>
+							<ButtonDefault
+								id="btn-register"
+								className="btn-default margin-bottom-4 margin-top-2"
+								onClick={handleSubmit}
+							>
+								CADASTRAR
+							</ButtonDefault>
+						</div>
+					</form>
+				</div>
 			</section>
 
 

@@ -1,0 +1,43 @@
+:root {
+  --stroke:#464242;
+}
+
+li{
+  list-style: none;
+  
+  .border-link{
+    width: 80%;
+    height:40%;
+    border:3px solid white;
+    border-radius:5px;
+  }
+}
+
+  div {
+    & .item-aside{
+    width: 8rem;
+    height: 8rem;
+    border:1px solid var(--stroke);
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    }
+    & .burger {
+      background-image: url("../../img/burger.jpg");
+      background-size: cover;
+    }
+    .border-link{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      span{
+        color:white;
+        font-size:1.3rem;
+      }
+    
+    }
+    
+  }
+
+

@@ -30,13 +30,13 @@ export default function CartArea() {
 				</div>
 				<div>
 					<ButtonDefault 
-                        className="btn-cart-cancel btn-default margin-left-1"
+                        className="btn-cart btn-cart-cancel btn-default margin-left-1"
                     >
                         CANCELAR
                     </ButtonDefault>
 
 					<ButtonDefault 
-                        className="btn-cart-confirm btn-default margin-right-1"
+                        className="btn cart btn-cart-confirm btn-default margin-right-1"
                     >
                         CONFIRMAR
                     </ButtonDefault>
