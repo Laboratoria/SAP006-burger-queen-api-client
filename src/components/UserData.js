@@ -1,8 +1,7 @@
 import React from 'react';
 
 export function InputContentUserData ({
-  inputData,
-  inputConfirmPassword,
+  inputClass,
   inputType,
   inputPlaceholder,
   inputValue,
@@ -10,13 +9,14 @@ export function InputContentUserData ({
   labelClass,
   labelText,
   iconSRC,
-  iconAlt
+  iconAlt,
+  buttonClass,
+  buttonEvent
 }) {
   return (
     <div>
       <input 
-        data-input={inputData}
-        data-input-confirm-password={inputConfirmPassword}
+        className={inputClass}
         type={inputType}
         required
         placeholder={inputPlaceholder}
@@ -31,11 +31,15 @@ export function InputContentUserData ({
         src={iconSRC} 
         alt={iconAlt}
       />
+      <button
+        className={buttonClass}
+        onClick={buttonEvent}/>
     </div>
   )
 }
 
 export function InputRadioUserData ({
+  divClass,
   inputData,
   inputType,
   inputValue,
@@ -47,7 +51,7 @@ export function InputRadioUserData ({
 }) {
   return (
     <div>
-      <div>
+      <div className={divClass}>
         <input 
           data-input={inputData}
           type={inputType}

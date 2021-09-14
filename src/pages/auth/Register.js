@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-
+import { authErrorsMessages } from '../../services/errors';
 import { authSignin } from '../../services/auth';
 import { showOrNotShowPassword } from '../../services/auth';
 import { navigateTo } from '../../services/routes';
@@ -34,7 +34,8 @@ export const Register = () => {
   const [role, setRole] = useState ('');
   const userData = {name, email, password, confirmPassword, role};
 
-  const[showPassword, setShowPassword] = useState('false')
+  const[showPassword, setShowPassword] = useState(false)
+  const[showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const [authErrorModal, setAuthErrorModal] = useState(false);
   const [authSucessModal, setAuthSucessModal] = useState(false);
@@ -47,7 +48,8 @@ export const Register = () => {
   const [roleErrorInput, setRoleErrorInput] = useState(false);
 
   const setAuthInputs = {setNameErrorInput, setEmailErrorInput, setPasswordErrorInput,
-    setConfirmPasswordErrorInput, setRoleErrorInput}
+  setConfirmPasswordErrorInput, setRoleErrorInput}
+
 
   return (
     <div className = 'login-and-register-content register-content'>
@@ -60,79 +62,90 @@ export const Register = () => {
       <main>
         <form>
           <InputContentUserData 
-            inputData='name'
+            inputClass={nameErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
             inputType='text'
             inputPlaceholder='Nome Completo'
             inputValue={name}
-            inputOnChange={(e) => setName(e.target.value)}
+            inputOnChange={(e) => [setName(e.target.value), setNameErrorInput(false)]}
             labelText='Nome Completo'
             iconSRC={inputName}
             iconAlt='Name'
+            buttonClass='display-none'
           />
-          {nameErrorInput ? (
-          <AuthErrorMessages
-            textErrorMessage='Por favor, insira um nome válido.'
-          />
-          ): null}
+          <AuthErrorMessages  
+            errorMessageText = {nameErrorInput ? authErrorsMessages.name : 'Input has an error!'}
+            errorMessageClass = {nameErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
+          /> 
           <InputContentUserData 
-            inputData='email'
+            inputClass={emailErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
             inputType='email'
             inputPlaceholder='Email'
             inputValue={email}
-            inputOnChange={(event) => setEmail(event.target.value)}
+            inputOnChange={(event) => [setEmail(event.target.value), setEmailErrorInput(false)]}
             labelClass={`${email ? 'move-label-up' : ''}`}
             labelText='Email'
             iconSRC={inputEmail}
             iconAlt='Email'
+            buttonClass='display-none'
           />
-        < InputContentUserData 
-            inputData='password'
-            inputConfirmPassword='confirmPassword'
-            inputType={showPassword ? 'password' : 'text'}
+          <AuthErrorMessages  
+            errorMessageText = {emailErrorInput ? authErrorsMessages.email : 'Input has an error!'}
+            errorMessageClass = {emailErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
+          /> 
+          <InputContentUserData 
+            inputClass={passwordErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
+            inputType={showPassword ? 'text' : 'password'}
             inputPlaceholder='Senha'
             inputValue={password}
-            inputOnChange={(e) => setPassword(e.target.value)}
+            inputOnChange={(e) => [setPassword(e.target.value), setPasswordErrorInput(false), setConfirmPasswordErrorInput(false)]}
             labelText='Senha'
             iconSRC={inputPassword}
-          />
-          <Button 
-            buttonClass={`show-or-not-password ${showPassword ? 'not-show-password' : 'show-password'}`}
+            buttonClass={`auth-show-or-not-password ${showPassword ? 'auth-show-password' : 'auth-not-show-password'}`}
             buttonEvent={() => showOrNotShowPassword(showPassword, setShowPassword)}
           />
+          <AuthErrorMessages  
+            errorMessageText =  {password !== confirmPassword ? authErrorsMessages.confirmPassword : authErrorsMessages.password}
+            errorMessageClass = {passwordErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
+          /> 
           <InputContentUserData
-            inputData='password'
-            inputConfirmPassword='confirmPassword'
-            inputType={showPassword ? 'password' : 'text'}
-            inputPlaceholder='Confirme a Senha'
-            inputValue={confirmPassword}
-            inputOnChange={(e) => setConfirmPassword(e.target.value)}
-            labelText='Confirme a Senha'
-            iconSRC={inputPassword}
+            inputClass={confirmPasswordErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
+              inputType={showConfirmPassword ? 'text' : 'password'}
+              inputPlaceholder='Confirme a Senha'
+              inputValue={confirmPassword}
+              inputOnChange={(e) => [setConfirmPassword(e.target.value), setPasswordErrorInput(false), setConfirmPasswordErrorInput(false)]}
+              labelText='Confirme a Senha'
+              iconSRC={inputPassword}
+              buttonClass={`auth-show-or-not-password ${showConfirmPassword ? 'auth-show-password' : 'auth-not-show-password'}`}
+            buttonEvent={() => showOrNotShowPassword(showConfirmPassword, setShowConfirmPassword)}
           />
-          <Button 
-            buttonClass={`show-or-not-password ${showPassword ? 'not-show-password' : 'show-password'}`}
-            buttonEvent={() => showOrNotShowPassword(showPassword, setShowPassword)}
-          />
+          <AuthErrorMessages
+            errorMessageText =  {password !== confirmPassword ? authErrorsMessages.confirmPassword : authErrorsMessages.password}
+            errorMessageClass = {confirmPasswordErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
+          /> 
           <div>
             <fieldset>
               <img src={inputRole} alt='Role'/>
               <InputRadioUserData 
-                inputData='role'
+                divClass={roleErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
                 inputType='radio'
                 inputValue='room'
                 inputChecked={role === 'room'}
-                inputOnChange={(e) => setRole(e.target.value)}
+                inputOnChange={(e) => [setRole(e.target.value), setRoleErrorInput(false)]}
                 labelText='Salão'
               />
               <InputRadioUserData 
-                inputData='role'
+                divClass={roleErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
                 inputType='radio'
                 inputValue='kitchen'
                 inputChecked={role === 'kitchen'}
                 inputOnChange={(e) => setRole(e.target.value)}
                 labelText='Cozinha'
               />
-            </fieldset>
+          </fieldset>
+          <AuthErrorMessages  
+            errorMessageText = {roleErrorInput ? authErrorsMessages.role: 'Input has an error!'}
+            errorMessageClass = {roleErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
+          /> 
           </div>
           <Button
             buttonType = 'submit'

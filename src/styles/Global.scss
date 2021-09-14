@@ -22,6 +22,14 @@ button {
   cursor: pointer;
 }
 
+.visibility-hidden{
+  visibility: hidden;
+}
+
+.display-none{
+  display:none;
+}
+
 .modal-background{
   display: flex;
   justify-content: center;

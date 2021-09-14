@@ -1,10 +1,11 @@
 
-$background-gray: #535659;
+$dark-gray: #535659;
 $light-gray: #D3D3D3;
-$dark-yellow-btn: #FF8C00;
+$orange: #FF8C00;
+$auth-error-message: #FFC299;
 
 .login-and-register-content{
-  background-color: $background-gray;
+  background-color: $dark-gray;
   height: 100vh;
 
   header{
@@ -28,12 +29,12 @@ $dark-yellow-btn: #FF8C00;
       display: flex;
       flex-direction: column;
       width: 100%;
-      margin: 0 auto 10% auto;
+      margin: 0 auto;
 
       input {
         line-height: 5vh;
     
-        border-bottom: black solid 2.5pt;
+        border-bottom: 2.5pt;
         padding-left: 10%;
     
         font-size: 180%;
@@ -74,7 +75,7 @@ $dark-yellow-btn: #FF8C00;
       width: 90%;
       height: 6vh;
 
-      background-color: $dark-yellow-btn;
+      background-color: $orange;
 
       font-size: 210%;
 
@@ -87,50 +88,45 @@ $dark-yellow-btn: #FF8C00;
 
       a {
         text-decoration: none;
-        color: $dark-yellow-btn;
+        color: $orange;
       }
     }
 
   }
 
-  .auth-error-message {
-    margin: -9% auto -5%;
+  .auth-correct-input{
+    border-bottom: black solid;
+  }
+
+  .auth-wrong-input{
+    border-bottom: $orange solid;
+  }
+
+  .auth-error-message{
+    margin: 0 auto 5%;
     font-size: 130%;
-    color: #ffc299;
+    color: $auth-error-message;
   }
 
-  .input-content-is-wrong {
-    border-bottom: $dark-yellow-btn solid 3pt;
-    box-shadow: 0 5px 5px -5px #333;
-
-    input{
-      border-bottom: 0pt;
-    }
-  }
-
-
-  .show-or-not-password {
+  .auth-show-or-not-password {
     height: 3vh;
     width: 3vh;
-    position: relative;
-    left: 40%;
-    margin-top: -20%;
-  }
 
-  .show-or-not-password {
+    position:absolute;
+    right: 5%;
+
+    background-size: 3vh;
     background-color: transparent;
     background-repeat: no-repeat;
-    background-size: 3vh;
   }
 
-  .not-show-password{
+  .auth-not-show-password{
     background-image: url('../assets/icons/input-password-not-show.png');
   }
 
-  .show-password{
+  .auth-show-password{
     background-image: url('../assets/icons/input-password-show.png');
   }
-
 }
 
 .login-content {
@@ -140,14 +136,22 @@ $dark-yellow-btn: #FF8C00;
 
   form {
     margin: 10% auto;
+
+    div {
+      margin-bottom: 10%;
+    }
   }
 
   button {
-    margin: 0 auto 4% auto;
+    margin: 8% auto 4% auto;
   }
 
   p {
     margin: 4% auto;
+  }
+
+  .auth-show-or-not-password {
+    bottom:0%;
   }
 }
 
@@ -166,14 +170,13 @@ $dark-yellow-btn: #FF8C00;
       padding: 0;
 
       img {
-        bottom: 70%;
+        bottom: 62%;
         left: 0;
       }
 
       div div {
-        margin: 8% 0 0% 0;
-        bottom:10%;
-        border-bottom: black solid 2.5pt;
+        margin: 5% 0 -4% 0;
+        bottom:0%;
       }
 
       label,
@@ -191,20 +194,18 @@ $dark-yellow-btn: #FF8C00;
         height: 2.5vh;
         width: 2.5vh;
       }
-
-      .auth-error-message {
-        margin: -1% 40%;
-        width: 120%;
-
-      }
     }
   }
 
   button {
-    margin: -14% auto 4% auto;
+    margin: 2% auto 2%;
   }
 
   p {
-    margin: -1% auto;
+    margin: auto;
+  }
+
+  .auth-show-or-not-password {
+    bottom: 40%;
   }
 }

@@ -3,19 +3,23 @@ export const authSignin = (event, {userData}, {setAuthModals}, {setAuthInputs}) 
   event.preventDefault();
 
   if (userData.name.length < 7) {   
-    setAuthInputs.setNameErrorInput(true);
+    setAuthInputs.setNameErrorInput('eba');
   }
   else if (!userData.email.includes('@')) {
-      return 'email'
+    setAuthInputs.setEmailErrorInput(true);
   }
   else if (userData.password.length < 6) {
-      return 'password'
+    setAuthInputs.setPasswordErrorInput(true);
+    setAuthInputs.setConfirmPasswordErrorInput(true);
   }
+
   else if (userData.password !== userData.confirmPassword) {
-      return 'confirmPassword'
+    setAuthInputs.setPasswordErrorInput(true);
+    setAuthInputs.setConfirmPasswordErrorInput(true);
   } 
+  
   else if (userData.role === '') {
-      return 'role'
+    setAuthInputs.setRoleErrorInput(true);
   } else {
     fetch(apiToSignin , {
       method: 'POST',
@@ -72,6 +76,6 @@ export const authLogin = (event, {userData}, {setAuthModals}) => {
   })
 };
 
-export const showOrNotShowPassword = (showPassword, setShowPassword) => {
-  setShowPassword(showPassword ? false : true);
+export const showOrNotShowPassword = (value, setValue) => {
+  setValue(value ? false : true);
 };

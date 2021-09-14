@@ -6,8 +6,8 @@ import { authLogin } from '../../services/auth';
 import { showOrNotShowPassword } from '../../services/auth';
 import { navigateTo } from '../../services/routes';
 
-import { Button } from '../../components/Button'
 import { AuthModal } from '../../components/Modal';
+import { Button } from '../../components/Button'
 import { Header } from '../../components/Header'
 import { InputContentUserData } from '../../components/UserData';
 
@@ -25,7 +25,7 @@ export function Login () {
   const [password, setPassword] = useState('');
   const userData = {email, password};
 
-  const[showPassword, setShowPassword] = useState('false')
+  const [showPassword, setShowPassword] = useState(false);
 
   const [authErrorModal, setAuthErrorModal] = useState(false);
   const [authSucessModal, setAuthSucessModal] = useState(false);
@@ -42,6 +42,7 @@ export function Login () {
     <main>
       <form>
         <InputContentUserData 
+          inputClass='auth-correct-input'
           inputData='email'
           inputType='email'
           inputPlaceholder='Email'
@@ -51,19 +52,19 @@ export function Login () {
           labelText='Email'
           iconSRC={inputEmail}
           iconAlt='Email'
+          buttonClass='display-none'
         />
         <InputContentUserData 
+          inputClass='auth-correct-input'
           inputData='password'
-          inputType={showPassword ? 'password' : 'text'}
+          inputType={showPassword ? 'text' : 'password'}
           inputPlaceholder='Senha'
           inputValue={password}
           inputOnChange={(event) => setPassword(event.target.value)}
           labelText='Senha'
           iconSRC={inputPassword}
           iconAlt='Password'
-        />
-        <Button 
-          buttonClass={`show-or-not-password ${showPassword ? 'not-show-password' : 'show-password'}`}
+          buttonClass={`auth-show-or-not-password ${showPassword ? 'auth-show-password' : 'auth-not-show-password'}`}
           buttonEvent={() => showOrNotShowPassword(showPassword, setShowPassword)}
         />
         <Button
