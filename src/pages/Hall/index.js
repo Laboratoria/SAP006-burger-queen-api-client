@@ -7,6 +7,9 @@ import ButtonDefault from '../../components/ButtonDefault';
 import './hall.scss';
 import Input from '../../components/Input';
 
+import ProductArea from '../../components/ProductArea'
+import burger from '../../img/burger-example.png';
+
 
 export default function Hall() {
 
@@ -55,7 +58,18 @@ export default function Hall() {
 
 					</section >
 					<section className="products">
-
+						<ProductArea
+							inputClass='hidden menu-item-name'
+							inputId='carne'
+							inputName='meat-options'
+							inputValue='Hambúrg. de Carne'
+							// inputOnChange={}
+							labelClass='label-item-box'
+							menuItemSrc={burger}
+							menuItemDescription='Hambúrguer de Carne'
+							menuItemClassName='menu-item-name'
+							menuItemText='Simples'
+						/>
 					</section>
 					<section className="wrapper">
 					<CartArea />
