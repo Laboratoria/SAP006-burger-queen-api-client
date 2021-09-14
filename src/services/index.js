@@ -6,6 +6,9 @@ export const loginRedirection = (role, history) => {
 		case 'kitchen':
 			history.push('/cozinha');
 			break;
+		case '/':
+			history.push('/');
+			break;
 		default:
 			break;
 	}

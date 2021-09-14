@@ -1,0 +1,31 @@
+:root {
+	--white: #fff;
+	--black: #000000;
+	--green: #a0a603;
+	--yellow: #d97904;
+	--red: #bf0404;
+	--dark-red: #590202;
+	--light-gray: #292929;
+	--dark-gray: #111111;
+}
+
+.title-area {
+    display: flex;
+    justify-content:space-between;
+
+    h1 {
+        color:white;
+        font-weight: bold;
+        margin: 2rem 0 0 3rem;
+    }
+    
+    p {
+        color:white;
+    }
+}
+
+.btn-order-status {
+    background-color:var(--light-gray);
+    padding: 1.3rem 2.5rem;
+    border-radius: 12px;
+}
