@@ -54,35 +54,18 @@ $dark-yellow-btn: #FF8C00;
       }
 
       input:valid ~ label,
-      .move-label-up ~ label {
+      .move-label-up {
         display: block;
         bottom: 85%;
         font-size: 160%;
         color: $light-gray;
       }
 
-      img, .show-or-not-password {
+      img{
         position: absolute;
         bottom: 30%;
         height: 3vh;
         width: 3vh;
-      }
-
-      .show-or-not-password {
-        bottom: -2%;
-        left: 90%;
-
-        background-color: transparent;
-        background-repeat: no-repeat;
-        background-size: 3vh;
-      }
-
-      .not-show-password{
-        background-image: url('../assets/icons/input-password-not-show.png');
-      }
-
-      .show-password{
-        background-image: url('../assets/icons/input-password-show.png');
       }
 
     }
@@ -125,8 +108,27 @@ $dark-yellow-btn: #FF8C00;
     }
   }
 
-  .input-content-is-wrong ~ .auth-error-message {
-    visibility: visible;
+
+  .show-or-not-password {
+    height: 3vh;
+    width: 3vh;
+    position: relative;
+    left: 40%;
+    margin-top: -20%;
+  }
+
+  .show-or-not-password {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 3vh;
+  }
+
+  .not-show-password{
+    background-image: url('../assets/icons/input-password-not-show.png');
+  }
+
+  .show-password{
+    background-image: url('../assets/icons/input-password-show.png');
   }
 
 }

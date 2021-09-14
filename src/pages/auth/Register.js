@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-import { showOrNotShowPassword } from './Functions';
-import { moveLabelUpEvenWhenInputValueIsInvalid } from './Functions'
 
-import { navigateTo } from '../../services/routes';
 import { authSignin } from '../../services/auth';
+import { showOrNotShowPassword } from '../../services/auth';
+import { navigateTo } from '../../services/routes';
 
 import { AuthErrorMessages } from '../../components/ErrorMessages';
 import { AuthModal } from '../../components/Modal';
@@ -34,6 +33,8 @@ export const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState ('');
   const userData = {name, email, password, confirmPassword, role};
+
+  const[showPassword, setShowPassword] = useState('false')
 
   const [authErrorModal, setAuthErrorModal] = useState(false);
   const [authSucessModal, setAuthSucessModal] = useState(false);
@@ -67,7 +68,6 @@ export const Register = () => {
             labelText='Nome Completo'
             iconSRC={inputName}
             iconAlt='Name'
-            eyeClass='display-none'
           />
           {nameErrorInput ? (
           <AuthErrorMessages
@@ -79,37 +79,39 @@ export const Register = () => {
             inputType='email'
             inputPlaceholder='Email'
             inputValue={email}
-            inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
+            inputOnChange={(event) => setEmail(event.target.value)}
+            labelClass={`${email ? 'move-label-up' : ''}`}
             labelText='Email'
             iconSRC={inputEmail}
             iconAlt='Email'
-            eyeClass='display-none'
           />
-        <InputContentUserData 
+        < InputContentUserData 
             inputData='password'
             inputConfirmPassword='confirmPassword'
-            inputType='password'
+            inputType={showPassword ? 'password' : 'text'}
             inputPlaceholder='Senha'
             inputValue={password}
             inputOnChange={(e) => setPassword(e.target.value)}
             labelText='Senha'
             iconSRC={inputPassword}
-            iconAlt='Password'
-            eyeClass='show-or-not-password not-show-password'
-            buttonEvent={(event) => showOrNotShowPassword(event)}
+          />
+          <Button 
+            buttonClass={`show-or-not-password ${showPassword ? 'not-show-password' : 'show-password'}`}
+            buttonEvent={() => showOrNotShowPassword(showPassword, setShowPassword)}
           />
           <InputContentUserData
             inputData='password'
             inputConfirmPassword='confirmPassword'
-            inputType='password'
+            inputType={showPassword ? 'password' : 'text'}
             inputPlaceholder='Confirme a Senha'
             inputValue={confirmPassword}
             inputOnChange={(e) => setConfirmPassword(e.target.value)}
             labelText='Confirme a Senha'
             iconSRC={inputPassword}
-            iconAlt='Password'
-            eyeClass='show-or-not-password not-show-password'
-            buttonEvent={(event) => showOrNotShowPassword(event)}
+          />
+          <Button 
+            buttonClass={`show-or-not-password ${showPassword ? 'not-show-password' : 'show-password'}`}
+            buttonEvent={() => showOrNotShowPassword(showPassword, setShowPassword)}
           />
           <div>
             <fieldset>

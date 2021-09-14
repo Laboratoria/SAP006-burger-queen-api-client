@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-import { showOrNotShowPassword } from './Functions';
-import { moveLabelUpEvenWhenInputValueIsInvalid } from './Functions'
-
 import { authLogin } from '../../services/auth';
+import { showOrNotShowPassword } from '../../services/auth';
 import { navigateTo } from '../../services/routes';
 
 import { Button } from '../../components/Button'
@@ -27,6 +25,8 @@ export function Login () {
   const [password, setPassword] = useState('');
   const userData = {email, password};
 
+  const[showPassword, setShowPassword] = useState('false')
+
   const [authErrorModal, setAuthErrorModal] = useState(false);
   const [authSucessModal, setAuthSucessModal] = useState(false);
   const setAuthModals = {setAuthErrorModal, setAuthSucessModal}
@@ -46,23 +46,25 @@ export function Login () {
           inputType='email'
           inputPlaceholder='Email'
           inputValue={email}
-          inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
+          inputOnChange={(event) => setEmail(event.target.value)}
+          labelClass={`${email ? 'move-label-up' : ''}`}
           labelText='Email'
           iconSRC={inputEmail}
           iconAlt='Email'
-          eyeClass='display-none'
         />
         <InputContentUserData 
           inputData='password'
-          inputType='password'
+          inputType={showPassword ? 'password' : 'text'}
           inputPlaceholder='Senha'
           inputValue={password}
           inputOnChange={(event) => setPassword(event.target.value)}
           labelText='Senha'
           iconSRC={inputPassword}
           iconAlt='Password'
-          eyeClass='show-or-not-password not-show-password'
-          buttonEvent={(event) => showOrNotShowPassword(event)}
+        />
+        <Button 
+          buttonClass={`show-or-not-password ${showPassword ? 'not-show-password' : 'show-password'}`}
+          buttonEvent={() => showOrNotShowPassword(showPassword, setShowPassword)}
         />
         <Button
           buttonType = 'button'
@@ -85,7 +87,7 @@ export function Login () {
       <section>
         {authErrorModal ? (
           <AuthModal 
-            modalMessage = 'Usuário não encontrade. Verifique seus dados :)'
+            modalMessage = 'Usuárie não encontrade. Verifique seus dados :)'
             buttonText = 'Tente novamente'
             buttonEvent = {() => navigateTo(history, '/', setAuthErrorModal)}
             buttonIIText = 'Crie uma nova conta'

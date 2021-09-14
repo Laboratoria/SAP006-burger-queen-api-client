@@ -3,14 +3,6 @@ $background-gray: #535659;
 $light-gray: #D3D3D3;
 $dark-yellow-btn: #FF8C00;
 
-
-body {
-  margin: 0;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-}
-
 * { 
   background-color: transparent;
   box-sizing: border-box;
@@ -19,8 +11,15 @@ body {
   outline: none;
 }
 
-.display-none{
-  display: none;
+body {
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  cursor: pointer;
 }
 
 .modal-background{

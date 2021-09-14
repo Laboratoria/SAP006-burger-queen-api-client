@@ -7,11 +7,10 @@ export function InputContentUserData ({
   inputPlaceholder,
   inputValue,
   inputOnChange,
+  labelClass,
   labelText,
   iconSRC,
-  iconAlt,
-  eyeClass,
-  buttonEvent
+  iconAlt
 }) {
   return (
     <div>
@@ -25,16 +24,12 @@ export function InputContentUserData ({
         autoComplete='off'
         onChange={inputOnChange}
       />
-      <label> 
+      <label className={labelClass}> 
         {labelText}
       </label>
       <img 
         src={iconSRC} 
         alt={iconAlt}
-      />
-      <button
-        className={eyeClass}
-        onClick={buttonEvent}
       />
     </div>
   )
