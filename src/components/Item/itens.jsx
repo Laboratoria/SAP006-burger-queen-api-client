@@ -4,6 +4,7 @@ import React from 'react';
 import Button from '../Button/button';
 
 function Item({
+  divOnClick,
   divClassName,
   divKey,
   divName,
@@ -22,12 +23,11 @@ function Item({
         <div>
           <img src={ImgSrc} className="img-food" alt="img-food"></img>
         </div>
-        <h1 className="divName" key={itemNameKey}>{itemQnt}{itemName}</h1>
+        <h1 className="divName" key={itemNameKey}>{itemQnt}{itemName}{itemNameKey}</h1>
         <div className="divButton">
           <h1 className="divPrice" key={itemPriceKey}> R$ {itemPrice},00</h1>
         </div>
-        <Button buttonText="ADD" buttonClass="add-button" />
-
+        <Button buttonOnClick={divOnClick} buttonClass="add-button"> ADD </Button>
       </div>
     </>
   );
