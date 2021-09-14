@@ -109,7 +109,7 @@ export default function Login() {
           <form>
             <fieldset className="margin-input">
               <Input
-                className={`  ${errorEmail ? 'is-invalid' : ''}`}
+                className={`${errorEmail ? 'is-invalid' : ''}`}
                 type="email"
                 placeholder="Email"
                 onChange={onChange}
@@ -125,7 +125,7 @@ export default function Login() {
 
             <fieldset className="margin-input">
               <Input
-                className={` ${errorPassword ? 'teste' : ''}`}
+                className={` ${errorPassword ? 'is-invalid' : ''}`}
                 type="password"
                 placeholder="Senha"
                 onChange={onChange}
@@ -142,7 +142,7 @@ export default function Login() {
               <ButtonDefault
                 id="btn-signin"
                 className="btn-default margin-bottom-2"
-                onclick={handleSubmit}
+                onClick={handleSubmit}
               >
                 ENTRAR
               </ButtonDefault>

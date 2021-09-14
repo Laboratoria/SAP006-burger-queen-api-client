@@ -1,63 +1,45 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root{
-  --white: #FFF;
+:root {
+  --white: #fff;
   --black: #000000;
-  --green: #A0A603;
-  --yellow: #D97904;
-  --red: #BF0404;
+  --green: #a0a603;
+  --yellow: #d97904;
+  --red: #bf0404;
   --dark-red: #590202;
+  --stroke:#333030;
 
 }
 
 body {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   letter-spacing: 1.7px;
- 
 }
 
 $_DIRECTIONS: (top right bottom left);
 
 @for $i from 1 through 100 {
-  .margin-#{$i} { margin: #{$i}rem; }
+  .margin-#{$i} {
+    margin: #{$i}rem;
+  }
 
   @each $direction in $_DIRECTIONS {
-    .margin-#{$direction}-#{$i} { margin-#{$direction}: #{$i}rem; }
+    .margin-#{$direction}-#{$i} {
+      margin-#{$direction}: #{$i}rem;
+    }
   }
 }
 
-
-
-h2{
-  color:var(--white);
-}
-
-.btn-primary{
-  background-color:var(--yellow);
-  border:none;
-  box-shadow: none;
-  transition: all 1s;
+h2 {
+  color: var(--white);
 }
 
 
-#btn-register:hover, #btn-signin:hover, #btn-signin:focus, #btn-register:active, #btn-signin:active{
-  background-color: var(--red);
-  box-shadow: none;
+.error-text {
+  color: red;
+  margin-bottom: -0.4rem;
 }
-
-
-.error-text{
-  color:red;
-  margin-bottom:-0.8rem;
-  
-}
-
-
-
-
-

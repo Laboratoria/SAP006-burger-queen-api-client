@@ -1,22 +1,20 @@
-:root{
-  --white: #FFF;
+:root {
+  --white: #fff;
   --black: #000000;
-  --green: #A0A603;
-  --yellow: #D97904;
-  --red: #BF0404;
+  --green: #a0a603;
+  --yellow: #d97904;
+  --red: #bf0404;
   --dark-red: #590202;
-
 }
 
-.radio-wrapper{
-  display:flex;
+.radio-wrapper {
+  display: flex;
   flex-direction: column;
 }
 
 .switch-field {
-	display: flex;
-	overflow: hidden;
-
+  display: flex;
+  overflow: hidden;
 
   input {
     position: absolute;
@@ -26,16 +24,15 @@
     border: 0;
     overflow: hidden;
     
-
   }
 
   label {
     background-color: transparent;
-    color:var(--white);
+    color: var(--white);
+    font-size:1rem;
     line-height: 1;
     text-align: center;
     padding: 0.8rem 3rem;
-    // margin-right: -1px;
     border: 1px solid var(--white);
     transition: all 0.5s ease-in-out;
 
@@ -50,24 +47,15 @@
     &:last-of-type {
       border-radius: 0 6px 6px 0;
     }
-    
   }
 
   input:checked + label {
-    background-color:var(--yellow);
+    background-color: var(--yellow);
     border: 1px solid var(--yellow);
-   
   }
 
   input:hover + label {
-    background-color:var(--yellow);
+    background-color: var(--yellow);
     border: 1px solid var(--yellow);
-   
   }
-
 }
-
-
-
-
-

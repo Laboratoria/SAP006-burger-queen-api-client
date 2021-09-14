@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ButtonLogout from '../../components/ButtonLogout';
+import LinkAside from '../../components/LinkAside';
 
 export default function Hall() {
 
@@ -10,6 +11,7 @@ export default function Hall() {
 		<>
 			<h1>Salão</h1>
 			<ButtonLogout />
+			<LinkAside/>
 		</>
 	)
 };

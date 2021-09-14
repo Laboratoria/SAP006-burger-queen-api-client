@@ -1,11 +1,10 @@
-
-.loader-container{
-  position:absolute;
-  top:0;
-  right:0;
+.loader-container {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 100vw;
   height: 100vh;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(59, 56, 56, 0.3);
@@ -91,8 +90,6 @@
     }
   }
 }
-
-
 
 @keyframes lds-roller {
   0% {
