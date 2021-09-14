@@ -39,7 +39,7 @@
 .cash-register{
 width: 100px;
 height: 100px;
-background: red;
+
 }
 .breakfast-menu{
     display: flex;
@@ -67,6 +67,7 @@ background: red;
     color: #ffff;
     margin-top: 30px;
     margin-left: 50px;
+    cursor: pointer;
 
 }
 
