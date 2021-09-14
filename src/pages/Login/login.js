@@ -13,8 +13,8 @@ function Login() {
   const salao = () => {
     routeHistory.push('/table');
   };
-  const cozinha = () => {
-    console.log('cozinha');
+  const kitchen = () => {
+    routeHistory.push('/kitchen');
   };
 
   const [email, setEmail] = useState('');
@@ -40,8 +40,8 @@ function Login() {
           const tokenUser = localStorage.setItem('token', token);
           const idUser = localStorage.setItem('id', id);
 
-          if (tokenUser !== null && idUser !== null && json.role === 'cozinha') {
-            cozinha();
+          if (tokenUser !== null && idUser !== null && json.role === 'kitchen') {
+            kitchen();
           } else if (tokenUser !== null && idUser !== null && json.role === 'salao') {
             salao();
           } else {

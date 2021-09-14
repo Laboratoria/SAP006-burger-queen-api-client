@@ -5,9 +5,9 @@ import Register from './pages/Register/register';
 // eslint-disable-next-line import/no-unresolved
 import Table from './pages/Table/table';
 import Page404 from './pages/Page404/index';
-// import Initial from './pages/Initial';
 import Pedidos from './pages/Pedidos/index';
 import GlobalStyle from './components/GlobalStyle';
+import Kitchen from './pages/Kitchen/kitchen';
 
 function Routes() {
   return (
@@ -28,6 +28,10 @@ function Routes() {
 
         <Route exact path="/table/pedidos">
           <Pedidos />
+        </Route>
+
+        <Route exact path="/kitchen">
+          <Kitchen />
         </Route>
 
         <Route>
