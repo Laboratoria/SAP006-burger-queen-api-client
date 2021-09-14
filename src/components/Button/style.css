@@ -1,5 +1,5 @@
-.goBtn {
-  width: 45%;
+
+.goBtn, .registerBtn, .createAccount {
   padding: 6px;
   color: floralwhite;
   background-color: #8544b9;
@@ -11,15 +11,15 @@
   cursor: pointer;
 }
 
+.goBtn {
+  width: 45%;
+}
+
 .registerBtn {
   width: 120%;
-  padding: 6px;
-  color: floralwhite;
-  background-color: #8544b9;
-  border: none;
-  border-radius: 5px;
-  font-family: "Kaisei Tokumin", serif;
-  align-items: center;
-  box-shadow: 0px 4px 4px rgb(20 20 20 / 37%);
-  cursor: pointer;
 }
+
+.createAccount {
+  width: 50%;
+}
+

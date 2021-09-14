@@ -5,6 +5,8 @@ import Login from "./pages/Login/index.js";
 import signUp from "./pages/signUp/index.js";
 import Menu from "./pages/Salao/index.js";
 
+import './pages/signUp/style.css';
+
 function App() {
   return (
     <BrowserRouter>
