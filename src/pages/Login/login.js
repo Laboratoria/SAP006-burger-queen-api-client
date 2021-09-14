@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Button from '../../components/Button/button';
 import InputTxt from '../../components/Input/inputTxt';
 import './login.css';
+import Logo from '../../img/logo-img.png';
 // import Error from '../../components/Errors/errors';
 
 function Login() {
@@ -53,6 +54,10 @@ function Login() {
   return (
 
     <div className="Login-container">
+      <div className="logo-login">
+        <img className="logo-img" src={Logo} alt="Logo The Krusty Krab" />
+      </div>
+
       <form className="login-form">
         <h1 className="txt-login">login</h1>
         <InputTxt
@@ -76,9 +81,9 @@ function Login() {
         <Button
           // eslint-disable-next-line react/jsx-no-bind
           buttonOnClick={loginBtn}
-          buttonText="Login"
           btnClassName="btnForm"
-        />
+        > Login
+        </Button>
         {isModalVisible ? (
           <div className="error-msg">
             <h1> Usuário não encontrado </h1>
