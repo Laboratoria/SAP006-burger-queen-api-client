@@ -104,8 +104,8 @@ export default function Login() {
 
       <section className="container-login">
         <img src={logo} className="logo" alt="logo"></img>
-        <h2>LOGIN</h2>
-        <div className="form-wrapper">
+        <h2 className="margin-bottom-2">LOGIN</h2>
+        <div className="form-wrapper margin-top-1">
           <form>
             <fieldset className="margin-input">
               <Input
@@ -141,7 +141,7 @@ export default function Login() {
             <div>
               <ButtonDefault
                 id="btn-signin"
-                className="btn-default margin-bottom-2"
+                className="btn-default margin-bottom-2 margin-top-1"
                 onClick={handleSubmit}
               >
                 ENTRAR

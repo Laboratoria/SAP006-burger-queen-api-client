@@ -47,7 +47,13 @@ nav{
             height: 2rem;
             margin:0 2rem 0rem 0;
             color:white;
-            border-bottom:3px solid var(--yellow);
+            cursor:pointer;
+           
+            &.selected{
+                color:var(--yellow);
+                border-bottom:3px solid var(--yellow);
+
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import ButtonLogout from '../../components/ButtonLogout';
 import LinkAside from '../../components/LinkAside';
@@ -9,7 +9,18 @@ import Input from '../../components/Input';
 
 
 export default function Hall() {
+  const [breakfastClass, setBreakfastClass] = useState("")
+	const [allDayClass, setAllDayClass] = useState("selected")
 
+	const selectBreakfast = () =>{
+		setBreakfastClass("selected")
+		setAllDayClass("")
+	}
+
+	const selectAllDay = () =>{
+		setAllDayClass("selected")
+		setBreakfastClass("")
+	}
 
 
 	return (
@@ -25,8 +36,8 @@ export default function Hall() {
 
 			<nav>
 					<ul className="menu-types">
-						<li>Breakfast</li>
-						<li>All Day</li>
+						<li className={breakfastClass} onClick={selectBreakfast}> Breakfast </li>
+						<li className={allDayClass} onClick={selectAllDay}> All Day </li>
 					</ul>
 
 
