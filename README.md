@@ -223,6 +223,8 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 - [ ] **GitHub: Organização pelo Github (projects | issues | labels | milestones | releases)**
 
+---
+
 ### HTTP
 
 - [ ] **Solicitações o requisições (request) e respostas (response).**
@@ -276,6 +278,19 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
   - [Cross-Origin Resource Sharing (CORS) - MDN](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS)
   </p></details>
 
+## OU
+
+
+### Firebase
+
+- [ ] **Firestore**
+
+- [ ] **Firebase Auth**
+
+- [ ] **Firebase Host**
+
+---
+
 ### react
 
 - [ ] **jsx**
@@ -310,6 +325,8 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 Este projeto deve ser feito em pares. Lembre-se que deverá consumir a
 API [Burger Queen API](https://lab-api-bq.herokuapp.com/api-docs/).
+
+Se feito individualmente, deve ser feito usando Firebase para armazenar as informações de autenticação e dos pedidos.
 
 Trabalhe integralmente uma história de usuário antes de passar para a próxima.
 Cumpra todas as histórias possíveis dentro do tempo especificado.
@@ -445,6 +462,144 @@ rapidamente aos clientes.
 
 ---
 
+---
+
+## 5.1 Critério de aceitação mínimos (projeto individual)
+
+Para esta versão do projeto poderá ser usado Firebase para armazenamento de dados e manipulação dos pedidos.
+
+#### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
+
+Eu, como garçom/garçonete quero entrar no sistema de pedidos.
+
+##### Critérios de aceitação
+
+O que deve acontecer para satisfazer as necessidades do usuário?
+
+- Acessar uma tela de login.
+- Inserir email e senha.
+- Receber mensagens de erros compreensíveis, conforme o erro e as informações inseridas.
+- Entrar no sistema de pedidos caso as credenciais forem corretas.
+
+##### Definição de pronto
+
+O acordado abaixo deve acontecer para dizer que a história está terminada:
+
+- Você deve ter recebido _code review_ de pelo menos uma parceira.
+- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
+
+---
+
+#### [História de usuário 2] Garçom/Garçonete deve ser capaz de anotar o pedido do cliente
+
+Eu como garçom/garçonete quero poder anotar o pedido de um cliente para não
+depender da minha memória, saber quanto cobrar e poder enviar os pedidos para a
+cozinha para serem preparados em ordem.
+
+##### Critérios de aceitação
+
+O que deve acontecer para satisfazer as necessidades do usuário?
+
+- Anotar o nome do cliente.
+- Adicionar produtos aos pedidos.
+- Excluir produtos.
+- Ver resumo e o total da compra.
+- Subir uma notificação de que o pedido foi efetuado (guardar na collection do Firebase).
+- Funcionar bem em um _tablet_.
+
+##### Definição de pronto
+
+O acordado abaixo deve acontecer para dizer que a história está terminada:
+
+- Você deve ter recebido _code review_ de pelo menos uma parceira.
+- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
+
+---
+
+## 5.2 Critério de aceitação adicionais (projeto individual)
+
+Para esta versão do projeto poderá ser usado Firebase para armazenamento de dados e manipulação dos pedidos.
+
+#### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
+
+Eu, como garçom/garçonete quero entrar no sistema de pedidos.
+
+##### Critérios de aceitação
+
+O que deve acontecer para satisfazer as necessidades do usuário?
+
+- Acessar uma tela de login.
+- Inserir email e senha.
+- Receber mensagens de erros compreensíveis, conforme o erro e as informações inseridas.
+- Entrar no sistema de pedidos caso as credenciais forem corretas.
+
+##### Definição de pronto
+
+O acordado abaixo deve acontecer para dizer que a história está terminada:
+
+- Você deve ter recebido _code review_ de pelo menos uma parceira.
+- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
+
+---
+
+#### [História de usuário 2] Garçom/Garçonete deve ser capaz de anotar o pedido do cliente
+
+Eu como garçom/garçonete quero poder anotar o pedido de um cliente para não
+depender da minha memória, saber quanto cobrar e poder enviar os pedidos para a
+cozinha para serem preparados em ordem.
+
+##### Critérios de aceitação
+
+O que deve acontecer para satisfazer as necessidades do usuário?
+
+- Anotar o nome do cliente.
+- Adicionar produtos aos pedidos.
+- Excluir produtos.
+- Ver resumo e o total da compra.
+- Subir uma notificação de que o pedido foi efetuado (guardar na collection do Firebase).
+- Funcionar bem em um _tablet_.
+
+##### Definição de pronto
+
+O acordado abaixo deve acontecer para dizer que a história está terminada:
+
+- Você deve ter recebido _code review_ de pelo menos uma parceira.
+- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
+
+---
+
+#### [História de usuário 3] Chefe de cozinha deve ver os pedidos
+
+Eu como chefe de cozinha quero ver os pedidos dos clientes em ordem, poder
+marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido
+está pronto para ser entregue ao cliente.
+
+##### Critérios de aceitação
+
+- Ver os pedidos ordenados à medida em que são feitos.
+- Marcar os pedidos que foram preparados e estão prontos para serem servidos.
+
+
+##### Definição de pronto
+
+- Você deve ter recebido _code review_ de pelo menos uma parceira.
+- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
+
+---
+
+#### [Historia de usuário 4] Garçom/Garçonete deve ver os pedidos prontos para servir
+
+Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los
+rapidamente aos clientes.
+
+##### Critérios de aceitação
+
+- Ver a lista de pedidos prontos para servir.
+- Marcar os pedidos que foram entregues.
+
+---
+
+
 ## 6. Pistas, tips e leituras complementares
 
 ### Frameworks / bibliotecas
@@ -473,3 +628,4 @@ rapidamente aos clientes.
   - [Netlify (vídeo)](https://drive.google.com/file/d/1hzlB8dl4m0OnLLY2-WpjSLcU7eYTURRk/view)
   - [Heroku (vídeo)](https://drive.google.com/file/d/1eqx6yuwJnAU-R83ta89tgEem7ABZigNG/view)
   - [Vercel (vídeo)](https://drive.google.com/file/d/1Q9q1iVnRrWeEhGRns0r5OOeiqloQug8y/view)
+  - [Firebase Host]
