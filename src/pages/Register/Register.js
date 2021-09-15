@@ -16,15 +16,15 @@ const Register = () => {
 return (
     <>
     <div className='container-register'>
-    <div className='register'>
-      <Input placeholder='Nome'></Input>
-      <Input placeholder='E-mail'></Input>
-      <Input placeholder='Senha'></Input>
-      <Input placeholder='Confirmação de senha'></Input>
+    <form className='register'>
+      <Input className='register-input' placeholder='Nome'></Input>
+      <Input className='register-input' placeholder='E-mail'></Input>
+      <Input className='register-input' placeholder='Senha'></Input>
+      <Input className='register-input' placeholder='Confirmação de senha'></Input>
       <p>Não tem uma conta? 
           <Button buttonText='Ir para o Login' buttonOnClick={goToLogin}/>
       </p>
-    </div>
+    </form>
     </div>
     </>
 )

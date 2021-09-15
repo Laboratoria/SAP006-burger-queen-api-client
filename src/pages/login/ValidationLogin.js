@@ -17,3 +17,5 @@ function ValidateInputs(values) {
     }
     return errors;
 }
+
+export default ValidateInputs;
