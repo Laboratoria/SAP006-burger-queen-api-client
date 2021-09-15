@@ -7,15 +7,15 @@ import CoffeImg from "../../img/coffe-item.png";
  
 function Pedidos() {
   useEffect(()=> {
-    getAllProducts()
-  })
+    getAllProducts();
+  }, [])
 
  
 
   const [menu, setMenu] = useState('')
+  const [resumopedido, setResumoPedido] = useState([]);
 
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imp1bGxpQGtydXN0eWtyYWIuY29tIiwiaWQiOjE5NDksImlhdCI6MTYzMTI0NDM0MSwiZXhwIjoxNjYyODAxOTQxfQ.ey2HG1ugfXWZpqufoUUNfQOrML7FHBRaBTTvdLOQnns";
- 
+  const token = localStorage.getItem("token")
    const getAllProducts = () => {
      fetch('https://lab-api-bq.herokuapp.com/products', {
        headers: {
@@ -25,45 +25,73 @@ function Pedidos() {
        },
 
      })
-
      .then((response)=> response.json())
      .then((json)=> {
        const breakfast = json.filter(item => item.type ==='breakfast')
        setMenu(breakfast)
       
-     },
-   
-     )
+     })
   
    }
- 
 
+   
+ 
 
   return (
     <main className="all-container">
       <Header />
       <div className="menu-um">
         <div className="breakfast-menu">
-          {menu && menu.map((item) => (
+          {menu && menu.map((item, index) => (
             <Item
             divClassName="container-food"
             divKey={Math.random()}
             itemName={item.name}
+            divId={item.id}
             ImgSrc={item.image}
             itemPrice={item.price}
+            qnt = {item.qnt}
+            divKey={Math.random}
+            itemNameKey={item.id}
+            divOnClick={() => {
+              if(!resumopedido.some(item => item.name === menu[index].name)) {
+                setResumoPedido([...resumopedido, {"id":menu[index].id, "name": menu[index].name, "qtd":1}]);
+              } else {
+                resumopedido.map((item, i) => {
+                  if (item.name === menu[index].name) {
+                    resumopedido[i].qnt +++
+                    setResumoPedido([...resumopedido]);
+                  }
+                })
+              }
+            }}
           
             />
 
-          )          
-          )
-          }
+          ))}
         
         </div>
      
 
       </div>
       <div className="finish-menu">
-        <h1>menudois</h1>
+        <h1>Resumo do Pedido</h1>
+        <p>Cliente:</p>
+        <section>
+        <label className="item">Item</label>
+        {resumopedido.map((item, index) => (
+          <ui className='lista-resumo-pedido'>
+            <li className="list" key={index}>
+              <div className="pedido-name">
+                {typeof item.name === "string" ? item.name : item.name.map((item) =>
+                <label className="title-pedido">{item.name}</label>               
+                )}
+              </div>
+            </li>
+         </ui>
+        )
+        )}
+        </section>
 
         <div className="cash-register">
           

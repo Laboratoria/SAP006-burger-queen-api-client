@@ -6,8 +6,8 @@ import Register from './pages/Register/register';
 import Table from './pages/Table/table';
 import Page404 from './pages/Page404/index';
 import Pedidos from './pages/Pedidos/index';
-import GlobalStyle from './components/GlobalStyle';
 import Kitchen from './pages/Kitchen/kitchen';
+import GlobalStyle from './components/GlobalStyle';
 
 function Routes() {
   return (

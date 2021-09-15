@@ -19,6 +19,13 @@
     height: 100vh;  
 }
 
+.not-found {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .bob-gif {
     max-width: 100%;
     padding: 1rem;
@@ -28,10 +35,30 @@
 }
 
 .notFound-text{
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     font-size: 30px;
-    color: whitesmoke;
+    color: black;
+    font-family: Bob; 
+}
+
+.Jelly-div-404{
+    display: flex;
+    padding: 0 3rem;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.jellyfish-img {
+    width: 6.5rem;
+    -webkit-transition: -webkit-transform .5s ease;
+    transition: transform .5s ease;
+}
+
+.jellyfish-img:hover{
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+
 }

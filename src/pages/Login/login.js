@@ -55,7 +55,7 @@ function Login() {
 
     <div className="Login-container">
       <div className="logo-login">
-        <img className="logo-img" src={Logo} alt="Logo The Krusty Krab" />
+        <img className="logo-img-login" src={Logo} alt="Logo The Krusty Krab" />
       </div>
 
       <form className="login-form">

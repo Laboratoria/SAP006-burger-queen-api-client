@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Bob;
+  src: url('../../fonts/SpongebobFontCondensedRegular-3zZEy.otf');
+  
+}
 :root {
     
     --bg--circle--red--color: #7A212D;
@@ -156,20 +161,23 @@ header {
   @media screen and (max-width: 1024px) {
     header {
       width: 100%;
-      height: 180px;
-      margin-left: -8px;
+      height: 160px;
        
    }
    .back-log{
     width: 180px;
-    height: 180px;
-   
+    height: 180px; 
     margin-left: 80%;
     display: flex;
     margin-bottom: 35px;
 
 }
+.logo-img{
+  width: 10rem;
+  margin-left: 80%;
+  margin-top: -17px;
 
+}
 .all-table{
   position: fixed;
   display: flex;
@@ -181,7 +189,7 @@ header {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin-top: 250px;
+  margin-top: 110px;
   margin-left: 220px;
  
 }
@@ -194,7 +202,7 @@ header {
   position: absolute;
   flex-direction: column;
   margin-left: 655px;
-  margin-top: 250px;
+  margin-top: 110px;
   
 }
 .rigth-table-middle{
@@ -204,8 +212,9 @@ header {
 .title-table{
   display: flex;
   position: absolute;
-  margin-top: 230px;
-  margin-left: 35%;
+  margin-top: 80px;
+  margin-left: 34%;
+  font-family: Bob;
 
 }
 .table-button{
@@ -246,5 +255,25 @@ header {
   margin-left: 25px;
 
 }
-   
+.nav-pedidos{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: yellow;
+  width: 400px;
+  margin: 0 auto;
+  height: 150px;
+
+}
+   .nav-btn{
+     width: 150px;
+     height: 35px;
+     margin-top: 170px;
+     border-radius: 20px;
+     border: none;
+     cursor: pointer
+   }
+   .nav-btn:hover{
+    background-color: tomato;
+  }
  }

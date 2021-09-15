@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Bob;
+    src: url('../../fonts/SpongebobFontCondensedRegular-3zZEy.otf'); 
+  }
+
 .Login-container {
     display: flex;
     flex-direction: column;
@@ -5,13 +10,14 @@
     justify-content: center;
     background-color: #03e5b7;
     background-image: linear-gradient(315deg, #03e5b7 0%, #037ade 74%); 
-    height: 100vh;  
+    height: 100vh; 
 }
+
 .logo-login {
     margin-top: 1rem;
 }
 
-.logo-img{
+.logo-img-login{
     width: 10rem;
 }
 
@@ -29,6 +35,7 @@
 .txt-login {
     margin-bottom: 2rem;
     color: #000000ad;
+    font-family: Bob; 
 }
 .LoginInput {
     padding: 1rem;
