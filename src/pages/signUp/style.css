@@ -57,6 +57,9 @@ body {
     img {
         width:40%;
     }
+    main {
+        height: 480px;
+    }
 } 
 
 @media (max-width: 587px) {
