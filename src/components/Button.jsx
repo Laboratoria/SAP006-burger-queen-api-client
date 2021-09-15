@@ -1,10 +1,15 @@
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
-const Button = (props) => {
-    const history = useHistory();
+const Button = ({ variant, children, onClick }) => {
+    const classes = `button ${variant}`;
+    // const history = useHistory();
 
     return (
-        <button variant='primary' onClick={() => {history.push('/register');}}>Cadastro</button>
+        <button className={classes} variant='primary' 
+        onClick={onClick}> 
+            {/* {history.push('/register')}  */}
+            {children}
+        </button>
     );
 }
 
