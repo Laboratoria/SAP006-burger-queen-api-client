@@ -1,5 +1,4 @@
 import React from 'react';
-// import { validateForm } from '../../services/validate';
 
 import useForm from './useForm';
 
