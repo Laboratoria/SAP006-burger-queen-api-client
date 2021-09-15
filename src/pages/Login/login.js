@@ -1,15 +1,23 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
+
 import './login.css';
 
+import jesus from '../../img/jesus.gif'
 
 function Login() {
-  const [ infoUser, setInfoUser ] = useState({ email: '', password: '' })
+
+  const [ infoUser, setInfoUser ] = useState({ email: '', password: '' });
+  console.log(infoUser);
+  console.log(setInfoUser);
 
   return (
     <div className='login'>
+      <Link to='/home'>Ir para home</Link>
+      
       <figure className='imagem-login'>
         <img className='hamburguer-login'
-          src='img/hamburg' alt='Login APP'/>
+          src={jesus} alt='Login APP' />
       </figure>
       <form className='form-login'>
         <fieldset className='form-inner'>
@@ -36,6 +44,6 @@ function Login() {
       </form>
     </div>
   )
-}
+} 
 
 export default Login
