@@ -18,8 +18,8 @@ function Page404() {
       <img className="bob-gif" src={Bob} alt="Spongebob-imagination" />
       <div className="Jelly-div-404">
         <Link to="/">
+          <div className="text-init">Voltar</div>
           <img className="jellyfish-img" src={Jellyfish} alt="jellyfish" />
-          <div className="secret-text">Voltar</div>
         </Link>
       </div>
     </main>

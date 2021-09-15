@@ -99,8 +99,8 @@ function Register() {
       </div>
       <div className="Jelly-div">
         <Link to="/">
-          <img className="jellyfish" src={Jellyfish} alt="jellyfish-btn" />
           <div className="secret-text">Voltar</div>
+          <img className="jellyfish" src={Jellyfish} alt="jellyfish-btn" />
         </Link>
       </div>
 

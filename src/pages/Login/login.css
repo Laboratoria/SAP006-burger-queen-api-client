@@ -10,7 +10,7 @@
     justify-content: center;
     background-color: #03e5b7;
     background-image: linear-gradient(315deg, #03e5b7 0%, #037ade 74%); 
-    height: 100vh; 
+    padding: 0 2rem 4rem;
 }
 
 .logo-login {
