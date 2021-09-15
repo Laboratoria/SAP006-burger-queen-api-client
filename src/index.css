@@ -5,5 +5,15 @@ body {
   font-family: 'Kaisei Tokumin', serif;
   font-weight: bold;
   font-size: 15px;
+  /* background-color: var(--red);; */
 }
 
+:root {
+  --red: #eb1919;
+  --yellow: #F2D055;
+  --white: #FFFFFF;
+  --gray: #ABABAB;
+  --darker-gray: #868686;
+  --black: #1D2228;
+  
+}

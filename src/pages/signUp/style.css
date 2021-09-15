@@ -1,3 +1,5 @@
+@import '../../index.css';
+
 main {
     display: flex;
     justify-content: center;
@@ -16,7 +18,13 @@ main {
 
 .form h1{
     text-align: center;
-    margin-bottom: 10%;
+    margin-bottom: 15%;
+}
+
+.form-input p { 
+    font-size: 12px;
+    margin: -4% 0% 0% 0%;
+    color: var(--red);
 }
 
 .form-input{
@@ -45,12 +53,14 @@ label {
     margin-left: 30%;
 }
 
-body {
-    background-color: #F2D055;
-}
  
 .input {
     width: 70%;
+}
+
+.line{
+    margin-top: 10%;
+    width: 150px;
 }
 
 @media (max-width: 870px) {
