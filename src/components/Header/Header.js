@@ -7,7 +7,7 @@ export function Header ({
   headerLogoSRC
 }) {
   return (
-    <header>
+    <header data-testid='header'>
       <img className={headerBackgroundClassName} src={headerBackgroundSRC} alt='Ilustração de Background'/>
       <img className={headerLogoClassName} src={headerLogoSRC} alt='Logo Combos Burguer'/>
     </header>

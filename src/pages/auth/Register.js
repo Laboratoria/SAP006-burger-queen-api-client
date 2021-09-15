@@ -109,13 +109,13 @@ export const Register = () => {
           /> 
           <InputContentUserData
             inputClass={confirmPasswordErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
-              inputType={showConfirmPassword ? 'text' : 'password'}
-              inputPlaceholder='Confirme a Senha'
-              inputValue={confirmPassword}
-              inputOnChange={(e) => [setConfirmPassword(e.target.value), setPasswordErrorInput(false), setConfirmPasswordErrorInput(false)]}
-              labelText='Confirme a Senha'
-              iconSRC={inputPassword}
-              buttonClass={`auth-show-or-not-password ${showConfirmPassword ? 'auth-show-password' : 'auth-not-show-password'}`}
+            inputType={showConfirmPassword ? 'text' : 'password'}
+            inputPlaceholder='Confirme a Senha'
+            inputValue={confirmPassword}
+            inputOnChange={(e) => [setConfirmPassword(e.target.value), setPasswordErrorInput(false), setConfirmPasswordErrorInput(false)]}
+            labelText='Confirme a Senha'
+            iconSRC={inputPassword}
+            buttonClass={`auth-show-or-not-password ${showConfirmPassword ? 'auth-show-password' : 'auth-not-show-password'}`}
             buttonEvent={() => showOrNotShowPassword(showConfirmPassword, setShowConfirmPassword)}
           />
           <AuthErrorMessages
@@ -158,7 +158,7 @@ export const Register = () => {
       <section>
         {authSucessModal ? (
           <AuthModal 
-            modalMessage = 'Cadastro realizado com sucesso!'
+            children = 'Cadastro realizado com sucesso!'
             buttonText = 'OK'
             buttonEvent = {() => navigateTo(history, '/orders', setAuthSucessModal)}
             buttonIIClass = 'display-none'
@@ -168,7 +168,7 @@ export const Register = () => {
       <section>
         {authErrorModal ? (
           <AuthModal 
-            modalMessage = 'Este email já está cadastrado no sistema.'
+            children = 'Este email já está cadastrado no sistema.'
             buttonText = 'Cadastre um novo email.'
             buttonEvent = {() => navigateTo(history, '/register', setAuthErrorModal)}
             buttonIIText = 'Entre com uma conta já existente.'

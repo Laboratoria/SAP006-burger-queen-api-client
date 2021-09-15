@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { Button } from '../Button/Button'
+
 export function AuthModal ({
-modalMessage,
+children,
 buttonClass,
 buttonEvent,
 buttonText,
@@ -13,14 +15,14 @@ buttonIIText
     <section className='modal-background'>
       <div className='modal-container'>
         <p>
-          {modalMessage}
+          {children}
         </p>
-        <button className={buttonClass} onClick={buttonEvent}>
+        <Button buttonClass={buttonClass} buttonEvent={buttonEvent}>
           {buttonText}
-        </button>
-        <button className={buttonIIClass} onClick={buttonIIEvent}>
+        </Button>
+        <Button buttonClass={buttonIIClass} buttonEvent={buttonIIEvent}>
           {buttonIIText}
-        </button>
+        </Button>
       </div>
     </section>
   )

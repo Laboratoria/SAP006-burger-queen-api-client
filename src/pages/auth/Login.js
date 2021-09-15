@@ -78,7 +78,7 @@ export function Login () {
     <section>
         {authSucessModal ? (
           <AuthModal 
-            modalMessage = 'Cadastro realizado com sucesso!'
+            children = 'Cadastro realizado com sucesso!'
             buttonText = 'OK'
             buttonEvent = {() => navigateTo(history, '/orders', setAuthSucessModal)}
             buttonIIClass = 'display-none'
@@ -88,7 +88,7 @@ export function Login () {
       <section>
         {authErrorModal ? (
           <AuthModal 
-            modalMessage = 'Usuárie não encontrade. Verifique seus dados :)'
+            children = 'Usuárie não encontrade. Verifique seus dados :)'
             buttonText = 'Tente novamente'
             buttonEvent = {() => navigateTo(history, '/', setAuthErrorModal)}
             buttonIIText = 'Crie uma nova conta'

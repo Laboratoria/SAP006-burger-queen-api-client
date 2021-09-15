@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../Button/Button';
 
 export function InputContentUserData ({
   inputClass,
@@ -11,11 +12,12 @@ export function InputContentUserData ({
   iconSRC,
   iconAlt,
   buttonClass,
-  buttonEvent
+  buttonEvent,
 }) {
   return (
-    <div>
+    <div data-testid='user-data-div-text-content'>
       <input 
+        data-testid='user-data-input-text-content'
         className={inputClass}
         type={inputType}
         required
@@ -24,16 +26,22 @@ export function InputContentUserData ({
         autoComplete='off'
         onChange={inputOnChange}
       />
-      <label className={labelClass}> 
+      <label 
+      data-testid='user-data-label-text-content'
+      className={labelClass}
+      > 
         {labelText}
       </label>
-      <img 
+      <img
+        data-testid='user-data-img-text-content'
         src={iconSRC} 
         alt={iconAlt}
       />
-      <button
-        className={buttonClass}
-        onClick={buttonEvent}/>
+      <Button
+        datatestid='user-data-btn-text-content'
+        buttonClass={buttonClass}
+        buttonEvent={buttonEvent}
+      />
     </div>
   )
 }

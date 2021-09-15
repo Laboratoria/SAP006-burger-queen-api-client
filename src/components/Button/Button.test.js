@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React from 'react';
 import { render, screen, fireEvent, cleanup} from '@testing-library/react';
 import { Button } from './Button'
@@ -9,7 +8,7 @@ describe('Testing the Button component', () => {
 
   const label = 'btnLabel';
 
-  it ('Should render the component button with the given text.', () => {
+  it ('Should render the component button with the given label.', () => {
     render(<Button>{label}</Button>);
     const btn = screen.getByText(label);
     expect(btn).toBeInTheDocument();
