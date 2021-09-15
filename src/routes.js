@@ -3,7 +3,7 @@ import reactDom from 'react-dom';
 import { Switch, Route } from 'react-router-dom';
 
 import Login from './pages/Login/login';
-import Home from './pages/Home/home';
+import Home from './pages/home/home';
 
 export const Routes = () => {
   return (
