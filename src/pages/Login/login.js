@@ -5,7 +5,7 @@ import './login.css';
 
 import jesus from '../../img/jesus.gif'
 
-export const Login = () => {
+const Login = () => {
   const [infoUser, setInfoUser] = useState({ email: '', password: '' });
   console.log(infoUser);
   console.log(setInfoUser);
@@ -45,3 +45,4 @@ export const Login = () => {
   )
 }
 
+export default Login;
