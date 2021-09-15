@@ -9,6 +9,7 @@ import Input from '../../components/Input';
 
 import ProductArea from '../../components/ProductArea'
 import burger from '../../img/burger-example.png';
+import ButtonRadio from '../../components/ButtonRadio';
 
 
 export default function Hall() {
@@ -58,36 +59,33 @@ export default function Hall() {
 
 					</section >
 					<section className="products">
-						<div className="products-row">
-						
+						<div className="products-row">					
 							<ProductArea
-								inputClass='hidden product-name'
 								inputId='simples'
 								inputName='burger-options'
 								inputValue='Hambúrg. Simples'
 								// inputOnChange={}
-								labelClassName='label-product-box'
 								productImg={burger}
 								productImgAlt='burger example'
-								productClassName='product-name'
 								productName='Simples'
 								productPrice="R$ 10,00"
-								priceClassName="product-price"
 							/>
 
 							<ProductArea
-								inputClass='hidden product-name'
 								inputId='duplo'
 								inputName='burger-options'
 								inputValue='Hambúrg. Duplo'
 								// inputOnChange={}
-								labelClassName='label-product-box'
 								productImg={burger}
 								productImgAlt='burger example'
-								productClassName='product-name'
 								productName='Duplo'
 								productPrice="R$ 15,00"
-								priceClassName="product-price"
+							/>
+						</div>
+
+						<div className="radio-wrapper">
+							<ButtonRadio 
+								radioClassName=""
 							/>
 						</div>
 					</section>

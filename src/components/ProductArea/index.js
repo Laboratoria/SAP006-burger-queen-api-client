@@ -8,21 +8,17 @@ export default function ProductArea( {
     productImgAlt,
     productName,
     productPrice,
-    inputClass,
     inputId,
     inputName,
     inputValue,
     inputChecked,
     // inputOnChange,
-    labelClassName,
-    productClassName,
-    priceClassName,
 }) {
 	return (
 		<div className="product-container">
             <input
                 type='radio'
-                className={inputClass}
+                className="hidden product-name"
                 id={inputId}
                 name={inputName}
                 value={inputValue}
@@ -31,15 +27,15 @@ export default function ProductArea( {
             />
             <label
                 htmlFor={inputId}
-                className={labelClassName}
+                className="label-product-box"
                 >
                 <img
                     className='product-image'
                     src={productImg}
                     alt={productImgAlt}
                 />
-                <p className={productClassName}>{productName}</p>
-                <p className={priceClassName}>{productPrice}</p>
+                <p className="product-name">{productName}</p>
+                <p className="product-price">{productPrice}</p>
             </label>
         </div>
 	);

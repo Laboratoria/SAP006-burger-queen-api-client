@@ -3,7 +3,7 @@
 import React from 'react';
 import './buttonRadio.scss'
 
-export default function ButtonRadio({ onChange }) {
+export default function ButtonRadio({ onChange, radioClassName }) {
   return (
     <div className="switch-field">
       <input type="radio"
@@ -12,7 +12,7 @@ export default function ButtonRadio({ onChange }) {
 							value="hall"
 							id="hall"
 							onChange={onChange}
-							className="radio-btn" />
+							className={radioClassName} />
       <label htmlFor="hall">Salão</label>
       <input type="radio"
 							variant="secondary"
@@ -20,7 +20,7 @@ export default function ButtonRadio({ onChange }) {
 							value="kitchen"
 							id="kitchen"
 							onChange={onChange}
-							className="radio-btn"/>
+							className={radioClassName}/>
       <label htmlFor="kitchen">Cozinha</label>
     </div>
   )
