@@ -58,18 +58,38 @@ export default function Hall() {
 
 					</section >
 					<section className="products">
-						<ProductArea
-							inputClass='hidden menu-item-name'
-							inputId='carne'
-							inputName='meat-options'
-							inputValue='Hambúrg. de Carne'
-							// inputOnChange={}
-							labelClass='label-item-box'
-							menuItemSrc={burger}
-							menuItemDescription='Hambúrguer de Carne'
-							menuItemClassName='menu-item-name'
-							menuItemText='Simples'
-						/>
+						<div className="products-row">
+						
+							<ProductArea
+								inputClass='hidden product-name'
+								inputId='simples'
+								inputName='burger-options'
+								inputValue='Hambúrg. Simples'
+								// inputOnChange={}
+								labelClassName='label-product-box'
+								productImg={burger}
+								productImgAlt='burger example'
+								productClassName='product-name'
+								productName='Simples'
+								productPrice="R$ 10,00"
+								priceClassName="product-price"
+							/>
+
+							<ProductArea
+								inputClass='hidden product-name'
+								inputId='duplo'
+								inputName='burger-options'
+								inputValue='Hambúrg. Duplo'
+								// inputOnChange={}
+								labelClassName='label-product-box'
+								productImg={burger}
+								productImgAlt='burger example'
+								productClassName='product-name'
+								productName='Duplo'
+								productPrice="R$ 15,00"
+								priceClassName="product-price"
+							/>
+						</div>
 					</section>
 					<section className="wrapper">
 					<CartArea />

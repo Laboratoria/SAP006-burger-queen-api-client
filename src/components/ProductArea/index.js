@@ -4,17 +4,19 @@ import React from 'react';
 import './productArea.scss';
 
 export default function ProductArea( {
-    menuItemSrc,
-    menuItemDescription,
-    menuItemText,
+    productImg,
+    productImgAlt,
+    productName,
+    productPrice,
     inputClass,
     inputId,
     inputName,
     inputValue,
     inputChecked,
     // inputOnChange,
-    labelClass,
-    menuItemClassName,
+    labelClassName,
+    productClassName,
+    priceClassName,
 }) {
 	return (
 		<div className="product-container">
@@ -29,14 +31,15 @@ export default function ProductArea( {
             />
             <label
                 htmlFor={inputId}
-                className={labelClass}
+                className={labelClassName}
                 >
                 <img
                     className='product-image'
-                    src={menuItemSrc}
-                    alt={menuItemDescription}
+                    src={productImg}
+                    alt={productImgAlt}
                 />
-                <p className={menuItemClassName}>{menuItemText}</p>
+                <p className={productClassName}>{productName}</p>
+                <p className={priceClassName}>{productPrice}</p>
             </label>
         </div>
 	);

@@ -13,29 +13,31 @@
 .product-container {
     display: flex;
     flex-direction: column;
-}
-
-.label-item-box {
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
 .product-image {
-    width: 8rem;
-    height: 8rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
+    cursor: pointer;
 }
 
-.menu-item-name {
+.product-name {
     color: var(--white);
-    padding: 0.25rem 0.6rem;
     width: auto;
     position: relative;
     top: 0.5rem;
     text-align: center;
     font-weight: bold;
-  }
+    cursor: pointer;
+}
+
+.product-price{
+    color: var(--white);
+    cursor: pointer;
+    text-align: center;
+}
   
 .product-container input:checked + label > img {
     border: 0.3rem solid var(--yellow);
@@ -43,4 +45,8 @@
   
 .product-container input:checked + label > p {
     color: var(--yellow);
+}
+
+.label-product-box {
+    margin-top: -2rem;
 }
