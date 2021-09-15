@@ -1,8 +1,12 @@
 .register {
-    width: 25%;
-    height: 25%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.container-register {
+    width: 30vw;
+    height: 40vw;
+    background: #FCB056;
 }
