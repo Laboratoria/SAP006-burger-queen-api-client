@@ -1,43 +1,98 @@
 :root {
-  --stroke:#464242;
+  --stroke: #464242;
 }
 
-li{
+li {
   list-style: none;
-  
-  .border-link{
+  position: relative;
+
+  & .burger {
+    background-image: url("../../img/burger.jpg");
+    background-size: cover;
+  }
+
+  & .drinks {
+    background-image: url("../../img/drinks.jpg");
+    background-size: cover;
+  }
+
+  & .sides {
+    background-image: url("../../img/fries.jpg");
+    background-size: cover;
+  }
+
+  span {
+    text-transform: uppercase;
+    color: white;
+    font-size: 1.3rem;
+    letter-spacing: 0rem;
+    z-index: 2;
+    text-shadow: 1px 1px 1px #666, -1px -1px 1px #fff, 1px 1px #666;
+    
+  }
+
+  .border-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80%;
-    height:40%;
-    border:3px solid white;
-    border-radius:5px;
+    height: 40%;
+    border-radius: 5px;
+    transition: border 0.2s ease-in;
+
+    &.active {
+      border: 3px solid white;
+      box-shadow: inset 1px 1px 1px #666, -1px -1px 1px #fff, 1px 1px #666;
+    }
+  }
+
+  .effects {
+    width: 9rem;
+    height: 9rem;
+    border: 1px solid var(--stroke);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(22, 22, 29, 0.548);
+
+    &.active {
+      background-color: transparent;
+    }
+    &:hover {
+      background-color: transparent;
+      .border-link {
+        border: 3px solid white;
+        box-shadow: inset 1px 1px 1px #666, -1px -1px 1px #fff, 1px 1px #666;
+      }
+    }
+  }
+
+  .underline {
+    width: 2rem;
+    border-top: 3px solid white;
+    margin-top: -3px;
   }
 }
 
-  div {
-    & .item-aside{
-    width: 8rem;
-    height: 8rem;
-    border:1px solid var(--stroke);
-    border-radius:5px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+div {
+  & .item-aside {
+    width: 9rem;
+    height: 9rem;
+    border: 1px solid var(--stroke);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & .active {
+      border: none;
     }
-    & .burger {
-      background-image: url("../../img/burger.jpg");
-      background-size: cover;
-    }
-    .border-link{
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      span{
-        color:white;
-        font-size:1.3rem;
-      }
-    
-    }
-    
   }
-
-
+}

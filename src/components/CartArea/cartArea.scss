@@ -7,7 +7,7 @@
 	--dark-red: #590202;
 	--light-gray: #292929;
 	--dark-gray: #111111;
-	--stroke:#464242;
+	--stroke: #464242;
 }
 
 body {
@@ -15,67 +15,115 @@ body {
 }
 
 .cart-container {
-	width: 40vw;
-	height: 100%;
+	width: 45vw;
+	height:100%;
 	background-color: var(--light-gray);
-	border:1px solid var(--stroke);
+	border: 1px solid var(--stroke);
 	border-radius: 5px;
 	color: white;
 	font-size: 1.2em;
-	position:relative;
+	position: relative;
+	padding:2%;
+	padding-bottom:8rem;
+
+	header{
+		display:flex;
+		flex-direction:column;
+		height:15%;
+		justify-content: space-between;
+
+		
+
+
+		.title-card {
+			display: flex;
+			align-items: center;
 	
-
-	h4 {
-		margin-bottom: 0;
-		font-weight: bold;
-	}
-
-	div {
-		display: flex;
-		padding-top: 1.7rem;
-	}
-
-	img {
-		height: 24px;
-	}
-
-	hr {
-		margin: 1rem 1rem;
+			img {
+				height: 24px;
+			}
+			h4 {
+				margin-bottom: 0;
+				font-weight: bold;
+				font-size: 1.1rem;
+			}
+		}
 	}
 
 	p {
 		font-weight: lighter;
+	}
+
+	.added-items-container {
+		height: 82%;
+		overflow: auto;
+		scrollbar-width: 5px !important;
+		margin:2%;
+		border-top:0.1rem solid var(--stroke);
+		padding-top: 1rem;
+		&::-webkit-scrollbar {
+			width: 0.2em;
+			height: 0.5em;
+		 }
+	 
+		 &::-webkit-scrollbar-thumb {
+			background-color: rgba(255,255,255,.1);
+			border-radius: 3px;
+	 
+			&:hover {
+			 background: rgba(255,255,255,.2);
+			}
+		 }
+	
+
+		p {
+			font-size:0.9rem;
+		}
 	}
 }
 
 .subtitle-cart {
 	display: flex;
 	justify-content: space-between;
+	h5{
+		font-size:1.2rem;
+		margin-bottom:0;
+	}
 }
 
 .total-area {
 	display: flex;
 	flex-direction: column;
-	position:absolute;
-	bottom:0;
-	height:13rem;
-	width:100%;
+	position: absolute;
+	bottom: 0;
+	left:0;
+	height: 8rem;
+	width: 100%;
+	background-color: var(--light-gray);
+	border-top:1px solid var(--stroke);
+	padding:0 2%;
 
-	hr {
-		margin: 0rem 0rem;
+
+	.total{
+		display:flex;
+		justify-content: space-between;
+		margin:0.5rem 0 0.5rem 0;
 	}
 
-	div {
-		display: flex;
+	.cart-buttons-wrapper{
+		display:flex;
 		justify-content: space-between;
+		margin-top:0;
 	}
 }
 
 .btn-cart-confirm {
 	width: 45%;
+	border: 1px solid var(--yellow);
 
 	&:hover {
 		background-color: var(--green);
+	
 	}
 }
 

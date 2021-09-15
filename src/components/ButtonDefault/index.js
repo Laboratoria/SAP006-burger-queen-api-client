@@ -11,7 +11,6 @@ export default function ButtonDefault({
     type="button"
     className={className}
     onClick={onClick}
-    data-testid="button"
   >
     {children}
   </button>

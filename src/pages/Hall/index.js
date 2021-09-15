@@ -17,115 +17,116 @@ export default function Hall() {
 
 
 	return (
-		<>
-			<div className="pages-container">
-				<header className="title-area">
-					<div>
-						<h1>DIVINO BURGER</h1>
-						<p>horário atual</p>
+		<div className="pages-container">
+			<header className="title-area">
+				<div>
+					<h1>DIVINO BURGER</h1>
+					<p>horário atual</p>
+				</div>
+
+				<ButtonLogout />
+			</header>
+
+			<nav>
+					<ul className="menu-types">
+						<li>Breakfast</li>
+						<li>All Day</li>
+					</ul>
+
+
+				<div className="order-progress">
+				<ButtonDefault
+					className="btn-order-status btn-default"
+				>
+					Em andamento
+				</ButtonDefault>
+
+				<ButtonDefault
+					className="btn-order-status btn-default margin-left-1"
+				>
+					Finalizados
+				</ButtonDefault>
+				</div>
+			</nav>
+			<main>
+
+				<section className="order-filling">
+					<div className="client-data margin-bottom-2">
+						<Input className="input-hall" placeholder="Insira o nome do cliente"/>
 					</div>
-
-					<ButtonLogout />
-				</header>
-
-				<navbar>
-					<ButtonDefault
-						className="btn-order-status btn-default"
-					>
-						Em andamento
-					</ButtonDefault>
-
-					<ButtonDefault
-						className="btn-order-status btn-default margin-left-1"
-					>
-						Finalizados
-					</ButtonDefault>
-
-
-
-				</navbar>
-				<main>
-					
-					<section className="menu">
-						<div className="client-data margin-bottom-2">
-							<Input/>
-						</div>
+					<div className="menu">
 						<aside>
-							<LinkAside />
-							<LinkAside />
-							<LinkAside />
-
+							<LinkAside className="active" type="burger">Burgers</LinkAside>
+							<LinkAside type="sides">Adicionais</LinkAside>
+							<LinkAside type="drinks">Bebidas</LinkAside>
 						</aside>
 
-					</section >
-					<section className="products">
-						<div className="products-row">					
-							<ProductArea
-								inputId='simples'
-								inputName='burger-options'
-								inputValue='Hambúrg. Simples'
-								// inputOnChange={}
-								productImg={burger}
-								productImgAlt='burger example'
-								productName='Simples'
-								productPrice="R$ 10,00"
-							/>
+						<section className="products">
+							<div className="products-row">					
+								<ProductArea
+									inputId='simples'
+									inputName='burger-options'
+									inputValue='Hambúrg. Simples'
+									// inputOnChange={}
+									productImg={burger}
+									productImgAlt='burger example'
+									productName='Simples'
+									productPrice="R$ 10,00"
+								/>
 
-							<ProductArea
-								inputId='duplo'
-								inputName='burger-options'
-								inputValue='Hambúrg. Duplo'
-								// inputOnChange={}
-								productImg={burger}
-								productImgAlt='burger example'
-								productName='Duplo'
-								productPrice="R$ 15,00"
-							/>
-						</div>
+								<ProductArea
+									inputId='duplo'
+									inputName='burger-options'
+									inputValue='Hambúrg. Duplo'
+									// inputOnChange={}
+									productImg={burger}
+									productImgAlt='burger example'
+									productName='Duplo'
+									productPrice="R$ 15,00"
+								/>
+							</div>
 
-						<div className="radio-wrapper">
-							<ButtonRadio 
-								// onChange={onChange} 
-								firstInputName="drinks"
-								firstInputValue="water"
-								firstInputId="water"
-								firstLabel="500ml"
-								firstPrice="R$ 5,00"
-								secondInputName="drinks"
-								secondInputValue="soda"
-								secondInputId="soda"
-								secondLabel="700ml"
-								secondPrice="R$ 7,00"
-								secondClassName="second-btn"
-								thirdClassName="hidden"
-							/>
+							<div className="radio-wrapper">
+								<ButtonRadio 
+									// onChange={onChange} 
+									firstInputName="drinks"
+									firstInputValue="water"
+									firstInputId="water"
+									firstLabel="500ml"
+									firstPrice="R$ 5,00"
+									secondInputName="drinks"
+									secondInputValue="soda"
+									secondInputId="soda"
+									secondLabel="700ml"
+									secondPrice="R$ 7,00"
+									secondClassName="second-btn"
+									thirdClassName="hidden"
+								/>
 
-							<ButtonRadio 
-								// onChange={onChange} 
-								firstInputName="burger"
-								firstInputValue="carne"
-								firstInputId="carne"
-								firstLabel="Carne"
-								secondInputName="burger"
-								secondInputValue="frango"
-								secondInputId="frango"
-								secondLabel="Frango"
-								thirdInputName="burger"
-								thirdInputValue="vegetariano"
-								thirdInputId="vegetariano"
-								thirdLabel="Vegetariano"
-								thirdClassName="third-btn"
-							/>
-						</div>
-					</section>
-					<section className="wrapper">
-					<CartArea />
-					</section>
-				</main>
-			</div>
-		</>
+								<ButtonRadio 
+									// onChange={onChange} 
+									firstInputName="burger"
+									firstInputValue="carne"
+									firstInputId="carne"
+									firstLabel="Carne"
+									secondInputName="burger"
+									secondInputValue="frango"
+									secondInputId="frango"
+									secondLabel="Frango"
+									thirdInputName="burger"
+									thirdInputValue="vegetariano"
+									thirdInputId="vegetariano"
+									thirdLabel="Vegetariano"
+									thirdClassName="third-btn"
+								/>
+							</div>
+						</section>
+					</div>
+				</section>
+				<CartArea />
 
-
+			</main>
+		</div>
 
 	)
 };
