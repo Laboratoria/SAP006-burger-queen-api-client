@@ -6,7 +6,8 @@ import './login.css';
 import jesus from '../../img/jesus.gif'
 
 const Login = () => {
-  const [infoUser, setInfoUser] = useState({ email: '', password: '' });
+
+  const [ infoUser, setInfoUser ] = useState({ email: '', password: '' });
   console.log(infoUser);
   console.log(setInfoUser);
 
@@ -21,16 +22,16 @@ const Login = () => {
       <form className='form-login'>
         <fieldset className='form-inner'>
           <input className='input-login'
-            type='email' id='email' placeholder='Email' required=''
-            value={infoUser.email}
-            onChange={e => setInfoUser({ ...infoUser, email: e.target.value })} />
-          <section className='icons-input'>
-            <i className='far fa-envelope icons'></i>
+          type='email' id='email' placeholder='Email' required='' 
+          value={infoUser.email} 
+          onChange={e => setInfoUser({...infoUser, email: e.target.value})}/>
+          <section className ='icons-input'>
+          <i className='far fa-envelope'></i>
           </section>
         </fieldset>
-        <fieldset className="form-login">
-          <input className="input"
-            type="password" id="password" placeholder="Password" required=""
+        <fieldset className="form-inner">
+          <input className="input-password" 
+            type="password" id="password" placeholder="Password" required="" 
             value={infoUser.password}
             onChange={e => setInfoUser({ ...infoUser, password: e.target.value })} />
           <section className="icons-input">
@@ -43,6 +44,6 @@ const Login = () => {
       </form>
     </div>
   )
-}
+};
 
 export default Login;
