@@ -13,58 +13,62 @@ export default function Hall() {
 
 
 	return (
-		<>
-			<div className="pages-container">
-				<header className="title-area">
-					<div>
-						<h1>DIVINO BURGER</h1>
-						<p>horário atual</p>
+		<div className="pages-container">
+			<header className="title-area">
+				<div>
+					<h1>DIVINO BURGER</h1>
+					<p>horário atual</p>
+				</div>
+
+				<ButtonLogout />
+			</header>
+
+			<nav>
+					<ul className="menu-types">
+						<li>Breakfast</li>
+						<li>All Day</li>
+					</ul>
+
+
+				<div className="order-progress">
+				<ButtonDefault
+					className="btn-order-status btn-default"
+				>
+					Em andamento
+				</ButtonDefault>
+
+				<ButtonDefault
+					className="btn-order-status btn-default margin-left-1"
+				>
+					Finalizados
+				</ButtonDefault>
+				</div>
+
+
+
+			</nav>
+			<main>
+
+				<section className="order-filling">
+					<div className="client-data margin-bottom-2">
+						<Input className="input-hall" placeholder="Insira o nome do cliente"/>
 					</div>
-
-					<ButtonLogout />
-				</header>
-
-				<navbar>
-					<ButtonDefault
-						className="btn-order-status btn-default"
-					>
-						Em andamento
-					</ButtonDefault>
-
-					<ButtonDefault
-						className="btn-order-status btn-default margin-left-1"
-					>
-						Finalizados
-					</ButtonDefault>
-
-
-
-				</navbar>
-				<main>
-					
-					<section className="menu">
-						<div className="client-data margin-bottom-2">
-							<Input/>
-						</div>
+					<div className="menu">
 						<aside>
-							<LinkAside />
-							<LinkAside />
-							<LinkAside />
-
+							<LinkAside className="active" type="burger">Burgers</LinkAside>
+							<LinkAside type="sides">Adicionais</LinkAside>
+							<LinkAside type="drinks">Bebidas</LinkAside>
 						</aside>
 
-					</section >
-					<section className="products">
+						<section className="products">
 
-					</section>
-					<section className="wrapper">
-					<CartArea />
-					</section>
-				</main>
-			</div>
-		</>
+						</section>
+					</div>
+				</section>
+				<CartArea />
 
-
+			</main>
+		</div>
 
 	)
 };

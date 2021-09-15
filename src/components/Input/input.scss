@@ -1,5 +1,7 @@
 :root {
   --yellow: #d97904;
+  --light-gray: #292929;
+  --stroke:#464242;
 }
 
 input[type="email"],
@@ -14,6 +16,7 @@ input[type="text"] {
   border-radius: 5px;
   transition: all 0.3s;
   outline: none;
+  
 }
 
 input[type="text"]:focus,
@@ -38,4 +41,11 @@ input[type="email"]:focus + label {
   background-position-y:center;
   background-origin: content-box;
  
+}
+
+.input-hall{
+  background-color:var(--light-gray);
+  color:white;
+  outline:none;
+  border:1px solid var(--stroke);
 }
