@@ -1,14 +1,12 @@
 import React from "react";
+import Logo from './Image/Logo.png';
 
-class Header extends React.Component {
-    render(){
-        return(
-            <div>
-                <h1>Arroz</h1>
-                    <p>banana</p>
-            </div>
+function Header () {
+    return(
+        <div className="header container">
+            <img src= { Logo } alt="logo hamburguer" />
+        </div>
         );
-    }
 }
 
 export default Header;
