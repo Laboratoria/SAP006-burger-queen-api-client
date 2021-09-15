@@ -79,7 +79,6 @@ main{
     .order-filling{
         display:flex;
         flex-direction: column;
-
         .menu{
             display:flex;
             flex-direction: row;
@@ -97,10 +96,16 @@ main{
             width:60%;
         }
 
+        .products-row {
+            display: flex;
+            justify-content: space-around;
+            background-color:var(--light-gray);
+            height: 15vh;
+            margin: 3rem 2rem;
+            border-radius: 5px;
+        }
+
     }
     
-
-
 }
-
 
