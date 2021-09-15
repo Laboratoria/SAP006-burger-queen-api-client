@@ -12,9 +12,13 @@ import Button from '../../components/Button/button'
 // import './table.css';
 
 function Table() {
- const routerPedidos = () => {
-    history.push('/table/pedidos')
-}
+  const mesasTotal = 6;
+  const mesas = [];
+
+  for(let i = 0; i < mesasTotal; i++) {
+    mesas.push(`${[i+1]}`)
+  }  
+
 
   return (
     <div className="container">
@@ -31,7 +35,13 @@ function Table() {
           <div className="all-table">
             <div className="all-table-left">
               <div className="table">
-                <Mesa />
+                {mesas.map((mesa) =>
+                
+                 <Mesa
+                 mesa = {mesa}
+                  />     
+                )}
+               
               </div>
               <div className="table-middle">
                 <Mesa />

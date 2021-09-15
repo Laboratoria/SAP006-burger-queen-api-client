@@ -93,10 +93,7 @@ function Pedidos() {
         )}
         </section>
 
-        <div className="cash-register">
-          
-          
-        
+        <div className="cash-register">   
         </div>
       </div>
 
