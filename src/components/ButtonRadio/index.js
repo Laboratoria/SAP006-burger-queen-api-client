@@ -6,20 +6,20 @@ import './buttonRadio.scss'
 export default function ButtonRadio({ 
 	onChange,
 	firstInputName,
-	firstInputvalue,
-	firstInputid,
+	firstInputValue,
+	firstInputId,
 	firstLabel,
 	firstPrice,
 	firstClassName,
 	secondInputName,
-	secondInputvalue,
-	secondInputid,
+	secondInputValue,
+	secondInputId,
 	secondLabel,
 	secondPrice,
 	secondClassName,
 	thirdInputName,
-	thirdInputvalue,
-	thirdInputid,
+	thirdInputValue,
+	thirdInputId,
 	thirdLabel,
 	thirdClassName
 }) {
@@ -28,29 +28,29 @@ export default function ButtonRadio({
       <input type="radio"
 							variant="secondary"
 							name={firstInputName}
-							value={firstInputvalue}
-							id={firstInputid}
+							value={firstInputValue}
+							id={firstInputId}
 							onChange={onChange}
 							/>
-      <label className={firstClassName} htmlFor={firstInputid}>{firstLabel}<br></br>{firstPrice}</label>
+      <label className={firstClassName} htmlFor={firstInputId}>{firstLabel}<br></br>{firstPrice}</label>
 
       <input type="radio"
 							variant="secondary"
 							name={secondInputName}
-							value={secondInputvalue}
-							id={secondInputid}
+							value={secondInputValue}
+							id={secondInputId}
 							onChange={onChange}
 							/>
-      <label className={secondClassName} htmlFor={secondInputid}>{secondLabel}<br></br>{secondPrice}</label>
+      <label className={secondClassName} htmlFor={secondInputId}>{secondLabel}<br></br>{secondPrice}</label>
 
 	  <input type="radio"
 							variant="secondary"
 							name={thirdInputName}
-							value={thirdInputvalue}
-							id={thirdInputid}
+							value={thirdInputValue}
+							id={thirdInputId}
 							onChange={onChange}
 							/>
-      <label className={thirdClassName} htmlFor={thirdInputid}> {thirdLabel} </label>
+      <label className={thirdClassName} htmlFor={thirdInputId}> {thirdLabel} </label>
     </div>
   )
 }
