@@ -5,7 +5,7 @@ import './login.css';
 
 import jesus from '../../img/jesus.gif'
 
-function Login() {
+const Login = () => {
 
   const [ infoUser, setInfoUser ] = useState({ email: '', password: '' });
   console.log(infoUser);
@@ -26,11 +26,11 @@ function Login() {
           value={infoUser.email} 
           onChange={e => setInfoUser({...infoUser, email: e.target.value})}/>
           <section className ='icons-input'>
-          <i className='far fa-envelope icons'></i>
+          <i className='far fa-envelope'></i>
           </section>
         </fieldset>
-        <fieldset className="form-login">
-          <input className="input" 
+        <fieldset className="form-inner">
+          <input className="input-password" 
             type="password" id="password" placeholder="Password" required="" 
             value={infoUser.password}
             onChange={e => setInfoUser({...infoUser, password: e.target.value})}/>
@@ -44,6 +44,6 @@ function Login() {
       </form>
     </div>
   )
-} 
+};
 
-export default Login
+export default Login;
