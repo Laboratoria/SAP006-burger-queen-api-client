@@ -32,24 +32,24 @@ const Login = () => {
 					if(token){
 						history.push('/Hall')
 					}else {
-					alert('erro');
+					  alert('erro');
 					}
 				})
 		}
 	}
 
 	return (
-		<>
-			<h1>Login</h1>
-			<div className='login'>
-				<Input placeholder='E-mail' className='login-input' value={email} onChange={(event) => setEmail(event.target.value)}></Input>
-				<Input placeholder='Senha' className='login-input' value={password} onChange={(event) => setPassword(event.target.value)}></Input>
-				<Button buttonText='LOGIN' className='button' buttonOnClick={buttonLogin} />
-				<p>Não tem uma conta? <Link to='./Register/index.js'>
-					Registre-se
-				</Link></p>
-			</div>
-		</>
+      <section className='container'>
+        <div className='logo' />
+			  <form className='login'>
+				  <Input placeholder='E-mail' className='login-input' value={email} onChange={(event) => setEmail(event.target.value)}></Input>
+				  <Input placeholder='Senha' className='login-input' value={password} onChange={(event) => setPassword(event.target.value)}></Input>
+				  <Button buttonText='LOGIN' className='button' buttonOnClick={buttonLogin} />
+				  <p>Não tem uma conta? <Link to='./Register/index.js'>
+				  	Registre-se
+				  </Link></p>
+			  </form>
+      </section> 
 	)
 }
 
