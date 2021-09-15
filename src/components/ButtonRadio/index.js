@@ -3,25 +3,54 @@
 import React from 'react';
 import './buttonRadio.scss'
 
-export default function ButtonRadio({ onChange, radioClassName }) {
+export default function ButtonRadio({ 
+	onChange,
+	firstInputName,
+	firstInputvalue,
+	firstInputid,
+	firstLabel,
+	firstPrice,
+	firstClassName,
+	secondInputName,
+	secondInputvalue,
+	secondInputid,
+	secondLabel,
+	secondPrice,
+	secondClassName,
+	thirdInputName,
+	thirdInputvalue,
+	thirdInputid,
+	thirdLabel,
+	thirdClassName
+}) {
   return (
     <div className="switch-field">
       <input type="radio"
 							variant="secondary"
-							name="role"
-							value="hall"
-							id="hall"
+							name={firstInputName}
+							value={firstInputvalue}
+							id={firstInputid}
 							onChange={onChange}
-							className={radioClassName} />
-      <label htmlFor="hall">Salão</label>
+							/>
+      <label className={firstClassName} htmlFor={firstInputid}>{firstLabel}<br></br>{firstPrice}</label>
+
       <input type="radio"
 							variant="secondary"
-							name="role"
-							value="kitchen"
-							id="kitchen"
+							name={secondInputName}
+							value={secondInputvalue}
+							id={secondInputid}
 							onChange={onChange}
-							className={radioClassName}/>
-      <label htmlFor="kitchen">Cozinha</label>
+							/>
+      <label className={secondClassName} htmlFor={secondInputid}>{secondLabel}<br></br>{secondPrice}</label>
+
+	  <input type="radio"
+							variant="secondary"
+							name={thirdInputName}
+							value={thirdInputvalue}
+							id={thirdInputid}
+							onChange={onChange}
+							/>
+      <label className={thirdClassName} htmlFor={thirdInputid}> {thirdLabel} </label>
     </div>
   )
 }

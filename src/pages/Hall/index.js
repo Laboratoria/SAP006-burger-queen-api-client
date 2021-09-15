@@ -85,7 +85,36 @@ export default function Hall() {
 
 						<div className="radio-wrapper">
 							<ButtonRadio 
-								radioClassName=""
+								// onChange={onChange} 
+								firstInputName="drinks"
+								firstInputvalue="water"
+								firstInputid="water"
+								firstLabel="500ml"
+								firstPrice="R$ 5,00"
+								secondInputName="drinks"
+								secondInputvalue="soda"
+								secondInputid="soda"
+								secondLabel="700ml"
+								secondPrice="R$ 7,00"
+								secondClassName="second-btn"
+								thirdClassName="hidden"
+							/>
+
+							<ButtonRadio 
+								// onChange={onChange} 
+								firstInputName="burger"
+								firstInputvalue="carne"
+								firstInputid="carne"
+								firstLabel="Carne"
+								secondInputName="burger"
+								secondInputvalue="frango"
+								secondInputid="frango"
+								secondLabel="Frango"
+								thirdInputName="burger"
+								thirdInputvalue="vegetariano"
+								thirdInputid="vegetariano"
+								thirdLabel="Vegetariano"
+								thirdClassName="third-btn"
 							/>
 						</div>
 					</section>
