@@ -59,8 +59,9 @@ export function InputRadioUserData ({
 }) {
   return (
     <div>
-      <div className={divClass}>
+      <div className={divClass} data-testid='user-data-div-radio-content'>
         <input 
+          data-testid='user-data-input-radio-content'
           data-input={inputData}
           type={inputType}
           name='role'
@@ -70,11 +71,11 @@ export function InputRadioUserData ({
           onChange={inputOnChange}
           onKeyPress={inputOnKeyUp}
         />
-        <label> 
+        <label data-testid='user-data-label-radio-content'> 
           {labelText}
         </label>
       </div>
-      <p className='auth-error-message'>
+      <p className='auth-error-message' data-testid='user-data-p-radio-content'>
         {errorMessage}
       </p>
     </div>

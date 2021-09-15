@@ -21,4 +21,6 @@ describe('Testing the Button component', () => {
     fireEvent.click(btn)
     expect(fn).toHaveBeenCalledTimes(1);
   });
+
+  
 });
