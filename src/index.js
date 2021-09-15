@@ -1,10 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './pages/Login';
+import { BrowserRouter } from 'react-router-dom'
 
-ReactDOM.render(
+import { Routes } from './routes'
+
+ReactDOM.render( //o render precisa receber apenas uma saída 
+  //poderíamos colocar os dois dentro de um array [<Login />, <Home />]
+  //Além disso, poderia ser feito sem refresh com historyAPI, mas é treta 
   <React.StrictMode>
-    <Login />
+    <BrowserRouter>
+    <Routes />
+      
+    </BrowserRouter>
   </React.StrictMode>,
+
   document.getElementById('root')
 );
