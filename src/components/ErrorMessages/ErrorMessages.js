@@ -1,10 +1,10 @@
 import React from 'react';
 
 export function AuthErrorMessages ({
-  errorMessageText,
+  children,
   errorMessageClass
 }) {
   return (
-    <p className={errorMessageClass}>{errorMessageText}</p>
+    <p className={errorMessageClass}>{children}</p>
   )
 }

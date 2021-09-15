@@ -6,10 +6,10 @@ import { authLogin } from '../../services/auth';
 import { showOrNotShowPassword } from '../../services/auth';
 import { navigateTo } from '../../services/routes';
 
-import { AuthModal } from '../../components/Modal';
-import { Button } from '../../components/Button'
-import { Header } from '../../components/Header'
-import { InputContentUserData } from '../../components/UserData';
+import { AuthModal } from '../../components/Modal/Modal';
+import { Button } from '../../components/Button/Button'
+import { Header } from '../../components/Header/Header'
+import { InputContentUserData } from '../../components/UserData/UserData';
 
 import '../../styles/Auth.scss'
 
@@ -69,9 +69,9 @@ export function Login () {
         />
         <Button
           buttonType = 'button'
-          buttonText = 'Entrar'
           buttonEvent = {(event) => authLogin(event, {userData}, {setAuthModals})}
-        />
+        > Entrar 
+        </Button>
         <p> Ou <Link to = '/register'> registre-se </Link> </p>
       </form>
     </main>

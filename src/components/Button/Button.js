@@ -1,13 +1,13 @@
 import React from 'react';
 
-export const Button = ({buttonType, buttonClass, buttonEvent, buttonText}) => {
+export const Button = ({buttonType, buttonClass, buttonEvent, children}) => {
   return (
     <button 
       type={buttonType}
       className={buttonClass}
       onClick={buttonEvent}
     >
-      {buttonText}
+      {children}
     </button> 
   )
 }

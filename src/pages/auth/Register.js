@@ -7,12 +7,12 @@ import { authSignin } from '../../services/auth';
 import { showOrNotShowPassword } from '../../services/auth';
 import { navigateTo } from '../../services/routes';
 
-import { AuthErrorMessages } from '../../components/ErrorMessages';
-import { AuthModal } from '../../components/Modal';
-import { Button } from '../../components/Button';
-import { Header } from '../../components/Header';
-import { InputContentUserData } from '../../components/UserData';
-import { InputRadioUserData } from '../../components/UserData';
+import { AuthErrorMessages } from '../../components/ErrorMessages/ErrorMessages';
+import { AuthModal } from '../../components/Modal/Modal';
+import { Button } from '../../components/Button/Button';
+import { Header } from '../../components/Header/Header';
+import { InputContentUserData } from '../../components/UserData/UserData';
+import { InputRadioUserData } from '../../components/UserData/UserData';
 
 import '../../styles/Auth.scss'
 
@@ -73,7 +73,7 @@ export const Register = () => {
             buttonClass='display-none'
           />
           <AuthErrorMessages  
-            errorMessageText = {nameErrorInput ? authErrorsMessages.name : 'Input has an error!'}
+            children = {nameErrorInput ? authErrorsMessages.name : 'Input has an error!'}
             errorMessageClass = {nameErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
           /> 
           <InputContentUserData 
@@ -89,7 +89,7 @@ export const Register = () => {
             buttonClass='display-none'
           />
           <AuthErrorMessages  
-            errorMessageText = {emailErrorInput ? authErrorsMessages.email : 'Input has an error!'}
+            children = {emailErrorInput ? authErrorsMessages.email : 'Input has an error!'}
             errorMessageClass = {emailErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
           /> 
           <InputContentUserData 
@@ -104,7 +104,7 @@ export const Register = () => {
             buttonEvent={() => showOrNotShowPassword(showPassword, setShowPassword)}
           />
           <AuthErrorMessages  
-            errorMessageText =  {password !== confirmPassword ? authErrorsMessages.confirmPassword : authErrorsMessages.password}
+            children =  {password !== confirmPassword ? authErrorsMessages.confirmPassword : authErrorsMessages.password}
             errorMessageClass = {passwordErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
           /> 
           <InputContentUserData
@@ -119,7 +119,7 @@ export const Register = () => {
             buttonEvent={() => showOrNotShowPassword(showConfirmPassword, setShowConfirmPassword)}
           />
           <AuthErrorMessages
-            errorMessageText =  {password !== confirmPassword ? authErrorsMessages.confirmPassword : authErrorsMessages.password}
+            children =  {password !== confirmPassword ? authErrorsMessages.confirmPassword : authErrorsMessages.password}
             errorMessageClass = {confirmPasswordErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
           /> 
           <div>
@@ -143,15 +143,15 @@ export const Register = () => {
               />
           </fieldset>
           <AuthErrorMessages  
-            errorMessageText = {roleErrorInput ? authErrorsMessages.role: 'Input has an error!'}
+            children = {roleErrorInput ? authErrorsMessages.role: 'Input has an error!'}
             errorMessageClass = {roleErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
           /> 
           </div>
           <Button
             buttonType = 'submit'
-            buttonText = 'Registrar'
             buttonEvent = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs})}
-          />
+          >Registrar
+          </Button>
           <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
         </form>
       </main>
