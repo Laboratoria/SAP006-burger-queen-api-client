@@ -7,6 +7,10 @@ import ButtonDefault from '../../components/ButtonDefault';
 import './hall.scss';
 import Input from '../../components/Input';
 
+import ProductArea from '../../components/ProductArea'
+import burger from '../../img/burger-example.png';
+import ButtonRadio from '../../components/ButtonRadio';
+
 
 export default function Hall() {
 
@@ -43,9 +47,6 @@ export default function Hall() {
 					Finalizados
 				</ButtonDefault>
 				</div>
-
-
-
 			</nav>
 			<main>
 
@@ -61,7 +62,64 @@ export default function Hall() {
 						</aside>
 
 						<section className="products">
+							<div className="products-row">					
+								<ProductArea
+									inputId='simples'
+									inputName='burger-options'
+									inputValue='Hambúrg. Simples'
+									// inputOnChange={}
+									productImg={burger}
+									productImgAlt='burger example'
+									productName='Simples'
+									productPrice="R$ 10,00"
+								/>
 
+								<ProductArea
+									inputId='duplo'
+									inputName='burger-options'
+									inputValue='Hambúrg. Duplo'
+									// inputOnChange={}
+									productImg={burger}
+									productImgAlt='burger example'
+									productName='Duplo'
+									productPrice="R$ 15,00"
+								/>
+							</div>
+
+							<div className="radio-wrapper">
+								<ButtonRadio 
+									// onChange={onChange} 
+									firstInputName="drinks"
+									firstInputValue="water"
+									firstInputId="water"
+									firstLabel="500ml"
+									firstPrice="R$ 5,00"
+									secondInputName="drinks"
+									secondInputValue="soda"
+									secondInputId="soda"
+									secondLabel="700ml"
+									secondPrice="R$ 7,00"
+									secondClassName="second-btn"
+									thirdClassName="hidden"
+								/>
+
+								<ButtonRadio 
+									// onChange={onChange} 
+									firstInputName="burger"
+									firstInputValue="carne"
+									firstInputId="carne"
+									firstLabel="Carne"
+									secondInputName="burger"
+									secondInputValue="frango"
+									secondInputId="frango"
+									secondLabel="Frango"
+									thirdInputName="burger"
+									thirdInputValue="vegetariano"
+									thirdInputId="vegetariano"
+									thirdLabel="Vegetariano"
+									thirdClassName="third-btn"
+								/>
+							</div>
 						</section>
 					</div>
 				</section>

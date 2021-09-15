@@ -44,9 +44,6 @@
       border-radius: 6px 0 0 6px;
     }
 
-    &:last-of-type {
-      border-radius: 0 6px 6px 0;
-    }
   }
 
   input:checked + label {
@@ -57,5 +54,18 @@
   input:hover + label {
     background-color: var(--yellow);
     border: 1px solid var(--yellow);
+  }
+}
+
+.third-btn {
+    &:nth-of-type(3n) {
+    border-radius: 0 6px 6px 0;
+  }
+
+}
+
+.second-btn {
+    &:nth-of-type(2n) {
+    border-radius: 0 6px 6px 0;
   }
 }

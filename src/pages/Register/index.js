@@ -172,7 +172,19 @@ const Register = () => {
 							)}
 						</fieldset>
 						<div className="radio-wrapper">
-							<ButtonRadio onChange={onChange} />
+							<ButtonRadio 
+								onChange={onChange} 
+								firstInputName="role"
+								firstInputvalue="hall"
+								firstInputid="hall"
+								firstLabel="Salão"
+								secondInputName="role"
+								secondInputvalue="kitchen"
+								secondInputid="kitchen"
+								secondLabel="Cozinha"
+								secondClassName="second-btn"
+								thirdClassName="hidden"
+							/>
 							{errors.role && (
 								<ErrorMessage>{errors.role}</ErrorMessage>
 							)}
