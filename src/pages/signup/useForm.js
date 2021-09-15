@@ -1,5 +1,6 @@
 import { useState } from 'react';
-// import { createUser } from '../../services/auth';
+import { validateForm } from '../../services/validate';
+import { createUser } from '../../services/auth';
 
 const useForm = () => {
   const [values, setValues] = useState({
@@ -14,16 +15,20 @@ const useForm = () => {
     const auxValues = { ...values };
     auxValues[e.target.name] = e.target.value;
     setValues(auxValues);
-    console.log(values)
+    validateForm(values);
   }
 
-  // const handleSubmit = (callback) => (e) => {
-  //   e.preventDefault();
-  //   callback();
-  //   // createUser(name, email, password, role);
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm(values) === true) {
+      createUser(values)
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+    }
+  }
 
-  return [{values}, handleChange];
+  return { handleChange, handleSubmit };
 }
 
 export default useForm;
