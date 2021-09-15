@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import './login.css';
 
+
 function Login() {
   const [ infoUser, setInfoUser ] = useState({ email: '', password: '' })
-  console.log(infoUser);
-  console.log(setInfoUser);
 
   return (
     <div className='login'>
       <figure className='imagem-login'>
         <img className='hamburguer-login'
-          src='img/hamburguer-login.png' alt='Login APP'/>
+          src='img/hamburg' alt='Login APP'/>
       </figure>
       <form className='form-login'>
         <fieldset className='form-inner'>
@@ -22,8 +21,8 @@ function Login() {
           <i className='far fa-envelope icons'></i>
           </section>
         </fieldset>
-        <fieldset className="form-login">
-          <input className="input" 
+        <fieldset className="form-inner">
+          <input className="input-password" 
             type="password" id="password" placeholder="Password" required="" 
             value={infoUser.password}
             onChange={e => setInfoUser({...infoUser, password: e.target.value})}/>
