@@ -16,7 +16,7 @@ const SignUp = () => {
       </select>
       <input type='email' placeholder='Email' name='email'onChange={handleChange} />
       <input type='password' placeholder='Senha' name='password' onChange={handleChange} />
-      <input type='password' placeholder='Confirme sua senha' name='confirmPassword'onChange={handleChange} />
+      <input type='password' placeholder='Confirme sua senha' name='confirmPassword' onChange={handleChange} />
       <button type='submit' onClick={handleSubmit}>Cadastrar</button>  
     </div>
   );
