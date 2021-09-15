@@ -6,10 +6,6 @@ body {
     color: white;
     font-weight: 300;
     font-size: 1.5rem;
-    text-align: center;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
 }
 
 h1, h2 {
