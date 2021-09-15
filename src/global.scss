@@ -29,6 +29,10 @@ $_DIRECTIONS: (top right bottom left);
   }
 }
 
+html, body {
+  height: 100vh;
+}
+
 body {
   font-family: "Roboto Condensed", sans-serif;
   letter-spacing: 1.7px;
@@ -46,6 +50,6 @@ h2 {
 .pages-container{
   width:100vw;
   height: 100vh;
-  padding:2rem 3rem;
+  padding:2rem 3rem 3rem 3rem;
 }
 
