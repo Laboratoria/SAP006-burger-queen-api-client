@@ -520,52 +520,6 @@ O acordado abaixo deve acontecer para dizer que a história está terminada:
 
 Para esta versão do projeto poderá ser usado Firebase para armazenamento de dados e manipulação dos pedidos.
 
-#### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
-
-Eu, como garçom/garçonete quero entrar no sistema de pedidos.
-
-##### Critérios de aceitação
-
-O que deve acontecer para satisfazer as necessidades do usuário?
-
-- Acessar uma tela de login.
-- Inserir email e senha.
-- Receber mensagens de erros compreensíveis, conforme o erro e as informações inseridas.
-- Entrar no sistema de pedidos caso as credenciais forem corretas.
-
-##### Definição de pronto
-
-O acordado abaixo deve acontecer para dizer que a história está terminada:
-
-- Você deve ter recebido _code review_ de pelo menos uma parceira.
-- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
-
----
-
-#### [História de usuário 2] Garçom/Garçonete deve ser capaz de anotar o pedido do cliente
-
-Eu como garçom/garçonete quero poder anotar o pedido de um cliente para não
-depender da minha memória, saber quanto cobrar e poder enviar os pedidos para a
-cozinha para serem preparados em ordem.
-
-##### Critérios de aceitação
-
-O que deve acontecer para satisfazer as necessidades do usuário?
-
-- Anotar o nome do cliente.
-- Adicionar produtos aos pedidos.
-- Excluir produtos.
-- Ver resumo e o total da compra.
-- Subir uma notificação de que o pedido foi efetuado (guardar na collection do Firebase).
-- Funcionar bem em um _tablet_.
-
-##### Definição de pronto
-
-O acordado abaixo deve acontecer para dizer que a história está terminada:
-
-- Você deve ter recebido _code review_ de pelo menos uma parceira.
-- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
-
 ---
 
 #### [História de usuário 3] Chefe de cozinha deve ver os pedidos
