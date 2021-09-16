@@ -14,8 +14,22 @@ export const createUser = (values) => {
   });
 };
 
+export const loginUser= (values) => {
+  return  fetch('https://lab-api-bq.herokuapp.com/auth', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify ({
+    email: values.email,
+    password: values.password,
+  })
+});
+};
+
+
 export const isAuthenticated = () => {
-  const token = localStorage.getItem('userToken');
+  const token = localStorage.getItem('usersToken');
   if (token) {
     return true;
   } else {
@@ -24,5 +38,5 @@ export const isAuthenticated = () => {
 };
 
 export const logOut = () => {
-  localStorage.removeItem('userToken');
+  localStorage.removeItem('usersToken');
 };
