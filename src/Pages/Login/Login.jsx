@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Button from '../../components/Button';
-import login from '../../Assets/login.png';
-import { Link } from 'react-router-dom';
 import Input from '../../components/Input/Input.jsx'
+import { LoginWithEmail } from '../../services/auth';
+import login from '../../Assets/login.png';
 
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
             <div className='div-style'>
                 <img src={login} alt='icon-login' />
@@ -15,17 +19,21 @@ const Login = () => {
                         type='email' 
                         id='email' 
                         placeholder='e-mail'
-                        errorMessage='Por favor, insira um e-mail válido.' 
+                        value={email}
+                        errorMessage='Por favor, insira um e-mail válido.'
+                        onChange={(event) => setEmail(event.target.value)}
                     />
                     <Input 
                         type='password' 
                         id='password' 
                         placeholder='senha'
-                        errorMessage='Por favor, insira uma senha válida.' 
+                        value={password}
+                        errorMessage='Por favor, insira uma senha válida.'
+                        onChange={(event) => setPassword(event.target.value)}
                     />
                 </form>
 
-            <Button variant='enter-app' onClick={login}>
+            <Button variant='enter-app' onClick={LoginWithEmail}>
                 <Link to='/tables'>entrar</Link>
             </Button>
             <p>É o seu primeiro dia no Vixi?
