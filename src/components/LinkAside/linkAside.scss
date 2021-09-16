@@ -5,21 +5,38 @@
 li {
   list-style: none;
   position: relative;
+  
 
-  & .burger {
+  & .burgers {
     background-image: url("../../img/burger.jpg");
     background-size: cover;
   }
 
-  & .drinks {
-    background-image: url("../../img/drinks.jpg");
-    background-size: cover;
-  }
-
+  
   & .sides {
     background-image: url("../../img/fries.jpg");
     background-size: cover;
   }
+  & .drinks {
+    background-image: url("../../img/drinks.jpg");
+    background-size: cover;
+  }
+  
+  & .sandwiches {
+    background-image: url("../../img/sandwich.jpg");
+    background-size: cover;
+  }
+  & .coffes {
+    background-image: url("../../img/coffe.jfif");
+    background-size: cover;
+  }
+  & .juices {
+    background-image: url("../../img/juices.jfif");
+    background-size: cover;
+  }
+
+
+
 
   span {
     text-transform: uppercase;
