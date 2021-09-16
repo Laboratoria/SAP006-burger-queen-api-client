@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link, useHistory } from "react-router-dom";
-import Button from "../../components/button";
-import Input from "../../components/input";
+import Button from "../../components/Button/button";
+import Input from "../../components/Input/input";
 import ValidateInputs from "../login/ValidationLogin"
 
 import './Login.css'
@@ -49,14 +49,35 @@ const Login = () => {
 
 	}
   return (
+
 	<section className='container'>
-		<div className='logo'/>
+		<div className='logo'/>		
 		<form className='login'>
-			<Input placeholder='E-mail' className='login-input' name='email' value={values.email} onChange={onChangeValues}></Input>
+
+			<Input 
+				data-testid='email-input'
+				placeholder='E-mail' 
+				className='login-input' 
+				name='email' 
+				value={values.email} 
+				onChange={onChangeValues}>
+			</Input>
 			{errors.email && <p>{errors.email}</p>}
-			<Input placeholder='Senha' className='login-input' name='password' value={values.password} onChange={onChangeValues}></Input>
-			{errors.password && <p>{errors.password}</p>}
-			<Button buttonText='LOGIN' className='button' buttonOnClick={buttonLogin} />
+
+			<Input 
+				placeholder='Senha' 
+				className='login-input' 
+				name='password' 
+				value={values.password} 
+				onChange={onChangeValues}>
+			</Input>
+				{errors.password && <p>{errors.password}</p>}
+
+			<Button 
+				buttonText='LOGIN' 
+				className='button' 
+				buttonOnClick={buttonLogin}/>
+				
 			<p>Não tem uma conta? <Link to='./Register/index.js'>
 				Registre-se
 			</Link></p>
