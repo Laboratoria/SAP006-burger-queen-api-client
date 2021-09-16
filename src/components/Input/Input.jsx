@@ -1,9 +1,10 @@
 import React from 'react';
+import GeneralInput from './style'
 
 const Input = ({id, ...props}) => {
 
     return (
-        <input id={id} {...props} />
+        <GeneralInput id={id} {...props} />
     )
 }
 
