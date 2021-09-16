@@ -1,0 +1,11 @@
+$auth-error-message: #FFC299;
+
+.auth-error-message{
+  margin: -8% auto 2%;
+  font-size: 130%;
+  color: $auth-error-message;
+}
+
+.auth-error-message-of-role{
+  margin: 1% auto 1% !important;
+}

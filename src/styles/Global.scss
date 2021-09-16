@@ -3,14 +3,6 @@ $background-gray: #535659;
 $light-gray: #D3D3D3;
 $dark-yellow-btn: #FF8C00;
 
-
-body {
-  margin: 0;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-}
-
 * { 
   background-color: transparent;
   box-sizing: border-box;
@@ -19,49 +11,14 @@ body {
   outline: none;
 }
 
-.display-none{
-  display: none;
+body {
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
 }
 
-.modal-background{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  background: rgba(0,0,0, .5);
-}
-
-.modal-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  margin: auto;
-  padding:5%;
-
-  font-size: 180%;
-  background-color: rgba(255,175, 77, 0.9);
-  border: #ff8533 solid 4pt;
-  border-radius: 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-
-  button {
-    background-color: wheat;
-    padding: 2% 4%;
-    margin-bottom: 4%;;
-    font-size: 90%;
-    border:#535659 solid 2pt;
-    border-radius: 5px;
-    box-shadow: 4px 5px 15px 5px rgba(0,0,0,0.29);
-  }
-
-  button:hover{
-    cursor: pointer;
-    background-color: #535659;
-    color: white;
-  }
+button {
+  cursor: pointer;
+  background-repeat: no-repeat;
 }

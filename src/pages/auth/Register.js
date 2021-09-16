@@ -1,135 +1,135 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-import { showOrNotShowPassword } from './Functions';
-import { moveLabelUpEvenWhenInputValueIsInvalid } from './Functions'
-import { processAuthRequest } from './Functions';
+import { authSignin } from '../../services/auth';
+import { navigateTo } from '../../services/routes';
 
-import { AuthSignin } from '../../services/auth';
+import { AuthErrorMessages } from '../../components/ErrorMessages/ErrorMessages';
+import { AuthModal } from '../../components/Modal/Modal';
+import { Button } from '../../components/Button/Button';
+import { Header } from '../../components/Header/Header';
+import { InputContentUserData } from '../../components/UserData/UserData';
+import { InputRadioUserData } from '../../components/UserData/UserData';
 
-import { Header } from '../../components/Header'
-import { Button } from '../../components/Button'
-import { InputContentUserData } from '../../components/UserData';
-import { InputRadioUserData } from '../../components/UserData';
+import inputRole from '../../assets/icons/input-role.png';
 
 import '../../styles/Auth.scss'
-
-import registerBg from '../../assets/images/register-bg.jpg';
-import logoCombosBurger from '../../assets/images/logo-combos-burger.png';
-import inputName from '../../assets/icons/input-name.png';
-import inputEmail from '../../assets/icons/input-email.png';
-import inputPassword from '../../assets/icons/input-password.png';
-import inputRole from '../../assets/icons/input-role.png';
 
 export const Register = () => {
 
   const history = useHistory();
-
- function navigateTo (path) {
-  history.push(path);
- }
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState ('');
+  const userData = {name, email, password, confirmPassword, role};
 
-  const userData = {name, email, password, confirmPassword, role}
+  const [authErrorModal, setAuthErrorModal] = useState(false);
+  const [authSucessModal, setAuthSucessModal] = useState(false);
+  const setAuthModals = {setAuthErrorModal, setAuthSucessModal}
+
+  const [nameErrorInput, setNameErrorInput] = useState(false);
+  const [emailErrorInput, setEmailErrorInput] = useState(false);
+  const [passwordErrorInput, setPasswordErrorInput] = useState(false);
+  const [confirmPasswordErrorInput, setConfirmPasswordErrorInput] = useState(false);
+  const [roleErrorInput, setRoleErrorInput] = useState(false);
+
+  const setAuthInputs = {setNameErrorInput, setEmailErrorInput, setPasswordErrorInput,
+  setConfirmPasswordErrorInput, setRoleErrorInput}
 
   return (
-  <div className = 'login-and-register-content register-content'>
-    <Header
-      headerBackgroundClassName='register-bg'
-      headerBackgroundSRC={registerBg}
-      headerLogoClassName='logo'
-      headerLogoSRC={logoCombosBurger}
-    />
-    <main>
-      <form>
-        <InputContentUserData 
-          inputData='name'
-          inputType='text'
-          inputPlaceholder='Nome Completo'
-          inputValue={name}
-          inputOnChange={(e) => setName(e.target.value)}
-          labelText='Nome Completo'
-          iconSRC={inputName}
-          iconAlt='Name'
-          eyeClass='display-none'
-          errorMessage='Por favor, insira um nome válido.'
-        />
-        <InputContentUserData 
-          inputData='email'
-          inputType='email'
-          inputPlaceholder='Email'
-          inputValue={email}
-          inputOnChange={(event) => [setEmail(event.target.value), moveLabelUpEvenWhenInputValueIsInvalid(event)]}
-          labelText='Email'
-          iconSRC={inputEmail}
-          iconAlt='Email'
-          eyeClass='display-none'
-          errorMessage='Por favor, insira um email válido.'
-        />
-       <InputContentUserData 
-          inputData='password'
-          inputConfirmPassword='confirmPassword'
-          inputType='password'
-          inputPlaceholder='Senha'
-          inputValue={password}
-          inputOnChange={(e) => setPassword(e.target.value)}
-          labelText='Senha'
-          iconSRC={inputPassword}
-          iconAlt='Password'
-          eyeClass='show-or-not-password not-show-password'
-          buttonEvent={(event) => showOrNotShowPassword(event)}
-          errorMessage='A senha deve conter ao menos 6 caracteres.'
-        />
-        <InputContentUserData
-          inputData='password'
-          inputConfirmPassword='confirmPassword'
-          inputType='password'
-          inputPlaceholder='Confirme a Senha'
-          inputValue={confirmPassword}
-          inputOnChange={(e) => setConfirmPassword(e.target.value)}
-          labelText='Confirme a Senha'
-          iconSRC={inputPassword}
-          iconAlt='Password'
-          eyeClass='show-or-not-password not-show-password'
-          buttonEvent={(event) => showOrNotShowPassword(event)}
-          errorMessage='A senha deve conter ao menos 6 caracteres.'
-        />
-        <div>
-          <fieldset>
+    <div className = 'login-and-register-content register-content'>
+    <Header 
+      Location = 'register'/>
+      <main>
+        <form>
+          <InputContentUserData 
+            Subject='name'
+            Error={nameErrorInput}
+            InputValue = {name}
+            InputOnChange = {(event) => [setName(event.target.value), setNameErrorInput(false)]}
+          />
+          {nameErrorInput ? <AuthErrorMessages Subject='name'/> : <p className='auth-error-message'>&nbsp;</p>}
+          
+          <InputContentUserData 
+            Subject='email'
+            Error={emailErrorInput}
+            InputValue = {email}
+            InputOnChange = {(event) => [setEmail(event.target.value), setEmailErrorInput(false)]}
+          />
+          {emailErrorInput ? <AuthErrorMessages Subject='email'/> : <p className='auth-error-message'>&nbsp;</p>}
+          
+          <InputContentUserData 
+            Subject='password'
+            Error={passwordErrorInput}
+            InputValue = {password}
+            InputOnChange = {(event) => [setPassword(event.target.value), setPasswordErrorInput(false), setConfirmPasswordErrorInput(false)]}   
+          />
+          {passwordErrorInput ? 
+          password !== confirmPassword ? 
+          <AuthErrorMessages Subject='confirmPassword'/> : <AuthErrorMessages Subject='password'/> 
+          : <p className='auth-error-message'>&nbsp;</p>}
+         
+          <InputContentUserData 
+            Subject='confirmPassword'
+            InputValue = {confirmPassword}
+            Error={passwordErrorInput}
+            InputOnChange = {(event) => [setConfirmPassword(event.target.value),  setPasswordErrorInput(false), setConfirmPasswordErrorInput(false)]}   
+          />
+          {confirmPasswordErrorInput ? 
+          password !== confirmPassword ? 
+          <AuthErrorMessages Subject='confirmPassword'/> : <AuthErrorMessages Subject='password'/> 
+          : <p className='auth-error-message'>&nbsp;</p>}
+
+          <fieldset className = {roleErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}>
             <img src={inputRole} alt='Role'/>
-            <InputRadioUserData 
-              inputData='role'
-              inputType='radio'
-              inputValue='room'
-              inputChecked={role === 'room'}
-              inputOnChange={(e) => setRole(e.target.value)}
-              labelText='Salão'
-              errorMessage='Por favor, escolha um setor.'
+            <InputRadioUserData
+              Subject='room'
+              InputChecked={role === 'room'}
+              InputOnChange={(event) => [setRole(event.target.value), setRoleErrorInput(false)]}
             />
-            <InputRadioUserData 
-              inputData='role'
-              inputType='radio'
-              inputValue='kitchen'
-              inputChecked={role === 'kitchen'}
-              inputOnChange={(e) => setRole(e.target.value)}
-              labelText='Cozinha'
+            <InputRadioUserData
+              Subject='kitchen'
+              InputChecked={role === 'kitchen'}
+              InputOnChange={(event) => [setRole(event.target.value), setRoleErrorInput(false)]}
             />
           </fieldset>
+          {roleErrorInput ? <AuthErrorMessages Subject='role'/> : <p className='auth-error-message auth-error-message-of-role'>&nbsp;</p>}
+        </form>
+        <Button 
+          Role = 'authSubmitForm'
+          ButtonOnClick = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs})} 
+          ButtonChildren = 'Registrar'
+        /> 
+        <div className='auth-navigation-div'>
+          <p>Ou</p>
+          <Button 
+            Role = 'authNavigateTo'
+            ButtonOnClick = {() => navigateTo(history, '/', setAuthSucessModal)} 
+            ButtonChildren = 'entre'
+          /> 
+          <p> com uma conta existente</p>
         </div>
-        <Button
-          buttonType = 'submit'
-          buttonText = 'Registrar'
-          buttonEvent = {(event) => processAuthRequest(AuthSignin, event, {userData}, navigateTo)}
-        />
-        <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
-      </form>
-    </main>
-  </div>
+      </main>
+      <section>
+        {authSucessModal ? (
+          <AuthModal 
+            Role = 'authSucessModal-register'
+            ButtonOnClick = {() => navigateTo(history, '/register', setAuthSucessModal)} 
+          />
+        ): null}
+      </section>
+      <section>
+        {authErrorModal ? (
+          <AuthModal 
+            Role = 'authErrorModal-register'
+            ButtonOnClick = {() => navigateTo(history, '/register', setAuthErrorModal)}
+            ButtonOnClickSecondOption = {() => navigateTo(history, '/', setAuthErrorModal)}
+          />
+        ): null}
+      </section>
+    </div>
   )
 }

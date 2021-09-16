@@ -1,0 +1,94 @@
+
+$dark-gray: #535659;
+$light-gray: #D3D3D3;
+$orange: #FF8C00;
+$auth-error-message: #FFC299;
+
+main {
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    position: relative;
+    
+    div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+      margin: 0 auto 10%;
+
+      input {
+        padding: 4% 4% 3% 10%;
+        
+        font-size: 180%;
+        color: white;
+      }
+
+      ::placeholder{
+        color:white;
+      }
+
+      label {
+        display: none;
+
+        position: absolute;
+        left: 10%;
+        bottom: 85%;
+
+        color: $light-gray;
+        font-size: 160%;
+      }
+
+      input:valid ~ label,
+      .move-label-up {
+        display: block;
+      }
+    }
+  }
+  
+  img {
+    position: absolute;
+    bottom: 30%;
+    height: 3vh;
+    width: 3vh;
+  }
+}
+
+.login-content {
+  form {
+    margin: 5% auto;
+  } 
+}
+
+.register-content {
+  form {
+    margin: 1% auto 4%;
+  }
+
+  .auth-label-radio-input {
+    display: block;
+    left: 40%;
+    bottom: 25%;
+    font-size: 180%;
+    color: white;
+  }
+  
+  .auth-radio-input {
+    margin: 0 0 7% 25%;
+    height: 2.5vh;
+    width: 2.5vh;
+  }
+}
+
+.auth-correct-input{
+  border-bottom: black solid;
+}
+
+.auth-wrong-input{
+  border-bottom: $orange solid;
+}
+
+
+
+
