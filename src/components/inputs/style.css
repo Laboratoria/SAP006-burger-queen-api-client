@@ -1,16 +1,16 @@
 .input {
-    margin-bottom: 22px;
-    background-color: #E5E5E5;
-    border: none;
-    justify-content: center;
-    text-align: center;
-    padding: 5px;
+  margin-bottom: 4px;
+  background-color: var(--light-gray);
+  border: none;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
 }
 
-@media (min-width:1400px) {
-    .input{
-        font-size: 35px;
-        padding: 15px;
-        margin-bottom: 11%;
-    }
-    }
+@media (min-width: 1400px) {
+  .input {
+    font-size: 35px;
+    padding: 15px;
+    margin-bottom: 11%;
+  }
+}

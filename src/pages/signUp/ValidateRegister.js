@@ -6,7 +6,7 @@ export default function validateValues(values) {
   }
 
   if (!values.email) {
-    errors.email = "Insira seu email.";
+    errors.email = "Insira seu email";
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
     errors.email = "Formato de email inválido";
   }

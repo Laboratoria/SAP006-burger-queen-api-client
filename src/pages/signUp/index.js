@@ -10,7 +10,8 @@ function alertApears() {
 }
 
 export function signUp() {
-  const { handleChange, values, handleSubmit, errors } = ValueAndError(validateValues);
+  const { handleChange, values, handleSubmit, errors } =
+    ValueAndError(validateValues);
 
   return (
     <main>
@@ -18,37 +19,41 @@ export function signUp() {
       <form className="form" onSubmit={handleSubmit}>
         <h1>Bem Vindo!</h1>
         <section className="form-input">
-          {errors.name && <p>{errors.name}</p>}
-          <Input
-            name="name"
-            type="text"
-            placeholder="Nome"
-            autoComplete="off"
-            value={values.name}
-            onChange={handleChange}
-          />
+          <fieldset className="margin-input">
+            <Input
+              name="name"
+              type="text"
+              placeholder="Nome"
+              autoComplete="off"
+              value={values.name}
+              onChange={handleChange}
+            />
+            {errors.name && <p>{errors.name}</p>}
+          </fieldset>
 
-          {errors.email && <p>{errors.email}</p>}
-          <Input
-            name="email"
-            id="email"
-            type="text"
-            placeholder="Email"
-            autoComplete="off"
-            value={values.email}
-            onChange={handleChange}
-          />
+          <fieldset className="margin-input">
+            <Input
+              name="email"
+              id="email"
+              type="text"
+              placeholder="Email"
+              value={values.email}
+              onChange={handleChange}
+            />
+            {errors.email && <p>{errors.email}</p>}
+          </fieldset>
 
-          {errors.password && <p>{errors.password}</p>}
-          <Input
-            name="password"
-            id="password"
-            type="password"
-            placeholder="Senha"
-            autoComplete="off"
-            value={values.password}
-            onChange={handleChange}
-          />
+          <fieldset className="margin-input">
+            <Input
+              name="password"
+              id="password"
+              type="password"
+              placeholder="Senha"
+              value={values.password} //{errors.password ? errors.password : values.password}
+              onChange={handleChange}
+            />
+            {errors.password && <p>{errors.password}</p>}
+          </fieldset>
         </section>
 
         <hr className="line" />
