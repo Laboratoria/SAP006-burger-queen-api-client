@@ -1,8 +1,9 @@
-
-.goBtn, .registerBtn, .createAccount {
+.goBtn,
+.registerBtn,
+.createAccount {
   padding: 6px;
-  color: floralwhite;
-  background-color: #8544b9;
+  color: var(--white);
+  background-color: var(--purple);
   border: none;
   border-radius: 5px;
   font-family: "Kaisei Tokumin", serif;
@@ -22,4 +23,3 @@
 .createAccount {
   width: 50%;
 }
-
