@@ -1,10 +1,8 @@
 import React from "react";
-import Logo from './Image/Logo.png';
 
 function Header () {
     return(
-        <div className="header container">
-            <img src= { Logo } alt="logo hamburguer" />
+        <div className="header container">   
         </div>
         );
 }
