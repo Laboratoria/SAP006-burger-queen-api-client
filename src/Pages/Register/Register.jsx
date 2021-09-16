@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { RegisterUser } from '../../services/auth';
-import validation from '../../services/validation';
+import validation from '../../services/errors';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input.jsx'
 import register from '../../Assets/register.png';
@@ -13,11 +13,10 @@ const Register = ({submitForm}) => {
         email: '',
         password: '',
         confirmPassword: '',
-        occupation: '',
+        role: '',
     });
 
     const [errors, setErrors] = useState({});
-    // const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
     const handleChange = (event) => {
         setValues({
@@ -29,15 +28,15 @@ const Register = ({submitForm}) => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         setErrors(validation(values));
-        // setDataIsCorrect(true);
-        RegisterUser();
-    };
 
-    // useEffect(() => {
-    //     if(Object.keys(errors).length === 0 && dataIsCorrect) {
-    //         submitForm(true)
-    //     }
-    // }, [errors]);
+        RegisterUser(values)
+            .then((json) => {
+                console.log(json);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    };
     
     return (
         <div className='div-style'>
@@ -50,7 +49,7 @@ const Register = ({submitForm}) => {
                 values={values.fullName}
                 onChange={handleChange}
                 placeholder='nome completo' 
-                errorMessage='Por favor, insira um nome válido.' />
+                errormessage='Por favor, insira um nome válido.' />
             {errors.fullName && <p className='error'>{errors.fullName}</p>}
             <Input 
                 type='email' 
@@ -59,7 +58,7 @@ const Register = ({submitForm}) => {
                 values={values.email}
                 onChange={handleChange}
                 placeholder='e-mail'
-                errorMessage='Por favor, insira um e-mail válido.' />
+                errormessage='Por favor, insira um e-mail válido.' />
             {errors.email && <p className='error'>{errors.email}</p>}
             <Input 
                 type='password' 
@@ -68,7 +67,7 @@ const Register = ({submitForm}) => {
                 value={values.password}
                 onChange={handleChange}
                 placeholder='senha'
-                errorMessage='Por favor, insira uma senha válida.' />
+                errormessage='Por favor, insira uma senha válida.' />
             {errors.password && <p className='error'>{errors.password}</p>}
             <Input 
                 type='password'
@@ -77,28 +76,30 @@ const Register = ({submitForm}) => {
                 value={values.confirmPassword}
                 onChange={handleChange}
                 placeholder='confirmar senha'
-                errorMessage='As senhas não conferem.' />
+                errormessage='As senhas não conferem.' />
             {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
             <form >
                 <label><Input 
                     type='radio'
-                    name='occupation'
-                    value={values.occupation}
-                    onChange={handleChange}
-                    labelText='Atendente' />
+                    name='role'
+                    className='input-radio'
+                    // onChange={handleChange}
+                    value={values.role}
+                    labeltext='Atendente' />
                     Atendente
                 </label>
-                {errors.occupation && <p className='error'>{errors.occupation}</p>}
+                {errors.role && <p className='error'>{errors.role}</p>}
                 <label>
                     <Input 
                     type='radio' 
-                    name='occupation'
-                    value={values.occupation}
-                    onChange={handleChange}
-                    labelText='cozinha' />
+                    name='role'
+                    className='input-radio'
+                    // onChange={handleChange}
+                    value={values.role}
+                    labeltext='cozinha' />
                     Cozinha
                 </label>
-                {errors.occupation && <p className='error'>{errors.occupation}</p>}
+                {errors.role && <p className='error'>{errors.role}</p>}
             </form>
             <Button variant='enter-app' onClick={handleFormSubmit}>
                 <Link to='/'>registrar</Link>

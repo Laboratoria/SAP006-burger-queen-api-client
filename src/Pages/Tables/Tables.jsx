@@ -1,13 +1,13 @@
 // import { Redirect } from 'react-router-dom';
 
-import Button from '../../components/Button';
+// import Button from '../../components/Button';
 
 const Tables = () => {
 
     return (
         <div className='div-style'>
             Tables
-            <Button />
+            {/* <Button /> */}
         </div>
     )
 }

@@ -20,7 +20,7 @@ const Login = () => {
                         id='email' 
                         placeholder='e-mail'
                         value={email}
-                        errorMessage='Por favor, insira um e-mail válido.'
+                        errormessage='Por favor, insira um e-mail válido.'
                         onChange={(event) => setEmail(event.target.value)}
                     />
                     <Input 
@@ -28,7 +28,7 @@ const Login = () => {
                         id='password' 
                         placeholder='senha'
                         value={password}
-                        errorMessage='Por favor, insira uma senha válida.'
+                        errormessage='Por favor, insira uma senha válida.'
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </form>
