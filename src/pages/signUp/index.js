@@ -4,14 +4,21 @@ import "../signUp/style.css";
 import logoMagic from "../../img/logoMagic.png";
 import ValueAndError from "./formValueAndError.js";
 import validateValues from "./ValidateRegister.js";
+import { signUpWithEmailAndPassword } from '../../services/register.js';
 
-function alertApears() {
-  // alert("clicouuu");
-}
-
-export function signUp() {
+const signUp = () => {
   const { handleChange, values, handleSubmit, errors } =
     ValueAndError(validateValues);
+    function handleClick(e) {
+      e.preventDefault()
+      signUpWithEmailAndPassword("Thais","thais4444444444@hotmail.com", "123456", "Atendente")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    };
 
   return (
     <main>
@@ -69,7 +76,7 @@ export function signUp() {
         <Button
           btnClass="createAccount"
           btnText="Cadastrar"
-          btnOnClick={alertApears}
+          btnOnClick={handleClick}
         />
       </form>
     </main>

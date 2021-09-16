@@ -68,10 +68,13 @@ label {
 }
 
 @media (max-width: 870px) {
-  img {
-    width: 40%;
-  }
-}
+    img {
+        width:40%;
+    }
+    main {
+        height: 480px;
+    }
+} 
 
 @media (max-width: 587px) {
   main {
