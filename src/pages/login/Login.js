@@ -53,9 +53,9 @@ const Login = () => {
 		<div className='logo'/>
 		<form className='login'>
 			<Input placeholder='E-mail' className='login-input' name='email' value={values.email} onChange={onChangeValues}></Input>
-			{errors.email && <p>{errors.email}</p>}
+			<div className="hidden">{errors.email && <p>{errors.email}</p>}</div>
 			<Input placeholder='Senha' className='login-input' name='password' value={values.password} onChange={onChangeValues}></Input>
-			{errors.password && <p>{errors.password}</p>}
+			<div className="hidden">{errors.email && <p>{errors.email}</p>}</div>
 			<Button buttonText='LOGIN' className='button' buttonOnClick={buttonLogin} />
 			<p>Não tem uma conta? <Link to='./Register/index.js'>
 				Registre-se

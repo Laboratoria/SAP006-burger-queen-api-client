@@ -14,19 +14,18 @@ const Register = () => {
 	}
 
 return (
-    <>
-    <div className='container-register'>
+    <section className='container-register'>
+    <div className='logo-register'/>
     <form className='register'>
       <Input className='register-input' placeholder='Nome'></Input>
       <Input className='register-input' placeholder='E-mail'></Input>
       <Input className='register-input' placeholder='Senha'></Input>
       <Input className='register-input' placeholder='Confirmação de senha'></Input>
-      <p>Não tem uma conta? 
+      <p className='p-register'>Não tem uma conta? 
           <Button buttonText='Ir para o Login' buttonOnClick={goToLogin}/>
       </p>
     </form>
-    </div>
-    </>
+    </section>
 )
 }
 
