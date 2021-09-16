@@ -1,13 +1,14 @@
 // import { Redirect } from 'react-router-dom';
 
-import Button from '../../components/Button';
+import MealNavBar from '../../components/NavBar/NavBar';
 
 const Tables = () => {
 
     return (
-        <div className='div-style'>
+        
+        <div> 
+            <MealNavBar />          
             Tables
-            <Button />
         </div>
     )
 }
