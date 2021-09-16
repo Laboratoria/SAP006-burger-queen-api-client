@@ -8,6 +8,8 @@ import './register.css';
 import Logo from '../../img/logo-img.png';
 
 function Register() {
+  const [verifyInput, setVerifyInput] = useState(false);
+  const [verifyPassword, setVerifyPassword] = useState(false);
   const routeHistory = useHistory();
   const routerRegister = () => {
     routeHistory.push('/');
@@ -19,8 +21,10 @@ function Register() {
 
   const postCad = (e) => {
     e.preventDefault();
-    if (email === '' || password === '') {
-      console.log('ruim');
+    if (email === '' || password === '' || name === '' || role === '') {
+      setVerifyInput(true);
+    } if (password.length < 6) {
+      setVerifyPassword(true);
     } else {
       fetch('https://lab-api-bq.herokuapp.com/users/', {
         method: 'POST',
@@ -38,6 +42,7 @@ function Register() {
           } else {
             routerRegister();
           }
+          console.log('deu bom');
         });
     }
   };
@@ -95,12 +100,23 @@ function Register() {
             btnClassName="btnForm"
           > Cadastrar
           </Button>
+
+          {verifyPassword ? (
+            <div className="error-msg">
+              <h1> A senha deve conter mais de seis digitos </h1>
+            </div>
+          ) : null}
+          {verifyInput ? (
+            <div className="error-msg">
+              <h1> Preencha todos os campos </h1>
+            </div>
+          ) : null}
         </form>
       </div>
       <div className="Jelly-div">
         <Link to="/">
-          <img className="jellyfish" src={Jellyfish} alt="jellyfish-btn" />
           <div className="secret-text">Voltar</div>
+          <img className="jellyfish" src={Jellyfish} alt="jellyfish-btn" />
         </Link>
       </div>
 

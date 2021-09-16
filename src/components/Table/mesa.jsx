@@ -1,46 +1,34 @@
-/* eslint-disable */
 import React from 'react';
-import { useHistory } from "react-router-dom";
-function Mesas({mesa}){ 
-    const history = useHistory()
-    
-    
+import { useHistory } from 'react-router-dom';
+
+function Mesas({ mesa }) {
+  const history = useHistory();
 
   return (
 
-    <label key={mesa} className="buttons-mesas">
-            
-    <div className="table-button">
-    <div className="red-circle">
-        <div className="yellow-circle">
+    <label htmlFor="button-table" type="button" key={mesa} className="buttons-mesas">
+
+      <div className="table-button">
+        <div className="red-circle">
+          <div className="yellow-circle">
             <div className="little-circle">
-                <input
+              <input
                 type="button"
                 value={`Mesa ${mesa}`}
                 className="button-mesa"
                 onClick={() => {
-                    history.push({
-                        pathname: `table/pedidos`
-                    })
+                  history.push({
+                    pathname: `sallon/pedidos/${mesa}`,
+                  });
                 }}
-
-                >
-            
-
-                </input>
+              />
             </div>
-
-
+          </div>
         </div>
-
-    </div>
-
-</div>
-
+      </div>
     </label>
 
-  )
+  );
 }
- // eslint-disable-next-line
 
-export default  Mesas
+export default Mesas;
