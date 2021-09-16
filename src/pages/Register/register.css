@@ -1,0 +1,11 @@
+.header,
+.login{
+    font-style: 'Frijole', cursive;
+    font-size: 20px;
+    color: var(--ice);
+}
+
+.link{
+    font-size: 20px;
+    color: var(--aqua);
+}

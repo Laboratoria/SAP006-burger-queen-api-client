@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap');
+@import './pages/Login/login.css';
+@import './pages/Register/register.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --white: #ECF0F1;
+    --ice: #ECF0F1;
+    --black: #222222;
+    --grey: #3A3A3A;
+    --aqua: #2BBCBA;
+    --green: #10A9A8;
+    --pink: #A31163;
+    --yellow: #DFB202;
+    --orange: #D65500;
+    --blue:#1158A9;
+    --bege: #A5A066;
+  }
+
+  body {
+    background-color: var(--grey);
+    font-family: Roboto, sans-serif;
+  }
+   

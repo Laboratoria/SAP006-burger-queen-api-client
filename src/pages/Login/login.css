@@ -1,0 +1,12 @@
+
+.header, 
+.new-register{
+    font-style: 'Frijole', cursive;
+    font-size: 20px;
+    color: var(--ice);
+}
+
+.link{
+    font-size: 20px;
+    color: var(--aqua);
+}
