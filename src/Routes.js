@@ -1,10 +1,9 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Login from './Pages/Login/Login';
-import Registration from './Pages/Cadastro/Registration';
-import User from './Pages/Tables/Tables';
-import { isAuthenticated } from './Services/Auth';
+import Login from './pages/Login/Login';
+import Registration from './pages/Cadastro/Registration';
+import { isAuthenticated } from './services/Auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {... rest} render={props => (
@@ -23,9 +22,8 @@ function Routes(){
             <Switch>
                 <Route path="/" exact component={Login} />
                 <Route path="/cadastre-se" component={Registration} />
-                <Route path="*" element={<h1>Not Found</h1>} />
-                <PrivateRoute path="/mesas" component={ User }/>
-                
+                <Route path="*" element={<h1>Not Found</h1>} /> 
+                <PrivateRoute path="/" component={ Login }/>               
             </Switch>
             
         </BrowserRouter> 

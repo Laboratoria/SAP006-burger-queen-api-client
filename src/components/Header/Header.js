@@ -1,11 +1,8 @@
 import React from "react";
-import LogoRetro from '../../img/Logo';
 
 function Header () {
     return(
         <div className="header container">
-            
-                     
         </div>
         );
 }
