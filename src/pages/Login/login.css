@@ -22,6 +22,8 @@ body{
     overflow: hidden;
     background-color: #fcff6acc;
     border-radius: 150px 150px 0px 0px;
+    bottom: 0;
+    position: fixed;
 }
 
 .form-inner{
@@ -35,15 +37,11 @@ body{
 .input-login, .input-password{
     width: 50%;
     height: 20px;
-    background: #e0dede;
-    font-size: 20px;
-    justify-content: center;
-    display: flex;
     margin-left: 22%;
     padding: 18px;
-    border: none;
-    outline: none;
     border-radius: 10px;
+    font-size: 22px;
+    background: #e0dede;
 }
 
 .btn-login{
@@ -64,12 +62,16 @@ body{
 }
 
 .icons-input{
-    color: grey;
-    margin: -7% 0% 0px 68%;
+    font-size: 135%;
+    margin-left: 70%;
+    margin-top: -5%;
+    display: flex;
+    position: absolute;
 }
 
 .fa-envelope{
     color: #47423a;
+    margin-top: -37px;
 }
 
 #hide, #hide-again, #hide-login{

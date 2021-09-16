@@ -26,7 +26,7 @@ const Login = () => {
           value={infoUser.email} 
           onChange={e => setInfoUser({...infoUser, email: e.target.value})}/>
           <section className ='icons-input'>
-          <i className='far fa-envelope'></i>
+          <i className='far fa-envelope icons'></i>
           </section>
         </fieldset>
         <fieldset className="form-inner">
