@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {Image, LoginBox, Title , Form, InputForm , LoginButton, PhraseRegister } from './style';
+import {Image, LoginBox, Title , Form, PhraseRegister } from './style';
 
 import Button from '../../components/Button';
 import Input from '../../components/Input/Input.jsx'
@@ -18,7 +18,7 @@ const Login = () => {
                 <Image src={login} alt='icon-login' />
                 <Title>login</Title>
                 <Form>
-                    <InputForm 
+                    <Input
                         type='email' 
                         id='email' 
                         placeholder='e-mail'
@@ -26,7 +26,7 @@ const Login = () => {
                         errorMessage='Por favor, insira um e-mail válido.'
                         onChange={(event) => setEmail(event.target.value)}
                     />
-                    <InputForm 
+                    <Input
                         type='password' 
                         id='password' 
                         placeholder='senha'
@@ -36,9 +36,9 @@ const Login = () => {
                     />
                 </Form>
 
-                <LoginButton variant='enter-app' onClick={LoginWithEmail}>
+                <Button variant='enter-app' onClick={LoginWithEmail}>
                     <Link to='/tables'>entrar</Link>
-                </LoginButton>
+                </Button>
                 <PhraseRegister>É o seu primeiro dia no Vixi?
                     <Link to='/register'>Cadastre-se aqui</Link>
                 </PhraseRegister>
