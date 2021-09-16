@@ -2,7 +2,8 @@ export const getProducts = (products) => {
     return fetch('https://lab-api-bq.herokuapp.com/products', {
         method:'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': '',
         },
         body: JSON.stringify({
             'name': products.name,
