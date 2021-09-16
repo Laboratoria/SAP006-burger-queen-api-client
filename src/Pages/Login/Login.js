@@ -1,9 +1,11 @@
 import React from "react";
+import Input from "../../Components/Input";
 
 function Login(){
     return(
-        <div className='login-page'>
-            
+        <div className='container login'>
+            <Input />
+            <h1>Arroz logar</h1>
         </div>
 
     );

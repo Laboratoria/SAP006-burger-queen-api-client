@@ -1,35 +1,30 @@
-import React from "react";
-import Routes from "./Routes";
-import Header from "./Components/Header";
-import Input from "./Components/Input";
+// import React from "react";
+// import Routes from "./Routes";
+// import Header from "./Components/Header";
+// import Input from "./Components/Input";
 
-function App() {
+// function App() {
   
   
-  return (
-      <div className="App">
-        <Routes />
-        <Header />
-        <Input />
-      </div>
+//   return (
+//       <div className="App">
+//         <Routes />
+//         <Header /> 
+//       </div>
 
-    );
-}
+//     );
+// };
 
-export default App;
+// export default App;
+
+// function AppLogin (){
+//   return (
+//     <div>
+//       <Input />
+//     </div>
+//   );
+// }
+
+// export default AppLogin;
 
 
-// const [valor, setValor] = useState(0);
-
-//   function funcAumentar(){
-//     setValor(valor + 1);
-
-//   }
-
-//   function funcDiminuir(){
-//     setValor(valor - 1);
-//   }
-
-{/* <div>Quantidade de produto no carrinho: <b>{ valor }</b></div>
-      <button onClick={funcAumentar}>Adicionar + 1 no carrinho</button>
-      <button onClick={funcDiminuir}>Remover - 1 no carrinho</button> */}
