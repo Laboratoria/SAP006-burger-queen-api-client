@@ -25,50 +25,22 @@ $auth-error-message: #FFC299;
       color: white;
     }
   }
-
-  .auth-error-message{
-    margin: 0 auto 5%;
-    font-size: 130%;
-    color: $auth-error-message;
-  }
-
 }
 
+fieldset {
+  display: flex;
+  flex-direction: row;
 
+  width: 100%;
+  height: 5vh;
 
+  margin-top: 2%;
 
-
-    fieldset {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      padding: 0;
-
-      img {
-        bottom: 62%;
-        left: 0;
-      }
-
-      div div {
-        margin: 5% 0 -4% 0;
-        bottom:0%;
-      }
-
-      label,
-      input:valid ~ label,
-      input:focus ~ label {
-        display: block;
-        left: 40%;
-        bottom: 25%;
-        font-size: 180%;
-        color: white;
-      }
-
-      input[type='radio'] {
-        margin: 0 0 7% 25%;
-        height: 2.5vh;
-        width: 2.5vh;
-      }
-    }
+  img {
+    position: absolute;
+    bottom: 9%;
+    left: 1%;
+  }
+}
   
 

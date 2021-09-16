@@ -13,10 +13,16 @@ export const Button = ({ Role, Conditional, ButtonOnClick, ButtonChildren }) => 
     'authShowOrNotShowPassword':{
       'ButtonClass':`auth-show-or-not-password ${Conditional ? 'auth-show-password' : 'auth-not-show-password'}`
     },
-    'authSucessModal':{
+    'authSucessModal-login':{
       'ButtonClass':'auth-modal-button '
     },
-    'authErrorModal':{
+    'authErrorModal-login':{
+      'ButtonClass':'auth-modal-button '
+    },
+    'authSucessModal-register':{
+      'ButtonClass':'auth-modal-button '
+    },
+    'authErrorModal-register':{
       'ButtonClass':'auth-modal-button '
     },
   }

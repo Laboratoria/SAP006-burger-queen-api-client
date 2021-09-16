@@ -1,26 +1,36 @@
-export const authSignin = (event, {userData}, {setAuthModals}, {setAuthInputs}) => {
-  const apiToSignin = 'https://lab-api-bq.herokuapp.com/users'
-  event.preventDefault();
-
+const checkUserDataToSignin = ({userData}, {setAuthInputs}) => {
   if (userData.name.length < 7) {   
-    setAuthInputs.setNameErrorInput('eba');
+    setAuthInputs.setNameErrorInput(true);
+    return 'Error'
   }
   else if (!userData.email.includes('@')) {
     setAuthInputs.setEmailErrorInput(true);
+    return 'Error'
   }
   else if (userData.password.length < 6) {
     setAuthInputs.setPasswordErrorInput(true);
     setAuthInputs.setConfirmPasswordErrorInput(true);
+    return 'Error'
   }
-
   else if (userData.password !== userData.confirmPassword) {
     setAuthInputs.setPasswordErrorInput(true);
     setAuthInputs.setConfirmPasswordErrorInput(true);
+    return 'Error'
   } 
-  
   else if (userData.role === '') {
     setAuthInputs.setRoleErrorInput(true);
+    return 'Error'
   } else {
+    return 'Sucess'
+  }
+}
+
+export const authSignin = (event, {userData}, {setAuthModals}, {setAuthInputs}) => {
+  const apiToSignin = 'https://lab-api-bq.herokuapp.com/users'
+  event.preventDefault();
+
+  const userDataCheckResult = checkUserDataToSignin ({userData}, {setAuthInputs})
+  if (userDataCheckResult === 'Sucess') {
     fetch(apiToSignin , {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -46,7 +56,9 @@ export const authSignin = (event, {userData}, {setAuthModals}, {setAuthInputs}) 
       setAuthModals.setAuthErrorModal(true)
     })
   }
-};
+
+
+  };
 
 export const authLogin = (event, {userData}, {setAuthModals}) => {
   const apiToLogin = 'https://lab-api-bq.herokuapp.com/auth';

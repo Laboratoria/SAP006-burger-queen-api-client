@@ -6,12 +6,20 @@ import './Modal.scss';
 export function AuthModal ({ Role, ButtonOnClick, ButtonOnClickSecondOption }) {
 
   const ModalProps = {
-    'authSucessModal': {
+    'authSucessModal-login': {
       'ModalContent':'Cadastro realizado com sucesso!',
       'ButtonChildren':'OK',
     },
-    'authErrorModal': {
+    'authErrorModal-login': {
       'ModalContent':'Usuárie não encontrade. Verifique seus dados.',
+      'ButtonChildren':'Tente Novamente'
+    },
+    'authSucessModal-register': {
+      'ModalContent':'Cadastro realizado com sucesso!',
+      'ButtonChildren':'OK',
+    },
+    'authErrorModal-register': {
+      'ModalContent':'Este email já está vinculado a outra conta.',
       'ButtonChildren':'Tente Novamente'
     },
   }
@@ -25,10 +33,17 @@ export function AuthModal ({ Role, ButtonOnClick, ButtonOnClickSecondOption }) {
           ButtonChildren={ModalProps[Role].ButtonChildren}
           ButtonOnClick={ButtonOnClick}
         />
-        { Role === 'authErrorModal' ?
+        { Role === 'authErrorModal-login' ?
           <Button 
             Role={Role}
-            ButtonChildren='Cadastre se com uma nova conta'
+            ButtonChildren='Crie uma nova conta.'
+            ButtonOnClick={ButtonOnClickSecondOption}
+          /> : null
+        }
+        { Role === 'authErrorModal-register' ?
+          <Button 
+            Role={Role}
+            ButtonChildren='Entre com uma conta já existente.'
             ButtonOnClick={ButtonOnClickSecondOption}
           /> : null
         }

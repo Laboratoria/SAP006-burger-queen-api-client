@@ -56,7 +56,7 @@ export function Login () {
           <section>
         {authSucessModal ? (
           <AuthModal 
-            Role = 'authSucessModal'
+            Role = 'authSucessModal-login'
             ButtonOnClick = {() => navigateTo(history, '/register', setAuthSucessModal)} 
           />
         ): null}
@@ -64,7 +64,7 @@ export function Login () {
       <section>
         {authErrorModal ? (
           <AuthModal 
-            Role = 'authErrorModal'
+            Role = 'authErrorModal-login'
             ButtonOnClick = {() => navigateTo(history, '/', setAuthErrorModal)}
             ButtonOnClickSecondOption = {() => navigateTo(history, '/register', setAuthErrorModal)}
           />

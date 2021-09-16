@@ -4,53 +4,80 @@ $light-gray: #D3D3D3;
 $orange: #FF8C00;
 $auth-error-message: #FFC299;
 
-form {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  position: relative;
-  margin: 5% auto 3%;
-  
-  div {
+main {
+  form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 60%;
     position: relative;
-    margin: 0 auto 10%;
+    
+    div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+      margin: 0 auto 10%;
 
-    input {
-      padding: 4% 4% 3% 10%;
-      
-      font-size: 180%;
-      color: white;
+      input {
+        padding: 4% 4% 3% 10%;
+        
+        font-size: 180%;
+        color: white;
+      }
+
+      ::placeholder{
+        color:white;
+      }
+
+      label {
+        display: none;
+
+        position: absolute;
+        left: 10%;
+        bottom: 85%;
+
+        color: $light-gray;
+        font-size: 160%;
+      }
+
+      input:valid ~ label,
+      .move-label-up {
+        display: block;
+      }
     }
+  }
+  
+  img {
+    position: absolute;
+    bottom: 30%;
+    height: 3vh;
+    width: 3vh;
+  }
+}
 
-    ::placeholder{
-      color:white;
-    }
+.login-content {
+  form {
+    margin: 5% auto;
+  } 
+}
 
-    label {
-      display: none;
+.register-content {
+  form {
+    margin: 1% auto 4%;
+  }
 
-      position: absolute;
-      left: 10%;
-      bottom: 85%;
-
-      color: $light-gray;
-      font-size: 160%;
-    }
-
-    input:valid ~ label,
-    .move-label-up {
-      display: block;
-    }
-
-    img {
-      position: absolute;
-      bottom: 30%;
-      height: 3vh;
-      width: 3vh;
-    }
+  .auth-label-radio-input {
+    display: block;
+    left: 40%;
+    bottom: 25%;
+    font-size: 180%;
+    color: white;
+  }
+  
+  .auth-radio-input {
+    margin: 0 0 7% 25%;
+    height: 2.5vh;
+    width: 2.5vh;
   }
 }
 
@@ -61,6 +88,7 @@ form {
 .auth-wrong-input{
   border-bottom: $orange solid;
 }
+
 
 
 
