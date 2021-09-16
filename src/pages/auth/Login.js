@@ -43,14 +43,14 @@ export function Login () {
         <Button 
           Role = 'authSubmitForm'
           ButtonOnClick = {(event) => authLogin(event, {userData}, {setAuthModals})} 
-          ButtonChildren = 'Entrar'
+          children = 'Entrar'
         /> 
         <div className='auth-navigation-div'>
           <p>Ou</p>
           <Button 
             Role = 'authNavigateTo'
             ButtonOnClick = {() => navigateTo(history, '/register', setAuthSucessModal)} 
-            ButtonChildren = 'registre-se'
+            children = 'registre-se'
           /> 
         </div>
           <section>

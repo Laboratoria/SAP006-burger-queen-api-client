@@ -6,21 +6,68 @@ import { AuthModal } from './Modal'
 afterEach(cleanup)
 
 describe('Testing the AuthModal component', () => {
-  const label = 'modalContent';
-  const labelButton = 'modalLabelButton';
 
-  it ('Should render the modal message with the given label.', () => {
-    render(<AuthModal>{label}</AuthModal>);
-    const p = screen.getByText(label);
-    expect(p).toBeInTheDocument();
+  it('The AuthModal Section component should be rendered in the document.', () => {
+    const {queryByTestId} = render(<AuthModal Role='test' />);
+    expect(queryByTestId('authModalSection')).toBeInTheDocument();
   });
 
-  it ('The buttons inside a modal should dispatch a function.', () => {
+  it('The AuthModal Section component should have the class "modal-background".', () => {
+    const {queryByTestId} = render(<AuthModal Role='test' />);
+    expect(queryByTestId('authModalSection')).toHaveClass('modal-background');
+  });
+
+  it('The AuthModal Div component should be rendered in the document.', () => {
+    const {queryByTestId} = render(<AuthModal Role='test' />);
+    expect(queryByTestId('authModalDiv')).toBeInTheDocument();
+  });
+
+  it('The AuthModal Div component should have the class "modal-container".', () => {
+    const {queryByTestId} = render(<AuthModal Role='test' />);
+    expect(queryByTestId('authModalDiv')).toHaveClass('modal-container');
+  });
+
+  it('The AuthModal Content component should be rendered in the document.', () => {
+    const {queryByTestId} = render(<AuthModal Role='test' />);
+    expect(queryByTestId('authModalContent')).toBeInTheDocument();
+  });
+
+  it ('The AuthModal Content component should be rendered in the document with the given label.', () => {
+    const {queryByTestId} = render(<AuthModal Role='test' />);
+    expect(queryByTestId('authModalContent')).toHaveTextContent('test');
+  });
+
+  it('The AuthModal Button component should rendered in the document.', () => {
+    const {queryByTestId} = render(<AuthModal Role='test' />);
+    expect(queryByTestId('button')).toBeInTheDocument();
+  });
+
+  it('The AuthModal Button component should be rendered in the document with the given label.', () => {
+    const {queryByTestId} = render(<AuthModal Role='test' />);
+    expect(queryByTestId('button')).toHaveTextContent('test');
+  });
+
+  it('The AuthModal Button component should be rendered in the document with the given label, role = authErrorModal-login.', () => {
+    const {queryByTestId} = render(<AuthModal Role='authErrorModal-login' />);
+    expect(queryByTestId('button')).toHaveTextContent('Tente novamente');
+  });
+
+  it('The AuthModal Button component should be rendered in the document with the given label, role = authErrorModal-register.', () => {
+    const {queryByTestId} = render(<AuthModal Role='authErrorModal-register' />);
+    expect(queryByTestId('button')).toHaveTextContent('Tente novamente');
+  });
+
+  it('The AuthModal Button component should have the class "auth-modal-button".', () => {
+    const {queryByTestId} = render(<AuthModal Role='test' />);
+    expect(queryByTestId('button')).toHaveClass('test-class');
+  });
+
+  it ('The AuthModal Button component should dispatch a function when clicked.', () => {
     const fn = jest.fn();
-    render(<AuthModal> <Button buttonEvent={fn}>{labelButton}</Button></AuthModal>)
-    const btn = screen.getByText(labelButton);
-    fireEvent.click(btn)
+    const {queryByTestId} = render(<AuthModal Role='test' ButtonOnClick={fn}/>)
+    fireEvent.click(queryByTestId('button'))
     expect(fn).toHaveBeenCalledTimes(1);
   });
+
 
 });
