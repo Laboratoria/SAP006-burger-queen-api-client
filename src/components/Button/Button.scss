@@ -22,6 +22,7 @@ $orange: #FF8C00;
   width: 3vh;
 
   position:absolute;
+  bottom: 30%;
   right: 5%;
 
   background-size: 3vh;
@@ -34,7 +35,6 @@ $orange: #FF8C00;
 .auth-show-password{
   background-image: url('../../assets/icons/input-password-show.png');
 }
-
 
 .auth-modal-button {
   position: relative;

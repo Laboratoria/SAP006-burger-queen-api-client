@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 import { authErrorsMessages } from '../../services/errors';
@@ -16,13 +15,6 @@ import { InputRadioUserData } from '../../components/UserData/UserData';
 
 import '../../styles/Auth.scss'
 
-import registerBg from '../../assets/images/register-bg.jpg';
-import logoCombosBurger from '../../assets/images/logo-combos-burger.png';
-import inputName from '../../assets/icons/input-name.png';
-import inputEmail from '../../assets/icons/input-email.png';
-import inputPassword from '../../assets/icons/input-password.png';
-import inputRole from '../../assets/icons/input-role.png';
-
 export const Register = () => {
 
   const history = useHistory();
@@ -34,8 +26,6 @@ export const Register = () => {
   const [role, setRole] = useState ('');
   const userData = {name, email, password, confirmPassword, role};
 
-  const[showPassword, setShowPassword] = useState(false)
-  const[showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const [authErrorModal, setAuthErrorModal] = useState(false);
   const [authSucessModal, setAuthSucessModal] = useState(false);
@@ -50,129 +40,62 @@ export const Register = () => {
   const setAuthInputs = {setNameErrorInput, setEmailErrorInput, setPasswordErrorInput,
   setConfirmPasswordErrorInput, setRoleErrorInput}
 
-
   return (
     <div className = 'login-and-register-content register-content'>
-      <Header
-        headerBackgroundClassName='register-bg'
-        headerBackgroundSRC={registerBg}
-        headerLogoClassName='logo'
-        headerLogoSRC={logoCombosBurger}
-      />
+    <Header 
+      Location = 'register'/>
       <main>
         <form>
-          <InputContentUserData 
-            inputClass={nameErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
-            inputType='text'
-            inputPlaceholder='Nome Completo'
-            inputValue={name}
-            inputOnChange={(e) => [setName(e.target.value), setNameErrorInput(false)]}
-            labelText='Nome Completo'
-            iconSRC={inputName}
-            iconAlt='Name'
-            buttonClass='display-none'
-          />
-          <AuthErrorMessages  
-            children = {nameErrorInput ? authErrorsMessages.name : 'Input has an error!'}
-            errorMessageClass = {nameErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
-          /> 
-          <InputContentUserData 
-            inputClass={emailErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
-            inputType='email'
-            inputPlaceholder='Email'
-            inputValue={email}
-            inputOnChange={(event) => [setEmail(event.target.value), setEmailErrorInput(false)]}
-            labelClass={`${email ? 'move-label-up' : ''}`}
-            labelText='Email'
-            iconSRC={inputEmail}
-            iconAlt='Email'
-            buttonClass='display-none'
-          />
-          <AuthErrorMessages  
-            children = {emailErrorInput ? authErrorsMessages.email : 'Input has an error!'}
-            errorMessageClass = {emailErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
-          /> 
-          <InputContentUserData 
-            inputClass={passwordErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
-            inputType={showPassword ? 'text' : 'password'}
-            inputPlaceholder='Senha'
-            inputValue={password}
-            inputOnChange={(e) => [setPassword(e.target.value), setPasswordErrorInput(false), setConfirmPasswordErrorInput(false)]}
-            labelText='Senha'
-            iconSRC={inputPassword}
-            buttonClass={`auth-show-or-not-password ${showPassword ? 'auth-show-password' : 'auth-not-show-password'}`}
-            OnClick={() => showOrNotShowPassword(showPassword, setShowPassword)}
-          />
-          <AuthErrorMessages  
-            children =  {password !== confirmPassword ? authErrorsMessages.confirmPassword : authErrorsMessages.password}
-            errorMessageClass = {passwordErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
-          /> 
-          <InputContentUserData
-            inputClass={confirmPasswordErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
-            inputType={showConfirmPassword ? 'text' : 'password'}
-            inputPlaceholder='Confirme a Senha'
-            inputValue={confirmPassword}
-            inputOnChange={(e) => [setConfirmPassword(e.target.value), setPasswordErrorInput(false), setConfirmPasswordErrorInput(false)]}
-            labelText='Confirme a Senha'
-            iconSRC={inputPassword}
-            buttonClass={`auth-show-or-not-password ${showConfirmPassword ? 'auth-show-password' : 'auth-not-show-password'}`}
-            OnClick={() => showOrNotShowPassword(showConfirmPassword, setShowConfirmPassword)}
-          />
-          <AuthErrorMessages
-            children =  {password !== confirmPassword ? authErrorsMessages.confirmPassword : authErrorsMessages.password}
-            errorMessageClass = {confirmPasswordErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
-          /> 
-          <div>
-            <fieldset>
-              <img src={inputRole} alt='Role'/>
-              <InputRadioUserData 
-                divClass={roleErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
-                inputType='radio'
-                inputValue='room'
-                inputChecked={role === 'room'}
-                inputOnChange={(e) => [setRole(e.target.value), setRoleErrorInput(false)]}
-                labelText='Salão'
-              />
-              <InputRadioUserData 
-                divClass={roleErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}
-                inputType='radio'
-                inputValue='kitchen'
-                inputChecked={role === 'kitchen'}
-                inputOnChange={(e) => setRole(e.target.value)}
-                labelText='Cozinha'
-              />
-          </fieldset>
-          <AuthErrorMessages  
-            children = {roleErrorInput ? authErrorsMessages.role: 'Input has an error!'}
-            errorMessageClass = {roleErrorInput ? 'auth-error-message' : 'auth-error-message visibility-hidden'}
-          /> 
-          </div>
-          <Button
-            buttonType = 'submit'
-            OnClick = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs})}
-          >Registrar
-          </Button>
-          <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
+        <InputContentUserData 
+          Subject='name'
+          InputValue = {name}
+          InputOnChange = {(event) => setName(event.target.value)}
+        />
+         <InputContentUserData 
+          Subject='email'
+          InputValue = {email}
+          InputOnChange = {(event) => setEmail(event.target.value)}
+        />
+        <InputContentUserData 
+          Subject='password'
+          InputValue = {password}
+          InputOnChange = {(event) => setPassword(event.target.value)}   
+        />
+        <InputContentUserData 
+          Subject='confirmPassword'
+          InputValue = {confirmPassword}
+          InputOnChange = {(event) => setConfirmPassword(event.target.value)}   
+        />
         </form>
+        <Button 
+          Role = 'authSubmitForm'
+          ButtonOnClick = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs})} 
+          ButtonChildren = 'Registrar'
+        /> 
+        <div className='auth-navigation-div'>
+          <p>Ou</p>
+          <Button 
+            Role = 'authNavigateTo'
+            ButtonOnClick = {() => navigateTo(history, '/', setAuthSucessModal)} 
+            ButtonChildren = 'entre'
+          /> 
+          <p> com uma conta existente</p>
+        </div>
       </main>
       <section>
         {authSucessModal ? (
           <AuthModal 
-            children = 'Cadastro realizado com sucesso!'
-            buttonText = 'OK'
-            OnClick = {() => navigateTo(history, '/orders', setAuthSucessModal)}
-            buttonIIClass = 'display-none'
+            Role = 'authSucessModal'
+            ButtonOnClick = {() => navigateTo(history, '/register', setAuthSucessModal)} 
           />
         ): null}
       </section>
       <section>
         {authErrorModal ? (
           <AuthModal 
-            children = 'Este email já está cadastrado no sistema.'
-            buttonText = 'Cadastre um novo email.'
-            OnClick = {() => navigateTo(history, '/register', setAuthErrorModal)}
-            buttonIIText = 'Entre com uma conta já existente.'
-            buttonIIEvent = {() => navigateTo(history, '/', setAuthErrorModal)}
+            Role = 'authErrorModal'
+            ButtonOnClick = {() => navigateTo(history, '/', setAuthErrorModal)}
+            ButtonOnClickSecondOption = {() => navigateTo(history, '/register', setAuthErrorModal)}
           />
         ): null}
       </section>

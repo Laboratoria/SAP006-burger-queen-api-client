@@ -1,6 +1,7 @@
 import React from 'react';
 
 import loginBg from '../../assets/images/login-bg.jpg';
+import registerBg from '../../assets/images/register-bg.jpg';
 import logoCombosBurger from '../../assets/images/logo-combos-burger.png';
 
 import './Header.scss';
@@ -14,7 +15,7 @@ export function Header ({Location}) {
     },
     'register':{
       'HeaderClass':'register-bg',
-      'HeaderSRC': '' ,
+      'HeaderSRC': registerBg ,
     },
   }
   return (

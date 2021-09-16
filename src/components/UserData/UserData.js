@@ -18,7 +18,7 @@ export function InputContentUserData ({Subject, InputValue, InputOnChange}) {
   const UserDataProps = {
     'name': {
       'data-content':'name',
-      'InputClass': '',
+      'InputClass': InputValue.length < 1 ? 'auth-correct-input' : InputValue.length >= 7 ? 'auth-correct-input' : 'auth-wrong-input',
       'InputType':'text',
       'InputPlaceholder':'Nome',
       'LabelClass':'',
@@ -46,9 +46,9 @@ export function InputContentUserData ({Subject, InputValue, InputOnChange}) {
     },
     'confirmPassword': {
       'data-content':'confirmPassword',
-      'InputClass': '',
-      'InputType':showPassword ? 'text' : 'password',
-      'InputPlaceholder':'Senha',
+      'InputClass': InputValue.length < 1 ? 'auth-correct-input' : InputValue.length >= 6 ? 'auth-correct-input' : 'auth-wrong-input',
+      'InputType':showConfirmPassword ? 'text' : 'password',
+      'InputPlaceholder':'Confirme a Senha',
       'LabelClass':'',
       'IconSrc':inputPassword,
       'IconAlt':'Confirm Password',
@@ -89,7 +89,7 @@ export function InputContentUserData ({Subject, InputValue, InputOnChange}) {
       { Subject === 'password' || Subject === 'confirmPassword' ?
        <Button
           Role='authShowOrNotShowPassword'
-          Conditional = {showPassword}
+          Conditional = {showPassword || showConfirmPassword}
           ButtonOnClick={UserDataProps[Subject].ButtonOnClick}
        /> : null
       }  

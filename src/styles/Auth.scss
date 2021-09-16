@@ -35,13 +35,8 @@ $auth-error-message: #FFC299;
 }
 
 
-.register-content {
-  .logo{
-    margin: -25% auto 0 auto;
-  }
 
-  form {
-    margin: 4% auto;
+
 
     fieldset {
       width: 100%;
@@ -75,6 +70,5 @@ $auth-error-message: #FFC299;
         width: 2.5vh;
       }
     }
-  }
+  
 
-}
