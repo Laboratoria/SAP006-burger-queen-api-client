@@ -99,15 +99,7 @@ main{
         }
         .products{
             width:35vw;
-        }
-
-        .products-row {
-            display: flex;
-            justify-content: space-around;
-            background-color:var(--light-gray);
-            height: 15vh;
-            margin: 3rem 2rem;
-            border-radius: 5px;
+            align-items: center;
         }
 
     }
