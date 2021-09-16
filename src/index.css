@@ -2,8 +2,17 @@
 
 body {
   margin: 0;
-  font-family: 'Kaisei Tokumin', serif;
+  font-family: "Kaisei Tokumin", serif;
   font-weight: bold;
   font-size: 15px;
+  background-color: var(--yellow);
 }
 
+:root {
+  --yellow: #f2d055;
+  --white: #ffffff;
+  --light-gray: #e5e5e5;
+  --red: #eb1919;
+  --purple: #8544b9;
+  --green: #31a708;
+}
