@@ -44,8 +44,15 @@ input[type="email"]:focus + label {
 }
 
 .input-hall{
+  padding:0.24rem 0.8rem;
+  margin-right:1rem;
+  border-radius:3px;
   background-color:var(--light-gray);
   color:white;
   outline:none;
   border:1px solid var(--stroke);
+  font-size:1rem;
+  &::placeholder {
+    color:white;
+  }
 }

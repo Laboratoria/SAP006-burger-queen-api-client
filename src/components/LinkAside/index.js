@@ -4,11 +4,11 @@ import './linkAside.scss'
 
 
 export default function LinkAside({
- children, className, type 
+ children, className, type, onClick
 }) {
   return (
-    <li>
-      <a href>
+    <li type={type} onClick={onClick}>
+      <a>
         <div className={`item-aside ${type} ${className}`}>
          
         </div>
