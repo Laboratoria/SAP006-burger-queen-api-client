@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import ButtonLogout from '../../components/ButtonLogout';
 import LinkAside from '../../components/LinkAside';
@@ -13,7 +13,22 @@ import ButtonRadio from '../../components/ButtonRadio';
 
 
 export default function Hall() {
+  const [breakfastClass, setBreakfastClass] = useState("")
+	const [allDayClass, setAllDayClass] = useState("selected")
 
+	const [activeBurgers, setActiveBurgers] = useState(true)
+	const [activeSides, setActivSactiveSides] = useState(false)
+	const [activeDrinks, setActiveDrinks] = useState(false)
+
+	const selectBreakfast = () =>{
+		setBreakfastClass("selected")
+		setAllDayClass("")
+	}
+
+	const selectAllDay = () =>{
+		setAllDayClass("selected")
+		setBreakfastClass("")
+	}
 
 
 	return (
@@ -29,8 +44,8 @@ export default function Hall() {
 
 			<nav>
 					<ul className="menu-types">
-						<li>Breakfast</li>
-						<li>All Day</li>
+						<li className={breakfastClass} onClick={selectBreakfast}> Breakfast </li>
+						<li className={allDayClass} onClick={selectAllDay}> All Day </li>
 					</ul>
 
 
@@ -56,9 +71,9 @@ export default function Hall() {
 					</div>
 					<div className="menu">
 						<aside>
-							<LinkAside className="active" type="burger">Burgers</LinkAside>
-							<LinkAside type="sides">Adicionais</LinkAside>
-							<LinkAside type="drinks">Bebidas</LinkAside>
+							<LinkAside className={activeBurgers ? "active" : null} type="burger">Burgers</LinkAside>
+							<LinkAside className={activeSides ? "active" : null} type="sides">Adicionais</LinkAside>
+							<LinkAside className={activeDrinks ? "active" : null} type="drinks" >Bebidas</LinkAside>
 						</aside>
 
 						<section className="products">

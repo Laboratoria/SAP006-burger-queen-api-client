@@ -47,7 +47,18 @@ nav{
             height: 2rem;
             margin:0 2rem 0rem 0;
             color:white;
-            border-bottom:3px solid var(--yellow);
+            cursor:pointer;
+           
+            &.selected{
+                color:var(--yellow);
+                border-bottom:3px solid var(--yellow);
+
+            }
+            &:hover{
+                color:var(--yellow);
+                border-bottom:3px solid var(--yellow);
+
+            }
         }
     }
 
@@ -77,7 +88,7 @@ main{
             display:flex;
             flex-direction: row;
             height:100%;
-            width:48vw;
+            width:55vw;
         }
         aside{
             display:flex;
@@ -87,7 +98,7 @@ main{
             margin-right:2rem;
         }
         .products{
-            width:60%;
+            width:35vw;
         }
 
         .products-row {

@@ -120,14 +120,15 @@ const Register = () => {
 			<div className="container-bg">
 				<img src={background} className="bg-login" alt="background"/>
 			</div>
-			<button className="margin-1 goback-btn" onClick={goBack}>
-				<img src={arrow} alt="arrow"/>
-			</button>
+			
 			
 			<section className="container-login">
+			<button className="goback-btn" onClick={goBack}>
+				<img src={arrow} alt="arrow"/>
+			</button>
 				
 				<h2>CADASTRO</h2>
-				<div className="form-wrapper">
+				<div className="form-wrapper margin-top-1">
 					<form>
 						<fieldset className="margin-input">
 							<Input
@@ -196,7 +197,7 @@ const Register = () => {
 						<div>
 							<ButtonDefault
 								id="btn-register"
-								className="btn-default margin-bottom-4 margin-top-2"
+								className="btn-default margin-bottom-4 margin-top-3"
 								onClick={handleSubmit}
 							>
 								CADASTRAR
