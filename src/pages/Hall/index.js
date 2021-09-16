@@ -16,6 +16,10 @@ export default function Hall() {
   const [breakfastClass, setBreakfastClass] = useState("")
 	const [allDayClass, setAllDayClass] = useState("selected")
 
+	const [activeBurgers, setActiveBurgers] = useState(true)
+	const [activeSides, setActivSactiveSides] = useState(false)
+	const [activeDrinks, setActiveDrinks] = useState(false)
+
 	const selectBreakfast = () =>{
 		setBreakfastClass("selected")
 		setAllDayClass("")
@@ -67,9 +71,9 @@ export default function Hall() {
 					</div>
 					<div className="menu">
 						<aside>
-							<LinkAside className="active" type="burger">Burgers</LinkAside>
-							<LinkAside type="sides">Adicionais</LinkAside>
-							<LinkAside type="drinks">Bebidas</LinkAside>
+							<LinkAside className={activeBurgers ? "active" : null} type="burger">Burgers</LinkAside>
+							<LinkAside className={activeSides ? "active" : null} type="sides">Adicionais</LinkAside>
+							<LinkAside className={activeDrinks ? "active" : null} type="drinks" >Bebidas</LinkAside>
 						</aside>
 
 						<section className="products">
