@@ -17,8 +17,8 @@
 }
 
 .product-image {
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -49,4 +49,7 @@
 
 .label-product-box {
     margin-top: -2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

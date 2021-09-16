@@ -7,9 +7,11 @@ import ButtonDefault from '../../components/ButtonDefault';
 import './hall.scss';
 import Input from '../../components/Input';
 
-import ProductArea from '../../components/ProductArea'
-import burger from '../../img/burger-example.png';
-import ButtonRadio from '../../components/ButtonRadio';
+import Snack from '../../components/Breakfast/Snack';
+import Coffee from '../../components/Breakfast/Coffee';
+import Juice from '../../components/Breakfast/Juice';
+import InputSelect from '../../components/InputSelect';
+
 
 
 export default function Hall() {
@@ -28,20 +30,11 @@ export default function Hall() {
 		third: 'bebidas',
 	})
 
-	// const [activeBurgers, setActiveBurgers] = useState(true)
-	// const [activeSides, setActiveSides] = useState(false)
-	// const [activeDrinks, setActiveDrinks] = useState(false)
-	// const [activeSandwiches, setActiveSandwiches] = useState(true)
-	// const [activeCoffes, setActiveCoffes] = useState(false)
-	// const [activeJuices, setActiveJuices] = useState(false)
-
 	const [activation1, setActivation1] = useState(true)
 	const [activation2, setActivation2] = useState(false)
 	const [activation3, setActivation3] = useState(false)
 
-	const[mensagem, setMensagem] = useState("Burgers")
-
-
+	const[products, setProducts] = useState(<Snack/>)
 
 	const selectBreakfast = () => {
 		setActivation1(true)
@@ -50,7 +43,7 @@ export default function Hall() {
 		setBreakfastClass("selected")
 		setAllDayClass("")
 		setValues({
-			first: 'sandwiches',
+			first: 'snacks',
 			second: 'coffes',
 			third: 'juices',
 		})
@@ -91,7 +84,7 @@ export default function Hall() {
 				setActivation1(false)
 				setActivation2(true)
 				setActivation3(false)
-				setMensagem("Produtos Adicionais")
+				
 				break
 			case "BEBIDAS":
 				setActivation1(false)
@@ -102,24 +95,24 @@ export default function Hall() {
 				setActivation1(true)
 				setActivation2(false)
 				setActivation3(false)
+				setProducts(<Snack/>)
 				break;
 			case "CAFÉS":
 				setActivation1(false)
 				setActivation2(true)
 				setActivation3(false)
+				setProducts(<Coffee/>)
 				break
 			case "SUCOS":
 				setActivation1(false)
 				setActivation2(false)
 				setActivation3(true)
+				setProducts(<Juice/>)
 				break
 
 			default:
 		}
-
-
 	}
-
 
 	return (
 		<div className="pages-container">
@@ -157,6 +150,7 @@ export default function Hall() {
 
 				<section className="order-filling">
 					<div className="client-data margin-bottom-2">
+						<InputSelect/>
 						<Input className="input-hall" placeholder="Insira o nome do cliente" />
 					</div>
 					<div className="menu">
@@ -167,65 +161,8 @@ export default function Hall() {
 						</aside>
 
 						<section className="products">
-							<p>{mensagem}</p>
-							<div className="products-row">
-								<ProductArea
-									inputId='simples'
-									inputName='burger-options'
-									inputValue='Hambúrg. Simples'
-									// inputOnChange={}
-									productImg={burger}
-									productImgAlt='burger example'
-									productName='Simples'
-									productPrice="R$ 10,00"
-								/>
-
-								<ProductArea
-									inputId='duplo'
-									inputName='burger-options'
-									inputValue='Hambúrg. Duplo'
-									// inputOnChange={}
-									productImg={burger}
-									productImgAlt='burger example'
-									productName='Duplo'
-									productPrice="R$ 15,00"
-								/>
-							</div>
-
-							<div className="radio-wrapper">
-								<ButtonRadio
-									// onChange={onChange} 
-									firstInputName="drinks"
-									firstInputValue="water"
-									firstInputId="water"
-									firstLabel="500ml"
-									firstPrice="R$ 5,00"
-									secondInputName="drinks"
-									secondInputValue="soda"
-									secondInputId="soda"
-									secondLabel="700ml"
-									secondPrice="R$ 7,00"
-									secondClassName="second-btn"
-									thirdClassName="hidden"
-								/>
-
-								<ButtonRadio
-									// onChange={onChange} 
-									firstInputName="burger"
-									firstInputValue="carne"
-									firstInputId="carne"
-									firstLabel="Carne"
-									secondInputName="burger"
-									secondInputValue="frango"
-									secondInputId="frango"
-									secondLabel="Frango"
-									thirdInputName="burger"
-									thirdInputValue="vegetariano"
-									thirdInputId="vegetariano"
-									thirdLabel="Vegetariano"
-									thirdClassName="third-btn"
-								/>
-							</div>
+							{products}
+						
 						</section>
 					</div>
 				</section>
@@ -233,7 +170,6 @@ export default function Hall() {
 
 			</main>
 		</div>
-
 	)
 };
 
