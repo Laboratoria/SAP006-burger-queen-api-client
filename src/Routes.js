@@ -25,7 +25,7 @@ function Routes(){
                 <Route path="/cadastre-se" component={Registration} />
                 <Route path="*" element={<h1>Not Found</h1>} />
                 <PrivateRoute path="/mesas" component={ User }/>
-                {/* <PrivateRoute path="/cozinha" component={}/>             */}
+                
             </Switch>
             
         </BrowserRouter> 
