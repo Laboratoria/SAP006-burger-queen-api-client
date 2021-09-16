@@ -2,12 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login/login';
 import Register from './pages/Register/register';
-// eslint-disable-next-line import/no-unresolved
-import Table from './pages/Table/table';
+import Sallon from './pages/Sallon/sallon';
 import Page404 from './pages/Page404/index';
 import Pedidos from './pages/Pedidos/index';
 import Kitchen from './pages/Kitchen/kitchen';
 import GlobalStyle from './components/GlobalStyle';
+
+// import PrivateRoute from './service/PrivateRoute';
 
 function Routes() {
   return (
@@ -22,11 +23,11 @@ function Routes() {
           <Register />
         </Route>
 
-        <Route exact path="/table">
-          <Table />
+        <Route exact path="/sallon">
+          <Sallon />
         </Route>
 
-        <Route exact path="/table/pedidos">
+        <Route exact path="/sallon/pedidos/:mesa">
           <Pedidos />
         </Route>
 

@@ -6,8 +6,7 @@ function Mesas({ mesa }) {
 
   return (
 
-    // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label key={mesa} className="buttons-mesas">
+    <label htmlFor="button-table" type="button" key={mesa} className="buttons-mesas">
 
       <div className="table-button">
         <div className="red-circle">
@@ -19,7 +18,7 @@ function Mesas({ mesa }) {
                 className="button-mesa"
                 onClick={() => {
                   history.push({
-                    pathname: 'table/pedidos',
+                    pathname: `sallon/pedidos/${mesa}`,
                   });
                 }}
               />

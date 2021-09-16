@@ -11,7 +11,7 @@ function Login() {
   const [visibleInput, setVisibleInput] = useState(false);
   const routeHistory = useHistory();
   const salao = () => {
-    routeHistory.push('/table');
+    routeHistory.push('/sallon');
   };
   const kitchen = () => {
     routeHistory.push('/kitchen');
@@ -40,7 +40,7 @@ function Login() {
           const tokenUser = localStorage.setItem('token', token);
           const idUser = localStorage.setItem('id', id);
 
-          if (tokenUser !== null && idUser !== null && json.role === 'kitchen') {
+          if (tokenUser !== null && idUser !== null && json.role === 'cozinha') {
             kitchen();
           } else if (tokenUser !== null && idUser !== null && json.role === 'salao') {
             salao();
