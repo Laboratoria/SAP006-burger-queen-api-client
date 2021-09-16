@@ -7,6 +7,4 @@ const Input = ({id, ...props}) => {
     )
 }
 
-
-
 export default Input;
