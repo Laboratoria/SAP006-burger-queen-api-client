@@ -42,6 +42,16 @@ a {
   box-shadow: 0px 4px 20px 4px rgb(73 73 73 / 25%);
 }
 
+.input-login p {
+  color: red;
+  margin-bottom: 1px;
+  margin-top: -22px;
+}
+
+.errorNotice {
+  margin-top: 1px;
+}
+
 @media (min-width: 1400px) {
   .container-login {
     padding: 6%;
