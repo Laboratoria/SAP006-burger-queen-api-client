@@ -7,7 +7,7 @@ import Menu from '../pages/menu/menu.jsx'
 import Kitchen from '../pages/kitchen/kitchen.jsx'
 import Orders from '../pages/orders/orders.jsx'
 import NotFound from '../pages/notfound/notfound.jsx'
-//import PrivateRoute from './privateRoute.js';
+//import { PrivateRoute } from './privateRoute.js';
 
 const Routes = () => {
   return (
