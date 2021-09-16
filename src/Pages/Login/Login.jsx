@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from '../../components/Button';
+import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input.jsx'
 import { LoginWithEmail } from '../../services/auth';
 import login from '../../Assets/login.png';
