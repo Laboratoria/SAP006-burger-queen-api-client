@@ -1,10 +1,11 @@
 .input {
-    margin-bottom: 22px;
+    margin-bottom: 19px;
     background-color: #E5E5E5;
     border: none;
     justify-content: center;
     text-align: center;
     padding: 5px;
+    margin-top: 7px;
 }
 
 @media (min-width:1400px) {

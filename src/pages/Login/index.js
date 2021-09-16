@@ -6,6 +6,7 @@ import logoMagic from "../../img/logoMagic.png";
 import useForm from "./useForm.js"
 import signInValidation from "./signInValidation.js";
 
+
 function Login() {
 
   const {values, handleChange, handleSubmit, errors} = useForm(signInValidation);
@@ -26,7 +27,7 @@ function Login() {
           type="text"
           >
           </Input>
-          {errors.email && <p>{errors.email}</p>}
+          {errors.email && <p class="errorNotice">{errors.email}</p>}
           <Input 
           placeholder="Senha"
           name="password"
@@ -35,7 +36,7 @@ function Login() {
           type="password"
           > 
           </Input>
-          {errors.password && <p>{errors.password}</p>} 
+          {errors.password && <p class="errorNotice">{errors.password}</p>} 
         </form>
 
         <Button

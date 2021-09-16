@@ -2,12 +2,19 @@ import  Input  from '../../components/inputs/index.js';
 import Button from '../../components/Button/button.js';
 import '../signUp/style.css';
 import logoMagic from "../../img/logoMagic.png";
-
-function alertApears() {
-  alert("clicouuu");
-}
+import { signUpWithEmailAndPassword } from '../../services/register.js';
 
 const signUp = () => {
+    function handleClick(e) {
+      e.preventDefault()
+      signUpWithEmailAndPassword("Thais","thais4444444444@hotmail.com", "123456", "Atendente")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    };
     return (
     <main>
     <img alt="" src={logoMagic}></img>
@@ -22,7 +29,7 @@ const signUp = () => {
       <p>Selecione seu cargo:</p>
       <label><input type="radio" name="workingOptions" value="Atendente"></input>Atendente</label>
       <label><input type="radio" name="workingOptions" value="Cozinheiro(a)"></input>Cozinheiro(a)</label>
-      <Button btnClass="createAccount" btnText="Cadastrar" btnOnClick={alertApears} />
+      <Button btnClass="createAccount" btnText="Cadastrar" btnOnClick={handleClick} />
     </form>
     </main>
     );
