@@ -1,5 +1,5 @@
 // import { useHistory } from 'react-router-dom';
-import GeneralButton from './Menu/style'
+import GeneralButton from './styleBtn'
 
 const Button = ({ variant, children, onClick }) => {
     const classes = `button ${variant}`;
@@ -15,5 +15,3 @@ const Button = ({ variant, children, onClick }) => {
 }
 
 export default Button;
-
- 

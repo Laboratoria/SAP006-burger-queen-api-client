@@ -7,8 +7,6 @@ import Input from '../../components/Input/Input.jsx'
 import { LoginWithEmail } from '../../services/auth';
 import login from '../../Assets/login.png';
 
-
-
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -37,10 +35,10 @@ const Login = () => {
                 </Form>
 
                 <Button variant='enter-app' onClick={LoginWithEmail}>
-                    <Link to='/tables'>entrar</Link>
+                    <Link to='/tables'>Login</Link>
                 </Button>
-                <PhraseRegister>É o seu primeiro dia no Vixi?
-                    <Link to='/register'>Cadastre-se aqui</Link>
+                <PhraseRegister>Is your first day at Vixi?
+                    <Link to='/register'>Sign in here!</Link>
                 </PhraseRegister>
             </LoginBox>
     )

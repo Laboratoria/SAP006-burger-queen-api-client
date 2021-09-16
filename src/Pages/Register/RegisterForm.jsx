@@ -85,8 +85,8 @@ const Register = ({submitForm}) => {
                     className='input-radio'
                     // onChange={handleChange}
                     value={values.role}
-                    labeltext='Atendente' />
-                    Atendente
+                    labeltext='Hall' />
+                    Hall
                 </label>
                 {errors.role && <p className='error'>{errors.role}</p>}
                 <label>
@@ -96,20 +96,99 @@ const Register = ({submitForm}) => {
                     className='input-radio'
                     // onChange={handleChange}
                     value={values.role}
-                    labeltext='cozinha' />
+                    labeltext='Cozinha' />
                     Cozinha
                 </label>
                 {errors.role && <p className='error'>{errors.role}</p>}
             </form>
             <Button variant='enter-app' onClick={handleFormSubmit}>
-                <Link to='/'>registrar</Link>
+                <Link to='/'>ENTRAR</Link>
             </Button>
             {}
-            <p>Já possui uma conta?
-                <Link to='/'>Faça seu login aqui</Link>
+            <p>Já trabalha no Vixi?
+                <Link to='/'>Faça seu login aqui!</Link>
             </p>
         </div>
     )
 }
 
 export default Register;
+
+// const Register = () => {
+    
+//     return (
+//         <div className='div-style'>
+//              <img src={register} alt='icon-register' />
+//             <p>Crie sua conta</p>
+//             <Input 
+//                 type='text' 
+//                 id='name'
+//                 name='username'
+//                 values={values.username}
+//                 onChange={handleChange}
+//                 placeholder='full name' 
+//                 errormessage='Please, enter a valid name.' />
+//             {errors.username && <p className='error'>{errors.username}</p>}
+//             <Input 
+//                 type='email' 
+//                 id='email' 
+//                 name='email'
+//                 values={values.email}
+//                 onChange={handleChange}
+//                 placeholder='e-mail'
+//                 errormessage='Please, enter a valid email address.' />
+//             {errors.email && <p className='error'>{errors.email}</p>}
+//             <Input 
+//                 type='password' 
+//                 id='password' 
+//                 name='password'
+//                 value={values.password}
+//                 onChange={handleChange}
+//                 placeholder='senha'
+//                 errormessage='Please, enter a valid password.' />
+//             {errors.password && <p className='error'>{errors.password}</p>}
+//             <Input 
+//                 type='password'
+//                 id='confirm-password' 
+//                 name='confirmPassword'
+//                 value={values.confirmPassword}
+//                 onChange={handleChange}
+//                 placeholder='confirmar senha'
+//                 errormessage='The passwords do not match.' />
+//             {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
+//             <form >
+//                 <label><Input 
+//                     type='radio'
+//                     name='role'
+//                     className='input-radio'
+//                     // onChange={handleChange}
+//                     value={values.role}
+//                     labeltext='Hall' />
+//                     Hall
+//                 </label>
+//                 {errors.role && <p className='error'>{errors.role}</p>}
+//                 <label>
+//                     <Input 
+//                     type='radio' 
+//                     name='role'
+//                     className='input-radio'
+//                     // onChange={handleChange}
+//                     value={values.role}
+//                     labeltext='Kitchen' />
+//                     Kitchen
+//                 </label>
+//                 {errors.role && <p className='error'>{errors.role}</p>}
+//             </form>
+//             <Button variant='enter-app' onClick={handleFormSubmit}>
+//                 <Link to='/'>Register</Link>
+//             </Button>
+//             {}
+//             <p>Already have an account?
+//                 <Link to='/'>Login here!</Link>
+//             </p>
+//         </div>
+//     )
+// }
+
+
+

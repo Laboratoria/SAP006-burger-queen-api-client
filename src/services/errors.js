@@ -4,6 +4,8 @@ const validation = (values) => {
 
     if(!values.fullName){
         errors.fullName = 'Insira seu nome completo.'
+    } else if(values.fullName.lenght < 4){
+        errors.email='Este e-mail é inválido'
     }
 
     if(!values.email){
@@ -24,8 +26,8 @@ const validation = (values) => {
         errors.password='As senhas não conferem.'
     }
 
-    if(!values.occupation){
-        errors.occupation='Selecione uma opção.'
+    if(!values.role){
+        errors.role='Selecione uma opção.'
     }
 
     return errors;
