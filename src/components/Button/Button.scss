@@ -1,0 +1,55 @@
+
+$orange: #FF8C00;
+
+.auth-submit-form {
+  width: 60%;
+  height: 6vh;
+
+  margin: 0% auto;
+
+  background-color: $orange;
+
+  font-size: 210%;
+}
+
+.auth-route-navigation {
+  color: $orange;
+  font-size: 170%;
+}
+
+.auth-show-or-not-password {
+  height: 3vh;
+  width: 3vh;
+
+  position:absolute;
+  right: 5%;
+
+  background-size: 3vh;
+}
+
+.auth-not-show-password{
+  background-image: url('../../assets/icons/input-password-not-show.png');
+}
+
+.auth-show-password{
+  background-image: url('../../assets/icons/input-password-show.png');
+}
+
+
+.auth-modal-button {
+  position: relative;
+  margin: 6% auto 1%;
+  padding: 2% 4%;
+
+  background-color: wheat;
+  font-size: 90%;
+
+  border:#535659 solid 2pt;
+  border-radius: 5px;
+  box-shadow: 4px 5px 15px 5px rgba(0,0,0,0.29);
+}
+
+.auth-modal-button:hover{
+  background-color: #535659;
+  color: white;
+}

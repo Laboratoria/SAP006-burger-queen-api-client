@@ -8,98 +8,22 @@ $auth-error-message: #FFC299;
   background-color: $dark-gray;
   height: 100vh;
 
-  header{
+  main {
     display: flex;
     flex-direction: column;
   }
 
-  .logo{
-    height: 28vh;
-    width: 28vh;
-  }
-
-  form {
-    position: relative;
+  .auth-navigation-div{
     display: flex;
-    flex-direction: column;
-    width: 60%;
-    
-    div {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      margin: 0 auto;
-
-      input {
-        line-height: 5vh;
-    
-        border-bottom: 2.5pt;
-        padding-left: 10%;
-    
-        font-size: 180%;
-        color: white;
-      }
-
-      ::placeholder{
-        color:white;
-      }
-
-      label {
-        display: none;
-        position: absolute;
-        bottom: 25%;
-        left: 10%;
-        font-size: 190%;
-        color: white;
-      }
-
-      input:valid ~ label,
-      .move-label-up {
-        display: block;
-        bottom: 85%;
-        font-size: 160%;
-        color: $light-gray;
-      }
-
-      img{
-        position: absolute;
-        bottom: 30%;
-        height: 3vh;
-        width: 3vh;
-      }
-
-    }
-
-    button {
-      width: 90%;
-      height: 6vh;
-
-      background-color: $orange;
-
-      font-size: 210%;
-
-      cursor: pointer;
-    }
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 
     p {
-      color: white;
       font-size: 170%;
-
-      a {
-        text-decoration: none;
-        color: $orange;
-      }
+      padding-right: 1%;
+      color: white;
     }
-
-  }
-
-  .auth-correct-input{
-    border-bottom: black solid;
-  }
-
-  .auth-wrong-input{
-    border-bottom: $orange solid;
   }
 
   .auth-error-message{
@@ -108,52 +32,8 @@ $auth-error-message: #FFC299;
     color: $auth-error-message;
   }
 
-  .auth-show-or-not-password {
-    height: 3vh;
-    width: 3vh;
-
-    position:absolute;
-    right: 5%;
-
-    background-size: 3vh;
-    background-color: transparent;
-    background-repeat: no-repeat;
-  }
-
-  .auth-not-show-password{
-    background-image: url('../assets/icons/input-password-not-show.png');
-  }
-
-  .auth-show-password{
-    background-image: url('../assets/icons/input-password-show.png');
-  }
 }
 
-.login-content {
-  .logo{
-    margin: -20% auto 0 auto;
-  }
-
-  form {
-    margin: 10% auto;
-
-    div {
-      margin-bottom: 10%;
-    }
-  }
-
-  button {
-    margin: 8% auto 4% auto;
-  }
-
-  p {
-    margin: 4% auto;
-  }
-
-  .auth-show-or-not-password {
-    bottom:0%;
-  }
-}
 
 .register-content {
   .logo{
@@ -197,15 +77,4 @@ $auth-error-message: #FFC299;
     }
   }
 
-  button {
-    margin: 2% auto 2%;
-  }
-
-  p {
-    margin: auto;
-  }
-
-  .auth-show-or-not-password {
-    bottom: 40%;
-  }
 }

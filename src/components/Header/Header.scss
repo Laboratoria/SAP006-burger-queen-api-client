@@ -1,0 +1,15 @@
+header{
+  display: flex;
+  flex-direction: column;
+}
+
+.logo{
+  height: 28vh;
+  width: 28vh;
+}
+
+.login-content {
+  .logo{
+    margin: -20% auto 0 auto;
+  }
+}

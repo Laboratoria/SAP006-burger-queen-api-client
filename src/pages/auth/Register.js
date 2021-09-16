@@ -101,7 +101,7 @@ export const Register = () => {
             labelText='Senha'
             iconSRC={inputPassword}
             buttonClass={`auth-show-or-not-password ${showPassword ? 'auth-show-password' : 'auth-not-show-password'}`}
-            buttonEvent={() => showOrNotShowPassword(showPassword, setShowPassword)}
+            OnClick={() => showOrNotShowPassword(showPassword, setShowPassword)}
           />
           <AuthErrorMessages  
             children =  {password !== confirmPassword ? authErrorsMessages.confirmPassword : authErrorsMessages.password}
@@ -116,7 +116,7 @@ export const Register = () => {
             labelText='Confirme a Senha'
             iconSRC={inputPassword}
             buttonClass={`auth-show-or-not-password ${showConfirmPassword ? 'auth-show-password' : 'auth-not-show-password'}`}
-            buttonEvent={() => showOrNotShowPassword(showConfirmPassword, setShowConfirmPassword)}
+            OnClick={() => showOrNotShowPassword(showConfirmPassword, setShowConfirmPassword)}
           />
           <AuthErrorMessages
             children =  {password !== confirmPassword ? authErrorsMessages.confirmPassword : authErrorsMessages.password}
@@ -149,7 +149,7 @@ export const Register = () => {
           </div>
           <Button
             buttonType = 'submit'
-            buttonEvent = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs})}
+            OnClick = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs})}
           >Registrar
           </Button>
           <p> Ou <Link to = '/'> entre </Link> com contas existentes.</p>
@@ -160,7 +160,7 @@ export const Register = () => {
           <AuthModal 
             children = 'Cadastro realizado com sucesso!'
             buttonText = 'OK'
-            buttonEvent = {() => navigateTo(history, '/orders', setAuthSucessModal)}
+            OnClick = {() => navigateTo(history, '/orders', setAuthSucessModal)}
             buttonIIClass = 'display-none'
           />
         ): null}
@@ -170,7 +170,7 @@ export const Register = () => {
           <AuthModal 
             children = 'Este email já está cadastrado no sistema.'
             buttonText = 'Cadastre um novo email.'
-            buttonEvent = {() => navigateTo(history, '/register', setAuthErrorModal)}
+            OnClick = {() => navigateTo(history, '/register', setAuthErrorModal)}
             buttonIIText = 'Entre com uma conta já existente.'
             buttonIIEvent = {() => navigateTo(history, '/', setAuthErrorModal)}
           />

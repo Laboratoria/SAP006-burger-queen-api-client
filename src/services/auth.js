@@ -76,6 +76,7 @@ export const authLogin = (event, {userData}, {setAuthModals}) => {
   })
 };
 
-export const showOrNotShowPassword = (value, setValue) => {
+export const showOrNotShowPassword = (event, value, setValue) => {
+  event.preventDefault();
   setValue(value ? false : true);
 };

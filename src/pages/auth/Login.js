@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 import { authLogin } from '../../services/auth';
-import { showOrNotShowPassword } from '../../services/auth';
 import { navigateTo } from '../../services/routes';
 
 import { AuthModal } from '../../components/Modal/Modal';
@@ -13,19 +11,13 @@ import { InputContentUserData } from '../../components/UserData/UserData';
 
 import '../../styles/Auth.scss'
 
-import loginBg from '../../assets/images/login-bg.jpg';
-import logoCombosBurger from '../../assets/images/logo-combos-burger.png';
-import inputEmail from '../../assets/icons/input-email.png';
-import inputPassword from '../../assets/icons/input-password.png';
-
 export function Login () {
 
   const history = useHistory();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const userData = {email, password};
-
-  const [showPassword, setShowPassword] = useState(false);
+  const userData = {email, password}
 
   const [authErrorModal, setAuthErrorModal] = useState(false);
   const [authSucessModal, setAuthSucessModal] = useState(false);
@@ -33,69 +25,52 @@ export function Login () {
 
   return (
   <div className = 'login-and-register-content login-content'>
-    <Header
-      headerBackgroundClassName='login-bg'
-      headerBackgroundSRC={loginBg}
-      headerLogoClassName='logo'
-      headerLogoSRC={logoCombosBurger}
-    />
+    <Header 
+      Location = 'login'/>
     <main>
       <form>
         <InputContentUserData 
-          inputClass='auth-correct-input'
-          inputData='email'
-          inputType='email'
-          inputPlaceholder='Email'
-          inputValue={email}
-          inputOnChange={(event) => setEmail(event.target.value)}
-          labelClass={`${email ? 'move-label-up' : ''}`}
-          labelText='Email'
-          iconSRC={inputEmail}
-          iconAlt='Email'
-          buttonClass='display-none'
+          Subject='email'
+          InputValue = {email}
+          InputOnChange = {(event) => setEmail(event.target.value)}
         />
         <InputContentUserData 
-          inputClass='auth-correct-input'
-          inputData='password'
-          inputType={showPassword ? 'text' : 'password'}
-          inputPlaceholder='Senha'
-          inputValue={password}
-          inputOnChange={(event) => setPassword(event.target.value)}
-          labelText='Senha'
-          iconSRC={inputPassword}
-          iconAlt='Password'
-          buttonClass={`auth-show-or-not-password ${showPassword ? 'auth-show-password' : 'auth-not-show-password'}`}
-          buttonEvent={() => showOrNotShowPassword(showPassword, setShowPassword)}
+          Subject='password'
+          InputValue = {password}
+          InputOnChange = {(event) => setPassword(event.target.value)}   
         />
-        <Button
-          buttonType = 'button'
-          buttonEvent = {(event) => authLogin(event, {userData}, {setAuthModals})}
-        > Entrar 
-        </Button>
-        <p> Ou <Link to = '/register'> registre-se </Link> </p>
       </form>
-    </main>
-    <section>
+        <Button 
+          Role = 'authSubmitForm'
+          ButtonOnClick = {(event) => authLogin(event, {userData}, {setAuthModals})} 
+          ButtonChildren = 'Entrar'
+        /> 
+        <div className='auth-navigation-div'>
+          <p>Ou</p>
+          <Button 
+            Role = 'authNavigateTo'
+            ButtonOnClick = {() => navigateTo(history, '/register', setAuthSucessModal)} 
+            ButtonChildren = 'registre-se'
+          /> 
+        </div>
+          <section>
         {authSucessModal ? (
           <AuthModal 
-            children = 'Cadastro realizado com sucesso!'
-            buttonText = 'OK'
-            buttonEvent = {() => navigateTo(history, '/orders', setAuthSucessModal)}
-            buttonIIClass = 'display-none'
+            Role = 'authSucessModal'
+            ButtonOnClick = {() => navigateTo(history, '/register', setAuthSucessModal)} 
           />
         ): null}
       </section>
       <section>
         {authErrorModal ? (
           <AuthModal 
-            children = 'Usuárie não encontrade. Verifique seus dados :)'
-            buttonText = 'Tente novamente'
-            buttonEvent = {() => navigateTo(history, '/', setAuthErrorModal)}
-            buttonIIText = 'Crie uma nova conta'
-            buttonIIEvent = {() => navigateTo(history, '/register', setAuthErrorModal)}
+            Role = 'authErrorModal'
+            ButtonOnClick = {() => navigateTo(history, '/', setAuthErrorModal)}
+            ButtonOnClickSecondOption = {() => navigateTo(history, '/register', setAuthErrorModal)}
           />
         ): null}
       </section>
+    </main>
   </div>
   )
 }

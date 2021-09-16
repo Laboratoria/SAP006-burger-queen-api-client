@@ -1,14 +1,33 @@
 import React from 'react';
+import './Button.scss';
 
-export const Button = ({datatestid, buttonType, buttonClass, buttonEvent, children}) => {
+export const Button = ({ Role, Conditional, ButtonOnClick, ButtonChildren }) => {
+
+  const ButtonProps = {
+    'authNavigateTo': {
+      'ButtonClass':'auth-route-navigation',
+    },
+    'authSubmitForm': {
+      'ButtonClass':'auth-submit-form',
+    },
+    'authShowOrNotShowPassword':{
+      'ButtonClass':`auth-show-or-not-password ${Conditional ? 'auth-show-password' : 'auth-not-show-password'}`
+    },
+    'authSucessModal':{
+      'ButtonClass':'auth-modal-button '
+    },
+    'authErrorModal':{
+      'ButtonClass':'auth-modal-button '
+    },
+  }
+
   return (
     <button 
-      data-testid={datatestid}
-      type={buttonType}
-      className={buttonClass}
-      onClick={buttonEvent}
+    className={ButtonProps[Role].ButtonClass}
+    type='submit' 
+    onClick={ButtonOnClick}
     >
-      {children}
+      {ButtonChildren}
     </button> 
   )
 }
