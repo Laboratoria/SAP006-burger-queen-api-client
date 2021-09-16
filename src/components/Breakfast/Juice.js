@@ -3,7 +3,7 @@ import './breakfast.scss';
 
 import ProductArea from '../ProductArea';
 import suco from '../../img/juice.png';
-import ButtonDefault from '../ButtonDefault';
+
 
 export default function Juice() {
 	return (
@@ -21,9 +21,7 @@ export default function Juice() {
                 />      
             </div>
 
-            <ButtonDefault className="btn-default btn-add-item"> 
-                ADICIONAR ITEM 
-            </ButtonDefault>
+            
         </div>
 	);
 }

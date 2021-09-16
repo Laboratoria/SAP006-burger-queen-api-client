@@ -162,11 +162,15 @@ export default function Hall() {
 
 						<section className="products">
 							{products}
+							<ButtonDefault className="btn-default btn-add-item"> 
+          			ADICIONAR ITEM 
+        			</ButtonDefault>
 						
 						</section>
 					</div>
 				</section>
 				<CartArea />
+			
 
 			</main>
 		</div>

@@ -4,7 +4,6 @@ import './breakfast.scss';
 import ProductArea from '../ProductArea';
 import americano from '../../img/cafe-americano.png';
 import leite from '../../img/cafe-leite.png';
-import ButtonDefault from '../ButtonDefault';
 
 export default function Coffee() {
 	return (
@@ -33,9 +32,7 @@ export default function Coffee() {
                 />      
             </div>
 
-            <ButtonDefault className="btn-default btn-add-item"> 
-                ADICIONAR ITEM 
-            </ButtonDefault>
+           
         </div>
 	);
 }

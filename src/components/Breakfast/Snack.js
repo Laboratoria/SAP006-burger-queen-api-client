@@ -3,7 +3,6 @@ import './breakfast.scss';
 
 import ProductArea from '../ProductArea';
 import misto from '../../img/misto-quente.png';
-import ButtonDefault from '../ButtonDefault';
 
 export default function Snack() {
 	return (
@@ -21,9 +20,6 @@ export default function Snack() {
                 />      
             </div>
 
-            <ButtonDefault className="btn-default btn-add-item"> 
-                ADICIONAR ITEM 
-            </ButtonDefault>
         </div>
 	);
 }
