@@ -1,13 +1,9 @@
 import React from "react";
 
-function Button(Login) {
+export default function Button() {
     return (
-        <button></button>
-
+        <button>Feijão</button>
     );
     
 }
-
-export default Button;
-
 

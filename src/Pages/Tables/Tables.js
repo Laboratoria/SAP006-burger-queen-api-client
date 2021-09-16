@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useParams } from 'react-router-dom';
  
-function User(){
+export default function User(){
     const { name } = useParams();
     return (
         <div>
@@ -10,4 +10,3 @@ function User(){
         </div>
     )   
 }
-export default User;
