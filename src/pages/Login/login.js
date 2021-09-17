@@ -11,34 +11,41 @@ import jesusDesk from '../../img/jesus-desk.gif'
 
 const Login = () => {
 
-  const [ infoUser, setInfoUser ] = useState({ email: '', password: '' });
+  const [infoUser, setInfoUser] = useState({ email: '', password: '' });
   console.log(infoUser);
-  console.log(setInfoUser);
+
+
+  const handleChange = (e) => {
+    const informationUser = e.target.id;
+    setInfoUser({ ...infoUser, [informationUser]: e.target.value })
+
+    // if (informationUser === 'password') {      
+    // }
+  }
 
   return (
     <div className='login'>
       <figure>
         <img className='fundo-login'
-          src={fundo} />
+          src={fundo} alt='fundo' />
         <img className='fundo-desk'
-          src={fundoDesk} />
+          src={fundoDesk} alt='fundoDesk'/>
         <img className='hamburguer-login'
-          src={hamburguer} />
+          src={hamburguer} alt='hamburguer'/>
       </figure>
-      <Link to='/home'>Ir para home</Link>
-      
+      <Link to='/home'>Ir para home</Link>      
       <figure className='imagens-login'>
         <img className='jesus-logo'
           src={jesus} alt='Login APP' />
         <img className='jesus-desk'
-          src={jesusDesk} />
+          src={jesusDesk} alt='jesusDesk'/>
       </figure>
       <form className='form-login'>
         <fieldset className='form-inner'>
           <input className='input-login'
           type='email' id='email' placeholder='Email' required='' 
           value={infoUser.email} 
-          onChange={e => setInfoUser({...infoUser, email: e.target.value})}/>
+          onChange={handleChange}/>
           <section className ='icons-input'>
           <i className='far fa-envelope icons'></i>
           </section>
@@ -47,14 +54,14 @@ const Login = () => {
           <input className="input-password" 
             type="password" id="password" placeholder="Password" required="" 
             value={infoUser.password}
-            onChange={e => setInfoUser({...infoUser, password: e.target.value})}/>
-            <section className="icons-input">
+            onChange={handleChange} />
+          <section className="icons-input">
             <i id="show" className="fas fa-lock icons"></i>
             <i id="hide" className="fas fa-lock-open icons"></i>
-            </section>
+          </section>
         </fieldset>
         <input className='btn-login'
-        type='submit'value='Login'/>
+          type='submit' value='login' />
       </form>
     </div>
   )
