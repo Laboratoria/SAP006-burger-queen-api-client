@@ -1,6 +1,6 @@
 // import { Redirect } from 'react-router-dom';
 
-import Button from '../../components/Button/Button';
+// import Button from '../../components/Button';
 
 const NotFound = () => {
 
@@ -11,7 +11,7 @@ const NotFound = () => {
     return (
         <div className='div-style'>
             NotFound
-            <Button />
+            {/* <Button /> */}
         </div>
     )
 }

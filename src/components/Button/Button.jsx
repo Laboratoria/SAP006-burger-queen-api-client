@@ -15,5 +15,3 @@ const Button = ({ variant, children, onClick }) => {
 }
 
 export default Button;
-
- 
