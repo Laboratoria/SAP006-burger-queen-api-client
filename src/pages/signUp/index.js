@@ -5,7 +5,7 @@ import "../signUp/style.css";
 import logoMagic from "../../img/logoMagic.png";
 // import ValueAndError from "./formValueAndError.js";
 import validateValues from "./ValidateRegister.js";
-import { signUpWithEmailAndPassword } from "../../services/register&login.js";
+import { signUpWithEmailAndPassword } from "../../services/data.js";
 
 
 
