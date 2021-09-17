@@ -3,13 +3,13 @@ import Input from "../../components/inputs/index.js";
 import { Link } from "react-router-dom";
 import "./style.css";
 import logoMagic from "../../img/logoMagic.png";
-import useForm from "./useForm.js"
+// import useForm from "./useForm.js"
 import signInValidation from "./signInValidation.js";
-
+import UseForm from './signInSubmitted.js'
 
 function Login() {
 
-  const {values, handleChange, handleSubmit, errors} = useForm(signInValidation);
+  const {values, handleChange, handleSubmit, errors} = UseForm(signInValidation);
 
   return (
     <form className="container">
