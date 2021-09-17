@@ -2,6 +2,7 @@
 
 import MealNavBar from '../../components/Header/NavBar';
 import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
+import GeneralButton from '../../components/Button/style';
 
 const Tables = () => {
 
@@ -23,7 +24,7 @@ const Tables = () => {
                 </ul>
             </section>
             <input type="text" placeholder="Nome do Cliente"/>
-            <button>Confirmar Pedido</button>
+            <GeneralButton>Confirmar Pedido</GeneralButton>
             <MenuOptionsNavBar />
         </div>
     )
