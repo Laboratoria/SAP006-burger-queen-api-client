@@ -3,7 +3,7 @@ import {BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Login from './Pages/Login/Login';
 import Registration from './Pages/Cadastro/Registration';
-import { isAuthenticated } from './services/Auth';
+import { isAuthenticated } from './Services/Auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {... rest} render={props => (
