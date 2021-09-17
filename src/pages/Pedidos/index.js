@@ -19,13 +19,15 @@ function Pedidos() {
 
   const [menu, setMenu] = useState('')
   const [resumopedido, setResumoPedido] = useState([]);
-
+  const [fazerPedido, setFazerPedido] = useState({"client": "", "table": mesa, "products": []});
+  const [erroMessage, setErroMessage] = useState("");
+  const [showError, setShowError] = useState(false)
   const token = localStorage.getItem("token")
    const getAllProducts = () => {
      fetch('https://lab-api-bq.herokuapp.com/products', {
        headers: {
         'accept': 'application/json',
-        "Authorization": `${token}`
+        'Authorization': `${token}`
 
        },
 
@@ -85,6 +87,16 @@ function Pedidos() {
       <div className="finish-menu">
         <h1>Resumo do Pedido</h1>
         <p> Mesa {mesa}</p>
+        <input className="nome-cliente"
+        type="text"
+        placeholder="Digite o nome do cliente"
+        onChange={(event) => 
+          setFazerPedido({...fazerPedido, "client": event.target})
+        }
+        >
+          
+
+        </input>
         <section>
         <label className="item">Item</label>
         {resumopedido.map((item, index) => (
@@ -94,12 +106,15 @@ function Pedidos() {
                 {typeof item.name === "string" ? item.name : item.name.map((item) =>
                 <>
                 <label className="title-pedido">{item.name}</label>  
+                
                 </>              
                 )}
                 
                <label className="prices">
                  {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.price)}
               </label>
+              <label className="title-pedido">{item.id}</label> 
+              <label className="title-pedido">{item.qtd}</label> 
               <input className="qtd-button"
               id="menos-qtd"
               type="button"
@@ -139,6 +154,65 @@ function Pedidos() {
 
         <div className="cash-register">   
         <p className="total-pedido">TOTAL:{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(somaFinal(resumopedido))}</p>
+        </div>
+        <div>
+          <input
+          type="button"
+          value="Finalizar Pedido"
+          onClick={() => {
+            if(fazerPedido.client !== "") {
+              const products = resumopedido.map(item => {
+                return {"id": item.id, "qtd": item.qtd}
+              });
+              fazerPedido.products = products;
+
+              const requestOptions = {
+                method: 'POST',
+                headers: {
+                  "Content-Type": "application/json",
+                  "accept": "application/json",
+                  'Authorization': `${token}`
+                },
+                body: JSON.stringify({
+                  "client": "ana",
+                  "table": mesa,
+                  "products": 
+                  resumopedido.map((item)=> (
+                    {
+                      "id": Number(item.id),
+                      "qtd": Number(item.qtd)
+                    }
+                  )
+                  )
+                }),
+              };
+
+              fetch('https://lab-api-bq.herokuapp.com/orders', requestOptions)
+              .then(response => response.json())
+              .then(data => { 
+                if(data.id !== undefined){
+                  setErroMessage("Pedido enviado com sucesso");
+                  setShowError(true)
+                  setFazerPedido({"client": "", "table":mesa, "products":[] })
+                  console.log("foi")
+                }else{
+                  setShowError(true)
+                  setErroMessage("`${json.message}`")
+                  console.log("oh noo")
+                }
+            })
+
+            }else{  setShowError(true);
+            setErroMessage("Nome do Cliente nao está")
+          }
+          }
+          }
+          
+          >
+
+          </input>
+
+
         </div>
       </div>
 
