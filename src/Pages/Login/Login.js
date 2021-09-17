@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
-import Input from "../../Components/Input";
-import Button from "../../Components/Button/Button";
-import LogoImg from "../../Components/Image/Image";
+import Input from "../../components/Input";
+import Button from "../../components/button/Button";
+import LogoImg from "../../components/image/Image";
 
 function Login() { 
 
