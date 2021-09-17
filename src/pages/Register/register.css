@@ -1,8 +1,6 @@
 .ocean-container{
     background-color: #03e5b7;
     background-image: linear-gradient(315deg, #03e5b7 0%, #037ade 74%); 
-    height: 100vh;
-    width: 100%;
 }
 
 .register-container{
@@ -12,9 +10,11 @@
     align-items: center;
     z-index: 3;
 }
+
 .txt-register {
     margin-bottom: 2rem;
     color: #000000ad;
+    font-family: Bob; 
 }
 
 .logo-register {
@@ -43,11 +43,12 @@
     transform: scale(1.1);
 }
 .secret-text{
-    color: black;
-    display: none;
+    color: #00000063;
+    font-family: Bob;
+    margin-bottom: -1.5rem; 
 
 }
-.secret-text:hover + div {
+.secret-text:hover {
     display: block;
 }
 

@@ -4,25 +4,26 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
 } from 'react-router-dom';
 import Login from './pages/Login/login';
 import Register from './pages/Register/register';
-// eslint-disable-next-line import/no-unresolved
-import Table from './pages/Table/table';
+import Sallon from './pages/Sallon/sallon';
 import Page404 from './pages/Page404/index';
-// import Initial from './pages/Initial';
 import Pedidos from './pages/Pedidos/index';
+import Kitchen from './pages/Kitchen/kitchen';
 import GlobalStyle from './components/GlobalStyle';
 
+// import PrivateRoute from './service/PrivateRoute';
+
 function Routes() {
-  const isAuth = () => {
+  /* const isAuth = () => {
     const user = localStorage.getItem('token');
     if (!user) return false;
 
     return true;
   };
 
+  /*
   const PrivateRoutes = ({ component: Component, ...rest }) => (
 
     <Route
@@ -34,6 +35,7 @@ function Routes() {
       )}
     />
   );
+*/
   return (
     <Router>
       <GlobalStyle />
@@ -46,12 +48,18 @@ function Routes() {
           <Register />
         </Route>
 
-        <PrivateRoutes exact path="/table">
-          <Table />
-        </PrivateRoutes>
-        <PrivateRoutes exact path="/table/pedidos/:mesa">
+        <Route exact path="/sallon">
+          <Sallon />
+        </Route>
+
+        <Route exact path="/sallon/pedidos/:mesa">
           <Pedidos />
-        </PrivateRoutes>
+        </Route>
+
+        <Route exact path="/kitchen">
+          <Kitchen />
+        </Route>
+
         <Route>
           <Page404 />
         </Route>

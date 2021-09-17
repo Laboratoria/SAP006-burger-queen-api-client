@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Button from '../../components/Button/button';
 import InputTxt from '../../components/Input/inputTxt';
 import './login.css';
+import Logo from '../../img/logo-img.png';
 // import Error from '../../components/Errors/errors';
 
 function Login() {
@@ -10,10 +11,10 @@ function Login() {
   const [visibleInput, setVisibleInput] = useState(false);
   const routeHistory = useHistory();
   const salao = () => {
-    routeHistory.push('/table');
+    routeHistory.push('/sallon');
   };
-  const cozinha = () => {
-    console.log('cozinha');
+  const kitchen = () => {
+    routeHistory.push('/kitchen');
   };
 
   const [email, setEmail] = useState('');
@@ -40,7 +41,7 @@ function Login() {
           const idUser = localStorage.setItem('id', id);
 
           if (tokenUser !== null && idUser !== null && json.role === 'cozinha') {
-            cozinha();
+            kitchen();
           } else if (tokenUser !== null && idUser !== null && json.role === 'salao') {
             salao();
           } else {
@@ -53,6 +54,9 @@ function Login() {
   return (
 
     <div className="Login-container">
+      <div className="logo-login">
+        <img className="logo-img-login" src={Logo} alt="Logo The Krusty Krab" />
+      </div>
 
       <form className="login-form">
         <h1 className="txt-login">login</h1>
