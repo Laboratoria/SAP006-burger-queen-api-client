@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { Link } from 'react-router-dom';
 
 import './login.css';
@@ -12,9 +12,7 @@ import jesusDesk from '../../img/jesus-desk.gif'
 const Login = () => {
 
   const [infoUser, setInfoUser] = useState({ email: '', password: '' });
-  console.log(infoUser);
-
-
+  
   const handleChange = (e) => {
     const informationUser = e.target.id;
     setInfoUser({ ...infoUser, [informationUser]: e.target.value })
@@ -24,6 +22,7 @@ const Login = () => {
   }
 
   return (
+    <Fragment>
     <div className='login'>
       <figure>
         <img className='fundo-login'
@@ -62,8 +61,9 @@ const Login = () => {
         </fieldset>
         <input className='btn-login'
           type='submit' value='login' />
-      </form>
-    </div>
+      </form >
+    </div >
+    </Fragment>
   )
 };
 
