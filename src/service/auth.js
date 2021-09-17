@@ -7,8 +7,4 @@ const authUser = () => {
   return false;
 };
 
-const role = () => localStorage.getItem('role');
-
-const token = () => localStorage.getItem('token');
-
-export default { authUser, role, token };
+export default authUser;
