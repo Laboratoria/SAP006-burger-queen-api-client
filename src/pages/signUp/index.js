@@ -35,7 +35,7 @@ const signUp = () => {
               value={values.name}
               onChange={handleChange}
             />
-            {errors.name && <p>{errors.name}</p>}
+           <p> {errors.name && errors.name}</p>
           </fieldset>
 
           <fieldset className="margin-input">
@@ -47,7 +47,7 @@ const signUp = () => {
               value={values.email}
               onChange={handleChange}
             />
-            {errors.email && <p>{errors.email}</p>}
+            <p>{errors.email && errors.email} </p>
           </fieldset>
 
           <fieldset className="margin-input">
@@ -59,7 +59,7 @@ const signUp = () => {
               value={values.password} //{errors.password ? errors.password : values.password}
               onChange={handleChange}
             />
-            {errors.password && <p>{errors.password}</p>}
+            <p> {errors.password && errors.password}</p>
           </fieldset>
         </section>
 
@@ -72,6 +72,7 @@ const signUp = () => {
         <label>
           <input type="radio" name="workingOptions" value="cozinheiro" />
           Cozinheiro(a)
+          
         </label>
         <Button
           btnClass="createAccount"

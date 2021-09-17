@@ -32,6 +32,7 @@ main {
   margin: -4% 0% 0% 0%;
   color: var(--red);
   text-align: center;
+  min-height: 16.8px;
 }
 
 .form-input {

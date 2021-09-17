@@ -11,6 +11,10 @@ export default function validateValues(values) {
     errors.email = "Formato de email inválido";
   }
 
+  // if (values.status === 403) {
+  //   errors.email = "E-mail já cadastrado, insira outro";
+  // }
+
   if (!values.password) {
     errors.password = "Insira uma senha";
   } else if (values.password.length < 6) {

@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet');
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Kaisei Tokumin", serif;
