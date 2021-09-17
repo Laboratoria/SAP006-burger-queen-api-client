@@ -1,7 +1,7 @@
 import React from 'react';
 import './Button.scss';
 
-export const Button = ({ Role, Conditional, ButtonOnClick, ButtonChildren }) => {
+export const Button = ({ Role, Conditional, ButtonOnClick, children}) => {
 
   const ButtonProps = {
     'authNavigateTo': {
@@ -14,26 +14,30 @@ export const Button = ({ Role, Conditional, ButtonOnClick, ButtonChildren }) => 
       'ButtonClass':`auth-show-or-not-password ${Conditional ? 'auth-show-password' : 'auth-not-show-password'}`
     },
     'authSucessModal-login':{
-      'ButtonClass':'auth-modal-button '
+      'ButtonClass':'auth-modal-button'
     },
     'authErrorModal-login':{
-      'ButtonClass':'auth-modal-button '
+      'ButtonClass':'auth-modal-button'
     },
     'authSucessModal-register':{
-      'ButtonClass':'auth-modal-button '
+      'ButtonClass':'auth-modal-button'
     },
     'authErrorModal-register':{
-      'ButtonClass':'auth-modal-button '
+      'ButtonClass':'auth-modal-button'
     },
+    'test':{
+      'ButtonClass':'test-class',
+    }
   }
 
   return (
     <button 
-    className={ButtonProps[Role].ButtonClass}
+    data-testid = 'button'
     type='submit' 
+    className={ButtonProps[Role].ButtonClass}
     onClick={ButtonOnClick}
     >
-      {ButtonChildren}
+      {children}
     </button> 
   )
 }

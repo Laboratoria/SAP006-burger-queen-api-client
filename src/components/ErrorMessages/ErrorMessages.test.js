@@ -6,11 +6,25 @@ afterEach(cleanup)
 
 describe('Testing the AuthErrorMessage component', () => {
 
-  const label = 'errorMessageLabel';
-
-  it ('Should render the component errorMessage (which is a <p> element) with the given label.', () => {
-    render(<AuthErrorMessages>{label}</AuthErrorMessages>);
-    const p = screen.getByText(label);
-    expect(p).toBeInTheDocument();
+  it ('The AuthErrorMessage component should be rendered in the document.', () => {
+    const {queryByTestId} = render(<AuthErrorMessages Subject='test'/>);
+    expect(queryByTestId('errorMessage')).toBeInTheDocument();
   });
+
+  it ('The AuthErrorMessage component should be rendered in the document with the given text.', () => {
+    render(<AuthErrorMessages Subject='test'></AuthErrorMessages>);
+    const error = screen.getByText('Test error message');
+    expect(error).toBeInTheDocument();
+  });
+
+  it ('The Rendered AuthErrorMessage component should have class="auth-error-message"', () => {
+    const {queryByTestId} = render(<AuthErrorMessages Subject='test'/>);
+    expect(queryByTestId('errorMessage')).toHaveClass('auth-error-message');
+  });
+
+  it ('The Rendered AuthErrorMessage component should have class="auth-error-message-of-role"', () => {
+    const {queryByTestId} = render(<AuthErrorMessages Subject='role'/>);
+    expect(queryByTestId('errorMessage')).toHaveClass('auth-error-message-of-role');
+  });
+
 });

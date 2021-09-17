@@ -22,28 +22,32 @@ export function AuthModal ({ Role, ButtonOnClick, ButtonOnClickSecondOption }) {
       'ModalContent':'Este email já está vinculado a outra conta.',
       'ButtonChildren':'Tente Novamente'
     },
+    'test': {
+      'ModalContent':'test',
+      'ButtonChildren':'test'
+    },
   }
 
   return (
-    <section className='modal-background'>
-      <div className='modal-container'>
-        <p> {ModalProps[Role].ModalContent} </p>
+    <section className='modal-background' data-testid='authModalSection'>
+      <div className='modal-container' data-testid='authModalDiv'>
+        <p data-testid='authModalContent'> {ModalProps[Role].ModalContent} </p>
         <Button 
           Role={Role}
-          ButtonChildren={ModalProps[Role].ButtonChildren}
+          children={ModalProps[Role].ButtonChildren}
           ButtonOnClick={ButtonOnClick}
         />
         { Role === 'authErrorModal-login' ?
-          <Button 
+          <Button
             Role={Role}
-            ButtonChildren='Crie uma nova conta.'
+            children='Crie uma nova conta'
             ButtonOnClick={ButtonOnClickSecondOption}
           /> : null
         }
         { Role === 'authErrorModal-register' ?
           <Button 
             Role={Role}
-            ButtonChildren='Entre com uma conta já existente.'
+            children='Entre com uma conta já existente'
             ButtonOnClick={ButtonOnClickSecondOption}
           /> : null
         }

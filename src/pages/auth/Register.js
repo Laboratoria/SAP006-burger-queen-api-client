@@ -101,14 +101,14 @@ export const Register = () => {
         <Button 
           Role = 'authSubmitForm'
           ButtonOnClick = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs})} 
-          ButtonChildren = 'Registrar'
+          children = 'Registrar'
         /> 
         <div className='auth-navigation-div'>
           <p>Ou</p>
           <Button 
             Role = 'authNavigateTo'
             ButtonOnClick = {() => navigateTo(history, '/', setAuthSucessModal)} 
-            ButtonChildren = 'entre'
+            children = 'entre'
           /> 
           <p> com uma conta existente</p>
         </div>
