@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 
 import './login.css';
 
+import fundo from '../../img/fundo.png'
+import fundoDesk from '../../img/fundo-desk.png'
+import hamburguer from '../../img/hamburguer-login.png'
 import jesus from '../../img/jesus.gif'
+import jesusDesk from '../../img/jesus-desk.gif'
 
 const Login = () => {
 
@@ -13,11 +17,21 @@ const Login = () => {
 
   return (
     <div className='login'>
+      <figure>
+        <img className='fundo-login'
+          src={fundo} />
+        <img className='fundo-desk'
+          src={fundoDesk} />
+        <img className='hamburguer-login'
+          src={hamburguer} />
+      </figure>
       <Link to='/home'>Ir para home</Link>
       
-      <figure className='imagem-login'>
-        <img className='hamburguer-login'
+      <figure className='imagens-login'>
+        <img className='jesus-logo'
           src={jesus} alt='Login APP' />
+        <img className='jesus-desk'
+          src={jesusDesk} />
       </figure>
       <form className='form-login'>
         <fieldset className='form-inner'>
@@ -40,7 +54,7 @@ const Login = () => {
             </section>
         </fieldset>
         <input className='btn-login'
-        type='submit'value='login'/>
+        type='submit'value='Login'/>
       </form>
     </div>
   )

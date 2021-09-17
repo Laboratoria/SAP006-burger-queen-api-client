@@ -5,14 +5,37 @@
     font-family: 'Roboto', sans-serif;
 }
 
-body{
-    background-color: #cd7c0391;
+.fundo-login{
+    display: block;
+    width: 100%;
+}
+
+.fundo-desk{
+    display: none;
+}
+
+.jesus-logo{
+    width: 35%;
+    margin-left: 34%;
+    margin-top: -125%;
+    position: fixed;
+}
+
+.jesus-desk{
+    display: none;
+    width: 25%;
+    margin-top: -125%;
+    margin-left: 10%;
+    position: fixed;
+    z-index: 1;
 }
 
 .hamburguer-login{
-    width: 35%;
-    margin-left: 32%;
-    margin-top: 10%;
+    display: none;
+    width: 50%;
+    margin-left: 50%;
+    margin-top: -105%;
+    position: fixed;
 }
 
 .form-login{
@@ -20,7 +43,7 @@ body{
     width: 100%;
     height: 600px;
     overflow: hidden;
-    background-color: #fcff6acc;
+    background-color: #fdff6adc;
     border-radius: 150px 150px 0px 0px;
     bottom: 0;
     position: fixed;
@@ -94,4 +117,230 @@ body{
 .footer a {
     padding: 3px;
     color: white;
+}
+
+@media screen and (min-width: 425px) and (max-width: 767px){
+    .jesus-logo{
+        width: 35%;
+    }
+
+    .form-login{
+        width: 100%;
+        height: 300px;
+        border-radius: 80px 80px 0px 0px;
+    }
+    
+    .input-login{
+        margin-top: 15%;
+        margin-bottom: 4%;
+    }
+    .input-login, .input-password{
+        width: 43%;
+        margin-left: 25%;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    .btn-login{
+        width: 25%;
+        height: 30px;
+        font-size: 17px;
+        margin-left: 38%;
+    }
+
+    .fa-envelope{
+        margin-top: -12px;
+    }
+
+    .icons-input{
+        font-size: 90%;
+        margin-left: 65%;
+        margin-top: -7%;
+    }
+
+    .footer{
+        height: 5%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .jesus-logo{
+        width: 25%;
+        margin-left: 38%;
+        margin-top: -130%;
+    }
+
+    .form-login{
+        width: 100%;
+        height: 400px;
+        border-radius: 100px 100px 0px 0px;
+    }
+
+    .input-login{
+        margin-top: 10%;
+        margin-bottom: 4%;
+    }
+    .input-login, .input-password{
+        width: 43%;
+        margin-left: 26%;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    .fa-envelope{
+        margin-top: -25px;
+    }
+
+    .icons-input{
+        margin-left: 67%;
+    }
+
+    .btn-login{
+        width: 25%;
+        height: 40px;
+        margin-left: 38%;
+        margin-top: 5%;
+    }
+
+}
+
+@media screen and (min-width: 992px) and (max-width: 1299px){
+    .jesus-logo{
+        width: 28%;
+        margin-left: 38%;
+        margin-top: -130%;
+    }
+
+    .input-login{
+        margin-top: 12%;
+    }
+    .input-login, .input-password{
+        width: 43%;
+        height: 40px;
+        margin-left: 28%;
+        font-size: 22px;
+    }
+    
+    .btn-login{
+        width: 30%;
+        height: 55px;
+        margin-left: 38%;
+    }
+
+    .footer{
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1385px){
+    .fundo-login, .jesus-logo{
+        display: none;
+    }
+
+    .fundo-desk{
+        display: block;
+        width: 100%;
+    }
+
+    .jesus-desk{
+        display: block;
+        z-index: 1;
+    }
+    
+    .hamburguer-login{
+        display: block;
+    }
+
+    .form-login{
+        width: 45%;
+        height: 100%;
+        border-radius: 0px 150px 150px 0px;
+        background-color: #fafc70;
+    }
+
+    .input-login{
+        margin-top: 100%;
+        margin-bottom: 10%;
+    }
+    .input-login, .input-password{
+        width: 65%;
+        height: 20px;
+        margin-left: 12%;
+        padding: 25px;
+        border-radius: 20px;
+        font-size: 24px;
+    }
+
+    .icons-input{
+        font-size: 150%;
+        margin-left: 77%;
+        margin-top: -12%;
+    }
+
+}
+
+@media screen and (min-width: 1386px) and (max-width: 1440px) {
+    .fundo-login, .jesus-logo{
+        display: none;
+    }
+
+    .fundo-desk{
+        display: block;
+        width: 100%;
+    }
+    
+    .jesus-desk{
+        display: block;
+        width: 16%;
+        margin-left: 15%;
+        margin-top: -60%;
+    }
+    
+    .hamburguer-login{
+        display: block;
+        width: 38%;
+        margin-top: -52%;
+        margin-left: 53%;
+    }
+
+    .form-login{
+        width: 45%;
+        height: 100%;
+        border-radius: 0px 130px 130px 0px;
+        background-color: #fafc70;
+    }
+
+    .input-login{
+        margin-top: 55%;
+    }
+    .input-login, .input-password{
+        width: 55%;
+        height: 30px;
+        margin-left: 18%;
+        border-radius: 20px;
+        font-size: 23px;
+    }
+
+    .fa-envelope{
+        margin-top: -28px;
+    }
+
+    .icons-input{
+        font-size: 160%;
+        margin-left: 70%;
+        margin-top: -8%;
+    }
+
+    .btn-login{
+        width: 40%;
+        height: 60px;
+        margin-left: 30%;
+        font-size: 28px;
+    }
+
+    .footer{
+        font-size: 24px;
+    }
 }
