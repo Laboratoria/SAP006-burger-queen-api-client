@@ -1,6 +1,6 @@
 // import { Redirect } from 'react-router-dom';
 
-import Button from '../../components/Button';
+// import Button from '../../components/Button';
 
 const OrderStatus = () => {
 
@@ -11,7 +11,7 @@ const OrderStatus = () => {
     return (
         <div className='div-style'>
             OrderStatus
-            <Button />
+            {/* <Button /> */}
         </div>
     )
 }
