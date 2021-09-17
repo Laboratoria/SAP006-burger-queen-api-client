@@ -1,3 +1,4 @@
+@import '../../styles/Global.scss';
 
 .modal-background{
   display: flex;
@@ -14,15 +15,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-justify: inter-word;
   align-items: center;
   position: absolute;
   margin: auto;
   padding:5%;
 
   font-size: 180%;
-  background-color: rgba(255,175, 77, 0.9);
-  border: #ff8533 solid 4pt;
+  font-weight: 500;
+  background-color: $light-brown-txt;
+  border: $orange-btn solid 4pt;
   border-radius: 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-
 }

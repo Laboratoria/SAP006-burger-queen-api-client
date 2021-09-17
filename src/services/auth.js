@@ -1,4 +1,4 @@
-const checkUserDataToSignin = ({userData}, {setAuthInputs}) => {
+export const checkUserDataToSignin = ({userData}, {setAuthInputs}) => {
   if (userData.name.length < 7) {   
     setAuthInputs.setNameErrorInput(true);
     return 'Error'

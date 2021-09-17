@@ -1,11 +1,9 @@
 
-$dark-gray: #535659;
-$light-gray: #D3D3D3;
-$orange: #FF8C00;
-$auth-error-message: #FFC299;
+@import './Global.scss';
+
 
 .login-and-register-content{
-  background-color: $dark-gray;
+  background-color: $dark-brown-bg;
   height: 100vh;
 
   main {
@@ -18,11 +16,13 @@ $auth-error-message: #FFC299;
     flex-direction: row;
     justify-content: center;
     width: 100%;
+    margin-top: -2%;
 
     p {
       font-size: 170%;
       padding-right: 1%;
-      color: white;
+      color: $even-lighter-brown-txt;
+      height: 3vh;
     }
   }
 }

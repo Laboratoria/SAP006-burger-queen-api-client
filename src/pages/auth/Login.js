@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { authLogin } from '../../services/auth';
@@ -15,18 +15,17 @@ export function Login () {
 
   const history = useHistory();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const userData = {email, password}
 
-  const [authErrorModal, setAuthErrorModal] = useState(false);
-  const [authSucessModal, setAuthSucessModal] = useState(false);
+  const [authErrorModal, setAuthErrorModal] = React.useState(false);
+  const [authSucessModal, setAuthSucessModal] = React.useState(false);
   const setAuthModals = {setAuthErrorModal, setAuthSucessModal}
 
   return (
-  <div className = 'login-and-register-content login-content'>
-    <Header 
-      Location = 'login'/>
+  <div className = 'login-and-register-content login-content' data-testid='login-div'>
+    <Header/>
     <main>
       <form>
         <InputContentUserData 

@@ -41,8 +41,7 @@ export const Register = () => {
 
   return (
     <div className = 'login-and-register-content register-content'>
-    <Header 
-      Location = 'register'/>
+    <Header/>
       <main>
         <form>
           <InputContentUserData 
