@@ -12,26 +12,24 @@ import jesusDesk from '../../img/jesus-desk.gif'
 const Login = () => {
 
   const [ infoUser, setInfoUser ] = useState({ email: '', password: '' });
-  console.log(infoUser);
-  console.log(setInfoUser);
+  // const [ show, setShow ] = useState (false);
 
   return (
     <div className='login'>
-      <figure>
-        <img className='fundo-login'
-          src={fundo} />
-        <img className='fundo-desk'
-          src={fundoDesk} />
-        <img className='hamburguer-login'
-          src={hamburguer} />
-      </figure>
       <Link to='/home'>Ir para home</Link>
-      
-      <figure className='imagens-login'>
+      <figure className='fundos-login'>
+        <img className='fundo-login'
+          src={fundo} alt='fundo'/>
+        <img className='fundo-desk'
+          src={fundoDesk} alt='fundo'/>
+        <img className='hamburguer-login'
+          src={hamburguer} alt='hamburguer'/>
+      </figure>
+      <figure className='logos-login'>
         <img className='jesus-logo'
-          src={jesus} alt='Login APP' />
+          src={jesus} alt='jesus' />
         <img className='jesus-desk'
-          src={jesusDesk} />
+          src={jesusDesk} alt='jesus'/>
       </figure>
       <form className='form-login'>
         <fieldset className='form-inner'>
