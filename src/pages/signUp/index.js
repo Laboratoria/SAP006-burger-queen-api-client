@@ -5,7 +5,7 @@ import "../signUp/style.css";
 import logoMagic from "../../img/logoMagic.png";
 // import ValueAndError from "./formValueAndError.js";
 import validateValues from "./ValidateRegister.js";
-import { signUpWithEmailAndPassword } from "../../services/data.js";
+// import { signUpWithEmailAndPassword } from "../../services/data.js";
 
 
 
@@ -32,22 +32,7 @@ const SignUp = () => {
       const ErrorsValidation = validate(values);
       console.log(ErrorsValidation);
 
-      setErrors(ErrorsValidation);
-
-
-        if(errors.empty === true) {
-
-          console.log(errors.empty)
-          console.log(values)
-          console.log('Entrou?')
-          signUpWithEmailAndPassword(values)
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-         }
+      setErrors(ErrorsValidation)
     };
   
     const handleChange = (e) => {
@@ -79,7 +64,7 @@ const SignUp = () => {
   return (
     <main>
       <img alt="" src={logoMagic}></img>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <h1>Bem Vindo!</h1>
         <section className="form-input">
           <fieldset className="margin-input">
@@ -133,7 +118,7 @@ const SignUp = () => {
         <Button
           btnClass="createAccount"
           btnText="Cadastrar"
-          btnOnClick={handleSubmit}
+          btnType="submit"
           // btnOnClick={handleClick}
         />
       </form>

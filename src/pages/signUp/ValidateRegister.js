@@ -1,3 +1,5 @@
+import { signUpWithEmailAndPassword } from "../../services/data.js";
+
 export default function validateValues(values) {
   let errors = { empty: true};
 
@@ -28,13 +30,30 @@ export default function validateValues(values) {
   }
 
   if (
-    values.workingOptions !== "atendente" &&
-    values.workingOptions !== "cozinheiro"
+    values.role !== "atendente" &&
+    values.role !== "cozinheiro"
   ) {
-    errors.workingOptions = "Preencha seu cargo";
+    errors.role = "Preencha seu cargo";
     errors.empty = false
     console.log('6')
   }
+
+  
+  if(errors.empty === true) {
+
+    console.log(errors.empty)
+    console.log(values)
+    console.log('Entrou?')
+    signUpWithEmailAndPassword(values)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+   }
+
+
 
   return errors;
 }
