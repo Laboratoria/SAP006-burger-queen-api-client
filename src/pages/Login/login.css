@@ -206,7 +206,7 @@
 
 }
 
-@media screen and (min-width: 992px) and (max-width: 1299px){
+@media screen and (min-width: 992px) and (max-width: 1023px){
     .jesus-logo{
         width: 28%;
         margin-left: 38%;
@@ -234,7 +234,7 @@
     }
 }
 
-@media screen and (min-width: 1200px) and (max-width: 1385px){
+@media screen and (min-width: 1024px) and (max-width: 1199px){
     .fundo-login, .jesus-logo{
         display: none;
     }
@@ -242,15 +242,21 @@
     .fundo-desk{
         display: block;
         width: 100%;
+        height: 680px;
     }
 
     .jesus-desk{
         display: block;
+        width: 17%;
+        margin-top: -63%;
+        margin-left: 13%;
         z-index: 1;
     }
     
     .hamburguer-login{
         display: block;
+        margin-top: -55%;
+        width: 45%;
     }
 
     .form-login{
@@ -261,27 +267,38 @@
     }
 
     .input-login{
-        margin-top: 100%;
-        margin-bottom: 10%;
+        margin-top: 62%;
+        margin-bottom: 7%;
     }
     .input-login, .input-password{
-        width: 65%;
-        height: 20px;
-        margin-left: 12%;
+        width: 55%;
+        height: 5px;
+        margin-left: 15%;
         padding: 25px;
-        border-radius: 20px;
-        font-size: 24px;
+        border-radius: 15px;
+        font-size: 20px;
     }
 
+    .fa-envelope{
+        margin-top: -30px;
+    }
     .icons-input{
-        font-size: 150%;
-        margin-left: 77%;
-        margin-top: -12%;
+        font-size: 140%;
+        margin-left: 71%;
+        margin-top: -9%;
+    }
+
+    .footer{
+        width: 66%;
+        height: 25px;
+        font-size: 18px;
+        margin-left: 34%;
+        border-radius: 40px 0px 0px;
     }
 
 }
 
-@media screen and (min-width: 1386px) and (max-width: 1440px) {
+@media screen and (min-width: 1200px) and (max-width: 1440px) {
     .fundo-login, .jesus-logo{
         display: none;
     }
@@ -293,34 +310,34 @@
     
     .jesus-desk{
         display: block;
-        width: 16%;
-        margin-left: 15%;
-        margin-top: -60%;
+        width: 15%;
+        margin-left: 13%;
+        margin-top: -62%;
     }
     
     .hamburguer-login{
         display: block;
         width: 38%;
-        margin-top: -52%;
+        margin-top: -57%;
         margin-left: 53%;
     }
 
     .form-login{
-        width: 45%;
+        width: 43%;
         height: 100%;
         border-radius: 0px 130px 130px 0px;
         background-color: #fafc70;
     }
 
     .input-login{
-        margin-top: 55%;
+        margin-top: 50%;
     }
     .input-login, .input-password{
-        width: 55%;
-        height: 30px;
+        width: 50%;
+        height: 25px;
         margin-left: 18%;
         border-radius: 20px;
-        font-size: 23px;
+        font-size: 22px;
     }
 
     .fa-envelope{
@@ -329,18 +346,22 @@
 
     .icons-input{
         font-size: 160%;
-        margin-left: 70%;
+        margin-left: 65%;
         margin-top: -8%;
     }
 
     .btn-login{
         width: 40%;
-        height: 60px;
-        margin-left: 30%;
+        height: 55px;
+        margin-left: 28%;
         font-size: 28px;
     }
 
     .footer{
-        font-size: 24px;
+        width: 66%;
+        height: 25px;
+        font-size: 18px;
+        margin-left: 34%;
+        border-radius: 40px 0px 0px;
     }
 }
