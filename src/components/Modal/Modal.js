@@ -11,7 +11,7 @@ export function AuthModal ({ Role, ButtonOnClick, ButtonOnClickSecondOption }) {
       'ButtonChildren':'OK',
     },
     'authErrorModal-login': {
-      'ModalContent':'Usuárie não encontrade. Verifique seus dados.',
+      'ModalContent':'Usuárie não encontrade! Verifique seus dados.',
       'ButtonChildren':'Tente Novamente'
     },
     'authSucessModal-register': {

@@ -3,8 +3,6 @@ import { render, fireEvent, cleanup} from '@testing-library/react';
 import { InputContentUserData } from './UserData'
 import { InputRadioUserData } from './UserData'
 
-import { showOrNotShowPassword } from '../../services/auth'
-
 afterEach(cleanup)
 
 describe('Testing the UserDataTextContent component', () => {

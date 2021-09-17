@@ -1,8 +1,4 @@
-
-$dark-gray: #535659;
-$light-gray: #D3D3D3;
-$orange: #FF8C00;
-$auth-error-message: #FFC299;
+@import '../../styles/Global.scss';
 
 main {
   form {
@@ -22,11 +18,11 @@ main {
         padding: 4% 4% 3% 10%;
         
         font-size: 180%;
-        color: white;
+        color: $light-brown-txt;
       }
 
       ::placeholder{
-        color:white;
+        color:$light-brown-label;
       }
 
       label {
@@ -36,7 +32,7 @@ main {
         left: 10%;
         bottom: 85%;
 
-        color: $light-gray;
+        color: $light-brown-label;
         font-size: 160%;
       }
 
@@ -63,7 +59,7 @@ main {
 
 .register-content {
   form {
-    margin: 1% auto 4%;
+    margin: 1% auto 0;
   }
 
   .auth-label-radio-input {
@@ -71,7 +67,7 @@ main {
     left: 40%;
     bottom: 25%;
     font-size: 180%;
-    color: white;
+    color: $light-brown-label;
   }
   
   .auth-radio-input {
@@ -82,11 +78,11 @@ main {
 }
 
 .auth-correct-input{
-  border-bottom: black solid;
+  border-bottom: $light-brown-box solid;
 }
 
 .auth-wrong-input{
-  border-bottom: $orange solid;
+  border-bottom: $red-box solid;
 }
 
 

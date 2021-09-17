@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Button } from '../Button/Button';
 
 import inputName from '../../assets/icons/input-name.png';
@@ -12,8 +12,8 @@ import './UserData.scss'
 
 export function InputContentUserData ({Subject, Error, InputValue, InputOnChange}) {
   
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
 
   const UserDataProps = {
     'name': {

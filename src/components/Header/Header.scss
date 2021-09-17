@@ -3,19 +3,18 @@ header{
   flex-direction: column;
 }
 
-.logo{
-  height: 28vh;
-  width: 28vh;
-}
-
 .login-content {
   .logo{
-    margin: -20% auto 0 auto;
+    margin: 5% auto 0;
+    height: 50vh;
+    width: 50vh;
   }
 }
 
 .register-content {
   .logo{
-    margin: -25% auto 0 auto;
+    margin: 1% auto 0%;
+    height: 30vh;
+    width: 30vh;
   }
 }

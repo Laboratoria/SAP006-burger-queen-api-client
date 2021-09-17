@@ -1,5 +1,4 @@
-
-$orange: #FF8C00;
+@import '../../styles/Global.scss';
 
 .auth-submit-form {
   width: 60%;
@@ -7,14 +6,17 @@ $orange: #FF8C00;
 
   margin: 0% auto;
 
-  background-color: $orange;
+  background-color: $orange-btn;
+  color:$even-lighter-brown-txt;
 
   font-size: 210%;
 }
 
 .auth-route-navigation {
-  color: $orange;
+  color: $yellow-logo;
   font-size: 170%;
+  margin-top: 3.5%;
+  height: 3vh;
 }
 
 .auth-show-or-not-password {
@@ -41,15 +43,15 @@ $orange: #FF8C00;
   margin: 6% auto 1%;
   padding: 2% 4%;
 
-  background-color: wheat;
-  font-size: 90%;
+  background-color: $light-brown-label;
+  font-size: 100%;
 
-  border:#535659 solid 2pt;
+  border:$orange-btn solid 2pt;
   border-radius: 5px;
-  box-shadow: 4px 5px 15px 5px rgba(0,0,0,0.29);
+  box-shadow: 4px 5px 15px 5px rgba(0,0,0,0.1);
 }
 
 .auth-modal-button:hover{
-  background-color: #535659;
+  background-color: $orange-btn;
   color: white;
 }

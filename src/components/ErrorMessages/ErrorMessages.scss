@@ -1,9 +1,9 @@
-$auth-error-message: #FFC299;
+@import '../../styles/Global.scss';
 
 .auth-error-message{
-  margin: -8% auto 2%;
+  margin: -10% auto 5%;
   font-size: 130%;
-  color: $auth-error-message;
+  color: $red-error-message;
 }
 
 .auth-error-message-of-role{
