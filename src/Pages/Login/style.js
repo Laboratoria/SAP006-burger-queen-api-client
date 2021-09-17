@@ -3,14 +3,11 @@ import styled from "styled-components";
 
 const LoginBox = styled.div`
     background: rgba(255, 255, 255, 0.52);
-
 `
 const Image = styled.img`
     height: 252px;
     width: 268px;
     margin: 10px 20px 0px 50px;
-
-
 `
 const Title = styled.p`
     font-family: 'Montserrat', sans-serif;

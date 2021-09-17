@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {Image, LoginBox, Title , Form, PhraseRegister } from './style';
 
 import Button from '../../components/Button/Button';
@@ -10,6 +10,28 @@ import login from '../../Assets/login.png';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const history = useHistory();
+
+    function AuthUserLogin() {
+        const user = {
+            email,
+            password
+        }
+
+        LoginWithEmail(user)
+            .then((token) => {
+                if(token) {
+                localStorage.setItem('Vixi', token)
+                history.push('/tables')
+                } 
+                else {
+                    alert('deu errado o token')
+                }
+            })
+            .catch(() => {
+                alert('tente novamente')
+            })
+    }
 
     return (
             <LoginBox>
@@ -34,8 +56,8 @@ const Login = () => {
                     />
                 </Form>
 
-                <Button variant='enter-app' onClick={LoginWithEmail}>
-                    <Link to='/tables'>Login</Link>
+                <Button variant='enter-app' onClick={AuthUserLogin}>
+                    Login
                 </Button>
                 <PhraseRegister>Is your first day at Vixi?
                     <Link to='/register'>Sign in here!</Link>

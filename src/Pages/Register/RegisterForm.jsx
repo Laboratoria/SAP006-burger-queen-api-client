@@ -7,7 +7,7 @@ import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input.jsx'
 import register from '../../Assets/register.png';
 
-const Register = ({submitForm}) => {
+const Register = () => {
     const [values, setValues] = useState({
         fullName: '',
         email: '',
@@ -42,51 +42,51 @@ const Register = ({submitForm}) => {
         <div className='div-style'>
             <img src={register} alt='icon-register' />
             <p>Crie sua conta</p>
-            <Input 
-                type='text' 
-                id='name'
-                name='fullName'
-                values={values.fullName}
-                onChange={handleChange}
-                placeholder='nome completo' 
-                errormessage='Por favor, insira um nome válido.' />
-            {errors.fullName && <p className='error'>{errors.fullName}</p>}
-            <Input 
-                type='email' 
-                id='email' 
-                name='email'
-                values={values.email}
-                onChange={handleChange}
-                placeholder='e-mail'
-                errormessage='Por favor, insira um e-mail válido.' />
-            {errors.email && <p className='error'>{errors.email}</p>}
-            <Input 
-                type='password' 
-                id='password' 
-                name='password'
-                value={values.password}
-                onChange={handleChange}
-                placeholder='senha'
-                errormessage='Por favor, insira uma senha válida.' />
-            {errors.password && <p className='error'>{errors.password}</p>}
-            <Input 
-                type='password'
-                id='confirm-password' 
-                name='confirmPassword'
-                value={values.confirmPassword}
-                onChange={handleChange}
-                placeholder='confirmar senha'
-                errormessage='As senhas não conferem.' />
-            {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
-            <form >
+            <form>
+                <Input 
+                    type='text' 
+                    id='name'
+                    name='fullName'
+                    values={values.fullName}
+                    onChange={handleChange}
+                    placeholder='nome completo' 
+                    errormessage='Por favor, insira um nome válido.' />
+                {errors.fullName && <p className='error'>{errors.fullName}</p>}
+                <Input 
+                    type='email' 
+                    id='email' 
+                    name='email'
+                    values={values.email}
+                    onChange={handleChange}
+                    placeholder='e-mail'
+                    errormessage='Por favor, insira um e-mail válido.' />
+                {errors.email && <p className='error'>{errors.email}</p>}
+                <Input 
+                    type='password' 
+                    id='password' 
+                    name='password'
+                    value={values.password}
+                    onChange={handleChange}
+                    placeholder='senha'
+                    errormessage='Por favor, insira uma senha válida.' />
+                {errors.password && <p className='error'>{errors.password}</p>}
+                <Input 
+                    type='password'
+                    id='confirm-password' 
+                    name='confirmPassword'
+                    value={values.confirmPassword}
+                    onChange={handleChange}
+                    placeholder='confirmar senha'
+                    errormessage='As senhas não conferem.' />
+                {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
                 <label><Input 
                     type='radio'
                     name='role'
                     className='input-radio'
-                    // onChange={handleChange}
-                    value={values.role}
-                    labeltext='Hall' />
-                    Hall
+                    onChange={handleChange}
+                    value='Salão'
+                    labeltext='Salão' />
+                    Salão
                 </label>
                 {errors.role && <p className='error'>{errors.role}</p>}
                 <label>
@@ -94,20 +94,19 @@ const Register = ({submitForm}) => {
                     type='radio' 
                     name='role'
                     className='input-radio'
-                    // onChange={handleChange}
-                    value={values.role}
+                    onChange={handleChange}
+                    value='cozinha'
                     labeltext='Cozinha' />
                     Cozinha
                 </label>
                 {errors.role && <p className='error'>{errors.role}</p>}
+                <Button type='submit' variant='enter-app' onClick={handleFormSubmit}>
+                    <Link to='/'>ENTRAR</Link>
+                </Button>
+                <p>Já trabalha no Vixi?
+                    <Link to='/'>Faça seu login aqui!</Link>
+                </p>
             </form>
-            <Button variant='enter-app' onClick={handleFormSubmit}>
-                <Link to='/'>ENTRAR</Link>
-            </Button>
-            {}
-            <p>Já trabalha no Vixi?
-                <Link to='/'>Faça seu login aqui!</Link>
-            </p>
         </div>
     )
 }
