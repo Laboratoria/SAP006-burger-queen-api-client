@@ -11,3 +11,12 @@
 //     )   
 // }
 // export default User;
+
+export default function User(){
+    const { name } = useParams();
+    return (
+        <div>
+            <h1>Logado como { name }</h1>
+        </div>
+    )   
+}

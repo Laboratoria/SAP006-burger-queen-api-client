@@ -1,12 +1,9 @@
 import React from "react";
 
-function Button(Login) {
+export default function Button() {
     return (
-        <button></button>
-
+        <button>{this.props.label}</button>
     );
     
 }
-
-export default Button;
 
