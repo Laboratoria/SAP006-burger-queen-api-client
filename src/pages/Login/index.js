@@ -27,7 +27,7 @@ function Login() {
           type="text"
           >
           </Input>
-          {errors.email && <p class="errorNotice">{errors.email}</p>}
+          <p class="errorNotice"> {errors.email && errors.email}</p>
           <Input 
           placeholder="Senha"
           name="password"
@@ -36,7 +36,7 @@ function Login() {
           type="password"
           > 
           </Input>
-          {errors.password && <p class="errorNotice">{errors.password}</p>} 
+          <p class="errorNotice">{errors.password && errors.password}</p>
         </form>
 
         <Button

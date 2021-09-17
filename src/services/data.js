@@ -1,4 +1,4 @@
-export const signUpWithEmailAndPassword = (name, email, password, role) => {
+export const signUpWithEmailAndPassword = ({name, email, password, role}) => {
     // var myHeaders = new Headers();
     const myInit = {
         method: 'POST',
@@ -30,3 +30,17 @@ export const signUpWithEmailAndPassword = (name, email, password, role) => {
         })
 
 }
+
+export const loginWithUserPassword = (email, password) => {
+    return fetch("https://lab-api-bq.herokuapp.com/auth", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+  };
+  
