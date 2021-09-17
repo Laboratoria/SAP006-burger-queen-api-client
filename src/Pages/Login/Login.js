@@ -6,6 +6,7 @@ import Button from "../../Components/Button/Button";
 import LogoImg from "../../Components/Image/Image";
 
 function Login() { 
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -17,7 +18,7 @@ function Login() {
                     type='text' 
                     id='email' 
                     placeholder='digite o seu e-mail'
-                    value={email}
+                    defaultValue={email}
                     errorMessage='Por favor, insira um e-mail válido.'
                     onChange={(event) => setEmail(event.target.value)}
                 />
