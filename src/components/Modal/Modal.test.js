@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, cleanup} from '@testing-library/react';
-import { Button } from '../Button/Button';
+import { render, fireEvent, cleanup} from '@testing-library/react';
 import { AuthModal } from './Modal'
 
 afterEach(cleanup)
@@ -48,15 +47,17 @@ describe('Testing the AuthModal component', () => {
   });
 
   it('The AuthModal Button component should be rendered in the document with the given label, role = authErrorModal-login.', () => {
-    const {queryByTestId} = render(<AuthModal Role='authErrorModal-login' />);
-    expect(queryByTestId('button')).toHaveTextContent('Tente novamente');
+    const {queryAllByTestId} = render(<AuthModal Role='authErrorModal-login' />);
+    expect(queryAllByTestId('button')[0]).toHaveTextContent('Tente Novamente');
+    expect(queryAllByTestId('button')[1]).toHaveTextContent('Crie uma nova conta');
   });
 
   it('The AuthModal Button component should be rendered in the document with the given label, role = authErrorModal-register.', () => {
-    const {queryByTestId} = render(<AuthModal Role='authErrorModal-register' />);
-    expect(queryByTestId('button')).toHaveTextContent('Tente novamente');
+    const {queryAllByTestId} = render(<AuthModal Role='authErrorModal-register' />);
+    expect(queryAllByTestId('button')[0]).toHaveTextContent('Tente Novamente');
+    expect(queryAllByTestId('button')[1]).toHaveTextContent('Entre com uma conta já existente');
   });
-
+ 
   it('The AuthModal Button component should have the class "auth-modal-button".', () => {
     const {queryByTestId} = render(<AuthModal Role='test' />);
     expect(queryByTestId('button')).toHaveClass('test-class');

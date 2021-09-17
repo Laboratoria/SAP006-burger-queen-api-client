@@ -22,10 +22,9 @@ describe('Testing the AuthErrorMessage component', () => {
     expect(queryByTestId('errorMessage')).toHaveClass('auth-error-message');
   });
 
-  it ('If the AuthErrorMessage component has the Subject = "role" should have class="auth-error-message auth-error-message-of-role"', () => {
+  it ('The Rendered AuthErrorMessage component should have class="auth-error-message-of-role"', () => {
     const {queryByTestId} = render(<AuthErrorMessages Subject='role'/>);
-    expect(queryByTestId('errorMessage')).toHaveClass('auth-error-message auth-error-message-of-role');
+    expect(queryByTestId('errorMessage')).toHaveClass('auth-error-message-of-role');
   });
-
 
 });

@@ -37,12 +37,14 @@ describe('Testing the Button component', () => {
 
     it ('The Rendered authShowOrNotShowPassword button should have class="auth-not-show-password" when conditional = false', () => {
       const {queryByTestId} = render(<Button Role='authShowOrNotShowPassword' Conditional={false}/>);
-      expect(queryByTestId('button')).toHaveClass('auth-not-show-password');
+      expect(queryByTestId('button')).toHaveClass('auth-show-or-not-password auth-not-show-password');
     });
+
 
     it ('The Rendered authShowOrNotShowPassword button should have class="auth-show-password" when conditional = true', () => {
       const {queryByTestId} = render(<Button Role='authShowOrNotShowPassword' Conditional={true}/>);
-      expect(queryByTestId('button')).toHaveClass('auth-show-password');
+      expect(queryByTestId('button')).toHaveClass('auth-show-or-not-password auth-show-password');
     });
 
+  
 });

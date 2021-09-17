@@ -54,11 +54,22 @@ export function InputContentUserData ({Subject, Error, InputValue, InputOnChange
       'IconAlt':'Confirm Password',
       'ButtonOnClick':(event) => showOrNotShowPassword(event, showConfirmPassword, setShowConfirmPassword),
     },
+    'test': {
+      'data-content':'test',
+      'InputClass': 'test',
+      'InputType':'test',
+      'InputPlaceholder':'test',
+      'LabelClass':'test',
+      'IconSrc':'test',
+      'IconAlt':'test',
+      'ButtonOnClick':'test',
+    },
   }
 
   return (
-    <div>
+    <div data-testid='userDataDiv'>
       <input 
+        data-testid='userDataInput'
         required
         autoComplete='off'
         data-content={Subject}
@@ -70,15 +81,16 @@ export function InputContentUserData ({Subject, Error, InputValue, InputOnChange
         onChange={InputOnChange}
         value={InputValue}
       />
-      <label className={UserDataProps[Subject].LabelClass} > 
+      <label data-testid='userDataLabel'
+        className={UserDataProps[Subject].LabelClass} > 
         {UserDataProps[Subject].InputPlaceholder}
       </label>
-      <img
+      <img data-testid='userDataImg'
         src={UserDataProps[Subject].IconSrc}
         alt={UserDataProps[Subject].IconAlt}
       />
       { Subject === 'password' || Subject === 'confirmPassword' ?
-       <Button
+       <Button 
           Role='authShowOrNotShowPassword'
           Conditional = {showPassword || showConfirmPassword}
           ButtonOnClick={UserDataProps[Subject].ButtonOnClick}
@@ -104,10 +116,17 @@ export function InputRadioUserData ({Subject, InputChecked, InputOnChange}) {
         'LabelText':'Cozinha',
         'LabelClass':'auth-label-radio-input',
       },
+      'test': {
+        'data-content':'test',
+        'InputClass':'test',
+        'InputValue':'test',
+        'LabelText':'test',
+        'LabelClass':'test',
+      },
     }
 
   return (
-      <div>
+      <div data-testid='userDataDiv'>
         <input 
           required
           data-content = {Subject}

@@ -34,7 +34,6 @@ export function AuthModal ({ Role, ButtonOnClick, ButtonOnClickSecondOption }) {
         <p data-testid='authModalContent'> {ModalProps[Role].ModalContent} </p>
         <Button 
           Role={Role}
-          title='button I'
           children={ModalProps[Role].ButtonChildren}
           ButtonOnClick={ButtonOnClick}
         />
