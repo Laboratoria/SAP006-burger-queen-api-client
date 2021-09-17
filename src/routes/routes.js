@@ -7,7 +7,7 @@ import Menu from '../pages/menu/menu.jsx';
 import Kitchen from '../pages/kitchen/kitchen.jsx';
 import Orders from '../pages/orders/orders.jsx';
 import NotFound from '../pages/notfound/notfound.jsx';
-//import PrivateRoute from '../routes/privateRoute';
+import PrivateRoute from '../routes/privateRoute';
 
 
 const Routes = () => {
@@ -18,9 +18,9 @@ const Routes = () => {
           <Route path='/' exact component={Home} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={SignUp} />
-          <Route path='/menu' component={Menu} />
-          <Route path='/kitchen' component={Kitchen} />
-          <Route path='/orders' component={Orders} />
+          <PrivateRoute path='/menu' component={Menu} />
+          <PrivateRoute path='/kitchen' component={Kitchen} />
+          <PrivateRoute path='/orders' component={Orders} />
           <Route component={NotFound} />
         </Switch>
       </div>

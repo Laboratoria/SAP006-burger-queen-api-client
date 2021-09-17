@@ -16,13 +16,17 @@ const useFormLogin = () => {
   }
 
   const history = useHistory();
+  const saveToken = (token) => {
+    localStorage.setItem('token', token)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     loginUser(values)
       .then(res => res.json())
       .then((data) => {
+        saveToken(data.token)
+        console.log(data.token)
           if (data.role === 'attendant') {
             history.push('/menu')
           }
