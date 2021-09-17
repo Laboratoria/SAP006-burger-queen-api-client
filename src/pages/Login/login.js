@@ -4,15 +4,17 @@ import Button from '../../components/Button/button';
 import InputTxt from '../../components/Input/inputTxt';
 import './login.css';
 import Logo from '../../img/logo-img.png';
-// import Error from '../../components/Errors/errors';
 
 function Login() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [visibleInput, setVisibleInput] = useState(false);
+
   const routeHistory = useHistory();
-  const salao = () => {
-    routeHistory.push('/sallon');
+
+  const saloon = () => {
+    routeHistory.push('/saloon');
   };
+
   const kitchen = () => {
     routeHistory.push('/kitchen');
   };
@@ -43,7 +45,7 @@ function Login() {
           if (tokenUser !== null && idUser !== null && json.role === 'cozinha') {
             kitchen();
           } else if (tokenUser !== null && idUser !== null && json.role === 'salao') {
-            salao();
+            saloon();
           } else {
             setIsModalVisible(true);
           }

@@ -3,13 +3,13 @@ import React from 'react';
 import Mesa from '../../components/Table/mesa';
 import Header from '../../components/Header/header';
 import Button from '../../components/Button/button';
-import './sallon.css';
+import './saloon.css';
 
 // import Mesa from '../../components/mesa';
 // import Header from '../../components/header';
 // import Logo from '../../img/logo-img.png';
 
-function Sallon() {
+function Saloon() {
   const mesasTotal = 6;
   const mesas = [];
 
@@ -66,4 +66,4 @@ function Sallon() {
   );
 }
 
-export default Sallon;
+export default Saloon;

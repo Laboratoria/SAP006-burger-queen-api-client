@@ -52,6 +52,6 @@
 //     fireEvent.change(password, { taget: { value: '123456' } });
 //     fireEvent.click(btnLogin);
 
-//     expect(goToSallon).toBe('/salao');
+//     expect(goToSaloon).toBe('/salao');
 //   });
 // });

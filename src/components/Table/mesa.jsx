@@ -18,7 +18,7 @@ function Mesas({ mesa }) {
                 className="button-mesa"
                 onClick={() => {
                   history.push({
-                    pathname: `sallon/pedidos/${mesa}`,
+                    pathname: `saloon/pedidos/${mesa}`,
                   });
                 }}
               />
