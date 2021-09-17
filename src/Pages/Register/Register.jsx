@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RegisterUser } from '../../services/auth';
 import validation from '../../services/validation';
-import Button from '../../components/Button';
+import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input.jsx'
 import register from '../../Assets/register.png';
 
