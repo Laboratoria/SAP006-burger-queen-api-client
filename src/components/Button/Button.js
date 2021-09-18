@@ -1,8 +1,14 @@
-import React from "react";
+import React from 'react';
 
-export default function Button(props) {
-    return(
-        <button>{props.label}</button>
-    )
+const showEvent = () => {
+    console.log('evento clicado')
 }
+
+export default function Button({ label }) {
+    return(
+        <div>
+            <button onClick={showEvent}>{ label }</button>
+        </div>
+    )
+};
 

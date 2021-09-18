@@ -14,7 +14,6 @@ function Routes(){
                 <Route path="*" element={<h1>Not Found</h1>} /> 
                 <PrivateRoute path="/" component={ Login }/>               
             </Switch>
-            
         </BrowserRouter> 
     );  
 };

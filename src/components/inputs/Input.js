@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Input = ({name, id, placeholder, type, value, handleChange}) => {
     
@@ -15,5 +15,4 @@ const Input = ({name, id, placeholder, type, value, handleChange}) => {
 }
 
 export default Input;
-
 
