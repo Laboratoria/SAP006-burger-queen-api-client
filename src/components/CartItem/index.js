@@ -3,10 +3,12 @@ import React from 'react';
 import './cartItem.scss';
 
 export default function CartItem({
-  name, price, flavor, complement
+  name, price, flavor, complement, plus, minus, qty
 }) {
 
+ 
   return (
+
     <li className="itemData">
       <div className="item">
         <p className="product">{name}</p>
@@ -17,14 +19,15 @@ export default function CartItem({
       </div>
 
       <div className="button-container">
-        <button className="cart-qty-plus" type="button" value="-">-</button>
-        <input type="text" name="qty" min="0" className="qty form-control" value="0" />
-        <button className="cart-qty-minus" type="button" value="+">+</button>
+        <button className="cart-qty-plus" type="button" name={name} onClick={minus}>-</button>
+        <input type="text" name="qty" min="0" className="qty form-control" value={qty} readOnly/>
+        <button className="cart-qty-minus" type="button" name={name} onClick={plus}>+</button>
       </div>
 
       <div className="price">
         <p>{price}</p>
       </div>
     </li>
+
   )
 };

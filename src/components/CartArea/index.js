@@ -6,7 +6,11 @@ import cart from '../../img/shopping-cart.png';
 import ButtonDefault from '../ButtonDefault';
 import CartItem from '../CartItem';
 
-export default function CartArea({content}) {
+export default function CartArea({
+content, plus, minus
+}) {
+
+
 
 	return (
 		<div className="cart-container">
@@ -29,8 +33,9 @@ export default function CartArea({content}) {
 				
 			</header>
 			<div className="added-items-container">
+			{/* eslint-disable-next-line */}
 			{content.map(product=>
-             < CartItem name={product.name} price={product.price}/>)}
+             < CartItem name={product.name} price={product.price} qty={product.quantity} plus={plus} minus={minus}/>)}
 			</div>
 
 

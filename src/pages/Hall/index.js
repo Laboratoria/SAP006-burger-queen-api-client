@@ -26,7 +26,7 @@ export default function Hall() {
 		second: 'sides',
 		third: 'drinks',
 	})
-	
+
 	const [labels, setLabels] = useState({
 		first: 'burgers',
 		second: 'adicionais',
@@ -36,25 +36,22 @@ export default function Hall() {
 	const [activation1, setActivation1] = useState(true)
 	const [activation2, setActivation2] = useState(false)
 	const [activation3, setActivation3] = useState(false)
-	
+
+	const [productSelected, setProductSelected] = useState("")
+
 	const chooseProduct = (e) => {
-	
+
 		setProductSelected({
-			name:e.target.value,
-			price:e.target.getAttribute('price'),
-		
+			name: e.target.value,
+			price: e.target.getAttribute('price'),
+			quantity: 1,
+			// flavor:"",
+			// complement:"",
+
+
 		})
-	
 	}
 	const [products, setProducts] = useState(<Burgers onClick={chooseProduct} />)
-	
-
-	// const cartEmpty = () => (
-		// 	<>
-		// 		<p>Nenhum item adicionado</p>
-	// 	</>
-	// )
-
 
 	const selectBreakfast = () => {
 		setActivation1(true)
@@ -139,19 +136,51 @@ export default function Hall() {
 		}
 	}
 
-	const [productSelected, setProductSelected] = useState("")
-	
-	
-	const [cartContent, setCartContent] = useState([])
-	
-	const addProduct = () => {
-		if(productSelected!==""){
-			const newArray = [...cartContent]
-			newArray.push(productSelected)
-			setCartContent(newArray)
-			setProductSelected("")
 
+
+	const [cartContent, setCartContent] = useState([])
+
+	const addProduct = () => {
+		if (productSelected !== "") {
+			const newArray = [...cartContent]
+			const productInCart = newArray.find(product => product.name === productSelected.name)
+			const index = newArray.indexOf(productInCart)
+			if (index<0){
+				newArray.push(productSelected)
+				setCartContent(newArray)
+			} else{
+				productInCart.quantity += 1
+				setCartContent(newArray)
+
+			}
+			setProductSelected("")
+			console.log(cartContent)
 		}
+	}
+
+
+	const addUnit = (e) => {
+		const name = e.target.getAttribute("name")
+		const newArray = [...cartContent]
+		const productInCart = newArray.find(product => product.name === name)
+		productInCart.quantity += 1
+		setCartContent(newArray)
+	}
+
+	const removeUnit = (e) => {
+		const name = e.target.getAttribute("name")
+		const newArray = [...cartContent]
+		const productInCart = newArray.find(product => product.name === name)
+		productInCart.quantity -= 1
+		const index = newArray.indexOf(productInCart)
+		if (productInCart.quantity < 1){
+			newArray.splice(index,1)
+			setCartContent(newArray)
+		}else{
+			setCartContent(newArray)
+		}
+		console.log(cartContent)
+			
 	}
 
 
@@ -211,7 +240,7 @@ export default function Hall() {
 						</section>
 					</div>
 				</section>
-				<CartArea content={cartContent} />
+				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} />
 
 
 			</main>
