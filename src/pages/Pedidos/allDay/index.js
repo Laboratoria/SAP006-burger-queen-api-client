@@ -48,7 +48,7 @@ function AllDay() {
       <div>
         <Button
         buttonOnClick={(e) =>  
-             history.push('/seealloders')}
+             history.push('/')}
         ></Button>
       </div>
       <div className="menu-um">
