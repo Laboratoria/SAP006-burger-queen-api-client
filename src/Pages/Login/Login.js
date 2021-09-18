@@ -1,37 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import { useState } from "react";
-import Input from "../../components/Input";
+import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import LogoImg from "../../components/image/Image";
 
-function Login() { 
+function initialState() {
+    return { user: '', password: ''};
+}
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+function UserLogin() { 
+    const [values, setValues] = useState(initialState);    
+    // const [email, setEmail] = useState(initialState);
+    // const [password, setPassword] = useState(initialState);
+
+    function onChange(event){
+        const { value, name } = event.target;
+        
+        setValues({
+            ...values,
+            [name]: value,
+        });
+    }  
 
     return(
         <div className='container login'>
             <form>
                 <LogoImg />
                 <Input 
-                    type='text' 
-                    id='email' 
+                    id='user' 
+                    type='text'
                     placeholder='digite o seu e-mail'
-                    defaultValue={email}
+                    name='user'
+                    value={values.user}
                     errorMessage='Por favor, insira um e-mail válido.'
-                    onChange={(event) => setEmail(event.target.value)}
+                    onChange={onChange}
                 />
                 <Input 
-                    type='password' 
                     id='password' 
+                    type='password' 
                     placeholder='digite a sua senha'
-                    value={password}
+                    name='password'
+                    value={values.password}
                     errorMessage='Por favor, insira uma senha válida.'
-                    onChange={(event) => setPassword(event.target.value)}
+                    onChange={onChange}
                 />
 
-                <Button label="Entrar">
+                <Button 
+                    label="Entrar"
+                    type='submit'>
                     <Link to='/mesas'></Link>
                 </ Button>
             </form>
@@ -40,5 +56,4 @@ function Login() {
 
     );
 };
-
-export default Login;
+export default UserLogin; 

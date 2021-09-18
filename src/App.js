@@ -1,21 +1,22 @@
-// import React from "react";
-// import Routes from "./Routes";
-// import Header from "./Components/Header";
-// import Input from "./Components/Input";
+import React from "react";
+import Routes from "./Routes";
+import Login from "./pages/login/Login";
 
-// function App() {
+
+function App() {
   
   
-//   return (
-//       <div className="App">
-//         <Routes />
-//         <Header /> 
-//       </div>
+  return (
+      <div className="App">
+        <Routes />
+        <Login />
+         
+      </div>
 
-//     );
-// };
+    );
+};
 
-// export default App;
+export default App;
 
 // function AppLogin (){
 //   return (
