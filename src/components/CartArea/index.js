@@ -20,7 +20,7 @@ content, plus, minus, totalPrice
 					className="margin-left-1 margin-bottom-0"
 					alt="shopping-cart"
 				/>
-				<h4 className="margin-left-1"> CARRINHO </h4>
+				<h4 className="margin-left-1 uppercase"> Carrinho </h4>
 				</div>
 				<div className="subtitle-cart">
 				
@@ -46,15 +46,15 @@ content, plus, minus, totalPrice
 				</div>
 				<div className="cart-buttons-wrapper">
 					<ButtonDefault
-						className="btn-cart btn-cart-cancel btn-default margin-left-1"
+						className="btn-cart btn-cart-cancel btn-default margin-left-1 uppercase"
 					>
-						CANCELAR
+						Cancelar
 					</ButtonDefault>
 
 					<ButtonDefault
-						className="btn cart btn-cart-confirm btn-default margin-right-1"
+						className="btn cart btn-cart-confirm btn-default margin-right-1 uppercase"
 					>
-						CONFIRMAR
+						Confirmar
 					</ButtonDefault>
 				</div>
 			</div>  
