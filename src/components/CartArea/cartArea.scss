@@ -16,29 +16,24 @@ body {
 
 .cart-container {
 	width: 38vw;
-	height:100%;
+	height: 100%;
 	background-color: var(--light-gray);
 	border: 1px solid var(--stroke);
 	border-radius: 5px;
 	color: white;
-	font-size: 1.2em;
 	position: relative;
-	padding:2%;
-	padding-bottom:8rem;
+	padding: 2%;
+	padding-bottom: 8rem;
 
-	header{
-		display:flex;
-		flex-direction:column;
-		height:15%;
-		justify-content: space-between;
-
-		
-
+	header {
+		display: flex;
+		flex-direction: column;
+		height: 15%;
 
 		.title-card {
 			display: flex;
 			align-items: center;
-	
+
 			img {
 				height: 24px;
 			}
@@ -50,44 +45,46 @@ body {
 		}
 	}
 
-	p {
-		font-weight: lighter;
-	}
-
 	.added-items-container {
 		height: 82%;
 		overflow: auto;
 		scrollbar-width: 5px !important;
-		margin:2%;
-		border-top:0.1rem solid var(--stroke);
+		margin: 8% 2%;
+		border-top: 0.1rem solid var(--stroke);
 		padding-top: 1rem;
 		&::-webkit-scrollbar {
 			width: 0.2em;
 			height: 0.5em;
-		 }
-	 
-		 &::-webkit-scrollbar-thumb {
-			background-color: rgba(255,255,255,.1);
-			border-radius: 3px;
-	 
-			&:hover {
-			 background: rgba(255,255,255,.2);
-			}
-		 }
-	
+		}
 
-		p {
-			font-size:0.9rem;
+		&::-webkit-scrollbar-thumb {
+			background-color: rgba(255, 255, 255, 0.1);
+			border-radius: 3px;
+
+			&:hover {
+				background: rgba(255, 255, 255, 0.2);
+			}
 		}
 	}
 }
 
 .subtitle-cart {
 	display: flex;
-	justify-content: space-between;
-	h5{
-		font-size:1.2rem;
-		margin-bottom:0;
+	margin: 1rem 2% 0 2%;
+
+	h5 {
+		font-size: 1.1rem;
+	}
+	.item-title {
+		width: 50%;
+	}
+	.qt-title {
+		width: 30%;
+		text-align: center;
+	}
+	.price-title {
+		width: 20%;
+		text-align: end;
 	}
 }
 
@@ -96,39 +93,40 @@ body {
 	flex-direction: column;
 	position: absolute;
 	bottom: 0;
-	left:0;
+	left: 0;
 	height: 8rem;
 	width: 100%;
 	background-color: var(--light-gray);
-	border-top:1px solid var(--stroke);
-	padding:0 2%;
+	border-top: 1px solid var(--stroke);
+	padding: 0 2%;
 
-
-	.total{
-		display:flex;
+	.total {
+		display: flex;
 		justify-content: space-between;
-		margin:0.5rem 0 0.5rem 0;
+		margin: 0.5rem 0 0.5rem 0;
+		p{
+			font-size:1rem;
+		}
 	}
 
-	.cart-buttons-wrapper{
-		display:flex;
+	.cart-buttons-wrapper {
+		display: flex;
 		justify-content: space-between;
-		margin-top:0;
+		margin-top: 0;
 	}
 }
 
 .btn-cart-confirm {
-	width: 45%;
+	width: 43%;
 	border: 1px solid var(--yellow);
 
 	&:hover {
 		background-color: var(--green);
-	
 	}
 }
 
 .btn-cart-cancel {
-	width: 45%;
+	width: 43%;
 	background-color: transparent;
 	border: 1px solid var(--white);
 

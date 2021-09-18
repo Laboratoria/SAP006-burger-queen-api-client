@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import ButtonLogout from '../../components/ButtonLogout';
 import LinkAside from '../../components/LinkAside';
@@ -34,7 +34,15 @@ export default function Hall() {
 	const [activation2, setActivation2] = useState(false)
 	const [activation3, setActivation3] = useState(false)
 
-	const[products, setProducts] = useState(<Snack/>)
+	const [products, setProducts] = useState(<Snack />)
+
+
+	// const cartEmpty = () => (
+	// 	<>
+	// 		<p>Nenhum item adicionado</p>
+	// 	</>
+	// )
+
 
 	const selectBreakfast = () => {
 		setActivation1(true)
@@ -84,7 +92,7 @@ export default function Hall() {
 				setActivation1(false)
 				setActivation2(true)
 				setActivation3(false)
-				
+
 				break
 			case "BEBIDAS":
 				setActivation1(false)
@@ -95,24 +103,47 @@ export default function Hall() {
 				setActivation1(true)
 				setActivation2(false)
 				setActivation3(false)
-				setProducts(<Snack/>)
+				setProducts(<Snack onClick={chooseProduct} />)
 				break;
 			case "CAFÉS":
 				setActivation1(false)
 				setActivation2(true)
 				setActivation3(false)
-				setProducts(<Coffee/>)
+				setProducts(<Coffee onClick={chooseProduct} />)
 				break
 			case "SUCOS":
 				setActivation1(false)
 				setActivation2(false)
 				setActivation3(true)
-				setProducts(<Juice/>)
+				setProducts(<Juice onClick={chooseProduct} />)
 				break
 
 			default:
 		}
 	}
+
+	const [productSelected, setProductSelected] = useState("")
+	
+	const chooseProduct = (e) => {
+	
+		setProductSelected({
+			name:e.target.value,
+			price:e.target.getAttribute('price'),
+		
+		})
+
+	}
+	
+	const [cartContent, setCartContent] = useState([])
+	
+	const addProduct = () => {
+		const newArray = [...cartContent]
+		newArray.push(productSelected)
+		setCartContent(newArray)
+		
+	}
+
+
 
 	return (
 		<div className="pages-container">
@@ -150,7 +181,7 @@ export default function Hall() {
 
 				<section className="order-filling">
 					<div className="client-data margin-bottom-2">
-						<InputSelect/>
+						<InputSelect />
 						<Input className="input-hall" placeholder="Insira o nome do cliente" />
 					</div>
 					<div className="menu">
@@ -162,15 +193,15 @@ export default function Hall() {
 
 						<section className="products">
 							{products}
-							<ButtonDefault className="btn-default btn-add-item"> 
-          			ADICIONAR ITEM 
-        			</ButtonDefault>
-						
+							<ButtonDefault className="btn-default btn-add-item" onClick={addProduct}>
+								ADICIONAR ITEM
+							</ButtonDefault>
+
 						</section>
 					</div>
 				</section>
-				<CartArea />
-			
+				<CartArea content={cartContent} />
+
 
 			</main>
 		</div>

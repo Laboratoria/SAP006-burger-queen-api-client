@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-key */
+
 import React from 'react'
 import './inputSelect.scss'
 
@@ -8,9 +8,9 @@ export default function InputSelect() {
   return (
     
       <select>
-          <option value ="" hidden >Número da Mesa</option>
+          <option value ="" hidden >Mesa</option>
           {tables.map(table=>
-             <option  value={table}>{table}</option>)}
+             <option  key={table} value={table}>{table}</option>)}
         </select>
  
   );
