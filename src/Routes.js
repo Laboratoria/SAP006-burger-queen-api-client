@@ -12,6 +12,7 @@ import Page404 from './pages/Page404/index';
 import Pedidos from './pages/Pedidos/index';
 import Kitchen from './pages/Kitchen/kitchen';
 import GlobalStyle from './components/GlobalStyle';
+import AllDay from './pages/Pedidos/allDay/index';
 
 // import PrivateRoute from './service/PrivateRoute';
 
@@ -58,6 +59,10 @@ function Routes() {
 
         <Route exact path="/kitchen">
           <Kitchen />
+        </Route>
+
+        <Route exact path="/allday">
+          <AllDay />
         </Route>
 
         <Route>

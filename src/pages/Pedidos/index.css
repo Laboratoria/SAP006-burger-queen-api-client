@@ -1,5 +1,10 @@
-:root {
+@font-face {
+    font-family: Bob;
+    src: url('../../fonts/SpongebobFontCondensedRegular-3zZEy.otf');
     
+  }
+:root {
+    --bg--button--color:#F47C6C;
   
     --bg--menu--yellow--color: #FFE98D; 
   };
@@ -36,6 +41,17 @@
     border-radius: 25px;
     box-shadow: 5px 5px 5px rgb(160, 159, 159);
 }
+
+.finish-menu h1{
+    font-family: Bob;
+    font-size: 20px;
+}
+
+.nome-cliente {
+    background-color: transparent;
+    border:transparent;
+    border-bottom: black 1px solid;
+}
 .cash-register{
 width: 100px;
 height: 100px;
@@ -46,20 +62,23 @@ height: 100px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:space-between;
+    margin-top: 40px;
 }
 
 .container-food{
     font-size: 6px;
-    width: 160px;
-    height: 180px;
+    width: 140px;
+    height: 160px;
     background-color: #F5F3EF;
     border-radius: 22px;
-    margin: 25px;
+    margin: 35px;
+    margin-top: 15px;
+   
 
 }
 
 .add-button {
-    background: #F47C6C;
+    background: var(--bg--button--color);
     width: 70px;
     height: 20px;
     border: none;
@@ -69,6 +88,32 @@ height: 100px;
     margin-left: 50px;
     cursor: pointer;
 
+}
+.qtd-button{
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-color:  var(--bg--button--color);
+    border: none;
+    color: #ffff;
+
+
+}
+.button-finish{
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    background-color:  var(--bg--button--color);
+    border: none;
+    color: #ffff;
+    border-radius: 12px;
+
+}
+
+.lista-resumo-pedido  {
+    list-style: none;
+   
 }
 
 .img-food{

@@ -30,34 +30,13 @@ function Sallon() {
       </div>
       <main>
         <p className="title-table">Escolha a mesa para realizar o pedido</p>
-        <div className="all-table">
-          <div className="all-table-left">
-            <div className="table">
-              {mesas.map((mesa) => (
-                <Mesa
-                  mesa={mesa}
-                />
-              ))}
 
-            </div>
-            <div className="table-middle">
-              <Mesa />
-            </div>
-            <div className="table">
-              <Mesa />
-            </div>
-          </div>
-          <div className="all-table-rigth">
-            <div className="right-table">
-              <Mesa />
-            </div>
-            <div className="rigth-table-middle">
-              <Mesa />
-            </div>
-            <div className="rigth-table">
-              <Mesa />
-            </div>
-          </div>
+        <div className="table">
+          {mesas.map((mesa) => (
+            <Mesa
+              mesa={mesa}
+            />
+          ))}
 
         </div>
       </main>

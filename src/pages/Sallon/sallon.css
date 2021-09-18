@@ -179,40 +179,28 @@ header {
 
 }
 .all-table{
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-
-}
-.all-table-left {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  flex-wrap: wrap;
+
+}
+.table{
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+  height: 400px;
+  background-color: red;
+  justify-content: space-between;
   margin-top: 110px;
   margin-left: 220px;
- 
-}
-.table-middle{
-  margin-left: -140px;
 
 }
-.all-table-rigth{
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  margin-left: 655px;
-  margin-top: 110px;
-  
-}
-.rigth-table-middle{
-  margin-left: 145px;
 
-}
 .title-table{
   display: flex;
   position: absolute;
-  margin-top: 80px;
+  margin-top: 10px;
   margin-left: 34%;
   font-family: Bob;
 
