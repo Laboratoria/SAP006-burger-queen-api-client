@@ -5,10 +5,14 @@ import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 
+
 export default function Registration() { 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // primeiro elemento é o estado que esta querendo controlar - ex:password
+    // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
+    // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
     
     return(
         <div className='container register'>
