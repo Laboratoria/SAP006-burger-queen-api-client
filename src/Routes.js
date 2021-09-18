@@ -1,9 +1,9 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Login from './Pages/Login/Login';
-import Registration from './Pages/Cadastro/Registration';
-import { isAuthenticated } from './Services/Auth';
+import Login from './pages/mainHall/login/Login';
+import Registration from './pages/mainHall/register/Register';
+import { isAuthenticated } from './services/Auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {... rest} render={props => (

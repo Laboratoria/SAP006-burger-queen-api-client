@@ -16,4 +16,3 @@ const Input = ({name, id, placeholder, type, value, handleChange}) => {
 
 export default Input;
 
-
