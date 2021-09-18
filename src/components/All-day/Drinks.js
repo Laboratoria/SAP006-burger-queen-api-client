@@ -31,7 +31,7 @@ export default function Drinks() {
 				/>
 			</div>
 
-			<ButtonRadio
+			<ButtonRadio className="radio-menu radio-drinks"
 				// onChange={onChange}
 				firstInputName="drinks"
 				firstInputValue="water"

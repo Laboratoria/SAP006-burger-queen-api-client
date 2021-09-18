@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import ButtonLogout from '../../components/ButtonLogout';
 import LinkAside from '../../components/LinkAside';
@@ -10,6 +10,9 @@ import Input from '../../components/Input';
 import Snack from '../../components/Breakfast/Snack';
 import Coffee from '../../components/Breakfast/Coffee';
 import Juice from '../../components/Breakfast/Juice';
+import Burgers from '../../components/All-day/Burgers';
+import Drinks from '../../components/All-day/Drinks';
+import Sides from '../../components/All-day/Sides';
 import InputSelect from '../../components/InputSelect';
 
 
@@ -23,7 +26,7 @@ export default function Hall() {
 		second: 'sides',
 		third: 'drinks',
 	})
-
+	
 	const [labels, setLabels] = useState({
 		first: 'burgers',
 		second: 'adicionais',
@@ -33,8 +36,25 @@ export default function Hall() {
 	const [activation1, setActivation1] = useState(true)
 	const [activation2, setActivation2] = useState(false)
 	const [activation3, setActivation3] = useState(false)
+	
+	const chooseProduct = (e) => {
+	
+		setProductSelected({
+			name:e.target.value,
+			price:e.target.getAttribute('price'),
+		
+		})
+	
+	}
+	const [products, setProducts] = useState(<Burgers onClick={chooseProduct} />)
+	
 
-	const[products, setProducts] = useState(<Snack/>)
+	// const cartEmpty = () => (
+		// 	<>
+		// 		<p>Nenhum item adicionado</p>
+	// 	</>
+	// )
+
 
 	const selectBreakfast = () => {
 		setActivation1(true)
@@ -52,6 +72,7 @@ export default function Hall() {
 			second: 'cafés',
 			third: 'sucos',
 		})
+		setProducts(<Snack onClick={chooseProduct} />)
 	}
 
 	const selectAllDay = () => {
@@ -70,6 +91,7 @@ export default function Hall() {
 			second: 'adicionais',
 			third: 'bebidas',
 		})
+		setProducts(<Burgers onClick={chooseProduct} />)
 	}
 
 	const changeProducts = (e) => {
@@ -79,40 +101,60 @@ export default function Hall() {
 				setActivation1(true)
 				setActivation2(false)
 				setActivation3(false)
+				setProducts(<Burgers onClick={chooseProduct} />)
 				break;
 			case "ADICIONAIS":
 				setActivation1(false)
 				setActivation2(true)
 				setActivation3(false)
-				
+				setProducts(<Sides onClick={chooseProduct} />)
+
 				break
 			case "BEBIDAS":
 				setActivation1(false)
 				setActivation2(false)
 				setActivation3(true)
+				setProducts(<Drinks onClick={chooseProduct} />)
 				break
 			case "LANCHES":
 				setActivation1(true)
 				setActivation2(false)
 				setActivation3(false)
-				setProducts(<Snack/>)
+				setProducts(<Snack onClick={chooseProduct} />)
 				break;
 			case "CAFÉS":
 				setActivation1(false)
 				setActivation2(true)
 				setActivation3(false)
-				setProducts(<Coffee/>)
+				setProducts(<Coffee onClick={chooseProduct} />)
 				break
 			case "SUCOS":
 				setActivation1(false)
 				setActivation2(false)
 				setActivation3(true)
-				setProducts(<Juice/>)
+				setProducts(<Juice onClick={chooseProduct} />)
 				break
 
 			default:
 		}
 	}
+
+	const [productSelected, setProductSelected] = useState("")
+	
+	
+	const [cartContent, setCartContent] = useState([])
+	
+	const addProduct = () => {
+		if(productSelected!==""){
+			const newArray = [...cartContent]
+			newArray.push(productSelected)
+			setCartContent(newArray)
+			setProductSelected("")
+
+		}
+	}
+
+
 
 	return (
 		<div className="pages-container">
@@ -150,7 +192,7 @@ export default function Hall() {
 
 				<section className="order-filling">
 					<div className="client-data margin-bottom-2">
-						<InputSelect/>
+						<InputSelect />
 						<Input className="input-hall" placeholder="Insira o nome do cliente" />
 					</div>
 					<div className="menu">
@@ -162,15 +204,15 @@ export default function Hall() {
 
 						<section className="products">
 							{products}
-							<ButtonDefault className="btn-default btn-add-item"> 
-          			ADICIONAR ITEM 
-        			</ButtonDefault>
-						
+							<ButtonDefault className="btn-default btn-add-item" onClick={addProduct}>
+								ADICIONAR ITEM
+							</ButtonDefault>
+
 						</section>
 					</div>
 				</section>
-				<CartArea />
-			
+				<CartArea content={cartContent} />
+
 
 			</main>
 		</div>

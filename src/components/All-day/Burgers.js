@@ -35,7 +35,7 @@ export default function Burgers() {
 				/>
 			</div>
 
-			<ButtonRadio
+			<ButtonRadio className="radio-menu"
 				// onChange={onChange}
 				firstInputName="burger"
 				firstInputValue="carne"
@@ -55,7 +55,7 @@ export default function Burgers() {
 			<div className="products-row">
 				<ProductArea
 					inputId="queijo"
-					inputName="all-day"
+					inputName="complement"
 					inputValue="Queijo"
 					// inputOnChange={}
 					productImg={queijo}
@@ -66,7 +66,7 @@ export default function Burgers() {
 
 				<ProductArea
 					inputId="ovo"
-					inputName="all-day"
+					inputName="complement"
 					inputValue="Ovo"
 					// inputOnChange={}
 					productImg={ovo}

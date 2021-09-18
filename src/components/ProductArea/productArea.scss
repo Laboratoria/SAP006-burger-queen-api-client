@@ -14,11 +14,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: auto;
 }
 
 .product-image {
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -29,14 +30,19 @@
     position: relative;
     top: 0.5rem;
     text-align: center;
+    font-size:1.1rem;
     font-weight: bold;
     cursor: pointer;
+    margin-bottom:0.5rem;
 }
 
 .product-price{
     color: var(--white);
     cursor: pointer;
     text-align: center;
+    font-size:0.9rem;
+    font-weight: lighter;
+   
 }
   
 .product-container input:checked + label > img {

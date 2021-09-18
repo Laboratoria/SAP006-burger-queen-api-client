@@ -1,2 +1,46 @@
+.switch-field {
+  margin-bottom: 1rem;
+  width: 100%;
+  border-radius: none;
 
+  .radio-menu {
+    background-color: transparent;
+    width: 33%;
+    color: var(--white);
+    font-size: 1rem;
+    line-height: 1;
+    text-align: center;
+    padding: 1.2rem 0;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: none;
+    border-right: none;
+    border-radius: none;
+    transition: all 0.5s ease-in-out;
 
+    &.radio-drinks{
+      width:50%;
+      line-height: 1.5rem;
+      margin-bottom:1rem;
+   
+    }
+
+    &:first-of-type {
+      border-radius: 0px 0 0 0px;
+    }
+  }
+
+  .third-btn {
+    &:nth-of-type(3n) {
+      border-radius: 0 0px 0px 0;
+    }
+  }
+
+  .second-btn {
+    &:nth-of-type(2n) {
+      border-radius: 0 0px 0px 0;
+    }
+  }
+
+ 
+}

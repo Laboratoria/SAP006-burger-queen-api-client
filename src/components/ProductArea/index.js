@@ -3,7 +3,7 @@
 import React from 'react';
 import './productArea.scss';
 
-export default function ProductArea( {
+export default function ProductArea({
     productImg,
     productImgAlt,
     productName,
@@ -12,10 +12,11 @@ export default function ProductArea( {
     inputName,
     inputValue,
     inputChecked,
-    // inputOnChange,
+    className,
+    onClick
 }) {
-	return (
-		<div className="product-container">
+    return (
+        <div className="product-container" onClick={onClick}>
             <input
                 type='radio'
                 className="hidden product-name"
@@ -23,12 +24,15 @@ export default function ProductArea( {
                 name={inputName}
                 value={inputValue}
                 checked={inputChecked}
-                // onChange={() => inputOnChange(inputId)}
+                price={productPrice}
+            
+               
+            // onChange={onChange}
             />
             <label
                 htmlFor={inputId}
-                className="label-product-box"
-                >
+                className="label-product-box "
+            >
                 <img
                     className='product-image'
                     src={productImg}
@@ -38,7 +42,7 @@ export default function ProductArea( {
                 <p className="product-price">{productPrice}</p>
             </label>
         </div>
-	);
+    );
 }
 
 

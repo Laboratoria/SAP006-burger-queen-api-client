@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import './breakfast.scss';
 
@@ -5,7 +6,7 @@ import ProductArea from '../ProductArea';
 import suco from '../../img/juice.png';
 
 
-export default function Juice() {
+export default function Juice({onClick}) {
 	return (
         <div className="menu-wrap">
             <div className="products-row">
@@ -13,12 +14,13 @@ export default function Juice() {
                     inputId="breakfast"
                     inputName="breakfast"
                     inputValue="Suco de fruta natural"
-                    // inputOnChange={}
                     productImg={suco}
                     productImgAlt="juice"
                     productName="Suco de fruta natural"
                     productPrice="R$ 7,00"
+                    onClick={onClick}
                 />      
+                
             </div>
 
             
