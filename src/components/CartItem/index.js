@@ -6,6 +6,12 @@ export default function CartItem({
   name, price, flavor, complement, plus, minus, qty
 }) {
 
+  // eslint-disable-next-line radix
+  const priceConvert = parseInt(((price.replace(/[.,]/g, '')).slice(3)).slice(0,-2))
+
+  const totalPrice = priceConvert*qty
+ 
+
  
   return (
 
@@ -25,7 +31,7 @@ export default function CartItem({
       </div>
 
       <div className="price">
-        <p>{price}</p>
+        <p>R${totalPrice},00</p>
       </div>
     </li>
 

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react';
+
 import './productArea.scss';
 
 export default function ProductArea({
@@ -15,6 +16,8 @@ export default function ProductArea({
     className,
     onClick
 }) {
+
+
     return (
         <div className="product-container" onClick={onClick}>
             <input
@@ -25,9 +28,6 @@ export default function ProductArea({
                 value={inputValue}
                 checked={inputChecked}
                 price={productPrice}
-            
-               
-            // onChange={onChange}
             />
             <label
                 htmlFor={inputId}
@@ -40,6 +40,7 @@ export default function ProductArea({
                 />
                 <p className="product-name">{productName}</p>
                 <p className="product-price">{productPrice}</p>
+
             </label>
         </div>
     );

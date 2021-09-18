@@ -7,9 +7,8 @@ import ButtonDefault from '../ButtonDefault';
 import CartItem from '../CartItem';
 
 export default function CartArea({
-content, plus, minus
+content, plus, minus, totalPrice
 }) {
-
 
 
 	return (
@@ -43,7 +42,7 @@ content, plus, minus
 				
 				<div className="total">
 					<p className="margin-left-1">Total</p>
-					<p className="margin-right-1">R$ 0,00</p>
+					<p className="margin-right-1">R$ {totalPrice},00</p>
 				</div>
 				<div className="cart-buttons-wrapper">
 					<ButtonDefault

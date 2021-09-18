@@ -1,3 +1,5 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable radix */
 import React, { useState } from 'react';
 
 import ButtonLogout from '../../components/ButtonLogout';
@@ -154,7 +156,6 @@ export default function Hall() {
 
 			}
 			setProductSelected("")
-			console.log(cartContent)
 		}
 	}
 
@@ -179,10 +180,25 @@ export default function Hall() {
 		}else{
 			setCartContent(newArray)
 		}
-		console.log(cartContent)
 			
 	}
 
+	const [totalPrice, setTotalPrice] = useState(0)
+
+	// useEffect(()=>{
+	// 	if(cartContent.length!==0){
+	// 	// eslint-disable-next-line array-callback-return
+	// 	const arrayPrices = cartContent.map(product=>product.price)
+	// 	// const arrayPrices = cartContent.map(product=>{parseInt(((product.price.replace(/[.,]/g, '')).slice(3)).slice(0,-2))})
+	// 	/* eslint-disable no-param-reassign */
+	// 	const sumPrices = arrayPrices.reduce((total, price) => total+=parseInt((price.replace(/[.,]/g, '').slice(3)).slice(0,-2)))
+	// 	setTotalPrice(sumPrices)
+	// 	console.log(arrayPrices)
+	// 	}
+	
+
+
+	// }, [cartContent])
 
 
 	return (
@@ -240,7 +256,7 @@ export default function Hall() {
 						</section>
 					</div>
 				</section>
-				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} />
+				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} totalPrice={totalPrice} />
 
 
 			</main>
