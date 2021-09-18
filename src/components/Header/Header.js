@@ -10,7 +10,7 @@ import './Header.scss';
 
 export function Header () {
   const isPortrait = useMediaQuery({query: '(max-width: 1024px)' })
-  const isLandscape = useMediaQuery({query: '(min-width: 1024px)' })
+  const isLandscape = useMediaQuery({query: '(min-width: 1024px)'})
 
   return (
     <header data-testid='header'>
@@ -19,6 +19,7 @@ export function Header () {
         className='logo' 
         src={logoBerg} alt='Logo Berg'
         />}
+
       {isLandscape &&  
         <div>
           <img data-testid='img-logo'

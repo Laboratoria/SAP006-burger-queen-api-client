@@ -19,7 +19,15 @@ header{
   }
 }
 
+@media (min-height: 1366px) {
+  .register-content, .login-content{
+    .auth-welcome{
+      visibility: hidden;
+    }
+  }
  
+} 
+
 @media (min-width: 1000px) {
   .login-content{
     .logo{
@@ -54,6 +62,29 @@ header{
     height: 40vh;
     width: 40vh;
     position: absolute;
+    }
+  }
+}
+
+@media (min-height: 1200px) {
+  .login-content{
+    .logo{
+      top:4%;
+      left: 10%;
+      height: 55vh;
+      width: 55vh;
+      position: absolute;   
+    }
+
+  }
+
+  .register-content{
+    .logo{
+      top:0%;
+      left: 25%;
+      height: 35vh;
+      width: 35vh;
+      position: absolute;    
     }
   }
 }

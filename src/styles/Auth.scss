@@ -51,3 +51,10 @@ fieldset {
     width: 50%;
   }
 }
+
+@media (min-height: 1200px) {
+  main {
+    width: 70%;
+    left: 15%;
+  }
+}

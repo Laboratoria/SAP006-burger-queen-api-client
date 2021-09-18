@@ -123,4 +123,18 @@ main {
   }
 }
 
+@media (min-height: 1200px) {
+  .register-content{
+    main {
+      form {
+        div{
+          margin-bottom: 8%;
 
+          input{
+            padding-bottom: 1%;
+          }
+        }
+      }
+    }
+  }
+}
