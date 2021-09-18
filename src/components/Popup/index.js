@@ -25,10 +25,10 @@ export default function Popup({
 
 				<div>
 					<ButtonDefault
-						className="btn-default margin-top-1"
+						className="btn-default margin-top-1 uppercase"
 						onClick={onClose}
 					>
-						OK
+						Ok
 					</ButtonDefault>
 				</div>
 			</div>
