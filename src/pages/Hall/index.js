@@ -15,7 +15,7 @@ import Drinks from '../../components/All-day/Drinks';
 import Sides from '../../components/All-day/Sides';
 import InputSelect from '../../components/InputSelect';
 
-
+import Popup from '../../components/Popup';
 
 export default function Hall() {
 	const [breakfastClass, setBreakfastClass] = useState("")
@@ -140,7 +140,7 @@ export default function Hall() {
 	}
 
 	const [productSelected, setProductSelected] = useState("")
-	
+	const [showPopup, setShowPopup] = useState(false);
 	
 	const [cartContent, setCartContent] = useState([])
 	
@@ -150,17 +150,17 @@ export default function Hall() {
 			newArray.push(productSelected)
 			setCartContent(newArray)
 			setProductSelected("")
-
+		}
+		else {
+			setShowPopup(true);
 		}
 	}
-
-
 
 	return (
 		<div className="pages-container">
 			<header className="title-area">
 				<div>
-					<h1>DIVINO BURGER</h1>
+					<h1 className="uppercase">Divino Burger</h1>
 					<p>horário atual</p>
 				</div>
 
@@ -169,54 +169,82 @@ export default function Hall() {
 
 			<nav>
 				<ul className="menu-types">
-					<li className={breakfastClass} onClick={selectBreakfast}> Breakfast </li>
-					<li className={allDayClass} onClick={selectAllDay}> All Day </li>
+					<li className={breakfastClass} onClick={selectBreakfast}>
+						{' '}
+						Breakfast{' '}
+					</li>
+					<li className={allDayClass} onClick={selectAllDay}>
+						{' '}
+						All Day{' '}
+					</li>
 				</ul>
 
-
 				<div className="order-progress">
-					<ButtonDefault
-						className="btn-order-status btn-default"
-					>
+					<ButtonDefault className="btn-order-status btn-default">
 						Em andamento
 					</ButtonDefault>
 
-					<ButtonDefault
-						className="btn-order-status btn-default margin-left-1"
-					>
+					<ButtonDefault className="btn-order-status btn-default margin-left-1">
 						Finalizados
 					</ButtonDefault>
 				</div>
 			</nav>
 			<main>
-
 				<section className="order-filling">
 					<div className="client-data margin-bottom-2">
 						<InputSelect />
-						<Input className="input-hall" placeholder="Insira o nome do cliente" />
+						<Input
+							className="input-hall"
+							placeholder="Insira o nome do cliente"
+						/>
 					</div>
 					<div className="menu">
 						<aside>
-							<LinkAside className={activation1 ? "active" : null} type={values.first} onClick={changeProducts}>{labels.first}</LinkAside>
-							<LinkAside className={activation2 ? "active" : null} type={values.second} onClick={changeProducts}>{labels.second}</LinkAside>
-							<LinkAside className={activation3 ? "active" : null} type={values.third} onClick={changeProducts}>{labels.third}</LinkAside>
+							<LinkAside
+								className={activation1 ? 'active' : null}
+								type={values.first}
+								onClick={changeProducts}
+							>
+								{labels.first}
+							</LinkAside>
+							<LinkAside
+								className={activation2 ? 'active' : null}
+								type={values.second}
+								onClick={changeProducts}
+							>
+								{labels.second}
+							</LinkAside>
+							<LinkAside
+								className={activation3 ? 'active' : null}
+								type={values.third}
+								onClick={changeProducts}
+							>
+								{labels.third}
+							</LinkAside>
 						</aside>
 
 						<section className="products">
 							{products}
-							<ButtonDefault className="btn-default btn-add-item" onClick={addProduct}>
-								ADICIONAR ITEM
+							<ButtonDefault
+								className="btn-default btn-add-item uppercase"
+								onClick={addProduct}
+							>
+								Adicionar item
 							</ButtonDefault>
-
 						</section>
 					</div>
 				</section>
 				<CartArea content={cartContent} />
 
-
+				{showPopup ? (
+					<Popup
+						popupText="Selecione um item antes de adicioná-lo!"
+						onClose={() => setShowPopup(false)}
+					></Popup>
+				) : null}
 			</main>
 		</div>
-	)
+	);
 };
 
 
