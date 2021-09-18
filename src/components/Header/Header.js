@@ -5,9 +5,6 @@ import authWelcome from '../../assets/images/auth-welcome.png'
 
 import './Header.scss';
 
-
-
-
 export function Header () {
   const isPortrait = useMediaQuery({query: '(max-width: 1024px)' })
   const isLandscape = useMediaQuery({query: '(min-width: 1024px)'})

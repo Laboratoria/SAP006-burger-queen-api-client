@@ -8,7 +8,8 @@ import { NavbarRoom } from '../../components/Navbar/Navbar';
 import { Button } from '../../components/Button/Button';
 
 
-export const Room = () => { 
+
+export const OrdersBeingPrepared = () => { 
   const history = useHistory();
 
   const handleLogout = () => {
@@ -17,11 +18,10 @@ export const Room = () => {
   }
 
   return (
-    <div className='navbar-div'>
+    <div>
     <NavbarRoom/>
-    <Button Role='room-sign-out' ButtonOnClick={handleLogout}/> 
+    <h1>BEING PREPARED</h1>
     </div>
     
   )
 }
-

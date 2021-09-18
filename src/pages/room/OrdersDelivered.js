@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -8,7 +9,8 @@ import { NavbarRoom } from '../../components/Navbar/Navbar';
 import { Button } from '../../components/Button/Button';
 
 
-export const Room = () => { 
+
+export const OrdersDelivered = () => { 
   const history = useHistory();
 
   const handleLogout = () => {
@@ -17,11 +19,10 @@ export const Room = () => {
   }
 
   return (
-    <div className='navbar-div'>
+    <div>
     <NavbarRoom/>
-    <Button Role='room-sign-out' ButtonOnClick={handleLogout}/> 
+    <h1>DELIVEREDD</h1>
     </div>
     
   )
 }
-

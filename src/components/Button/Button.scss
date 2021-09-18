@@ -65,12 +65,48 @@
 
 .unauhtorized-sign-out{
   right: 5%;
+}
+
+.sign-out{
+  right: 5%;
   background-image: url('../../assets/icons/light-brown-logout.png');
 }
 
 .unauhtorized-goback{
   left: 5%;
   background-image: url('../../assets/icons/light-brown-goback.png');
+}
+
+.room-sign-out{
+  height: 5vh;
+  width: 5vh;
+  background-size: 5vh ;
+  position: absolute;
+  right: 1%;
+  bottom:1%;
+}
+
+.room-navbar-button{
+  height: 15vh;
+  width: 15vh;
+  background-size: 15vh;
+}
+
+.room-navbar-menu{
+  margin-top: -12%;
+  background-image: url('./../../assets/images-buttons/navbar-menu.png');
+}
+
+.room-being-prepared-orders{
+  background-image: url('./../../assets/images-buttons/navbar-being-prepared-orders.png');
+}
+
+.room-ready-orders{
+  background-image: url('./../../assets/images-buttons/navbar-ready-orders.png');
+}
+
+.room-delivered-orders {
+  background-image: url('./../../assets/images-buttons/navbar-delivered-orders.png');
 }
 
 @media (min-width: 1000px) {

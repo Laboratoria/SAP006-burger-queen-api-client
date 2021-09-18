@@ -10,6 +10,12 @@ import { Register } from '../../pages/auth/Register';
 import { Room } from '../../pages/room/Room'
 import { Kitchen } from '../../pages/kitchen/Kitchen'
 
+import { Menu } from '../../pages/room/Menu';
+import { OrdersBeingPrepared } from '../../pages/room/OrdersBeingPrepared'
+import { OrdersReady } from '../../pages/room/OrdersReady'
+import { OrdersDelivered} from '../../pages/room/OrdersDelivered'
+
+
 import { PrivateRouteRoom } from '../routeComponents/private/PrivateRouteRoom';
 import { PrivateRouteKitchen } from '../routeComponents/private/PrivateRouteKitchen';
 
@@ -24,6 +30,11 @@ export const Root = () => {
           <PublicRoute path='/register' exact={true} component={Register} />
           <Route path='/unauthorized' exact={true} component={Unauthorized}/>
           <PrivateRouteRoom path='/room' exact={true} component={Room} />
+          <PrivateRouteRoom path='/menu' exact={true} component={Menu} />
+          <PrivateRouteRoom path='/orders/being-prepared' exact={true} component={OrdersBeingPrepared} />
+          <PrivateRouteRoom path='/orders/ready' exact={true} component={OrdersReady} />
+          <PrivateRouteRoom path='/orders/delivered' exact={true} component={OrdersDelivered} />
+          
           <PrivateRouteKitchen path='/kitchen' exact={true} component={Kitchen} />
           <Route component={NotFound}/>
         </Switch>
