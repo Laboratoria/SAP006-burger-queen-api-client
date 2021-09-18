@@ -18,3 +18,46 @@ header{
     width: 30vh;
   }
 }
+
+ 
+@media (min-width: 1000px) {
+  .login-content{
+    .logo{
+      top:14%;
+      left: -2%;
+      height: 65vh;
+      width: 65vh;
+      position: absolute;   
+    }
+
+  .auth-welcome{
+    top:2%;
+    right: 13%;
+    height: 45vh;
+    width: 45vh;
+    position: absolute;
+    }
+  }
+
+  .register-content{
+    .logo{
+      top:35%;
+      left: -1%;
+      height: 60vh;
+      width: 60vh;
+      position: absolute;    
+    }
+
+  .auth-welcome{
+    top:0%;
+    left: 7%;
+    height: 40vh;
+    width: 40vh;
+    position: absolute;
+    }
+  }
+}
+
+
+
+

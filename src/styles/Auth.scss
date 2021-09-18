@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     width: 100%;
     margin-top: -2%;
 
@@ -22,7 +23,6 @@
       font-size: 170%;
       padding-right: 1%;
       color: $even-lighter-brown-txt;
-      height: 3vh;
     }
   }
 }
@@ -42,5 +42,12 @@ fieldset {
     left: 1%;
   }
 }
-  
 
+@media (min-width: 1000px) {
+  main {
+    position: absolute;
+    bottom: 2%;
+    right: 5%;
+    width: 50%;
+  }
+}

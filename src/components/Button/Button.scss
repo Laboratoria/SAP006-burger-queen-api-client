@@ -4,7 +4,7 @@
   width: 60%;
   height: 6vh;
 
-  margin: 0% auto;
+  margin: 0% auto 3%;
 
   background-color: $orange-btn;
   color:$even-lighter-brown-txt;
@@ -15,8 +15,7 @@
 .auth-route-navigation {
   color: $yellow-logo;
   font-size: 170%;
-  margin-top: 3.5%;
-  height: 3vh;
+  margin-right: 1%;
 }
 
 .auth-show-or-not-password {
@@ -72,4 +71,11 @@
 .unauhtorized-goback{
   left: 5%;
   background-image: url('../../assets/icons/light-brown-goback.png');
+}
+
+@media (min-width: 1000px) {
+  .auth-submit-form {
+    height: 8vh;
+    width: 80%;
+  }
 }
