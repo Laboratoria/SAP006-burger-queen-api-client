@@ -55,3 +55,21 @@
   background-color: $orange-btn;
   color: white;
 }
+
+.unauhtorized-sign-out, .unauhtorized-goback{
+  height: 8vh;
+  width: 8vh;
+  position: absolute;
+  bottom: 2%;
+  background-size: 8vh;
+}
+
+.unauhtorized-sign-out{
+  right: 5%;
+  background-image: url('../../assets/icons/light-brown-logout.png');
+}
+
+.unauhtorized-goback{
+  left: 5%;
+  background-image: url('../../assets/icons/light-brown-goback.png');
+}

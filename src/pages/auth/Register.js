@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { authSignin } from '../../services/auth';
-import { navigateTo } from '../../services/routes';
-
 import { AuthErrorMessages } from '../../components/ErrorMessages/ErrorMessages';
 import { AuthModal } from '../../components/Modal/Modal';
 import { Button } from '../../components/Button/Button';
@@ -12,6 +9,8 @@ import { InputContentUserData } from '../../components/UserData/UserData';
 import { InputRadioUserData } from '../../components/UserData/UserData';
 
 import inputRole from '../../assets/icons/input-role.png';
+
+import { login } from '../../routes/utils/auth';
 
 import '../../styles/Auth.scss'
 
@@ -39,6 +38,81 @@ export const Register = () => {
   const setAuthInputs = {setNameErrorInput, setEmailErrorInput, setPasswordErrorInput,
   setConfirmPasswordErrorInput, setRoleErrorInput}
 
+  const handleSignin = () => {
+    const token = localStorage.getItem('currentEmployeeToken')
+    const role = localStorage.getItem('currentEmployeeRole')
+    login(token)
+    role === 'kitchen' ? history.push('/kitchen') : history.push('/room')
+  }
+
+  const navigateTo = (history, path, setModalState) => {
+    setModalState(false);
+    history.push(path);
+  }
+
+  const checkUserDataToSignin = ({userData}, {setAuthInputs}) => {
+    if (userData.name.length < 7) {   
+      setAuthInputs.setNameErrorInput(true);
+      return 'Error'
+    }
+    else if (!userData.email.includes('@')) {
+      setAuthInputs.setEmailErrorInput(true);
+      return 'Error'
+    }
+    else if (userData.password.length < 6) {
+      setAuthInputs.setPasswordErrorInput(true);
+      setAuthInputs.setConfirmPasswordErrorInput(true);
+      return 'Error'
+    }
+    else if (userData.password !== userData.confirmPassword) {
+      setAuthInputs.setPasswordErrorInput(true);
+      setAuthInputs.setConfirmPasswordErrorInput(true);
+      return 'Error'
+    } 
+    else if (userData.role === '') {
+      setAuthInputs.setRoleErrorInput(true);
+      return 'Error'
+    } else {
+      return 'Sucess'
+    }
+  }
+
+  const authSignin = (event, {userData}, {setAuthModals}, {setAuthInputs}) => {
+    const apiToSignin = 'https://lab-api-bq.herokuapp.com/users'
+    event.preventDefault();
+
+    const userDataCheckResult = checkUserDataToSignin ({userData}, {setAuthInputs})
+    if (userDataCheckResult === 'Sucess') {
+      fetch(apiToSignin , {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify 
+          ({
+          name: userData.name,
+          email: userData.email,
+          password: userData.password,
+          role:userData.role,
+          restaurant:'Berg'
+          })
+      }).then((response) => { 
+        return response.json();
+      }).then((responseJson) => {
+        localStorage.setItem('currentEmployeeName', responseJson.name);
+        localStorage.setItem('currentEmployeeEmail', responseJson.email);
+        localStorage.setItem('currentEmployeeToken', responseJson.token);
+        localStorage.setItem('currentEmployeeRole', responseJson.role);
+        if (responseJson.token !== undefined) {
+          setAuthModals.setAuthSucessModal(true)
+        } else {
+          throw new Error (responseJson.message);
+        }
+      }).catch(() => {
+        setAuthModals.setAuthErrorModal(true)
+      })
+    }
+  }
+
+  
   return (
     <div className = 'login-and-register-content register-content'>
     <Header/>
@@ -99,7 +173,7 @@ export const Register = () => {
         </form>
         <Button 
           Role = 'authSubmitForm'
-          ButtonOnClick = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs})} 
+          ButtonOnClick = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs}, checkUserDataToSignin)} 
           children = 'Registrar'
         /> 
         <div className='auth-navigation-div'>
@@ -116,7 +190,7 @@ export const Register = () => {
         {authSucessModal ? (
           <AuthModal 
             Role = 'authSucessModal-register'
-            ButtonOnClick = {() => navigateTo(history, '/register', setAuthSucessModal)} 
+            ButtonOnClick = {() => handleSignin()} 
           />
         ): null}
       </section>

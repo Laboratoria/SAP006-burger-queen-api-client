@@ -7,7 +7,7 @@ export function AuthModal ({ Role, ButtonOnClick, ButtonOnClickSecondOption }) {
 
   const ModalProps = {
     'authSucessModal-login': {
-      'ModalContent':'Cadastro realizado com sucesso!',
+      'ModalContent':'Login realizado com sucesso!',
       'ButtonChildren':'OK',
     },
     'authErrorModal-login': {

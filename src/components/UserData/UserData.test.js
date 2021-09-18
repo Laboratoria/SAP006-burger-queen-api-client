@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent, cleanup} from '@testing-library/react';
 import { InputContentUserData } from './UserData'
 import { InputRadioUserData } from './UserData'
+import { showOrNotShowPassword } from './UserData'
 
 afterEach(cleanup)
 
@@ -67,7 +68,6 @@ describe('Testing the UserDataTextContent component', () => {
     expect(queryByTestId('userDataInput')).toHaveClass('auth-correct-input');
   });
 
-
   it('The UserData Button component should not be in the document when subject = test', () => {
     const {queryByTestId} = render(<InputContentUserData Subject='test' InputValue='test' InputOnChange = {(event) => event.target.value}/>);
     expect(queryByTestId('button')).toBeNull();
@@ -105,7 +105,13 @@ describe('Testing the UserDataTextContent component', () => {
     expect(queryByTestId('button')).toHaveClass('auth-show-password')
   });
 
+  it ('The showOrNotShowPassword function should be a function.', () => {
+    const component = render(<InputContentUserData Subject='confirmPassword' InputValue='test' InputOnChange = {(event) => event.target.value}/>);
+    expect(typeof component.showOrNotShowPassword).toBe('funcion')
+  })
+
 })
+
 
 describe('Testing the UserDataRadioContent component', () => {
   it('The UserDataRadio Div component should be rendered in the document.', () => {
