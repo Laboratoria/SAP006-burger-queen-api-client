@@ -12,6 +12,7 @@ export default function ProductArea({
     inputName,
     inputValue,
     inputChecked,
+    className,
     onClick
 }) {
     return (
@@ -30,7 +31,7 @@ export default function ProductArea({
             />
             <label
                 htmlFor={inputId}
-                className="label-product-box"
+                className="label-product-box "
             >
                 <img
                     className='product-image'
