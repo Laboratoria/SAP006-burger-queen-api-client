@@ -6,14 +6,17 @@ import inputEmail from '../../assets/icons/input-email.png';
 import inputPassword from '../../assets/icons/input-password.png';
 
 
-import { showOrNotShowPassword } from '../../services/auth';
-
 import './UserData.scss'
 
 export function InputContentUserData ({Subject, Error, InputValue, InputOnChange}) {
   
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
+
+  const showOrNotShowPassword = (event, value, setValue) => {
+  event.preventDefault();
+  setValue(value ? false : true);
+  };
 
   const UserDataProps = {
     'name': {

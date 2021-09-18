@@ -1,0 +1,33 @@
+
+@import '../../styles/Global.scss';
+
+.not-found-page{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $dark-brown-bg;
+  padding: 5%;
+
+  img {
+    height: 50vh;
+    width: 50vh;
+  }
+
+  h1, h2 {
+    text-align: center;
+    color:$yellow-logo;
+  }
+
+  h1 {
+    font-size: 600%;
+    color:$orange-btn;
+  }
+
+  h2 {
+    font-size: 250%;
+    color:$yellow-logo;
+  }
+}

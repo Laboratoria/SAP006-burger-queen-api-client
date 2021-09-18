@@ -25,10 +25,17 @@ export const Button = ({ Role, Conditional, ButtonOnClick, children}) => {
     'authErrorModal-register':{
       'ButtonClass':'auth-modal-button'
     },
+    'unauhtorized-sign-out':{
+      'ButtonClass':'unauhtorized-sign-out'
+    },
+    'unauhtorized-goback':{
+      'ButtonClass':'unauhtorized-goback'
+    },
     'test':{
       'ButtonClass':'test-class',
     }
   }
+  
 
   return (
     <button 
