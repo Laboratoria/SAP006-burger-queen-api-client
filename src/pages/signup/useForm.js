@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { validateForm } from '../../services/validate';
 import { createUser } from '../../services/auth';
 
@@ -9,26 +9,36 @@ const useForm = () => {
     password: '',
     confirmPassword: '',
     role: '',
+  });
+
+  const [errors, setErrors] = useState('');
+
+  useEffect(() => {
+    return { errors }
   })
 
   const handleChange = (e) => {
     const auxValues = { ...values };
     auxValues[e.target.name] = e.target.value;
     setValues(auxValues);
-    validateForm(values);
-  }
+    setErrors(validateForm(values).message);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm(values) === true) {
+    if (validateForm(values).validationFulfilled === true) {
       createUser(values)
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+          if (data.code === 403) {
+            setErrors(data.message);
+          }
+        })
         .catch(error => console.log(error))
     }
-  }
+  };
 
-  return { handleChange, handleSubmit };
+  return { handleChange, handleSubmit, errors };
 }
 
 export default useForm;

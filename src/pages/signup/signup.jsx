@@ -1,13 +1,14 @@
 import React from 'react';
-
+import ShowErrors from '../../components/errors';
 import useForm from './useForm';
 
 const SignUp = () => {
-  const { handleChange, handleSubmit } = useForm();
-  
+  const { handleChange, handleSubmit, errors } = useForm();
+
   return (
     <div>
       <h1>Página de Cadastro</h1>
+      <ShowErrors value={errors}/>
       <input type='text' placeholder='Nome' name='name' onChange={handleChange} />
       <select autoComplete='off' name='role' onChange={handleChange}>
         <option value=''>Selecione um cargo</option>
