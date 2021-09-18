@@ -86,5 +86,55 @@ main {
 }
 
 
+ 
+@media (min-width: 1000px) {
+  main {
+    form {
+      width: 100%;
+      }
+    }
 
+  .login-content{
+    main {
+      form {
+        div{
+          margin-bottom: 7%;
 
+          input{
+            padding-bottom: 1%;
+          }
+        }
+      }
+    }
+  }
+
+  .register-content{
+    main {
+      form {
+        div{
+          margin-bottom: 10%;
+
+          input{
+            padding-bottom: 1%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-height: 1200px) {
+  .register-content{
+    main {
+      form {
+        div{
+          margin-bottom: 8%;
+
+          input{
+            padding-bottom: 1%;
+          }
+        }
+      }
+    }
+  }
+}

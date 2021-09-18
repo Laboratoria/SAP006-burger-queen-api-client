@@ -1,6 +1,6 @@
+
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
 
 import { logout } from "../../routes/utils/auth";
 import { NavbarRoom } from '../../components/Navbar/Navbar';
@@ -8,7 +8,7 @@ import { NavbarRoom } from '../../components/Navbar/Navbar';
 import { Button } from '../../components/Button/Button';
 
 
-export const Room = () => { 
+export const OrdersReady= () => { 
   const history = useHistory();
 
   const handleLogout = () => {
@@ -17,9 +17,9 @@ export const Room = () => {
   }
 
   return (
-    <div className='navbar-div'>
+    <div>
     <NavbarRoom/>
-    <Button Role='room-sign-out' ButtonOnClick={handleLogout}/> 
+    <h1>READY</h1>
     </div>
     
   )

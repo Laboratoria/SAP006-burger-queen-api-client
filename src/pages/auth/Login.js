@@ -33,7 +33,7 @@ export function Login () {
     history.push(path);
   }
 
-  const authLogin = (event, {userData}, {setAuthModals}) => {
+  const authLogin = (event) => {
     const apiToLogin = 'https://lab-api-bq.herokuapp.com/auth';
     event.preventDefault();
     fetch (apiToLogin, {

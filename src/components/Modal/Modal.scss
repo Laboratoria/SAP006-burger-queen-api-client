@@ -27,3 +27,25 @@
   border: $orange-btn solid 4pt;
   border-radius: 5px;
 }
+
+ 
+@media (min-width: 1024px) {
+  .login-content{
+    .modal-background{
+      top: -90%;
+      left: -90%;
+      height: 101vh;
+      width: 133vh;
+      background: rgba(0,0,0, .5);
+    }
+  }
+
+  .register-content{
+    .modal-background{
+      height: 101vh;
+      width: 133vh;
+      background: rgba(0,0,0, .5);
+    }
+  }
+
+}
