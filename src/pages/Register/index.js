@@ -127,7 +127,7 @@ const Register = () => {
 				<img src={arrow} alt="arrow"/>
 			</button>
 				
-				<h2>CADASTRO</h2>
+				<h2 className="uppercase">Cadastro</h2>
 				<div className="form-wrapper margin-top-1">
 					<form>
 						<fieldset className="margin-input">
@@ -197,10 +197,10 @@ const Register = () => {
 						<div>
 							<ButtonDefault
 								id="btn-register"
-								className="btn-default margin-bottom-4 margin-top-3"
+								className="btn-default margin-bottom-4 margin-top-3 uppercase"
 								onClick={handleSubmit}
 							>
-								CADASTRAR
+								Cadastrar
 							</ButtonDefault>
 						</div>
 					</form>
