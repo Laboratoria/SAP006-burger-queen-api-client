@@ -5,4 +5,3 @@ export default function Kitchen ()  {
 	<h1>Cozinha</h1>
 	)
 };
-
