@@ -1,0 +1,51 @@
+:root {
+	--white: #fff;
+	--black: #000000;
+	--green: #a0a603;
+	--yellow: #d97904;
+	--red: #bf0404;
+	--dark-red: #590202;
+	--light-gray: #292929;
+	--dark-gray: #111111;
+	--stroke: #464242;
+}
+
+.popup-overlay {
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	background-color: #00000042;
+}
+
+.popup-open {
+	display: flex;
+	width: 30%;
+	position: relative;
+	height: 20%;
+	flex-direction: column;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 1rem;
+	overflow: hidden;
+	background-color: #f8eddd;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--dark-red);
+	padding: 10px;
+	margin-bottom: 0;
+	text-align: center;
+
+	p {
+		margin: 0;
+	}
+}
