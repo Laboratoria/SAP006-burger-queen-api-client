@@ -109,6 +109,17 @@
   background-image: url('./../../assets/images-buttons/navbar-delivered-orders.png');
 }
 
+.menu-filter {
+  font-family: 'Norwester', arial;
+  font-size: 250%;
+  padding:1%;
+  border-radius: 10pt;
+  background-color: $light-brown-box;
+  color:$even-lighter-brown-txt;
+}
+
+
+
 @media (min-width: 1000px) {
   .auth-submit-form {
     height: 8vh;

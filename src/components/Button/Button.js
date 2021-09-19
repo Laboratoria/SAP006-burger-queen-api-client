@@ -4,6 +4,9 @@ import './Button.scss';
 export const Button = ({ Role, Conditional, ButtonOnClick, children}) => {
 
   const ButtonProps = {
+    'test':{
+      'ButtonClass':'test-class',
+    },
     'authNavigateTo': {
       'ButtonClass':'auth-route-navigation',
     },
@@ -49,10 +52,21 @@ export const Button = ({ Role, Conditional, ButtonOnClick, children}) => {
     'room-navbar-menu-delivered-orders':{
       'ButtonClass':'room-navbar-button room-delivered-orders',
     },
-  
-    'test':{
-      'ButtonClass':'test-class',
-    }
+    'menu-all':{
+      'ButtonClass':'menu-filter menu-filter-all',
+    },
+    'menu-petit-dej':{
+      'ButtonClass':'menu-filter menu-filter-petit-dej',
+    },
+    'menu-pour-la-journee':{
+      'ButtonClass':'menu-filter menu-filter-pour-la-journee',
+    },
+    'menu-to-drink':{
+      'ButtonClass':'menu-filter menu-filter-to-drink',
+    },
+    'menu-to-eat':{
+      'ButtonClass':'menu-filter menu-filter-to-eat',
+    },
   }
   
 

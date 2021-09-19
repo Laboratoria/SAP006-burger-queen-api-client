@@ -12,7 +12,7 @@ import inputRole from '../../assets/icons/input-role.png';
 
 import { login } from '../../routes/utils/auth';
 
-import '../../styles/Auth.scss'
+import './Auth.scss'
 
 export const Register = () => {
 

@@ -1,0 +1,16 @@
+.menu-cards-section {
+  margin-left: 3%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-row-gap:4%;
+}
+
+.teste-h1{
+  font-family: 'Norwester', arial;
+}
+
+.filter-buttons-div{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 3%;
+}

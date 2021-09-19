@@ -7,13 +7,13 @@ import { Unauthorized } from '../../pages/unauthorized/Unauthorized'
 import { Login } from '../../pages/auth/Login'
 import { Register } from '../../pages/auth/Register';
 
-import { Room } from '../../pages/room/Room'
+import { Room } from '../../pages/room/Room/Room'
 import { Kitchen } from '../../pages/kitchen/Kitchen'
 
-import { Menu } from '../../pages/room/Menu';
-import { OrdersBeingPrepared } from '../../pages/room/OrdersBeingPrepared'
-import { OrdersReady } from '../../pages/room/OrdersReady'
-import { OrdersDelivered} from '../../pages/room/OrdersDelivered'
+import { Menu } from '../../pages/room/Menu/Menu';
+import { OrdersBeingPrepared } from '../../pages/room/OrdersBeingPrepared/OrdersBeingPrepared'
+import { OrdersReady } from '../../pages/room/OrdersReady/OrdersReady'
+import { OrdersDelivered} from '../../pages/room/OrdersDelivered/OrdersDelivered'
 
 
 import { PrivateRouteRoom } from '../routeComponents/private/PrivateRouteRoom';

@@ -8,7 +8,7 @@ import { InputContentUserData } from '../../components/UserData/UserData';
 
 import { login } from '../../routes/utils/auth';
 
-import '../../styles/Auth.scss'
+import './Auth.scss'
 
 export function Login () {
   const history = useHistory();

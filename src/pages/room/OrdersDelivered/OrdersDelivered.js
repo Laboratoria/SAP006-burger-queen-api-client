@@ -2,13 +2,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { logout } from "../../routes/utils/auth";
-import { NavbarRoom } from '../../components/Navbar/Navbar';
 
-import { Button } from '../../components/Button/Button';
+import { logout } from "../../../routes/utils/auth";
+import { NavbarRoom } from '../../../components/Navbar/Navbar';
+
+import { Button } from '../../../components/Button/Button';
 
 
-export const OrdersReady= () => { 
+
+export const OrdersDelivered = () => { 
   const history = useHistory();
 
   const handleLogout = () => {
@@ -19,9 +21,8 @@ export const OrdersReady= () => {
   return (
     <div>
     <NavbarRoom/>
-    <h1>READY</h1>
+    <h1>DELIVEREDD</h1>
     </div>
     
   )
 }
-
