@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-// import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
+import { LoginWithEmail } from '../../../services/Auth';
+
 
 export default function Login() { 
     const [email, setEmail] = useState('');
@@ -37,11 +39,12 @@ export default function Login() {
                     placeholder='Digite a sua senha'
                 />
               
-                <Button 
-                    label='Entrar' 
+                <Button label='Entrar' 
                     type="submit"
-                    // onClick={} -- colocar a função do botão dentro do bigode quando fizer
-                />
+                    onClick={LoginWithEmail}>
+                    <Link to='/cadastre-se'></Link>
+            
+                </Button>
 
                 <div>
                     <h2>Não tem uma conta? Cadastre-se</h2>

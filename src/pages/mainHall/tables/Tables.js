@@ -1,4 +1,13 @@
-// import React from 'react';
+import React from 'react';
+import LogoImg from '../../../components/images/LogoImg';
+
+function Mesas () {
+    return(
+        <LogoImg />
+    )
+}
+
+export default Mesas;
 
 // import { useParams } from 'react-router-dom';
  

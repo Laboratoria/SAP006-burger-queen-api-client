@@ -1,17 +1,77 @@
-export const loginWithEmailAndPassword = (email, password) => {
-    
-    return fetch("https://lab-api-bq.herokuapp.com/auth", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify ({
-        "email": email,
-        "password": password
-    })
-  });
+import { Redirect } from "react-router";
+
+export const RegisterUser = (users) => {
+    return fetch('https://lab-api-bq.herokuapp.com/users', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authentication': 'Token'
+        },
+        body: JSON.stringify({
+            'name': 'thalita',
+            'email': users.email,
+            'password': users.password,
+            'role': users.role,
+            'restaurant': 'Retro Burger',
+        })
+    });
 };
 
-export default loginWithEmailAndPassword;
+export const RegisterSuccess = () => {
+    return (
+        alert('Sua conta foi criada com sucesso! :)')
+    )
+}
 
-export const isAuthenticated = () => true;
+export const LoginWithEmail = (users) => {
+    return fetch('https://lab-api-bq.herokuapp.com/auth', {
+        method:'POST',
+        headers: {
+            accept: 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify ({
+            "email": users.email,
+            "password": users.password,
+        }),
+        // body: `email=${email}&password=${password}`
+    })
+        .then((response) => response.json())
+        .then((json) => {
+            const { token } = json;
+            if(token) {
+                <Redirect push to='/mesas' />
+                // window.push('/tables')
+            } else {
+                // history().push('/');
+                <Redirect push to='/' />
+                alert('erro no token');
+            }
+        })
+};
+
+
+
+
+
+
+
+// // import { Redirect } from "react-router";
+
+// export const loginWithEmailAndPassword = (email, password) => {
+    
+//     return fetch("https://lab-api-bq.herokuapp.com/auth", {
+//     method: "POST",
+//     headers: {
+//         "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify ({
+//         "email": email,
+//         "password": password
+//     })
+//   });
+// };
+
+// export default loginWithEmailAndPassword;
+
+// export const isAuthenticated = () => true;
