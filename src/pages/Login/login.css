@@ -84,6 +84,13 @@
     background: #91541c;
 }
 
+.link-register{
+    width: 40%;
+    height: 50px;
+    justify-content: center;
+    color: #884f1adb;
+}
+
 .icons-input{
     font-size: 135%;
     margin-left: 70%;
