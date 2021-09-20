@@ -6,6 +6,7 @@ import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input.jsx'
 import { LoginWithEmail } from '../../services/auth';
 import login from '../../Assets/login.png';
+import { Login as LoginAuth } from '../../services/auth'
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -21,7 +22,7 @@ const Login = () => {
         LoginWithEmail(user)
             .then((token) => {
                 if(token) {
-                localStorage.setItem('Vixi', token)
+                    LoginAuth('Vixi', token)
                 history.push('/tables')
                 } 
                 else {
