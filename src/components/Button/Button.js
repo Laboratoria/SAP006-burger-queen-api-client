@@ -67,6 +67,12 @@ export const Button = ({ Role, Conditional, ButtonOnClick, children}) => {
     'menu-to-eat':{
       'ButtonClass':'menu-filter menu-filter-to-eat',
     },
+    'menu-open-ingredients-modal':{
+      'ButtonClass':'menu-open-ingredients-modal'
+    },
+    'menu-close-ingredients-modal':{
+      'ButtonClass':'menu-close-ingredients-modal'
+    }
   }
   
 

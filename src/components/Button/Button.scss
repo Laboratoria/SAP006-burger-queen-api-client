@@ -118,7 +118,16 @@
   color:$even-lighter-brown-txt;
 }
 
-
+.menu-open-ingredients-modal{
+  width: 20%;
+  margin-top:5%;
+  margin-left: 5%;
+  font-family: 'Norwester', arial;
+  color: $yellow-logo;
+  font-size: 210%;
+  background-color: $light-brown-box;
+  border-radius: 50%;
+}
 
 @media (min-width: 1000px) {
   .auth-submit-form {

@@ -1,9 +1,16 @@
 @import '../../styles/Global.scss';
 
 
-.menu-card-img{
-  height: 16vh;
-  width: 16vh;
+.menu-card-div{
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
-  border: $light-brown-box solid 2pt;
+  border: $light-brown-box solid 2pt;justify-content: center;
 }
+
+.menu-card-img{
+  margin: auto;
+  height: 14vh;
+  width: 14vh;
+}
+

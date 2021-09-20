@@ -25,14 +25,23 @@
 }
 
 body {
+  min-height: 110vh;
   margin:auto;
   padding: 0;
   align-items: center;
   justify-content: center;
   background-color: $dark-brown-bg;
+  overflow: scroll;
+  scroll-behavior: smooth;
 }
 
 button {
   cursor: pointer;
   background-repeat: no-repeat;
+}
+
+@media (max-height: 1024px) {
+  body{
+    min-height: 118vh;
+  }
 }
