@@ -1,0 +1,39 @@
+.container-kitchen {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Bob; 
+}
+.txt-logOut{
+    color: #00000063;
+    font-family: Bob;
+    margin-bottom: -1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-div{
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logOut-btn{
+    padding: 1rem;
+    border: none;
+    background-color: inherit;
+}
+
+.window-img {
+    width: 6.5rem;
+    -webkit-transition: -webkit-transform .5s ease;
+    transition: transform .5s ease;
+}
+
+.window-img:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}

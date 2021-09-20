@@ -7,14 +7,14 @@ import {
 } from 'react-router-dom';
 import Login from './pages/Login/login';
 import Register from './pages/Register/register';
-import Sallon from './pages/Sallon/sallon';
+import Saloon from './pages/Saloon/saloon';
 import Page404 from './pages/Page404/index';
 import Pedidos from './pages/Pedidos/index';
 import Kitchen from './pages/Kitchen/kitchen';
 import GlobalStyle from './components/GlobalStyle';
 import AllDay from './pages/Pedidos/allDay/index';
 
-// import PrivateRoute from './service/PrivateRoute';
+import PrivateRoute from './service/PrivateRoute';
 
 function Routes() {
   /* const isAuth = () => {
@@ -45,21 +45,25 @@ function Routes() {
           <Login />
         </Route>
 
+        <Route exact path="/login">
+          <Login />
+        </Route>
+
         <Route exact path="/register">
           <Register />
         </Route>
 
-        <Route exact path="/sallon">
-          <Sallon />
-        </Route>
+        <PrivateRoute exact path="/saloon">
+          <Saloon />
+        </PrivateRoute>
 
-        <Route exact path="/sallon/pedidos/:mesa">
+        <PrivateRoute exact path="/saloon/pedidos/:mesa">
           <Pedidos />
-        </Route>
+        </PrivateRoute>
 
-        <Route exact path="/kitchen">
+        <PrivateRoute exact path="/kitchen">
           <Kitchen />
-        </Route>
+        </PrivateRoute>
 
         <Route exact path="/allday">
           <AllDay />
