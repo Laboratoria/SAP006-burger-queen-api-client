@@ -12,8 +12,7 @@ function Routes(){
             <Switch>
                 <Route path="/" exact component={Login} />
                 <Route path="/cadastre-se" component={Registration} />
-                <Route path="/mesas" component={ Mesas } />
-
+                
                 <PrivateRoute path="/mesas" component={ Mesas }/>
                 <Route path="*" element={<h1>Not Found</h1>} />                                
             </Switch>

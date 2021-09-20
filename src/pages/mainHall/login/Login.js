@@ -23,7 +23,7 @@ export default function Login() {
         LoginWithEmail(user)
         .then(token => {
             if (token){
-                localStorage.setItem(token)
+                localStorage.setItem('arroz', token)
                 history.push('/mesas')
             }
         }) 
@@ -41,7 +41,6 @@ export default function Login() {
                     name='email'
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
-                    errorMessage='Por favor, insira um e-mail válido.'
                     placeholder='Digite o seu e-mail'
                 />
 
@@ -50,7 +49,6 @@ export default function Login() {
                     name='password'
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
-                    errorMessage='Por favor, insira uma senha válida.'
                     placeholder='Digite a sua senha'
                 />
               
