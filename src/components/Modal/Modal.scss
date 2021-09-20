@@ -6,9 +6,10 @@
   align-items: center;
   position: absolute;
   top: 0;
-  height: 100vh;
+  min-height: 100%;
   width: 100%;
   background: rgba(0,0,0, .5);
+  z-index: 2;
 }
 
 .modal-container{
@@ -20,6 +21,7 @@
   position: absolute;
   margin: auto;
   padding:5%;
+  width: 80%;
 
   font-size: 180%;
   font-weight: 500;
@@ -28,30 +30,28 @@
   border-radius: 5px;
 }
 
-
-.product-card-div{
-  .modal-background{
-    width: 100vh;
-  }
+.auth-modal-content{
+  color: $dark-brown-bg;
+  font-size: 150%;
+  text-align: center;
 }
- 
-@media (min-width: 1024px) {
-  .login-content{
-    .modal-background{
-      top: -90%;
-      left: -90%;
-      height: 101vh;
-      width: 133vh;
-      background: rgba(0,0,0, .5);
-    }
-  }
 
-  .register-content{
-    .modal-background{
-      height: 101vh;
-      width: 133vh;
-      background: rgba(0,0,0, .5);
-    }
-  }
+.menu-modal-title{
+  margin-bottom: -2%;
+  font-family: $berg-font;
+  font-size: 180%;
+  color:$medium-green;
+  text-align: center;
+}
 
+.menu-modal-content{
+  line-height: 130%;
+  font-size: 110%;
+  color:$even-darker-brown-txt;
+  text-align: justify;
+}
+
+.menu-modal-observations{
+  font-size: 80%;
+  text-align: justify;
 }

@@ -23,7 +23,7 @@ export function InputContentUserData ({Subject, Error, InputValue, InputOnChange
       'data-content':'name',
       'InputClass': Error ? 'auth-wrong-input' : InputValue.length < 1 ? 'auth-correct-input' : InputValue.length >= 7 ? 'auth-correct-input' : 'auth-wrong-input',
       'InputType':'text',
-      'InputPlaceholder':'Nome',
+      'InputPlaceholder':'Nome Completo',
       'LabelClass':'',
       'IconSrc':inputName,
       'IconAlt':'Full Name',

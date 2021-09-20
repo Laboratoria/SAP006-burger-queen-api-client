@@ -3,9 +3,6 @@
 
 
 .login-and-register-content{
-  background-color: $dark-brown-bg;
-  height: 100vh;
-
   main {
     display: flex;
     flex-direction: column;
@@ -27,7 +24,7 @@
   }
 }
 
-fieldset {
+.auth-role-input-fieldset {
   display: flex;
   flex-direction: row;
 
@@ -44,17 +41,21 @@ fieldset {
 }
 
 @media (min-width: 1000px) {
-  main {
-    position: absolute;
-    bottom: 2%;
-    right: 5%;
-    width: 50%;
+  .login-and-register-content{
+    main {
+      position: absolute;
+      bottom: 2%;
+      right: 5%;
+      width: 50%;
+    }
   }
 }
 
 @media (min-height: 1200px) {
-  main {
-    width: 70%;
-    left: 15%;
+  .login-and-register-content{
+    main {
+      width: 70%;
+      left: 15%;
+    }
   }
 }

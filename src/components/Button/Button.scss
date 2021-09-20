@@ -4,7 +4,7 @@
   width: 60%;
   height: 6vh;
 
-  margin: 0% auto 3%;
+  margin: 0% auto;
 
   background-color: $orange-btn;
   color:$even-lighter-brown-txt;
@@ -120,13 +120,21 @@
 
 .menu-open-ingredients-modal{
   width: 20%;
-  margin-top:5%;
-  margin-left: 5%;
-  font-family: 'Norwester', arial;
+  margin: 5% 0% -8% 5%;
+  font-family: $berg-font;
   color: $yellow-logo;
   font-size: 210%;
   background-color: $light-brown-box;
   border-radius: 50%;
+  z-index: 1;
+}
+
+.menu-close-ingredients-modal{
+  background-color: $orange-btn;
+  font-size: 120%;
+  border-radius: 10px;
+  padding: 1% 4%;
+  margin-top: 3%;
 }
 
 @media (min-width: 1000px) {

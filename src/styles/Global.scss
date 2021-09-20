@@ -1,4 +1,4 @@
-
+  $even-darker-brown-txt:#292018;
   $dark-brown-bg:#493421;
   $orange-btn:#F25C05;
   $light-brown-label:#FFA34C;
@@ -12,9 +12,12 @@
   $blue-delivered-order:#2E8EFF;
   $red-delivered-order:#EA463B;
   $light-brown-bg:#EDBA93;
+  $medium-green:#467502;
 
 
   @import url(https://allfont.net/allfont.css?fonts=norwester);
+
+  $berg-font: 'Norwester', arial;
   
 * { 
   background-color: transparent;
@@ -24,24 +27,31 @@
   outline: none;
 }
 
+html {
+  overflow: hidden;
+}
+
+body, #root{
+  overflow: scroll;
+}
+
+body, html, #root { 
+  width:100%; 
+  height:100%; 
+  padding: 0; 
+  margin: 0;
+}
+
 body {
-  min-height: 110vh;
-  margin:auto;
-  padding: 0;
+  position: absolute;
+  top:0;
+  width: 100%;
   align-items: center;
   justify-content: center;
   background-color: $dark-brown-bg;
-  overflow: scroll;
-  scroll-behavior: smooth;
 }
 
 button {
   cursor: pointer;
   background-repeat: no-repeat;
-}
-
-@media (max-height: 1024px) {
-  body{
-    min-height: 118vh;
-  }
 }

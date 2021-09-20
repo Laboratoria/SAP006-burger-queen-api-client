@@ -6,9 +6,9 @@ import { products } from '../../data/products';
 import { MenuModal } from '../Modal/Modal';
 import { Button } from '../Button/Button';
 
-export const ProductCard = ({Role}) => { 
+export const ProductCard = ({Role, ButtonOnClick}) => { 
 
-  const [showIngredients, setShowIngredients] = React.useState(false);
+ 
 
   function importMenuImages(files) {
     let importedImages = {};
@@ -20,18 +20,9 @@ export const ProductCard = ({Role}) => {
   Object.entries(products).map(produt => produt[1].importedImg = importedImages[produt[0]].default)
 
   return (
-    <div className='menu-card-div'>
-      <Button Role='menu-open-ingredients-modal' children='+' ButtonOnClick={() => setShowIngredients(true)}/>
+    <div className='menu-card-div' id={products[Role].id}>
+      <Button Role='menu-open-ingredients-modal' children='+' ButtonOnClick={ButtonOnClick}/>
       <img className='menu-card-img' src={products[Role].importedImg}  alt={products[Role].alt}/>
-      <section>
-      {showIngredients ? 
-        <MenuModal 
-          Role = 'menu-close-ingredients-modal'
-          ModalContent={products[Role].ingredients}
-          ButtonOnClick={() => setShowIngredients(false)}
-        />
-      : null}
-      </section>
     </div>
     )
   }

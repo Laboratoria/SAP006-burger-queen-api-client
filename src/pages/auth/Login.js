@@ -93,7 +93,8 @@ export function Login () {
             children = 'registre-se'
           /> 
         </div>
-          <section>
+      </main>
+      <section>
         {authSucessModal ? (
           <AuthModal 
             Role = 'authSucessModal-login'
@@ -110,7 +111,7 @@ export function Login () {
           />
         ): null}
       </section>
-    </main>
+    
   </div>
   )
 }

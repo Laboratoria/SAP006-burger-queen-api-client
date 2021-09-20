@@ -1,7 +1,8 @@
 export const products = {
     'cafe-com-leite':{
+      'title':'Café Com Leite',
       'id':'cafe-com-leite',
-      'ingredientes':'1. Leite de vacas livres e que vivem com seus filhotes - Produto de origem de pequenos produtores rurais regionais. 2. Café artesanal, semeado, colhido, moído e embalado por pequenos produtores na Etiópa - terra mãe do café.',
+      'ingredientes':'1. Leite de vacas livres; 2. Café artesanal, semeado, colhido, moído e embalado por pequenos produtores na Etiópa (terra mãe do café).',
       'setor':'bebida',
       'tipo':'bebida-quente',
       'menu':'cafe-da-manha',
@@ -12,6 +13,7 @@ export const products = {
       'importedImg':''
     },
     'cafe-americano':{
+      'title':'Café Americano',
       'id':'cafe-americano',
       'ingredientes':'1. Café artesanal, semeado, colhido, moído e embalado por pequenos produtores na Etiópa - terra mãe do café.',
       'setor':'bebida',
@@ -24,8 +26,9 @@ export const products = {
       'importedImg':''
     },
     'sanduiche-presunto-queijo':{
+      'title':'Sanduíche de Presunto e Queijo',
       'id':'sanduiche-presunto-queijo',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal de produção de pequeno porte - vacas livres e que vivem com seus filhotes. 3. Proteína de soja temperada, saborizada e texturizada como presunto.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Proteína de soja temperada, saborizada e texturizada como presunto.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'cafe-da-manha',
@@ -36,8 +39,9 @@ export const products = {
       'importedImg':''
     },
     'suco-de-fruta-natural':{
+      'title':'Suco de Fruta Natural',
       'id':'suco-de-fruta-natural',
-      'ingredientes':'1. Frutas da época colhidas em propriedades da região.',
+      'ingredientes':'1. Frutas da época.',
       'setor':'bebida',
       'tipo':'bebida-fria',
       'menu':'cafe-da-manha',
@@ -48,8 +52,9 @@ export const products = {
       'importedImg':''
     },
     'hamburguer-simples-bovino':{
+      'title':'Hambúrguer Simples Bovino',
       'id':'hamburguer-simples-bovino',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal de produção de pequeno porte - vacas livres e que vivem com seus filhotes. 3. Hambúrguer  de proteína de soja temperada, saborizada e texturizada como picanha. 4. Alface, tomate e pepino.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer  de proteína de soja temperada, saborizada e texturizada como picanha. 4. Alface, tomate e pepino.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -60,8 +65,9 @@ export const products = {
       'importedImg':''
     },
     'hamburguer-duplo-bovino':{
+      'title':'Hambúrguer Duplo Bovino',
       'id':'hamburguer-duplo-bovino',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal de produção de pequeno porte - vacas livres e que vivem com seus filhotes. 3. Hambúrguer  de proteína de soja temperada, saborizada e texturizada como picanha. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes (com exceção do pão) do hamburguer simples.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer  de proteína de soja temperada, saborizada e texturizada como picanha. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes da versão simples.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -72,8 +78,9 @@ export const products = {
       'importedImg':''
     },
     'hamburguer-simples-frango':{
+      'title':'Hambúrguer Simples de Frango',
       'id':'hamburguer-simples-frango',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal de produção de pequeno porte - vacas livres e que vivem com seus filhotes. 3. Hambúrguer de proteína de soja temperada, saborizada e texturizada como frango. 4. Alface, tomate e pepino.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo. 3. Hambúrguer de proteína de soja temperada, saborizada e texturizada como frango. 4. Alface, tomate e pepino.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -84,8 +91,9 @@ export const products = {
       'importedImg':''
     },
     'hamburguer-duplo-frango':{
+      'title':'Hambúrguer Duplo de Frango',
       'id':'hamburguer-duplo-frango',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal de produção de pequeno porte - vacas livres e que vivem com seus filhotes. 3. Hambúrguer de proteína de soja temperada, saborizada e texturizada como frango defumado. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes (com exceção do pão) do hamburguer simples.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer de proteína de soja temperada, saborizada e texturizada como frango. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes da versão  simples.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -96,8 +104,9 @@ export const products = {
       'importedImg':''
     },
     'hamburguer-simples-vegetariano':{
+      'title':'Hambúrguer Simples Vegetariano',
       'id':'hamburguer-simples-vegetariano',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal de produção de pequeno porte - vacas livres e que vivem com seus filhotes. 3. Hambúrguer cremoso de abóbora japonesa. 4. Alface, tomate e pepino.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer cremoso de abóbora japonesa. 4. Alface, tomate e pepino.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -108,8 +117,9 @@ export const products = {
       'importedImg':''
     },
     'hamburguer-duplo-vegetariano':{
+      'title':'Hambúrguer Duplo Vegetariano',
       'id':'hamburguer-duplo-vegetariano',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal de produção de pequeno porte - vacas livres e que vivem com seus filhotes.  3. Hambúrguer cremoso de abóbora japonesa. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes (com exceção do pão) do hamburguer simples.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal.  3. Hambúrguer cremoso de abóbora japonesa. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes da versão simples.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -120,8 +130,9 @@ export const products = {
       'importedImg':''
     },
     'batata-frita':{
+      'title':'Batata Frita',
       'id':'batata-frita',
-      'ingredientes':'1. Batata cortada em casa e frita na air fryer (sem óleo).',
+      'ingredientes':'1. Batata cortada em casa e frita sem óleo.',
       'setor':'comida',
       'tipo':'petisco',
       'menu':'dia',
@@ -132,8 +143,9 @@ export const products = {
       'importedImg':''
     },
     'aneis-de-cebola':{
+      'title':'Anéis de Cebola',
       'id':'aneis-de-cebola',
-      'ingredientes':'1. Cebola cortada em casa e frita na air fryer (sem óleo).',
+      'ingredientes':'1. Cebola cortada em casa e frita sem óleo.',
       'setor':'comida',
       'tipo':'petisco',
       'menu':'dia',
@@ -144,6 +156,7 @@ export const products = {
       'importedImg':''
     },
     'agua-500':{
+      'title':'Água 500ml',
       'id':'agua-500',
       'ingredientes':'Água natural em garrafa de vidro.',
       'setor':'bebida',
@@ -156,6 +169,7 @@ export const products = {
       'importedImg':''
     },
     'agua-750':{
+      'title':'Água 750ml',
       'id':'agua-750',
       'ingredientes':'Água natural em garrafa de vidro.',
       'setor':'bebida',
@@ -168,6 +182,7 @@ export const products = {
       'importedImg':''
     },
     'bebida-gaseificada-500':{
+      'title':'Bebida Gaseificada 500ml',
       'id':'bebida-gaseificada-500',
       'ingredientes':'Fermentação natural e caseira de água e xarope tipo francês artesanal.',
       'setor':'bebida',
@@ -180,6 +195,7 @@ export const products = {
       'importedImg':''
     },
     'bebida-gaseificada-750':{
+      'title':'Bebida Gaseificada 750ml',
       'id':'bebida-gaseificada-750',
       'ingredientes':'Fermentação natural e caseira de água e xarope tipo francês artesanal.',
       'setor':'bebida',
