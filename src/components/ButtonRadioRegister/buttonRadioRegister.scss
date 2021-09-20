@@ -1,0 +1,59 @@
+:root{
+    --white: #FFF;
+    --black: #000000;
+    --green: #A0A603;
+    --yellow: #D97904;
+    --red: #BF0404;
+    --dark-red: #590202;
+  
+  }
+  
+  .switch-field-register {
+      display: flex;
+      overflow: hidden;
+  
+  
+    input {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      width: 1px;
+      border: 0;
+      overflow: hidden;
+  
+    }
+  
+    label {
+      background-color: transparent;
+      color:var(--white);
+      line-height: 1;
+      text-align: center;
+      padding: 0.8rem 3rem;
+      border: 1px solid var(--white);
+      transition: all 0.5s ease-in-out;
+  
+      &:hover {
+        cursor: pointer;
+      }
+  
+      &:first-of-type {
+        border-radius: 6px 0 0 6px;
+      }
+  
+      &:last-of-type {
+        border-radius: 0 6px 6px 0;
+      }
+      
+    }
+  
+    input:checked + label {
+      background-color:var(--yellow);
+      border: 1px solid var(--yellow);
+    }
+
+    input:hover + label {
+        background-color: var(--yellow);
+        border: 1px solid var(--yellow);
+      }
+  
+  }
