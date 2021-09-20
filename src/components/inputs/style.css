@@ -7,10 +7,3 @@
   padding: 5px;
 }
 
-@media (min-width: 1400px) {
-  .input {
-    font-size: 23px;
-    padding: 15px;
-    margin-bottom: 11%;
-  }
-}
