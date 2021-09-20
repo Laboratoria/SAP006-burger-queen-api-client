@@ -11,6 +11,10 @@ function signInValidation(values) {
         errors.password = "Preencha sua senha";
       }
 
+      else if(values.token === null){
+          errors.token = "Usuário não encontrado"
+      }
+
     return errors;  
 }
 
