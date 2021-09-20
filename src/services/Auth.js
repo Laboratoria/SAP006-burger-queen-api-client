@@ -33,7 +33,13 @@ export const RegisterUser = (users) => {
             'role': users.role,
             'restaurant': 'Retro Burger',
         })
-    });
+    })
+        .then((response) => response.json())
+        .then((json) => {
+            const { token } = json;
+            console.log(token)
+            return token
+        })
 };
 
 
