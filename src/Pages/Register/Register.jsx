@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
-import { Link } from 'react-router-dom';
 import { RegisterUser } from '../../services/auth';
 import validation from '../../services/validation';
+
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input.jsx'
-import register from '../../Assets/register.png';
 
-const Register = ({submitForm}) => {
+import register from '../../Assets/register.png';
+import { SignUpBox, Image, TitleRegister, Form, InputRadio, ErrorsMessage, PhraseRegister } from './style';
+
+
+const Register = () => {
     const [values, setValues] = useState({
         fullName: '',
         email: '',
@@ -17,7 +21,6 @@ const Register = ({submitForm}) => {
     });
 
     const [errors, setErrors] = useState({});
-    // const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
     const handleChange = (event) => {
         setValues({
@@ -26,61 +29,64 @@ const Register = ({submitForm}) => {
         })
     }
 
+    const history = useHistory();
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
         setErrors(validation(values));
-        // setDataIsCorrect(true);
-        RegisterUser();
+        RegisterUser()
+            .then((users) => {
+                users.role === 'Atendente' ? 
+                history.push('/tables') 
+                : history.push('/kitchen')
+            })
     };
-
-    // useEffect(() => {
-    //     if(Object.keys(errors).length === 0 && dataIsCorrect) {
-    //         submitForm(true)
-    //     }
-    // }, [errors]);
     
     return (
-        <div className='div-style'>
-            <img src={register} alt='icon-register' />
-            <p>Crie sua conta</p>
-            <Input 
-                type='text' 
-                id='name'
-                name='fullName'
-                values={values.fullName}
-                onChange={handleChange}
-                placeholder='nome completo' 
-                errorMessage='Por favor, insira um nome válido.' />
-            {errors.fullName && <p className='error'>{errors.fullName}</p>}
-            <Input 
-                type='email' 
-                id='email' 
-                name='email'
-                values={values.email}
-                onChange={handleChange}
-                placeholder='e-mail'
-                errorMessage='Por favor, insira um e-mail válido.' />
-            {errors.email && <p className='error'>{errors.email}</p>}
-            <Input 
-                type='password' 
-                id='password' 
-                name='password'
-                value={values.password}
-                onChange={handleChange}
-                placeholder='senha'
-                errorMessage='Por favor, insira uma senha válida.' />
-            {errors.password && <p className='error'>{errors.password}</p>}
-            <Input 
-                type='password'
-                id='confirm-password' 
-                name='confirmPassword'
-                value={values.confirmPassword}
-                onChange={handleChange}
-                placeholder='confirmar senha'
-                errorMessage='As senhas não conferem.' />
-            {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
-            <form >
-                <label><Input 
+        <SignUpBox>
+            <Image src={register} alt='icon-register' />
+            <TitleRegister>Crie sua conta</TitleRegister>
+            <Form>
+                <Input 
+                    type='text' 
+                    id='name'
+                    name='fullName'
+                    values={values.fullName}
+                    onChange={handleChange}
+                    placeholder='nome completo' 
+                    errorMessage='Por favor, insira um nome válido.' />
+                {errors.fullName && <ErrorsMessage className='error'>{errors.fullName}</ErrorsMessage>}
+                <Input 
+                    type='email' 
+                    id='email' 
+                    name='email'
+                    values={values.email}
+                    onChange={handleChange}
+                    placeholder='e-mail'
+                    errorMessage='Por favor, insira um e-mail válido.' />
+                {errors.email && <ErrorsMessage className='error'>{errors.email}</ErrorsMessage>}
+                <Input 
+                    type='password' 
+                    id='password' 
+                    name='password'
+                    value={values.password}
+                    onChange={handleChange}
+                    placeholder='senha'
+                    errorMessage='Por favor, insira uma senha válida.' />
+                {errors.password && <ErrorsMessage className='error'>{errors.password}</ErrorsMessage>}
+                <Input 
+                    type='password'
+                    id='confirm-password' 
+                    name='confirmPassword'
+                    value={values.confirmPassword}
+                    onChange={handleChange}
+                    placeholder='confirmar senha'
+                    errorMessage='As senhas não conferem.' />
+                {errors.confirmPassword && <ErrorsMessage className='error'>{errors.confirmPassword}</ErrorsMessage>}
+            </Form>
+            <InputRadio>
+                <label>
+                    <Input 
                     type='radio'
                     name='occupation'
                     value={values.occupation}
@@ -88,7 +94,7 @@ const Register = ({submitForm}) => {
                     labelText='Atendente' />
                     Atendente
                 </label>
-                {errors.occupation && <p className='error'>{errors.occupation}</p>}
+                {errors.occupation && <ErrorsMessage className='error'>{errors.occupation}</ErrorsMessage>}
                 <label>
                     <Input 
                     type='radio' 
@@ -98,16 +104,15 @@ const Register = ({submitForm}) => {
                     labelText='cozinha' />
                     Cozinha
                 </label>
-                {errors.occupation && <p className='error'>{errors.occupation}</p>}
-            </form>
+                {errors.occupation && <ErrorsMessage className='error'>{errors.occupation}</ErrorsMessage>}
+            </InputRadio>
             <Button variant='enter-app' onClick={handleFormSubmit}>
                 <Link to='/'>registrar</Link>
             </Button>
-            {}
-            <p>Já possui uma conta?
+            <PhraseRegister>Já possui uma conta?<br/> 
                 <Link to='/'>Faça seu login aqui</Link>
-            </p>
-        </div>
+            </PhraseRegister>
+        </SignUpBox>
     )
 }
 

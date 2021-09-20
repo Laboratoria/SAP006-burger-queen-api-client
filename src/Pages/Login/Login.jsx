@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import {Image, LoginBox, Title , Form, PhraseRegister } from './style';
+import {Image, LoginBox, Title, Form, PhraseLogin } from './style';
 
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input.jsx'
@@ -10,26 +10,32 @@ import login from '../../Assets/login.png';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [occupation, setOccupation] = useState('');
     const history = useHistory();
+
+    function navigateTo (user) {
+        user.occupation === 'Atendente' ? 
+            history.push('/tables') 
+            : history.push('/kitchen')
+    }
 
     function AuthUserLogin() {
         const user = {
             email,
-            password
+            password, 
+            occupation
         }
 
         LoginWithEmail(user)
             .then((token) => {
-                if(token) {
-                localStorage.setItem('Vixi', token)
-                history.push('/tables')
-                } 
-                else {
-                    alert('deu errado o token')
-                }
+                token ?
+                    // localStorage.setItem('Vixi', token) && history.push('/tables')
+                    // : alert('deu errado o token')
+                    localStorage.setItem('Vixi', token) && navigateTo()
+                    : alert('deu errado o token') 
             })
             .catch(() => {
-                alert('tente novamente')
+                alert('tente novamente, erro no catch')
             })
     }
 
@@ -55,15 +61,36 @@ const Login = () => {
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </Form>
-
+                {/* <Form>
+                    <label>
+                        <Input 
+                        type='radio'
+                        name='occupation'
+                        value={occupation}
+                        onChange={(event) => setOccupation(event.target.value)}
+                        labelText='Atendente' />
+                        Atendente
+                    </label>
+                    <label>
+                        <Input 
+                        type='radio' 
+                        name='occupation'
+                        value={occupation}
+                        onChange={(event) => setOccupation(event.target.value)}
+                        labelText='cozinha' />
+                        Cozinha
+                    </label>
+                </Form> */}
                 <Button variant='enter-app' onClick={AuthUserLogin}>
                     Login
                 </Button>
-                <PhraseRegister>Is your first day at Vixi?
-                    <Link to='/register'>Sign in here!</Link>
-                </PhraseRegister>
+                <PhraseLogin>É o seu primeiro dia no Vixi? <br />
+                    <Link to='/register'>Crie sua conta aqui!</Link>
+                </PhraseLogin>
             </LoginBox>
     )
 }
 
 export default Login;
+
+// { user.occupation === 'Atendente' ? history.push('/tables') : history.push('/kitchen') }

@@ -1,5 +1,4 @@
 export const RegisterUser = (users) => {
-    console.log(users);
     const body = {
         'name': users.fullName,
         'email': users.email,
@@ -19,11 +18,11 @@ export const RegisterUser = (users) => {
         .then((response) => response.json())
     };
     
-    export const RegisterSuccess = () => {
-        return (
-            alert('Sua conta foi criada com sucesso! :)')
-        )
-    }
+export const RegisterSuccess = () => {
+    return (
+        alert('Sua conta foi criada com sucesso! :)')
+    )
+}
 
 export const LoginWithEmail = (users) => {
     return fetch('https://lab-api-bq.herokuapp.com/auth', {

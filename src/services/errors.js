@@ -4,7 +4,7 @@ const validation = (values) => {
 
     if(!values.fullName){
         errors.fullName = 'Insira seu nome completo.'
-    } else if(values.fullName.lenght < 4){
+    } else if(values.fullName.length < 4){
         errors.email='Este e-mail é inválido'
     }
 

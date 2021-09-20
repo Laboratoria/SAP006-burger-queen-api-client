@@ -10,6 +10,7 @@ const GeneralButton = styled.button`
     margin: 80px 0px 50px 50px ;
     text-transform:uppercase;
     background-color:rgb(163, 210, 206);    
+    cursor: pointer;
         a {
             color:black;
             font-weight:bold;

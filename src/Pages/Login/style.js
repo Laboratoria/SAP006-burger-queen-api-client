@@ -1,42 +1,49 @@
 import styled from "styled-components";
 
-
 const LoginBox = styled.div`
-    background: rgba(255, 255, 255, 0.52);
+    background: rgba(244, 244, 244, 0.52);
+    height: 100%
+    width: 100%
 `
 const Image = styled.img`
-    height: 252px;
-    width: 268px;
-    margin: 10px 20px 0px 50px;
+    height: 43vh;
+    // width: 268px; 
+    margin: 0vh 15vh;
 `
 const Title = styled.p`
     font-family: 'Montserrat', sans-serif;
-    font-size:28px;
+    font-size: 1.6em;
     font-style: normal;
-    font-weight: 800;
-    color: #008F83;
-    font-weight:bold;
-    justify-content:center;
+    font-weight: 1000;
     text-align:center;
-    text-transform:uppercase;
+    text-transform: uppercase;
+    color: #008F83;
+    justify-content:center;
+    margin: 8vh 0 5vh;
 `
 const Form = styled.form`
     justify-content:center;
     text-align:center;
 `
 
-const PhraseRegister = styled.p`
-    font-family:Montserrat;
-    justify-content:center;
-    text-align:center;  
-    font-size: 16px;
-    margin: 80px 0px;
+const ButtonLogin = styled.button`
+    width: 32vh;
+    height: 20vh;
+    margin: 0;
+    display: flex;
+`
+
+const PhraseLogin = styled.p`
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    text-align: center;  
+    font-size: 1.1em;
+    margin: 4vh 3vh;
         a {
-            color:black;
-            font-weight:bold;
+            color: black;
+            font-weight: bold;
             text-decoration: none;
         }
 `
 
-
-export { Image, LoginBox, Title, Form, PhraseRegister};
+export { Image, LoginBox, Title, Form, ButtonLogin, PhraseLogin};
