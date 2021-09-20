@@ -72,6 +72,9 @@ export const Button = ({ Role, Conditional, ButtonOnClick, children}) => {
     },
     'menu-close-ingredients-modal':{
       'ButtonClass':'menu-close-ingredients-modal'
+    },
+    'menu-go-back':{
+      'ButtonClass':'menu-go-back'
     }
   }
   

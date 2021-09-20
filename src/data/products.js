@@ -158,7 +158,7 @@ export const products = {
     'agua-500':{
       'title':'Água 500ml',
       'id':'agua-500',
-      'ingredientes':'Água natural em garrafa de vidro.',
+      'ingredientes':'1. Água natural em garrafa de vidro.',
       'setor':'bebida',
       'tipo':'bebida-fria',
       'menu':'dia',
@@ -171,7 +171,7 @@ export const products = {
     'agua-750':{
       'title':'Água 750ml',
       'id':'agua-750',
-      'ingredientes':'Água natural em garrafa de vidro.',
+      'ingredientes':'1. Água natural em garrafa de vidro.',
       'setor':'bebida',
       'tipo':'bebida-fria',
       'menu':'dia',
@@ -184,7 +184,7 @@ export const products = {
     'bebida-gaseificada-500':{
       'title':'Bebida Gaseificada 500ml',
       'id':'bebida-gaseificada-500',
-      'ingredientes':'Fermentação natural e caseira de água e xarope tipo francês artesanal.',
+      'ingredientes':'1. Fermentação natural e caseira de água e xarope tipo francês artesanal.',
       'setor':'bebida',
       'tipo':'bebida-fria',
       'menu':'dia',
@@ -197,7 +197,7 @@ export const products = {
     'bebida-gaseificada-750':{
       'title':'Bebida Gaseificada 750ml',
       'id':'bebida-gaseificada-750',
-      'ingredientes':'Fermentação natural e caseira de água e xarope tipo francês artesanal.',
+      'ingredientes':'1. Fermentação natural e caseira de água e xarope tipo francês artesanal.',
       'setor':'bebida',
       'tipo':'bebida-fria',
       'menu':'dia',

@@ -67,7 +67,7 @@ export const MenuModal = ({Role, ModalTitle, ModalContent, ButtonOnClick}) => {
         <br/>
         <span className='menu-modal-observations'>As vacas vivem livres sob o sistema de rotação do pasto em hipótese alguma são separadas de seus filhotes.</span>
         <br/>
-        <span className='menu-modal-observations'>As galinhas correm soltas por aí e passam o dia fofocando da vida alheia.</span>
+        <span className='menu-modal-observations'>As galinhas correm soltas por aí e passam o dia fofocando da vida alheia...</span>
         <Button 
           Role={Role}
           children='Fechar'

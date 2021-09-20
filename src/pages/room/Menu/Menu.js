@@ -13,6 +13,9 @@ import { products } from '../../../data/products';
 
 
 export const Menu = () => { 
+
+  const history = useHistory();
+
   const filterProducts = (condition, value) =>{
     const filteredProductsNames = [];
     const  filteredProducts = Object.entries(products).filter((product) => product[1][condition].includes(value))
@@ -44,6 +47,10 @@ export const Menu = () => {
       </header>
       <main>
         <section className='filter-buttons-div'>
+          <Button 
+            Role='menu-go-back' 
+            ButtonOnClick={()=>history.push('/room')}
+          />
           <Button 
             Role='menu-all' 
             children='Alles'
