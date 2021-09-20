@@ -5,10 +5,10 @@ function Menu() {
     <form>
       <h1>Essa página terá o Menu e atendimento</h1>
       
-      <Input placeholder="Cliente"></Input>
-      <Input placeholder="Mesa"></Input>
+      <Input className="client" placeholder="Cliente"></Input>
+      <Input className="table" type="number" min="1" max="10" placeholder="Mesa"/>
     </form>
-  );
+  );  
 }
 
 export default Menu;

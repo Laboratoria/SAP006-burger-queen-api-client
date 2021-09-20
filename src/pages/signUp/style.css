@@ -10,36 +10,44 @@ main {
 .form {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 415px;
+  width: 270px;
+  height: 345px;
   background-color: var(--white);
   border-radius: 20px;
 }
 
 .form h1 {
   text-align: center;
-  /* margin-bottom: 15%; */
+  margin-bottom: 8%;
+  margin-top: 5%;
 }
 
 .margin-input {
-  margin: 2% 0% -3% 0%;
+  /* margin: 2% 0% -3% 0%; */
   border: none;
   align-self: center;
 }
 
 .form-input p {
-  font-size: 12px;
-  margin: -4% 0% 0% 0%;
+  /* margin: -4% 0% 0% 0%; */
   color: var(--red);
+  min-height: 17px;
+  position: relative;
+  bottom: 5px;
   text-align: center;
-  min-height: 16.8px;
+}
+
+.errorMessage {
+  min-height: 17px;
+  color: red;
+  font-size: 12px;
 }
 
 .form-input {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 24%;
+  height: 31%;
 }
 
 img {
@@ -56,7 +64,7 @@ p {
 }
 
 .form button {
-  margin-top: 7%;
+  margin-top: 4%;
 }
 
 label {
@@ -64,18 +72,17 @@ label {
 }
 
 .line {
-  margin-top: 10%;
-  width: 150px;
+  margin-top: 8%;
 }
 
 @media (max-width: 870px) {
-    img {
-        width:40%;
-    }
-    main {
-        height: 480px;
-    }
-} 
+  img {
+    width: 40%;
+  }
+  main {
+    height: 480px;
+  }
+}
 
 @media (max-width: 587px) {
   main {
@@ -89,5 +96,6 @@ label {
 @media (max-width: 437px) {
   img {
     width: 60%;
+    margin-top: 25%;
   }
 }

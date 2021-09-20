@@ -2,7 +2,7 @@ import React from "react";
 // import ReactDOM from 'react-dom';
 import "../inputs/style.css";
 
-const Input = ({ name, type, placeholder, value, onChange }) => {
+const Input = ({ name, type, placeholder, value, onChange, max, min }) => {
   return (
     <input
       name={name}
@@ -11,6 +11,8 @@ const Input = ({ name, type, placeholder, value, onChange }) => {
       value={value}
       className="input"
       onChange={onChange}
+      max={max}
+      min={min}
     />
   );
 };

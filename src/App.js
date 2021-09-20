@@ -1,23 +1,23 @@
-import "./index.css";
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import Login from "./pages/Login/index.js";
 import signUp from "./pages/signUp/index.js";
 import Menu from "./pages/Salao/index.js";
 import Kitchen from "./pages/Kitchen/index.js"; 
-import './pages/signUp/style.css';
+// import PrivateRoute from "./services/PrivateRoute";
+// import PublicRoute from './services/PublicRoute.js'
 
 function App() {
+  const history = useHistory()
   return (
-    <BrowserRouter>
+  <BrowserRouter history={history}>
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/login" component={Login} />
-        <Route path="/register" component={signUp}></Route>
-        <Route path="/menu" component={Menu}></Route>
-        <Route path="/kitchen" component={Kitchen}></Route>
+        <Route path="/register" component={signUp} />
+        <Route path="/menu" component={Menu} />
+        <Route path="/kitchen" component={Kitchen} />
       </Switch>
-    </BrowserRouter>
+      </BrowserRouter>
   );
 }
 
