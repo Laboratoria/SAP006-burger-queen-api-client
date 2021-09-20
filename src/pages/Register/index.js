@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import arrow from '../../img/arrow.png'
+import arrow from '../../img/arrow.png';
 import { loginRedirection, validationInputs } from '../../services';
 import ErrorMessage from '../../components/ErrorMessage';
 import ButtonDefault from '../../components/ButtonDefault';
-import ButtonRadio from '../../components/ButtonRadio';
+import ButtonRadioRegister from '../../components/ButtonRadioRegister';
 import Loader from '../../components/Loader';
-
 
 import './register.scss';
 import Input from '../../components/Input';
@@ -39,21 +38,19 @@ const Register = () => {
 			[name]: value,
 		});
 
-
 		setErrorName(false);
 		setErrorEmail(false);
 		setErrorPassword(false);
-		setErrors({
-		})
-
+		setErrors({			
+		});
 	};
 
 	const goBack = () => {
-		loginRedirection('/', history)
-	}
+		loginRedirection('/', history);
+	};
 
 	const handleSubmit = (event) => {
-		event.preventDefault()
+		event.preventDefault();
 		const errorsObject = validationInputs(values);
 		setErrors(errorsObject);
 
@@ -78,7 +75,7 @@ const Register = () => {
 			const requestOptions = {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(values),
 			};
@@ -98,9 +95,8 @@ const Register = () => {
 				})
 				.then((role) => {
 					setTimeout(() => {
-						loginRedirection(role, history)
-					},
-						2000)
+						loginRedirection(role, history);
+					}, 2000);
 				})
 				.catch(() => {
 					setLoading(false);
@@ -108,7 +104,6 @@ const Register = () => {
 						...errors,
 						fail: `Ocorreu um erro, tente novamente.`,
 					});
-
 				});
 		}
 	};
@@ -116,8 +111,7 @@ const Register = () => {
 	return (
 		<>
 			{loading ? <Loader /> : false}
-			<div className="container-bg">
-			</div>
+			<div className="container-bg"></div>
 
 			<section className="container-login">
 				<button className="goback-btn" onClick={goBack}>
@@ -155,7 +149,7 @@ const Register = () => {
 								)}
 							</fieldset>
 
-							<fieldset className="margin-input" >
+							<fieldset className="margin-input">
 								<Input
 									className={` ${errorPassword ? 'is-invalid' : ''}`}
 									type="password"
@@ -170,27 +164,11 @@ const Register = () => {
 								)}
 							</fieldset>
 							<div className="radio-wrapper">
-								<ButtonRadio
-									className2="switch-field"
-									name="role"
-									onChange={onChange}
-									firstInputvalue="hall"
-									firstInputid="hall"
-									firstLabel="Salão"
-									secondInputvalue="kitchen"
-									secondInputid="kitchen"
-									secondLabel="Cozinha"
-									secondClassName="second-btn"
-									thirdClassName="hidden"
-								/>
-								{errors.role && (
-									<ErrorMessage>{errors.role}</ErrorMessage>
-								)}
+								<ButtonRadioRegister onChange={onChange} />
+								{errors.role && <ErrorMessage>{errors.role}</ErrorMessage>}
 							</div>
 
-							{errors.fail && (
-								<ErrorMessage >{errors.fail}</ErrorMessage>
-							)}
+							{errors.fail && <ErrorMessage>{errors.fail}</ErrorMessage>}
 							<div>
 								<ButtonDefault
 									id="btn-register"
@@ -204,8 +182,6 @@ const Register = () => {
 					</div>
 				</div>
 			</section>
-
-
 		</>
 	);
 };
