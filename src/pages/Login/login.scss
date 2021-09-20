@@ -60,6 +60,12 @@
 
   h2 {
     margin-bottom: 1rem;
+    @media (max-device-width : 1024px) and (orientation:landscape){
+      margin-bottom: 0;
+      font-size:1.6rem;
+     
+    }
+   
   }
 
   span {
@@ -98,10 +104,18 @@
     background-color: black;
 
   }
+
+  .button-login{
+    margin-bottom:2rem;
+    @media (max-device-width : 1024px) and (orientation:landscape){
+      margin-bottom: 1.5rem;
+     
+    }
+  }
 }
 
 .logo {
-  width: 9rem;
+  width:9rem;
   margin-top: 4rem;
   margin-bottom: 2rem;
   @media (max-device-width : 1024px) and (orientation:portrait){
@@ -110,9 +124,14 @@
     margin-top:0;
   }
   @media (min-device-width : 1025px){
-    position:absolute;
-    left:23%;
+    display:none
    
+  }
+
+  @media (max-device-width : 1024px) and (orientation:landscape){
+    width:10rem;
+    margin-top:4rem;
+    margin-bottom:3rem;
   }
 
   

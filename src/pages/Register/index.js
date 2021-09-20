@@ -123,7 +123,7 @@ const Register = () => {
 				<button className="goback-btn" onClick={goBack}>
 					<img src={arrow} alt="arrow" />
 				</button>
-				<div className="form">
+				<div className="form margin-top-1">
 					<h2 className="uppercase">Cadastro</h2>
 					<div className="form-wrapper margin-top-1">
 						<form>
@@ -194,7 +194,7 @@ const Register = () => {
 							<div>
 								<ButtonDefault
 									id="btn-register"
-									className="btn-default margin-bottom-4 margin-top-3 uppercase"
+									className="btn-default  margin-top-3 uppercase"
 									onClick={handleSubmit}
 								>
 									Cadastrar
