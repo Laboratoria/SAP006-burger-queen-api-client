@@ -4,6 +4,8 @@ import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
+import cozinheiro from '../../../img/cozinheiro.png'
+import garcom from '../../../img/garcom.png'
 
 
 export default function Registration() { 
@@ -51,11 +53,11 @@ export default function Registration() {
                 <div className='container-checkbox'>
                     <Input type='checkbox' name='checkbox' />
                         <div>
-                            <img src="#" alt="salão"/>
+                            <img src={garcom} alt="salão"/>
                         </div>
                     <Input type='checkbox' name='checkbox' />
                         <div>
-                            <img src="#" alt="cozinha"/>
+                            <img src={cozinheiro} alt="cozinha"/>
                         </div>
                 </div>
                 <Button 

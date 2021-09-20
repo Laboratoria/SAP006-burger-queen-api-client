@@ -1,7 +1,7 @@
 import { Route, Redirect } from 'react-router';
 
 const isAuthenticated = () => {
-    const token = localStorage.setItem('userToken');
+    const token = localStorage.setItem('userToken', token);
         if (token) {
             return true;
         } else {
