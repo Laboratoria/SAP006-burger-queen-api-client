@@ -20,12 +20,18 @@
         &.product{
           font-weight:bold;
           font-size:1rem;
+          @media (min-device-width: 1400px) {
+            font-size: 1.2rem;
+        }
          
         }
         &.product-details{
           font-weight: lighter;
           font-size:0.8rem;
         }
+        @media (min-device-width: 1400px) {
+          font-size: 1rem;
+      }
       }
 
     }
@@ -92,6 +98,9 @@
         font-size:1rem;
         margin-top:auto;
         margin-bottom:auto;
+        @media (min-device-width: 1400px) {
+          font-size: 1.2rem;
+      }
 
       }
     }

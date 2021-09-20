@@ -22,13 +22,14 @@ export default function ButtonRadio({
 	thirdInputId,
 	thirdLabel,
 	thirdClassName,
-	className
+	className,
+	className2,
+	name
 }) {
   return (
-    <div className="switch-field">
+    <div className={className2}>
       <input type="radio"
-							variant="secondary"
-							name={firstInputName}
+							name={name}
 							value={firstInputValue}
 							id={firstInputId}
 							onChange={onChange}
@@ -36,8 +37,7 @@ export default function ButtonRadio({
       <label className={`${firstClassName} ${className}`} htmlFor={firstInputId}><b>{firstLabel}</b><br></br>{firstPrice}</label>
 
       <input type="radio"
-							variant="secondary"
-							name={secondInputName}
+							name={name}
 							value={secondInputValue}
 							id={secondInputId}
 							onChange={onChange}
@@ -45,8 +45,7 @@ export default function ButtonRadio({
       <label className={`${secondClassName} ${className}`} htmlFor={secondInputId}><b>{secondLabel}</b><br></br>{secondPrice}</label>
 
 	  <input type="radio"
-							variant="secondary"
-							name={thirdInputName}
+							name={name}
 							value={thirdInputValue}
 							id={thirdInputId}
 							onChange={onChange}

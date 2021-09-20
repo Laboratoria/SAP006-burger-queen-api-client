@@ -11,8 +11,7 @@
   --yellow: #d97904;
   --red: #bf0404;
   --dark-red: #590202;
-  --stroke:#464242;
-
+  --stroke: #464242;
 }
 
 $_DIRECTIONS: (top right bottom left);
@@ -29,31 +28,28 @@ $_DIRECTIONS: (top right bottom left);
   }
 }
 
-html, body {
-  height: 100vh;
-}
-
 body {
   font-family: "Roboto Condensed", sans-serif;
-  width:100vw;
+  width: 100vw;
   height: 100vh;
 }
-
-
 
 h2 {
   color: var(--white);
 }
 
-
-.pages-container{
-  width:100vw;
+.pages-container {
+  width: 100vw;
   height: 100vh;
-  padding:2rem 3rem 2rem 3rem;
+  padding: 2rem 3rem 2rem 3rem;
+
+  @media (min-device-width: 1400px) {
+    padding: 2rem 10rem 2rem 10rem;
+  }
 }
 
-.hidden { 
-  display: none 
+.hidden {
+  display: none;
 }
 
 .uppercase {

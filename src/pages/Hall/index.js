@@ -185,8 +185,6 @@ export default function Hall() {
 			
 	}
 
-	const [totalPrice, setTotalPrice] = useState(0)
-
 	// useEffect(()=>{
 	// 	if(cartContent.length!==0){
 	// 	// eslint-disable-next-line array-callback-return
@@ -281,7 +279,7 @@ export default function Hall() {
 						</section>
 					</div>
 				</section>
-				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} totalPrice={totalPrice} />
+				<CartArea content={cartContent} plus={addUnit} minus={removeUnit}/>
 
 				{showPopup ? (
 					<Popup

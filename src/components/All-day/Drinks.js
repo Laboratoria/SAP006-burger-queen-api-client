@@ -32,13 +32,13 @@ export default function Drinks() {
 			</div>
 
 			<ButtonRadio className="radio-menu radio-drinks"
+				className2=" switch-field switch-field-menu"
 				// onChange={onChange}
-				firstInputName="drinks"
+				name="drinks"
 				firstInputValue="water"
 				firstInputId="water"
 				firstLabel="500ml"
 				firstPrice="R$ 5,00"
-				secondInputName="drinks"
 				secondInputValue="soda"
 				secondInputId="soda"
 				secondLabel="700ml"

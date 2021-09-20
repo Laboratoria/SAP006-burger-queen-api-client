@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import background from '../../img/bg-login3.png';
 import arrow from '../../img/arrow.png'
 import { loginRedirection, validationInputs } from '../../services';
 import ErrorMessage from '../../components/ErrorMessage';
@@ -48,7 +47,7 @@ const Register = () => {
 		})
 
 	};
-	
+
 	const goBack = () => {
 		loginRedirection('/', history)
 	}
@@ -118,92 +117,91 @@ const Register = () => {
 		<>
 			{loading ? <Loader /> : false}
 			<div className="container-bg">
-				<img src={background} className="bg-login" alt="background"/>
 			</div>
-			
-			
+
 			<section className="container-login">
-			<button className="goback-btn" onClick={goBack}>
-				<img src={arrow} alt="arrow"/>
-			</button>
-				
-				<h2 className="uppercase">Cadastro</h2>
-				<div className="form-wrapper margin-top-1">
-					<form>
-						<fieldset className="margin-input">
-							<Input
-								className={` ${errorName ? 'is-invalid' : ''}`}
-								type="text"
-								placeholder="Nome completo"
-								onChange={onChange}
-								value={values.name}
-								name="name"
-							/>
-							{errors.userName && (
-								<ErrorMessage>{errors.userName}</ErrorMessage>
-							)}
-						</fieldset>
+				<button className="goback-btn" onClick={goBack}>
+					<img src={arrow} alt="arrow" />
+				</button>
+				<div className="form">
+					<h2 className="uppercase">Cadastro</h2>
+					<div className="form-wrapper margin-top-1">
+						<form>
+							<fieldset className="margin-input">
+								<Input
+									className={` ${errorName ? 'is-invalid' : ''}`}
+									type="text"
+									placeholder="Nome completo"
+									onChange={onChange}
+									value={values.name}
+									name="name"
+								/>
+								{errors.userName && (
+									<ErrorMessage>{errors.userName}</ErrorMessage>
+								)}
+							</fieldset>
 
-						<fieldset className="margin-input">
-							<Input
-								className={` ${errorEmail ? 'is-invalid' : ''}`}
-								type="email"
-								placeholder="Email"
-								onChange={onChange}
-								value={values.email}
-								name="email"
-							/>
-							{errors.userEmail && (
-								<ErrorMessage>{errors.userEmail}</ErrorMessage>
-							)}
-						</fieldset>
+							<fieldset className="margin-input">
+								<Input
+									className={` ${errorEmail ? 'is-invalid' : ''}`}
+									type="email"
+									placeholder="Email"
+									onChange={onChange}
+									value={values.email}
+									name="email"
+								/>
+								{errors.userEmail && (
+									<ErrorMessage>{errors.userEmail}</ErrorMessage>
+								)}
+							</fieldset>
 
-						<fieldset className="margin-input" >
-							<Input
-								className={` ${errorPassword ? 'is-invalid' : ''}`}
-								type="password"
-								placeholder="Senha"
-								onChange={onChange}
-								value={values.password}
-								name="password"
-								required
-							/>
-							{errors.userPassword && (
-								<ErrorMessage>{errors.userPassword}</ErrorMessage>
-							)}
-						</fieldset>
-						<div className="radio-wrapper">
-							<ButtonRadio 
-								onChange={onChange} 
-								firstInputName="role"
-								firstInputvalue="hall"
-								firstInputid="hall"
-								firstLabel="Salão"
-								secondInputName="role"
-								secondInputvalue="kitchen"
-								secondInputid="kitchen"
-								secondLabel="Cozinha"
-								secondClassName="second-btn"
-								thirdClassName="hidden"
-							/>
-							{errors.role && (
-								<ErrorMessage>{errors.role}</ErrorMessage>
-							)}
-						</div>
+							<fieldset className="margin-input" >
+								<Input
+									className={` ${errorPassword ? 'is-invalid' : ''}`}
+									type="password"
+									placeholder="Senha"
+									onChange={onChange}
+									value={values.password}
+									name="password"
+									required
+								/>
+								{errors.userPassword && (
+									<ErrorMessage>{errors.userPassword}</ErrorMessage>
+								)}
+							</fieldset>
+							<div className="radio-wrapper">
+								<ButtonRadio
+									className2="switch-field"
+									name="role"
+									onChange={onChange}
+									firstInputvalue="hall"
+									firstInputid="hall"
+									firstLabel="Salão"
+									secondInputvalue="kitchen"
+									secondInputid="kitchen"
+									secondLabel="Cozinha"
+									secondClassName="second-btn"
+									thirdClassName="hidden"
+								/>
+								{errors.role && (
+									<ErrorMessage>{errors.role}</ErrorMessage>
+								)}
+							</div>
 
-						{errors.fail && (
-							<ErrorMessage >{errors.fail}</ErrorMessage>
-						)}
-						<div>
-							<ButtonDefault
-								id="btn-register"
-								className="btn-default margin-bottom-4 margin-top-3 uppercase"
-								onClick={handleSubmit}
-							>
-								Cadastrar
-							</ButtonDefault>
-						</div>
-					</form>
+							{errors.fail && (
+								<ErrorMessage >{errors.fail}</ErrorMessage>
+							)}
+							<div>
+								<ButtonDefault
+									id="btn-register"
+									className="btn-default margin-bottom-4 margin-top-3 uppercase"
+									onClick={handleSubmit}
+								>
+									Cadastrar
+								</ButtonDefault>
+							</div>
+						</form>
+					</div>
 				</div>
 			</section>
 

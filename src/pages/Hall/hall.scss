@@ -1,116 +1,133 @@
 :root {
-	--white: #fff;
-	--black: #000000;
-	--green: #a0a603;
-	--yellow: #d97904;
-	--red: #bf0404;
-	--dark-red: #590202;
-	--light-gray: #292929;
-	--dark-gray: #111111;
-    --stroke:#464242;
+    --white: #fff;
+    --black: #000000;
+    --green: #a0a603;
+    --yellow: #d97904;
+    --red: #bf0404;
+    --dark-red: #590202;
+    --light-gray: #292929;
+    --dark-gray: #111111;
+    --stroke: #464242;
 }
-
 
 .title-area {
     display: flex;
-    width:100%;
-    flex-wrap:nowrap;
-    justify-content:space-between;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 
     h1 {
-        color:white;
+        color: white;
         font-weight: bold;
-        font-size:1.7rem;
-        
+        font-size: 1.7rem;
+        @media (min-device-width: 1400px) {
+            font-size: 2rem;
+        }
     }
-    
+
     p {
-        color:white;
+        color: white;
     }
 }
 
-nav{
-    display:flex;
-    width:100%;
-    height:4rem;
+nav {
+    display: flex;
+    width: 100%;
+    height: 4rem;
     justify-content: space-between;
-    margin:-1rem 0 0 0;
+    margin: -1rem 0 0 0;
     border-bottom: 1px solid var(--stroke);
 
-    .menu-types{
-        display:flex;
-        align-items: flex-end;;
+    .menu-types {
+        display: flex;
+        align-items: flex-end;
         list-style-type: none;
         height: 100%;
-        padding:0;
-        li{
+        padding: 0;
+        li {
             height: 2rem;
-            margin:0 2rem 0rem 0;
-            color:white;
-            cursor:pointer;
-           
-            &.selected{
-                color:var(--yellow);
-                border-bottom:3px solid var(--yellow);
+            margin: 0 2rem 0rem 0;
+            color: white;
+            cursor: pointer;
 
+            &.selected {
+                color: var(--yellow);
+                border-bottom: 3px solid var(--yellow);
             }
-            &:hover{
-                color:var(--yellow);
-                border-bottom:3px solid var(--yellow);
+            &:hover {
+                color: var(--yellow);
+                border-bottom: 3px solid var(--yellow);
+            }
+        }
 
-            }
+        @media (min-device-width: 1400px) {
+            font-size: 1.3rem;
         }
     }
 
     .btn-order-status {
-        background-color:var(--light-gray);
+        background-color: var(--light-gray);
         padding: 0.8rem 1.6rem;
         border-radius: 7px;
-        border:1px solid var(--stroke);
-        font-size:0.9rem
+        border: 1px solid var(--stroke);
+        font-size: 0.9rem;
     }
-
 }
 
-
-
-main{
-    display:flex;
+main {
+    display: flex;
     justify-content: space-between;
-    width:100%;
-    height:70vh;
-    margin:2rem 0;
+    width: 100%;
+    height: 70vh;
+    margin: 2rem 0;
 
-    .order-filling{
-        display:flex;
+    .order-filling {
+        display: flex;
         flex-direction: column;
-        .menu{
-            display:flex;
+        .menu {
+            display: flex;
             flex-direction: row;
-            height:100%;
-            width:55vw;
+            height: 100%;
+            width: 55vw;
+            @media (min-device-width: 1025px) {
+                width: 60vw;
+            }
+
+            @media (min-device-width: 1400px) {
+                width: 55vw;
+            }
         }
-        aside{
-            display:flex;
+        aside {
+            display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height:100%;
-            
+            height: 100%;
         }
-        .products{
-            width:100%;
+        .products {
+            width: 100%;
             align-items: center;
             height: 100%;
             margin: 0 8%;
-            
+            @media (min-device-width: 1400px) {
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
 
         .btn-add-item {
             align-self: center;
-            width:100%;
+            width: 100%;
         }
-
     }
-    
-}
 
+    @media (min-device-width: 1025px) {
+        height: 100vh;
+        padding-bottom: 3rem;
+    }
+
+    @media (min-device-width: 1400px) {
+        height: 80vh;
+        padding-bottom: 3rem;
+    }
+}

@@ -36,16 +36,15 @@ export default function Burgers() {
 			</div>
 
 			<ButtonRadio className="radio-menu"
+				className2=" switch-field switch-field-menu"
 				// onChange={onChange}
-				firstInputName="burger"
+				name="burger"
 				firstInputValue="carne"
 				firstInputId="carne"
 				firstLabel="Carne"
-				secondInputName="burger"
 				secondInputValue="frango"
 				secondInputId="frango"
 				secondLabel="Frango"
-				thirdInputName="burger"
 				thirdInputValue="vegetariano"
 				thirdInputId="vegetariano"
 				thirdLabel="Vegetariano"

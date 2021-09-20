@@ -86,6 +86,16 @@ li {
         box-shadow: inset 1px 1px 1px #666, -1px -1px 1px #fff, 1px 1px #666;
       }
     }
+
+    @media (min-device-width : 1025px){
+      width: 10rem;
+      height: 10rem;
+
+    }
+    @media (min-device-width: 1400px) {
+      width: 12rem;
+      height: 12rem;
+    }
   }
 
   .underline {
@@ -109,5 +119,17 @@ div {
     & .active {
       border: none;
     }
+
+    @media (min-device-width : 1025px){
+      width: 10rem;
+      height: 10rem;
+
+    }
+
+    @media (min-device-width: 1400px) {
+      width: 12rem;
+      height: 12rem;
+    }
+
   }
 }
