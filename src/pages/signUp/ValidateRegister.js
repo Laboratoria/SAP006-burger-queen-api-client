@@ -46,14 +46,21 @@ export default function validateValues(values) {
     console.log('Entrou?')
     signUpWithEmailAndPassword(values)
     .then((response) => {
-      console.log(response);
+      if (response.message) {
+        console.log(response.message);
+        alert(response.message);
+        // errors.message = response.message;
+        // return errors;
+      } else if (response.token) {
+        console.log(response)
+        alert("Usuário cadastrado com sucesso!")
+        //rota
+      }
     })
     .catch((error) => {
       console.log(error)
     })
    }
-
-
 
   return errors;
 }

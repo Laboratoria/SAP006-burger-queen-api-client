@@ -24,6 +24,7 @@ const SignUp = () => {
       email: "",
       password: "",
       role: "",
+      message: "",
     });
   
     const handleSubmit = (e) => {
@@ -88,7 +89,8 @@ const SignUp = () => {
               value={values.email}
               onChange={handleChange}
             />
-            <p className="errorMessage"> {errors.email && errors.email}</p>
+            <p className="errorMessage"> {errors.email && errors.email} {errors.message && errors.message}</p>
+            {/* <p className="errorMessage"> {errors.message && errors.message}</p> */}
           </fieldset>
 
           <fieldset className="margin-input">
