@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { RegisterUser } from '../../services/auth';
 import validation from '../../services/errors';
 import Button from '../../components/Button/Button';
@@ -14,7 +14,7 @@ const Register = () => {
         email: '',
         password: '',
         confirmPassword: '',
-        occupation: '',
+        role: '',
     });
 
     const [errors, setErrors] = useState({});
@@ -26,21 +26,20 @@ const Register = () => {
         })
     }
 
-    const history = useHistory();
-
     const handleFormSubmit = (e) => {
         e.preventDefault();
         setErrors(validation(values));
-        RegisterUser()
-            .then((users) => {
-                users.role === 'Atendente' ? 
-                history.push('/tables') 
-                : history.push('/kitchen')
+
+        RegisterUser(values)
+            .then((json) => {
+                console.log(json);
             })
-            .catch((error) => console.log(error))
+            .catch((error) => {
+                console.log(error);
+            })
     };
     
-    return (        
+    return (
         <SignUpBox>
             <Image src={register} alt='icon-register' />
             <TitleRegister>Crie sua conta</TitleRegister>
@@ -52,8 +51,8 @@ const Register = () => {
                     values={values.fullName}
                     onChange={handleChange}
                     placeholder='nome completo' 
-                    errorMessage='Por favor, insira um nome válido.' />
-                {errors.fullName && <ErrorsMessage className='error'>{errors.fullName}</ErrorsMessage>}
+                    errormessage='Por favor, insira um nome válido.' />
+                {errors.fullName && <p className='error'>{errors.fullName}</p>}
                 <Input 
                     type='email' 
                     id='email' 
@@ -61,7 +60,7 @@ const Register = () => {
                     values={values.email}
                     onChange={handleChange}
                     placeholder='e-mail'
-                    errorMessage='Por favor, insira um e-mail válido.' />
+                    errormessage='Por favor, insira um e-mail válido.' />
                 {errors.email && <ErrorsMessage className='error'>{errors.email}</ErrorsMessage>}
                 <Input 
                     type='password' 
@@ -70,7 +69,7 @@ const Register = () => {
                     value={values.password}
                     onChange={handleChange}
                     placeholder='senha'
-                    errorMessage='Por favor, insira uma senha válida.' />
+                    errormessage='Por favor, insira uma senha válida.' />
                 {errors.password && <ErrorsMessage className='error'>{errors.password}</ErrorsMessage>}
                 <Input 
                     type='password'
@@ -79,31 +78,32 @@ const Register = () => {
                     value={values.confirmPassword}
                     onChange={handleChange}
                     placeholder='confirmar senha'
-                    errorMessage='As senhas não conferem.' />
+                    errormessage='As senhas não conferem.' />
                 {errors.confirmPassword && <ErrorsMessage className='error'>{errors.confirmPassword}</ErrorsMessage>}
-            </Form>
-            <InputRadio>
-                <label>
-                    <Input 
+                </Form>
+                <InputRadio>
+                <label><Input 
                     type='radio'
-                    name='occupation'
-                    value={values.occupation}
+                    name='role'
+                    className='input-radio'
                     onChange={handleChange}
-                    labelText='Atendente' />
-                    Atendente
+                    value='Salão'
+                    labeltext='Salão' />
+                    Salão
                 </label>
-                {errors.occupation && <ErrorsMessage className='error'>{errors.occupation}</ErrorsMessage>}
+                {errors.role && <ErrorsMessage className='error'>{errors.role}</ErrorsMessage>}
                 <label>
                     <Input 
                     type='radio' 
-                    name='occupation'
-                    value={values.occupation}
+                    name='role'
+                    className='input-radio'
                     onChange={handleChange}
-                    labelText='cozinha' />
+                    value='cozinha'
+                    labeltext='Cozinha' />
                     Cozinha
                 </label>
-                {errors.occupation && <ErrorsMessage className='error'>{errors.occupation}</ErrorsMessage>}
-            </InputRadio>
+                {errors.role && <ErrorsMessage className='error'>{errors.role}</ErrorsMessage>}
+                </InputRadio>
             <Button variant='enter-app' onClick={handleFormSubmit}>
                 <Link to='/'>registrar</Link>
             </Button>
