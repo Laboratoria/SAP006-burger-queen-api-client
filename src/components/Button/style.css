@@ -14,10 +14,12 @@
 
 .goBtn {
   width: 45%;
+  margin-bottom: 10%;
 }
 
 .registerBtn {
   width: 120%;
+  margin-top: 10%;
 }
 
 .createAccount {

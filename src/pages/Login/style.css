@@ -34,28 +34,38 @@ a {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 4%;
+  padding: 2%;
   background-color: #ffffff;
   border-radius: 5%;
-  width: 16%;
-  height: 5%;
+  width: 29%;
+  height: 262px;
   box-shadow: 0px 4px 20px 4px rgb(73 73 73 / 25%);
 }
 
-.input-login p {
-  color: red;
-  margin-bottom: 1px;
-  margin-top: -22px;
-}
+/* .input-login p {
+  color: var(--red);
+  min-height: 17px;
+  position: relative;
+  bottom: 5px;
+  text-align: center;
+  font-size: 15px;
+
+} */
 
 .errorNotice {
-  margin-top: 1px;
+  color: var(--red);
+  min-height: 16.8px;
+  position: relative;
+  bottom: 5px;
+  text-align: center;
+  font-size: 12px;
 }
 
 @media (min-width: 1400px) {
   .container-login {
-    padding: 6%;
-    font-size: 30px;
+    font-size: 23px;
+    width: 32%;
+    height: 509px;
   }
 
   .logoMagic {
@@ -66,25 +76,32 @@ a {
   }
 
   .goBtn {
-    width: 48%;
+    width: 38%;
     padding: 11px;
     border-radius: 16px;
     font-family: "Kaisei Tokumin", serif;
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .registerBtn {
-    width: 115%;
-    padding: 13px;
+    width: 129%;
+    padding: 12px;
     border-radius: 16px;
     font-family: "Kaisei Tokumin", serif;
-    font-size: 30px;
+    font-size: 24px;
   }
+
+  .input {
+      font-size: 18px;
+      padding: 15px;
+      margin-bottom: 11%;
+    }
 }
 
 @media screen and (max-width: 768px) {
   .container-login {
-    width: 23%;
+    width: 31%;
+    height: 275px;
   }
   .logoMagic {
     width: 32%;
@@ -99,6 +116,7 @@ a {
     display: flex;
     flex-direction: column;
     margin: auto;
+    align-items: center;
   }
   .container-login {
     width: 44%;
@@ -112,7 +130,7 @@ a {
   }
 
   .container-login {
-    width: 50%;
+    width: 65%;
     padding: 9%;
     margin: auto;
   }
@@ -121,7 +139,7 @@ a {
     position: inherit;
     width: 55%;
     margin-top: 2%;
-    margin-left: 22%;
+    /* margin-left: 22%; */
     z-index: -1;
   }
 }
