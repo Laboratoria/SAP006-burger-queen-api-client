@@ -7,8 +7,11 @@ import ButtonDefault from '../ButtonDefault';
 import CartItem from '../CartItem';
 
 export default function CartArea({
-content, plus, minus, totalPrice
+content, plus, minus
 }) {
+
+const arrayPrices = content.map(product=>(parseFloat(product.price.slice(3).replace(',','.')))*product.quantity)
+const totalPrice = arrayPrices.reduce((total, price) => total+price , 0)
 
 
 	return (

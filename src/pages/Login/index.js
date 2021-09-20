@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import logo from '../../img/logo.png';
-import background from '../../img/bg-login3.png';
 import ButtonDefault from '../../components/ButtonDefault';
 import { loginRedirection, validationInputs } from '../../services';
 import ErrorMessage from '../../components/ErrorMessage';
@@ -99,61 +98,63 @@ export default function Login() {
     <>
       {loading ? <Loader /> : false}
       <div className="container-bg">
-        <img src={background} alt="background"></img>
+        {/* <img src={background} alt="background"></img> */}
       </div>
 
       <section className="container-login">
         <img src={logo} className="logo" alt="logo"></img>
-        <h2 className="margin-bottom-2 uppercase">Login</h2>
-        <div className="form-wrapper margin-top-1">
-          <form>
-            <fieldset className="margin-input">
-              <Input
-                className={`${errorEmail ? 'is-invalid' : ''}`}
-                type="email"
-                placeholder="Email"
-                onChange={onChange}
-                value={values.email}
-                name="email"
-                required
+         <div className="form">
+          <h2 className="uppercase">Login</h2>
+          <div className="form-wrapper margin-top-1">
+            <form>
+              <fieldset className="margin-input">
+                <Input
+                  className={`${errorEmail ? 'is-invalid' : ''}`}
+                  type="email"
+                  placeholder="Email"
+                  onChange={onChange}
+                  value={values.email}
+                  name="email"
+                  required
 
-              />
-              {errors.userEmail && (
-                <ErrorMessage>{errors.userEmail}</ErrorMessage>
-              )}
-            </fieldset>
+                />
+                {errors.userEmail && (
+                  <ErrorMessage>{errors.userEmail}</ErrorMessage>
+                )}
+              </fieldset>
 
-            <fieldset className="margin-input">
-              <Input
-                className={` ${errorPassword ? 'is-invalid' : ''}`}
-                type="password"
-                placeholder="Senha"
-                onChange={onChange}
-                value={values.password}
-                name="password"
+              <fieldset className="margin-input">
+                <Input
+                  className={` ${errorPassword ? 'is-invalid' : ''}`}
+                  type="password"
+                  placeholder="Senha"
+                  onChange={onChange}
+                  value={values.password}
+                  name="password"
 
-              />
-              {errors.userPassword && (
-                <ErrorMessage>{errors.userPassword}</ErrorMessage>
-              )}
-            </fieldset>
+                />
+                {errors.userPassword && (
+                  <ErrorMessage>{errors.userPassword}</ErrorMessage>
+                )}
+              </fieldset>
 
-            <div>
-              <ButtonDefault
-                id="btn-signin"
-                className="btn-default margin-bottom-2 margin-top-1 uppercase"
-                onClick={handleSubmit}
-              >
-                Entrar
-              </ButtonDefault>
-            </div>
-            <div className=" link-register uppercase">
-              <span className="text">Primeiro acesso?</span>
-              <a href="/cadastro" >
-                Cadastre-se
-              </a>
-            </div>
-          </form>
+              <div className="button-login">
+                <ButtonDefault
+                  id="btn-signin"
+                  className="btn-default margin-top-1 uppercase"
+                  onClick={handleSubmit}
+                >
+                  Entrar
+                </ButtonDefault>
+              </div>
+              <div className=" link-register uppercase">
+                <span className="text">Primeiro acesso?</span>
+                <a href="/cadastro" >
+                  Cadastre-se
+                </a>
+              </div>
+            </form>
+          </div>
         </div>
       </section>
     </>
