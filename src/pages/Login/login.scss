@@ -69,21 +69,31 @@
       display:flex;
       align-items: center;
       justify-content: center;
-      width:40vw;
       height: 100vh;
       top:0;
-      padding:1% 20% 1% 12%;
+      background-position-x: center;
+      width:40vw;
+      margin-right:8vw;
       background-image:url('../../img/bg-form.png');
-      background-size: contain;
+      background-size: cover;
       background-repeat:no-repeat;
-      width:auto;
       border-radius:10px;
      
     }
 
-    @media (min-device-width : 1400px){
+    @media (min-device-width : 1200px){
+      
+      margin-right:9vw;
+     
 
-      padding:1% 23% 1% 16%;
+    }
+
+
+
+
+    @media (min-device-width : 1400px){
+      
+      margin-right:13vw;
      
 
     }
