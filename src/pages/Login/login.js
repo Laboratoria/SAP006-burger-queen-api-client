@@ -2,7 +2,8 @@ import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
 import { login } from "../../utils/auth";
-import { validate } from './form-validate'
+import { validate } from './form-validate';
+import { Footer } from '../../components/footer/footer'
 
 import './login.css';
 
@@ -11,6 +12,9 @@ import fundoDesk from '../../img/fundo-desk.png'
 import hamburguer from '../../img/hamburguer-login.png'
 import jesus from '../../img/jesus.gif'
 import jesusDesk from '../../img/jesus-desk.gif'
+
+
+
 
 
 const Login = () => {
@@ -83,6 +87,7 @@ const Login = () => {
           onClick={handleLogin}
           />         
       </form>
+      <Footer />
     </div>
     </Fragment>
   )
