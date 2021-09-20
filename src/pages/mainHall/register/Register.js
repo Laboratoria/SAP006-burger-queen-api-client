@@ -35,13 +35,13 @@ export default function Registration() {
 
     return(
         <div className='container-register'>
-            <LogoImg />
-            <div>
-                <Title 
-                    title='Cadastre-se' >
-                </Title>
-            </div>
-            <form>
+            <form className="container-form">
+                <LogoImg />
+                <div>
+                    <Title 
+                        title='Cadastre-se' >
+                    </Title>
+                </div>
                 <Input 
                     type='text' 
                     name='name'
@@ -67,10 +67,12 @@ export default function Registration() {
                 />
 
                 <div className='container-checkbox'>
-                    <Input type='checkbox' name='checkbox' />
+                    <Input type='checkbox' name='checkbox' className="checkbox"/>
                             <img src={garcom} alt="waiter" className="waiter-icon"/>
-                    <Input type='checkbox' name='checkbox' />
+                            <p className="text">Salão</p>
+                    <Input type='checkbox' name='checkbox'/>
                             <img src={cozinheiro} alt="kitchen" className="kitchen-icon"/>
+                            <p className="text">Cozinha</p>
                 </div>
                 <Button 
                     label="Cadastrar" 

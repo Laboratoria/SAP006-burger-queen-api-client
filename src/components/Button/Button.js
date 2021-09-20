@@ -3,7 +3,9 @@ import './Buttons.css';
 
 export default function Button({ label, onClick }) {
     return(
-        <button onClick={onClick}>{ label }</button>
+        <button 
+            className="buttons"
+            onClick={onClick}>{ label }</button>
     )
 };
 
