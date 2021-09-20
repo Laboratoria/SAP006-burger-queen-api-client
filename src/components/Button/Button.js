@@ -1,7 +1,7 @@
 import React from 'react';
 import './Button.scss';
 
-export const Button = ({ Role, Conditional, ButtonOnClick, children}) => {
+export const Button = ({productId, ButtonTitle, ButtonId, Role, Conditional, ButtonOnClick, children}) => {
 
   const ButtonProps = {
     'test':{
@@ -75,6 +75,51 @@ export const Button = ({ Role, Conditional, ButtonOnClick, children}) => {
     },
     'menu-go-back':{
       'ButtonClass':'menu-go-back'
+    },
+    'table-01':{
+      'ButtonClass':'room-table-button room-table-button-01'
+    },
+    'table-02':{
+      'ButtonClass':'room-table-button room-table-button-02'
+    },
+    'table-03':{
+      'ButtonClass':'room-table-button room-table-button-03'
+    },
+    'table-04':{
+      'ButtonClass':'room-table-button room-table-button-04'
+    },
+    'table-05':{
+      'ButtonClass':'room-table-button room-table-button-05'
+    },
+    'table-06':{
+      'ButtonClass':'room-table-button room-table-button-06'
+    },
+    'table-07':{
+      'ButtonClass':'room-table-button room-table-button-07'
+    },
+    'table-08':{
+      'ButtonClass':'room-table-button room-table-button-08'
+    },
+    'table-09':{
+      'ButtonClass':'room-table-button room-table-button-09'
+    },
+    'table-10':{
+      'ButtonClass':'room-table-button room-table-button-10'
+    },
+    'table-11':{
+      'ButtonClass':'room-table-button room-table-button-11'
+    },
+    'table-12':{
+      'ButtonClass':'room-table-button room-table-button-12'
+    },
+    'room-new-order':{
+      'ButtonClass':'room-new-order'
+    },
+    'new-order-product-button':{
+      'ButtonClass':'new-order-product-button'
+    },
+    'room-new-order-save-order':{
+      'ButtonClass':'room-new-order-save-order'
     }
   }
   
@@ -82,6 +127,9 @@ export const Button = ({ Role, Conditional, ButtonOnClick, children}) => {
   return (
     <button 
     data-testid = 'button'
+    data-title={ButtonTitle}
+    data-productid={productId}
+    id={ButtonId}
     type='submit' 
     className={ButtonProps[Role].ButtonClass}
     onClick={ButtonOnClick}

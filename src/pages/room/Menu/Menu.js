@@ -1,5 +1,5 @@
      
-import React  from 'react';
+import { useState }  from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './Menu.scss'
@@ -32,13 +32,13 @@ export const Menu = () => {
 
   let productsToPrint = Object.keys(products)
 
-  const [showAll, setShowAll] = React.useState(true);
-  const [showBreakfast, setShowBreakfast] = React.useState(false);
-  const [showRestOfTheDay, setShowRestOfTheDay] = React.useState(false);
-  const [showFood, setShowFood] = React.useState(false);
-  const [showDrinks, setShowDrinks] = React.useState(false);
-  const [showIngredients, setShowIngredients] = React.useState(false);
-  const [productId, setProductId] = React.useState('');
+  const [showAll, setShowAll] = useState(true);
+  const [showBreakfast, setShowBreakfast] = useState(false);
+  const [showRestOfTheDay, setShowRestOfTheDay] = useState(false);
+  const [showFood, setShowFood] = useState(false);
+  const [showDrinks, setShowDrinks] = useState(false);
+  const [showIngredients, setShowIngredients] = useState(false);
+  const [productId, setProductId] = useState('');
 
   return (
     <div className='product-card-div'>

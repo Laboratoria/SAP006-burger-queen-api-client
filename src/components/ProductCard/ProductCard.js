@@ -3,13 +3,9 @@ import React from 'react';
 import './ProductCard.scss';
 
 import { products } from '../../data/products';
-import { MenuModal } from '../Modal/Modal';
 import { Button } from '../Button/Button';
 
 export const ProductCard = ({Role, ButtonOnClick}) => { 
-
- 
-
   function importMenuImages(files) {
     let importedImages = {};
     files.keys().map(imgPath => importedImages[imgPath.replace('./', '').replace('.png', '')] = files(imgPath));

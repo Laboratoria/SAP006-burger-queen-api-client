@@ -19,3 +19,20 @@ nav {
   align-items: center;
 }
 
+.employee-information-div{
+  align-items: center;
+  height: 4vh;
+  margin: 0% auto -2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  background-color: $light-brown-box;
+
+  p {
+    font-size:130%;
+    padding: 0% 5%;
+    color:$even-lighter-brown-txt;
+    font-weight: 500;
+    border-radius: 10px;
+  }
+}

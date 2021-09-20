@@ -1,58 +1,60 @@
 @import '../../styles/Global.scss';
 
-.auth-submit-form {
-  width: 60%;
-  height: 6vh;
-
-  margin: 0% auto;
-
-  background-color: $orange-btn;
-  color:$even-lighter-brown-txt;
-
-  font-size: 210%;
-}
-
-.auth-route-navigation {
-  color: $yellow-logo;
-  font-size: 170%;
-  margin-right: 1%;
-}
-
-.auth-show-or-not-password {
-  height: 3vh;
-  width: 3vh;
-
-  position:absolute;
-  bottom: 30%;
-  right: 5%;
-
-  background-size: 3vh;
-}
-
-.auth-not-show-password{
-  background-image: url('../../assets/icons/input-password-not-show.png');
-}
-
-.auth-show-password{
-  background-image: url('../../assets/icons/input-password-show.png');
-}
-
-.auth-modal-button {
-  position: relative;
-  margin: 6% auto 1%;
-  padding: 2% 4%;
-
-  background-color: $light-brown-label;
-  font-size: 100%;
-
-  border:$orange-btn solid 2pt;
-  border-radius: 5px;
-  box-shadow: 4px 5px 15px 5px rgba(0,0,0,0.1);
-}
-
-.auth-modal-button:hover{
-  background-color: $orange-btn;
-  color: white;
+.login-and-register-content{
+  .auth-submit-form {
+    width: 60%;
+    height: 6vh;
+  
+    margin: 0% auto;
+  
+    background-color: $orange-btn;
+    color:$even-lighter-brown-txt;
+  
+    font-size: 210%;
+  }
+  
+  .auth-route-navigation {
+    color: $yellow-logo;
+    font-size: 170%;
+    margin-right: 1%;
+  }
+  
+  .auth-show-or-not-password {
+    height: 3vh;
+    width: 3vh;
+  
+    position:absolute;
+    bottom: 30%;
+    right: 5%;
+  
+    background-size: 3vh;
+  }
+  
+  .auth-not-show-password{
+    background-image: url('../../assets/icons/input-password-not-show.png');
+  }
+  
+  .auth-show-password{
+    background-image: url('../../assets/icons/input-password-show.png');
+  }
+  
+  .auth-modal-button {
+    position: relative;
+    margin: 6% auto 1%;
+    padding: 2% 4%;
+  
+    background-color: $light-brown-label;
+    font-size: 100%;
+  
+    border:$orange-btn solid 2pt;
+    border-radius: 5px;
+    box-shadow: 4px 5px 15px 5px rgba(0,0,0,0.1);
+  }
+  
+  .auth-modal-button:hover{
+    background-color: $orange-btn;
+    color: white;
+  }  
 }
 
 .unauhtorized-sign-out, .unauhtorized-goback{
@@ -77,37 +79,34 @@
   background-image: url('../../assets/icons/light-brown-goback.png');
 }
 
-.room-sign-out{
-  height: 5vh;
-  width: 5vh;
-  background-size: 5vh ;
-  position: absolute;
-  right: 1%;
-  bottom:1%;
+nav {
+  .room-navbar-menu{
+    margin-top: -12%;
+    background-image: url('./../../assets/images-buttons/navbar-menu.png');
+  }
+  
+  .room-being-prepared-orders{
+    background-image: url('./../../assets/images-buttons/navbar-being-prepared-orders.png');
+  }
+  
+  .room-ready-orders{
+    background-image: url('./../../assets/images-buttons/navbar-ready-orders.png');
+  }
+  
+  .room-delivered-orders {
+    background-image: url('./../../assets/images-buttons/navbar-delivered-orders.png');
+  }
+
+  .room-navbar-button{
+    height: 15vh;
+    width: 15vh;
+    background-size: 15vh;
+  }
 }
 
-.room-navbar-button{
-  height: 15vh;
-  width: 15vh;
-  background-size: 15vh;
-}
 
-.room-navbar-menu{
-  margin-top: -12%;
-  background-image: url('./../../assets/images-buttons/navbar-menu.png');
-}
 
-.room-being-prepared-orders{
-  background-image: url('./../../assets/images-buttons/navbar-being-prepared-orders.png');
-}
 
-.room-ready-orders{
-  background-image: url('./../../assets/images-buttons/navbar-ready-orders.png');
-}
-
-.room-delivered-orders {
-  background-image: url('./../../assets/images-buttons/navbar-delivered-orders.png');
-}
 
 .menu-filter {
   font-family: 'Norwester', arial;
@@ -144,6 +143,151 @@
   background-image: url('../../assets/icons/light-brown-goback.png');
 }
 
+.room-div{
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .room-sign-out{
+    height: 3.5vh;
+    width: 3.5vh;
+    background-size: 3.5vh ;
+    position: absolute;
+    right: 1%;
+    bottom:1%;
+  }
+
+  .room-table-button{
+    height: 17vh;
+    width: 17vh;
+    background-size:17vh;
+  }
+
+  .room-table-button:hover{
+    border: $medium-green solid 3pt;
+    border-radius: 10px;
+  }
+
+  .room-table-button-01{
+    background-image: url('../../assets/images-tables/table-01.png');
+  }
+
+  .room-table-button-02{
+    background-image: url('../../assets/images-tables/table-02.png');
+  }
+
+  .room-table-button-03{
+    background-image: url('../../assets/images-tables/table-03.png');
+  }
+
+  .room-table-button-04{
+    background-image: url('../../assets/images-tables/table-04.png');
+  }
+
+  .room-table-button-05{
+    background-image: url('../../assets/images-tables/table-05.png');
+  }
+
+  .room-table-button-06{
+    background-image: url('../../assets/images-tables/table-06.png');
+  }
+
+  .room-table-button-07{
+    background-image: url('../../assets/images-tables/table-07.png');
+  }
+
+  .room-table-button-08{
+    background-image: url('../../assets/images-tables/table-08.png');
+  }
+
+  .room-table-button-09{
+    background-image: url('../../assets/images-tables/table-09.png');
+  }
+
+  .room-table-button-10{
+    background-image: url('../../assets/images-tables/table-10.png');
+  }
+  
+  .room-table-button-11{
+    background-image: url('../../assets/images-tables/table-11.png');
+  }
+
+  .room-table-button-12{
+    background-image: url('../../assets/images-tables/table-12.png');
+  }
+
+  .room-new-order, .room-new-order-save-order{
+    width: 80%;
+    background-color: $medium-green;
+    padding: 2%;
+    margin: auto;
+    font-size: 200%;
+    border-radius: 10px;
+    color: $even-lighter-brown-txt;
+    font-weight: 500;
+  }
+    .new-order-product-button{
+      height: 15vh;
+      width: 15vh;
+      background-size:15vh;
+      border: $light-brown-box solid 2pt;
+      border-radius: 10px;
+  }
+
+  [data-title='cafe-americano'] {
+    background-image: url('../../assets/images-menu/cafe-com-leite.png');
+  }
+  
+  [data-title='cafe-com-leite'] {
+    background-image: url('../../assets/images-menu/cafe-com-leite.png');
+  }
+  [data-title='sanduiche-presunto-queijo'] {
+    background-image: url('../../assets/images-menu/sanduiche-presunto-queijo.png');
+  }
+  [data-title='suco-de-fruta-natural'] {
+    background-image: url('../../assets/images-menu/suco-de-fruta-natural.png');
+  }
+  [data-title='hamburguer-simples-bovino'] {
+    background-image: url('../../assets/images-menu/hamburguer-simples-bovino.png');
+  }
+  [data-title='hamburguer-simples-frango'] {
+    background-image: url('../../assets/images-menu/hamburguer-simples-frango.png');
+  }
+  [data-title='hamburguer-simples-vegetariano'] {
+    background-image: url('../../assets/images-menu/hamburguer-simples-vegetariano.png');
+  }
+  [data-title='hamburguer-duplo-bovino'] {
+    background-image: url('../../assets/images-menu/hamburguer-duplo-bovino.png');
+  }
+  [data-title='hamburguer-duplo-frango'] {
+    background-image: url('../../assets/images-menu/hamburguer-duplo-frango.png');
+  }
+  [data-title='hamburguer-duplo-vegetariano'] {
+    background-image: url('../../assets/images-menu/hamburguer-duplo-vegetariano.png');
+  }
+  [data-title='batata-frita'] {
+    background-image: url('../../assets/images-menu/batata-frita.png');
+  }
+  [data-title='aneis-de-cebola'] {
+    background-image: url('../../assets/images-menu/aneis-de-cebola.png');
+  }
+  [data-title='agua-500'] {
+    background-image: url('../../assets/images-menu/agua-500.png');
+  }
+  [data-title='agua-750'] {
+    background-image: url('../../assets/images-menu/agua-750.png');
+  }
+  [data-title='bebida-gaseificada-500'] {
+    background-image: url('../../assets/images-menu/bebida-gaseificada-500.png');
+  }
+  [data-title='bebida-gaseificada-750'] {
+    background-image: url('../../assets/images-menu/bebida-gaseificada-750.png');
+  }
+
+}
+
 @media (min-width: 1024px) and (max-height: 768px),
 (min-width: 1366px) and (max-height: 1024px){
 
@@ -152,10 +296,12 @@
     width: 80%;
   }
 
-  .room-navbar-button{
-    height: 22vh;
-    width: 22vh;
-    background-size: 22vh;
+  nav{
+    .room-navbar-button{
+      height: 22vh;
+      width: 22vh;
+      background-size: 22vh;
+    }  
   }
 
   .menu-filter{
@@ -167,6 +313,14 @@
     height: 7vh;
     width: 7vh;
     background-size: 7vh;
+  }
+
+  .room-div{
+    .room-table-button{
+      height: 20vh;
+      width: 20vh;
+      background-size:20vh;
+    }
   }
   
 }
