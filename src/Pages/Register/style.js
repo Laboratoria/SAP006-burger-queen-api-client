@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 const SignUpBox = styled.div`
-    background: rgba(244, 244, 244, 0.52);
+    background-color: blue;
+
 `
 const Image = styled.img`
-    height: 252px;
+    height: 20px;
     width: 268px;
     margin: 10px 20px 0px 50px;
 `

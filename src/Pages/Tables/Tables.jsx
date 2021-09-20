@@ -3,8 +3,17 @@
 import MealNavBar from '../../components/Header/NavBar';
 import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
 import GeneralButton from '../../components/Button/style';
+import { useHistory } from "react-router-dom";
+import { Logout } from "../../services/auth";
 
 const Tables = () => {
+
+    const history = useHistory();
+
+    const handleLogout = () => {
+        Logout()
+        history.push('./')
+    }
 
     return (
         
@@ -26,6 +35,7 @@ const Tables = () => {
             <input type="text" placeholder="Nome do Cliente"/>
             <GeneralButton>Confirmar Pedido</GeneralButton>
             <MenuOptionsNavBar />
+            <button onClick={handleLogout}>Logout</button>
         </div>
     )
 }

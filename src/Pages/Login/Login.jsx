@@ -1,42 +1,51 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import {Image, LoginBox, Title, Form, PhraseLogin } from './style';
+
+import { LoginWithEmail } from '../../services/auth';
+import { Login as LoginAuth } from '../../services/auth';
 
 import Button from '../../components/Button/Button';
-import Input from '../../components/Input/Input.jsx'
-import { LoginWithEmail } from '../../services/auth';
+import Input from '../../components/Input/Input';
+
+import {Image, LoginBox, Title, Form, PhraseLogin } from './style';
 import login from '../../Assets/login.png';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [occupation, setOccupation] = useState('');
+    // const [occupation, setOccupation] = useState('');
     const history = useHistory();
 
-    function navigateTo (user) {
-        user.occupation === 'Atendente' ? 
-            history.push('/tables') 
-            : history.push('/kitchen')
-    }
+    // function navigateTo (user) {
+    //     user.occupation === 'Atendente' ? 
+    //         history.push('/tables') 
+    //         : history.push('/kitchen')
+    // }
 
     function AuthUserLogin() {
         const user = {
             email,
             password, 
-            occupation
+            // occupation
         }
 
         LoginWithEmail(user)
             .then((token) => {
-                token ?
-                    // localStorage.setItem('Vixi', token) && history.push('/tables')
-                    // : alert('deu errado o token')
-                    localStorage.setItem('Vixi', token) && navigateTo()
-                    : alert('deu errado o token') 
+                if(token) {
+                    LoginAuth('Vixi', token)
+                    history.push('/tables')
+                } 
+                else {
+                    alert('deu errado o token')
+                }
+                // token ?
+                //     (LoginAuth('Vixi', token) && history.push('/tables'))
+                //     : alert('deu errado o token')
+                    // LoginAuth('Vixi', token) && navigateTo()
+                    // : alert('Usuário não encontrado') 
             })
-            .catch(() => {
-                alert('tente novamente, erro no catch')
-            })
+            .catch((error) => 
+            console.log(error, 'tente novamente, erro na autenticação do usuário.'))
     }
 
     return (

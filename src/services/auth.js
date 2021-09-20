@@ -16,6 +16,7 @@ export const RegisterUser = (users) => {
         body: JSON.stringify(body)
     })
         .then((response) => response.json())
+        .catch((error) => console.log(error, 'erro na RegisterUser'))
     };
     
 export const RegisterSuccess = () => {
@@ -40,11 +41,24 @@ export const LoginWithEmail = (users) => {
             const { token } = json;
             return token;
         })
+        .catch((error) => console.log(error, 'erro de token na LoginWithEmail'))
 };
 
+const STORAGE_KEY = 'burger-queen-api-client'
 
-// export const isAuthenticated = () => true;
+const isLogged = () => !! localStorage.getItem(STORAGE_KEY)
+const Login = token => localStorage.setItem(STORAGE_KEY, token)
+const Logout = () => localStorage.removeItem(STORAGE_KEY)
+export { isLogged , Login , Logout }
 
+
+
+
+
+
+
+
+// como usar token fora promise?
 // const objectAPI = {
     //     'name': users.name,
     //     'email': users.email,

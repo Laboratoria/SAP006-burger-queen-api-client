@@ -10,7 +10,6 @@ import Input from '../../components/Input/Input.jsx'
 import register from '../../Assets/register.png';
 import { SignUpBox, Image, TitleRegister, Form, InputRadio, ErrorsMessage, PhraseRegister } from './style';
 
-
 const Register = () => {
     const [values, setValues] = useState({
         fullName: '',
@@ -40,10 +39,11 @@ const Register = () => {
                 history.push('/tables') 
                 : history.push('/kitchen')
             })
+            .catch((error) => console.log(error))
     };
     
     return (
-        <SignUpBox>
+        <div>
             <Image src={register} alt='icon-register' />
             <TitleRegister>Crie sua conta</TitleRegister>
             <Form>
@@ -112,7 +112,7 @@ const Register = () => {
             <PhraseRegister>Já possui uma conta?<br/> 
                 <Link to='/'>Faça seu login aqui</Link>
             </PhraseRegister>
-        </SignUpBox>
+        </div>
     )
 }
 
