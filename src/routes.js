@@ -1,5 +1,5 @@
 import React from "react";
-import { isAuthenticated } from './auth';
+import { isAuthenticated } from '../src/services/auth';
 import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -13,15 +13,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     />
 );
 
-/* const Routes = () => (
-    <BrowserRouter>
-    <Switch>
-        <Route exact path="/" component={()=> <h1>Hello Word</h1>} />
-        <PrivateRoute path="/app"component={()=> <h1>Você está logado</h1>} />
-    </Switch>
-    </BrowserRouter>
-
-);*/
 
 export default PrivateRoute;
 

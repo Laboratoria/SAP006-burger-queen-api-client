@@ -1,12 +1,2 @@
+@import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap');
 
-.header, 
-.new-register{
-    font-style: 'Frijole', cursive;
-    font-size: 20px;
-    color: var(--ice);
-}
-
-.link{
-    font-size: 20px;
-    color: var(--aqua);
-}
