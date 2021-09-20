@@ -4,7 +4,7 @@ import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { RegisterUser } from '../../../services/Auth';
 
 
