@@ -7,6 +7,7 @@ import Tables from './Pages/Tables/Tables'
 import OrderStatus from './Pages/OrderStatus/OrderStatus'
 import Kitchen from './Pages/Kitchen/Kitchen'
 import NotFound from './Pages/NotFound/NotFound'
+import PrivateRoute from './PrivateRoute';
 
 // const PrivateRoute = ({ component:Component, ...rest }) => (
 //     <Route {...rest} render={props => (
@@ -26,9 +27,9 @@ const Routes = () => {
                 <Route exact path='/' component={Login} />
                 {/* <PrivateRoute path='/app' component={Tables} /> */}
                 <Route path='/register' component={Register} />
-                <Route path='/tables' component={Tables} />
-                <Route path='/orders-status' component={OrderStatus} />
-                <Route path='/kitchen' component={Kitchen} />
+                <PrivateRoute path='/tables' component={Tables} />
+                <PrivateRoute path='/orders-status' component={OrderStatus} />
+                <PrivateRoute path='/kitchen' component={Kitchen} />
                 <Route path='*' component={NotFound} />
             </Switch>
         </BrowserRouter>

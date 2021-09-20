@@ -43,6 +43,16 @@ export const LoginWithEmail = (users) => {
         })
 };
 
+// como usar token fora promise?
+
+const STORAGE_KEY = 'burger-queen-api-client'
+
+const isLogged = () => !! localStorage.getItem(STORAGE_KEY)
+const Login = token => localStorage.setItem(STORAGE_KEY, token)
+const Logout = () => localStorage.removeItem(STORAGE_KEY)
+export { isLogged , Login , Logout }
+
+
 
 // export const isAuthenticated = () => true;
 
