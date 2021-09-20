@@ -117,7 +117,7 @@ const Register = () => {
 				<button className="goback-btn" onClick={goBack}>
 					<img src={arrow} alt="arrow" />
 				</button>
-				<div className="form margin-top-1">
+				<div className="form form-register">
 					<h2 className="uppercase">Cadastro</h2>
 					<div className="form-wrapper margin-top-1">
 						<form>
