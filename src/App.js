@@ -1,16 +1,13 @@
+import React from 'react';
+import Route from './utils/routes.js';
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
-    </div>
+    <Route />
   );
 }
 
 export default App;
-
-import './App.css';
-import './App.css';
-import './App.css';
 
 
 
