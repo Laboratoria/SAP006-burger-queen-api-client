@@ -1,11 +1,12 @@
 import React from "react";
 import NavegationBar from './style'
+import GeneralButton from '../Button/style'
 
 const MealNavBar = () => {
     return (
         <NavegationBar>
-            <button variant="breakfast">Café da Manhã</button>
-            <button variant="lunch">Almoço</button>
+            <GeneralButton secondary>Café da Manhã</GeneralButton>
+            <GeneralButton secondary>Almoço</GeneralButton>
         </NavegationBar>
     )
 }
