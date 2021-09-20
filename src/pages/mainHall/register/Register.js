@@ -24,8 +24,8 @@ export default function Registration() {
         RegisterUser(user)
         .then(token => {
             if (token) {
-                localStorage.setItem ('userToken', token)
-                history.push('/login')
+                localStorage.setItem ('arroz', token)
+                history.push('/')
             }
         })
 
