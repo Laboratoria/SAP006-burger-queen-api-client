@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 import { LoginWithEmail } from '../../../services/Auth';
+
 
 
 export default function Login() { 
@@ -13,6 +14,20 @@ export default function Login() {
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
     // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
+    const history = useHistory();
+    
+    function handleClick (e){
+        e.preventDefault()
+        console.log('handleClick')
+        const user = {email, password}
+        LoginWithEmail(user)
+        .then(token => {
+            if (token){
+                localStorage.setItem(token)
+                history.push('/mesas')
+            }
+        }) 
+    }
     
     return(
         <div className='container login'>
@@ -39,10 +54,10 @@ export default function Login() {
                     placeholder='Digite a sua senha'
                 />
               
-                <Button label='Entrar' 
+                <Button 
+                    label='Entrar' 
                     type="submit"
-                    onClick={LoginWithEmail}>
-                    <Link to='/cadastre-se'></Link>
+                    onClick={handleClick}>
             
                 </Button>
 

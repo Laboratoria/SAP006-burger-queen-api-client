@@ -14,8 +14,8 @@ function Routes(){
                 <Route path="/cadastre-se" component={Registration} />
                 <Route path="/mesas" component={ Mesas } />
 
-                <Route path="*" element={<h1>Not Found</h1>} /> 
-                <PrivateRoute path="/mesas" component={ Mesas }/>               
+                <PrivateRoute path="/mesas" component={ Mesas }/>
+                <Route path="*" element={<h1>Not Found</h1>} />                                
             </Switch>
         </BrowserRouter> 
     );  

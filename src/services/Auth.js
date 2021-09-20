@@ -1,4 +1,23 @@
-import { Redirect } from "react-router";
+
+export const LoginWithEmail = (users) => {
+    console.log('entrou aqui')
+    return fetch('https://lab-api-bq.herokuapp.com/auth', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify ({
+            "email": users.email,
+            "password": users.password,
+        }),
+    })
+        .then((response) => response.json())
+        .then((json) => {
+            const { token } = json;
+            console.log(token)
+            return token
+        })
+};
 
 export const RegisterUser = (users) => {
     return fetch('https://lab-api-bq.herokuapp.com/users', {
@@ -17,41 +36,12 @@ export const RegisterUser = (users) => {
     });
 };
 
+
 export const RegisterSuccess = () => {
     return (
-        alert('Sua conta foi criada com sucesso! :)')
+        alert('Sua conta foi criada com sucesso!')
     )
 }
-
-export const LoginWithEmail = (users) => {
-    return fetch('https://lab-api-bq.herokuapp.com/auth', {
-        method:'POST',
-        headers: {
-            accept: 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify ({
-            "email": users.email,
-            "password": users.password,
-        }),
-        // body: `email=${email}&password=${password}`
-    })
-        .then((response) => response.json())
-        .then((json) => {
-            const { token } = json;
-            if(token) {
-                <Redirect push to='/mesas' />
-                // window.push('/tables')
-            } else {
-                // history().push('/');
-                <Redirect push to='/' />
-                alert('erro no token');
-            }
-        })
-};
-
-
-
 
 
 
