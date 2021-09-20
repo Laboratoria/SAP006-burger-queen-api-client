@@ -108,7 +108,7 @@
     display: none;
 }
 
-.footer{
+/* .footer{
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -124,7 +124,7 @@
 .footer a {
     padding: 3px;
     color: white;
-}
+} */
 
 @media screen and (min-width: 425px) and (max-width: 767px){
     .jesus-logo{
