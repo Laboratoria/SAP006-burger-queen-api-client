@@ -1,5 +1,8 @@
 import React, { useState, Fragment } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
+import { login } from "../../utils/auth";
+import { validate } from './form-validate'
 
 import './login.css';
 
@@ -9,16 +12,30 @@ import hamburguer from '../../img/hamburguer-login.png'
 import jesus from '../../img/jesus.gif'
 import jesusDesk from '../../img/jesus-desk.gif'
 
+
 const Login = () => {
+
+  const [errors, setErrors] = useState({})
+  function validateValues(values) {
+    setErrors(validate(values))
+  }
 
   const [infoUser, setInfoUser] = useState({ email: '', password: '' });
   
   const handleChange = (e) => {
     const informationUser = e.target.id;
     setInfoUser({ ...infoUser, [informationUser]: e.target.value })
-
     // if (informationUser === 'password') {      
     // }
+  }
+  
+  //let history = useHistory()
+  const handleLogin = (e) => {   
+    e.preventDefault();
+      console.log('foi')
+    validateValues(infoUser)         
+    // login('1234')  
+    // history.push('/home')
   }
 
   return (
@@ -39,15 +56,16 @@ const Login = () => {
         <img className='jesus-desk'
           src={jesusDesk} alt='jesus'/>
       </figure>
-      <form className='form-login'>
+      <form className='form-login' >
         <fieldset className='form-inner'>
           <input className='input-login'
           type='email' id='email' placeholder='Email' required='' 
           value={infoUser.email} 
           onChange={handleChange}/>
-          <section className ='icons-input'>
+        <section className ='icons-input'>
           <i className='far fa-envelope icons'></i>
           </section>
+          {errors.email && <span className='form-error'>{errors.email}</span>}
         </fieldset>
         <fieldset className="form-inner">
           <input className="input-password" 
@@ -58,11 +76,14 @@ const Login = () => {
             <i id="show" className="fas fa-lock icons"></i>
             <i id="hide" className="fas fa-lock-open icons"></i>
           </section>
+          {errors.password && <span className='form-error'>{errors.password}</span>}
         </fieldset>
         <input className='btn-login'
-          type='submit' value='login' />
-      </form >
-    </div >
+          type='submit' value='login' 
+          onClick={handleLogin}
+          />         
+      </form>
+    </div>
     </Fragment>
   )
 };
