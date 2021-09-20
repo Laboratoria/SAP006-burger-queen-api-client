@@ -1,9 +1,8 @@
 import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
-import { login, registerUser } from "../../utils/auth";
+import { registerUser } from "../../utils/auth";
 import { validate } from '../Login/form-validate'
-import { resgisterUser } from '../../utils/auth'
 
 import '../Login/login.css';
 
@@ -35,8 +34,11 @@ const Register = () => {
     e.preventDefault();
       console.log('foi')
     validateValues(infoUser)
-    const x = registerUser(infoUser.email, infoUser.password)
-    console.log(x);
+    registerUser(infoUser.email, infoUser.password)
+    // console.log(x, infoUser.email, infoUser.password)
+    /* .then((response) => {
+        console.log(response.json())
+    }) */
     // login('1234')
     // history.push('/home')
   }

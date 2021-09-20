@@ -29,13 +29,13 @@ const Login = () => {
     // }
   }
   
-  //let history = useHistory()
+  let history = useHistory()
   const handleLogin = (e) => {   
     e.preventDefault();
       console.log('foi')
     validateValues(infoUser)         
-    // login('1234')  
-    // history.push('/home')
+    login('1234')  
+    history.push('/home')
   }
 
   return (
