@@ -1,17 +1,9 @@
 import { Route, Redirect } from 'react-router';
-
-const isAuthenticated = () => {
-    const token = localStorage.setItem('userToken');
-        if (token) {
-            return true;
-        } else {
-            return false;
-        }
-}
+import isAuth from '../routes/authRoutes'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {... rest} render={props => (
-        isAuthenticated() ? (
+        isAuth() ? (
             <Component {... props} />
         ) : (
             <Redirect to={{ pathname: '/', state: { from: props.location } }} />

@@ -23,7 +23,7 @@ export default function Login() {
         LoginWithEmail(user)
         .then(token => {
             if (token){
-                localStorage.setItem('arroz', token)
+                localStorage.setItem('userToken', token)
                 history.push('/mesas')
             }
         }) 

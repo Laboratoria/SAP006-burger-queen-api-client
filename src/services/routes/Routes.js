@@ -1,10 +1,10 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Login from './pages/mainHall/login/Login';
-import Registration from './pages/mainHall/register/Register';
-import PrivateRoute from './PrivateRoutes';
-import Mesas from './pages/mainHall/tables/Tables';
+import Login from '../../pages/mainHall/login/Login';
+import Registration from '../../pages/mainHall/register/Register';
+import Mesas from '../../pages/mainHall/tables/Tables';
+import PrivateRoute from '../routes/PrivateRoutes'
 
 function Routes(){
     return (
