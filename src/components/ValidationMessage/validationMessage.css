@@ -1,0 +1,6 @@
+.validation-message {
+  display: inline-flexbox;
+  color: red;
+  font-size:  min(14px, 3vw);
+
+}

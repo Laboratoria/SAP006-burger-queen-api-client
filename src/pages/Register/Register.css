@@ -1,18 +1,18 @@
 .container-register {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;  
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .logo-register {
-    width: 30%;
-    height: 35%;
-    background-image: url("../../img/Logo.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+  width: 30%;
+  height: 35%;
+  background-image: url("../../img/Logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .register {
@@ -26,17 +26,18 @@
     border-radius: 20px;
 }
 
-.register-input{
-    border: none;
-    border-bottom: 2px solid #c65758;
-    background-color: transparent;
-    width: 80%;
-    height: 25px;
-    margin: 30px 0;
+.register-form-group {
+  width: 80%;
+  margin-bottom: 8%;
 }
 
-.p-register {
-    font-size: 1.0rem;
+.register-options {
+	color: #c65758;
+	font-size:  min(18px, 3vw);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 4%;
 }
 
 @media (max-width: 769px) and (max-height: 1024px) {
@@ -192,3 +193,7 @@
 
 
 
+  .register-form-group {
+		margin-bottom: 5%;
+  }
+}

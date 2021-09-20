@@ -2,7 +2,8 @@ import React, { useState } from "react"
 import Button from "../../components/Button/button";
 import Input from "../../components/Input/input";
 import { useHistory } from 'react-router-dom';
-import ValidateInputs from '../login/ValidationLogin';
+import ValidateInputs from '../Register/ValidationRegister';
+import ValidationMessage from "../../components/ValidationMessage/validationMessage";
 import './Register.css'
 
 
@@ -20,13 +21,16 @@ const Register = () => {
     email: '',
     password: '',
     confirmPassword: '',
+    role: '',
   })
 
   const onChangeValues = (event) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value
+      
     })
+    console.log(values)
   }
 
   const history = useHistory();
@@ -34,20 +38,20 @@ const Register = () => {
   const buttonRegister = (e) => {
     e.preventDefault();
     setErrors(ValidateInputs(values))
-    if (errors.empty) {
+    if (errors) {
       fetch('https://lab-api-bq.herokuapp.com/users ', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `email=${values.email}&password=${values.password}&name=${values.name}&role=cozinha&restaurant=Deburguer`
+        body: `email=${values.email}&password=${values.password}&name=${values.name}&role=${values.role}&restaurant=Deburger`
       })
         .then((response) => {
           response.json()
             .then((json) => {
               console.log(json);
               if (json.id) {
-                history.push('/Hall')
+                history.push('/Login')
               } else {
                 console.log(' não rodouuuuuu')
               }
@@ -60,49 +64,66 @@ const Register = () => {
     <section className='container-register'>
       <div className='logo-register' />
       <form className='register'>
-        <Input name='name'
-          className='register-input'
-          placeholder='Nome'
-          onChange={onChangeValues}
-          value={values.name}>
-        </Input>
+        <div className='register-form-group'>
+          <Input
+            type='text'
+            name='name'
+            className='register-input'
+            placeholder='Nome'
+            onChange={onChangeValues}
+            value={values.name}>
+          </Input>
+          {errors.name && <ValidationMessage>{errors.name}</ValidationMessage>}
+        </div>
 
-        <div className="hidden">{errors.name && <p className='hidden-warning'>{errors.name}</p>}</div>
+        <div className='register-form-group'>
+          <Input
+            type='text'
+            name='email'
+            className='register-input'
+            placeholder='E-mail'
+            onChange={onChangeValues}
+            value={values.email}>
+          </Input>
+          {errors.email && <ValidationMessage>{errors.email}</ValidationMessage>}
+        </div>
 
-        <Input name='email'
-          className='register-input'
-          placeholder='E-mail'
-          onChange={onChangeValues}
-          value={values.email}>
-        </Input>
+        <div className='register-form-group'>
+          <Input
+            type='password'
+            name='password'
+            className='register-input'
+            placeholder='Senha'
+            onChange={onChangeValues}
+            value={values.password}>
+          </Input>
+          {errors.password && <ValidationMessage>{errors.password}</ValidationMessage>}
+        </div>
 
-        <div className="hidden">{errors.email && <p className='hidden-warning'>{errors.email}</p>}</div>
+        <div className='register-form-group'>
+          <Input
+            type='password'
+            name='confirmPassword'
+            className='register-input'
+            placeholder='Confirmação de senha'
+            onChange={onChangeValues}
+            value={values.confirmPassword}>
+          </Input>
+          {errors.confirmPassword && <ValidationMessage>{errors.confirmPassword}</ValidationMessage>}
+        </div>
 
-        <Input name='password'
-          className='register-input'
-          placeholder='Senha'
-          onChange={onChangeValues}
-          value={values.password}>
-        </Input>
-
-        <div className="hidden">{errors.password && <p className='hidden-warning'>{errors.password}</p>}</div>
-
-        <Input name='confirmPassword'
-          className='register-input'
-          placeholder='Confirmação de senha'
-          onChange={onChangeValues}
-          value={values.confirmPassword}>
-        </Input>
-
-        <div className="hidden">{errors.confirmPassword && <p className='hidden-warning'>{errors.confirmPassword}</p>}</div>
+        <div className='register-options'>
+          <input type='radio' name='role' value='hall' onChange={onChangeValues} />
+          <label>Atendimento</label>
+          <input type='radio' name='role' value='kitchen' onChange={onChangeValues} />
+          <label>Cozinha</label>
+        </div>
 
         <Button
           buttonText='CADASTRAR'
           className='button'
           buttonOnClick={buttonRegister} />
-        <p className='p-register'>Não tem uma conta?
-          <Button buttonText='Ir para o Login' buttonOnClick={goToLogin} />
-        </p>
+        <p onClick={goToLogin} className='go-to'>Não tem uma conta? Faça Login. </p>
       </form>
     </section>
   )
