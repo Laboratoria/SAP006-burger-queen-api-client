@@ -14,7 +14,6 @@ export const LoginWithEmail = (users) => {
         .then((response) => response.json())
         .then((json) => {
             const { token } = json;
-            console.log(token)
             return token
         })
 };
@@ -32,8 +31,13 @@ export const RegisterUser = (users) => {
             'password': users.password,
             'role': users.role,
             'restaurant': 'Retro Burger',
-        })
+        }),
     })
+        // .then ((response) => response.json())
+        // .then ((json) => {
+        //     const { token } = json;
+        //     return token
+        // })
 };
 
 

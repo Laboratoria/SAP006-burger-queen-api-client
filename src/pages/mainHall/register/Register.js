@@ -75,9 +75,9 @@ export default function Registration() {
                 <Button 
                     label='Cadastrar' 
                     type="submit"
-                    onClick={handleClick} >
-                </Button>
-
+                    onClick={handleClick} 
+                />
+                
             </form>
 
         <Footer />    

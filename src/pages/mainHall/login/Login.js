@@ -55,9 +55,8 @@ export default function Login() {
                 <Button 
                     label='Entrar' 
                     type="submit"
-                    onClick={handleClick}>
-            
-                </Button>
+                    onClick={handleClick} 
+                />
 
                 <div>
                     <h2>Não tem uma conta? Cadastre-se</h2>
