@@ -9,16 +9,6 @@ import Kitchen from './Pages/Kitchen/Kitchen'
 import NotFound from './Pages/NotFound/NotFound'
 import PrivateRoute from './PrivateRoute';
 
-// const PrivateRoute = ({ component:Component, ...rest }) => (
-//     <Route {...rest} render={props => (
-//         isAuthenticated() ? (
-//             <Tables {...props} />
-//         ) : (
-//             <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-//         )
-//     )} />
-// )
-
 const Routes = () => {
 
     return (

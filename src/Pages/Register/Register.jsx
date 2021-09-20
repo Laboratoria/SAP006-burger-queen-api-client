@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-
 import { RegisterUser } from '../../services/auth';
 import validation from '../../services/validation';
-
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input.jsx'
-
 import register from '../../Assets/register.png';
 import { SignUpBox, Image, TitleRegister, Form, InputRadio, ErrorsMessage, PhraseRegister } from './style';
 
@@ -42,8 +39,8 @@ const Register = () => {
             .catch((error) => console.log(error))
     };
     
-    return (
-        <div>
+    return (        
+        <SignUpBox>
             <Image src={register} alt='icon-register' />
             <TitleRegister>Crie sua conta</TitleRegister>
             <Form>
@@ -112,7 +109,7 @@ const Register = () => {
             <PhraseRegister>Já possui uma conta?<br/> 
                 <Link to='/'>Faça seu login aqui</Link>
             </PhraseRegister>
-        </div>
+        </SignUpBox>
     )
 }
 
