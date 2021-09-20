@@ -65,7 +65,7 @@ function AllDay() {
               itemFlavor={item.flavor}
               itemNameKey={item.id}
               divOnClick={() => {
-                if (!resumopedido.some((item) => item.name === menu[index].name)) {
+                if (!resumopedido.some((item) => item.id === menu[index].id)) {
                   setResumoPedido([...resumopedido, {
                     id: menu[index].id,
                     name: menu[index].name,
@@ -74,7 +74,7 @@ function AllDay() {
                   }]);
                 } else {
                   resumopedido.map((item, i) => {
-                    if (item.name === menu[index].name) {
+                    if (item.id === menu[index].id) {
                       resumopedido[i].qnt++
                     + setResumoPedido([...resumopedido]);
                     }
@@ -122,10 +122,10 @@ function AllDay() {
                     type="button"
                     value="-"
                     onClick={() => {
-                      if (item.qtd > 1 && item.name === resumopedido[index].name) {
+                      if (item.qtd > 1 && item.id === resumopedido[index].id) {
                         resumopedido[index].qtd--;
                         setResumoPedido([...resumopedido]);
-                      } else if (item.name === resumopedido[index].name && item.atd === 1) {
+                      } else if (item.id === resumopedido[index].id && item.qtd === 1) {
                         resumopedido.splice(index, 1);
                         setResumoPedido([...resumopedido]);
                       }
@@ -138,7 +138,7 @@ function AllDay() {
                     type="button"
                     value="+"
                     onClick={() => {
-                      if (item.name === resumopedido[index].name) {
+                      if (item.id === resumopedido[index].id) {
                         resumopedido[index].qtd++;
                         setResumoPedido([...resumopedido]);
                       }
@@ -173,7 +173,7 @@ function AllDay() {
                   },
                   body: JSON.stringify({
                     client: 'ana',
-                    table: mesa,
+                    table: "1",
                     products:
                   resumopedido.map((item) => (
                     {

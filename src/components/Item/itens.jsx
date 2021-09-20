@@ -25,7 +25,7 @@ function Item({
         </div>
         <h1 className="divName" key={itemNameKey}>{itemName}</h1>
         <div className="divButton">
-          <h1 className="divPrice" key={itemPriceKey}> R${itemPrice},00</h1>
+          <h1 className="divPrice" key={itemPriceKey}> {divId} R${itemPrice},00</h1>
           <h1 className="divFlavor"> {itemFlavor}</h1>
         </div>
         <Button buttonOnClick={divOnClick} buttonClass="add-button"> ADD </Button>
