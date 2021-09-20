@@ -1,11 +1,10 @@
 import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
-import { login } from "../../utils/auth";
-import { validate } from './form-validate';
-import { Footer } from '../../components/footer/footer'
+import { registerUser } from "../../utils/auth";
+import { validate } from '../Login/form-validate'
 
-import './login.css';
+import '../Login/login.css';
 
 import fundo from '../../img/fundo.png'
 import fundoDesk from '../../img/fundo-desk.png'
@@ -14,10 +13,7 @@ import jesus from '../../img/jesus.gif'
 import jesusDesk from '../../img/jesus-desk.gif'
 
 
-
-
-
-const Login = () => {
+const Register = () => {
 
   const [errors, setErrors] = useState({})
   function validateValues(values) {
@@ -33,13 +29,18 @@ const Login = () => {
     // }
   }
   
-  let history = useHistory()
-  const handleLogin = (e) => {   
+  //let history = useHistory()
+  const handleRegister = (e) => {   
     e.preventDefault();
       console.log('foi')
-    validateValues(infoUser)         
-    login('1234')  
-    history.push('/home')
+    validateValues(infoUser)
+    registerUser(infoUser.email, infoUser.password)
+    // console.log(x, infoUser.email, infoUser.password)
+    /* .then((response) => {
+        console.log(response.json())
+    }) */
+    // login('1234')
+    // history.push('/home')
   }
 
   return (
@@ -81,16 +82,15 @@ const Login = () => {
           </section>
           {errors.password && <span className='form-error'>{errors.password}</span>}
         </fieldset>
-        <input className='btn-login'
-          type='submit' value='login' 
-          onClick={handleLogin}
+        <input className='btn-register'
+          type='submit' value='Register' 
+          onClick={handleRegister}
           />
-        <p className='link-register'><Link to='/register'>Clique aqui para se cadastrar.</Link></p>
+        <p className='link-register'><Link to='/'>Clique aqui para logar-se.</Link></p>
       </form>
-      <Footer />
     </div>
     </Fragment>
   )
 };
 
-export default Login;
+export default Register;
