@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import '../styles/login.css';
 import logo from '../img/logo.png'
 import { MdEmail, MdLock } from "react-icons/md";
@@ -41,10 +40,5 @@ function login() {
         </div>
     );
 }
-=======
-import React from 'react';
-
-const Login = () => <h1>Login</h1>
->>>>>>> 870b64bb8be4304bfd65eb9f5d61cd4a49e2c36d
 
 export default Login;
