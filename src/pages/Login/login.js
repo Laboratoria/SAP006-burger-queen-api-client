@@ -36,8 +36,8 @@ const Login = () => {
   let history = useHistory()
   const handleLogin = (e) => {   
     e.preventDefault();
-      console.log('foi')
-    validateValues(infoUser)         
+    /*  console.log('foi')
+    validateValues(infoUser) */      
     login('1234')  
     history.push('/home')
   }

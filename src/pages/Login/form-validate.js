@@ -16,6 +16,7 @@ export const validate = (values) => {
     if (values.password === '') {
       errors.password = 'Please, insert a valid password'
     }
+    
   
     return errors;
   }
