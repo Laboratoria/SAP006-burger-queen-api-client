@@ -5,7 +5,7 @@ import Header from '../../components/Header'
 export default function Kitchen() {
 	return (
 		<div className="pages-container">
-			<Header />
+			<Header/>
 			<ListAllOrders />
 		</div>
 	);

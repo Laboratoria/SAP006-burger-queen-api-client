@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 
 import './listAllOrders.scss';
@@ -27,35 +28,35 @@ export default function ListAllOrders() {
 	console.log(allOrders);
 
 	return (
-		<section className="container-cards" >
+		<section className="container-cards">
 			{allOrders.map((order) => (
-					<div className="card-template" key={order.id}>
-						<div className="card-container-text">
-							<div>
-								<div className="card-table-info">
-									<p className="title-card">Mesa</p>
-									<p className="title-number-card">{order.table}</p>
-								</div>
+				<div className="card-template" key={order.id}>
+					<div className="card-container-text">
+						<div>
+							<div className="card-table-info">
+								<p className="title-card">Mesa</p>
+								<p className="title-number-card">{order.table}</p>
+							</div>
 
-								<div>
-									<p className="title-card">
-										Nº do Pedido: <span className="text-card">{order.id}</span>
-									</p>
-									<p className="title-card">
-										Cliente:{' '}
-										<span className="text-card">{order.client_name}</span>
-									</p>
-									<p className="title-card">
-										Horário do Pedido:{' '}
-										<span className="text-card">{order.createdAt}</span>
-									</p>
-									<p className="title-card">
-										Status: <span className="text-card">{order.status}</span>
-									</p>
-								</div>
+							<div>
+								<p className="title-card">
+									Nº do Pedido: <span className="text-card">{order.id}</span>
+								</p>
+								<p className="title-card">
+									Cliente:{' '}
+									<span className="text-card">{order.client_name}</span>
+								</p>
+								<p className="title-card">
+									Horário do Pedido:{' '}
+									<span className="text-card">{order.createdAt}</span>
+								</p>
+								<p className="title-card">
+									Status: <span className="text-card">{order.status}</span>
+								</p>
 							</div>
 						</div>
 					</div>
+				</div>
 			))}
 		</section>
 	);
