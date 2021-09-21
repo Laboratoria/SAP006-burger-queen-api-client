@@ -10,26 +10,6 @@
     --stroke: #464242;
 }
 
-.title-area {
-    display: flex;
-    width: 100%;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-
-    h1 {
-        color: white;
-        font-weight: bold;
-        font-size: 1.7rem;
-        @media (min-device-width: 1400px) {
-            font-size: 2rem;
-        }
-    }
-
-    p {
-        color: white;
-    }
-}
-
 nav {
     display: flex;
     width: 100%;

@@ -2,7 +2,6 @@
 /* eslint-disable radix */
 import React, { useState, useEffect } from 'react';
 
-import ButtonLogout from '../../components/ButtonLogout';
 import LinkAside from '../../components/LinkAside';
 import CartArea from '../../components/CartArea'
 import ButtonDefault from '../../components/ButtonDefault';
@@ -18,7 +17,8 @@ import Sides from '../../components/All-day/Sides';
 import InputSelect from '../../components/InputSelect';
 
 import Popup from '../../components/Popup';
-import DateTime from '../../components/DateTime'
+import PopupCancel from '../../components/PopupCancel';
+import Header from '../../components/Header';
 
 export default function Hall() {
 	
@@ -196,6 +196,7 @@ export default function Hall() {
 	}
 
 	const [showPopup, setShowPopup] = useState(false);
+	const [showPopupCancel, setShowPopupCancel] = useState(false);
 
 	const [cartContent, setCartContent] = useState([])
 
@@ -251,8 +252,9 @@ export default function Hall() {
 
 	}
 
-	const cancelOrder = () =>{
+	const cancelAndCloseOrder = () =>{
 		setCartContent([])
+		setShowPopupCancel(false)
 	}
 
 	const [allProducts, setAllProducts] = useState([]);
@@ -279,14 +281,7 @@ export default function Hall() {
 
 	return (
 		<div className="pages-container">
-			<header className="title-area">
-				<div>
-					<h1 className="uppercase">Divino Burger</h1>
-					<DateTime/>
-				</div>
-
-				<ButtonLogout />
-			</header>
+			<Header />
 
 			<nav>
 				<ul className="menu-types">
@@ -355,13 +350,21 @@ export default function Hall() {
 						</section>
 					</div>
 				</section>
-				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} cancelOrder={cancelOrder} />
+				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} openPopupCancel={() => setShowPopupCancel(true)} />
 
 				{showPopup ? (
 					<Popup
 						popupText="Selecione um item antes de adicioná-lo!"
 						onClose={() => setShowPopup(false)}
 					></Popup>
+				) : null}
+
+				{showPopupCancel ? (
+					<PopupCancel
+						popupText="Tem certeza que deseja cancelar esse pedido?"
+						closePopup={() => setShowPopupCancel(false)}
+						cancelOrder= {() => cancelAndCloseOrder()}
+					></PopupCancel>
 				) : null}
 			</main>
 		</div>
