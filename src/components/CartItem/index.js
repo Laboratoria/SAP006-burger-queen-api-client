@@ -1,15 +1,37 @@
+/* eslint-disable radix */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './cartItem.scss';
 
 export default function CartItem({
-  name, price, flavor, complement, plus, minus, qty
+  name, price, flavor, complement, priceComplement,plus, minus, qty
 }) {
 
-  // eslint-disable-next-line radix
-  const priceConvert = parseInt(((price.replace(/[.,]/g, '')).slice(3)).slice(0,-2))
+  let convertedPrice
 
-  const totalPrice = priceConvert*qty
+
+  if (priceComplement===undefined || priceComplement===null || priceComplement===""){
+      convertedPrice = parseInt(((price.replace(/[.,]/g, '')).slice(3)).slice(0,-2))
+  } else{
+   convertedPrice = parseFloat(price.slice(3).replace(',','.'))+parseFloat(priceComplement.slice(3).replace(',','.'))
+  }
+
+  const totalPrice = convertedPrice*qty
+
+  let realFlavor 
+  if(flavor===null){
+    realFlavor =""
+  }else{
+    realFlavor = flavor
+  }
+
+  let realComplement 
+  if(complement===null){
+    realComplement =""
+  }else{
+    realComplement = complement
+  }
+
  
 
  
@@ -18,7 +40,7 @@ export default function CartItem({
     <li className="itemData">
       <div className="item">
         <p className="product">{name}</p>
-        <p className="product-details">teste complemento</p>
+        <p className="product-details">{realFlavor} {realComplement}</p>
 
         {/* {flavor && (
         <span className="product-details">{flavor}</span>)} */}

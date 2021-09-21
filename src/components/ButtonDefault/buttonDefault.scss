@@ -18,15 +18,15 @@
   cursor: pointer;
   transition: all 1s;
 
-  &:focus {
-    background-color: var(--red);
-  }
+  // &:focus {
+  //   background-color: var(--red);
+  // }
 
   &:hover {
     background-color: var(--red);
   }
 
-  &:active {
-    background-color: var(--red);
-  }
+  // &:active {
+  //   background-color: var(--red);
+  // }
 }

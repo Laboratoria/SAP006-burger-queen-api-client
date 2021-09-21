@@ -20,40 +20,96 @@ import InputSelect from '../../components/InputSelect';
 import Popup from '../../components/Popup';
 
 export default function Hall() {
-	const [breakfastClass, setBreakfastClass] = useState("")
-	const [allDayClass, setAllDayClass] = useState("selected")
-
+	
 	const [values, setValues] = useState({
 		first: 'burgers',
 		second: 'sides',
 		third: 'drinks',
 	})
-
+	
 	const [labels, setLabels] = useState({
 		first: 'burgers',
 		second: 'adicionais',
 		third: 'bebidas',
 	})
-
+	
 	const [activation1, setActivation1] = useState(true)
 	const [activation2, setActivation2] = useState(false)
 	const [activation3, setActivation3] = useState(false)
-
+	
+	const [productSelected, setProductSelected] = useState("")
 	const chooseProduct = (e) => {
-
 		setProductSelected({
 			name: e.target.value,
 			price: e.target.getAttribute('price'),
 			quantity: 1,
-			// flavor:"",
-			// complement:"",
-
+			flavor: null,
+			complement: null,
+			
 
 		})
 	}
-	const [products, setProducts] = useState(<Burgers onClick={chooseProduct} />)
+	
+	const chooseBurger = (e) => {
+		setProductSelected(prevProduct => ({
+			...prevProduct,
 
+			name: `Hambúrguer ${e.target.value}`,
+			price: e.target.getAttribute('price'),
+			quantity: 1,
+			
+		}))
+	}
+
+	const chooseFlavor = (e) => {
+		setProductSelected(prevProduct => ({
+			...prevProduct,
+			flavor: e.target.value,
+		}))
+		
+	}
+	
+	const chooseComplement = (e) => {
+		setProductSelected(prevProduct => ({
+			...prevProduct,
+			complement: e.target.value,
+			priceComplement: e.target.getAttribute('price'),
+			
+		}))
+	}
+	
+	const chooseDrink= (e) => {
+
+		setProductSelected(prevProduct => ({
+			...prevProduct,
+			name: `${e.target.value} ${prevProduct.size?prevProduct.size:""}`,
+			quantity: 1,
+			
+		}))
+	}
+	
+	const chooseSizeDrink= (e) => {
+		
+		setProductSelected(prevProduct => ({
+			...prevProduct,
+			name:`${prevProduct.name?`${prevProduct.name.split(" ")[0]} ${e.target.getAttribute('data-item')}`:""}`,
+			size:e.target.getAttribute('data-item'),
+			price: e.target.getAttribute('price'),
+			flavor:null,
+			complement:null
+			
+		}))
+	}
+	
+	const [complementChecked,setComplementChecked] = useState()
+	
+	const [products, setProducts] = useState(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} complementChecked={complementChecked}/>)
+
+	const [breakfastClass, setBreakfastClass] = useState("")
+	const [allDayClass, setAllDayClass] = useState("selected")
+	
 	const selectBreakfast = () => {
+		setProductSelected("")
 		setActivation1(true)
 		setActivation2(false)
 		setActivation3(false)
@@ -73,6 +129,7 @@ export default function Hall() {
 	}
 
 	const selectAllDay = () => {
+		setProductSelected("")
 		setActivation1(true)
 		setActivation2(false)
 		setActivation3(false)
@@ -92,13 +149,14 @@ export default function Hall() {
 	}
 
 	const changeProducts = (e) => {
+		setProductSelected("")
 		const click = e.target.innerText
 		switch (click) {
 			case "BURGERS":
 				setActivation1(true)
 				setActivation2(false)
 				setActivation3(false)
-				setProducts(<Burgers onClick={chooseProduct} />)
+				setProducts(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} complementChecked={complementChecked} />)
 				break;
 			case "ADICIONAIS":
 				setActivation1(false)
@@ -111,7 +169,7 @@ export default function Hall() {
 				setActivation1(false)
 				setActivation2(false)
 				setActivation3(true)
-				setProducts(<Drinks onClick={chooseProduct} />)
+				setProducts(<Drinks chooseDrink={chooseDrink} chooseSizeDrink={chooseSizeDrink}/>)
 				break
 			case "LANCHES":
 				setActivation1(true)
@@ -136,31 +194,38 @@ export default function Hall() {
 		}
 	}
 
-	const [productSelected, setProductSelected] = useState("")
 	const [showPopup, setShowPopup] = useState(false);
-	
+
 	const [cartContent, setCartContent] = useState([])
 
-	const addProduct = () => {
-		if (productSelected !== "") {
-			const newArray = [...cartContent]
-			const productInCart = newArray.find(product => product.name === productSelected.name)
-			const index = newArray.indexOf(productInCart)
-			if (index<0){
-				newArray.push(productSelected)
-				setCartContent(newArray)
-			} else{
-				productInCart.quantity += 1
-				setCartContent(newArray)
 
+	const addProduct = () => {
+		
+		if (productSelected.name !== undefined && productSelected.price !== undefined && productSelected.name !== "") {
+			if (productSelected.flavor === undefined) {
+				setShowPopup(true);
+
+			} else {
+				const newArray = [...cartContent]
+				const productInCart = newArray.find(product => product.name === productSelected.name && product.flavor === productSelected.flavor && product.complement === productSelected.complement)
+				const index = newArray.indexOf(productInCart)
+
+				if (index < 0) {
+					newArray.push(productSelected)
+					setCartContent(newArray)
+				} else {
+					productInCart.quantity += 1
+					setCartContent(newArray)
+
+				}
+				// setComplementChecked(false)
 			}
-			setProductSelected("")
-		}else{
+
+		} else {
 			setShowPopup(true);
 
 		}
 	}
-
 
 	const addUnit = (e) => {
 		const name = e.target.getAttribute("name")
@@ -176,30 +241,18 @@ export default function Hall() {
 		const productInCart = newArray.find(product => product.name === name)
 		productInCart.quantity -= 1
 		const index = newArray.indexOf(productInCart)
-		if (productInCart.quantity < 1){
-			newArray.splice(index,1)
+		if (productInCart.quantity < 1) {
+			newArray.splice(index, 1)
 			setCartContent(newArray)
-		}else{
+		} else {
 			setCartContent(newArray)
 		}
-			
+
 	}
 
-	// useEffect(()=>{
-	// 	if(cartContent.length!==0){
-	// 	// eslint-disable-next-line array-callback-return
-	// 	const arrayPrices = cartContent.map(product=>product.price)
-	// 	// const arrayPrices = cartContent.map(product=>{parseInt(((product.price.replace(/[.,]/g, '')).slice(3)).slice(0,-2))})
-	// 	/* eslint-disable no-param-reassign */
-	// 	const sumPrices = arrayPrices.reduce((total, price) => total+=parseInt((price.replace(/[.,]/g, '').slice(3)).slice(0,-2)))
-	// 	setTotalPrice(sumPrices)
-	// 	console.log(arrayPrices)
-	// 	}
-	
-
-
-	// }, [cartContent])
-
+	const cancelOrder = () =>{
+		setCartContent([])
+	}
 
 	return (
 		<div className="pages-container">
@@ -279,7 +332,7 @@ export default function Hall() {
 						</section>
 					</div>
 				</section>
-				<CartArea content={cartContent} plus={addUnit} minus={removeUnit}/>
+				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} cancelOrder={cancelOrder} />
 
 				{showPopup ? (
 					<Popup

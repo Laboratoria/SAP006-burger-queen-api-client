@@ -17,6 +17,12 @@ export default function ProductArea({
     onClick
 }) {
 
+    // const toggleChecked = (e) => {
+    //     // eslint-disable-next-line no-unneeded-ternary
+    //     e.target.checked=(e.target.checked)?false:true
+
+    // }
+
 
     return (
         <div className="product-container" onClick={onClick}>
@@ -28,6 +34,7 @@ export default function ProductArea({
                 value={inputValue}
                 checked={inputChecked}
                 price={productPrice}
+                // onClick = {toggleChecked}
             />
             <label
                 htmlFor={inputId}
