@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
 import { registerUser } from "../../utils/auth";
-import { validate } from '../Login/form-validate'
+import { validate } from '../../pages/Login/form-validate'
 import { Footer } from '../../components/footer/footer'
 
 import '../Login/login.css';
@@ -62,7 +62,8 @@ const Register = () => {
           src={jesusDesk} alt='jesus'/>
       </figure>
       <form className='form-login' >
-        <fieldset className='form-inner'>
+      <fieldset className='form-inner'>
+          <div>
           <input className='input-login'
           type='email' id='email' placeholder='Email' required='' 
           value={infoUser.email} 
@@ -70,9 +71,12 @@ const Register = () => {
         <section className ='icons-input'>
           <i className='far fa-envelope icons'></i>
           </section>
-          {errors.email && <span className='form-error'>{errors.email}</span>}
+          </div> 
+          {errors.email && <span className='form-error email'>{errors.email}</span>}
         </fieldset>
+        
         <fieldset className="form-inner">
+          <div>
           <input className="input-password" 
             type="password" id="password" placeholder="Password" required="" 
             value={infoUser.password}
@@ -81,8 +85,10 @@ const Register = () => {
             <i id="show" className="fas fa-lock icons"></i>
             <i id="hide" className="fas fa-lock-open icons"></i>
           </section>
+          </div>
           {errors.password && <span className='form-error'>{errors.password}</span>}
         </fieldset>
+        
         <input className='btn-register'
           type='submit' value='Register' 
           onClick={handleRegister}

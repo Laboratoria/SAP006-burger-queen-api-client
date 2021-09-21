@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
 import { login } from "../../utils/auth";
-import { validate } from './form-validate';
+import { validate } from '../Login/form-validate';
 import { Footer } from '../../components/footer/footer'
 
 import './login.css';
@@ -61,6 +61,7 @@ const Login = () => {
       </figure>
       <form className='form-login' >
         <fieldset className='form-inner'>
+          <div>
           <input className='input-login'
           type='email' id='email' placeholder='Email' required='' 
           value={infoUser.email} 
@@ -68,9 +69,12 @@ const Login = () => {
         <section className ='icons-input'>
           <i className='far fa-envelope icons'></i>
           </section>
+          </div> 
+          {errors.email && <span className='form-error email'>{errors.email}</span>}
         </fieldset>
-        {errors.email && <span className='form-error'>{errors.email}</span>}
+        
         <fieldset className="form-inner">
+          <div>
           <input className="input-password" 
             type="password" id="password" placeholder="Password" required="" 
             value={infoUser.password}
@@ -79,8 +83,10 @@ const Login = () => {
             <i id="show" className="fas fa-lock icons"></i>
             <i id="hide" className="fas fa-lock-open icons"></i>
           </section>
+          </div>
+          {errors.password && <span className='form-error'>{errors.password}</span>}
         </fieldset>
-        {errors.password && <span className='form-error'>{errors.password}</span>}
+        
         <input className='btn-login'
           type='submit' value='login' 
           onClick={handleLogin}

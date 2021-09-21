@@ -6,12 +6,14 @@ import Login from '../pages/Login/login';
 import Register  from '../pages/Register/register';
 import Home from '../pages/home/home';
 
+import PrivateRoute from './privete-route';
+
 export const Routes = () => {
   return (
     <Switch>
       <Route exact path='/' component={Login}  />
       <Route exact path='/register' component={Register}  />
-      <Route exact path='/home' component={Home} />
+      <PrivateRoute exact path='/home' component={Home} />
       <Route component={() => <div>Page 404</div>} />
     </Switch>
   )
