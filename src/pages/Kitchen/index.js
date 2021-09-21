@@ -1,7 +1,12 @@
 import React from 'react';
+import ListAllOrders from '../../components/ListAllOrders';
+import Header from '../../components/Header'
 
 export default function Kitchen() {
 	return (
-		<h1>Cozinha</h1>
+		<div className="pages-container">
+			<Header />
+			<ListAllOrders />
+		</div>
 	);
 }

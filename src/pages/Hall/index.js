@@ -2,7 +2,6 @@
 /* eslint-disable radix */
 import React, { useState, useEffect } from 'react';
 
-import ButtonLogout from '../../components/ButtonLogout';
 import LinkAside from '../../components/LinkAside';
 import CartArea from '../../components/CartArea'
 import ButtonDefault from '../../components/ButtonDefault';
@@ -18,7 +17,7 @@ import Sides from '../../components/All-day/Sides';
 import InputSelect from '../../components/InputSelect';
 
 import Popup from '../../components/Popup';
-import DateTime from '../../components/DateTime'
+import Header from '../../components/Header';
 
 export default function Hall() {
 	
@@ -279,14 +278,7 @@ export default function Hall() {
 
 	return (
 		<div className="pages-container">
-			<header className="title-area">
-				<div>
-					<h1 className="uppercase">Divino Burger</h1>
-					<DateTime/>
-				</div>
-
-				<ButtonLogout />
-			</header>
+			<Header />
 
 			<nav>
 				<ul className="menu-types">
