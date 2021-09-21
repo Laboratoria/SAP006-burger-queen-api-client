@@ -22,9 +22,7 @@ const Login = () => {
         <p className='new-user'>Não possui cadastro?</p>
         <button className='form-button draw' onClick={() => { history.push('/signup') }}>Cadastre-se</button>
       </form>
-
     </div>
-
   );
 }
 
