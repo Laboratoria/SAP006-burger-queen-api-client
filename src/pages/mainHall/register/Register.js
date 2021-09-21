@@ -17,6 +17,7 @@ export default function Registration() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
     const [role, setRole] = useState('');
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
@@ -75,6 +76,14 @@ export default function Registration() {
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                     placeholder='Digite a sua senha'
+                />
+
+                <Input 
+                    type='password' 
+                    name='password2'
+                    value={password2}
+                    onChange={(event) => setPassword2(event.target.value)}
+                    placeholder='Repita sua senha'
                 />
 
                 <div className='container-checkbox'>
