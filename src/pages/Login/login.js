@@ -72,6 +72,7 @@ const Login = () => {
           </div> 
           {errors.email && <span className='form-error email'>{errors.email}</span>}
         </fieldset>
+        {errors.email && <span className='form-error'>{errors.email}</span>}
         <fieldset className="form-inner">
           <div>
           <input className="input-password" 
@@ -85,11 +86,12 @@ const Login = () => {
           </div>
           {errors.password && <span className='form-error'>{errors.password}</span>}
         </fieldset>
+        {errors.password && <span className='form-error'>{errors.password}</span>}
         <input className='btn-login'
           type='submit' value='login' 
           onClick={handleLogin}
           />
-        <p className='link-register'><Link to='/register'>Clique aqui para se cadastrar.</Link></p>
+        <p className='link-register'>Clique <Link to='/register'>aqui </Link>para se cadastrar.</p>
       </form>
       <Footer />
     </div>
