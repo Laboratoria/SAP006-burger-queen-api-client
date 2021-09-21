@@ -1,58 +1,60 @@
 @import '../../styles/Global.scss';
 
-.auth-submit-form {
-  width: 60%;
-  height: 6vh;
-
-  margin: 0% auto 3%;
-
-  background-color: $orange-btn;
-  color:$even-lighter-brown-txt;
-
-  font-size: 210%;
-}
-
-.auth-route-navigation {
-  color: $yellow-logo;
-  font-size: 170%;
-  margin-right: 1%;
-}
-
-.auth-show-or-not-password {
-  height: 3vh;
-  width: 3vh;
-
-  position:absolute;
-  bottom: 30%;
-  right: 5%;
-
-  background-size: 3vh;
-}
-
-.auth-not-show-password{
-  background-image: url('../../assets/icons/input-password-not-show.png');
-}
-
-.auth-show-password{
-  background-image: url('../../assets/icons/input-password-show.png');
-}
-
-.auth-modal-button {
-  position: relative;
-  margin: 6% auto 1%;
-  padding: 2% 4%;
-
-  background-color: $light-brown-label;
-  font-size: 100%;
-
-  border:$orange-btn solid 2pt;
-  border-radius: 5px;
-  box-shadow: 4px 5px 15px 5px rgba(0,0,0,0.1);
-}
-
-.auth-modal-button:hover{
-  background-color: $orange-btn;
-  color: white;
+.login-and-register-content{
+  .auth-submit-form {
+    width: 60%;
+    height: 6vh;
+  
+    margin: 0% auto;
+  
+    background-color: $orange-btn;
+    color:$even-lighter-brown-txt;
+  
+    font-size: 210%;
+  }
+  
+  .auth-route-navigation {
+    color: $yellow-logo;
+    font-size: 170%;
+    margin-right: 1%;
+  }
+  
+  .auth-show-or-not-password {
+    height: 3vh;
+    width: 3vh;
+  
+    position:absolute;
+    bottom: 30%;
+    right: 5%;
+  
+    background-size: 3vh;
+  }
+  
+  .auth-not-show-password{
+    background-image: url('../../assets/icons/input-password-not-show.png');
+  }
+  
+  .auth-show-password{
+    background-image: url('../../assets/icons/input-password-show.png');
+  }
+  
+  .auth-modal-button {
+    position: relative;
+    margin: 6% auto 1%;
+    padding: 2% 4%;
+  
+    background-color: $light-brown-label;
+    font-size: 100%;
+  
+    border:$orange-btn solid 2pt;
+    border-radius: 5px;
+    box-shadow: 4px 5px 15px 5px rgba(0,0,0,0.1);
+  }
+  
+  .auth-modal-button:hover{
+    background-color: $orange-btn;
+    color: white;
+  }  
 }
 
 .unauhtorized-sign-out, .unauhtorized-goback{
@@ -77,41 +79,310 @@
   background-image: url('../../assets/icons/light-brown-goback.png');
 }
 
-.room-sign-out{
-  height: 5vh;
-  width: 5vh;
-  background-size: 5vh ;
-  position: absolute;
-  right: 1%;
-  bottom:1%;
+nav {
+  .room-navbar-menu{
+    margin-top: -12%;
+    background-image: url('./../../assets/images-buttons/navbar-menu.png');
+  }
+  
+  .room-being-prepared-orders{
+    background-image: url('./../../assets/images-buttons/navbar-being-prepared-orders.png');
+  }
+  
+  .room-ready-orders{
+    background-image: url('./../../assets/images-buttons/navbar-ready-orders.png');
+  }
+  
+  .room-delivered-orders {
+    background-image: url('./../../assets/images-buttons/navbar-delivered-orders.png');
+  }
+
+  .room-navbar-button{
+    height: 15vh;
+    width: 15vh;
+    background-size: 15vh;
+  }
 }
 
-.room-navbar-button{
-  height: 15vh;
-  width: 15vh;
-  background-size: 15vh;
+
+
+
+
+.menu-filter {
+  font-family: 'Norwester', arial;
+  font-size: 250%;
+  padding:1%;
+  border-radius: 10pt;
+  background-color: $light-brown-box;
+  color:$even-lighter-brown-txt;
 }
 
-.room-navbar-menu{
-  margin-top: -12%;
-  background-image: url('./../../assets/images-buttons/navbar-menu.png');
+.menu-open-ingredients-modal{
+  width: 20%;
+  margin: 5% 0% -8% 5%;
+  font-family: $berg-font;
+  color: $yellow-logo;
+  font-size: 210%;
+  background-color: $light-brown-box;
+  border-radius: 50%;
+  z-index: 1;
 }
 
-.room-being-prepared-orders{
-  background-image: url('./../../assets/images-buttons/navbar-being-prepared-orders.png');
+.menu-close-ingredients-modal{
+  background-color: $orange-btn;
+  font-size: 120%;
+  border-radius: 10px;
+  padding: 1% 4%;
+  margin-top: 3%;
 }
 
-.room-ready-orders{
-  background-image: url('./../../assets/images-buttons/navbar-ready-orders.png');
+.menu-go-back{
+  height: 4vh;
+  width: 4vh;
+  background-size: 4vh;
+  background-image: url('../../assets/icons/light-brown-goback.png');
 }
 
-.room-delivered-orders {
-  background-image: url('./../../assets/images-buttons/navbar-delivered-orders.png');
+.room-div{
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .room-sign-out{
+    height: 3.5vh;
+    width: 3.5vh;
+    background-size: 3.5vh ;
+    position: absolute;
+    right: 1%;
+    bottom:1%;
+  }
+
+  .room-table-button{
+    height: 17vh;
+    width: 17vh;
+    background-size:17vh;
+  }
+
+  .room-table-button:hover{
+    border: $medium-green solid 3pt;
+    border-radius: 10px;
+  }
+
+  .room-table-button-01{
+    background-image: url('../../assets/images-tables/table-01.png');
+  }
+
+  .room-table-button-02{
+    background-image: url('../../assets/images-tables/table-02.png');
+  }
+
+  .room-table-button-03{
+    background-image: url('../../assets/images-tables/table-03.png');
+  }
+
+  .room-table-button-04{
+    background-image: url('../../assets/images-tables/table-04.png');
+  }
+
+  .room-table-button-05{
+    background-image: url('../../assets/images-tables/table-05.png');
+  }
+
+  .room-table-button-06{
+    background-image: url('../../assets/images-tables/table-06.png');
+  }
+
+  .room-table-button-07{
+    background-image: url('../../assets/images-tables/table-07.png');
+  }
+
+  .room-table-button-08{
+    background-image: url('../../assets/images-tables/table-08.png');
+  }
+
+  .room-table-button-09{
+    background-image: url('../../assets/images-tables/table-09.png');
+  }
+
+  .room-table-button-10{
+    background-image: url('../../assets/images-tables/table-10.png');
+  }
+  
+  .room-table-button-11{
+    background-image: url('../../assets/images-tables/table-11.png');
+  }
+
+  .room-table-button-12{
+    background-image: url('../../assets/images-tables/table-12.png');
+  }
 }
 
-@media (min-width: 1000px) {
+  .room-new-order, .new-order-save-order{
+    font-family: $berg-font;
+    width: 80%;
+    background-color: $medium-green;
+    padding: 2%;
+    margin: auto;
+    font-size: 220%;
+    border-radius: 10px;
+    color: $even-lighter-brown-txt;
+    font-weight: 500;
+  }
+    .new-order-product-button{
+      height: 15vh;
+      width: 15vh;
+      background-size:15vh;
+      border: $light-brown-box solid 2pt;
+      border-radius: 10px;
+  }
+
+  .new-order-section{
+    [data-title='cafe-americano'] {
+      background-image: url('../../assets/images-menu/cafe-com-leite.png');
+    }
+    
+    [data-title='cafe-com-leite'] {
+      background-image: url('../../assets/images-menu/cafe-com-leite.png');
+    }
+    [data-title='sanduiche-presunto-queijo'] {
+      background-image: url('../../assets/images-menu/sanduiche-presunto-queijo.png');
+    }
+    [data-title='suco-de-fruta-natural'] {
+      background-image: url('../../assets/images-menu/suco-de-fruta-natural.png');
+    }
+    [data-title='hamburguer-simples-bovino'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-bovino.png');
+    }
+    [data-title='hamburguer-simples-frango'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-frango.png');
+    }
+    [data-title='hamburguer-simples-vegetariano'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-vegetariano.png');
+    }
+    [data-title='hamburguer-simples-bovino-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-bovino-queijo.png');
+    }
+    [data-title='hamburguer-simples-frango-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-frango-queijo.png');
+    }
+    [data-title='hamburguer-simples-vegetariano-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-vegetariano-queijo.png');
+    }
+    [data-title='hamburguer-simples-bovino-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-bovino-ovo.png');
+    }
+    [data-title='hamburguer-simples-frango-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-frango-ovo.png');
+    }
+    [data-title='hamburguer-simples-vegetariano-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-vegetariano-ovo.png');
+    }
+    [data-title='hamburguer-duplo-bovino'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-bovino.png');
+    }
+    [data-title='hamburguer-duplo-frango'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-frango.png');
+    }
+    [data-title='hamburguer-duplo-vegetariano'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-vegetariano.png');
+    }
+    [data-title='hamburguer-duplo-bovino-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-bovino-ovo.png');
+    }
+    [data-title='hamburguer-duplo-frango-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-frango-ovo.png');
+    }
+    [data-title='hamburguer-duplo-vegetariano-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-vegetariano-ovo.png');
+    }
+    [data-title='hamburguer-duplo-bovino-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-bovino-queijo.png');
+    }
+    [data-title='hamburguer-duplo-frango-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-frango-queijo.png');
+    }
+    [data-title='hamburguer-duplo-vegetariano-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-vegetariano-queijo.png');
+    }
+    [data-title='batata-frita'] {
+      background-image: url('../../assets/images-menu/batata-frita.png');
+    }
+    [data-title='aneis-de-cebola'] {
+      background-image: url('../../assets/images-menu/aneis-de-cebola.png');
+    }
+    [data-title='agua-500'] {
+      background-image: url('../../assets/images-menu/agua-500.png');
+    }
+    [data-title='agua-750'] {
+      background-image: url('../../assets/images-menu/agua-750.png');
+    }
+    [data-title='bebida-gaseificada-500'] {
+      background-image: url('../../assets/images-menu/bebida-gaseificada-500.png');
+    }
+    [data-title='bebida-gaseificada-750'] {
+      background-image: url('../../assets/images-menu/bebida-gaseificada-750.png');
+    }
+
+    .new-order-trash{
+      width: 2vh;
+      height: 2vh;
+      background-size:2vh;
+      background-image: url('../../assets/icons/new-order-trash.png');
+      margin: auto;
+    }
+
+    .new-order-modify-quantity{
+      margin:0 5%;
+      height: 2vh;
+      width: 2vh;
+      background-size:2vh
+    }
+
+    .new-order-modify-quantity-minus{
+      background-image: url('../../assets/icons/new-order-minus.png');
+    }
+
+    .new-order-modify-quantity-plus{
+      background-image: url('../../assets/icons/new-order-plus.png');
+    }
+    
+  }
+  
+@media (min-width: 1024px) and (max-height: 768px),
+(min-width: 1366px) and (max-height: 1024px){
+
   .auth-submit-form {
     height: 8vh;
     width: 80%;
   }
+
+  nav{
+    .room-navbar-button{
+      height: 22vh;
+      width: 22vh;
+      background-size: 22vh;
+    }  
+  }
+
+  .menu-filter{
+    font-size: 220%;
+    padding: 1% 3%; 
+  }
+
+  .menu-go-back{
+    height: 7vh;
+    width: 7vh;
+    background-size: 7vh;
+  }
+
+  .room-div{
+    .room-table-button{
+      height: 20vh;
+      width: 20vh;
+      background-size:20vh;
+    }
+  }
+  
 }

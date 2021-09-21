@@ -2,10 +2,10 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 
-import { logout } from "../../routes/utils/auth";
-import { NavbarRoom } from '../../components/Navbar/Navbar';
+import { logout } from "../../../routes/utils/auth";
+import { NavbarRoom } from '../../../components/Navbar/Navbar';
 
-import { Button } from '../../components/Button/Button';
+import { Button } from '../../../components/Button/Button';
 
 
 

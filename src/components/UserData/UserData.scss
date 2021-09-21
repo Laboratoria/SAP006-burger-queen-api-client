@@ -1,53 +1,55 @@
 @import '../../styles/Global.scss';
 
-main {
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    position: relative;
-    
-    div {
+.login-and-register-content {
+  main {
+    form {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      width: 60%;
       position: relative;
-      margin: 0 auto 10%;
+      
+      div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        margin: 0 auto 10%;
 
-      input {
-        padding: 4% 4% 3% 10%;
-        
-        font-size: 180%;
-        color: $light-brown-txt;
-      }
+        input {
+          padding: 4% 4% 3% 10%;
+          
+          font-size: 180%;
+          color: $light-brown-txt;
+        }
 
-      ::placeholder{
-        color:$light-brown-label;
-      }
+        ::placeholder{
+          color:$light-brown-label;
+        }
 
-      label {
-        display: none;
+        label {
+          display: none;
 
-        position: absolute;
-        left: 10%;
-        bottom: 85%;
+          position: absolute;
+          left: 10%;
+          bottom: 85%;
 
-        color: $light-brown-label;
-        font-size: 160%;
-      }
+          color: $light-brown-label;
+          font-size: 160%;
+        }
 
-      input:valid ~ label,
-      .move-label-up {
-        display: block;
+        input:valid ~ label,
+        .move-label-up {
+          display: block;
+        }
       }
     }
-  }
-  
-  img {
-    position: absolute;
-    bottom: 30%;
-    height: 3vh;
-    width: 3vh;
+    
+    img {
+      position: absolute;
+      bottom: 30%;
+      height: 3vh;
+      width: 3vh;
+    }
   }
 }
 
@@ -86,13 +88,14 @@ main {
 }
 
 
- 
 @media (min-width: 1000px) {
-  main {
-    form {
-      width: 100%;
+  .login-and-register-content {
+    main {
+      form {
+        width: 100%;
+        }
       }
-    }
+  }
 
   .login-content{
     main {

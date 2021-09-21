@@ -5,7 +5,8 @@ import './Modal.scss';
 
 export function AuthModal ({ Role, ButtonOnClick, ButtonOnClickSecondOption }) {
 
-  const ModalProps = {
+  const Modal = {
+    
     'authSucessModal-login': {
       'ModalContent':'Login realizado com sucesso!',
       'ButtonChildren':'OK',
@@ -31,10 +32,10 @@ export function AuthModal ({ Role, ButtonOnClick, ButtonOnClickSecondOption }) {
   return (
     <section className='modal-background' data-testid='authModalSection'>
       <div className='modal-container' data-testid='authModalDiv'>
-        <p data-testid='authModalContent'> {ModalProps[Role].ModalContent} </p>
+        <p data-testid='authModalContent' className='auth-modal-content'> {Modal[Role].ModalContent} </p>
         <Button 
           Role={Role}
-          children={ModalProps[Role].ButtonChildren}
+          children={Modal[Role].ButtonChildren}
           ButtonOnClick={ButtonOnClick}
         />
         { Role === 'authErrorModal-login' ?
@@ -55,3 +56,24 @@ export function AuthModal ({ Role, ButtonOnClick, ButtonOnClickSecondOption }) {
     </section>
   )
 }
+
+export const MenuModal = ({Role, ModalTitle, ModalContent, ButtonOnClick}) => {
+  return (
+    <section className='modal-background'>
+      <div className='modal-container'>
+        <p className='menu-modal-title'> {ModalTitle} </p>
+        <p className='menu-modal-content'> {ModalContent} </p>
+        <span className='menu-modal-observations'> Todos os produtos consumidos pela Berg são produzidos por pequenos produtores rurais da região (com exceção do café). </span>
+        <br/>
+        <span className='menu-modal-observations'>As vacas vivem livres sob o sistema de rotação do pasto em hipótese alguma são separadas de seus filhotes.</span>
+        <br/>
+        <span className='menu-modal-observations'>As galinhas correm soltas por aí e passam o dia fofocando da vida alheia...</span>
+        <Button 
+          Role={Role}
+          children='Fechar'
+          ButtonOnClick={ButtonOnClick}
+        />
+      </div>
+    </section>
+  )
+  }

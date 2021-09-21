@@ -8,7 +8,7 @@ import { InputContentUserData } from '../../components/UserData/UserData';
 
 import { login } from '../../routes/utils/auth';
 
-import '../../styles/Auth.scss'
+import './Auth.scss'
 
 export function Login () {
   const history = useHistory();
@@ -93,7 +93,8 @@ export function Login () {
             children = 'registre-se'
           /> 
         </div>
-          <section>
+      </main>
+      <section>
         {authSucessModal ? (
           <AuthModal 
             Role = 'authSucessModal-login'
@@ -110,7 +111,7 @@ export function Login () {
           />
         ): null}
       </section>
-    </main>
+    
   </div>
   )
 }

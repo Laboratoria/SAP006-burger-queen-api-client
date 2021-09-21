@@ -1,0 +1,26 @@
+@import '../../styles/Global.scss';
+
+
+.menu-card-div{
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: $light-brown-box solid 2pt;
+  justify-content: center;
+}
+
+.menu-card-img{
+  margin: auto;
+  height: 15vh;
+  width: 15vh;
+}
+
+@media (min-width: 1024px) and (max-height: 768px),
+(min-width: 1366px) and (max-height: 1024px){
+  .menu-card-img{
+    margin: auto;
+    height: 20vh;
+    width: 20vh;
+  }
+  
+}

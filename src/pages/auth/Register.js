@@ -12,7 +12,7 @@ import inputRole from '../../assets/icons/input-role.png';
 
 import { login } from '../../routes/utils/auth';
 
-import '../../styles/Auth.scss'
+import './Auth.scss'
 
 export const Register = () => {
 
@@ -156,7 +156,7 @@ export const Register = () => {
           <AuthErrorMessages Subject='confirmPassword'/> : <AuthErrorMessages Subject='password'/> 
           : <p className='auth-error-message'>&nbsp;</p>}
 
-          <fieldset className = {roleErrorInput ? 'auth-wrong-input' : 'auth-correct-input'}>
+          <fieldset className = {roleErrorInput ? 'auth-role-input-fieldset auth-wrong-input' : 'auth-role-input-fieldset auth-correct-input'}>
             <img src={inputRole} alt='Role'/>
             <InputRadioUserData
               Subject='room'
