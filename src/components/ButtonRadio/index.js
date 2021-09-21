@@ -33,6 +33,9 @@ export default function ButtonRadio({
 							value={firstInputValue}
 							id={firstInputId}
 							onChange={onChange}
+							data-item={firstLabel}
+							price={firstPrice}
+						
 							/>
       <label className={`${firstClassName} ${className}`} htmlFor={firstInputId}><b>{firstLabel}</b><br></br>{firstPrice}</label>
 
@@ -41,6 +44,8 @@ export default function ButtonRadio({
 							value={secondInputValue}
 							id={secondInputId}
 							onChange={onChange}
+							data-item={secondLabel}
+							price={secondPrice}
 							/>
       <label className={`${secondClassName} ${className}`} htmlFor={secondInputId}><b>{secondLabel}</b><br></br>{secondPrice}</label>
 

@@ -7,10 +7,17 @@ import ButtonDefault from '../ButtonDefault';
 import CartItem from '../CartItem';
 
 export default function CartArea({
-content, plus, minus
+content, plus, minus, cancelOrder,
 }) {
 
-const arrayPrices = content.map(product=>(parseFloat(product.price.slice(3).replace(',','.')))*product.quantity)
+const arrayPrices = content.map(product=>{
+	if (product.priceComplement===undefined || product.priceComplement===null || product.priceComplement===""){
+		return parseFloat(product.price.slice(3).replace(',','.'))*product.quantity
+
+	}
+		return (parseFloat(product.price.slice(3).replace(',','.'))+parseFloat(product.priceComplement.slice(3).replace(',','.')))*product.quantity
+	
+	})
 const totalPrice = arrayPrices.reduce((total, price) => total+price , 0)
 
 
@@ -20,7 +27,7 @@ const totalPrice = arrayPrices.reduce((total, price) => total+price , 0)
 			<div className="title-card">
 				<img
 					src={cart}
-					className="margin-left-1 margin-bottom-0"
+					className=""
 					alt="shopping-cart"
 				/>
 				<h4 className="margin-left-1 uppercase"> Carrinho </h4>
@@ -37,7 +44,7 @@ const totalPrice = arrayPrices.reduce((total, price) => total+price , 0)
 			<div className="added-items-container">
 			{/* eslint-disable-next-line */}
 			{content.map(product=>
-             < CartItem name={product.name} price={product.price} qty={product.quantity} plus={plus} minus={minus}/>)}
+             < CartItem name={product.name} price={product.price} qty={product.quantity} complement={product.complement} flavor={product.flavor} priceComplement={product.priceComplement} plus={plus} minus={minus}/>)}
 			</div>
 
 
@@ -50,6 +57,7 @@ const totalPrice = arrayPrices.reduce((total, price) => total+price , 0)
 				<div className="cart-buttons-wrapper">
 					<ButtonDefault
 						className="btn-cart btn-cart-cancel btn-default margin-left-1 uppercase"
+						onClick={cancelOrder}
 					>
 						Cancelar
 					</ButtonDefault>
