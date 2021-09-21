@@ -24,13 +24,6 @@ const SignUp = () => {
       role: "",
     });
 
-    // function navigateToMenu() {
-    //   history.push("/menu");
-    // }
-
-    // function navigateToKitchen() {
-    //   history.push("/kitchen");
-    // }
     function navigateToLogin() {
       history.push("/");
     }
