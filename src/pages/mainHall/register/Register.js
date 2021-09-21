@@ -15,22 +15,31 @@ export default function Registration() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('');
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
     // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
     
     const history = useHistory();
 
-    function handleClick (e) {
+// evento de clique
+    async function handleClick (e) {
+        try {e.preventDefault()
+        const user = {name, email, password, role}
+        const response = await RegisterUser(user)
+            console.log(response.json())
+            if (response) {
+                localStorage.setItem('arroz', response)
+                history.push('/')
+            }} catch{console.log('cagou')}
+    }
+
+// seleciona o role se cozinha ou salão - pega name e salva no role do servidor
+    function handleRoleChange (e) {
         e.preventDefault()
-        const user = {name, email, password}
-        RegisterUser(user)
-        .then(token => {
-            if (token) {
-                localStorage.setItem ('userToken', token)
-                history.push('/login')
-            }
-        })
+        if(e.target.checked){
+            setRole(e.target.name)
+        }
     }
 
     return(
@@ -67,19 +76,27 @@ export default function Registration() {
                 />
 
                 <div className='container-checkbox'>
-                    <Input type='checkbox' name='checkbox' className="checkbox"/>
-                            <img src={garcom} alt="waiter" className="waiter-icon"/>
-                            <p className="text">Salão</p>
-                    <Input type='checkbox' name='checkbox'/>
-                            <img src={cozinheiro} alt="kitchen" className="kitchen-icon"/>
-                            <p className="text">Cozinha</p>
+                    <Input 
+                        type='checkbox' 
+                        name='salon' 
+                        onChange={(event) => handleRoleChange(event)}
+                    />
+                    <img src={garcom} alt="waiter" className="waiter-icon"/>
+
+                    <Input 
+                        type='checkbox' 
+                        name='kitchen' 
+                        onChange={(event) => handleRoleChange(event)}
+                    />
+                    <img src={cozinheiro} alt="kitchen" className="kitchen-icon"/>
                 </div>
+                
                 <Button 
                     label="Cadastrar" 
                     type="submit"
-                    onClick={handleClick} >
-                </Button>
-
+                    onClick={handleClick} 
+                />
+                
             </form>
 
         <Footer />    

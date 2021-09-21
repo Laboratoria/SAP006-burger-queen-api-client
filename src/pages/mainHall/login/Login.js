@@ -24,7 +24,7 @@ export default function Login() {
         LoginWithEmail(user)
         .then(token => {
             if (token){
-                localStorage.setItem('userToken', token)
+                localStorage.setItem('arroz', token)
                 history.push('/mesas')
             }
         }) 
@@ -58,9 +58,8 @@ export default function Login() {
                 <Button 
                     label='Entrar' 
                     type="submit"
-                    onClick={handleClick}>
-            
-                </Button>
+                    onClick={handleClick} 
+                />
 
                 <div>
                     <h3>Não tem uma conta? Cadastre-se</h3>

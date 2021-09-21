@@ -14,7 +14,6 @@ export const LoginWithEmail = (users) => {
         .then((response) => response.json())
         .then((json) => {
             const { token } = json;
-            console.log(token)
             return token
         })
 };
@@ -31,15 +30,14 @@ export const RegisterUser = (users) => {
             'email': users.email,
             'password': users.password,
             'role': users.role,
-            'restaurant': 'Retro Burger',
-        })
+            'restaurant': 'retro burger',
+        }),
     })
-        .then((response) => response.json())
-        .then((json) => {
-            const { token } = json;
-            console.log(token)
-            return token
-        })
+        // .then ((response) => response.json())
+        // .then ((json) => {
+        //     const { token } = json;
+        //     return token
+        // })
 };
 
 
@@ -52,22 +50,3 @@ export const RegisterSuccess = () => {
 
 
 
-// // import { Redirect } from "react-router";
-
-// export const loginWithEmailAndPassword = (email, password) => {
-    
-//     return fetch("https://lab-api-bq.herokuapp.com/auth", {
-//     method: "POST",
-//     headers: {
-//         "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify ({
-//         "email": email,
-//         "password": password
-//     })
-//   });
-// };
-
-// export default loginWithEmailAndPassword;
-
-// export const isAuthenticated = () => true;

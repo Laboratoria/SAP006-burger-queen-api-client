@@ -1,5 +1,5 @@
 import { Route, Redirect } from 'react-router';
-import isAuth from '../routes/authRoutes'
+import isAuth from './authRoutes';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {... rest} render={props => (
@@ -13,3 +13,4 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 export default PrivateRoute;
+

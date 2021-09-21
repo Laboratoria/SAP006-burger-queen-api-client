@@ -1,6 +1,6 @@
 const isAuth = () => {
-    const tokenAuth = localStorage.setItem('userToken');
-        if (tokenAuth) {
+    const token = localStorage.getItem('arroz');
+        if (token) {
             return true;
         } else {
             return false;
@@ -8,3 +8,4 @@ const isAuth = () => {
 }
 
 export default isAuth;
+
