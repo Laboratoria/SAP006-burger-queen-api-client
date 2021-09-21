@@ -1,4 +1,5 @@
-export default function validateValues(values) {
+export function validateValues(values) {
+
   let errors = { empty: true };
 
   if (!values.name.trim()) {

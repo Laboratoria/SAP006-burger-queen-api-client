@@ -3,13 +3,16 @@ import Input from "../../components/inputs/index.js";
 import Button from "../../components/Button/button.js";
 import "../signUp/style.css";
 import logoMagic from "../../img/logoMagic.png";
-import validateValues from "./ValidateRegister.js";
+import { validateValues } from "./ValidateRegister.js";
 import { signUpWithEmailAndPassword } from "../../services/data.js";
+
 import { useHistory } from "react-router";
+
 
 const SignUp = () => {
   const ValueAndError = (validate) => {
     const history = useHistory();
+
     const [values, setValues] = useState({
       name: "",
       email: "",
@@ -22,6 +25,7 @@ const SignUp = () => {
       email: "",
       password: "",
       role: "",
+      message: "",
     });
 
     function navigateToLogin() {
@@ -34,23 +38,30 @@ const SignUp = () => {
       const ErrorsValidation = validate(values);
       console.log(ErrorsValidation);
 
-      setErrors(ErrorsValidation);
+      setErrors(ErrorsValidation)
 
-      if (errors.empty === true) {
-        console.log(errors.empty);
-        console.log(values);
-        console.log("Entrou?");
+      if(errors.empty === true) {
+
+        console.log(errors.empty)
+        console.log(values)
+        console.log('Entrou?')
         signUpWithEmailAndPassword(values)
-          .then((response) => {
-            alert("Usuário cadastrado!")
+        .then((response) => {
+          if (response.message) {
+            console.log(response.message);
+            alert(response.message);
+            // errors.message = response.message;
+            // return errors;
+          } else if (response.token) {
+            console.log(response)
+            alert("Usuário cadastrado com sucesso!")
             navigateToLogin()
-            console.log(response);
-          })
-          .catch((error) => {
-            alert("Usuário ja cadastrado")
-            console.log(error);
-          });
-      }
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+       }
     };
 
     const handleChange = (e) => {
@@ -67,21 +78,10 @@ const SignUp = () => {
   const { handleChange, values, handleSubmit, errors } =
     ValueAndError(validateValues);
 
-  // function handleClick(e) {
-  //   e.preventDefault()
-  //   signUpWithEmailAndPassword(values)
-  //   .then((response) => {
-  //     console.log(response);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error)
-  //   })
-  // };
-
   return (
     <main>
       <img alt="" src={logoMagic}></img>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <h1>Bem Vindo!</h1>
         <section className="form-input">
           <fieldset className="margin-input">
@@ -105,7 +105,8 @@ const SignUp = () => {
               value={values.email}
               onChange={handleChange}
             />
-            <p className="errorMessage"> {errors.email && errors.email}</p>
+            <p className="errorMessage"> {errors.email && errors.email} {errors.message && errors.message}</p>
+            {/* <p className="errorMessage"> {errors.message && errors.message}</p> */}
           </fieldset>
 
           <fieldset className="margin-input">
@@ -147,8 +148,7 @@ const SignUp = () => {
         <Button
           btnClass="createAccount"
           btnText="Cadastrar"
-          btnOnClick={handleSubmit}
-          // btnOnClick={handleClick}
+          btnType="submit"
         />
       </form>
     </main>
