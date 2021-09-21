@@ -14,6 +14,7 @@ function Routes(){
                 <Route path="/cadastre-se" component={Registration} />
                 
                 <PrivateRoute path="/mesas" component={ Mesas }/>
+                {/* <PrivateRoute path="/cozinha" component={ } /> */}
                 <Route path="*" element={<h1>Not Found</h1>} />                                
             </Switch>
         </BrowserRouter> 
@@ -21,3 +22,9 @@ function Routes(){
 };
 
 export default Routes;
+
+// O Router (BrowserRouter) é um componente responsável por 
+// fazer o roteamento dos nossos componentes. 
+// O Switch é feito para comparar as Route e iterará sobre todos 
+// os seus elementos e renderizará o primeiro que corresponda ao local atual.
+// O Route é o componente responsável por determinada rota do sistema.

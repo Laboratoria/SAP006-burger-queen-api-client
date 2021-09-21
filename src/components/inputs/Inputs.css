@@ -1,0 +1,9 @@
+.inputs{
+    display: flex;
+    border-radius: 10px;
+    height: 30px;
+    /* width: 55%; */
+    margin: 5px;
+    border:none;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.315);
+}

@@ -1,15 +1,23 @@
 import React from 'react';
 import LogoImg from '../../../components/images/LogoImg';
+import ButtonLogout from '../../../components/button/ButtonLogout';
+
 import './Tables.css';
 
 
 function Mesas () {
     return(
-        <LogoImg />
+        <div>
+            <LogoImg />
+            <ButtonLogout />
+        </div>
+        
     )
 }
 
 export default Mesas;
+
+
 
 // import { useParams } from 'react-router-dom';
  

@@ -11,6 +11,7 @@ const Input = ({name, id, placeholder, type, value, onChange}) => {
                 type={type} 
                 value ={value} 
                 onChange={onChange} 
+                className="inputs"
             />  
     );
 }

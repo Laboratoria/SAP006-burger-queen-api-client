@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
     
     return (
-            <h3>
+            <h3 className="footer">
                 Desenvolvido por Bianca Alves e Thalita Neves   |   Copyright © 2021
             </h3>
     );

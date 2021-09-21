@@ -12,14 +12,14 @@ import './Login.css';
 export default function Login() { 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const history = useHistory();
+
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
     // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
-    const history = useHistory();
     
     function handleClick (e){
         e.preventDefault()
-        console.log('handleClick')
         const user = {email, password}
         LoginWithEmail(user)
         .then(token => {

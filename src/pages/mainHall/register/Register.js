@@ -32,7 +32,7 @@ export default function Registration() {
             console.log(response.json())
             if (response) {
                 localStorage.setItem('arroz', response)
-                history.push('/mesas')
+                history.push('/')
             }} catch{console.log('cagou')}
     }
 
@@ -46,13 +46,13 @@ export default function Registration() {
 
     return(
         <div className='container-register'>
-            <LogoImg />
-            <div>
-                <Title 
-                    title='Cadastre-se' >
-                </Title>
-            </div>
-            <form>
+            <form className="container-form">
+                <LogoImg />
+                <div>
+                    <Title 
+                        title='Cadastre-se' >
+                    </Title>
+                </div>
                 <Input 
                     type='text' 
                     name='name'
