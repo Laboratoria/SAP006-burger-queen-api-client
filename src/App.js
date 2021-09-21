@@ -1,22 +1,22 @@
-import React from "react";
-import Routes from "./Routes";
-import Login from "./pages/login/Login";
+// import React from "react";
+// import Routes from "./Routes";
+// import Login from "./pages/login/Login";
 
 
-function App() {
+// function App() {
   
   
-  return (
-      <div className="App">
-        <Routes />
-        <Login />
+  // return (
+      // <div className="App">
+       // <Routes />
+       // <Login />
          
-      </div>
+     // </div>
 
-    );
-};
+   // );
+// };
 
-export default App;
+// export default App;
 
 // function AppLogin (){
 //   return (

@@ -1,5 +1,5 @@
 const isAuth = () => {
-    const token = localStorage.setItem('userLogin', 'token');
+    const token = localStorage.getItem('arroz');
         if (token) {
             return true;
         } else {

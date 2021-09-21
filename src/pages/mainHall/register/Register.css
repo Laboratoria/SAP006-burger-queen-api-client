@@ -1,0 +1,22 @@
+
+.container-register{
+    display: block;
+}
+
+.container-checkbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.waiter-icon{
+    width: 50px;
+    height: 50px;
+    margin: 20px 5px;
+}
+
+.kitchen-icon{
+    width: 50px;
+    height: 50px;
+    margin: 20px 5px;
+}

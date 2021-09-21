@@ -30,7 +30,7 @@ export const RegisterUser = (users) => {
             'email': users.email,
             'password': users.password,
             'role': users.role,
-            'restaurant': 'Retro Burger',
+            'restaurant': 'retro burger',
         }),
     })
         // .then ((response) => response.json())
@@ -50,22 +50,3 @@ export const RegisterSuccess = () => {
 
 
 
-// // import { Redirect } from "react-router";
-
-// export const loginWithEmailAndPassword = (email, password) => {
-    
-//     return fetch("https://lab-api-bq.herokuapp.com/auth", {
-//     method: "POST",
-//     headers: {
-//         "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify ({
-//         "email": email,
-//         "password": password
-//     })
-//   });
-// };
-
-// export default loginWithEmailAndPassword;
-
-// export const isAuthenticated = () => true;

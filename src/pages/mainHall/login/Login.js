@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import { useHistory } from 'react-router-dom';
+import { LoginWithEmail } from '../../../services/Auth';
 import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
-import { LoginWithEmail } from '../../../services/Auth';
-
+import Title from '../../../components/title/Title'
+import './Login.css';
 
 
 export default function Login() { 
@@ -33,7 +34,9 @@ export default function Login() {
         <div className='container login'>
             <LogoImg />
             <div>
-                <h2>Entre com uma conta</h2>
+                <Title 
+                    title='Entre com uma conta' >
+                </Title>
             </div>
             <form>
                 <Input 
@@ -59,7 +62,7 @@ export default function Login() {
                 />
 
                 <div>
-                    <h2>Não tem uma conta? Cadastre-se</h2>
+                    <h3>Não tem uma conta? Cadastre-se</h3>
                 </div>
 
             </form>

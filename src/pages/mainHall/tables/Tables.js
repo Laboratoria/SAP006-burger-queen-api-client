@@ -1,5 +1,7 @@
 import React from 'react';
 import LogoImg from '../../../components/images/LogoImg';
+import './Tables.css';
+
 
 function Mesas () {
     return(
