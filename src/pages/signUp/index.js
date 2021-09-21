@@ -5,6 +5,7 @@ import "../signUp/style.css";
 import logoMagic from "../../img/logoMagic.png";
 import { validateValues } from "./ValidateRegister.js";
 import { signUpWithEmailAndPassword } from "../../services/data.js";
+
 import { useHistory } from "react-router";
 
 
