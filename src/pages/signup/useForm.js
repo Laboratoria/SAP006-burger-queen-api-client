@@ -26,12 +26,15 @@ const useForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrors(validateForm(values).message)
     if (validateForm(values).validationFulfilled === true) {
       createUser(values)
         .then(res => res.json())
         .then(data => {
           if (data.code === 403) {
             setErrors(data.message);
+          } else {
+            setErrors('Email cadastrado com sucesso!')
           }
         })
         .catch(error => console.log(error))

@@ -1,26 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import useFormLogin from './useFormLogin';
-import { BrowserRouter as Router} from 'react-router-dom';
+import ShowErrors from '../../components/errors';
 
 const Login = () => {
-  const { handleChange, handleSubmit } = useFormLogin();
+  const { handleChange, handleSubmit, errors } = useFormLogin();
+  const history = useHistory();
 
   return (
-    <Router>
-     <div className='login-page'>
-      <h2 className='login-title'>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input type='email' name='email' placeholder='exemplo@exemplo.com' onChange={handleChange} />
-        <input type='password' name='password' placeholder='Senha' onChange={handleChange} />
-        <div>
-          <button type='submit'>Logar</button>
-        </div>
+    <div className='main'>
+      <form className='login-page' onSubmit={handleSubmit}>
+        <h2 className='form-title'>Login</h2>
+        <label className='form-labels'>Email</label>
+        <input className='form-input' type='email' name='email' placeholder='username@example.com' autoComplete='off' onChange={handleChange} />
+        <label className='form-labels'>Senha</label>
+        <input className='form-input' type='password' name='password' placeholder='Senha' onChange={handleChange} />
+        <span className='errors-message'>
+          <ShowErrors value={errors} />
+        </span>
+        <button className='form-button draw' type='submit'>Logar</button>
+        <p className='new-user'>Não possui cadastro?</p>
+        <button className='form-button draw' onClick={() => { history.push('/signup') }}>Cadastre-se</button>
       </form>
-      <p className='new-user'>Não possuí cadastro?</p>
-      <div><Link className="link" to='/signup'>Cadastre-se</Link></div>
-     </div>
-    </Router>
+    </div>
   );
 }
 

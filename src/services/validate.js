@@ -6,18 +6,21 @@ export const validateForm = (values) => {
 
   if (!values.name) {
     message = 'Insira o seu nome';
+    return { validationFulfilled, message }
   } else if (emailTest === false) {
     message = 'Email inválido';
+    return { validationFulfilled, message }
   } else if (values.password.length < 6) {
     message = 'A senha deve ter pelo menos 6 caracteres';
+    return { validationFulfilled, message }
   } else if (values.password !== values.confirmPassword) {
     message = 'As senhas não conferem';
+    return { validationFulfilled, message }
   } else if (!values.role) {
     message = 'Selecione um cargo';
+    return { validationFulfilled, message }
   } else {
     validationFulfilled = true;
     return { validationFulfilled, message };
   }
-
-  return { validationFulfilled, message };
 }

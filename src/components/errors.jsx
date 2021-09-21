@@ -2,7 +2,7 @@ import React from "react";
 
 const ShowErrors = (props) => {
   return (
-    <p>{props.value}</p>
+    <p className='errors'>{props.value}</p>
   );
 };
 
