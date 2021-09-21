@@ -40,29 +40,108 @@
   width: 150px;
   height: 40px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .go-to {
-  font-size:  min(18px, 3vw);
+  font-size: 1.0rem;
   position: absolute;
-  bottom : 0;
+  bottom: 0;
+  margin: 10%;
+  text-align: center;
 }
 
+@media screen and (max-width: 992px) {
+  .logo{
+    width: 45%;
+  }
 
-@media (max-width: 769px) and (max-height: 1025px){
-	.container {
-		flex-direction: column;
-		justify-content: start;
-	}
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 
-	.logo {
-		width: 30%;
-		height: 20%;
-		margin: 2%;
-	}
+  .login {
+    margin: 5%;
+    width: 45%;
+    height: 80%;
+  }
 
-	.login {
-		width: 70%;
-		height: 60%;
-	}
+  .login-input {
+    font-size: 1.2rem;
+  }
+
+  .button {
+    width: 145px;
+    height: 40px;
+    margin: 3%;
+    font-size: 1.0rem;
+  }
+
+  .go-to {
+    font-size: 1.0rem;
+    margin: 10%;
+  } 
+
+}
+
+@media screen and (max-width: 767px) {
+  .logo{
+    width: 45%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .login {
+    margin: 5%;
+    width: 45%;
+    height: 80%;
+  }
+
+  .login-input {
+    font-size: 1.0rem;
+  }
+
+  .button {
+    width: 135px;
+    height: 35px;
+    font-size: 0.8rem;
+    margin: 3%;
+  }
+
+  .go-to {
+    font-size: 1.0rem;
+  } 
+}
+
+@media screen and (max-width: 569px) {
+  .logo{
+    width: 45%;
+  }
+
+  .container {
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  .login {
+    margin: 5%;
+    width: 65%;
+    height: 80%;
+  }
+
+  .button {
+    width: 130px;
+    height: 30px;
+    margin: 3%;
+  }
+
+  .go-to {
+    font-size: 0.95rem;
+  } 
 }

@@ -1,7 +1,15 @@
-.login-input, .register-input {
+.login-input {
   border: none;
   border-bottom: 2px solid #c65758;
   background-color: transparent;
   width: 100%;
   height: 25px;;
+}
+
+.register-input {
+  height: 15px;
+  border: none;
+  border-bottom: 2px solid #c65758;
+  background-color: transparent;
+  width: 100%;
 }

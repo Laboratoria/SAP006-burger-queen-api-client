@@ -16,20 +16,31 @@
 }
 
 .register {
-  width: 25%;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #fcb056;
-  border-radius: 20px;
-  position: relative;
+    margin: 5%;
+    width: 30%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fcb056;
+    border-radius: 20px;
 }
 
 .register-form-group {
   width: 80%;
   margin-bottom: 8%;
+}
+
+.button-register {
+  background-color: #d72929;
+  color: #fff;
+  border-radius: 15px;
+  border: none;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .register-options {
@@ -41,24 +52,107 @@
 	margin-bottom: 4%;
 }
 
-@media (max-width: 769px) and (max-height: 1025px) {
-  .container-register {
-    flex-direction: column;
-    justify-content: start;
+.go-of-register {
+  font-size: 0.8rem;
+} 
+
+@media screen and (max-width: 992px) {
+  .logo-register{
+    width: 45%;
   }
 
-  .logo-register {
-    width: 30%;
-    height: 20%;
-    margin: 2%;
+  .container-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 
   .register {
-    width: 70%;
-    height: 60%;
+    margin: 5%;
+    width: 45%;
+    height: 80%;
   }
 
-  .register-form-group {
-		margin-bottom: 5%;
+  .register-input {
+    font-size: 1.0rem;
   }
+
+  .button-register {
+    width: 145px;
+    height: 40px;
+    margin: 3%;
+  }
+
+  .go-of-register {
+    font-size: 1.0rem;
+  } 
+
 }
+
+@media screen and (max-width: 767px) {
+  .logo-register{
+    width: 45%;
+  }
+
+  .container-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .register {
+    margin: 5%;
+    width: 45%;
+    height: 80%;
+  }
+
+  .button-register {
+    width: 130px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 3%;
+  }
+
+  .go-of-register {
+    font-size: 1.0rem;
+  } 
+
+}
+
+@media screen and (max-width: 569px) {
+    .logo-register{
+      width: 45%;
+    }
+
+    .container-register {
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    .register {
+      margin: 5%;
+      width: 70%;
+      height: 65%;
+    }
+
+    .register-input {
+      font-size: 0.7rem;
+    }
+
+    .button-register {
+      width: 130px;
+      height: 30px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 4%;
+    }
+
+    .go-of-register {
+      font-size: 0.8rem;
+    } 
+}
+
+
