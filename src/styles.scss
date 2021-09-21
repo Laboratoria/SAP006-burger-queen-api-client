@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pixels';
+}
+
+@font-face {
+  font-family: 'Pixels';
+  src: url('./FreePixel.ttf');
+}
+
+$background-color: #332D23;
+$pink: #BC435C;
+$light-pink: #AD7F85;
+$black: #1B1A15;
+$dark-cyan: #294742;
+$light-blue: #84A8A4;
+$light-cyan: #4E6764;
+
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+#root, .main {
+  background-color: $background-color;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 20em;
+  margin: 1em;
+}
+
+.card-container {
+  width: auto;
+  height: auto;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cards, .login-page, .signup-page {
+  display: flex;
+  flex-direction: column;
+  background-color: $black;
+  color: $light-blue;
+  border: 0.15em dotted $dark-cyan;
+  border-radius: 1.6em;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0.4em 0.4em $black;
+}
+
+.cards {
+  margin: 3em;
+  width: 17em;
+  height: 24em;  
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+  transform: scale(1.1);
+  border: 0.15em dotted $pink;
+  }
+}
+
+.card-name {
+  font-size: 3em;
+  font-weight: bolder;
+  color: $light-cyan;
+  
+  &:hover {
+    color: $pink;
+  }
+}
+
+.card-photo {
+  width: 95%;
+  margin: -1em;
+  border-radius: 1em;
+}
+
+.login-page, .signup-page {
+  margin-top: 25%;
+  width: 32em;
+  height: 26em;
+}
+
+.signup-page {
+  height: 37em;
+}
+
+.form-title {
+  margin: 1em;
+}
+
+.form-button {
+  width: 7em;
+  height: 2.5em;
+  font-size: 1em;
+  cursor: pointer;
+  color: $black;
+  border-radius: 0.5em;
+  font-weight: bolder;
+  border: none;
+  background: $light-blue;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  box-shadow: inset 0 0 0 2px $dark-cyan;
+  position: relative;
+  vertical-align: middle;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.draw {
+  transition: color 0.20s;
+
+  &::before,
+  &::after {
+    border-radius: 0.5em;
+    border: 2px solid transparent;
+    width: 0;
+    height: 0;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+  }
+
+  &::after {
+    bottom: 0;
+    right: 0;
+  }
+  
+  &:hover {
+    color: $pink;
+  }
+
+  &:hover::before,
+  &:hover::after {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover::before {
+    border-top-color: $pink;
+    border-right-color: $pink;
+    transition:
+      width 0.25s ease-out,
+      height 0.25s ease-out 0.25s;
+  }
+
+  &:hover::after {
+    border-bottom-color: $pink;
+    border-left-color: $pink;
+    transition:
+      border-color 0s ease-out 0.5s,
+      width 0.25s ease-out 0.5s,
+      height 0.25s ease-out 0.75s;
+  }
+}
+
+.form-input, .form-select {
+  width: 28em;
+  height: 3em;
+  margin: 0.30em;
+  background: $light-pink;
+  border: none;
+  border-radius: 0.25em;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  color: $black;
+  font-size: 0.94em;
+  font-weight: bolder;
+}
+
+.form-labels {
+  align-self: start;
+  margin-left: 2.6em;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.errors-message, .new-user {
+  color: $pink;
+  font-size: 1.13em;
+  width: auto;
+  height: 1.1em;
+  margin: 0.30em;
+  font-weight: bolder;
+}
+
+.new-user {
+  color: $light-blue;
+  font-size: 0.94em;
+}
+
+.test {
+  color: $light-pink;
+  margin-top: 10em;
+}

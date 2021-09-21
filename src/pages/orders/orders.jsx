@@ -1,7 +1,7 @@
 const Orders = () => {
   return (
     <div>
-      <h1>Pedidos prontos</h1>
+      <h1 className='test'>Pedidos prontos</h1>
     </div>
   )
 }
