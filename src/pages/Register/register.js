@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { registerUser } from "../../utils/auth";
 import { validate } from '../Login/form-validate'
+import { Footer } from '../../components/footer/footer'
 
 import '../Login/login.css';
 
@@ -86,8 +87,9 @@ const Register = () => {
           type='submit' value='Register' 
           onClick={handleRegister}
           />
-        <p className='link-register'><Link to='/'>Clique aqui para logar-se.</Link></p>
+        <p className='link-register'>Clique <Link to='/'>aqui </Link>para logar-se.</p>
       </form>
+      <Footer />
     </div>
     </Fragment>
   )

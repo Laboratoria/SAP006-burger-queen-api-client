@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { logout } from '../../utils/auth';
 import { useHistory } from "react-router-dom"
+import { Footer } from '../../components/footer/footer'
 
 import './home.css';
 
@@ -37,6 +38,7 @@ const Home = () => {
                 src={menu5} alt='menu5'
                 onClick={handleLogout}/>
             </figure>
+            <Footer/>
         </div>
     )
 }
