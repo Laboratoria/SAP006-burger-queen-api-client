@@ -2,16 +2,16 @@ import { useHistory } from "react-router";
 
 const Kitchen = () => {
   const history = useHistory();
-	return (
-		<div>
-			<h1 className='test'>Página de pedidos enviados para a cozinha</h1>
+  return (
+    <div className='main'>
+      <h1>Cozinha</h1>
       <button className='form-button draw' onClick={() => {
         localStorage.removeItem('token')
-        history.push('/home')
+        history.push('/')
       }}>LogOut
       </button>
-		</div>
-	);
+    </div>
+  );
 }
 
 export default Kitchen;

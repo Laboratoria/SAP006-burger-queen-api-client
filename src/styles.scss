@@ -47,7 +47,7 @@ body {
   justify-content: center;
 }
 
-.cards, .login-page, .signup-page {
+.cards, .login-page, .signup-page, .products-list {
   display: flex;
   flex-direction: column;
   background-color: $black;
@@ -96,6 +96,10 @@ body {
 
 .signup-page {
   height: 37em;
+}
+
+.products-list{
+  background-color: $light-pink;
 }
 
 .form-title {
@@ -217,4 +221,45 @@ body {
 .test {
   color: $light-pink;
   margin-top: 10em;
+}
+
+.menu-button {
+  width: 9em;
+  height: 2.5em;
+  font-size: 1em;
+  cursor: pointer;
+  color: $light-blue;
+  border-radius: 0.5em;
+  font-weight: bolder;
+  border: none;
+  background: $dark-cyan;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  box-shadow: inset 0 0 0 2px $dark-cyan;
+  position: relative;
+  vertical-align: middle;
+}
+
+.menu-labels {
+  color: $light-blue;
+  align-self: start;
+  margin-left: 2.6em;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.menu-input, .menu-select {
+  width: 28em;
+  height: 3em;
+  margin: 0.30em;
+  background: $light-cyan;
+  border-color:#1B1A15;
+  border-radius: 0.25em;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  color: $black;
+  font-size: 0.94em;
+  font-weight: bolder;
 }
