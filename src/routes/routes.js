@@ -2,7 +2,7 @@ import React from 'react';
 import reactDom from 'react-dom';
 import { Switch, Route } from 'react-router-dom';
 
-import Login from '../pages/Login/login';
+import Login from '../pages/login/login';
 import Register  from '../pages/Register/register';
 import Home from '../pages/home/home';
 
