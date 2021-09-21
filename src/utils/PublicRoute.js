@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { isAuthenticated, role } from './auth'
+import { isAuthenticated, role } from './Auth'
 
 
 const path = () => {
