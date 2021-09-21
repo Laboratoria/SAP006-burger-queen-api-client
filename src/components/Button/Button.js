@@ -118,12 +118,20 @@ export const Button = ({productId, ButtonTitle, ButtonId, Role, Conditional, But
     'new-order-product-button':{
       'ButtonClass':'new-order-product-button'
     },
-    'room-new-order-save-order':{
-      'ButtonClass':'room-new-order-save-order'
-    }
+    'new-order-save-order':{
+      'ButtonClass':'new-order-save-order'
+    },
+    'new-order-trash':{
+      'ButtonClass':'new-order-trash'
+    },
+    'new-order-modify-quantity-minus':{
+      'ButtonClass':'new-order-modify-quantity new-order-modify-quantity-minus'
+    },
+    'new-order-modify-quantity-plus':{
+      'ButtonClass':'new-order-modify-quantity new-order-modify-quantity-plus'
+    },
   }
   
-
   return (
     <button 
     data-testid = 'button'

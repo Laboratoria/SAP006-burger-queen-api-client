@@ -11,6 +11,7 @@ import { Room } from '../../pages/room/Room/Room'
 import { Kitchen } from '../../pages/kitchen/Kitchen'
 
 import { Menu } from '../../pages/room/Menu/Menu';
+import { NewOrder } from '../../pages/room/NewOrder/NewOrder';
 import { OrdersBeingPrepared } from '../../pages/room/OrdersBeingPrepared/OrdersBeingPrepared'
 import { OrdersReady } from '../../pages/room/OrdersReady/OrdersReady'
 import { OrdersDelivered} from '../../pages/room/OrdersDelivered/OrdersDelivered'
@@ -30,6 +31,7 @@ export const Root = () => {
           <PublicRoute path='/register' exact={true} component={Register} />
           <Route path='/unauthorized' exact={true} component={Unauthorized}/>
           <PrivateRouteRoom path='/room' exact={true} component={Room} />
+          <PrivateRouteRoom path='/neworder' exact={true} component={NewOrder} />
           <PrivateRouteRoom path='/menu' exact={true} component={Menu} />
           <PrivateRouteRoom path='/orders/being-prepared' exact={true} component={OrdersBeingPrepared} />
           <PrivateRouteRoom path='/orders/ready' exact={true} component={OrdersReady} />

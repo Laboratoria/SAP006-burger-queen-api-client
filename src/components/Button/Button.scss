@@ -217,13 +217,15 @@ nav {
   .room-table-button-12{
     background-image: url('../../assets/images-tables/table-12.png');
   }
+}
 
-  .room-new-order, .room-new-order-save-order{
+  .room-new-order, .new-order-save-order{
+    font-family: $berg-font;
     width: 80%;
     background-color: $medium-green;
     padding: 2%;
     margin: auto;
-    font-size: 200%;
+    font-size: 220%;
     border-radius: 10px;
     color: $even-lighter-brown-txt;
     font-weight: 500;
@@ -236,58 +238,118 @@ nav {
       border-radius: 10px;
   }
 
-  [data-title='cafe-americano'] {
-    background-image: url('../../assets/images-menu/cafe-com-leite.png');
+  .new-order-section{
+    [data-title='cafe-americano'] {
+      background-image: url('../../assets/images-menu/cafe-com-leite.png');
+    }
+    
+    [data-title='cafe-com-leite'] {
+      background-image: url('../../assets/images-menu/cafe-com-leite.png');
+    }
+    [data-title='sanduiche-presunto-queijo'] {
+      background-image: url('../../assets/images-menu/sanduiche-presunto-queijo.png');
+    }
+    [data-title='suco-de-fruta-natural'] {
+      background-image: url('../../assets/images-menu/suco-de-fruta-natural.png');
+    }
+    [data-title='hamburguer-simples-bovino'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-bovino.png');
+    }
+    [data-title='hamburguer-simples-frango'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-frango.png');
+    }
+    [data-title='hamburguer-simples-vegetariano'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-vegetariano.png');
+    }
+    [data-title='hamburguer-simples-bovino-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-bovino-queijo.png');
+    }
+    [data-title='hamburguer-simples-frango-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-frango-queijo.png');
+    }
+    [data-title='hamburguer-simples-vegetariano-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-vegetariano-queijo.png');
+    }
+    [data-title='hamburguer-simples-bovino-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-bovino-ovo.png');
+    }
+    [data-title='hamburguer-simples-frango-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-frango-ovo.png');
+    }
+    [data-title='hamburguer-simples-vegetariano-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-simples-vegetariano-ovo.png');
+    }
+    [data-title='hamburguer-duplo-bovino'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-bovino.png');
+    }
+    [data-title='hamburguer-duplo-frango'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-frango.png');
+    }
+    [data-title='hamburguer-duplo-vegetariano'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-vegetariano.png');
+    }
+    [data-title='hamburguer-duplo-bovino-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-bovino-ovo.png');
+    }
+    [data-title='hamburguer-duplo-frango-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-frango-ovo.png');
+    }
+    [data-title='hamburguer-duplo-vegetariano-ovo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-vegetariano-ovo.png');
+    }
+    [data-title='hamburguer-duplo-bovino-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-bovino-queijo.png');
+    }
+    [data-title='hamburguer-duplo-frango-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-frango-queijo.png');
+    }
+    [data-title='hamburguer-duplo-vegetariano-queijo'] {
+      background-image: url('../../assets/images-menu/hamburguer-duplo-vegetariano-queijo.png');
+    }
+    [data-title='batata-frita'] {
+      background-image: url('../../assets/images-menu/batata-frita.png');
+    }
+    [data-title='aneis-de-cebola'] {
+      background-image: url('../../assets/images-menu/aneis-de-cebola.png');
+    }
+    [data-title='agua-500'] {
+      background-image: url('../../assets/images-menu/agua-500.png');
+    }
+    [data-title='agua-750'] {
+      background-image: url('../../assets/images-menu/agua-750.png');
+    }
+    [data-title='bebida-gaseificada-500'] {
+      background-image: url('../../assets/images-menu/bebida-gaseificada-500.png');
+    }
+    [data-title='bebida-gaseificada-750'] {
+      background-image: url('../../assets/images-menu/bebida-gaseificada-750.png');
+    }
+
+    .new-order-trash{
+      width: 2vh;
+      height: 2vh;
+      background-size:2vh;
+      background-image: url('../../assets/icons/new-order-trash.png');
+      margin: auto;
+    }
+
+    .new-order-modify-quantity{
+      margin:0 5%;
+      height: 2vh;
+      width: 2vh;
+      background-size:2vh
+    }
+
+    .new-order-modify-quantity-minus{
+      background-image: url('../../assets/icons/new-order-minus.png');
+    }
+
+    .new-order-modify-quantity-plus{
+      background-image: url('../../assets/icons/new-order-plus.png');
+    }
+    
   }
   
-  [data-title='cafe-com-leite'] {
-    background-image: url('../../assets/images-menu/cafe-com-leite.png');
-  }
-  [data-title='sanduiche-presunto-queijo'] {
-    background-image: url('../../assets/images-menu/sanduiche-presunto-queijo.png');
-  }
-  [data-title='suco-de-fruta-natural'] {
-    background-image: url('../../assets/images-menu/suco-de-fruta-natural.png');
-  }
-  [data-title='hamburguer-simples-bovino'] {
-    background-image: url('../../assets/images-menu/hamburguer-simples-bovino.png');
-  }
-  [data-title='hamburguer-simples-frango'] {
-    background-image: url('../../assets/images-menu/hamburguer-simples-frango.png');
-  }
-  [data-title='hamburguer-simples-vegetariano'] {
-    background-image: url('../../assets/images-menu/hamburguer-simples-vegetariano.png');
-  }
-  [data-title='hamburguer-duplo-bovino'] {
-    background-image: url('../../assets/images-menu/hamburguer-duplo-bovino.png');
-  }
-  [data-title='hamburguer-duplo-frango'] {
-    background-image: url('../../assets/images-menu/hamburguer-duplo-frango.png');
-  }
-  [data-title='hamburguer-duplo-vegetariano'] {
-    background-image: url('../../assets/images-menu/hamburguer-duplo-vegetariano.png');
-  }
-  [data-title='batata-frita'] {
-    background-image: url('../../assets/images-menu/batata-frita.png');
-  }
-  [data-title='aneis-de-cebola'] {
-    background-image: url('../../assets/images-menu/aneis-de-cebola.png');
-  }
-  [data-title='agua-500'] {
-    background-image: url('../../assets/images-menu/agua-500.png');
-  }
-  [data-title='agua-750'] {
-    background-image: url('../../assets/images-menu/agua-750.png');
-  }
-  [data-title='bebida-gaseificada-500'] {
-    background-image: url('../../assets/images-menu/bebida-gaseificada-500.png');
-  }
-  [data-title='bebida-gaseificada-750'] {
-    background-image: url('../../assets/images-menu/bebida-gaseificada-750.png');
-  }
-
-}
-
 @media (min-width: 1024px) and (max-height: 768px),
 (min-width: 1366px) and (max-height: 1024px){
 
