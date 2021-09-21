@@ -10,7 +10,7 @@
 	--stroke: #464242;
 }
 
-.container-cards {
+.container-cards-order {
 	display: flex;
 	flex-wrap: wrap;
     flex-direction: row;
@@ -21,7 +21,7 @@
 	border-top: 1px solid var(--stroke);
 }
 
-.card-template {
+.card-template-order {
 	margin: 1rem;
 	width: 320px;
 	left: 44px;
@@ -31,30 +31,30 @@
 	box-shadow: 2px 5px 5px hsl(0deg 0% 0% / 30%);
 }
 
-.card-container-text {
+.card-container-text-order {
 	padding: 20px;
 	line-height: 20px;
 }
 
-.card-table-info {
+.card-table-info-order {
 	display: flex;
 	justify-content: space-between;
 }
 
-.title-card {
+.title-card-order {
 	margin: 0%;
 	font-weight: 500;
 	font-size: 16px;
 	color: var(--black);
 }
 
-.title-number-card {
+.title-number-card-order {
 	font-weight: 500;
 	font-size: 24px;
 	color: var(--black);
 }
 
-.text-card {
+.text-card-order {
 	margin: 0;
 	padding: 0;
 	font-weight: 300;

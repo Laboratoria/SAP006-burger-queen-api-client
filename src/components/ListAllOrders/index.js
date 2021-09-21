@@ -28,30 +28,30 @@ export default function ListAllOrders() {
 	console.log(allOrders);
 
 	return (
-		<section className="container-cards">
+		<section className="container-cards-order">
 			{allOrders.map((order) => (
-				<div className="card-template" key={order.id}>
-					<div className="card-container-text">
+				<div className="card-template-order" key={order.id}>
+					<div className="card-container-text-order">
 						<div>
-							<div className="card-table-info">
-								<p className="title-card">Mesa</p>
-								<p className="title-number-card">{order.table}</p>
+							<div className="card-table-info-order">
+								<p className="title-card-order">Mesa</p>
+								<p className="title-number-card-order">{order.table}</p>
 							</div>
 
 							<div>
-								<p className="title-card">
-									Nº do Pedido: <span className="text-card">{order.id}</span>
+								<p className="title-card-order">
+									Nº do Pedido: <span className="text-card-order">{order.id}</span>
 								</p>
-								<p className="title-card">
+								<p className="title-card-order">
 									Cliente:{' '}
-									<span className="text-card">{order.client_name}</span>
+									<span className="text-card-order">{order.client_name}</span>
 								</p>
-								<p className="title-card">
+								<p className="title-card-order">
 									Horário do Pedido:{' '}
-									<span className="text-card">{order.createdAt}</span>
+									<span className="text-card-order">{order.createdAt}</span>
 								</p>
-								<p className="title-card">
-									Status: <span className="text-card">{order.status}</span>
+								<p className="title-card-order">
+									Status: <span className="text-card-order">{order.status}</span>
 								</p>
 							</div>
 						</div>
