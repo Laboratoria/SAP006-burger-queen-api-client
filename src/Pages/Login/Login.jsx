@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { LoginWithEmail } from '../../services/auth';
+import { loginWithEmail } from '../../services/auth';
 import { getRouteByRole } from '../../routes/redirections'
 
 import Button from '../../components/Button/Button';
@@ -20,25 +20,17 @@ const Login = ({Login}) => {
         return Login();
     }
 
-    function AuthUserLogin() {
+    function authUserLogin() {
         const user = {
             email,
             password,
         }
 
-        LoginWithEmail(user)
+        loginWithEmail(user)
         .then((json) => {
             const route = getRouteByRole(json.role);
             history.push(route);      
-        })     
-        // LoginWithEmail(user)
-        // .then((token) => {
-        //     LoginAuth('Vixi', token)
-        //     const role = user.role;
-
-        //     
-        //     }
-        // })     
+        })
     }
 
     return (
@@ -63,27 +55,7 @@ const Login = ({Login}) => {
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </Form>
-                {/* <Form>
-                    <label>
-                        <Input 
-                        type='radio'
-                        name='occupation'
-                        value={occupation}
-                        onChange={(event) => setOccupation(event.target.value)}
-                        labelText='Atendente' />
-                        Atendente
-                    </label>
-                    <label>
-                        <Input 
-                        type='radio' 
-                        name='occupation'
-                        value={occupation}
-                        onChange={(event) => setOccupation(event.target.value)}
-                        labelText='cozinha' />
-                        Cozinha
-                    </label>
-                </Form> */}
-                <Button primary onClick={AuthUserLogin}>
+                <Button primary onClick={authUserLogin}>
                     Login
                 </Button>
                 <PhraseLogin>É o seu primeiro dia no Vixi? <br />

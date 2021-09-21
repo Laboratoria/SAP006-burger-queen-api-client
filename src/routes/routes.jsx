@@ -7,7 +7,7 @@ import Tables from '../Pages/Tables/Tables'
 import OrderStatus from '../Pages/OrderStatus/OrderStatus'
 import Kitchen from '../Pages/Kitchen/Kitchen'
 import NotFound from '../Pages/NotFound/NotFound'
-import privateRoute from './privateRoute';
+import PrivateRoute from './privateRoute';
 
 const Routes = () => {
 
@@ -16,9 +16,9 @@ const Routes = () => {
             <Switch>
                 <Route exact path='/' component={Login} />
                 <Route path='/register' component={Register} />
-                <privateRoute path='/tables' component={Tables} />
-                <privateRoute path='/orders-status' component={OrderStatus} />
-                <privateRoute path='/kitchen' component={Kitchen} />
+                <PrivateRoute path='/tables' component={Tables} />
+                <PrivateRoute path='/orders-status' component={OrderStatus} />
+                <PrivateRoute path='/kitchen' component={Kitchen} />
                 <Route path='*' component={NotFound} />
             </Switch>
         </BrowserRouter>

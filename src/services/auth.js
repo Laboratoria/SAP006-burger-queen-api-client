@@ -18,7 +18,7 @@ export const registerUser = (user) => {
         body: JSON.stringify(body)
     })
         .then(() => {
-            return LoginWithEmail({ email: user.email, password: user.password })
+            return loginWithEmail({ email: user.email, password: user.password })
         })
         .catch((error) => console.log(error, 'erro na registerUser'))
     };
@@ -29,7 +29,7 @@ export const RegisterSuccess = () => {
     )
 }
 
-export const LoginWithEmail = (users) => {
+export const loginWithEmail = (users) => {
     return fetch('https://lab-api-bq.herokuapp.com/auth', {
         method:'POST',
         headers: {
