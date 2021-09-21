@@ -38,8 +38,8 @@ const Login = () => {
     e.preventDefault();
       console.log('foi')
     validateValues(infoUser)         
-    login('1234')  
-    history.push('/home')
+    // login('1234')  
+    // history.push('/home')
   }
 
   return (
@@ -61,6 +61,7 @@ const Login = () => {
       </figure>
       <form className='form-login' >
         <fieldset className='form-inner'>
+          <div>
           <input className='input-login'
           type='email' id='email' placeholder='Email' required='' 
           value={infoUser.email} 
@@ -68,9 +69,12 @@ const Login = () => {
         <section className ='icons-input'>
           <i className='far fa-envelope icons'></i>
           </section>
-          {errors.email && <span className='form-error'>{errors.email}</span>}
+          </div> 
+          {errors.email && <span className='form-error email'>{errors.email}</span>}
         </fieldset>
+        {errors.email && <span className='form-error'>{errors.email}</span>}
         <fieldset className="form-inner">
+          <div>
           <input className="input-password" 
             type="password" id="password" placeholder="Password" required="" 
             value={infoUser.password}
@@ -79,13 +83,15 @@ const Login = () => {
             <i id="show" className="fas fa-lock icons"></i>
             <i id="hide" className="fas fa-lock-open icons"></i>
           </section>
+          </div>
           {errors.password && <span className='form-error'>{errors.password}</span>}
         </fieldset>
+        {errors.password && <span className='form-error'>{errors.password}</span>}
         <input className='btn-login'
           type='submit' value='login' 
           onClick={handleLogin}
           />
-        <p className='link-register'><Link to='/register'>Clique aqui para se cadastrar.</Link></p>
+        <p className='link-register'>Clique <Link to='/register'>aqui </Link>para se cadastrar.</p>
       </form>
       <Footer />
     </div>

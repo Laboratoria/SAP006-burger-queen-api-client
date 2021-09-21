@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { logout } from '../../utils/auth';
 import { useHistory } from "react-router-dom"
+
+import { logout } from '../../utils/auth';
 
 import './home.css';
 
@@ -36,7 +37,7 @@ const Home = () => {
                 <img className='menu5 fatia'
                 src={menu5} alt='menu5'
                 onClick={handleLogout}/>
-            </figure>
+            </figure>            
         </div>
     )
 }
