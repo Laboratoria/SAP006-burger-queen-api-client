@@ -25,7 +25,7 @@ export default function ListAllOrders() {
 				setAllOrders(sortById);
 			});
 	}, []);
-	console.log(allOrders);
+	// console.log(allOrders);
 
 	return (
 		<section className="container-cards-order">
@@ -43,12 +43,10 @@ export default function ListAllOrders() {
 									Nº do Pedido: <span className="text-card-order">{order.id}</span>
 								</p>
 								<p className="title-card-order">
-									Cliente:{' '}
-									<span className="text-card-order">{order.client_name}</span>
+									Cliente: <span className="text-card-order">{order.client_name}</span>
 								</p>
 								<p className="title-card-order">
-									Horário do Pedido:{' '}
-									<span className="text-card-order">{order.createdAt}</span>
+									Horário do Pedido: <span className="text-card-order">{order.createdAt}</span>
 								</p>
 								<p className="title-card-order">
 									Status: <span className="text-card-order">{order.status}</span>
