@@ -5,9 +5,11 @@ import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
+import Title from '../../../components/title/Title'
+
 import cozinheiro from '../../../img/cozinheiro.png'
 import garcom from '../../../img/garcom.png'
-import Title from '../../../components/title/Title'
+
 import './Register.css';
 
 
@@ -34,7 +36,7 @@ export default function Registration() {
             }} catch{console.log('cagou')}
     }
 
-// seleciona o role se cozinha ou salão - pega name e salva no role do servidor
+// seleciona o role - se cozinha ou salão - pega name e salva no role do servidor
     function handleRoleChange (e) {
         e.preventDefault()
         if(e.target.checked){
