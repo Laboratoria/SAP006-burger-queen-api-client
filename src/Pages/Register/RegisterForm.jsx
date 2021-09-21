@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { RegisterUser } from '../../services/auth';
-import validation from '../../services/errors';
-import Button from '../../components/Button/Button';
-import Input from '../../components/Input/Input.jsx'
-import register from '../../Assets/register.png';
-import { SignUpBox, Image, TitleRegister, Form, InputRadio, ErrorsMessage, PhraseRegister } from './style';
+import { Link, useHistory } from 'react-router-dom';
 
+import { registerUser } from '../../services/auth';
+import validation from '../../services/errors';
+import { getRouteByRole } from '../../routes/redirections';
+
+import Button from '../../components/Button/Button';
+import { Input }  from '../../components/Input/Input.jsx'
+
+import register from '../../Assets/register.png';
+import { SignUpBox, Image, TitleRegister, Form, InputRadioBox, LabelRadioInput,ErrorsMessage, PhraseRegister } from './style';
 
 const Register = () => {
     const [values, setValues] = useState({
@@ -18,6 +21,7 @@ const Register = () => {
     });
 
     const [errors, setErrors] = useState({});
+    const history = useHistory();
 
     const handleChange = (event) => {
         setValues({
@@ -30,9 +34,10 @@ const Register = () => {
         e.preventDefault();
         setErrors(validation(values));
 
-        RegisterUser(values)
+        registerUser(values)
             .then((json) => {
-                console.log(json);
+                const route = getRouteByRole(json.role);
+                history.push(route);
             })
             .catch((error) => {
                 console.log(error);
@@ -81,31 +86,32 @@ const Register = () => {
                     errormessage='As senhas não conferem.' />
                 {errors.confirmPassword && <ErrorsMessage className='error'>{errors.confirmPassword}</ErrorsMessage>}
                 </Form>
-                <InputRadio>
-                <label><Input 
-                    type='radio'
-                    name='role'
-                    className='input-radio'
-                    onChange={handleChange}
-                    value='Salão'
-                    labeltext='Salão' />
-                    Salão
-                </label>
-                {errors.role && <ErrorsMessage className='error'>{errors.role}</ErrorsMessage>}
-                <label>
-                    <Input 
-                    type='radio' 
-                    name='role'
-                    className='input-radio'
-                    onChange={handleChange}
-                    value='cozinha'
-                    labeltext='Cozinha' />
-                    Cozinha
-                </label>
-                {errors.role && <ErrorsMessage className='error'>{errors.role}</ErrorsMessage>}
-                </InputRadio>
-            <Button variant='enter-app' onClick={handleFormSubmit}>
-                <Link to='/'>registrar</Link>
+                <InputRadioBox>
+                    <LabelRadioInput><Input
+                        variant='true'
+                        type='radio'
+                        name='role'
+                        className='input-radio'
+                        onChange={handleChange}
+                        value='Salão'
+                        labelText='Salão' />
+                        Salão
+                    </LabelRadioInput>
+                    <LabelRadioInput>
+                        <Input
+                        variant='true'
+                        type='radio' 
+                        name='role'
+                        className='input-radio'
+                        onChange={handleChange}
+                        value='cozinha'
+                        labelText='Cozinha' />
+                        Cozinha
+                    </LabelRadioInput>
+                    {errors.role && <ErrorsMessage className='error'>{errors.role}</ErrorsMessage>}
+                </InputRadioBox>
+            <Button variant='primary' onClick={handleFormSubmit}>
+                Registrar
             </Button>
             <PhraseRegister>Já possui uma conta?<br/> 
                 <Link to='/'>Faça seu login aqui</Link>

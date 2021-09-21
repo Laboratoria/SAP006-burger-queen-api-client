@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 const LoginBox = styled.div`
     background: rgba(244, 244, 244, 0.52);
-    height: 100%
-    width: 100%
+    height: 100%;
+    width: 100%;
 `
 const Image = styled.img`
     height: 43vh;
-    // width: 268px; 
     margin: 0vh 15vh;
 `
 const Title = styled.p`

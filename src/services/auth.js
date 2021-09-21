@@ -1,9 +1,11 @@
-export const RegisterUser = (users) => {
+import { saveStorageKey } from "./storage";
+
+export const registerUser = (user) => {
     const body = {
-        'name': users.fullName,
-        'email': users.email,
-        'password': users.password,
-        'role': users.role,
+        'name': user.fullName,
+        'email': user.email,
+        'password': user.password,
+        'role': user.role,
         'restaurant': 'Vixi', 
     }
     console.log(body);
@@ -15,8 +17,10 @@ export const RegisterUser = (users) => {
         },
         body: JSON.stringify(body)
     })
-        .then((response) => response.json())
-        .catch((error) => console.log(error, 'erro na RegisterUser'))
+        .then(() => {
+            return LoginWithEmail({ email: user.email, password: user.password })
+        })
+        .catch((error) => console.log(error, 'erro na registerUser'))
     };
     
 export const RegisterSuccess = () => {
@@ -38,18 +42,12 @@ export const LoginWithEmail = (users) => {
     })
         .then((response) => response.json())
         .then((json) => {
-            const { token } = json;
-            return token;
+            saveStorageKey(json.token);
+            return json;
         })
         .catch((error) => console.log(error, 'erro de token na LoginWithEmail'))
 };
 
-const STORAGE_KEY = 'burger-queen-api-client'
-
-const isLogged = () => !! localStorage.getItem(STORAGE_KEY)
-const Login = token => localStorage.setItem(STORAGE_KEY, token)
-const Logout = () => localStorage.removeItem(STORAGE_KEY)
-export { isLogged , Login , Logout }
 
 
 
