@@ -1,16 +1,5 @@
-import '../styles/login.css';
+import React from 'react';
 
-function login() {
-    return (
-        <div className="pagina-login">
-            <header className="pagina-login-header">
-            
-            </header>
-            <main className="pagina-login-main">
-                <h1>login</h1>
-            </main>
-        </div>
-    );
-}
+const Login = () => <h1>Login</h1>
 
-export default login;
+export default Login;

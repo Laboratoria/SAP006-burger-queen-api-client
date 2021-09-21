@@ -1,0 +1,12 @@
+@import '../index.css';
+
+* {
+    background-color:#FBAD58;
+}
+
+bg-ellipse{
+    background-color: #9B2D0A;
+    position: absolute;
+    width: 100%;
+    height: 20%;
+}
