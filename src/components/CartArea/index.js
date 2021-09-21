@@ -7,7 +7,7 @@ import ButtonDefault from '../ButtonDefault';
 import CartItem from '../CartItem';
 
 export default function CartArea({
-content, plus, minus, cancelOrder,
+content, plus, minus, openPopupCancel,
 }) {
 
 const arrayPrices = content.map(product=>{
@@ -57,7 +57,7 @@ const totalPrice = arrayPrices.reduce((total, price) => total+price , 0)
 				<div className="cart-buttons-wrapper">
 					<ButtonDefault
 						className="btn-cart btn-cart-cancel btn-default margin-left-1 uppercase"
-						onClick={cancelOrder}
+						onClick={openPopupCancel}
 					>
 						Cancelar
 					</ButtonDefault>

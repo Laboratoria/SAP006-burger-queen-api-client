@@ -17,6 +17,7 @@ import Sides from '../../components/All-day/Sides';
 import InputSelect from '../../components/InputSelect';
 
 import Popup from '../../components/Popup';
+import PopupCancel from '../../components/PopupCancel';
 import Header from '../../components/Header';
 
 export default function Hall() {
@@ -195,6 +196,7 @@ export default function Hall() {
 	}
 
 	const [showPopup, setShowPopup] = useState(false);
+	const [showPopupCancel, setShowPopupCancel] = useState(false);
 
 	const [cartContent, setCartContent] = useState([])
 
@@ -250,8 +252,9 @@ export default function Hall() {
 
 	}
 
-	const cancelOrder = () =>{
+	const cancelAndCloseOrder = () =>{
 		setCartContent([])
+		setShowPopupCancel(false)
 	}
 
 	const [allProducts, setAllProducts] = useState([]);
@@ -347,13 +350,21 @@ export default function Hall() {
 						</section>
 					</div>
 				</section>
-				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} cancelOrder={cancelOrder} />
+				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} openPopupCancel={() => setShowPopupCancel(true)} />
 
 				{showPopup ? (
 					<Popup
 						popupText="Selecione um item antes de adicioná-lo!"
 						onClose={() => setShowPopup(false)}
 					></Popup>
+				) : null}
+
+				{showPopupCancel ? (
+					<PopupCancel
+						popupText="Tem certeza que deseja cancelar esse pedido?"
+						closePopup={() => setShowPopupCancel(false)}
+						cancelOrder= {() => cancelAndCloseOrder()}
+					></PopupCancel>
 				) : null}
 			</main>
 		</div>
