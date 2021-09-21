@@ -121,10 +121,10 @@ const Register = () => {
 
         <Button
           buttonText='CADASTRAR'
-          className='button'
+          className='button-register'
           buttonOnClick={buttonRegister} />
-        <p onClick={goToLogin} className='go-to'>Não tem uma conta? Faça Login. </p>
-      </form>
+        <p onClick={goToLogin} className='go-of-register'>Não tem uma conta? Faça o login aqui. </p>
+    </form>
     </section>
   )
 }
