@@ -47,7 +47,7 @@ body {
   justify-content: center;
 }
 
-.cards, .login-page, .signup-page, .products-list {
+.cards, .login-page, .signup-page, .products-list, .orders-list {
   display: flex;
   flex-direction: column;
   background-color: $black;
@@ -89,7 +89,7 @@ body {
 }
 
 .login-page, .signup-page {
-  margin-top: 25%;
+  margin-top: 13%;
   width: 32em;
   height: 26em;
 }
@@ -100,6 +100,22 @@ body {
 
 .products-list{
   background-color: $light-pink;
+  margin-top: 5%;
+  display: flex;
+  width: 32em;
+  height: 26em;
+  border: $black;
+  justify-content: right;
+
+}
+
+.orders-list {
+  background-color: $light-cyan;
+  display: flex;
+  width: 25em;
+  height: 15em;
+  border: none;
+  margin-top: 10%;
 }
 
 .form-title {
@@ -224,6 +240,7 @@ body {
 }
 
 .menu-button {
+  margin-top: 5%;
   width: 9em;
   height: 2.5em;
   font-size: 1em;
@@ -231,35 +248,47 @@ body {
   color: $light-blue;
   border-radius: 0.5em;
   font-weight: bolder;
-  border: none;
   background: $dark-cyan;
   box-sizing: border-box;
   margin-bottom: 1em;
   box-shadow: inset 0 0 0 2px $dark-cyan;
-  position: relative;
-  vertical-align: middle;
+  border: none;
 }
 
 .menu-labels {
+  margin-top: 10%;
   color: $light-blue;
-  align-self: start;
-  margin-left: 2.6em;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+.products-labels, .value-labels {
+  color: $black;
   font-size: 1.2em;
   font-weight: bolder;
 }
 
+.big-container{
+  display: flex;
+  grid-auto-rows: minmax(100px, auto);
+  justify-content: space-between;
+  grid-gap: 30px; 
+  align-items: left;
+
+}
 .menu-input, .menu-select {
-  width: 28em;
   height: 3em;
   margin: 0.30em;
   background: $light-cyan;
   border-color:#1B1A15;
-  border-radius: 0.25em;
+  border-radius: 1.25em;
   display: flex;
-  align-content: center;
   justify-content: center;
   text-align: center;
   color: $black;
   font-size: 0.94em;
   font-weight: bolder;
+}
+.menu-title {
+  color: $light-blue;
+  margin-top: 10%;
 }
