@@ -357,6 +357,16 @@ nav {
     margin-top: 4%;
   }
   
+  .new-order-filter{
+    padding: 1%;
+    background-color: $light-brown-box;
+    font-family: $berg-font;
+    color: $even-darker-brown-txt;
+    font-size: 200%;
+    border-radius: 10px;
+  }
+
+
 @media (min-width: 1024px) and (max-height: 768px),
 (min-width: 1366px) and (max-height: 1024px){
 

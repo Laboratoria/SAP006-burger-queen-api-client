@@ -136,6 +136,9 @@ export const Button = ({productId, ButtonTitle, ButtonId, Role, Conditional, But
     'new-order-sucess-modal':{
       'ButtonClass':'new-order-modal'
     },
+    'new-order-filter':{
+      'ButtonClass':'new-order-filter'
+    }
   }
   
   return (

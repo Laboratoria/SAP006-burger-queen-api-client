@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Button } from '../../../components/Button/Button';
 import { NewOrderModal } from '../../../components/Modal/Modal';
 
+import { sendOrderToKitchen } from '../../../services/orders';
 
 import './NewOrder.scss';
 
@@ -11,15 +12,25 @@ export const NewOrder = () => {
 
   const token = localStorage.getItem('currentEmployeeToken');
   const [table, setTable] = useState('');
-  const [customer, setCustomerName] = useState('');;
+  const [customer, setCustomerName] = useState('');
+  const [menu, setMenu] = useState(JSON.parse(localStorage.getItem('menu')))
+  const [filteredMenu, setFilteredMenu] = useState([]);
+
+  const [showAllProducts, setShowAllProducts] = useState(true);
+ 
+
   const [orderedProducts, setOrderedProducts] = useState([]);
   const [sucessModal, setSucessModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const [emptyTableModal, setEmptyTableModal] = useState(false);
   const [emptyCustomerModal, setEmptyCustomerModal] = useState(false);
   const [emptyOrderModal, setEmptyOrderModal] = useState(false);
-  const menu = JSON.parse(localStorage.getItem('menu'))
   menu.map((product) => product.id = product.id.toString())
+
+  const filterMenuButtons = ([productProp], value) => {
+    const filteredMenu = menu.filter((product) => product[productProp] === value)
+    return filteredMenu
+  }
 
   const productTotals = [];
   const orderedProductsQuantity = orderedProducts.reduce((acc, curr) => (acc[curr] = (acc[curr] || 0) + 1, acc), {});
@@ -40,7 +51,7 @@ export const NewOrder = () => {
   }
 
   const orderResume = orderedProductsData.map(product => ({ id: product.id, qtd:product.qtd.toString()}));
-  
+  const orderInformation = { token, customer, table, orderResume}
 
   const checkCustomerData = () => {
     if(customer.length <2){
@@ -57,35 +68,20 @@ export const NewOrder = () => {
     }
   }
 
-  const sendOrderToKitchen = () => { 
-    const apiToSendKitchenOrders = 'https://lab-api-bq.herokuapp.com/orders';
+  const sendOrder = () =>{
     const checkDataResult = checkCustomerData()
-      if (checkDataResult !== 'Error') {
-      const result = fetch (apiToSendKitchenOrders, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          accept: 'application/json',
-          Authorization:`${token}`
-        },
-        body: JSON.stringify({
-          client:customer,
-          table:table,
-          products:orderResume,
-        })
-      }).then((response) => {
-        return response.json()
-      }).then((responseJson) => {
+    if (checkDataResult !== 'Error') {
+      sendOrderToKitchen({orderInformation})
+      .then((responseJson) => {
         if(responseJson !== undefined) {
           setSucessModal(true)
         } else {
           throw new Error (responseJson.message)
         }
       }).catch(() => setErrorModal(true))
-      return result
     }
   }
-
+   
   return (
     <div>
       <main>
@@ -108,7 +104,7 @@ export const NewOrder = () => {
             </div>
             <div className='new-order-full-list'>
               {orderedProductsData.map((product) => 
-                <div className='new-order-products-list-content'>
+                <div className='new-order-products-list-content' key={product.id}>
                   <p className='new-order-product-list-name'>{product.name}</p>
                   <div className='new-order-quantity-div'>
                     <Button Role='new-order-modify-quantity-plus' ButtonOnClick={ () => setOrderedProducts(orderedProducts => [...orderedProducts, product.id])}/>
@@ -125,9 +121,57 @@ export const NewOrder = () => {
                 <h1>R$ {bill}</h1>
             </div>
           </div>
-          <Button Role='new-order-save-order' children='Enviar para cozinha' ButtonOnClick={()=> sendOrderToKitchen()}/>
+          <Button Role='new-order-save-order' children='Enviar para cozinha' ButtonOnClick={()=> sendOrder()}/>
+          <div className='new-order-filter-buttons-div'>
+            <Button 
+              Role='new-order-filter' 
+              children='Alles' 
+              ButtonOnClick={() => setShowAllProducts(true)}
+            />
+            <Button 
+              Role='new-order-filter' 
+              children='Snacks'
+              ButtonOnClick={() => [
+                setShowAllProducts(false), 
+                setFilteredMenu(filterMenuButtons(['sub_type'], 'snacks')), 
+              ]}
+            />
+            <Button 
+              Role='new-order-filter' 
+              children='Burgers' 
+              ButtonOnClick={() => [
+                setShowAllProducts(false), 
+                setFilteredMenu(filterMenuButtons(['sub_type'], 'hamburguer')), 
+              ]}
+            />
+            <Button 
+              Role='new-order-filter' 
+              children='Drinken'
+              ButtonOnClick={() => [
+                setShowAllProducts(false), 
+                setFilteredMenu(filterMenuButtons(['sub_type'], 'drinks')), 
+              ]}
+            />
+            <Button 
+              Role='new-order-filter'  
+              children='Morgen' 
+              ButtonOnClick={() => [
+                setShowAllProducts(false), 
+                setFilteredMenu(filterMenuButtons(['type'], 'breakfast')), 
+              ]}
+            />
+            <Button 
+              Role='new-order-filter'  
+              children='Dag' 
+              ButtonOnClick={() => [
+                setShowAllProducts(false), 
+                setFilteredMenu(filterMenuButtons(['type'], 'all-day')), 
+              ]}
+            />
+          </div>
           <div className='new-order-product-buttons-div'>
-          {menu.map((product) => 
+          {showAllProducts ?
+            menu.map((product) => 
               <Button 
                 key={product.id}
                 ButtonId={product.id}
@@ -135,7 +179,16 @@ export const NewOrder = () => {
                 ButtonTitle={product.title}
                 ButtonOnClick={(event)=> [setOrderedProducts(orderedProducts => [...orderedProducts, event.target.id])]}
               />
-            )}
+            ) 
+          :filteredMenu.map((product) => 
+            <Button 
+              key={product.id}
+              ButtonId={product.id}
+              Role='new-order-product-button' 
+              ButtonTitle={product.title}
+              ButtonOnClick={(event)=> [setOrderedProducts(orderedProducts => [...orderedProducts, event.target.id])]}
+            /> 
+          )}
           </div>
         </section> 
       </main>

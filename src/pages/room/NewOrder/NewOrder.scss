@@ -119,7 +119,18 @@ margin-bottom: -2%;
   justify-content: center;
 }
 
+.new-order-additional{
+  height: 4vh;
+  width: 4vh;
+}
 
+.new-order-filter-buttons-div{
+  margin-top: 4%;
+  margin-bottom: -2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
 @media (max-width: 768px) and (max-height: 1024px) {
 

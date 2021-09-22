@@ -47,4 +47,15 @@ export const titleCorrespondance = (data) => {
   data[19].name = 'Hambúrguer Duplo Bovino + Queijo'
   data[20].name = 'Hambúrguer Duplo de Frango + Queijo'
   data[21].name = 'Hambúrguer Duplo Vegetariano + Queijo'
+
+  data[0].sub_type = 'drinks'
+  data[1].sub_type = 'drinks'
+  data[2].sub_type = 'snacks'
+  data[3].sub_type = 'drinks'
+  data[22].sub_type = 'snacks'
+  data[23].sub_type = 'snacks'
+  data[24].sub_type = 'drinks'
+  data[25].sub_type = 'drinks'
+  data[26].sub_type = 'drinks'
+  data[27].sub_type = 'drinks'
 }
