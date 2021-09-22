@@ -18,8 +18,8 @@ export default function Popup({
 	};
 
 	return (
-		<div id={id} className="popup-overlay-cancel" onClick={handleOutsideClick}>
-			<div className="popup-open-cancel">
+		<div id={id} className="popup-overlay" onClick={handleOutsideClick}>
+			<div className="popup-open">
 				{children}
 
 				<p>{popupText}</p>

@@ -24,8 +24,8 @@ export default function ListAllOrders() {
 				const sortById = data.sort((itemA, itemB) => itemB.id - itemA.id);
 				setAllOrders(sortById);
 			});
-	}, []);
-	// console.log(allOrders);
+	}, []);	
+	{console.log(allOrders)}
 
 	return (
 		<section className="container-cards-order">
@@ -40,18 +40,40 @@ export default function ListAllOrders() {
 
 							<div>
 								<p className="title-card-order">
-									Nº do Pedido: <span className="text-card-order">{order.id}</span>
+									Nº do Pedido:
+									<span className="text-card-order">{order.id}</span>
 								</p>
 								<p className="title-card-order">
-									Cliente: <span className="text-card-order">{order.client_name}</span>
+									Cliente: 
+									<span className="text-card-order">{order.client_name}</span>
 								</p>
 								<p className="title-card-order">
-									Horário do Pedido: <span className="text-card-order">{order.createdAt}</span>
+									Horário do Pedido:
+									<span className="text-card-order">{order.createdAt}</span>
 								</p>
 								<p className="title-card-order">
-									Status: <span className="text-card-order">{order.status}</span>
+									Status:
+									<span className="text-card-order">{order.status}</span>
 								</p>
 							</div>
+							{order.Products.map((products) => (
+								<div key={products.id}>
+									<p className="title-card-order">
+										Item:
+										<span className="text-card-order">{products.name}</span>
+									</p>
+									<p className="title-card-order">
+										Qtd:
+										<span className="text-card-order">{products.qtd}</span>
+									</p>
+									<p className="title-card-order">
+										<span className="text-card-order"> {products.flavor !== null ? `Sabor: ${products.flavor}` : '' }</span>
+									</p>
+									<p className="title-card-order">
+										<span className="text-card-order">{products.complement !== null ? `Complemento: ${products.flavor}` : '' }</span>
+									</p>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>
