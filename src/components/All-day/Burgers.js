@@ -18,7 +18,7 @@ chooseBurger, chooseFlavor, chooseComplement, complementChecked
 				<ProductArea
 					inputId="simples"
 					inputName="burger"
-					inputValue="simples"
+					inputValue="Hambúrguer simples"
 					productImg={simples}
 					productImgAlt="simple burger"
 					productName="Simples"
@@ -29,7 +29,7 @@ chooseBurger, chooseFlavor, chooseComplement, complementChecked
 				<ProductArea
 					inputId="duplo"
 					inputName="burger"
-					inputValue="duplo"
+					inputValue="Hambúrguer duplo"
 					productImg={duplo}
 					productImgAlt="double burger"
 					productName="Duplo"

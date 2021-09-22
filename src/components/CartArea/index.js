@@ -7,7 +7,7 @@ import ButtonDefault from '../ButtonDefault';
 import CartItem from '../CartItem';
 
 export default function CartArea({
-content, plus, minus, openPopupCancel,
+content, plus, minus, openPopupCancel, sendOrder
 }) {
 
 const arrayPrices = content.map(product=>{
@@ -64,6 +64,7 @@ const totalPrice = arrayPrices.reduce((total, price) => total+price , 0)
 
 					<ButtonDefault
 						className="btn cart btn-cart-confirm btn-default margin-right-1 uppercase"
+						onClick={sendOrder}
 					>
 						Confirmar
 					</ButtonDefault>

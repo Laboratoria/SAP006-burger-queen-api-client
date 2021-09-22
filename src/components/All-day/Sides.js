@@ -13,7 +13,7 @@ export default function Sides({onClick}) {
 				<ProductArea
 					inputId="batata-frita"
 					inputName="all-day"
-					inputValue="Batata Frita"
+					inputValue="Batata frita"
 					productImg={fries}
 					productImgAlt="fries"
 					productName="Batata Frita"
@@ -24,8 +24,7 @@ export default function Sides({onClick}) {
 				<ProductArea
 					inputId="aneis-cebola"
 					inputName="all-day"
-					inputValue="Anéis de Cebola"
-					// inputOnChange={}
+					inputValue="Anéis de cebola"
 					productImg={onions}
 					productImgAlt="onion rings"
 					productName="Anéis de cebola"

@@ -1,5 +1,7 @@
 /* eslint-disable radix */
 /* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-key */ 
+
 import React from 'react';
 import './cartItem.scss';
 
@@ -47,9 +49,9 @@ export default function CartItem({
       </div>
 
       <div className="button-container">
-        <button className="cart-qty-plus" type="button" name={name} onClick={minus}>-</button>
+        <button className="cart-qty-plus" type="button" name={name} flavor={flavor} complement={complement} onClick={minus}>-</button>
         <input type="text" name="qty" min="0" className="qty form-control" value={qty} readOnly/>
-        <button className="cart-qty-minus" type="button" name={name} onClick={plus}>+</button>
+        <button className="cart-qty-minus" type="button" name={name} flavor={flavor} complement={complement} onClick={plus}>+</button>
       </div>
 
       <div className="price">

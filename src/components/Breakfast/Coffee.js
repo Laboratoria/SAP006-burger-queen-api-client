@@ -13,7 +13,7 @@ export default function Coffee({onClick}) {
                 <ProductArea
                     inputId="cafe-americano"
                     inputName="breakfast"
-                    inputValue="Café Americano"
+                    inputValue="Café americano"
                     productImg={americano}
                     productImgAlt="black coffee"
                     productName="Café Americano"
@@ -24,7 +24,7 @@ export default function Coffee({onClick}) {
                 <ProductArea
                     inputId="cafe-leite"
                     inputName="breakfast"
-                    inputValue="Café com Leite"
+                    inputValue="Café com leite"
                     productImg={leite}
                     productImgAlt="coffee with milk"
                     productName="Café com Leite"
