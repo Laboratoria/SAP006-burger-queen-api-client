@@ -76,4 +76,25 @@ export const MenuModal = ({Role, ModalTitle, ModalContent, ButtonOnClick}) => {
       </div>
     </section>
   )
-  }
+}
+
+export const NewOrderModal = ({Role, ModalContent, ButtonOnClick, children, childrenSecondButton, ButtonOnClickSecondOption}) => {
+  return (
+    <section className='modal-background'>
+      <div className='modal-container'>
+        <p className='new-order-modal-content'> {ModalContent} </p>
+        <Button 
+          Role={Role}
+          children={children}
+          ButtonOnClick={ButtonOnClick}
+        />
+        { Role === 'new-order-sucess-modal' ?
+         <Button 
+         Role={Role}
+         children={childrenSecondButton}
+         ButtonOnClick={ButtonOnClickSecondOption}
+       /> : null}
+      </div>
+    </section>
+  )
+}

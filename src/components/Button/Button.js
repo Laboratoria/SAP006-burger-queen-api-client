@@ -130,6 +130,12 @@ export const Button = ({productId, ButtonTitle, ButtonId, Role, Conditional, But
     'new-order-modify-quantity-plus':{
       'ButtonClass':'new-order-modify-quantity new-order-modify-quantity-plus'
     },
+    'new-order-modal':{
+      'ButtonClass':'new-order-modal'
+    },
+    'new-order-sucess-modal':{
+      'ButtonClass':'new-order-modal'
+    },
   }
   
   return (

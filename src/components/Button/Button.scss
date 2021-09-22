@@ -104,10 +104,6 @@ nav {
   }
 }
 
-
-
-
-
 .menu-filter {
   font-family: 'Norwester', arial;
   font-size: 250%;
@@ -347,6 +343,18 @@ nav {
       background-image: url('../../assets/icons/new-order-plus.png');
     }
     
+  }
+
+  .new-order-modal{
+    padding: 2%;
+    font-size: 100%;
+    border-radius: 5px;
+    box-shadow: 4px 5px 15px 5px rgba(0,0,0,0.1);
+    border:$even-darker-brown-txt solid 1pt;
+    background-color: $light-brown-box;
+    color:$even-darker-brown-txt;
+    font-weight: 500;
+    margin-top: 4%;
   }
   
 @media (min-width: 1024px) and (max-height: 768px),
