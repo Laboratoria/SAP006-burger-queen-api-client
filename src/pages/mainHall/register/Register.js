@@ -17,27 +17,43 @@ export default function Registration() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [password2, setPassword2] = useState('');
-    const [role, setRole] = useState('');
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
     // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
+    const [role, setRole] = useState('');
     
     const history = useHistory();
 
-// evento de clique
+// evento de clique de cadastro
     async function handleClick (e) {
-        try {e.preventDefault()
-        const user = {name, email, password, role}
-        const response = await RegisterUser(user)
-            console.log(response.json())
-            if (response) {
-                localStorage.setItem('arroz', response)
-                history.push('/')
-            }} catch{console.log('cagou')}
+        try {
+            e.preventDefault()
+            const user = {name, email, password, role}
+            const response = await RegisterUser(user)
+            const returnJson = await response.json()
+            const token = returnJson.token
+
+            if (token) {
+                localStorage.setItem('arroz', token)
+                const role = returnJson.role
+                if(role === 'salon') {
+                    history.push('/mesas')
+                } else {
+                    alert('Será direcionado para sua ár')
+                }                  
+            } 
+        } catch (error) {
+            console.log('cagou')
+        }
     }
 
-// seleciona o role - se cozinha ou salão - pega name e salva no role do servidor
+
+      const btnBack = () => {
+      localStorage.clear()
+      history.push('/')
+      }
+
+    // seleciona o role - se cozinha ou salão - pega value e salva no role do servidor
     function handleRoleChange (e) {
         e.preventDefault()
         if(e.target.checked){
@@ -78,24 +94,16 @@ export default function Registration() {
                     placeholder='Digite a sua senha'
                 />
 
-                <Input 
-                    type='password' 
-                    name='password2'
-                    value={password2}
-                    onChange={(event) => setPassword2(event.target.value)}
-                    placeholder='Repita sua senha'
-                />
-
                 <div className='container-checkbox'>
                     <Input 
-                        type='checkbox' 
+                        type='radio' 
                         name='salon' 
                         onChange={(event) => handleRoleChange(event)}
                     />
                     <img src={garcom} alt="waiter" className="waiter-icon"/>
 
                     <Input 
-                        type='checkbox' 
+                        type='radio' 
                         name='kitchen' 
                         onChange={(event) => handleRoleChange(event)}
                     />
@@ -106,8 +114,12 @@ export default function Registration() {
                     label="Cadastrar" 
                     type="submit"
                     onClick={handleClick} 
-                />
-                
+                /> 
+                <Button 
+                    label="Voltar" 
+                    type="submit"
+                    onClick={btnBack} 
+                /> 
             </form>
 
         <Footer />    

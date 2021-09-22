@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import exit from '../../img/exit.png'
-import './Buttons.css';
+import exit from '../../../img/exit.png'
+import './ButtonLogout.css';
 
-export default function ButtonLogout( {className} ) {
+export default function ButtonLogout() {
     const history = useHistory()
   
       const logout = () => {
@@ -12,8 +12,8 @@ export default function ButtonLogout( {className} ) {
       }
   
       return (
-              <button onClick={logout} className={className}>
-                  <img src={exit} alt="logout" />
+              <button onClick={logout} className="btn-logout">
+                  <img className="logout" src={exit} alt="logout" />
               </button>
       )
   };

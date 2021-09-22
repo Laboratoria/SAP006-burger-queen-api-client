@@ -1,6 +1,5 @@
 
 export const LoginWithEmail = (users) => {
-    console.log('entrou aqui')
     return fetch('https://lab-api-bq.herokuapp.com/auth', {
         method:'POST',
         headers: {
@@ -33,19 +32,14 @@ export const RegisterUser = (users) => {
             'restaurant': 'retro burger',
         }),
     })
-        // .then ((response) => response.json())
-        // .then ((json) => {
-        //     const { token } = json;
-        //     return token
-        // })
 };
 
 
-export const RegisterSuccess = () => {
-    return (
-        alert('Sua conta foi criada com sucesso!')
-    )
-}
+// export const RegisterSuccess = () => {
+//     return (
+//         alert('Sua conta foi criada com sucesso!')
+//     )
+// }
 
 
 

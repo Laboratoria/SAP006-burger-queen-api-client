@@ -5,7 +5,8 @@ export default function Button({ label, onClick }) {
     return(
         <button 
             className="buttons"
-            onClick={onClick}>{ label }</button>
+            onClick={onClick}>{ label }
+        </button>
     )
 };
 
