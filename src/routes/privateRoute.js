@@ -1,9 +1,8 @@
 import React from "react";
 import { Route , Redirect } from "react-router";
-import { isLogged} from '../src/services/auth';
+import { hasStorageKey } from '../services/storage';
 
-
-const PrivateRoute = props => isLogged()
+const PrivateRoute = props => hasStorageKey()
     ? <Route {...props}/>
     : <Redirect to="./"/>
 

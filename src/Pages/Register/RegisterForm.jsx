@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
-import { Link } from 'react-router-dom';
-import { RegisterUser } from '../../services/auth';
+import { registerUser } from '../../services/auth';
 import validation from '../../services/errors';
+import { getRouteByRole } from '../../routes/redirections';
+
 import Button from '../../components/Button/Button';
-import Input from '../../components/Input/Input.jsx'
+import { Input }  from '../../components/Input/Input.jsx'
+
 import register from '../../Assets/register.png';
+import { SignUpBox, Image, TitleRegister, Form, InputRadioBox, LabelRadioInput,ErrorsMessage, PhraseRegister } from './style';
 
 const Register = () => {
     const [values, setValues] = useState({
@@ -17,6 +21,7 @@ const Register = () => {
     });
 
     const [errors, setErrors] = useState({});
+    const history = useHistory();
 
     const handleChange = (event) => {
         setValues({
@@ -29,9 +34,10 @@ const Register = () => {
         e.preventDefault();
         setErrors(validation(values));
 
-        RegisterUser(values)
+        registerUser(values)
             .then((json) => {
-                console.log(json);
+                const route = getRouteByRole(json.role);
+                history.push(route);
             })
             .catch((error) => {
                 console.log(error);
@@ -39,10 +45,10 @@ const Register = () => {
     };
     
     return (
-        <div className='div-style'>
-            <img src={register} alt='icon-register' />
-            <p>Crie sua conta</p>
-            <form>
+        <SignUpBox>
+            <Image src={register} alt='icon-register' />
+            <TitleRegister>Crie sua conta</TitleRegister>
+            <Form>
                 <Input 
                     type='text' 
                     id='name'
@@ -60,7 +66,7 @@ const Register = () => {
                     onChange={handleChange}
                     placeholder='e-mail'
                     errormessage='Por favor, insira um e-mail válido.' />
-                {errors.email && <p className='error'>{errors.email}</p>}
+                {errors.email && <ErrorsMessage className='error'>{errors.email}</ErrorsMessage>}
                 <Input 
                     type='password' 
                     id='password' 
@@ -69,7 +75,7 @@ const Register = () => {
                     onChange={handleChange}
                     placeholder='senha'
                     errormessage='Por favor, insira uma senha válida.' />
-                {errors.password && <p className='error'>{errors.password}</p>}
+                {errors.password && <ErrorsMessage className='error'>{errors.password}</ErrorsMessage>}
                 <Input 
                     type='password'
                     id='confirm-password' 
@@ -78,116 +84,44 @@ const Register = () => {
                     onChange={handleChange}
                     placeholder='confirmar senha'
                     errormessage='As senhas não conferem.' />
-                {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
-                <label><Input 
-                    type='radio'
-                    name='role'
-                    className='input-radio'
-                    onChange={handleChange}
-                    value='Salão'
-                    labeltext='Salão' />
-                    Salão
-                </label>
-                {errors.role && <p className='error'>{errors.role}</p>}
-                <label>
-                    <Input 
-                    type='radio' 
-                    name='role'
-                    className='input-radio'
-                    onChange={handleChange}
-                    value='cozinha'
-                    labeltext='Cozinha' />
-                    Cozinha
-                </label>
-                {errors.role && <p className='error'>{errors.role}</p>}
-                <Button type='submit' variant='enter-app' onClick={handleFormSubmit}>
-                    <Link to='/'>ENTRAR</Link>
-                </Button>
-                <p>Já trabalha no Vixi?
-                    <Link to='/'>Faça seu login aqui!</Link>
-                </p>
-            </form>
-        </div>
+                {errors.confirmPassword && <ErrorsMessage className='error'>{errors.confirmPassword}</ErrorsMessage>}
+                </Form>
+                <InputRadioBox>
+                    <LabelRadioInput><Input
+                        variant='true'
+                        type='radio'
+                        name='role'
+                        className='input-radio'
+                        onChange={handleChange}
+                        value='Salão'
+                        labelText='Salão' />
+                        Salão
+                    </LabelRadioInput>
+                    <LabelRadioInput>
+                        <Input
+                        variant='true'
+                        type='radio' 
+                        name='role'
+                        className='input-radio'
+                        onChange={handleChange}
+                        value='cozinha'
+                        labelText='Cozinha' />
+                        Cozinha
+                    </LabelRadioInput>
+                    {errors.role && <ErrorsMessage className='error'>{errors.role}</ErrorsMessage>}
+                </InputRadioBox>
+            <Button secondary onClick={handleFormSubmit}>
+                Registrar
+            </Button>
+            <PhraseRegister>Já possui uma conta?<br/> 
+                <Link to='/'>Faça seu login aqui</Link>
+            </PhraseRegister>
+        </SignUpBox>
     )
 }
 
 export default Register;
 
-// const Register = () => {
-    
-//     return (
-//         <div className='div-style'>
-//              <img src={register} alt='icon-register' />
-//             <p>Crie sua conta</p>
-//             <Input 
-//                 type='text' 
-//                 id='name'
-//                 name='username'
-//                 values={values.username}
-//                 onChange={handleChange}
-//                 placeholder='full name' 
-//                 errormessage='Please, enter a valid name.' />
-//             {errors.username && <p className='error'>{errors.username}</p>}
-//             <Input 
-//                 type='email' 
-//                 id='email' 
-//                 name='email'
-//                 values={values.email}
-//                 onChange={handleChange}
-//                 placeholder='e-mail'
-//                 errormessage='Please, enter a valid email address.' />
-//             {errors.email && <p className='error'>{errors.email}</p>}
-//             <Input 
-//                 type='password' 
-//                 id='password' 
-//                 name='password'
-//                 value={values.password}
-//                 onChange={handleChange}
-//                 placeholder='senha'
-//                 errormessage='Please, enter a valid password.' />
-//             {errors.password && <p className='error'>{errors.password}</p>}
-//             <Input 
-//                 type='password'
-//                 id='confirm-password' 
-//                 name='confirmPassword'
-//                 value={values.confirmPassword}
-//                 onChange={handleChange}
-//                 placeholder='confirmar senha'
-//                 errormessage='The passwords do not match.' />
-//             {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
-//             <form >
-//                 <label><Input 
-//                     type='radio'
-//                     name='role'
-//                     className='input-radio'
-//                     // onChange={handleChange}
-//                     value={values.role}
-//                     labeltext='Hall' />
-//                     Hall
-//                 </label>
-//                 {errors.role && <p className='error'>{errors.role}</p>}
-//                 <label>
-//                     <Input 
-//                     type='radio' 
-//                     name='role'
-//                     className='input-radio'
-//                     // onChange={handleChange}
-//                     value={values.role}
-//                     labeltext='Kitchen' />
-//                     Kitchen
-//                 </label>
-//                 {errors.role && <p className='error'>{errors.role}</p>}
-//             </form>
-//             <Button variant='enter-app' onClick={handleFormSubmit}>
-//                 <Link to='/'>Register</Link>
-//             </Button>
-//             {}
-//             <p>Already have an account?
-//                 <Link to='/'>Login here!</Link>
-//             </p>
-//         </div>
-//     )
-// }
 
 
 

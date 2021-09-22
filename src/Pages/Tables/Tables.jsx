@@ -4,14 +4,14 @@ import MealNavBar from '../../components/Header/NavBar';
 import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
 import GeneralButton from '../../components/Button/style';
 import { useHistory } from "react-router-dom";
-import { Logout } from "../../services/auth";
+import { removeStorageKey } from '../../services/storage';
 
 const Tables = () => {
 
     const history = useHistory();
 
     const handleLogout = () => {
-        Logout()
+        removeStorageKey();
         history.push('./')
     }
 

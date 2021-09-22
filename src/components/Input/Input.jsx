@@ -1,11 +1,13 @@
 import React from 'react';
 import GeneralInput from './style'
 
-const Input = ({id, ...props}) => {
+const Input = ({id, variant, ...props}) => {
+
+    const classes = `input ${variant}`;
 
     return (
-        <GeneralInput id={id} {...props} />
+        <GeneralInput id={id} variant className={classes} {...props} />
     )
 }
 
-export default Input;
+export { Input };

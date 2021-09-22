@@ -1,48 +1,47 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import {Image, LoginBox, Title , Form, PhraseRegister } from './style';
+
+import { loginWithEmail } from '../../services/auth';
+import { getRouteByRole } from '../../routes/redirections'
 
 import Button from '../../components/Button/Button';
-import Input from '../../components/Input/Input.jsx'
-import { LoginWithEmail } from '../../services/auth';
-import login from '../../Assets/login.png';
-import { Login as LoginAuth } from '../../services/auth'
+import { Input } from '../../components/Input/Input';
 
-const Login = () => {
+import {Image, LoginBox, Title, Form, PhraseLogin } from './style';
+import login from '../../Assets/login.png';
+
+const Login = ({Login}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
 
-    function AuthUserLogin() {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        return Login();
+    }
+
+    function authUserLogin() {
         const user = {
             email,
-            password
+            password,
         }
 
-        LoginWithEmail(user)
-            .then((token) => {
-                if(token) {
-                    LoginAuth('Vixi', token)
-                history.push('/tables')
-                } 
-                else {
-                    alert('deu errado o token')
-                }
-            })
-            .catch(() => {
-                alert('tente novamente')
-            })
+        loginWithEmail(user)
+        .then((json) => {
+            const route = getRouteByRole(json.role);
+            history.push(route);      
+        })
     }
 
     return (
             <LoginBox>
                 <Image src={login} alt='icon-login' />
                 <Title>login</Title>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Input
                         type='email' 
                         id='email' 
-                        placeholder='e-mail'
+                        placeholder='email'
                         value={email}
                         errormessage='Por favor, insira um e-mail válido.'
                         onChange={(event) => setEmail(event.target.value)}
@@ -56,13 +55,12 @@ const Login = () => {
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </Form>
-
-                <Button variant='enter-app' onClick={AuthUserLogin}>
+                <Button primary onClick={authUserLogin}>
                     Login
                 </Button>
-                <PhraseRegister>Is your first day at Vixi?
-                    <Link to='/register'>Sign in here!</Link>
-                </PhraseRegister>
+                <PhraseLogin>É o seu primeiro dia no Vixi? <br />
+                    <Link to='/register'>Crie sua conta aqui!</Link>
+                </PhraseLogin>
             </LoginBox>
     )
 }
