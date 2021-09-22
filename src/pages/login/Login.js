@@ -38,8 +38,11 @@ const Login = () => {
 				.then((response) => {
 					response.json()
 						.then((json) => {
+							const userToken = json.token;
+							
+							localStorage.setItem('userToken', userToken)
+							
 							if (json.id) {
-								console.log(json.id)
 								history.push('/Hall')
 							} else {
 								console.log('nao rodou')

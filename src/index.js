@@ -4,7 +4,7 @@ import './index.css';
 
 import Login from './pages/login/Login';
 import Register from './pages/Register/Register';
-import Hall from './pages/Hall';
+import Hall from './pages/Hall/Hall';
 
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -24,7 +24,4 @@ ReactDOM.render (
 document.getElementById('root')
 );
 
-/*import Kitchen from './pages/Kitchen.js';
-import OrderReady from './pages/OrderReady.js';
-import OrderFinished from './pages/OrdersFinished.js';
-*/
+
