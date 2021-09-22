@@ -45,7 +45,11 @@ export default function ListAllOrders() {
 								Cliente: <span>{order.client_name}</span>
 							</p>
 							<p>
-								Horário do Pedido: <span>{order.createdAt}</span>
+								Data e Hora: <span>{`${new Date(
+									order.createdAt
+								).toLocaleDateString('pt-br')} - ${new Date(
+									order.createdAt
+								).getHours()}:${new Date(order.createdAt).getMinutes()}h`}</span>
 							</p>
 							<p>
 								Status: <span>{order.status}</span>
@@ -62,9 +66,7 @@ export default function ListAllOrders() {
 								</p>
 								<p>
 									{products.flavor !== null ? 'Sabor: ' : ''}
-									<span>
-										{products.flavor !== null ? products.flavor : ''}
-									</span>
+									<span>{products.flavor !== null ? products.flavor : ''}</span>
 								</p>
 								<p>
 									{products.complement !== null ? 'Complemento: ' : ''}
