@@ -28,18 +28,35 @@
 
 	p {
 		align-self: center;
-		margin-bottom: 0.5rem;
+		margin: 1rem 0;
+		font-size: 1.3em;
 	}
 }
 
 .card-order-template {
 	margin: 1rem;
-	width: 320px;
-	left: 44px;
-	top: 579px;
-	background: var(--stroke);
-	border-radius: 10px;
-	box-shadow: 2px 5px 5px hsl(0deg 0% 0% / 30%);
+	width: 400px;
+	height: 625px;
+	background-image: url('../../img/bloco.png');
+	background-position: center;
+	background-size: 42rem;
+	padding: 2rem;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 0.2em;
+		height: 0.5em;
+		margin-right:-5px
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: rgba(255, 255, 255, 0.1);
+		border-radius: 3px;
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.2);
+		}
+	}
 }
 
 .card-order-info {
@@ -50,8 +67,11 @@
 .card-order-table {
 	display: flex;
 	justify-content: space-between;
-	font-size: 24px;
+	font-size: 1.5em;
 	margin-bottom: 1rem;
+	background-color: #d979047a;
+	padding: 0 1rem;
+	border-radius: 5px;
 }
 
 .order-products {
