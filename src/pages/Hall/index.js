@@ -21,23 +21,46 @@ import PopupCancel from '../../components/PopupCancel';
 import Header from '../../components/Header';
 
 export default function Hall() {
-	
+
+	const [allProducts, setAllProducts] = useState([]);
+
+	useEffect(() => {
+		const apiURL = 'https://lab-api-bq.herokuapp.com';
+		const apiProducts = `${apiURL}/products`;
+		const token = localStorage.getItem('token');
+
+		const getRequestOptions = {
+			method: 'GET',
+			headers: {
+				Authorization: token,
+			},
+		};
+
+		fetch(apiProducts, getRequestOptions)
+			.then((response) => response.json())
+			.then((data) => {
+				setAllProducts(data);
+			});
+	}, []);
+	console.log(allProducts);
+
+
 	const [values, setValues] = useState({
 		first: 'burgers',
 		second: 'sides',
 		third: 'drinks',
 	})
-	
+
 	const [labels, setLabels] = useState({
 		first: 'burgers',
 		second: 'adicionais',
 		third: 'bebidas',
 	})
-	
+
 	const [activation1, setActivation1] = useState(true)
 	const [activation2, setActivation2] = useState(false)
 	const [activation3, setActivation3] = useState(false)
-	
+
 	const [productSelected, setProductSelected] = useState("")
 	const chooseProduct = (e) => {
 		setProductSelected({
@@ -46,19 +69,20 @@ export default function Hall() {
 			quantity: 1,
 			flavor: null,
 			complement: null,
-			
+
 
 		})
 	}
-	
+
 	const chooseBurger = (e) => {
 		setProductSelected(prevProduct => ({
 			...prevProduct,
 
-			name: `Hambúrguer ${e.target.value}`,
+			name: e.target.value,
 			price: e.target.getAttribute('price'),
 			quantity: 1,
-			
+			complement:(prevProduct.complement?prevProduct.complement:null)
+
 		}))
 	}
 
@@ -67,48 +91,48 @@ export default function Hall() {
 			...prevProduct,
 			flavor: e.target.value,
 		}))
-		
+
 	}
-	
+
 	const chooseComplement = (e) => {
 		setProductSelected(prevProduct => ({
 			...prevProduct,
 			complement: e.target.value,
 			priceComplement: e.target.getAttribute('price'),
-			
+
 		}))
 	}
-	
-	const chooseDrink= (e) => {
+
+	const chooseDrink = (e) => {
 
 		setProductSelected(prevProduct => ({
 			...prevProduct,
-			name: `${e.target.value} ${prevProduct.size?prevProduct.size:""}`,
+			name: `${e.target.value} ${prevProduct.size ? prevProduct.size : ""}`,
 			quantity: 1,
-			
+
 		}))
 	}
-	
-	const chooseSizeDrink= (e) => {
-		
+
+	const chooseSizeDrink = (e) => {
+
 		setProductSelected(prevProduct => ({
 			...prevProduct,
-			name:`${prevProduct.name?`${prevProduct.name.split(" ")[0]} ${e.target.getAttribute('data-item')}`:""}`,
-			size:e.target.getAttribute('data-item'),
+			name: `${prevProduct.name ? `${prevProduct.name.split(" ")[0]} ${e.target.getAttribute('data-item')}` : ""}`,
+			size: e.target.getAttribute('data-item'),
 			price: e.target.getAttribute('price'),
-			flavor:null,
-			complement:null
-			
+			flavor: null,
+			complement: null
+
 		}))
 	}
-	
-	const [complementChecked,setComplementChecked] = useState()
-	
-	const [products, setProducts] = useState(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} complementChecked={complementChecked}/>)
+
+	// const [complementChecked,setComplementChecked] = useState()
+
+	const [products, setProducts] = useState(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
 
 	const [breakfastClass, setBreakfastClass] = useState("")
 	const [allDayClass, setAllDayClass] = useState("selected")
-	
+
 	const selectBreakfast = () => {
 		setProductSelected("")
 		setActivation1(true)
@@ -157,7 +181,7 @@ export default function Hall() {
 				setActivation1(true)
 				setActivation2(false)
 				setActivation3(false)
-				setProducts(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} complementChecked={complementChecked} />)
+				setProducts(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
 				break;
 			case "ADICIONAIS":
 				setActivation1(false)
@@ -170,7 +194,7 @@ export default function Hall() {
 				setActivation1(false)
 				setActivation2(false)
 				setActivation3(true)
-				setProducts(<Drinks chooseDrink={chooseDrink} chooseSizeDrink={chooseSizeDrink}/>)
+				setProducts(<Drinks chooseDrink={chooseDrink} chooseSizeDrink={chooseSizeDrink} />)
 				break
 			case "LANCHES":
 				setActivation1(true)
@@ -202,12 +226,14 @@ export default function Hall() {
 
 
 	const addProduct = () => {
-		
+
 		if (productSelected.name !== undefined && productSelected.price !== undefined && productSelected.name !== "") {
 			if (productSelected.flavor === undefined) {
 				setShowPopup(true);
 
 			} else {
+				
+
 				const newArray = [...cartContent]
 				const productInCart = newArray.find(product => product.name === productSelected.name && product.flavor === productSelected.flavor && product.complement === productSelected.complement)
 				const index = newArray.indexOf(productInCart)
@@ -215,12 +241,15 @@ export default function Hall() {
 				if (index < 0) {
 					newArray.push(productSelected)
 					setCartContent(newArray)
+
 				} else {
 					productInCart.quantity += 1
 					setCartContent(newArray)
 
+
 				}
 				// setComplementChecked(false)
+
 			}
 
 		} else {
@@ -231,16 +260,20 @@ export default function Hall() {
 
 	const addUnit = (e) => {
 		const name = e.target.getAttribute("name")
+		const flavor = e.target.getAttribute("flavor")
+		const complement = e.target.getAttribute("complement")
 		const newArray = [...cartContent]
-		const productInCart = newArray.find(product => product.name === name)
+		const productInCart = newArray.find(product => product.name === name && product.flavor === flavor && product.complement === complement)
 		productInCart.quantity += 1
 		setCartContent(newArray)
 	}
 
 	const removeUnit = (e) => {
 		const name = e.target.getAttribute("name")
+		const flavor = e.target.getAttribute("flavor")
+		const complement = e.target.getAttribute("complement")
 		const newArray = [...cartContent]
-		const productInCart = newArray.find(product => product.name === name)
+		const productInCart = newArray.find(product => product.name === name && product.flavor === flavor && product.complement === complement)
 		productInCart.quantity -= 1
 		const index = newArray.indexOf(productInCart)
 		if (productInCart.quantity < 1) {
@@ -252,32 +285,56 @@ export default function Hall() {
 
 	}
 
-	const cancelAndCloseOrder = () =>{
+	const cancelAndCloseOrder = () => {
 		setCartContent([])
 		setShowPopupCancel(false)
 	}
 
-	const [allProducts, setAllProducts] = useState([]);
+	const [client, setClient] = useState();
+	const [table, setTable] = useState();
 
-	useEffect(() => {
-		const apiURL = 'https://lab-api-bq.herokuapp.com';
-		const apiProducts = `${apiURL}/products`;
-		const token = localStorage.getItem('token');
 
-		const getRequestOptions = {
-			method: 'GET',
-			headers: {
-				Authorization: token,
-			},
-		};
+	const onChangeClient = (e) => {
+		const name = e.target.value
+		setClient(name)
+		console.log(client)
+    
+  };
 
-		fetch(apiProducts, getRequestOptions)
-			.then((response) => response.json())
-			.then((data) => {
-				setAllProducts(data);
-			});
-	}, []);
-	console.log(allProducts);
+	const onChangeTable = (e) =>{
+		console.log(e.target.value)
+		setTable(e.target.value)
+	}
+	
+
+	const sendOrder = () => {
+		const newArray = [...cartContent]
+		const orderProducts = newArray.map((productCart) => {
+			const productAPI = allProducts.find(productApi => productApi.name === productCart.name && productApi.flavor === productCart.flavor && productApi.complement === productCart.complement)
+			return{
+			id: productAPI.id,
+			qty: productCart.quantity
+			}
+		}
+		)
+		
+		const order =
+		{
+			client,
+			table,
+			products:orderProducts
+
+		}
+
+		// Enviar pra API
+
+		setCartContent([])
+		setClient('')
+		setTable('')
+
+		console.log(order)
+	}
+
 
 	return (
 		<div className="pages-container">
@@ -308,10 +365,13 @@ export default function Hall() {
 			<main>
 				<section className="order-filling">
 					<div className="client-data margin-bottom-2">
-						<InputSelect />
+						<InputSelect onChange={onChangeTable}/>
 						<Input
 							className="input-hall"
 							placeholder="Insira o nome do cliente"
+							name="client"
+							value={client}
+							onChange={onChangeClient}
 						/>
 					</div>
 					<div className="menu">
@@ -350,7 +410,7 @@ export default function Hall() {
 						</section>
 					</div>
 				</section>
-				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} openPopupCancel={() => setShowPopupCancel(true)} />
+				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} openPopupCancel={() => setShowPopupCancel(true)} sendOrder={sendOrder} />
 
 				{showPopup ? (
 					<Popup
@@ -363,7 +423,7 @@ export default function Hall() {
 					<PopupCancel
 						popupText="Tem certeza que deseja cancelar esse pedido?"
 						closePopup={() => setShowPopupCancel(false)}
-						cancelOrder= {() => cancelAndCloseOrder()}
+						cancelOrder={() => cancelAndCloseOrder()}
 					></PopupCancel>
 				) : null}
 			</main>
