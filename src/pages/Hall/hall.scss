@@ -61,6 +61,18 @@ main {
     height: 70vh;
     margin: 2rem 0;
 
+    select{
+        padding:0.3rem 0.8rem;
+        margin-right:1rem;
+        border-radius:3px;
+        background-color:var(--light-gray);
+        color:white;
+        outline:none;
+        border:1px solid var(--stroke);
+        font-size:1rem;
+      
+      }
+
     .order-filling {
         display: flex;
         flex-direction: column;
@@ -111,3 +123,6 @@ main {
         padding-bottom: 3rem;
     }
 }
+
+
+  

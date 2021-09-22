@@ -24,7 +24,8 @@ export default function ButtonRadio({
 	thirdClassName,
 	className,
 	className2,
-	name
+	name,
+
 }) {
   return (
     <div className={className2}>
@@ -35,6 +36,7 @@ export default function ButtonRadio({
 							onChange={onChange}
 							data-item={firstLabel}
 							price={firstPrice}
+					
 						
 							/>
       <label className={`${firstClassName} ${className}`} htmlFor={firstInputId}><b>{firstLabel}</b><br></br>{firstPrice}</label>
