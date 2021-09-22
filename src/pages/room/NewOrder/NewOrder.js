@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../../components/Button/Button';
 import { NewOrderModal } from '../../../components/Modal/Modal';
@@ -9,6 +10,7 @@ import './NewOrder.scss';
 
 export const NewOrder = () => {
   const history = useHistory();
+  const isLandscape = useMediaQuery({query: '(min-width: 1024px)'})
 
   const token = localStorage.getItem('currentEmployeeToken');
   const [table, setTable] = useState('');
@@ -100,16 +102,16 @@ export const NewOrder = () => {
             <div className='new-order-products-list-head'>
               <h1>Produto</h1>
               <h1>Qtd.</h1>
-              <h1>Total R$</h1>
+              <h1>R$</h1>
             </div>
             <div className='new-order-full-list'>
               {orderedProductsData.map((product) => 
                 <div className='new-order-products-list-content' key={product.id}>
                   <p className='new-order-product-list-name'>{product.name}</p>
                   <div className='new-order-quantity-div'>
-                    <Button Role='new-order-modify-quantity-plus' ButtonOnClick={ () => setOrderedProducts(orderedProducts => [...orderedProducts, product.id])}/>
-                    <p className='new-order-product-list-quantity'>{product.qtd}</p>
                     <Button Role='new-order-modify-quantity-minus' ButtonOnClick={ () => decreaseProductQuantity(product.id)}/>
+                    <p className='new-order-product-list-quantity'>{product.qtd}</p>
+                    <Button Role='new-order-modify-quantity-plus' ButtonOnClick={ () => setOrderedProducts(orderedProducts => [...orderedProducts, product.id])}/>
                   </div>
                   <p className='new-order-product-list-price'>{product.total}</p>
                   <Button Role='new-order-trash' ButtonOnClick={ () => setOrderedProducts(orderedProducts.filter(elements => elements !== product.id))}/>

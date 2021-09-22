@@ -367,6 +367,13 @@ nav {
   }
 
 
+  @media (min-width: 1024px) and (max-height: 1366px){
+    .new-order-filter{
+      padding: 1% 2.5%;
+    }
+  }
+
+
 @media (min-width: 1024px) and (max-height: 768px),
 (min-width: 1366px) and (max-height: 1024px){
 
@@ -401,5 +408,57 @@ nav {
       background-size:20vh;
     }
   }
+
+  .room-new-order, .new-order-save-order{
+    font-size: 250%;
+    padding:1%;
+    width:50%;
+  }
+
+ .new-order-save-order{
+    width:60%;
+  }
   
+  .new-order-filter{
+    margin-right: 3%;
+    height: 7vh;
+    font-size: 200%;
+  }
+
+  .new-order-product-button{
+    height: 19vh;
+    width: 19vh;
+    background-size:19vh;
 }
+
+.new-order-section{
+  .new-order-trash, .new-order-modify-quantity{
+    width: 3vh;
+    height: 3vh;
+    background-size:3vh;
+  }
+}
+
+  .new-order-save-order{
+    position: absolute;  
+  }
+}
+
+
+@media (min-width: 1366px) and (max-height: 1024px){
+  .new-order-save-order{
+    width: 30%;
+    left:11%;
+    bottom: 6%;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 768px) {
+  .new-order-save-order{
+    width: 50%;
+    left: 8%;
+    bottom:6%
+  }
+}
+
+
