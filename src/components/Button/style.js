@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PropTypes from 'prop-types';
 
 const GeneralButton = styled.button`
-    background-color:${ props => props.secondary ? 'white': 'rgb(163, 210, 206)'};    
+    background-color:${props => props.secondary ? 'white': 'rgb(163, 210, 206)'};    
     width: ${ props => props.secondary ? '150px': '252px'};
     height: 42px;
     font-size: ${(props) => props.primary ? '1.3em' : '1em'};
