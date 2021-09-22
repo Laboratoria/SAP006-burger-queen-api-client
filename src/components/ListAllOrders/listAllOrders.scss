@@ -10,7 +10,7 @@
 	--stroke: #464242;
 }
 
-.container-cards-order {
+.cards-orders-container {
 	display: flex;
 	flex-wrap: wrap;
     flex-direction: row;
@@ -19,9 +19,20 @@
 	margin-bottom: 40px;
 	align-items: baseline;
 	border-top: 1px solid var(--stroke);
+	font-weight: bold;
+	color: var(--black);
+
+	span {
+		font-weight: lighter;
+	}
+
+	p {
+		align-self: center;
+		margin-bottom: 0.5rem;
+	}
 }
 
-.card-template-order {
+.card-order-template {
 	margin: 1rem;
 	width: 320px;
 	left: 44px;
@@ -31,32 +42,20 @@
 	box-shadow: 2px 5px 5px hsl(0deg 0% 0% / 30%);
 }
 
-.card-container-text-order {
+.card-order-info {
 	padding: 20px;
 	line-height: 20px;
 }
 
-.card-table-info-order {
+.card-order-table {
 	display: flex;
 	justify-content: space-between;
-}
-
-.title-card-order {
-	margin: 0%;
-	font-weight: 500;
-	font-size: 16px;
-	color: var(--black);
-}
-
-.title-number-card-order {
-	font-weight: 500;
 	font-size: 24px;
-	color: var(--black);
+	margin-bottom: 1rem;
 }
 
-.text-card-order {
-	margin: 0;
-	padding: 0;
-	font-weight: 300;
-	font-size: 16px;
+.order-products {
+	padding-top: 0.5rem;
+	border-top: 1px solid var(--dark-gray);
 }
+

@@ -25,56 +25,55 @@ export default function ListAllOrders() {
 				setAllOrders(sortById);
 			});
 	}, []);	
-	{console.log(allOrders)}
+	console.log(allOrders)
 
 	return (
-		<section className="container-cards-order">
+		<section className="cards-orders-container">
 			{allOrders.map((order) => (
-				<div className="card-template-order" key={order.id}>
-					<div className="card-container-text-order">
-						<div>
-							<div className="card-table-info-order">
-								<p className="title-card-order">Mesa</p>
-								<p className="title-number-card-order">{order.table}</p>
-							</div>
-
-							<div>
-								<p className="title-card-order">
-									Nº do Pedido:
-									<span className="text-card-order">{order.id}</span>
-								</p>
-								<p className="title-card-order">
-									Cliente: 
-									<span className="text-card-order">{order.client_name}</span>
-								</p>
-								<p className="title-card-order">
-									Horário do Pedido:
-									<span className="text-card-order">{order.createdAt}</span>
-								</p>
-								<p className="title-card-order">
-									Status:
-									<span className="text-card-order">{order.status}</span>
-								</p>
-							</div>
-							{order.Products.map((products) => (
-								<div key={products.id}>
-									<p className="title-card-order">
-										Item:
-										<span className="text-card-order">{products.name}</span>
-									</p>
-									<p className="title-card-order">
-										Qtd:
-										<span className="text-card-order">{products.qtd}</span>
-									</p>
-									<p className="title-card-order">
-										<span className="text-card-order"> {products.flavor !== null ? `Sabor: ${products.flavor}` : '' }</span>
-									</p>
-									<p className="title-card-order">
-										<span className="text-card-order">{products.complement !== null ? `Complemento: ${products.flavor}` : '' }</span>
-									</p>
-								</div>
-							))}
+				<div className="card-order-template" key={order.id}>
+					<div className="card-order-info">
+						<div className="card-order-table">
+							<p className="uppercase">Mesa</p>
+							<p>{order.table}</p>
 						</div>
+
+						<div>
+							<p>
+								Nº do Pedido: <span>{order.id}</span>
+							</p>
+							<p>
+								Cliente: <span>{order.client_name}</span>
+							</p>
+							<p>
+								Horário do Pedido: <span>{order.createdAt}</span>
+							</p>
+							<p>
+								Status: <span>{order.status}</span>
+							</p>
+						</div>
+
+						{order.Products.map((products) => (
+							<div className="order-products" key={products.id}>
+								<p>
+									Item: <span>{products.name}</span>
+								</p>
+								<p>
+									Qtd: <span>{products.qtd}</span>
+								</p>
+								<p>
+									{products.flavor !== null ? 'Sabor: ' : ''}
+									<span>
+										{products.flavor !== null ? products.flavor : ''}
+									</span>
+								</p>
+								<p>
+									{products.complement !== null ? 'Complemento: ' : ''}
+									<span>
+										{products.complement !== null ? products.complement : ''}
+									</span>
+								</p>
+							</div>
+						))}
 					</div>
 				</div>
 			))}
