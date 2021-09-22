@@ -16,7 +16,7 @@ import { OrdersBeingPrepared } from '../../pages/room/OrdersBeingPrepared/Orders
 import { OrdersReady } from '../../pages/room/OrdersReady/OrdersReady'
 import { OrdersDelivered} from '../../pages/room/OrdersDelivered/OrdersDelivered'
 
-
+import { PrivateRoute } from '../routeComponents/private/PrivateRoute';
 import { PrivateRouteRoom } from '../routeComponents/private/PrivateRouteRoom';
 import { PrivateRouteKitchen } from '../routeComponents/private/PrivateRouteKitchen';
 
@@ -33,9 +33,9 @@ export const Root = () => {
           <PrivateRouteRoom path='/room' exact={true} component={Room} />
           <PrivateRouteRoom path='/neworder' exact={true} component={NewOrder} />
           <PrivateRouteRoom path='/menu' exact={true} component={Menu} />
-          <PrivateRouteRoom path='/orders/being-prepared' exact={true} component={OrdersBeingPrepared} />
-          <PrivateRouteRoom path='/orders/ready' exact={true} component={OrdersReady} />
-          <PrivateRouteRoom path='/orders/delivered' exact={true} component={OrdersDelivered} />
+          <PrivateRoute path='/orders/being-prepared' exact={true} component={OrdersBeingPrepared} />
+          <PrivateRoute path='/orders/ready' exact={true} component={OrdersReady} />
+          <PrivateRoute path='/orders/delivered' exact={true} component={OrdersDelivered} />
           
           <PrivateRouteKitchen path='/kitchen' exact={true} component={Kitchen} />
           <Route component={NotFound}/>

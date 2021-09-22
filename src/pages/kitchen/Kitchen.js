@@ -2,6 +2,9 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { logout } from "../../routes/utils/auth";
 
+import { NavbarKitchen } from '../../components/Navbar/Navbar';
+import { Button } from '../../components/Button/Button';
+
 
 export const Kitchen = () => { 
   const history = useHistory();
@@ -13,8 +16,8 @@ export const Kitchen = () => {
 
   return (
     <div>
-      <h1>kitchen</h1>
-    <button onClick={handleLogout}>saia</button>
+      <NavbarKitchen/>
+      <Button Role='kitchen-sign-out'/>
     </div>
     
   )

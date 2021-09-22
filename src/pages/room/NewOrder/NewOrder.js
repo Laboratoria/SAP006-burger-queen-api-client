@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-sequences */
 import {useState} from 'react';
-import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../../components/Button/Button';
 import { NewOrderModal } from '../../../components/Modal/Modal';
@@ -10,7 +11,6 @@ import './NewOrder.scss';
 
 export const NewOrder = () => {
   const history = useHistory();
-  const isLandscape = useMediaQuery({query: '(min-width: 1024px)'})
 
   const token = localStorage.getItem('currentEmployeeToken');
   const [table, setTable] = useState('');

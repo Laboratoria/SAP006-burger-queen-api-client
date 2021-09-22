@@ -21,7 +21,7 @@ export const Unauthorized = () => {
   <div className = 'unauthorized'>
     <h1> ERROR 401 </h1>
     <img src = {logoBerg} alt = 'Logo Berg'/>
-    <h2> Desculpe-nos, mas você não possui permissão para acessar este setor :( <br/>
+    <h2> Desculpe-nos, mas você não possui permissão para acessar esta seção :( <br/>
     <br/>Entre em contato com um administrador.</h2>
        <Button Role='unauhtorized-sign-out'
         ButtonOnClick={() => handleLogout ()}

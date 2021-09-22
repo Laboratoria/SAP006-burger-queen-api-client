@@ -36,3 +36,43 @@ nav {
     border-radius: 10px;
   }
 }
+
+.logo{
+  height: 12vh;
+}
+
+.header-logo-and-title{
+  margin: -10% auto -15%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  p{
+    font-family: $berg-font;
+    font-size: 650%;
+    color: $yellow-processing-order;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 1366px){
+  .header-logo-and-title{
+    margin: -9% auto -12%;
+    p{
+      font-size: 750%;
+    }
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 768px),
+(min-width: 1366px) and (max-height: 1024px){
+  .navbar-kitchen{
+    ul {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      left: -40%;
+      top:6%
+    }
+  }
+}

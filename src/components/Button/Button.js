@@ -43,6 +43,9 @@ export const Button = ({productId, ButtonTitle, ButtonId, Role, Conditional, But
     'room-navbar-menu':{
       'ButtonClass':'room-navbar-button room-navbar-menu',
     },
+    'room-navbar-waiting-orders':{
+      'ButtonClass':'room-navbar-button room-navbar-waiting-orders',
+    },
     'room-navbar-being-prepared-orders':{
       'ButtonClass':'room-navbar-button room-being-prepared-orders',
     },
@@ -138,6 +141,9 @@ export const Button = ({productId, ButtonTitle, ButtonId, Role, Conditional, But
     },
     'new-order-filter':{
       'ButtonClass':'new-order-filter'
+    },
+    'kitchen-sign-out':{
+      'ButtonClass':'kitchen-sign-out'
     }
   }
   
