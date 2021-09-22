@@ -14,7 +14,6 @@ import Juice from '../../components/Breakfast/Juice';
 import Burgers from '../../components/All-day/Burgers';
 import Drinks from '../../components/All-day/Drinks';
 import Sides from '../../components/All-day/Sides';
-import InputSelect from '../../components/InputSelect';
 
 import Popup from '../../components/Popup';
 import PopupCancel from '../../components/PopupCancel';
@@ -101,6 +100,7 @@ export default function Hall() {
 			priceComplement: e.target.getAttribute('price'),
 
 		}))
+
 	}
 
 	const chooseDrink = (e) => {
@@ -126,7 +126,6 @@ export default function Hall() {
 		}))
 	}
 
-	// const [complementChecked,setComplementChecked] = useState()
 
 	const [products, setProducts] = useState(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
 
@@ -302,8 +301,8 @@ export default function Hall() {
   };
 
 	const onChangeTable = (e) =>{
-		console.log(e.target.value)
 		setTable(e.target.value)
+		console.log(table)
 	}
 	
 
@@ -335,6 +334,8 @@ export default function Hall() {
 		console.log(order)
 	}
 
+	const tables = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 
 	return (
 		<div className="pages-container">
@@ -365,7 +366,13 @@ export default function Hall() {
 			<main>
 				<section className="order-filling">
 					<div className="client-data margin-bottom-2">
-						<InputSelect onChange={onChangeTable}/>
+						{/* <InputSelect onChange={onChangeTable}/> */}
+
+						<select onChange={onChangeTable} >
+          <option value ="" hidden >Mesa</option>
+          {tables.map(tab=>
+             <option key={tab} value={tab}>{tab}</option>)}
+        </select>
 						<Input
 							className="input-hall"
 							placeholder="Insira o nome do cliente"
