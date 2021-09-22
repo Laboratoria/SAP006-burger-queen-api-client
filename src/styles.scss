@@ -23,7 +23,7 @@ body {
   height: 100vh;
 }
 
-#root, .main {
+.main {
   background-color: $background-color;
   width: 100%;
   height: 100vh;
@@ -60,7 +60,7 @@ body {
 }
 
 .cards {
-  margin: 3em;
+  margin: 30px;
   width: 17em;
   height: 24em;  
   cursor: pointer;
@@ -89,7 +89,7 @@ body {
 }
 
 .login-page, .signup-page {
-  margin-top: 13%;
+  margin-top: 50px;
   width: 32em;
   height: 26em;
 }
@@ -217,4 +217,32 @@ body {
 .test {
   color: $light-pink;
   margin-top: 10em;
+}
+
+@media screen and (max-width: 420px) {
+  .login-page, .signup-page {
+    width: 22em;
+  }
+
+  .form-input, .form-select {
+    width: 21em;
+  }
+
+  .form-labels {
+    margin-left: 1.5em;
+  }
+
+  .cards {
+    height: 7em;
+    margin: 18px;
+    border: 0.15em dotted $pink;
+  }
+
+  .card-photo {
+    display: none;
+  }
+
+  .card-name {
+    color: $pink;
+  }
 }
