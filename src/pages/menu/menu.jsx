@@ -1,9 +1,11 @@
 import { useHistory } from "react-router";
+import MenuHamburger from "../../components/menuHamburger";
 
 const Menu = () => {
   const history = useHistory();
   return (
     <div className='main'>
+      <header className='menu-header'><MenuHamburger/></header>
       <section className='big-container'>
       <div className='menu-list'>
         <button className='menu-button'>Café da manhã</button>
@@ -14,7 +16,7 @@ const Menu = () => {
         </div>
       </div>
       <div className='orders-card'>
-        <h2 className='menu-title'>Pedidos</h2>
+        <h1 className='menu-title'>Pedidos</h1>
         <label className='menu-labels'>Cliente</label>
         <input className='menu-input' type='text' placeholder='Nome' name='name' autoComplete='off'/>
         <label className='menu-labels'>Mesa</label>
