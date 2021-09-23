@@ -20,6 +20,7 @@ const GeneralButton = styled.button`
         margin: ${ props => props.primary ? '1vh': '20vh'};
         /* font-size: ${(props) => props.secondary ? '1.3em' : '1.5em'}; */
         }  
+    .btn-register
 `
 
 GeneralButton.propTypes = {

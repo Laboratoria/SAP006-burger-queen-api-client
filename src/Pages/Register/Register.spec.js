@@ -16,7 +16,7 @@ describe('Register', () => {
                 fireEvent.change(getByTestId("input-email"), {target: {value: "email@test.com"}})
                 fireEvent.change(getByTestId("input-password"), {target: {value: "1234567"}})
                 fireEvent.change(getByTestId("input-confirm-password"), {target: {value: "1234567"}})
-                fireEvent.change(getByTestId('select-role'), {target: {value: 'salão'}})
+                fireEvent.change(getByTestId("select-role"), {target: {value: 'salão'}})
             })
 
             act(() => {

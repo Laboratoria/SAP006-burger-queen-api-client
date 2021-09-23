@@ -1,42 +1,55 @@
-// import { Redirect } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 import MealNavBar from '../../components/Header/NavBar';
 import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
 import GeneralButton from '../../components/Button/style';
-import { useHistory } from "react-router-dom";
+import Button from '../../components/Button/Button';
+
 import { removeStorageKey } from '../../services/storage';
+
+// import { tablesDisplay, div } from './style';
 
 const Tables = () => {
 
     const history = useHistory();
 
+    const handleOrderSubmit = (e) => {
+        e.preventDefault();
+        history.push('/menu');
+    };
+
     const handleLogout = () => {
         removeStorageKey();
-        history.push('./')
+        history.push('./')  
     }
 
     return (
-        
-        <div> 
+        <main> 
             <MealNavBar />          
             <section>
-                <ul>
-                    <li>Mesa 1</li>
-                    <li>Mesa 2</li>
-                    <li>Mesa 3</li>
-                    <li>Mesa 4</li>
-                    <li>Mesa 5</li>
-                    <li>Mesa 6</li>
-                    <li>Mesa 7</li>
-                    <li>Mesa 8</li>
-                    <li>Mesa 9</li>
-                </ul>
+                <div>
+                    <Button>1</Button>
+                    <Button>2</Button>
+                </div>
+                <div>
+                    <Button>3</Button>
+                    <Button>4</Button>
+                </div>
+                <div>
+                    <Button>5</Button>
+                    <Button>6</Button>
+                </div>
+                <div>
+                     <Button>7</Button>
+                    <Button>8</Button>
+                </div>
+                <Button>9</Button>
             </section>
             <input type="text" placeholder="Nome do Cliente"/>
-            <GeneralButton>Confirmar Pedido</GeneralButton>
+            <GeneralButton onClick={handleOrderSubmit}>Confirmar Pedido</GeneralButton>
             <MenuOptionsNavBar />
             <button onClick={handleLogout}>Logout</button>
-        </div>
+        </main>
     )
 }
 
