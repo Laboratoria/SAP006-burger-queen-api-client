@@ -10,10 +10,11 @@ import { Input } from '../../components/Input/Input';
 import {Image, LoginBox, Title, Form, PhraseLogin } from './style';
 import login from '../../Assets/login.png';
 
-const Login = ({Login}) => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,6 +33,19 @@ const Login = ({Login}) => {
             history.push(route);      
         })
     }
+    
+    // function handleSubmit() {
+    //     const user = {
+    //         email,
+    //         password,
+    //     }
+
+    //     loginWithEmail(user)
+    //     .then((json) => {
+    //         const route = getRouteByRole(json.role);
+    //         history.push(route);      
+    //     })
+    // }
 
     return (
             <LoginBox>
@@ -49,13 +63,13 @@ const Login = ({Login}) => {
                     <Input
                         type='password' 
                         id='password' 
-                        placeholder='senha'
+                        placeholder="senha"
                         value={password}
                         errormessage='Por favor, insira uma senha válida.'
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </Form>
-                <Button primary onClick={authUserLogin}>
+                <Button variant="primary" type="submit" onClick={authUserLogin}>
                     Login
                 </Button>
                 <PhraseLogin>É o seu primeiro dia no Vixi? <br />

@@ -23,21 +23,15 @@ export const registerUser = (user) => {
         .catch((error) => console.log(error, 'erro na registerUser'))
     };
     
-export const RegisterSuccess = () => {
-    return (
-        alert('Sua conta foi criada com sucesso! :)')
-    )
-}
-
-export const loginWithEmail = (users) => {
+export const loginWithEmail = (user) => {
     return fetch('https://lab-api-bq.herokuapp.com/auth', {
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify ({
-            "email": users.email,
-            "password": users.password,
+            "email": user.email,
+            "password": user.password,
         }),
     })
         .then((response) => response.json())
