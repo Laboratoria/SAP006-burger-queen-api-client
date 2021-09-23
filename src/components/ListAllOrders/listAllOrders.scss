@@ -40,28 +40,37 @@
 	background-image: url('../../img/bloco.png');
 	background-position: center;
 	background-size: 42rem;
-	padding: 2rem;
-	overflow-y: auto;
+	padding: 3rem 2rem;
 
-	&::-webkit-scrollbar {
-		width: 0.2em;
-		height: 0.5em;
-		margin-right:-5px
-	}
 
-	&::-webkit-scrollbar-thumb {
-		background-color: rgba(255, 255, 255, 0.1);
-		border-radius: 3px;
 
-		&:hover {
-			background: rgba(255, 255, 255, 0.2);
-		}
-	}
 }
 
 .card-order-info {
+	height: 520px;
 	padding: 20px;
 	line-height: 20px;
+	overflow-y: auto;
+
+	/* width */
+&::-webkit-scrollbar {
+  width: 5px;
+
+}
+
+/* Track */
+&::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+/* Handle */
+&::-webkit-scrollbar-thumb {
+  background:var(--yellow); 
+  border-radius: 10px;
+}
+
+
 }
 
 .card-order-table {

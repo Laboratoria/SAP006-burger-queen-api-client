@@ -25,7 +25,7 @@ export default function ListAllOrders() {
 				setAllOrders(sortById);
 			});
 	}, []);	
-	console.log(allOrders)
+	
 
 	return (
 		<section className="cards-orders-container">

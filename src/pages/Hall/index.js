@@ -305,10 +305,10 @@ export default function Hall() {
 
 	const sendOrder = () => {
 		if (table === "" || client === "") {
-			setPopUpText("Dados do cliente incompletos. Preencha antes de enviar o pedido.")
+			setPopUpText("Dados do cliente incompletos. Preencha antes de enviar o pedido!")
 			setShowPopup(true)
 		} else if (cartContent.length === 0) {
-			setPopUpText("O Carrinho está vazio. Adicione os produtos antes de enviar o pedido.")
+			setPopUpText("O Carrinho está vazio. Adicione os produtos antes de enviar o pedido!")
 			setShowPopup(true)
 
 		} else {
