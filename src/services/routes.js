@@ -1,4 +1,4 @@
-import Home from "../pages/home-page";
+/*import Home from "../pages/home-page";
 import Login from '../pages/login';
 import CreateUser from "../pages/create-user";
 import { BrowserRouter, Switch, Route} from "react-router-dom";
@@ -15,4 +15,4 @@ function Routes() {
     )
 }
 
-export default Routes;
+export default Routes;*/

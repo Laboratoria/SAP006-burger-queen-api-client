@@ -1,0 +1,52 @@
+:root {
+    --rosa-seco: #a28788;
+    --azul-escuro: #050522;
+    --rosa-claro: #c2857a;
+    --lilas: #312f5b;
+    
+} 
+
+body {
+    background: var(--azul-escuro);
+    color: var(--rosa-seco);
+}
+
+body ,input, button {
+    font: 400 'Poppins', sans-serif;
+}
+
+button {
+    height: 3rem;
+    width: 400px;
+    border: var(--rosa-seco) solid 1pt;
+    background-color: var(--azul-escuro);
+    border-radius: 20%;
+    color: var(--rosa-seco);
+    padding: 10px 20px;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 10%;
+    margin-top: 20px;
+    margin-block-end: 6px;
+    font-size: 100%;
+}
+
+button:hover{
+    background-color: var(--rosa-seco);
+    color: var(--azul-escuro);
+}
+/*button {
+    border-radius: 30%;
+    height: 50px;
+    width: 300px;
+    margin-top: 70px;
+    cursor: pointer;
+}
+
+
+
+.logo img {
+    height: 350px;
+    left: 350px;
+    text-align: center;
+}*/

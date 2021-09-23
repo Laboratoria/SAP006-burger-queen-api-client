@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+    
+:root {
+    --rosa-seco: #a28788;
+    --azul-escuro: #050522;
+    --rosa-claro: #c2857a;
+    --lilas: #312f5b;
+    
+} 
+
+img {
+    height: 350px;
+    left: 350px;
+    text-align: center;
+}
+
+.login-class {
+    position:absolute;
+    background: #312F5B;
+    border-radius: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 60px;
+    width: min-content;
+}

@@ -10,27 +10,32 @@
     --azul-escuro: #050522;
     --rosa-claro: #c2857a;
     --lilas: #312f5b;
-    
 } 
     
-.logo img {
-    height: 400px;
-    left: 400px;
+img {
+    height: 350px;
+    left: 350px;
     text-align: center;
+
 }
-    
+
 .text-class {
     color: var(--rosa-seco);
     text-align: center;
     margin-top: 0%;
 }
     
+
+.class-p {
+    margin-top: 40px;
+}
+
 .button-class {
     height: 3rem;
     width: 400px;
     border: var(--rosa-seco) solid 1pt;
     background-color: var(--azul-escuro);
-    border-radius: 10%;
+    border-radius: 50%;
     color: var(--rosa-seco);
     padding: 10px 20px;
     flex-direction: column;
@@ -41,8 +46,26 @@
     font-size: 100%;
     
 }
-    
-.button-class:hover{
-    background-color: var(--rosa-seco);
-    color: var(--azul-escuro);
+
+
+.class-p {
+    font-size: 14px;
+    margin: 32px 0;
+    display: flex;
+    align-items: center;
+}
+.class-p::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rosa-claro);
+    margin-right: 10px;
+}
+
+.class-p::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rosa-claro);
+    margin-left: 10px;
 }

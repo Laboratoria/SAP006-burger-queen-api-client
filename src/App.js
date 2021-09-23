@@ -1,10 +1,17 @@
-import Routes from './services/routes';
+import Home from './pages/home-page';
+import Login from './pages/login';
+import CreateUser from './pages/create-user';
+import { BrowserRouter, Route } from "react-router-dom";
+
 
 function App() {
   return(
-    <div>
-      <Routes/>
-    </div>
+    <BrowserRouter>
+      <Route path='/' exact component={Home}/>
+      <Route path='/login' component={Login}/>
+      <Route path='/cadastrar' component={CreateUser}/>
+    </BrowserRouter>
+    
   )
 }
 
@@ -58,3 +65,7 @@ return (
 //<Button variant='secondary'onclick=''>
 //Login
 //</Button>
+
+/*  <div>
+      <Routes/>
+    </div>*/
