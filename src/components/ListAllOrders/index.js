@@ -1,15 +1,19 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import ButtonDefault from '../ButtonDefault';
 
 import './listAllOrders.scss';
 
 export default function ListAllOrders() {
 	const [allOrders, setAllOrders] = useState([]);
+	const [orderStatus, setOrderStatus] = useState('');
+	const [apiStatus, setApiStatus] = useState('')
+
+	const apiURL = 'https://lab-api-bq.herokuapp.com';
+	const apiOrders = `${apiURL}/orders`;
+	const token = localStorage.getItem('token');
 
 	useEffect(() => {
-		const apiURL = 'https://lab-api-bq.herokuapp.com';
-		const apiOrders = `${apiURL}/orders`;
-		const token = localStorage.getItem('token');
 
 		const getRequestOptions = {
 			method: 'GET',
@@ -23,10 +27,29 @@ export default function ListAllOrders() {
 			.then((data) => {
 				const sortById = data.sort((itemA, itemB) => itemB.id - itemA.id);
 				setAllOrders(sortById);
+				setOrderStatus(data.status)
+				setApiStatus(`${apiURL}/orders${data.id}`)
 			});
-	}, []);	
-	
+	}, [apiOrders, token]);	
 
+	const handleStatus = () => {
+		const getRequestOptions = {
+			method: 'PUT',
+			headers: {
+				Authorization: token,
+			},
+			body: JSON.stringify({
+				"status": "done"
+			}),
+		};
+
+		fetch(apiStatus, getRequestOptions)
+			.then((response) => response.json())
+			.then((data) => {
+				setOrderStatus(data.status)
+			});
+	}
+	
 	return (
 		<section className="cards-orders-container">
 			{allOrders.map((order) => (
@@ -37,6 +60,13 @@ export default function ListAllOrders() {
 							<p>{order.table}</p>
 						</div>
 
+						<ButtonDefault
+							className="btn-default"
+							onClick={handleStatus}
+						>
+							Atualizar status
+						</ButtonDefault>
+
 						<div>
 							<p>
 								Nº do Pedido: <span>{order.id}</span>
@@ -45,14 +75,18 @@ export default function ListAllOrders() {
 								Cliente: <span>{order.client_name}</span>
 							</p>
 							<p>
-								Data e Hora: <span>{`${new Date(
+								Data e Hora:{' '}
+								<span>{`${new Date(order.createdAt).toLocaleDateString(
+									'pt-br'
+								)} - ${new Date(order.createdAt).getHours()}:${new Date(
 									order.createdAt
-								).toLocaleDateString('pt-br')} - ${new Date(
-									order.createdAt
-								).getHours()}:${new Date(order.createdAt).getMinutes()}h`}</span>
+								).getMinutes()}h`}</span>
 							</p>
 							<p>
-								Status: <span>{order.status}</span>
+								Status:
+								<span className={`order-status status-${order.status}`}>
+									{order.status}
+								</span>
 							</p>
 						</div>
 
