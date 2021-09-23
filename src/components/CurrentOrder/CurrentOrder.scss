@@ -1,0 +1,85 @@
+@import '../../styles/Global.scss';
+
+.current-order-div{
+  width: 90%;
+  margin: 2% auto 1%;
+
+  border-radius: 10px;
+  border: $light-brown-box solid 3pt;
+  display: flex;
+  flex-direction: column;
+  color:$even-darker-brown-txt;
+}
+
+.current-order-header{
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.current-order-header-first{
+  background-color: $light-brown-box;
+  font-size: 190%;
+
+    span:first-of-type{
+      color: $dark-green;
+    }
+}
+
+.current-order-header-second{
+  background-color: $even-lighter-brown-txt;
+  font-size: 150%;
+}
+
+.current-order-header-third{
+  background-color: $light-brown-order-bg;
+  font-size: 170%;
+  font-weight: 500;
+  margin: 1% auto;
+}
+
+.current-order-all-products{
+  padding:1%;
+  background-color: $light-brown-order-bg;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
+  grid-row-gap:2vh;
+  grid-column-gap:3vh;
+  justify-content: center;
+}
+
+.current-order-product-content{
+  padding: 1%;
+  font-size: 160%;
+  background-color: $light-brown-order-bg;
+}
+
+.current-order-product-column-quantity, .current-order-product-column-flavor, .current-order-product-column-additional{
+  align-items: center;
+  text-align: center;
+}
+
+
+.current-order-all-products-column{
+  padding-left: 1%;
+}
+
+
+.current-order-button-div{
+  margin-top: -0.5%;
+  padding-left: 5%;
+  align-items: center;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ background-color: $light-brown-order-bg;
+ color:$even-darker-brown-txt;
+}
+
+.current-order-status-button-div{
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  padding: 2%;
+}

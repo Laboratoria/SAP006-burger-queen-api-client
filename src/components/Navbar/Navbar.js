@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { Button } from '../Button/Button';
 
 import logo from '../../assets/images/logo-berg.png'
+import { logout } from "../../routes/utils/auth";
 
 import './Navbar.scss';
 
@@ -43,6 +44,11 @@ export function NavbarKitchen() {
   let employeRole = localStorage.getItem('currentEmployeeRole')
 
   employeRole === 'room' ? employeRole = 'Salão' : employeRole ='Cozinha'
+  const handleLogout = () => {
+    logout()
+    history.push('/')
+  }
+
   return (
     <div>
       <nav className='navbar-kitchen'>
@@ -50,6 +56,7 @@ export function NavbarKitchen() {
           <p>Bem vinde {employeeName} :)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Setor: {employeRole}</p>
         </section>
         <div className='header-logo-and-title'>
+          <Button Role='kitchen-sign-out' ButtonOnClick={()=>handleLogout()}/>
           <img src={logo} alt='Berg Logo' className='logo'/>
           <p>COZINHA</p>
         </div>

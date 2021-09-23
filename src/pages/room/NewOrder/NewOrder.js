@@ -55,6 +55,7 @@ export const NewOrder = () => {
   const orderResume = orderedProductsData.map(product => ({ id: product.id, qtd:product.qtd.toString()}));
   const orderInformation = { token, customer, table, orderResume}
 
+
   const checkCustomerData = () => {
     if(customer.length <2){
       setEmptyCustomerModal(true)
@@ -73,9 +74,10 @@ export const NewOrder = () => {
   const sendOrder = () =>{
     const checkDataResult = checkCustomerData()
     if (checkDataResult !== 'Error') {
+      console.log(token)
       sendOrderToKitchen({orderInformation})
       .then((responseJson) => {
-        if(responseJson !== undefined) {
+        if(responseJson.code !== 401) {
           setSucessModal(true)
         } else {
           throw new Error (responseJson.message)
@@ -83,7 +85,23 @@ export const NewOrder = () => {
       }).catch(() => setErrorModal(true))
     }
   }
-   
+
+  const getAllOrders = () => {
+    const apiToGetOrders= 'https://lab-api-bq.herokuapp.com/orders';
+    fetch (apiToGetOrders, {
+      headers: {
+      accept: 'application/json',
+      Authorization: token
+      },
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const orders = responseJson
+        console.log(orders)
+      })
+  };
+
+   getAllOrders()
   return (
     <div>
       <main>

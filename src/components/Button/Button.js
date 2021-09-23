@@ -144,6 +144,18 @@ export const Button = ({productId, ButtonTitle, ButtonId, Role, Conditional, But
     },
     'kitchen-sign-out':{
       'ButtonClass':'kitchen-sign-out'
+    },
+    'kitchen-get-orders':{
+      'ButtonClass':'kitchen-get-orders'
+    },
+    'kitchen-change-order-status-being-prepared':{
+      'ButtonClass':'kitchen-change-order-status kitchen-change-order-status-being-prepared'
+    },
+    'kitchen-change-order-status-ready':{
+      'ButtonClass':'kitchen-change-order-status kitchen-change-order-status-ready'
+    },
+    'kitchen-delete-order':{
+      'ButtonClass':'kitchen-delete-order'
     }
   }
   

@@ -219,7 +219,7 @@ nav {
   }
 }
 
-  .room-new-order, .new-order-save-order{
+  .room-new-order, .new-order-save-order, .kitchen-get-orders{
     font-family: $berg-font;
     width: 80%;
     background-color: $medium-green;
@@ -372,21 +372,48 @@ nav {
 
   .kitchen-sign-out{
     background-image: url('../../assets/icons/light-brown-logout.png');
-    height: 6vh;
-    width: 6vh;
-    background-size:6vh;
+    height: 5vh;
+    width: 5vh;
+    background-size:5vh;
     position: absolute;
-    left: 4%;
-    top:7%;
+    left: 3%;
+    top:30%
+    }
+
+  .kitchen-get-orders{
+    margin-left: 10%;
   }
 
 
-  @media (min-width: 1024px) and (max-height: 1366px){
+  .kitchen-change-order-status{
+    font-size: 150%;
+    padding: 3% 5%;
+    border-radius: 10px;
+    font-family: $berg-font;
+    margin-left: 7%;
+  }
+
+  .kitchen-change-order-status-being-prepared{
+    background-color: $yellow-logo;
+  }
+
+  .kitchen-change-order-status-ready{
+    background-color: $red-delivered-order;
+  }
+
+  .kitchen-delete-order{
+    height: 3vh;
+    width: 3vh;
+    background-size: 3vh;
+    background-image: url('../../assets/icons/kitchen-trash.png');
+  }
+
+
+@media (min-width: 1024px) and (max-height: 1366px){
     .new-order-filter{
       padding: 1% 2.5%;
     }
-  }
-
+}
 
 @media (min-width: 1024px) and (max-height: 768px),
 (min-width: 1366px) and (max-height: 1024px){
@@ -458,10 +485,6 @@ nav {
   }
 
 }
-
-
-
-
 
 @media (min-width: 1366px) and (max-height: 1024px){
   .new-order-save-order{
