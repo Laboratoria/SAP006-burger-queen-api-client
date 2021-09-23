@@ -9,7 +9,7 @@ import Register from './pages/Register';
 // import { history } from './utils/history';
 import PrivateRoute from './utils/PrivateRoute';
 import PublicRoute from './utils/PublicRoute';
-
+import NotFound from './components/NotFound';
 
 
 const Routes = () => {
@@ -23,10 +23,7 @@ const Routes = () => {
 			<PrivateRoute path="/cozinha" component={Kitchen} />
 			<Route
 				component={() => (
-					<>
-						<h1>404</h1>
-						<p>Página não encontrada</p>
-					</>
+					<NotFound/>
 				)}
 			/>
 		</Switch>

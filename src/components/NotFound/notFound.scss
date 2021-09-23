@@ -1,0 +1,41 @@
+:root {
+	--white: #fff;
+	--black: #000000;
+	--green: #a0a603;
+	--yellow: #d97904;
+	--red: #bf0404;
+	--dark-red: #590202;
+	--light-gray: #292929;
+	--dark-gray: #111111;
+	--stroke: #464242;
+}
+
+body {
+	background-color: var(--light-gray);
+}
+
+.not-found {
+	color: #fff;
+	font-size: 100%;
+	line-height: 1.5;
+    text-align: center;
+    font-weight: 100;
+
+	p {
+		font-size: 2em;
+		text-shadow: #1b1b1b 1px 1px, #1b1b1b 2px 2px, #1b1b1b 3px 3px,
+			#1b1b1b 4px 4px, #1b1b1b 5px 5px, #1b1b1b 6px 6px, #1b1b1b 7px 7px,
+			#1b1b1b 8px 8px, #1b1b1b 9px 9px, #1b1b1b 10px 10px, #1b1b1b 11px 11px;
+	}
+
+	h1 {
+		font-size: 15em;
+		text-shadow: #1b1b1b 1px 1px, #1b1b1b 2px 2px, #1b1b1b 3px 3px,
+			#1b1b1b 4px 4px, #1b1b1b 5px 5px, #1b1b1b 6px 6px, #1b1b1b 7px 7px,
+			#1b1b1b 8px 8px, #1b1b1b 9px 9px, #1b1b1b 10px 10px, #1b1b1b 11px 11px,
+			#131212 12px 12px, #131212 13px 13px, #131212 14px 14px, #131212 15px 15px,
+			#131212 16px 16px, #131212 17px 17px, #131212 18px 18px, #131212 19px 19px,
+			#0f0f0f 20px 20px, #0f0f0f 21px 21px, #0f0f0f 22px 22px, #0f0f0f 23px 23px,
+			#0f0f0f 24px 24px, #0f0f0f 25px 25px, #0f0f0f 26px 26px, #0f0f0f 27px 27px;
+	}
+}
