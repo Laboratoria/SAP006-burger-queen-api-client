@@ -293,43 +293,7 @@ body {
   color: $light-blue;
   margin-top: 10%;
 }
-.btn {
-  position: fixed;
-  top:5rem;
-  right: 5rem;
-  width: 100px;
-  height: 100px;
-  z-index: 2;
 
-  &_burger {
-    &,
-    &::before,
-    &::after{
-      width: 2rem;
-      height: 6px;
-      background-color: $black;
-    }
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-    }
-    &::before {
-      transform: translateY(-12px
-      );
-    }
-    &::after {
-      transform: translateY(-12px
-      );
-    }
-   
-  }
-}
-
-.menu-header {
-  width: 100px;
-  height: 50px;
-}
 @media screen and (max-width: 420px) {
   .login-page, .signup-page {
     width: 22em;
