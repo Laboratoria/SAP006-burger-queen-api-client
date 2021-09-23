@@ -1,7 +1,6 @@
 import {useState} from 'react';
-import { useHistory } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-
+import { useHistory, Link } from 'react-router-dom';
 import { LoginWithEmail } from '../../../services/Auth';
 import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
@@ -16,31 +15,45 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [role] = useState('');
     const history = useHistory();
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
     // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
     
+
     // evento de clique do olhinho
     function eyeClick (e){
         e.preventDefault()
         setShowPassword(!showPassword) 
     }
 
-    // evento de clique do login
-    function handleClick (e){
-        e.preventDefault()
-        const user = {email, password}
-        LoginWithEmail(user)
-        .then(token => {
+    async function handleClick (e) {
+        try {
+            e.preventDefault()
+            const user = {email, password, role}
+            const response = await LoginWithEmail(user)
+            const returnJson = await response.json()
+            const token = returnJson.token
+            const name = returnJson.name
+            const roleUser = returnJson.role
+
             if (token) {
-                localStorage.setItem('arroz', token)
-                history.push('/mesas');
-                alert('Login Correto')
-            } else {
-                alert('Insira uma conta válida')
-            }
-        })
+                localStorage.setItem('userName', name)
+                localStorage.setItem('userToken', token)
+                localStorage.setItem('userRole', roleUser)
+
+                const role = roleUser
+                
+                if(role === 'salon') {
+                    history.push('/mesas')
+                } else {
+                    alert('Será direcionado para sua ár')
+                }                  
+            } 
+        } catch (error) {
+            console.log('cagou')
+        }
     }
     
     return(
@@ -86,7 +99,7 @@ export default function Login() {
 
                 <div>
                     <div className="register"> 
-                        Não tem uma conta? <a href="/cadastre-se"> Cadastre-se</a> 
+                        Não tem uma conta? <Link to="/cadastre-se">Cadastre-se</Link> 
                     </div>
                 </div>
             </form>
@@ -95,6 +108,22 @@ export default function Login() {
         </div>
     );
 };
+
+ // function handleClick (e){
+    //     e.preventDefault()
+    //     const user = {email, password}
+    //     LoginWithEmail(user)
+    //     .then(token => {
+    //         if (token) {
+    //             localStorage.setItem('arroz', token)
+    //             // localStorage.setItem(name, response.id);
+    //             history.push('/mesas');
+    //             alert('Login Correto')
+    //         } else {
+    //             alert('Insira uma conta válida')
+    //         }
+    //     })
+    // }
 
 // async function handleClick (e) {
     //     try {

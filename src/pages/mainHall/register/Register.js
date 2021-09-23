@@ -42,7 +42,7 @@ export default function Registration() {
             const token = returnJson.token
 
             if (token) {
-                localStorage.setItem('arroz', token)
+                localStorage.setItem('userName', token)
                 const role = returnJson.role
                 if(role === 'salon') {
                     history.push('/mesas')
@@ -55,11 +55,11 @@ export default function Registration() {
         }
     }
 
-    // evento de clique para voltar a página
-      const btnBack = () => {
+
+    const btnBack = () => {
       localStorage.clear()
       history.push('/')
-      }
+    }
 
     // seleciona o role - se cozinha ou salão - pega value e salva no role do servidor
     function handleRoleChange (e) {
@@ -75,8 +75,8 @@ export default function Registration() {
                 <LogoImg />
                 <div>
                     <Title 
-                        title='Cadastre-se' >
-                    </Title>
+                        title='Cadastre-se' 
+                    />
                 </div>
                 <div>
                     <Input 

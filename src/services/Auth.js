@@ -4,17 +4,18 @@ export const LoginWithEmail = (users) => {
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Authentication': 'Token'
         },
         body: JSON.stringify ({
             "email": users.email,
             "password": users.password,
         }),
     })
-        .then((response) => response.json())
-        .then((json) => {
-            const { token } = json;
-            return token
-        })
+        // .then((response) => response.json())
+        // .then((json) => {
+        //     const { token } = json;
+        //     return token
+        // })
 };
 
 export const RegisterUser = (users) => {
@@ -25,7 +26,7 @@ export const RegisterUser = (users) => {
             'Authentication': 'Token'
         },
         body: JSON.stringify({
-            'name': 'thalita',
+            'name': users.name,
             'email': users.email,
             'password': users.password,
             'role': users.role,
