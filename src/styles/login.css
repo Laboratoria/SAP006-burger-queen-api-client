@@ -2,10 +2,10 @@
 
 /* Imagem */
 .pagina-login-header img {
-    width: 300px;
-    height: 300px;
-    align-items: center;
-    justify-content: center;
+    width: 40%;
+    height: auto;
+    /* align-items: center; */
+    /* justify-content: center; */
     position: absolute;
     top: 0;
     left: 40%;
