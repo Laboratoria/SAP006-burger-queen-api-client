@@ -50,14 +50,6 @@ export const loginWithEmail = (user) => {
 
 
 
-// como usar token fora promise?
-// const objectAPI = {
-    //     'name': users.name,
-    //     'email': users.email,
-    //     'password': users.password,
-    //     'role': users.role,
-    //     'restaurant': 'Vixi',
-    // }
 
 // function getAPI (endpoint) {
 //     return fetch(`https://lab-api-bq.herokuapp.com/${endpoint}`, {
