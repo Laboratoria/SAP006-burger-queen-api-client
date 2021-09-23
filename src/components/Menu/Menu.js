@@ -4,8 +4,6 @@ import Button from '../Button/button';
 function Menu({
     products,
 }) {
-    console.log(products);
-
     const [showMenu, setShowMenu] = useState(true);
 
     return (
@@ -28,14 +26,28 @@ function Menu({
             </div>
 
             <div className='cards-menu'>
-                { 
-                showMenu ?
+                {
+                    showMenu ?
                         <div className='breakfast'>
-                            <p>Menu de café da manhã</p>
+                            {Object.keys(products).slice(0, 4).map((item) => (
+                                <p>
+                                    {products[item].name}
+                                    {products[item].image}
+                                    {products[item].price}
+                                </p>
+                            ))
+                            }
                         </div>
                         :
                         <div className='hamburguers'>
-                            <p>Hamburgueria</p>
+                              {Object.keys(products).slice(4, 28).map((item) => (
+                                <p>
+                                    {products[item].name}
+                                    {products[item].image}
+                                    {products[item].price}
+                                </p>
+                            ))
+                            }
                         </div>
                 }
             </div>
@@ -45,3 +57,4 @@ function Menu({
 }
 
 export default Menu;
+
