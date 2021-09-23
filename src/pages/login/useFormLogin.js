@@ -30,7 +30,6 @@ const useFormLogin = () => {
     loginUser(values)
       .then(res => res.json())
       .then((data) => {
-        console.log(data);
         if (data.role === 'attendant') {
           saveToken(data.token);
           history.push('/menu');
