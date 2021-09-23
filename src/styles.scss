@@ -262,6 +262,7 @@ body {
   font-size: 1.2em;
   font-weight: bolder;
 }
+
 .products-labels, .value-labels {
   color: $black;
   font-size: 1.2em;
@@ -273,9 +274,8 @@ body {
   grid-auto-rows: minmax(100px, auto);
   justify-content: space-between;
   grid-gap: 70px; 
-  align-items: left;
-
 }
+
 .menu-input, .menu-select {
   height: 3em;
   margin: 0.30em;
@@ -289,10 +289,88 @@ body {
   font-size: 0.94em;
   font-weight: bolder;
 }
+
 .menu-title {
   color: $light-blue;
   margin-top: 10%;
 }
+
+.menu-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: fixed;
+  width: 200px;
+  height: 100px;
+  top: 1em;
+  right: 1em;
+}
+
+.bar {
+  background-color: $pink;
+  position: fixed;
+  margin-top: 15px;
+
+  &-icon{
+    &,
+    &::before,
+    &::after {
+      width: 2em;
+      height: 6px;
+      background-color: $dark-cyan;
+      border: none;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+    }
+
+    &::before {
+      transform: translateY(-10px);
+    }
+
+    &::after {
+      transform: translateY(10px);
+    }
+  }
+}
+
+.nav-links {
+  margin-right: 40px;
+}
+
+.nav-item {
+  display: none;
+  padding: 10px 10px;
+  position: relative;
+  font-size: 18px;
+  color: $light-blue;
+  width: 125px;
+}
+
+.show-item {
+  display: flex;
+  animation: slide 1s;
+  background-color: $dark-cyan;
+
+  &:hover {
+    background-color: $light-pink;
+  }
+}
+
+@keyframes slide {
+  from {
+    top: -50px;
+    opacity: 0;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
 
 @media screen and (max-width: 420px) {
   .login-page, .signup-page {

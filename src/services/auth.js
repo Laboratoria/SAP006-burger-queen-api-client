@@ -36,10 +36,5 @@ export const getProducts = () => {
     },
   })
     .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      data.map((elem) => {
-        console.log(elem)
-      })
-    })
+    
 }
