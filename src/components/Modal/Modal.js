@@ -98,3 +98,24 @@ export const NewOrderModal = ({Role, ModalContent, ButtonOnClick, children, chil
     </section>
   )
 }
+
+
+export const DeleteOrderModal = ({Role, ModalContent, ButtonOnClick, children, childrenSecondButton, ButtonOnClickSecondOption}) => {
+  return (
+    <section className='modal-background'>
+      <div className='modal-container'>
+        <p className='new-order-modal-content'> {ModalContent} </p>
+        <Button 
+          Role={Role}
+          children={children}
+          ButtonOnClick={ButtonOnClick}
+        />
+         <Button 
+         Role={Role}
+         children={childrenSecondButton}
+         ButtonOnClick={ButtonOnClickSecondOption}
+       />
+      </div>
+    </section>
+  )
+}

@@ -64,10 +64,10 @@ export const CurrentOrder = ({order, ButtonDeleteOrder}) => {
         </div>
       </div>
       <div className='current-order-button-div'>
-        <Button Role='kitchen-delete-order' ButtonOnClick={ButtonDeleteOrder}/>
+        <Button Role='kitchen-delete-order' ButtonOnClick={ButtonDeleteOrder} ButtonId={order.id}/>
         <div className='current-order-status-button-div'>
-        <Button Role='kitchen-change-order-status-being-prepared' children='EM PREPARO'/>
-        <Button Role='kitchen-change-order-status-ready' children='PRONTO'/>
+        <Button Role='kitchen-change-order-status-being-prepared' children='EM PREPARO' ButtonId={order.id}/>
+        <Button Role='kitchen-change-order-status-ready' children='PRONTO' ButtonId={order.id}/>
         </div>
       </div>
     </div>

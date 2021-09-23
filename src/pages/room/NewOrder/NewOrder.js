@@ -74,7 +74,6 @@ export const NewOrder = () => {
   const sendOrder = () =>{
     const checkDataResult = checkCustomerData()
     if (checkDataResult !== 'Error') {
-      console.log(token)
       sendOrderToKitchen({orderInformation})
       .then((responseJson) => {
         if(responseJson.code !== 401) {
@@ -86,22 +85,6 @@ export const NewOrder = () => {
     }
   }
 
-  const getAllOrders = () => {
-    const apiToGetOrders= 'https://lab-api-bq.herokuapp.com/orders';
-    fetch (apiToGetOrders, {
-      headers: {
-      accept: 'application/json',
-      Authorization: token
-      },
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        const orders = responseJson
-        console.log(orders)
-      })
-  };
-
-   getAllOrders()
   return (
     <div>
       <main>
