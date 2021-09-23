@@ -5,7 +5,7 @@ import ButtonLogout from '../../../components/button/ButtonLogout';
 import './Tables.css';
 
 
-function Mesas () {
+function Tables () {
     return(
         <div>
             <LogoImg />
@@ -15,27 +15,5 @@ function Mesas () {
     )
 }
 
-export default Mesas;
+export default Tables;
 
-
-
-// import { useParams } from 'react-router-dom';
- 
-// function User(){
-//     const { name } = useParams();
-//     return (
-//         <div>
-//             <h1>Logado como { name }</h1>
-//         </div>
-//     )   
-// }
-// export default User;
-
-/* export default function User(){
-    const { name } = useParams();
-    return (
-        <div>
-            <h1>Logado como { name }</h1>
-        </div>
-    )   
-} */

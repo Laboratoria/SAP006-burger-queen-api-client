@@ -17,7 +17,7 @@ export default function Registration() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [password2, setPassword2] = useState('');
+    // const [password2, setPassword2] = useState('');
     const [role, setRole] = useState('');
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
@@ -35,8 +35,20 @@ export default function Registration() {
                 localStorage.setItem('arroz', response)
                 history.push('/')
             }} catch{console.log('cagou')}
+    
     }
 
+    // function handleClick (e){
+    //     e.preventDefault()
+    //     const user = {name, email, password, role}
+    //     RegisterUser(user)
+    //     .then(token => {
+    //         if (token){
+    //             localStorage.setItem('arroz', token)
+    //             history.push('/mesas');
+    //         }
+    //     })
+    
 // seleciona o role - se cozinha ou salão - pega name e salva no role do servidor
     function handleRoleChange (e) {
         e.preventDefault()
@@ -78,13 +90,13 @@ export default function Registration() {
                     placeholder='Digite a sua senha'
                 />
 
-                <Input 
+                {/* <Input 
                     type='password' 
                     name='password2'
                     value={password2}
                     onChange={(event) => setPassword2(event.target.value)}
                     placeholder='Repita sua senha'
-                />
+                /> */}
 
                 <div className='container-checkbox'>
                     <Input 
