@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getProducts }from '../../services/data'
+import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
+import './style.scss';
 
-const Menu = (products)  => {
+const Menu = ()  => {
+    const [order, setOrder] = useState([]);
     const [values, setValues] = useState({
         menu: [],
         order: [],
@@ -9,20 +12,20 @@ const Menu = (products)  => {
         burgers: [],
     });
 
-    const handleChange = (event) => {
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value, 
-        })
-    }
+    // const handleChange = (event) => {
+    //     setValues({
+    //         ...values,
+    //         [event.target.name]: event.target.value, 
+    //     })
+    // }
 
     useEffect(() => {
-            getProducts()
+            getProducts(values)
             .then((data) => {
-                const breakfast = data.filter(item => item.subtype === 'breakfast')
-                handleChange({breakfast});
-                const burgers = data.filter(item => item.subtype === 'burgers')
-                handleChange(burgers);
+                const breakfast = values.filter((item) => item.subtype === 'breakfast')
+                setValues(breakfast)
+                const burgers = values.filter((item) => item.subtype === 'burgers')
+                setValues(burgers)
             })
     })
 
@@ -30,8 +33,9 @@ const Menu = (products)  => {
         <>
             <div className='div-style'>
                 Menu
-            </div> 
-            {/* <cartArea arrItem={} /> */}
+            </div>
+            {/* <OrdersList/> */}
+            <MenuOptionsNavBar/> 
         </>
     )
 };

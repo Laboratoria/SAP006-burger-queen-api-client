@@ -1,0 +1,19 @@
+.GeneralButton {
+    background-color: white;    
+    width: 150px;
+    height: 42px;
+    font-size: 1.3em;
+    font-weight: 600;
+    text-align: center;    
+    text-transform: uppercase;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    a {
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+        margin: 1vh;
+    }  
+}
