@@ -6,15 +6,12 @@ import './listAllOrders.scss';
 
 export default function ListAllOrders() {
 	const [allOrders, setAllOrders] = useState([]);
-	const [orderStatus, setOrderStatus] = useState('');
-	const [apiStatus, setApiStatus] = useState('')
 
 	const apiURL = 'https://lab-api-bq.herokuapp.com';
-	const apiOrders = `${apiURL}/orders`;
+	const apiOrders = `${apiURL}/orders/`;
 	const token = localStorage.getItem('token');
 
 	useEffect(() => {
-
 		const getRequestOptions = {
 			method: 'GET',
 			headers: {
@@ -27,32 +24,39 @@ export default function ListAllOrders() {
 			.then((data) => {
 				const sortById = data.sort((itemA, itemB) => itemB.id - itemA.id);
 				setAllOrders(sortById);
-				setOrderStatus(data.status)
-				setApiStatus(`${apiURL}/orders${data.id}`)
 			});
-	}, [apiOrders, token]);	
+	}, [apiOrders, token]);
 
-	const handleStatus = () => {
-		const getRequestOptions = {
+	const putRequestOptions = (status) => {
+		const options = {
 			method: 'PUT',
 			headers: {
 				Authorization: token,
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Credentials': true,
+				'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST',
 			},
 			body: JSON.stringify({
-				"status": "done"
+				status,
 			}),
 		};
 
-		fetch(apiStatus, getRequestOptions)
+		return options;
+	};
+
+	const updateOrderStatus = (index, id, status) =>
+		fetch(`${apiOrders}${id}`, putRequestOptions(status))
 			.then((response) => response.json())
-			.then((data) => {
-				setOrderStatus(data.status)
+			.then(() => {
+				const pendingOrdersList = [...allOrders];
+				pendingOrdersList[index].status = status;
+				setAllOrders(pendingOrdersList);
 			});
-	}
 	
 	return (
 		<section className="cards-orders-container">
-			{allOrders.map((order) => (
+			{allOrders.map((order, index) => (
 				<div className="card-order-template" key={order.id}>
 					<div className="card-order-info">
 						<div className="card-order-table">
@@ -62,7 +66,11 @@ export default function ListAllOrders() {
 
 						<ButtonDefault
 							className="btn-default"
-							onClick={handleStatus}
+							onClick={() => {
+								updateOrderStatus(index, order.id, 'loading', allOrders, setAllOrders)
+								updateOrderStatus(index, order.id, 'done', allOrders, setAllOrders)
+								updateOrderStatus(index, order.id, 'delivered', allOrders, setAllOrders)
+							}}
 						>
 							Atualizar status
 						</ButtonDefault>
