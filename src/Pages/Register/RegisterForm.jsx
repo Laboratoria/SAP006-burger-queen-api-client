@@ -110,7 +110,7 @@ const Register = () => {
                     </LabelRadioInput>
                     {errors.role && <ErrorsMessage className='error'>{errors.role}</ErrorsMessage>}
                 </InputRadioBox>
-            <Button secondary onClick={handleFormSubmit}>
+            <Button className={register} secondary onClick={handleFormSubmit}>
                 Registrar
             </Button>
             <PhraseRegister>Já possui uma conta?<br/> 
