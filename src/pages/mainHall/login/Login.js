@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { LoginWithEmail } from '../../../services/Auth';
 import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
@@ -12,34 +12,50 @@ import './Login.css';
 export default function Login() { 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [role] = useState('');
     const history = useHistory();
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
     // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
     
-  
+    async function handleClick (e) {
+        try {
+            e.preventDefault()
+            const user = {email, password, role}
+            const response = await LoginWithEmail(user)
+            const returnJson = await response.json()
+            const token = returnJson.token
+            const name = returnJson.name
+            const roleUser = returnJson.role
 
-    function handleClick (e){
-        e.preventDefault()
-        const user = {email, password}
-        LoginWithEmail(user)
-        .then(token => {
-            if (token){
-                localStorage.setItem('arroz', token)
-                history.push('/mesas');
-            }
-        })
+            if (token) {
+                localStorage.setItem('userName', name)
+                localStorage.setItem('userToken', token)
+                localStorage.setItem('userRole', roleUser)
+
+                const role = roleUser
+                
+                if(role === 'salon') {
+                    history.push('/mesas')
+                } else {
+                    alert('Será direcionado para sua ár')
+                }                  
+            } 
+        } catch (error) {
+            console.log('cagou')
+        }
     }
     
     return(
-        <div className='container login'>
-            <LogoImg />
-            <div>
-                <Title 
-                    title='Entre com uma conta' >
-                </Title>
-            </div>
-            <form>
+        <div>
+            <form className="container-form">
+                <LogoImg />
+                <div>
+                    <Title 
+                        title='Entre com uma conta' >
+                    </Title>
+                </div>
+
                 <Input 
                     type='text' 
                     name='email'
@@ -61,14 +77,54 @@ export default function Login() {
                 />
 
                 <div>
-                    <span> 
-                        Não tem uma conta? <a href="/cadastre-se"> Cadastre-se</a> 
-                    </span>
+                    <div className="register"> 
+                        Não tem uma conta? <Link to="/cadastre-se">Cadastre-se</Link> 
+                    </div>
                 </div>
-
             </form>
                         
         <Footer /> 
         </div>
     );
 };
+
+ // function handleClick (e){
+    //     e.preventDefault()
+    //     const user = {email, password}
+    //     LoginWithEmail(user)
+    //     .then(token => {
+    //         if (token) {
+    //             localStorage.setItem('arroz', token)
+    //             // localStorage.setItem(name, response.id);
+    //             history.push('/mesas');
+    //             alert('Login Correto')
+    //         } else {
+    //             alert('Insira uma conta válida')
+    //         }
+    //     })
+    // }
+
+// async function handleClick (e) {
+    //     try {
+    //         e.preventDefault()
+    //         const user = {email, password, role}
+    //         const responseLogin = await LoginWithEmail(user)
+    //         const returnJsonLogin = await responseLogin.json()
+    //         const token = returnJsonLogin.token
+    //         console.log(responseLogin.json())
+
+    //         if (token){
+    //             localStorage.setItem('arroz', token)
+    //             const role = returnJsonLogin.role
+    //             if(role === 'salon') {
+    //             history.push('/mesas')
+    //             } else {
+    //                 alert('manda pra cozinha')
+    //             }     
+    //         } 
+    //     } catch (error) {
+    //         console.log('mel')
+    //     }
+        
+    // }
+    

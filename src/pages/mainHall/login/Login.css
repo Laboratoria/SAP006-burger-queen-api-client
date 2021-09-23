@@ -1,0 +1,30 @@
+:root {
+    --red-color: #AB2328;
+    --orange-green: #D79A2B;
+    --yellow-color: #F8EF5B;
+    --green-water-color: #40C1AC;
+    --brown-color: #5C3D31;
+    --white-color: #FFF;  
+}
+
+.container-form{
+    display: flex;
+    background-color: aquamarine;
+    flex-direction: column;
+    width: 50%;
+    height: 560px;
+    border-radius: 20px;
+    align-items: center;
+    margin: 20% 25%;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.315);
+}
+
+.text{
+    color: var(--white-color);
+    margin: 0;
+}
+
+.register{
+    margin: 110px 0 0 0;
+    font-size: 20px;
+}
