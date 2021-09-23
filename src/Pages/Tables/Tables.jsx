@@ -1,13 +1,11 @@
+import React from "react";
 import { useHistory } from "react-router-dom";
-
-import MealNavBar from '../../components/Header/NavBar';
+// import Header from '../../components/Header/Header'
+// import MealNavBar from '../../components/Header/MealNavBar';
 import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
-import GeneralButton from '../../components/Button/style';
 import Button from '../../components/Button/Button';
-
-import { removeStorageKey } from '../../services/storage';
-
-// import { tablesDisplay, div } from './style';
+import GeneralButton from '../../components/Button/style.scss';
+import './tables.scss';
 
 const Tables = () => {
 
@@ -18,37 +16,35 @@ const Tables = () => {
         history.push('/menu');
     };
 
-    const handleLogout = () => {
-        removeStorageKey();
-        history.push('./')  
-    }
-
     return (
         <main> 
-            <MealNavBar />          
-            <section>
-                <div>
-                    <Button>1</Button>
-                    <Button>2</Button>
+            {/* <Header /> */}
+            {/* <MealNavBar /> */}
+            <section className="tables-display">
+                <div className="doubleTables">
+                    <Button className="table">1</Button>
+                    <Button className="table">2</Button>
                 </div>
-                <div>
-                    <Button>3</Button>
-                    <Button>4</Button>
+                <div className="doubleTables">
+                    <Button className="table">3</Button>
+                    <Button className="table">4</Button>
                 </div>
-                <div>
-                    <Button>5</Button>
-                    <Button>6</Button>
+                <div className="doubleTables">
+                    <Button className="table">5</Button>
+                    <Button className="table">6</Button>
                 </div>
-                <div>
-                     <Button>7</Button>
-                    <Button>8</Button>
+                <div className="doubleTables">
+                     <Button className="table">7</Button>
+                    <Button className="table">8</Button>
                 </div>
-                <Button>9</Button>
+                <Button className="table">9</Button>
             </section>
-            <input type="text" placeholder="Nome do Cliente"/>
-            <GeneralButton onClick={handleOrderSubmit}>Confirmar Pedido</GeneralButton>
+            <form className="form-submitOrder">
+                <fieldset>oi</fieldset>
+                <input className="input-clientName" type="text" placeholder="Nome do Cliente"/>
+                <GeneralButton onClick={handleOrderSubmit} className="btn-submitOrder">Confirmar Pedido</GeneralButton>
+            </form>
             <MenuOptionsNavBar />
-            <button onClick={handleLogout}>Logout</button>
         </main>
     )
 }

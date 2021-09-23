@@ -1,13 +1,13 @@
-import GeneralButton from './style'
+import './style.scss';
 
-const Button = ({ variant, children, onClick }) => {
-    const classes = `button ${variant}`;
+const GeneralButton = ({ children, onClick }) => {
+    // const classes = `button ${variant}`;
 
     return (
-        <GeneralButton className={classes} variant onClick={onClick}> 
+        <button className="GeneralButton" onClick={onClick}> 
             {children}
-        </GeneralButton>
+        </button>
     );
 }
 
-export default Button;
+export default GeneralButton;

@@ -1,6 +1,4 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
-// import isAuthenticated from './services/auth'
 import Register from '../Pages/Register/RegisterForm'
 import Login from '../Pages/Login/Login'
 import Tables from '../Pages/Tables/Tables'

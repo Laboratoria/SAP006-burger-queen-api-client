@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { loginWithEmail } from '../../services/auth';
 import { getRouteByRole } from '../../routes/redirections'
 
-import Button from '../../components/Button/Button';
+import GeneralButton from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 
 import {Image, LoginBox, Title, Form, PhraseLogin } from './style';
@@ -69,9 +69,9 @@ const Login = () => {
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </Form>
-                <Button variant="primary" type="submit" onClick={authUserLogin}>
+                <GeneralButton variant="primary" type="submit" onClick={authUserLogin}>
                     Login
-                </Button>
+                </GeneralButton>
                 <PhraseLogin>É o seu primeiro dia no Vixi? <br />
                     <Link to='/register'>Crie sua conta aqui!</Link>
                 </PhraseLogin>
