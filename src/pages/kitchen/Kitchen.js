@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { NavbarKitchen } from '../../components/Navbar/Navbar';
@@ -25,12 +25,9 @@ export const Kitchen = () => {
       .then((response) => response.json())
       .then((responseJson) => {
         const orders = responseJson
-        console.log(orders)
-        console.log(currentOrders)
         setCurrentOrders(orders)
       })
   };
-
   const deleteOrder = (id) => {
     const apiToGetOrders= `https://lab-api-bq.herokuapp.com/orders/${id}`
     fetch (apiToGetOrders, {
@@ -41,10 +38,32 @@ export const Kitchen = () => {
       },
     })
       .then((response) => response.json())
-      .then((responseJson) => {
-        getAllOrders()
-      })
+      .then(() => getAllOrders())  
   };
+  const changeOrderStatus = (id, status) => {
+    id = id.toString();
+    const apiToGetOrders= `https://lab-api-bq.herokuapp.com/orders/${id}`
+    fetch (apiToGetOrders, {
+      method:'PUT',
+      headers: {
+      accept: 'application/json',
+      Authorization: token,
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
+      'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST',
+      },
+      body: JSON.stringify({ status })
+    })
+      .then((response) => response.json())
+      .then(() => getAllOrders())
+  };
+    
+    useEffect(() => {
+      getAllOrders()
+    }, [])
+  
+    console.log(currentOrders)
 
 return (
     <div>
@@ -58,6 +77,10 @@ return (
             order={order}
             ButtonId={order.id}
             ButtonDeleteOrder = {(event)=> [setDeleteOrderModal(true), setOrderToBeDeleted(event.target.id)]}
+            OrderPendingButton = {() => changeOrderStatus(order.id, 'Em espera')}
+            OrderBeingPreparedButton = {() => changeOrderStatus(order.id, 'Em Preparo')}
+            OrderReadyButton = {() => changeOrderStatus(order.id, 'Pronto')}
+            OrderDeliveredButton = {() => changeOrderStatus(order.id, 'Entregue')}
           /> 
         ): null}
       </section>

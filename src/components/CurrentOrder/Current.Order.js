@@ -5,7 +5,14 @@ import './CurrentOrder.scss';
 import { Button} from '../Button/Button'
 import { orderAge } from '../../services/general';
 
-export const CurrentOrder = ({order, ButtonDeleteOrder}) => { 
+export const CurrentOrder = ({
+  order, 
+  ButtonDeleteOrder, 
+  OrderPendingButton,
+  OrderBeingPreparedButton, 
+  OrderReadyButton,
+  OrderDeliveredButton
+  }) => { 
   const orderCreationAgeSeconds = (Date.now() - new Date (order.createdAt).valueOf())/1000
   const orderCreationAge = orderAge(orderCreationAgeSeconds)
   return (
@@ -64,10 +71,32 @@ export const CurrentOrder = ({order, ButtonDeleteOrder}) => {
         </div>
       </div>
       <div className='current-order-button-div'>
-        <Button Role='kitchen-delete-order' ButtonOnClick={ButtonDeleteOrder} ButtonId={order.id}/>
+        <Button 
+          Role='kitchen-delete-order' 
+          ButtonId={order.id}
+          ButtonOnClick={ButtonDeleteOrder}    
+        />
         <div className='current-order-status-button-div'>
-        <Button Role='kitchen-change-order-status-being-prepared' children='EM PREPARO' ButtonId={order.id}/>
-        <Button Role='kitchen-change-order-status-ready' children='PRONTO' ButtonId={order.id}/>
+          <Button 
+            Role='kitchen-change-order-status-pending' 
+            children='EM ESPERA' 
+            ButtonId={order.id} 
+            ButtonOnClick={OrderPendingButton}/>
+          <Button 
+            Role='kitchen-change-order-status-being-prepared' 
+            children='EM PREPARO' 
+            ButtonId={order.id} 
+            ButtonOnClick={OrderBeingPreparedButton}/>
+          <Button 
+            Role='kitchen-change-order-status-ready' 
+            children='PRONTO' 
+            ButtonId={order.id}
+            ButtonOnClick={OrderReadyButton}/>
+          <Button 
+          Role='kitchen-change-order-status-delivered' 
+          children='ENTREGUE' 
+          ButtonId={order.id}
+          ButtonOnClick={OrderDeliveredButton}/>
         </div>
       </div>
     </div>

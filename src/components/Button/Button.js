@@ -154,6 +154,12 @@ export const Button = ({productId, ButtonTitle, ButtonId, Role, Conditional, But
     'kitchen-change-order-status-ready':{
       'ButtonClass':'kitchen-change-order-status kitchen-change-order-status-ready'
     },
+    'kitchen-change-order-status-pending':{
+      'ButtonClass':'kitchen-change-order-status kitchen-change-order-status-pending'
+    },
+    'kitchen-change-order-status-delivered':{
+      'ButtonClass':'kitchen-change-order-status kitchen-change-order-status-delivered'
+    },
     'kitchen-delete-order':{
       'ButtonClass':'kitchen-delete-order'
     }

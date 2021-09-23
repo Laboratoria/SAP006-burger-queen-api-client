@@ -23,10 +23,9 @@ export const getAllOrders = (token) => {
   const result = fetch (apiToGetOrders, {
     headers: {
     accept: 'application/json',
-    Authorization:`${token}`
+    Authorization: `${token}`
     },
   })
     .then((response) => response.json())
-    .then((responseJson) => responseJson)
-  return result
+   return result
 };

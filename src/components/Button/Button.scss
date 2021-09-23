@@ -386,11 +386,16 @@ nav {
 
 
   .kitchen-change-order-status{
-    font-size: 150%;
-    padding: 3% 5%;
+    font-size: 120%;
+    padding: 1.5% 2%;
     border-radius: 10px;
     font-family: $berg-font;
     margin-left: 7%;
+  }
+
+
+  .kitchen-change-order-status-pending{
+    background-color: $medium-green;
   }
 
   .kitchen-change-order-status-being-prepared{
@@ -399,6 +404,10 @@ nav {
 
   .kitchen-change-order-status-ready{
     background-color: $red-delivered-order;
+  }
+
+  .kitchen-change-order-status-delivered{
+    background-color: $blue-delivered-order;
   }
 
   .kitchen-delete-order{
