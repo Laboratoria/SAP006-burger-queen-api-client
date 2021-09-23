@@ -36,5 +36,4 @@ export const getProducts = () => {
     },
   })
     .then(res => res.json())
-    
 }
