@@ -55,8 +55,8 @@ export default function Registration() {
         }
     }
 
-    // evento de clique para voltar a página
-      const btnBack = () => {
+
+    const btnBack = () => {
       localStorage.clear()
       history.push('/')
     }
