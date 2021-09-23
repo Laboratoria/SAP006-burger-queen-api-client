@@ -10,7 +10,7 @@
 	--stroke: #464242;
 }
 
-.container-cards-order {
+.cards-orders-container {
 	display: flex;
 	flex-wrap: wrap;
     flex-direction: row;
@@ -19,44 +19,63 @@
 	margin-bottom: 40px;
 	align-items: baseline;
 	border-top: 1px solid var(--stroke);
+	font-weight: bold;
+	color: var(--black);
+
+	span {
+		font-weight: lighter;
+	}
+
+	p {
+		align-self: center;
+		margin: 1rem 0;
+		font-size: 1.3em;
+	}
 }
 
-.card-template-order {
+.card-order-template {
 	margin: 1rem;
-	width: 320px;
-	left: 44px;
-	top: 579px;
-	background: var(--stroke);
-	border-radius: 10px;
-	box-shadow: 2px 5px 5px hsl(0deg 0% 0% / 30%);
+	width: 400px;
+	height: 625px;
+	background-image: url('../../img/bloco.png');
+	background-position: center;
+	background-size: 42rem;
+	padding: 2rem;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 0.2em;
+		height: 0.5em;
+		margin-right:-5px
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: rgba(255, 255, 255, 0.1);
+		border-radius: 3px;
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.2);
+		}
+	}
 }
 
-.card-container-text-order {
+.card-order-info {
 	padding: 20px;
 	line-height: 20px;
 }
 
-.card-table-info-order {
+.card-order-table {
 	display: flex;
 	justify-content: space-between;
+	font-size: 1.5em;
+	margin-bottom: 1rem;
+	background-color: #d979047a;
+	padding: 0 1rem;
+	border-radius: 5px;
 }
 
-.title-card-order {
-	margin: 0%;
-	font-weight: 500;
-	font-size: 16px;
-	color: var(--black);
+.order-products {
+	padding-top: 0.5rem;
+	border-top: 1px solid var(--dark-gray);
 }
 
-.title-number-card-order {
-	font-weight: 500;
-	font-size: 24px;
-	color: var(--black);
-}
-
-.text-card-order {
-	margin: 0;
-	padding: 0;
-	font-weight: 300;
-	font-size: 16px;
-}
