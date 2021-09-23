@@ -1,44 +1,65 @@
+import React from 'react';
 import '../styles/login.css';
 import logo from '../img/logo.png'
-import { MdEmail, MdLock } from "react-icons/md";
 
-function login() {
+import { Link } from 'react-router-dom';
+
+function Login() {
+        const  [username, setUsername] = React.useState('');
+        const  [password, setPassword] = React.useState('');
+
+        function handleSubmit(event){
+            event.preventDefault();
+
+            fetch('https://lab-api-bq.herokuapp.com/auth', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringfy ({username, password}),
+            })
+
+            .then(response => {
+                console.log(response);
+                return response.json();
+            })
+            .then((json) => {
+                console.log(json);
+            });
+        }
+
+       
+
     return (
-        <div className="pagina-login">
-            <header className="pagina-login-header">
-                <img src={logo} alt="Logo Burguer Queen" />
-            </header>
-            <div className="pagina-login-main">
-                <h1>login</h1>
-                <form className="login-form">
-                    <div className="loginInputEmail">
-                        <MdEmail />
-                        <input
-                        type="text"
-                        placeholder="Digite um email"
-                        />
-                    </div>
-                    <div className="loginInputPassword">
-                        <MdLock />
-                        <input
-                            type="text"
-                            placeholder="Digite sua senha"
-                        />
-                    </div>
-                    <button type="submit">
-                        Entrar
-                    </button>
-                    
-                    <h2>Não tenho conta!</h2>
+        <section>
+            <div className="pagina-login" >
+                <header className="pagina-login-header">
+                    <img src={logo} alt="Logo Burguer Queen" />
+                </header>
 
-                    <button type="submit">
-                        Cadastre-se
-                    </button>
+                <form action="" onSubmit={handleSubmit}>
+                    <h1 className="login-name">login</h1>
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={({ target }) => setUsername(target.value)}
+                    />
+                    <input
+                        type="text"
+                        value={password}
+                        onChange={({ target }) => setPassword(target.value)}
+                    />
+                    <button>Entrar</button>
+
+                    <Link className="link" to="/Register">Cadastre-se</Link>
+
+                    
                 </form>
-            
+               
+                
             </div>
-        </div>
-    );
+        </section>
+     );
 }
 
 export default Login;

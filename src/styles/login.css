@@ -1,5 +1,6 @@
-@import './global.css';
+@import '../global.css';
 
+/* Imagem */
 .pagina-login-header img {
     width: 300px;
     height: 300px;
@@ -8,24 +9,61 @@
     position: absolute;
     top: 0;
     left: 40%;
-}
+} 
 
-.pagina-login {
+/* Container do login */
+ .pagina-login {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     width: 100%;
-}
-.login-form {
+} 
+
+/* h1 login  */
+ .login-name {
+    padding: 2%;
+} 
+
+/* inputs dentro do login */
+    .login-form {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column; 
     /* background-color: #F2DFBA; */
+ } 
+
+/* Container do login */
+     .card-login {
+        width: 100%;
+        padding: 5%;
+        display: inline-block;
+        border: 0;
+        background-color: #F2DFBA;
+        outline: none;
+        min-width: 180px;
+        font-size: 16px;
+        transition: all .3s ease-out;
+        border-radius: 10px;
+        box-shadow: 3px 3px 1px 0px #00000060;
 }
 
+  /* padding: 5%;
+  border-radius: 10px;
+  box-shadow: 3px 3px 1px 0px #00000060;
+  margin: 5%;
+  background-color: #F2DFBA; */
 
 
+
+  /* width: 40%;
+  height: auto;
+  /* align-items: center; */
+  /* justify-content: center; 
+  position: absolute;
+  top: 0;
+  left: 20%;
+  margin: 3%; */
 
 
