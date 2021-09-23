@@ -1,14 +1,16 @@
 .loader-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
+
   display: flex;
+	width: 100%;
+	height: 100vh;
+	position:fixed;
   align-items: center;
   justify-content: center;
-  background-color: rgba(14, 13, 13, 0.199);
-  z-index: 10;
+  top:0;
+  left:0;
+	margin: auto;
+	background-color: #0000009a;
+	z-index: 10;
 
 }
 

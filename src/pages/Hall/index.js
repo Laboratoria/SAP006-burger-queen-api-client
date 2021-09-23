@@ -23,6 +23,7 @@ export default function Hall() {
 
 	const [allProducts, setAllProducts] = useState([]);
 
+
 	useEffect(() => {
 		const apiURL = 'https://lab-api-bq.herokuapp.com';
 		const apiProducts = `${apiURL}/products`;
@@ -41,7 +42,6 @@ export default function Hall() {
 				setAllProducts(data);
 			});
 	}, []);
-	console.log(allProducts);
 
 
 	const [values, setValues] = useState({
@@ -80,12 +80,13 @@ export default function Hall() {
 			name: e.target.value,
 			price: e.target.getAttribute('price'),
 			quantity: 1,
-			complement:(prevProduct.complement?prevProduct.complement:null)
+			complement: (prevProduct.complement ? prevProduct.complement : null)
 
 		}))
 	}
 
 	const chooseFlavor = (e) => {
+
 		setProductSelected(prevProduct => ({
 			...prevProduct,
 			flavor: e.target.value,
@@ -169,7 +170,7 @@ export default function Hall() {
 			second: 'adicionais',
 			third: 'bebidas',
 		})
-		setProducts(<Burgers onClick={chooseProduct} />)
+		setProducts(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
 	}
 
 	const changeProducts = (e) => {
@@ -220,6 +221,7 @@ export default function Hall() {
 
 	const [showPopup, setShowPopup] = useState(false);
 	const [showPopupCancel, setShowPopupCancel] = useState(false);
+	const [popUpText, setPopUpText] = useState("")
 
 	const [cartContent, setCartContent] = useState([])
 
@@ -228,11 +230,10 @@ export default function Hall() {
 
 		if (productSelected.name !== undefined && productSelected.price !== undefined && productSelected.name !== "") {
 			if (productSelected.flavor === undefined) {
+				setPopUpText("Selecione um item antes de adicioná-lo!")
 				setShowPopup(true);
 
 			} else {
-				
-
 				const newArray = [...cartContent]
 				const productInCart = newArray.find(product => product.name === productSelected.name && product.flavor === productSelected.flavor && product.complement === productSelected.complement)
 				const index = newArray.indexOf(productInCart)
@@ -244,14 +245,12 @@ export default function Hall() {
 				} else {
 					productInCart.quantity += 1
 					setCartContent(newArray)
-
-
 				}
 				// setComplementChecked(false)
-
 			}
 
 		} else {
+			setPopUpText("Selecione um item antes de adicioná-lo!")
 			setShowPopup(true);
 
 		}
@@ -289,49 +288,89 @@ export default function Hall() {
 		setShowPopupCancel(false)
 	}
 
-	const [client, setClient] = useState();
-	const [table, setTable] = useState();
+	const [client, setClient] = useState('');
+	const [table, setTable] = useState('');
 
 
 	const onChangeClient = (e) => {
 		const name = e.target.value
 		setClient(name)
-		console.log(client)
-    
-  };
 
-	const onChangeTable = (e) =>{
+	};
+
+	const onChangeTable = (e) => {
 		setTable(e.target.value)
-		console.log(table)
 	}
-	
+
 
 	const sendOrder = () => {
-		const newArray = [...cartContent]
-		const orderProducts = newArray.map((productCart) => {
-			const productAPI = allProducts.find(productApi => productApi.name === productCart.name && productApi.flavor === productCart.flavor && productApi.complement === productCart.complement)
-			return{
-			id: productAPI.id,
-			qty: productCart.quantity
+		if (table === "" || client === "") {
+			setPopUpText("Dados do cliente incompletos. Preencha antes de enviar o pedido.")
+			setShowPopup(true)
+		} else if (cartContent.length === 0) {
+			setPopUpText("O Carrinho está vazio. Adicione os produtos antes de enviar o pedido.")
+			setShowPopup(true)
+
+		} else {
+			const newArray = [...cartContent]
+			const orderProducts = newArray.map((productCart) => {
+				const productAPI = allProducts.find(productApi => productApi.name === productCart.name && productApi.flavor === productCart.flavor && productApi.complement === productCart.complement)
+				return {
+					id: productAPI.id,
+					qtd: productCart.quantity
+				}
 			}
-		}
-		)
-		
-		const order =
-		{
-			client,
-			table,
-			products:orderProducts
+			)
+
+			const order =
+			{
+				client,
+				table,
+				products: orderProducts
+
+			}
+
+			const apiURL = 'https://lab-api-bq.herokuapp.com';
+			const apiOrders = `${apiURL}/orders`;
+			const token = localStorage.getItem('token');
+
+			const requestOptions = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: token,
+				},
+				body: JSON.stringify(order),
+			};
+
+
+			fetch(apiOrders, requestOptions)
+				.then((response) => response.json())
+				.then((orderData) => {
+					// eslint-disable-next-line eqeqeq
+					if (orderData.code == '400') {
+						throw new Error();
+					} else {
+						setCartContent([])
+						setClient('')
+						setPopUpText('O pedido foi enviado com sucesso.')
+						setShowPopup(true)
+
+					}
+
+				})
+
+				.catch(() => {
+					setPopUpText('Ocorreu um erro no envio do pedido. Tente novamente.')
+					setShowPopup(true)
+
+				})
 
 		}
 
-		// Enviar pra API
 
-		setCartContent([])
-		setClient('')
-		setTable('')
 
-		console.log(order)
+
 	}
 
 	const tables = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -340,7 +379,6 @@ export default function Hall() {
 	return (
 		<div className="pages-container">
 			<Header />
-
 			<nav>
 				<ul className="menu-types">
 					<li className={breakfastClass} onClick={selectBreakfast}>
@@ -369,10 +407,10 @@ export default function Hall() {
 						{/* <InputSelect onChange={onChangeTable}/> */}
 
 						<select onChange={onChangeTable} >
-          <option value ="" hidden >Mesa</option>
-          {tables.map(tab=>
-             <option key={tab} value={tab}>{tab}</option>)}
-        </select>
+							<option value="" hidden >Mesa</option>
+							{tables.map(tab =>
+								<option key={tab} value={tab}>{tab}</option>)}
+						</select>
 						<Input
 							className="input-hall"
 							placeholder="Insira o nome do cliente"
@@ -421,7 +459,7 @@ export default function Hall() {
 
 				{showPopup ? (
 					<Popup
-						popupText="Selecione um item antes de adicioná-lo!"
+						popupText={popUpText}
 						onClose={() => setShowPopup(false)}
 					></Popup>
 				) : null}

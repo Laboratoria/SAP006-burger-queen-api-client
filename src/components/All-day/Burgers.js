@@ -12,9 +12,6 @@ import ovo from '../../img/ovo.png';
 export default function Burgers({
 chooseBurger, chooseFlavor, chooseComplement, complementChecked
 }) {
-
-
-
 	return (
 		<div className="menu-wrap">
 			<div className="products-row">
@@ -55,7 +52,6 @@ chooseBurger, chooseFlavor, chooseComplement, complementChecked
 				thirdLabel="Vegetariano"
 				thirdClassName="third-btn"
 				onChange={chooseFlavor}
-				
 			/>
 
 			<div className="products-row">
