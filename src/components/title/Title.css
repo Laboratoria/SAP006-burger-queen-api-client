@@ -1,5 +1,9 @@
+:root {
+    --brown-color: #5C3D31;
+}
+
 .title{
-    color: #5C3D31;
+    color: var(--brown-color);
     font-family: 'Courier New', Courier, monospace;
     margin: 0 0 10% 0;
     font-size: 30px;

@@ -1,7 +1,12 @@
+:root {
+    --brown-color: #5C3D31;
+    --white-color: #FFF; 
+}
+
 .footer{
     display: flex;
-    color: white;
-    background-color: #5C3D31;
+    color: var(--white-color);
+    background-color: var(--brown-color);
     width: 100%;
     height: 40px;
     align-items: center;

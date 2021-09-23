@@ -1,6 +1,8 @@
 import {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import { RegisterUser } from '../../../services/Auth';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
@@ -17,14 +19,20 @@ export default function Registration() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [role, setRole] = useState('');
     const history = useHistory();
-
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
-    // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.    
+    // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
+    
+    // evento de clique do olhinho
+    function eyeClick (e){
+        e.preventDefault()
+        setShowPassword(!showPassword) 
+    }
 
-// evento de clique de cadastro
+    // evento de clique de cadastro
     async function handleClick (e) {
         try {
             e.preventDefault()
@@ -39,7 +47,7 @@ export default function Registration() {
                 if(role === 'salon') {
                     history.push('/mesas')
                 } else {
-                    alert('Será direcionado para sua ár')
+                    alert('Será direcionado para sua área')
                 }                  
             } 
         } catch (error) {
@@ -47,8 +55,8 @@ export default function Registration() {
         }
     }
 
-
-    const btnBack = () => {
+    // evento de clique para voltar a página
+      const btnBack = () => {
       localStorage.clear()
       history.push('/')
     }
@@ -70,30 +78,38 @@ export default function Registration() {
                         title='Cadastre-se' 
                     />
                 </div>
-                <Input 
-                    type='text' 
-                    name='name'
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                    placeholder='Digite o seu Nome'
-                />
+                <div>
+                    <Input 
+                        type='text' 
+                        name='name'
+                        value={name}
+                        onChange={(event) => setName(event.target.value)}
+                        placeholder='Digite o seu Nome'
+                    />
 
-                <Input 
-                    type='text' 
-                    name='email'
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    placeholder='Digite o seu e-mail'
-                />
-
-                <Input 
-                    type='password' 
-                    name='password'
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    placeholder='Digite a sua senha'
-                />
-
+                    <Input 
+                        type='text' 
+                        name='email'
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        placeholder='Digite o seu e-mail'
+                    />
+                    <Input 
+                        type={showPassword ? 'type': 'password'}  
+                        name='password'
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                        placeholder='Digite a sua senha'
+                    />
+                    <span className="login-eye">
+                            {showPassword ? 
+                            (<FaEye
+                                onClick={eyeClick} /> ):
+                            (<FaEyeSlash
+                                onClick={eyeClick} />)
+                            }
+                        </span> 
+                </div>
                 <div className='container-checkbox'>
                     <Input 
                         type='radio' 
@@ -116,7 +132,7 @@ export default function Registration() {
                     onClick={handleClick} 
                 /> 
                 <Button 
-                    label="Voltar" 
+                    label="Já tenho conta" 
                     type="submit"
                     onClick={btnBack} 
                 /> 

@@ -1,6 +1,12 @@
+:root {
+    --red-color: #AB2328;
+    --white-color: #FFF; 
+    --red-hover: #360608;
+}
+
 .buttons{
-    color: #fff;
-    background-color: #AB2328;
+    color: var(--white-color);
+    background-color: var(--red-color);
     border: none;
     width: 70%;
     height: 40px;
@@ -10,5 +16,5 @@
 }
 
 .buttons:hover{
-    background-color: #360608;
+    background-color: var(--red-hover);
 }

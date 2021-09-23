@@ -4,12 +4,12 @@
     --yellow-color: #F8EF5B;
     --green-water-color: #40C1AC;
     --brown-color: #5C3D31;
-    --white-color: #FFF;  
+    --white-color: #FFF; 
 }
 
 .container-form{
     display: flex;
-    background-color: aquamarine;
+    background-color: var(--white-color);
     flex-direction: column;
     width: 50%;
     height: 560px;
@@ -27,4 +27,18 @@
 .register{
     margin: 110px 0 0 0;
     font-size: 20px;
+}
+
+.password-toogle-icon{
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.login-eye{
+    position: absolute;
+    margin: -3% 18%;
+    color: rgba(136, 136, 136, 0.904);
 }
