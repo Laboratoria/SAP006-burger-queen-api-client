@@ -6,4 +6,9 @@
 .btn-logout{
     border: none;
     background: #fff;
+    display: flex;
+}
+
+.btn-logout:hover{
+    background-color: #360608;
 }

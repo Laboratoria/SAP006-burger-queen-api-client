@@ -25,6 +25,7 @@ export default function Login() {
             if (token) {
                 localStorage.setItem('arroz', token)
                 history.push('/mesas');
+                alert('Login Correto')
             } else {
                 alert('Insira uma conta válida')
             }
