@@ -1,9 +1,12 @@
 import React from 'react';
+
 import NavBar from '../../../components/navbar/Navbar'
 import Footer from '../../../components/footer/Footer';
+
 import balcao from '../../../img/balcao.png'
 import mesas from '../../../img/mesas.png'
 import sofa from '../../../img/sofa.png'
+
 import './Tables.css';
 
 
@@ -52,12 +55,3 @@ export default Mesas;
 //     )   
 // }
 // export default User;
-
-/* export default function User(){
-    const { name } = useParams();
-    return (
-        <div>
-            <h1>Logado como { name }</h1>
-        </div>
-    )   
-} */
