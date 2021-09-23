@@ -26,3 +26,15 @@ export const loginUser = (values) => {
     })
   });
 };
+
+export const getProducts = () => {
+  return fetch('https://lab-api-bq.herokuapp.com/products', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+  })
+    .then(res => res.json())
+    
+}
