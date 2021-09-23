@@ -360,6 +360,15 @@ body {
   }
 }
 
+.products {
+  font-size: 25px;
+  color: $black;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  gap: 5px;
+}
+
 @keyframes slide {
   from {
     top: -50px;
