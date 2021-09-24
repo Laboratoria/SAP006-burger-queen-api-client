@@ -5,21 +5,33 @@ import './CurrentOrder.scss';
 
 import { Button} from '../Button/Button'
 import { orderAge } from '../../services/general';
+import { orderProcessAge } from '../../services/general';
 
 import { getUserById } from '../../services/users';
 
 export const CurrentOrder = ({
   order, 
   ButtonDeleteOrder, 
-  OrderPendingButton,
-  OrderBeingPreparedButton, 
   OrderReadyButton,
   OrderDeliveredButton
   }) => { 
     
   const orderCreationAgeSeconds = (Date.now() - new Date (order.createdAt).valueOf())/1000
+const creationDateInSeconds = (new Date (order.createdAt).valueOf())/1000
+const processDateInSeconds = (new Date (order.processedAt).valueOf())/1000
+const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
+
+  const orderProcessedAgeSeconds = processDateInSeconds - creationDateInSeconds
+  const orderUpdateAgeSeconds = updateDateInSeconds - processDateInSeconds
+  const orderDurationSeconds = updateDateInSeconds - creationDateInSeconds
+
   const orderCreationAge = orderAge(orderCreationAgeSeconds)
+  const orderTimeToPrepare = orderProcessAge(orderProcessedAgeSeconds)
+  const orderTimeToDeliver = orderProcessAge(orderUpdateAgeSeconds)
+  const orderDuration = orderProcessAge(orderDurationSeconds)
+
   const token = localStorage.getItem('currentEmployeeToken')
+  const role = localStorage.getItem('currentEmployeeRole')
   const [waitress, setWaitress] = useState('');
  
   useEffect(() => {
@@ -54,8 +66,25 @@ export const CurrentOrder = ({
           <span>Responsável:&nbsp;{waitress}</span>
         </div>
         <div>
-          <span>{orderCreationAge}</span>
+          {orderCreationAge === 'agora há pouco' ? 
+          <span>Pedido criado &nbsp;{orderCreationAge}</span> :
+          <span>Pedido criado há &nbsp;{orderCreationAge}</span> }
         </div>
+      </div>
+      
+      <div className='current-order-header current-order-header-second'>
+          <span>Duração:&nbsp;</span>
+          <span>Preparo:&nbsp;{orderTimeToPrepare}</span>
+          {order.status === 'pending' ?
+            <span>Entrega: ENF</span>
+          : <span>Entrega:&nbsp;{orderTimeToDeliver}</span>
+          }
+
+          {order.status === 'Entregue' ?
+          <span>Total:&nbsp;{orderDuration}</span>
+          :<span>Total:ENF</span>
+          }
+          
       </div>
       <div className='current-order-all-products'>
         <div className='current-order-all-products-column current-order-product-column-quantity'>
@@ -97,22 +126,45 @@ export const CurrentOrder = ({
           ButtonId={order.id}
           ButtonOnClick={ButtonDeleteOrder}    
         />
+       
         <div className='current-order-status-button-div'>
+          {role === 'kitchen' ? 
+           order.status !== 'Entregue' ? order.status !== 'Pronto' ?
+            <Button 
+              Role='kitchen-change-order-status-ready' 
+              children='PRONTO' 
+              ButtonId={order.id}
+              ButtonOnClick={OrderReadyButton}
+            /> : 
+            <Button 
+              Role='kitchen-change-order-status-ready' 
+              children='Este pedido já está pronto! :)' 
+              ButtonId={order.id}
+            /> :
+            <Button 
+              Role='kitchen-change-order-status-delivered' 
+              children='Este pedido já foi entregue :)' 
+              ButtonId={order.id}
+          />
+            : order.status !== 'pending' ? order.status !== 'Entregue' ?
           <Button 
-            Role='kitchen-change-order-status-being-prepared' 
-            children='PREPARO' 
-            ButtonId={order.id} 
-            ButtonOnClick={OrderBeingPreparedButton}/>
-          <Button 
-            Role='kitchen-change-order-status-ready' 
-            children='PRONTO' 
+            Role='kitchen-change-order-status-delivered' 
+            children='ENTREGAR' 
             ButtonId={order.id}
-            ButtonOnClick={OrderReadyButton}/>
-          <Button 
-          Role='kitchen-change-order-status-delivered' 
-          children='ENTREGUE' 
-          ButtonId={order.id}
-          ButtonOnClick={OrderDeliveredButton}/>
+            ButtonOnClick={OrderDeliveredButton}
+          />
+           : 
+           <Button 
+             Role='kitchen-change-order-status-delivered' 
+             children='Este pedido já foi entregue!' 
+             ButtonId={order.id}
+           /> 
+           : 
+           <Button 
+           Role='kitchen-change-order-status-being-prepared' 
+           children='Este pedido está sendo preparado!' 
+           ButtonId={order.id}
+         />}
         </div>
       </div>
     </div>

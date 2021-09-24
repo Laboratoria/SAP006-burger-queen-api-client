@@ -4,8 +4,6 @@ import { useHistory } from 'react-router-dom';
 
 import { Button } from '../Button/Button';
 
-import logo from '../../assets/images/logo-berg.png'
-
 
 import './Navbar.scss';
 
