@@ -1,7 +1,9 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { tables } from '../../../data/tables';
+import { getAllProducts } from '../../../services/products';
+import { getAllOrders } from '../../../services/orders';
 import { logout } from '../../../routes/utils/auth';
 import { titleCorrespondance } from '../../../data/titleCorrespondance';
 
@@ -13,30 +15,56 @@ import './Room.scss';
 
 export const Room = () => { 
   const history = useHistory();
-  const tablesToPrint = Object.keys(tables);
   const token = localStorage.getItem('currentEmployeeToken');
+  const [tables, setTables] = useState([
+    {'table':'1', 'tableName':'table-01'},
+    {'table':'2', 'tableName':'table-02'},
+    {'table':'3', 'tableName':'table-03'},
+    {'table':'4', 'tableName':'table-04'},
+    {'table':'5', 'tableName':'table-05'},
+    {'table':'6', 'tableName':'table-06'},
+    {'table':'7', 'tableName':'table-07'},
+    {'table':'8', 'tableName':'table-08'},
+    {'table':'9', 'tableName':'table-09'},
+    {'table':'10', 'tableName':'table-10'},
+    {'table':'11', 'tableName':'table-11'},
+    {'table':'12', 'tableName':'table-12'},
+  ])
+  const [tablesWithOrders,setTablesWithOrders] = useState('')
+  const [currentOrders, setCurrentOrders] = useState([]);
+  const [userNotAuthenticatedErrorModal, setUserNotAuthenticatedErrorModal] = useState(false);
+
 
   const getProducts = () => {
-    const apiToGetProducts = 'https://lab-api-bq.herokuapp.com/products';
-    const result = fetch (apiToGetProducts, {
-        headers: {
-          accept: 'application/json',
-          Authorization:`${token}`
-        },
-    }).then((response) => {
-        if (response.status === 200) {
-          return response.json();
-      } else {
-        throw new Error(response.status);
-      }
-    }).then((responseJson) => { 
+    getAllProducts(token)
+    .then((responseJson) => { 
       const menu = responseJson
       titleCorrespondance(menu)
       localStorage.removeItem('menu')
       localStorage.setItem('menu', JSON.stringify(menu))
     }).catch((error) => alert(error))
-    return result
   };
+
+  const getCurrentOrders = () => {
+    getAllOrders(token)
+    .then(responseJson => {
+      switch (responseJson.code) {
+        case 401:
+          return setUserNotAuthenticatedErrorModal(true)
+        default:
+          const orders = responseJson
+          setCurrentOrders(orders)
+          setTablesWithOrders({...tables, ...orders})
+      } 
+    })   
+  }
+
+
+   
+  useEffect(() => {
+    getCurrentOrders()
+  }, [])
+  console.log(tablesWithOrders)
 
   const handleLogout = () => {
     logout()
@@ -55,12 +83,13 @@ export const Room = () => {
           ButtonOnClick={()=>[getProducts(), history.push('/neworder')]}
         />
         <section className='room-tables-section'>
-          {tablesToPrint.map((role) => 
+          {tables.map((table) => 
             <Table
-              Role={role} key={role.toString()} 
+              Role={table.tableName} key={table.table} ButtonId={table.table}
             />
           )}
-        </section>
+          </section>
+
         <Button Role='room-sign-out' ButtonOnClick={()=> handleLogout()}/>
       </main>
     </div>
