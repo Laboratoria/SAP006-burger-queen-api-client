@@ -311,13 +311,12 @@ export default function Hall() {
 		if (table === "" || client === "") {
 			setPopUpText("Dados do cliente incompletos. Preencha antes de enviar o pedido!")
 			setShowPopup(true)
-			console.log(table)
 			setSelectTable("")
-			console.log(table)
+		
 		} else if (cartContent.length === 0) {
 			setPopUpText("O Carrinho está vazio. Adicione os produtos antes de enviar o pedido!")
 			setShowPopup(true)
-			console.log(table)
+		
 			
 
 		} else {
