@@ -8,7 +8,7 @@ import { getRouteByRole } from '../../routes/redirections';
 import GeneralButton from '../../components/Button/Button';
 import { Input }  from '../../components/Input/Input.jsx'
 
-// import './styleRegister.scss';
+// import './register.scss';
 import register from '../../Assets/register.png';
 
 

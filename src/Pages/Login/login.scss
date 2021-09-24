@@ -6,14 +6,10 @@ $breakpoints: (
 );
 
 
-.loginBox{
+.mainBox{
     background: rgba(244, 244, 244, 0.52);
     height: 100%;
     width: 100%;
-
-    @media screen { 
-        
-    }
 }
 
 
@@ -57,5 +53,31 @@ $breakpoints: (
             font-weight: bold;
             text-decoration: none;
         }
+}
+
+@media screen and (min-width: 768px) {
+
+    .mainBox{
+        display: flex;
+        margin: 5rem 0 0 0;
     }
+    .loginBox { 
+        display: flex;
+        flex-wrap: wrap;
+        width: 40vw;
+        height: 70vh;
+        background-color: #fff;
+        align-items: center;
+        justify-content:center;
+        border: 1px solid #008f83;
+        border-radius: 20px;   
+        margin-left: 4rem;
+    }
+
+    .imgLogo{
+        width: 30vw;
+        height: 50vh;
+        margin-top: 6rem;
+    }
+}
 
