@@ -4,10 +4,10 @@ import './allday.scss';
 
 import ProductArea from '../ProductArea';
 import ButtonRadio from '../ButtonRadio';
-import simples from '../../img/simples.png';
-import duplo from '../../img/duplo.png';
 import queijo from '../../img/queijo.png';
 import ovo from '../../img/ovo.png';
+import prato from '../../img/prato.png';
+import burger from '../../img/burger.png';
 
 export default function Burgers({
 chooseBurger, chooseFlavor, chooseComplement, complementChecked
@@ -19,7 +19,7 @@ chooseBurger, chooseFlavor, chooseComplement, complementChecked
 					inputId="simples"
 					inputName="burger"
 					inputValue="Hambúrguer simples"
-					productImg={simples}
+					productImg={burger}
 					productImgAlt="simple burger"
 					productName="Simples"
 					productPrice="R$ 10,00"
@@ -30,7 +30,7 @@ chooseBurger, chooseFlavor, chooseComplement, complementChecked
 					inputId="duplo"
 					inputName="burger"
 					inputValue="Hambúrguer duplo"
-					productImg={duplo}
+					productImg={burger}
 					productImgAlt="double burger"
 					productName="Duplo"
 					productPrice="R$ 15,00"
@@ -75,6 +75,18 @@ chooseBurger, chooseFlavor, chooseComplement, complementChecked
 					productImgAlt="egg"
 					productName="Ovo"
 					productPrice="R$ 1,00"
+					onClick={chooseComplement}
+					inputChecked={complementChecked}
+				/>
+
+<ProductArea
+					inputId="none"
+					inputName="complement"
+					inputValue= {null}
+					productImg={prato}
+					productImgAlt="dish"
+					productName="Sem extra"
+					// productPrice="R$ 1,00"
 					onClick={chooseComplement}
 					inputChecked={complementChecked}
 				/>
