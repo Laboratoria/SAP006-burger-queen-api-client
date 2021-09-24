@@ -3,7 +3,6 @@ import { Icon } from '@iconify/react';
 import { removeStorageKey } from '../../services/storage';
 import { getRouteHeaderMenu } from '../../routes/redirections';
 
-
 const Header = () => {
     const history = useHistory();
 
@@ -12,9 +11,8 @@ const Header = () => {
         history.push('./')  
     }
 
-    const handleRouteChange = () => {
-        const route = getRouteHeaderMenu();
-        history.push(route);
+    const handleRouteChange = (path) => {
+        getRouteHeaderMenu(path);
     }
 
     return (

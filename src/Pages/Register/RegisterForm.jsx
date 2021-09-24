@@ -35,10 +35,22 @@ const Register = () => {
         setErrors(validation(values));
 
         registerUser(values)
-            .then((json) => {
-                const route = getRouteByRole(json.role);
+            .then((response) => {
+                console.log(111, response)
+    
+                if (response.code && response.code === 400) {
+                console.log(response.message)
+                } else {
+                console.log(response.token);
+                }
+                 const route = getRouteByRole(values.role);
                 history.push(route);
             })
+            // .then((json) => {
+            //     const token = localStorage.getItem('token')
+            //     console.log(token);
+               
+            // })
             .catch((error) => {
                 console.log(error);
             })
