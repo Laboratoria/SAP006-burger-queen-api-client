@@ -1,10 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 // import Header from '../../components/Header/Header'
-// import MealNavBar from '../../components/Header/MealNavBar';
+import MealNavBar from '../../components/Header/MealNavBar';
 import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
-import Button from '../../components/Button/Button';
-import GeneralButton from '../../components/Button/style.scss';
+import GeneralButton from '../../components/Button/Button';
+import '../../components/Button/style.scss';
 import './tables.scss';
 
 const Tables = () => {
@@ -19,25 +19,25 @@ const Tables = () => {
     return (
         <main> 
             {/* <Header /> */}
-            {/* <MealNavBar /> */}
+            <MealNavBar />
             <section className="tables-display">
                 <div className="doubleTables">
-                    <Button className="table">1</Button>
-                    <Button className="table">2</Button>
+                    <GeneralButton className="table">1</GeneralButton>
+                    <GeneralButton className="table">2</GeneralButton>
                 </div>
                 <div className="doubleTables">
-                    <Button className="table">3</Button>
-                    <Button className="table">4</Button>
+                    <GeneralButton className="table">3</GeneralButton>
+                    <GeneralButton className="table">4</GeneralButton>
                 </div>
                 <div className="doubleTables">
-                    <Button className="table">5</Button>
-                    <Button className="table">6</Button>
+                    <GeneralButton className="table">5</GeneralButton>
+                    <GeneralButton className="table">6</GeneralButton>
                 </div>
                 <div className="doubleTables">
-                     <Button className="table">7</Button>
-                    <Button className="table">8</Button>
+                     <GeneralButton className="table">7</GeneralButton>
+                    <GeneralButton className="table">8</GeneralButton>
                 </div>
-                <Button className="table">9</Button>
+                <GeneralButton className="table">9</GeneralButton>
             </section>
             <form className="form-submitOrder">
                 <fieldset>oi</fieldset>
