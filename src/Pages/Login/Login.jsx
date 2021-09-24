@@ -7,8 +7,8 @@ import { getRouteByRole } from '../../routes/redirections'
 import GeneralButton from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 
-import './styleLogin.scss'
-import login from '../../Assets/login.png';
+import './login.scss'
+import vixiLogo from '../../Assets/vixiLogo.png';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -48,33 +48,35 @@ const Login = () => {
     // }
 
     return (
-            <section className="loginBox">
-                <img className="imgLogo" src={login} alt='icon-login' />
-                <p className="title">login</p>
-                <form className="form" onSubmit={handleSubmit}>
-                    <Input
-                        type='email' 
-                        id='email' 
-                        placeholder='email'
-                        value={email}
-                        errormessage='Por favor, insira um e-mail válido.'
-                        onChange={(event) => setEmail(event.target.value)}
-                    />
-                    <Input
-                        type='password' 
-                        id='password' 
-                        placeholder="senha"
-                        value={password}
-                        errormessage='Por favor, insira uma senha válida.'
-                        onChange={(event) => setPassword(event.target.value)}
-                    />
-                </form>
-                <GeneralButton variant="primary" type="submit" onClick={authUserLogin}>
-                    Login
-                </GeneralButton>
-                <p className="phraseLogin">É o seu primeiro dia no Vixi? <br />
-                    <Link to='/register'>Crie sua conta aqui!</Link>
-                </p>
+            <section className="mainBox">
+                <img className="imgLogo" src={vixiLogo} alt='icon-login' />
+                <div className="loginBox">
+                    <p className="title">login</p>
+                    <form className="form" onSubmit={handleSubmit}>
+                        <Input
+                            type='email' 
+                            id='email' 
+                            placeholder='email'
+                            value={email}
+                            errormessage='Por favor, insira um e-mail válido.'
+                            onChange={(event) => setEmail(event.target.value)}
+                        />
+                        <Input
+                            type='password' 
+                            id='password' 
+                            placeholder="senha"
+                            value={password}
+                            errormessage='Por favor, insira uma senha válida.'
+                            onChange={(event) => setPassword(event.target.value)}
+                        />
+                    </form>
+                    <GeneralButton variant="primary" type="submit" onClick={authUserLogin}>
+                        Entrar
+                    </GeneralButton>
+                    <p className="phraseLogin">É o seu primeiro dia no Vixi? <br />
+                        <Link to='/register'>Crie sua conta aqui!</Link>
+                    </p>
+                </div>
             </section>
     )
 }

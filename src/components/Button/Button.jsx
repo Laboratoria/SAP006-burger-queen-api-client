@@ -1,10 +1,10 @@
 import './style.scss';
 
-const GeneralButton = ({ children, onClick }) => {
-    // const classes = `button ${variant}`;
+const GeneralButton = ({ variant , children, onClick }) => {
+    const classes = `button ${variant}`;
 
     return (
-        <button className="GeneralButton" onClick={onClick}> 
+        <button className={classes} onClick={onClick}> 
             {children}
         </button>
     );

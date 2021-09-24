@@ -1,22 +1,19 @@
 
-.signUpBox {
+.mainBox {
     background-color: rgba(244, 244, 244, 0.52);
-    background-image: url(./Assets/register.png);
     font-family: 'Montserrat', sans-serif;
     width: 100%;
     height: 100%;
 }
 
-image {
-    height: 50vh;
-    width: 50vh;
-    margin: 0;
+.image {
+    height: 35vh;
+    width: 100vw;    
 }
-
 
 .titleRegister {
     font-family: 'Montserrat', sans-serif;
-    font-size:28px;
+    font: size 20px;
     font-style: normal;
     font-weight: 1000;
     color: #008F83;
@@ -37,7 +34,7 @@ image {
 }
 
 .labelRadioInput{
-    margin: 0 5vh;
+    margin: 0 2vh;
     
 }
 
@@ -46,24 +43,25 @@ image {
     font-weight: 500;
 }
 
-// const ButtonRegister = styled.button`
-//     width: 32vh;
-//     height: 20vh;
-//     margin: 0;
-//     display: flex;
-// `
-
 .phraseRegister {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
     line-height: 1em;
     text-align:center;  
     justify-content:center;
-    margin: 80px 0px;
+    margin: 20px 0px;
         a {
             color:black;
             font-weight:bold;
             text-decoration: none;
         }
-    }
+}
 
+
+@media screen and (min-width: 768px) {
+
+    .mainBox{
+        display: flex;
+        margin: 10rem 0 0 0;
+    }
+}
