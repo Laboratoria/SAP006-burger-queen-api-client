@@ -1,25 +1,16 @@
 
-$breakpoints: (
-    'medium': (min-width: 800px),
-    'large': (min-width: 1000px),
-    'huge': (min-width: 1200px),
-);
 
-
-.loginBox{
+.mainBox{
     background: rgba(244, 244, 244, 0.52);
     height: 100%;
     width: 100%;
-
-    @media screen { 
-        
-    }
 }
 
 
 .imgLogo{
-    height: 34vh;
-    margin: 0vh 8vh;
+    height: 38vh;
+    width: 80vw;
+    margin: 0vh 4vh;
 }
 
 .title{
@@ -31,7 +22,7 @@ $breakpoints: (
     text-transform: uppercase;
     color: #008F83;
     justify-content:center;
-    margin: 8vh 0 5vh;
+    margin: 4vh 0 5vh;
 }
 
 .form{
@@ -57,5 +48,32 @@ $breakpoints: (
             font-weight: bold;
             text-decoration: none;
         }
+}
+
+@media screen and (min-width: 768px) {
+
+    .mainBox{
+        display: flex;
+        margin: 10rem 0 0 0;
     }
+    .loginBox { 
+        display: flex;
+        flex-wrap: wrap;
+        width: 40vw;
+        height: 65vh;
+        background-color: #fff;
+        align-items: center;
+        justify-content:center;
+        border: 1px solid #008f83;
+        border-radius: 20px;   
+        margin: -20px;
+        
+    }
+
+    .imgLogo{
+        width: 60vw;
+        height: 70vh;
+        margin: -20px;
+    }
+}
 
