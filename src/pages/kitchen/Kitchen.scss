@@ -1,0 +1,18 @@
+@import '../../styles/Global.scss';
+
+.current-orders-section{
+  margin: 3%;
+ overflow-y: scroll;
+ height: 48vh;
+}
+
+@media (min-width: 1024px) and (max-height: 768px),
+(min-width: 1366px) and (max-height: 1024px){
+  .current-orders-section{
+    position: absolute;
+    width: 73%;
+    top:20%;
+    left: 20%;
+   height: 70vh;
+  }
+}

@@ -21,3 +21,5 @@ export const orderAge = (timeInSeconds) => {
     return `há  ${timeInYears} a.`;
   }
 };
+
+

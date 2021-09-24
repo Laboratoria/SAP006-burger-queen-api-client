@@ -84,6 +84,11 @@ nav {
     margin-top: -12%;
     background-image: url('./../../assets/images-buttons/navbar-menu.png');
   }
+
+  .room-navbar-home{
+    margin-top: -12%;
+    background-image: url('./../../assets/images-buttons/navbar-home.png');
+  }
   
   .room-navbar-waiting-orders{
     background-image: url('./../../assets/images-buttons/navbar-waiting-orders.png');
@@ -370,14 +375,17 @@ nav {
     border-radius: 10px;
   }
 
+
+
+
   .kitchen-sign-out{
     background-image: url('../../assets/icons/light-brown-logout.png');
-    height: 5vh;
-    width: 5vh;
-    background-size:5vh;
+    height: 4vh;
+    width: 4vh;
+    background-size:4vh;
     position: absolute;
-    left: 3%;
-    top:30%
+    left: 2%;
+    top:6%
     }
 
   .kitchen-get-orders{
@@ -386,16 +394,11 @@ nav {
 
 
   .kitchen-change-order-status{
-    font-size: 120%;
+    font-size: 110%;
     padding: 1.5% 2%;
     border-radius: 10px;
-    font-family: $berg-font;
     margin-left: 7%;
-  }
-
-
-  .kitchen-change-order-status-pending{
-    background-color: $medium-green;
+    font-weight: 600;
   }
 
   .kitchen-change-order-status-being-prepared{
@@ -416,6 +419,14 @@ nav {
     background-size: 3vh;
     background-image: url('../../assets/icons/kitchen-trash.png');
   }
+
+  .kitchen-modal{
+    background-color: $light-brown-box;
+    font-size: 130%;
+    padding: 3% 6%;
+    border-radius: 10px;
+  }
+
 
 
 @media (min-width: 1024px) and (max-height: 1366px){
@@ -438,6 +449,10 @@ nav {
       width: 22vh;
       background-size: 22vh;
     }  
+
+    .room-navbar-home{
+      margin-top: 2%;
+    }
   }
 
   .menu-filter{
@@ -458,6 +473,8 @@ nav {
       background-size:20vh;
     }
   }
+
+ 
 
   .room-new-order, .new-order-save-order{
     font-size: 250%;
@@ -493,6 +510,24 @@ nav {
     position: absolute;  
   }
 
+  .kitchen-get-orders{
+    width:35%;
+    margin-left: 60%;
+    margin-top:5%;
+  }
+
+  .kitchen-sign-out{
+    position: absolute;
+    left: 1%;
+    top:5%
+    }
+
+
+    .status-get-orders{
+      width: 60%;
+      margin-left: 30%;
+    }
+
 }
 
 @media (min-width: 1366px) and (max-height: 1024px){
@@ -501,6 +536,11 @@ nav {
     left:11%;
     bottom: 6%;
   }
+
+  .kitchen-get-orders{
+    margin-top:7%;
+  }
+
 }
 
 @media (min-width: 1024px) and (max-height: 768px) {

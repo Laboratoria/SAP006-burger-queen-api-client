@@ -27,5 +27,38 @@ export const getAllOrders = (token) => {
     },
   })
     .then((response) => response.json())
-   return result
+  return result
 };
+
+export const deleteOrder = (id, token) => {
+  const apiToGetOrders= `https://lab-api-bq.herokuapp.com/orders/${id}`
+  const result = fetch (apiToGetOrders, {
+    method:'DELETE',
+    headers: {
+    accept: 'application/json',
+    Authorization: `${token}`
+    },
+  })
+    .then((response) => response.json())
+  return result
+};
+
+export const changeOrderStatus = (id, token, status) => {
+  id = id.toString();
+  const apiToGetOrders= `https://lab-api-bq.herokuapp.com/orders/${id}`
+  const result = fetch (apiToGetOrders, {
+    method:'PUT',
+    headers: {
+    accept: 'application/json',
+    Authorization: `${token}`,
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
+    'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST',
+    },
+    body: JSON.stringify({ status })
+  })
+    .then((response) => response.json())
+  return result
+};
+  

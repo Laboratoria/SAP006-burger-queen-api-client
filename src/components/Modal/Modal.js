@@ -100,21 +100,38 @@ export const NewOrderModal = ({Role, ModalContent, ButtonOnClick, children, chil
 }
 
 
-export const DeleteOrderModal = ({Role, ModalContent, ButtonOnClick, children, childrenSecondButton, ButtonOnClickSecondOption}) => {
+export const KitchenDeleteOrderModal = ({Role, ModalContent, ButtonOnClick, children, childrenSecondButton, ButtonOnClickSecondOption}) => {
   return (
     <section className='modal-background'>
       <div className='modal-container'>
-        <p className='new-order-modal-content'> {ModalContent} </p>
-        <Button 
+        <p className='kitchen-modal-content'> {ModalContent} </p>
+        <div className='kitchen-modal-delete-order-button-div'>
+          <Button 
+            Role={Role}
+            children={children}
+            ButtonOnClick={ButtonOnClick}
+          />
+          <Button 
           Role={Role}
-          children={children}
+          children={childrenSecondButton}
+          ButtonOnClick={ButtonOnClickSecondOption}
+          />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export const KitchenErrorModal = ({ModalContent, ButtonOnClick}) => {
+  return (
+    <section className='modal-background'>
+      <div className='modal-container'>
+        <p className='kitchen-modal-content'> {ModalContent} </p>
+        <Button 
+          Role='kitchen-modal'
+          children='OK'
           ButtonOnClick={ButtonOnClick}
         />
-         <Button 
-         Role={Role}
-         children={childrenSecondButton}
-         ButtonOnClick={ButtonOnClickSecondOption}
-       />
       </div>
     </section>
   )

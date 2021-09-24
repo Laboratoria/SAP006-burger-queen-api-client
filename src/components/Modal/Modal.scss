@@ -63,6 +63,32 @@
 }  
 
 
+
+.kitchen-modal-content{
+  font-size: 130%;
+  text-align: center;
+}
+
+.kitchen-modal-delete-order-button-div{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  margin: auto;
+  justify-content: space-evenly;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (min-width: 1024px) and (max-height: 768px),
 (min-width: 1366px) and (max-height: 1024px){
   .menu-modal-content{

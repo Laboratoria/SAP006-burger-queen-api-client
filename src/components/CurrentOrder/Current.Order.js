@@ -1,9 +1,12 @@
      
 import React from 'react';
+import {useState, useEffect} from 'react';
 import './CurrentOrder.scss';
 
 import { Button} from '../Button/Button'
 import { orderAge } from '../../services/general';
+
+import { getUserById } from '../../services/users';
 
 export const CurrentOrder = ({
   order, 
@@ -13,10 +16,25 @@ export const CurrentOrder = ({
   OrderReadyButton,
   OrderDeliveredButton
   }) => { 
+    
   const orderCreationAgeSeconds = (Date.now() - new Date (order.createdAt).valueOf())/1000
   const orderCreationAge = orderAge(orderCreationAgeSeconds)
+  const token = localStorage.getItem('currentEmployeeToken')
+  const [waitress, setWaitress] = useState('');
+ 
+  useEffect(() => {
+    getUserById(token, order.user_id)
+    .then((reponseJson) => setWaitress(reponseJson.name))
+  }, [])
+
   return (
-    <div className='current-order-div'>
+    <div className= {order.status === 'Em Preparo' || order.status === 'pending'? 
+    'current-order-div order-being-prepared-div' :
+    order.status === 'Pronto' ? 
+    'current-order-div order-ready-div' :
+    order.status === 'Entregue' ? 
+    'current-order-div order-delivered-div' :
+    'current-order-div'}>
       <div className='current-order-header current-order-header-first'>
         <div>
           <span>Mesa:&nbsp;</span><span>{order.table}</span>
@@ -30,7 +48,10 @@ export const CurrentOrder = ({
       </div>
       <div className='current-order-header current-order-header-second'>
         <div>
-          <span>Status:&nbsp;</span><span>{order.status}</span>
+          <span>Status:&nbsp;</span><span>{order.status === 'pending' ? 'Em preparo' : order.status}</span>
+        </div>
+        <div>
+          <span>Responsável:&nbsp;{waitress}</span>
         </div>
         <div>
           <span>{orderCreationAge}</span>
@@ -78,13 +99,8 @@ export const CurrentOrder = ({
         />
         <div className='current-order-status-button-div'>
           <Button 
-            Role='kitchen-change-order-status-pending' 
-            children='EM ESPERA' 
-            ButtonId={order.id} 
-            ButtonOnClick={OrderPendingButton}/>
-          <Button 
             Role='kitchen-change-order-status-being-prepared' 
-            children='EM PREPARO' 
+            children='PREPARO' 
             ButtonId={order.id} 
             ButtonOnClick={OrderBeingPreparedButton}/>
           <Button 
