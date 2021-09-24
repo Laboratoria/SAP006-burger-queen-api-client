@@ -5,6 +5,7 @@ import ProductInfo from "../../components/productinfo";
 
 const Menu = () => {
   const [products, setProducts] = useState([]);
+  const [addItem, setAddItem] = useState([])
   const [productsType, setProductsType] = useState('breakfast');
   getProducts().then(data => setProducts(data))
 
@@ -23,7 +24,9 @@ const Menu = () => {
                 id={elem.id}
                 name={elem.name}
                 price={elem.price}
+            
               />
+              
             )
           })
           }
