@@ -12,7 +12,9 @@ const Menu = () => {
       <section className='big-container'>
         <div className='menu-list'>
           <button className='menu-button' onClick={handleButtonTypeClick} value={'breakfast'}>Café da manhã</button>
-          <button className='menu-button' onClick={handleButtonTypeClick} value={'all-day'}>Almoço/Jantar</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'hamburguer'}>Hambúrgueres</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'side'}>Acompanhamento</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'drinks'}>Bebidas</button>
         </div>
         <div className='products-list' {...productsFiltered}>
           <div className='list-area'>
@@ -25,8 +27,9 @@ const Menu = () => {
               <ProductInfo
                 id={elem.id}
                 name={elem.name}
-                price={elem.price}i
+                price={elem.price}
                 flavor={elem.flavor}
+                complement={elem.complement}
               />
             )
           })}
