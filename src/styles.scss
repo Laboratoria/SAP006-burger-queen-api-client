@@ -37,6 +37,8 @@ body {
   margin: 1em;
 }
 
+//home, login e signup
+
 .card-container {
   width: auto;
   height: auto;
@@ -96,26 +98,6 @@ body {
 
 .signup-page {
   height: 37em;
-}
-
-.products-list{
-  background-color: $light-pink;
-  border-radius: 0.8em;
-  margin-top: 5%;
-  width: 32em;
-  height: 26em;
-  border: $black;
-  justify-content: right;
-
-}
-
-.orders-list {
-  background-color: $light-cyan;
-  border-radius: 0.8em;
-  width: 25em;
-  height: 15em;
-  border: none;
-  margin-top: 10%;
 }
 
 .form-title {
@@ -239,6 +221,8 @@ body {
   margin-top: 10em;
 }
 
+//página de menu
+
 .menu-button {
   margin-top: 5%;
   margin-left: 5%;
@@ -263,10 +247,47 @@ body {
   font-weight: bolder;
 }
 
-.products-labels, .value-labels {
+.products-list{
+  background-color: $light-pink;
+  border-radius: 0.8em;
+  margin-top: 5%;
+  width: 32em;
+  height: 26em;
+  border: $black;
+  justify-content: right;
+
+}
+
+.orders-list {
+  background-color: $light-cyan;
+  border-radius: 0.8em;
+  width: 25em;
+  height: 15em;
+  border: none;
+  margin-top: 10%;
+}
+
+.list-area {
+  display: inline-block;
+  margin: 10px;
+}
+
+.list-labels {
+  padding: 50px;
+  color: black;
+  font-size: 25px;
+}
+
+.product-item {
+  font-size: 25px;
   color: $black;
-  font-size: 1.2em;
-  font-weight: bolder;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.product-info {
+  margin: 5px 25px;
 }
 
 .big-container{
@@ -294,6 +315,8 @@ body {
   color: $light-blue;
   margin-top: 10%;
 }
+
+//menu-hamburguer
 
 .menu-nav {
   display: flex;
@@ -360,15 +383,6 @@ body {
   }
 }
 
-.products {
-  font-size: 25px;
-  color: $black;
-  display: flex;
-  flex-direction: row;
-  margin: 5px;
-  gap: 5px;
-}
-
 @keyframes slide {
   from {
     top: -50px;
@@ -380,6 +394,7 @@ body {
   }
 }
 
+//responsividade
 
 @media screen and (max-width: 420px) {
   .login-page, .signup-page {

@@ -1,37 +1,42 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import MenuHamburger from "../../components/menuHamburger";
-import { getProducts } from "../../services/auth";
 import ProductInfo from "../../components/productinfo";
+import Requests from "../../components/requests";
+import useProducts from "./useProducts";
 
 const Menu = () => {
-  const [products, setProducts] = useState([]);
-  const [addItem, setAddItem] = useState([])
-  const [productsType, setProductsType] = useState('breakfast');
-  getProducts().then(data => setProducts(data))
+  const { productsFiltered, handleButtonTypeClick } = useProducts();
+  const [addItem, setAddItem] = useState([]);
 
   return (
     <div className='main'>
       <MenuHamburger />
       <section className='big-container'>
         <div className='menu-list'>
-          <button className='menu-button' onClick={() => setProductsType('breakfast')}>Café da manhã</button>
-          <button className='menu-button' onClick={() => setProductsType('all-day')}>Almoço/Jantar</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'breakfast'}>Café da manhã</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'all-day'}>Almoço/Jantar</button>
         </div>
-        <div className='products-list' {...products}>
-          {products.map((elem) => {
+        <div className='products-list' {...productsFiltered}>
+          <div className='list-area'>
+            <label className='list-labels'>Produto</label>
+            <label className='list-labels'>Sabor</label>
+            <label className='list-labels'>Valor</label>
+          </div>
+          {productsFiltered.map((elem) => {
             return (
               <ProductInfo
                 id={elem.id}
                 name={elem.name}
-                price={elem.price}
-            
+                price={elem.price}i
+                flavor={elem.flavor}
+                onClick={() => {
+                  setAddItem([...addItem, {id: elem.id, name: elem.name, price: elem.price, flavor: elem.flavor}])
+                }}
               />
               
+              
             )
-          })
-          }
-          <label className='products-labels'>Produtos</label>
-          <label className='value-labels'>Valor</label>
+          })}
         </div>
         <div className='orders-card'>
           <h1 className='menu-title'>Pedidos</h1>
@@ -51,7 +56,9 @@ const Menu = () => {
             <option value='9'>Mesa 9</option>
             <option value='10'>Mesa 10</option>
           </select>
-          <div className='orders-list'></div>
+          <div className='orders-list'>
+          <Requests data={addItem}/>
+          </div>
           <button className='menu-button'>Finalizar pedido</button>
         </div>
       </section>
