@@ -11,9 +11,9 @@ $breakpoints: (
     height: 100%;
     width: 100%;
 
-    /* @include respond-to('medium') {
-        color: blue;
-      } */
+    @media screen { 
+        
+    }
 }
 
 
