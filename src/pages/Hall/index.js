@@ -298,18 +298,27 @@ export default function Hall() {
 
 	};
 
+	const[selectTable, setSelectTable] = useState("")
+
 	const onChangeTable = (e) => {
 		setTable(e.target.value)
+		setSelectTable(e.target.value)
 	}
 
 
 	const sendOrder = () => {
+		
 		if (table === "" || client === "") {
 			setPopUpText("Dados do cliente incompletos. Preencha antes de enviar o pedido!")
 			setShowPopup(true)
+			console.log(table)
+			setSelectTable("")
+			console.log(table)
 		} else if (cartContent.length === 0) {
 			setPopUpText("O Carrinho está vazio. Adicione os produtos antes de enviar o pedido!")
 			setShowPopup(true)
+			console.log(table)
+			
 
 		} else {
 			const newArray = [...cartContent]
@@ -329,6 +338,17 @@ export default function Hall() {
 				products: orderProducts
 
 			}
+
+			setCartContent([])
+			setClient('')
+			setSelectTable("")
+			setTable('')
+			setPopUpText('O pedido foi enviado com sucesso.')
+			setSelectTable("")
+			setShowPopup(true)
+			setAllDayClass("selected")
+			setBreakfastClass('')
+			setProducts(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
 
 			const apiURL = 'https://lab-api-bq.herokuapp.com';
 			const apiOrders = `${apiURL}/orders`;
@@ -353,8 +373,14 @@ export default function Hall() {
 					} else {
 						setCartContent([])
 						setClient('')
+						setSelectTable("")
+						setTable('')
 						setPopUpText('O pedido foi enviado com sucesso.')
+						setSelectTable("")
 						setShowPopup(true)
+						setAllDayClass("selected")
+						setBreakfastClass('')
+						setProducts(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
 
 					}
 
@@ -406,7 +432,7 @@ export default function Hall() {
 					<div className="client-data margin-bottom-2">
 						{/* <InputSelect onChange={onChangeTable}/> */}
 
-						<select onChange={onChangeTable} >
+						<select onChange={onChangeTable} value={selectTable}>
 							<option value="" hidden >Mesa</option>
 							{tables.map(tab =>
 								<option key={tab} value={tab}>{tab}</option>)}

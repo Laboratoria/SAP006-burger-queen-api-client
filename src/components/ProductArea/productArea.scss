@@ -10,23 +10,18 @@
 	--stroke:#464242;
 }
 
+
 .product-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: auto;
-
-    &:hover{
-        transform: translateY(-5px);
-       
-
-    }
   
 }
 
 .product-image {
-    width: 5rem;
-    height: 5rem;
+    width: 5.5rem;
+    height: 5.5rem;
     border-radius: 50%;
     cursor: pointer;
     @media (min-device-width: 1025px) {
@@ -57,11 +52,13 @@
     text-align: center;
     font-size:0.9rem;
     font-weight: lighter;
+    margin-bottom:0.7rem;
    
 }
   
 .product-container input:checked + label > img {
     border: 0.3rem solid var(--yellow);
+    
 }
   
 .product-container input:checked + label > p {
