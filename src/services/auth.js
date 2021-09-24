@@ -1,7 +1,7 @@
 import { saveStorageKey } from "./storage";
 // const token = localStorage.getItem('token')
 
-export const registerUser = async (user) => {
+export const createUser = async (user) => {
     const body = {
         'name': user.fullName,
         'email': user.email,
@@ -22,7 +22,7 @@ export const registerUser = async (user) => {
             // saveStorageKey();
             // console.log(token);
             // return loginWithEmail({ email: user.email, password: user.password })
-        // .catch((error) => console.log(error, 'erro na registerUser'))
+        .catch((error) => console.log(error, 'erro na createUser'))
     };
     
 export const loginWithEmail = async (user) => {

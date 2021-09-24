@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { registerUser } from '../../services/auth';
+import { createUser } from '../../services/auth';
 import validation from '../../services/errors';
 import { getRouteByRole } from '../../routes/redirections';
 
@@ -35,7 +35,7 @@ const Register = () => {
         e.preventDefault();
         setErrors(validation(values));
 
-        registerUser(values)
+        createUser(values)
             .then((response) => {
                 console.log(111, response)
     
@@ -44,7 +44,7 @@ const Register = () => {
                 } else {
                 console.log(response.token);
                 }
-                 const route = getRouteByRole(values.role);
+                const route = getRouteByRole(values.role);
                 history.push(route);
             })
             // .then((json) => {

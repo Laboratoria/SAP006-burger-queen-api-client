@@ -23,7 +23,7 @@ const useForm = () => {
         e.preventDefault();
         setErrors(validation(values));
 
-        RegisterUser(values)
+        createUser(values)
             .then((json) => {
                 console.log(json);
             })
