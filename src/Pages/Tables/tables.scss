@@ -20,6 +20,7 @@
 .table {
     width: 20vh;
     height: 20vh;
+    background-color: #ffff;
 }
 
 .form-submitOrder {
@@ -35,10 +36,16 @@
     color: black;
     border: none;
     border-radius: 4px;
-    padding: 2px;
+    padding: 6px;
     margin: 6vh 0;
+    font-size: 1.1rem;
 }
 
 .btn-submitOrder {
     background-color: rgba(81, 104, 238, 1);
+    height: 30vh;
+}
+
+.GeneralButton {
+    background-color: rgb(241, 226, 229);
 }

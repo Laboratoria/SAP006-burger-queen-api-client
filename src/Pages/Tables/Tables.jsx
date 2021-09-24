@@ -40,9 +40,8 @@ const Tables = () => {
                 <GeneralButton className="table">9</GeneralButton>
             </section>
             <form className="form-submitOrder">
-                <fieldset>oi</fieldset>
                 <input className="input-clientName" type="text" placeholder="Nome do Cliente"/>
-                <GeneralButton onClick={handleOrderSubmit} className="btn-submitOrder">Confirmar Pedido</GeneralButton>
+                <GeneralButton onClick={handleOrderSubmit} className={["btn-submitOrder", "GeneralButton"]}>Confirmar Pedido</GeneralButton>
             </form>
             <MenuOptionsNavBar />
         </main>

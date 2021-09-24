@@ -1,28 +1,25 @@
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+import { Link } from 'react';
 import { Icon } from '@iconify/react';
-import { removeStorageKey } from '../../services/storage';
-import { getRouteHeaderMenu } from '../../routes/redirections';
+// import { removeStorageKey } from '../../services/storage';
+// import { getRouteHeaderMenu } from '../../routes/redirections';
 
 const Header = () => {
-    const history = useHistory();
+    // const history = useHistory();
 
-    const handleLogout = () => {
-        removeStorageKey();
-        history.push('./')  
-    }
-
-    const handleRouteChange = (path) => {
-        getRouteHeaderMenu(path);
-    }
+    // const handleLogout = () => {
+    //     removeStorageKey();
+    //     history.push('./')  
+    // }
 
     return (
-        <Header>
+        <nav className="header-navbar-desktop">
             <h2 className="header-title">VIXI!</h2>
-            <button onClick={handleRouteChange}>mesas</button>
-            <button onClick={handleRouteChange}>cardápio</button>
-            <button onClick={handleRouteChange}>status dos pedidos</button>
-            <button onClick={handleLogout}><Icon icon="carbon:logout" color="black" /></button>
-        </Header>
+            <Link to='/tables'>mesas</Link>
+            <Link to='/menu'>cardápio</Link>
+            <Link to='/orders-status'>status dos pedidos</Link>
+            <Link to='/'><Icon icon="carbon:logout" color="black" /></Link>
+        </nav>
     )
 }
 
