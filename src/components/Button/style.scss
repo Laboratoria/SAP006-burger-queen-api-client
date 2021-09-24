@@ -1,12 +1,9 @@
-
 // color
-
 $btn-blue: rgb(171, 218, 214);
 $btn-white: rgb(255, 255, 255);
 
 
-
-@mixin buttonProps {
+@mixin buttonProps() {
     width: 150px;
     height: 42px;
     font-size: 1.3em;
@@ -18,7 +15,6 @@ $btn-white: rgb(255, 255, 255);
     border-radius: 10px;
     cursor: pointer;
 }
-
 
 .button {
     @include buttonProps;

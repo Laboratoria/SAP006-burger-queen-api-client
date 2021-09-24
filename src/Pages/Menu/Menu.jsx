@@ -6,7 +6,7 @@ import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
 import MealNavBar from '../../components/Header/MealNavBar'
 import { getStorageKey} from '../../services/storage'
 import './style.scss';
-// import Header from '../../components/Header/Header';
+import Header from '../../components/Header/Header';
 
 const Menu = ()  => {
     const [products, setProducts] = useState([]);
@@ -44,7 +44,7 @@ const Menu = ()  => {
 
     return (
         <>
-            {/* <Header /> */}
+            <Header />
             <MealNavBar />
             <header className="select-menu-perMeal">
                 <button onClick={() => handleClick('breakfast')}>Café da manhã</button>
