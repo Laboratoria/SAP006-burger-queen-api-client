@@ -8,7 +8,7 @@ import GeneralButton from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 
 import './login.scss'
-import login from '../../Assets/login.png';
+import vixiLogo from '../../Assets/vixiLogo.png';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -49,7 +49,7 @@ const Login = () => {
 
     return (
             <section className="mainBox">
-                <img className="imgLogo" src={login} alt='icon-login' />
+                <img className="imgLogo" src={vixiLogo} alt='icon-login' />
                 <div className="loginBox">
                     <p className="title">login</p>
                     <form className="form" onSubmit={handleSubmit}>
@@ -71,7 +71,7 @@ const Login = () => {
                         />
                     </form>
                     <GeneralButton variant="primary" type="submit" onClick={authUserLogin}>
-                        Login
+                        Entrar
                     </GeneralButton>
                     <p className="phraseLogin">É o seu primeiro dia no Vixi? <br />
                         <Link to='/register'>Crie sua conta aqui!</Link>

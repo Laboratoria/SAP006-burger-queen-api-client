@@ -1,12 +1,12 @@
 import React from 'react';
-import GeneralInput from './style'
+import './input.scss';
 
 const Input = ({id, variant, ...props}) => {
 
     const classes = `input ${variant}`;
 
     return (
-        <GeneralInput id={id} variant className={classes} {...props} />
+        <input id={id} variant className={classes} {...props} />
     )
 }
 

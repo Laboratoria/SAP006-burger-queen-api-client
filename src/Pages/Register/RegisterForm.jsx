@@ -8,9 +8,8 @@ import { getRouteByRole } from '../../routes/redirections';
 import GeneralButton from '../../components/Button/Button';
 import { Input }  from '../../components/Input/Input.jsx'
 
-// import './register.scss';
 import register from '../../Assets/register.png';
-
+import './register.scss';
 
 const Register = () => {
     const [values, setValues] = useState({
@@ -58,78 +57,80 @@ const Register = () => {
     };
     
     return (
-        <section className="signUpBox">
+        <section className="mainBox">
             <img className="image" src={register} alt='icon-register' />
-            <p className="titleRegister">Crie sua conta</p>
-            <form className="form">
-                <Input 
-                    type='text' 
-                    id='name'
-                    name='fullName'
-                    values={values.fullName}
-                    onChange={handleChange}
-                    placeholder='nome completo' 
-                    errormessage='Por favor, insira um nome válido.' />
-                {errors.fullName && <p className='error'>{errors.fullName}</p>}
-                <Input 
-                    type='email' 
-                    id='email' 
-                    name='email'
-                    values={values.email}
-                    onChange={handleChange}
-                    placeholder='e-mail'
-                    errormessage='Por favor, insira um e-mail válido.' />
-                {errors.email && <p className='error errorsMessage'>{errors.email}</p>}
-                <Input 
-                    type='password' 
-                    id='password' 
-                    name='password'
-                    value={values.password}
-                    onChange={handleChange}
-                    placeholder='senha'
-                    errormessage='Por favor, insira uma senha válida.' />
-                {errors.password && <p className='error errorsMessage'>{errors.password}</p>}
-                <Input 
-                    type='password'
-                    id='confirm-password' 
-                    name='confirmPassword'
-                    value={values.confirmPassword}
-                    onChange={handleChange}
-                    placeholder='confirmar senha'
-                    errormessage='As senhas não conferem.' />
-                {errors.confirmPassword && <p className='error errorsMessage'>{errors.confirmPassword}</p>}
-                </form>
-                <form className="inputRadioBox">
-                    <label className="labelRadioInput">
-                        <Input
-                        variant='true'
-                        type='radio'
-                        name='role'
-                        className='input-radio'
+            <div className="signUpBox">
+                <p className="titleRegister">Crie sua conta</p>
+                <form className="form">
+                    <Input variant="primary"
+                        type='text' 
+                        id='name'
+                        name='fullName'
+                        values={values.fullName}
                         onChange={handleChange}
-                        value='Salão'
-                        labelText='Salão' />
-                        Salão
-                    </label>
-                    <label className="labelRadioInput">
-                        <Input
-                        variant='true'
-                        type='radio' 
-                        name='role'
-                        className='input-radio'
+                        placeholder='nome completo' 
+                        errormessage='Por favor, insira um nome válido.' />
+                    {errors.fullName && <p className='error'>{errors.fullName}</p>}
+                    <Input variant="primary"
+                        type='email' 
+                        id='email' 
+                        name='email'
+                        values={values.email}
                         onChange={handleChange}
-                        value='cozinha'
-                        labelText='Cozinha' />
-                        Cozinha
-                    </label>
-                    {errors.role && <p className='error errorsMessage'>{errors.role}</p>}
-                </form>
-            <GeneralButton className={register} variant="secondary" onClick={handleFormSubmit}>
-                Registrar
-            </GeneralButton>
-            <p className="phraseRegister">Já possui uma conta?<br/> 
-                <Link to='/'>Faça seu login aqui</Link>
-            </p>
+                        placeholder='e-mail'
+                        errormessage='Por favor, insira um e-mail válido.' />
+                    {errors.email && <p className='error errorsMessage'>{errors.email}</p>}
+                    <Input variant="primary"
+                        type='password' 
+                        id='password' 
+                        name='password'
+                        value={values.password}
+                        onChange={handleChange}
+                        placeholder='senha'
+                        errormessage='Por favor, insira uma senha válida.' />
+                    {errors.password && <p className='error errorsMessage'>{errors.password}</p>}
+                    <Input variant="primary"
+                        type='password'
+                        id='confirm-password' 
+                        name='confirmPassword'
+                        value={values.confirmPassword}
+                        onChange={handleChange}
+                        placeholder='confirmar senha'
+                        errormessage='As senhas não conferem.' />
+                    {errors.confirmPassword && <p className='error errorsMessage'>{errors.confirmPassword}</p>}
+                    </form>
+                    <form className="inputRadioBox">
+                        <label className="labelRadioInput">
+                            <Input
+                            variant='true'
+                            type='radio'
+                            name='role'
+                            className='input-radio'
+                            onChange={handleChange}
+                            value='Salão'
+                            labelText='Salão' />
+                            Salão
+                        </label>
+                        <label className="labelRadioInput">
+                            <Input
+                            variant='true'
+                            type='radio' 
+                            name='role'
+                            className='input-radio'
+                            onChange={handleChange}
+                            value='cozinha'
+                            labelText='Cozinha' />
+                            Cozinha
+                        </label>
+                        {errors.role && <p className='error errorsMessage'>{errors.role}</p>}
+                    </form>
+                <GeneralButton className={register} variant="primary" onClick={handleFormSubmit}>
+                    Registrar
+                </GeneralButton>
+                <p className="phraseRegister">Já possui uma conta?<br/> 
+                    <Link to='/'>Faça seu login aqui</Link>
+                </p>
+            </div>
         </section>
     )
 }
