@@ -1,15 +1,28 @@
-import styled from "styled-components";
 
-const LoginBox = styled.div`
+$breakpoints: (
+    'medium': (min-width: 800px),
+    'large': (min-width: 1000px),
+    'huge': (min-width: 1200px),
+);
+
+
+.loginBox{
     background: rgba(244, 244, 244, 0.52);
     height: 100%;
     width: 100%;
-`
-const Image = styled.img`
-    height: 43vh;
-    margin: 0vh 15vh;
-`
-const Title = styled.p`
+
+    @media screen { 
+        
+    }
+}
+
+
+.imgLogo{
+    height: 34vh;
+    margin: 0vh 8vh;
+}
+
+.title{
     font-family: 'Montserrat', sans-serif;
     font-size: 1.6em;
     font-style: normal;
@@ -19,20 +32,21 @@ const Title = styled.p`
     color: #008F83;
     justify-content:center;
     margin: 8vh 0 5vh;
-`
-const Form = styled.form`
+}
+
+.form{
     justify-content:center;
     text-align:center;
-`
+}
 
-const ButtonLogin = styled.button`
+.buttonLogin{
     width: 32vh;
     height: 20vh;
     margin: 0;
     display: flex;
-`
+}
 
-const PhraseLogin = styled.p`
+.phraseLogin{
     font-family: 'Montserrat', sans-serif;
     justify-content: center;
     text-align: center;  
@@ -43,6 +57,5 @@ const PhraseLogin = styled.p`
             font-weight: bold;
             text-decoration: none;
         }
-`
+    }
 
-export { Image, LoginBox, Title, Form, ButtonLogin, PhraseLogin};

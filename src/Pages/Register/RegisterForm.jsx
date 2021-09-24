@@ -8,8 +8,9 @@ import { getRouteByRole } from '../../routes/redirections';
 import GeneralButton from '../../components/Button/Button';
 import { Input }  from '../../components/Input/Input.jsx'
 
+// import './styleRegister.scss';
 import register from '../../Assets/register.png';
-import { SignUpBox, Image, TitleRegister, Form, InputRadioBox, LabelRadioInput,ErrorsMessage, PhraseRegister } from './style';
+
 
 const Register = () => {
     const [values, setValues] = useState({
@@ -57,10 +58,10 @@ const Register = () => {
     };
     
     return (
-        <SignUpBox>
-            <Image src={register} alt='icon-register' />
-            <TitleRegister>Crie sua conta</TitleRegister>
-            <Form>
+        <section className="signUpBox">
+            <img className="image" src={register} alt='icon-register' />
+            <p className="titleRegister">Crie sua conta</p>
+            <form className="form">
                 <Input 
                     type='text' 
                     id='name'
@@ -78,7 +79,7 @@ const Register = () => {
                     onChange={handleChange}
                     placeholder='e-mail'
                     errormessage='Por favor, insira um e-mail válido.' />
-                {errors.email && <ErrorsMessage className='error'>{errors.email}</ErrorsMessage>}
+                {errors.email && <p className='error errorsMessage'>{errors.email}</p>}
                 <Input 
                     type='password' 
                     id='password' 
@@ -87,7 +88,7 @@ const Register = () => {
                     onChange={handleChange}
                     placeholder='senha'
                     errormessage='Por favor, insira uma senha válida.' />
-                {errors.password && <ErrorsMessage className='error'>{errors.password}</ErrorsMessage>}
+                {errors.password && <p className='error errorsMessage'>{errors.password}</p>}
                 <Input 
                     type='password'
                     id='confirm-password' 
@@ -96,10 +97,11 @@ const Register = () => {
                     onChange={handleChange}
                     placeholder='confirmar senha'
                     errormessage='As senhas não conferem.' />
-                {errors.confirmPassword && <ErrorsMessage className='error'>{errors.confirmPassword}</ErrorsMessage>}
-                </Form>
-                <InputRadioBox>
-                    <LabelRadioInput><Input
+                {errors.confirmPassword && <p className='error errorsMessage'>{errors.confirmPassword}</p>}
+                </form>
+                <form className="inputRadioBox">
+                    <label className="labelRadioInput">
+                        <Input
                         variant='true'
                         type='radio'
                         name='role'
@@ -108,8 +110,8 @@ const Register = () => {
                         value='Salão'
                         labelText='Salão' />
                         Salão
-                    </LabelRadioInput>
-                    <LabelRadioInput>
+                    </label>
+                    <label className="labelRadioInput">
                         <Input
                         variant='true'
                         type='radio' 
@@ -119,16 +121,16 @@ const Register = () => {
                         value='cozinha'
                         labelText='Cozinha' />
                         Cozinha
-                    </LabelRadioInput>
-                    {errors.role && <ErrorsMessage className='error'>{errors.role}</ErrorsMessage>}
-                </InputRadioBox>
+                    </label>
+                    {errors.role && <p className='error errorsMessage'>{errors.role}</p>}
+                </form>
             <GeneralButton className={register} variant="secondary" onClick={handleFormSubmit}>
                 Registrar
             </GeneralButton>
-            <PhraseRegister>Já possui uma conta?<br/> 
+            <p className="phraseRegister">Já possui uma conta?<br/> 
                 <Link to='/'>Faça seu login aqui</Link>
-            </PhraseRegister>
-        </SignUpBox>
+            </p>
+        </section>
     )
 }
 

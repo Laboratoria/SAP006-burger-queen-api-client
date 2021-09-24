@@ -7,7 +7,7 @@ import { getRouteByRole } from '../../routes/redirections'
 import GeneralButton from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 
-import {Image, LoginBox, Title, Form, PhraseLogin } from './style';
+import './styleLogin.scss'
 import login from '../../Assets/login.png';
 
 const Login = () => {
@@ -48,10 +48,10 @@ const Login = () => {
     // }
 
     return (
-            <LoginBox>
-                <Image src={login} alt='icon-login' />
-                <Title>login</Title>
-                <Form onSubmit={handleSubmit}>
+            <section className="loginBox">
+                <img className="imgLogo" src={login} alt='icon-login' />
+                <p className="title">login</p>
+                <form className="form" onSubmit={handleSubmit}>
                     <Input
                         type='email' 
                         id='email' 
@@ -68,14 +68,14 @@ const Login = () => {
                         errormessage='Por favor, insira uma senha válida.'
                         onChange={(event) => setPassword(event.target.value)}
                     />
-                </Form>
+                </form>
                 <GeneralButton variant="primary" type="submit" onClick={authUserLogin}>
                     Login
                 </GeneralButton>
-                <PhraseLogin>É o seu primeiro dia no Vixi? <br />
+                <p className="phraseLogin">É o seu primeiro dia no Vixi? <br />
                     <Link to='/register'>Crie sua conta aqui!</Link>
-                </PhraseLogin>
-            </LoginBox>
+                </p>
+            </section>
     )
 }
 
