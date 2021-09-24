@@ -1,0 +1,20 @@
+.section-ordersList {
+    border-radius: 6.47px;
+    border: solid #ebebeb 2px;
+    background-color: #FFFFFF;
+    height: 50vh;
+    width: 35vh;
+    margin: 4vh;
+    padding: 3vh;
+    text-align: center;
+}
+
+.text-ordersList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-confirmOrder {
+    font-size: 0.3rem;
+}

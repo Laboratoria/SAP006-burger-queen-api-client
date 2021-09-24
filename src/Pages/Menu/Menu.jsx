@@ -1,41 +1,53 @@
-import { useEffect, useState } from 'react';
-import { getProducts }from '../../services/data'
+import { useState, useEffect } from 'react';
+// import { GetProducts }from '../../services/data'
+// import OrdersList from '../../components/ItemsMenu/OrdersList';
 import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
+import {saveStorageKey} from './storage'
 import './style.scss';
 
 const Menu = ()  => {
-    const [order, setOrder] = useState([]);
-    const [values, setValues] = useState({
-        menu: [],
-        order: [],
-        breakfast: [],
-        burgers: [],
-    });
-
-    // const handleChange = (event) => {
-    //     setValues({
-    //         ...values,
-    //         [event.target.name]: event.target.value, 
-    //     })
-    // }
+    const [products, setProducts] = useState([]);
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
-            getProducts(values)
-            .then((data) => {
-                const breakfast = values.filter((item) => item.subtype === 'breakfast')
-                setValues(breakfast)
-                const burgers = values.filter((item) => item.subtype === 'burgers')
-                setValues(burgers)
+        fetch('https://lab-api-bq.herokuapp.com/products', {
+                method:'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${token}`,
+                }
             })
-    })
+                .then(response => response.json())
+                .then((res) => {
+                    saveStorageKey(res.token);
+                    console.log(res.token)
+                    return res;
+                })
+                .catch((error) => console.log(error, 'erro ao acessar a lista de produtos'))
+    }, [token])
+
+    const handleClick = (json) => { 
+        setProducts(json)
+            const breakfast = json.filter((item) => item.type === 'breakfast')
+            setProducts(breakfast)
+    }
 
     return (
         <>
-            <div className='div-style'>
-                Menu
-            </div>
-            {/* <OrdersList/> */}
-            <MenuOptionsNavBar/> 
+            <button onClick={handleClick}>cafe</button>
+            <button onClick={handleClick}>almoço</button>
+
+            {products.map(item => 
+                (   
+                    <div key={item.id}>
+                        <p>{item.name}</p>
+                        <p>{item.price}</p>
+                    </div>
+                )
+            )}
+
+            {/* <OrdersList /> */}
+            <MenuOptionsNavBar /> 
         </>
     )
 };
