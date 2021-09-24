@@ -65,7 +65,7 @@ export default function Login() {
                         title='Entre com uma conta' >
                     </Title>
                 </div>
-                <div>
+                <div className="container-inputs">
                     <Input 
                         type='text' 
                         name='email'

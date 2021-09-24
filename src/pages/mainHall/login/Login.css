@@ -42,3 +42,7 @@
     margin: -3% 18%;
     color: rgba(136, 136, 136, 0.904);
 }
+
+.container-inputs{
+    width: 100%;
+}

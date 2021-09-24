@@ -47,7 +47,12 @@ export default function Registration() {
                 if(role === 'salon') {
                     history.push('/mesas')
                 } else {
-                    alert('Será direcionado para sua área')
+                    alert('Selecione uma opção')
+                } 
+                if(role === 'kitchen') {
+                    history.push('/cozinha')
+                } else {
+                    alert('Selecione uma opção')
                 }                  
             } 
         } catch (error) {

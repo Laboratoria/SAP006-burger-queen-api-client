@@ -7,9 +7,10 @@
     display: flex;
     border-radius: 10px;
     height: 30px;
-    width: 100%;
+    width: 60%;
     margin: 10px;
-    border:none;
+    margin-left: 20%;
+    border: none;
     background-color: var(--gray-color);
     font-size: 15px;
 }
