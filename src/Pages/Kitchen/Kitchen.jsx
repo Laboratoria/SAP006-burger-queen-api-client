@@ -1,13 +1,13 @@
-// import { Redirect } from 'react-router-dom';
-
-// import Button from '../../components/Button';
+import './style.scss'
 
 const Kitchen = () => {
 
     return (
-        <div className='div-style'>
-            Kitchen
-        </div>
+        <>
+            <div className='div-style'>
+                Kitchen
+            </div>
+        </>
     )
 }
 
