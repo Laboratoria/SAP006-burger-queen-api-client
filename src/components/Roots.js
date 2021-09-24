@@ -3,7 +3,7 @@ import { Router, Switch, Route } from 'react-router';
 import { history } from '../history';
 
 import Login from '../pages/Login';
-import Register from '../pages/Register';
+import Register from '../pages/Register.js';
 import NotFound from '../pages/NotFound';
 
 const Roots = () => (
