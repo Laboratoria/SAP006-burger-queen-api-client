@@ -4,7 +4,7 @@ import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
 import './style.scss';
 
 const Menu = ()  => {
-    const [order, setOrder] = useState([]);
+    // const [order, setOrder] = useState([]);
     const [values, setValues] = useState({
         menu: [],
         order: [],
