@@ -1,5 +1,4 @@
 import {saveStorageKey} from './storage'
-import { useEffect } from 'react';
 
 // export const getProducts = async () => {
     
@@ -19,7 +18,18 @@ export const GetProducts = async () => {
     const token = localStorage.getItem("token");
     console.log(token);
     
-    return await 
-    
-    
+    return await fetch('https://lab-api-bq.herokuapp.com/products', {
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${token}`,
+        }
+    })
+        .then(response => response.json())
+        .then((res) => {
+            saveStorageKey(res.token);
+            console.log(res.token)
+            return res;
+        })
+        .catch((error) => console.log(error, 'erro ao acessar a lista de produtos'))
 };

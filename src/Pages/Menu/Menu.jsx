@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 // import { GetProducts }from '../../services/data'
 // import OrdersList from '../../components/ItemsMenu/OrdersList';
 import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
-import {saveStorageKey} from './storage'
+import {saveStorageKey} from '../../services/storage'
 import './style.scss';
 
 const Menu = ()  => {
