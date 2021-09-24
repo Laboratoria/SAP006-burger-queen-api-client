@@ -1,20 +1,22 @@
 import React from 'react';
-import { Router, Switch, Route } from 'react-router';
+/* import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import { history } from '../history';
 
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import NotFound from '../pages/NotFound';
+import Hall from '../pages/Hall'
 
 const Roots = () => (
-    <Router history={history}>
+    <BrowserRouter history={history}>
         <Switch>
             <Route exact path='/' component={Login} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/register' component={Register} />
+            <Route path='/login' component={Login} />
+            <Route path='/register' component={Register} />
+            <Route path='/hall' component={Hall} />
             <Route component={NotFound}/>
         </Switch>
-    </Router>
+    </BrowserRouter>
 );
 
-export default Roots; 
+export default Roots; */
