@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
+import Formulario from '../../components/FormRegister/form';
 
-const Register = () => {
-
-    return (
-        <div className='div-style'>
-            Register
-        </div>
-    )
+class Register extends Component {
+    render() {
+        return (
+            <Fragment>
+                <Formulario />
+            </Fragment>);
+    }
 }
 
-export default Register;
+export default Register
