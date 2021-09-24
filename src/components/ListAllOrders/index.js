@@ -1,16 +1,17 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import ButtonDefault from '../ButtonDefault';
 
 import './listAllOrders.scss';
 
 export default function ListAllOrders() {
 	const [allOrders, setAllOrders] = useState([]);
 
-	useEffect(() => {
-		const apiURL = 'https://lab-api-bq.herokuapp.com';
-		const apiOrders = `${apiURL}/orders`;
-		const token = localStorage.getItem('token');
+	const apiURL = 'https://lab-api-bq.herokuapp.com';
+	const apiOrders = `${apiURL}/orders/`;
+	const token = localStorage.getItem('token');
 
+	useEffect(() => {
 		const getRequestOptions = {
 			method: 'GET',
 			headers: {
@@ -24,18 +25,55 @@ export default function ListAllOrders() {
 				const sortById = data.sort((itemA, itemB) => itemB.id - itemA.id);
 				setAllOrders(sortById);
 			});
-	}, []);	
-	
+	}, [apiOrders, token]);
 
+	const putRequestOptions = (status) => {
+		const options = {
+			method: 'PUT',
+			headers: {
+				Authorization: token,
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Credentials': true,
+				'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST',
+			},
+			body: JSON.stringify({
+				status,
+			}),
+		};
+
+		return options;
+	};
+
+	const updateOrderStatus = (index, id, status) =>
+		fetch(`${apiOrders}${id}`, putRequestOptions(status))
+			.then((response) => response.json())
+			.then(() => {
+				const pendingOrdersList = [...allOrders];
+				pendingOrdersList[index].status = status;
+				setAllOrders(pendingOrdersList);
+			});
+	
 	return (
 		<section className="cards-orders-container">
-			{allOrders.map((order) => (
+			{allOrders.map((order, index) => (
 				<div className="card-order-template" key={order.id}>
 					<div className="card-order-info">
 						<div className="card-order-table">
 							<p className="uppercase">Mesa</p>
 							<p>{order.table}</p>
 						</div>
+
+						<ButtonDefault
+							className="btn-default"
+							onClick={() => {
+								updateOrderStatus(index, order.id, 'loading', allOrders, setAllOrders)
+								updateOrderStatus(index, order.id, 'done', allOrders, setAllOrders)
+								updateOrderStatus(index, order.id, 'delivered', allOrders, setAllOrders)
+							}}
+						>
+							Atualizar status
+						</ButtonDefault>
 
 						<div>
 							<p>
@@ -45,14 +83,18 @@ export default function ListAllOrders() {
 								Cliente: <span>{order.client_name}</span>
 							</p>
 							<p>
-								Data e Hora: <span>{`${new Date(
+								Data e Hora:{' '}
+								<span>{`${new Date(order.createdAt).toLocaleDateString(
+									'pt-br'
+								)} - ${new Date(order.createdAt).getHours()}:${new Date(
 									order.createdAt
-								).toLocaleDateString('pt-br')} - ${new Date(
-									order.createdAt
-								).getHours()}:${new Date(order.createdAt).getMinutes()}h`}</span>
+								).getMinutes()}h`}</span>
 							</p>
 							<p>
-								Status: <span>{order.status}</span>
+								Status:
+								<span className={`order-status status-${order.status}`}>
+									{order.status}
+								</span>
 							</p>
 						</div>
 
