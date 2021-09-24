@@ -9,3 +9,21 @@
     --dark-gray: #111111;
     --stroke: #464242;
 }
+
+.btn-update-orders{
+    border-radius: 4px;
+    width: 12rem;
+	background-color: transparent;
+	border: 1px solid var(--white);
+    transition: all 1s;
+    color: var(--white);
+    font-size: 1.2rem;
+    padding: 0.5rem; 
+
+	&:hover {
+		background-color: var(--green);
+		border: 1px solid var(--green);
+        color: var(--black);
+	}
+}
+
