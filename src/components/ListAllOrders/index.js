@@ -145,129 +145,151 @@ export default function ListAllOrders({session}) {
 
 	return (
 		<section className="cards-orders-container">
-			{session? ordersFilteredByStatus().map((order, index) => (
-				<div className="card-order-template" key={order.id}>
-					<div className="card-order-info">
-						<div className="card-order-table">
-							<p className="uppercase">Mesa {order.table}</p>
-							<span className={`order-status status-${order.status}`}>
-									{orderStatus(order.status)}
-								</span>
-						</div>
-
-						<ButtonDefault
-							className={`btn-default btn-${order.status} btn-status`}
-							onClick={() => statusOnClick(index, order.id, order.status)}
-						>
-							{buttonText(order.status)}
-						</ButtonDefault>
-					
-
-						<div className="order-data">
-							<p>
-								Nº do Pedido: <span>{order.id}</span>
-							</p>
-							<p>
-								Cliente: <span>{order.client_name}</span>
-							</p>
-							<p>
-								Data e Hora:{' '}
-								<span>{`${new Date(order.createdAt).toLocaleDateString(
-									'pt-br'
-								)} - ${new Date(order.createdAt).getHours()}:${new Date(
-									order.createdAt
-								).getMinutes()}h`}</span>
-							</p>
-			
-						</div>
-						<p className="products-title uppercase">Produtos</p>
-
-						{order.Products.map((products) => (
-							<div className="order-products" key={products.id}>
-								<p>
-									Item: <span>{products.name}</span>
-								</p>
-								<p>
-									Qtd: <span>{products.qtd}</span>
-								</p>
-								<p>
-									{products.flavor !== null ? 'Sabor: ' : ''}
-									<span>{products.flavor !== null ? products.flavor : ''}</span>
-								</p>
-								<p>
-									{products.complement !== null ? 'Complemento: ' : ''}
-									<span>
-										{products.complement !== null ? products.complement : ''}
+			{session
+				? ordersFilteredByStatus().map((order, index) => (
+						<div className="card-order-template" key={order.id}>
+							<div className="card-order-info">
+								<div className="card-order-table">
+									<p className="uppercase">Mesa {order.table}</p>
+									<span className={`order-status status-${order.status}`}>
+										{orderStatus(order.status)}
 									</span>
-								</p>
+								</div>
+
+								<ButtonDefault
+									className={`btn-default btn-${order.status} btn-status`}
+									onClick={() => statusOnClick(index, order.id, order.status)}
+								>
+									{buttonText(order.status)}
+								</ButtonDefault>
+
+								<div className="order-data">
+									<p>
+										Nº do Pedido: <span>{order.id}</span>
+									</p>
+									<p>
+										Cliente: <span>{order.client_name}</span>
+									</p>
+									<p>
+										Data e Hora:{' '}
+										<span>{`${new Date(order.createdAt).toLocaleDateString(
+											'pt-br'
+										)}h`}</span>
+									</p>
+
+									<p>
+										Tempo de preparação:{' '}
+										<span>
+											{Math.floor(
+												(Math.abs(new Date(order.processedAt)) -
+													new Date(order.createdAt)) /
+													1000 /
+													60
+											) > 0
+												? `${Math.floor(
+														(Math.abs(new Date(order.processedAt)) -
+															new Date(order.createdAt)) /
+															1000 /
+															60
+												  )}min`
+												: '0min'}
+										</span>
+									</p>
+								</div>
+								<p className="products-title uppercase">Produtos</p>
+
+								{order.Products.map((products) => (
+									<div className="order-products" key={products.id}>
+										<p>
+											Item: <span>{products.name}</span>
+										</p>
+										<p>
+											Qtd: <span>{products.qtd}</span>
+										</p>
+										<p>
+											{products.flavor !== null ? 'Sabor: ' : ''}
+											<span>
+												{products.flavor !== null ? products.flavor : ''}
+											</span>
+										</p>
+										<p>
+											{products.complement !== null ? 'Complemento: ' : ''}
+											<span>
+												{products.complement !== null
+													? products.complement
+													: ''}
+											</span>
+										</p>
+									</div>
+								))}
 							</div>
-						))}
-					</div>
-				</div>
-			)):
-			allOrders.map((order, index) => (
-				<div className="card-order-template" key={order.id}>
-					<div className="card-order-info">
-						<div className="card-order-table">
-							<p className="uppercase">Mesa {order.table}</p>
-							<span className={`order-status status-${order.status}`}>
-									{orderStatus(order.status)}
-								</span>
 						</div>
-
-						<ButtonDefault
-							className={`btn-default btn-${order.status} btn-status`}
-							onClick={() => statusOnClick(index, order.id, order.status)}
-						>
-							{buttonText(order.status)}
-						</ButtonDefault>
-					
-
-						<div className="order-data">
-							<p>
-								Nº do Pedido: <span>{order.id}</span>
-							</p>
-							<p>
-								Cliente: <span>{order.client_name}</span>
-							</p>
-							<p>
-								Data e Hora:{' '}
-								<span>{`${new Date(order.createdAt).toLocaleDateString(
-									'pt-br'
-								)} - ${new Date(order.createdAt).getHours()}:${new Date(
-									order.createdAt
-								).getMinutes()}h`}</span>
-							</p>
-			
-						</div>
-						<p className="products-title uppercase">Produtos</p>
-
-						{order.Products.map((products) => (
-							<div className="order-products" key={products.id}>
-								<p>
-									Item: <span>{products.name}</span>
-								</p>
-								<p>
-									Qtd: <span>{products.qtd}</span>
-								</p>
-								<p>
-									{products.flavor !== null ? 'Sabor: ' : ''}
-									<span>{products.flavor !== null ? products.flavor : ''}</span>
-								</p>
-								<p>
-									{products.complement !== null ? 'Complemento: ' : ''}
-									<span>
-										{products.complement !== null ? products.complement : ''}
+				  ))
+				: allOrders.map((order, index) => (
+						<div className="card-order-template" key={order.id}>
+							<div className="card-order-info">
+								<div className="card-order-table">
+									<p className="uppercase">Mesa {order.table}</p>
+									<span className={`order-status status-${order.status}`}>
+										{orderStatus(order.status)}
 									</span>
-								</p>
-								
+								</div>
+
+								<ButtonDefault
+									className={`btn-default btn-${order.status} btn-status`}
+									onClick={() => statusOnClick(index, order.id, order.status)}
+								>
+									{buttonText(order.status)}
+								</ButtonDefault>
+
+								<div className="order-data">
+									<p>
+										Nº do Pedido: <span>{order.id}</span>
+									</p>
+									<p>
+										Cliente: <span>{order.client_name}</span>
+									</p>
+									<p>
+										Data e Hora:{' '}
+										<span>{`${new Date(order.createdAt).toLocaleDateString(
+											'pt-br',
+											{
+												hour: '2-digit',
+												minute: '2-digit',
+											}
+										)}h`}</span>
+									</p>
+								</div>
+								<p className="products-title uppercase">Produtos</p>
+
+								{order.Products.map((products) => (
+									<div className="order-products" key={products.id}>
+										<p>
+											Item: <span>{products.name}</span>
+										</p>
+										<p>
+											Qtd: <span>{products.qtd}</span>
+										</p>
+										<p>
+											{products.flavor !== null ? 'Sabor: ' : ''}
+											<span>
+												{products.flavor !== null ? products.flavor : ''}
+											</span>
+										</p>
+										<p>
+											{products.complement !== null ? 'Complemento: ' : ''}
+											<span>
+												{products.complement !== null
+													? products.complement
+													: ''}
+											</span>
+										</p>
+									</div>
+								))}
 							</div>
-						))}
-					</div>
-				</div>
-			))}
-			
-		
+						</div>
+				  ))}
+
 			{showPopup ? (
 				<Popup
 					popupText={popUpText}
