@@ -124,8 +124,8 @@ const Register = () => {
                         </label>
                         {errors.role && <p className='error errorsMessage'>{errors.role}</p>}
                     </form>
-                <GeneralButton className={register} variant="primary" onClick={handleFormSubmit}>
-                    Registrar
+                <GeneralButton className={register} variant="secondary" onClick={handleFormSubmit}>
+                    Entrar
                 </GeneralButton>
                 <p className="phraseRegister">Já possui uma conta?<br/> 
                     <Link to='/'>Faça seu login aqui</Link>

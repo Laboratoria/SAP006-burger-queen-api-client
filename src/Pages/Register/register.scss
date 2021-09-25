@@ -1,3 +1,7 @@
+$blue-color: #008F83;
+$text-color: rgb(0 , 0 , 0);
+
+
 
 .mainBox {
     background-color: rgba(244, 244, 244, 0.52);
@@ -8,15 +12,16 @@
 
 .image {
     height: 35vh;
-    width: 100vw;    
+    width: 95vw; 
+    margin-left: 15px;   
 }
 
 .titleRegister {
     font-family: 'Montserrat', sans-serif;
-    font: size 20px;
+    font: size 24px;
     font-style: normal;
     font-weight: 1000;
-    color: #008F83;
+    color: $blue-color;
     font-weight:bold;
     justify-content:center;
     text-align:center;
@@ -30,12 +35,12 @@
 
 .inputRadioBox {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    margin-top: 1.5rem;    
 }
 
 .labelRadioInput{
-    margin: 0 2vh;
-    
+    margin: 0 2vh;    
 }
 
 .errorsMessage {
@@ -45,23 +50,46 @@
 
 .phraseRegister {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1em;
     text-align:center;  
     justify-content:center;
     margin: 20px 0px;
         a {
-            color:black;
+            color:$text-color;
             font-weight:bold;
             text-decoration: none;
         }
 }
 
-
 @media screen and (min-width: 768px) {
-
     .mainBox{
         display: flex;
-        margin: 10rem 0 0 0;
+        margin: 4rem 0 0 0;
+    }
+    .image {
+        height: 70vh;
+        width: 60vw;
+    }
+    .signUpBox{
+        border: 1px solid $blue-color;
+        border-radius: 20px;
+        width: 40vw;
+        height: 65vh;
+        margin-right: 3rem;
+    }
+}
+
+@media screen and (min-width: 1190px){
+    .mainBox{
+        margin: 0 0 4rem 8rem;
+    }
+    .image{
+        height: 70vh;
+        width: 40vw;
+    }
+    .signUpBox{
+        width: 30vw;
+        height: 70vh;
     }
 }
