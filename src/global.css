@@ -1,11 +1,11 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /*box-sizing: border-box; */
     
 }
 
-:root {
+/* :root {
     --red: #9B2D0A;
     --light: #D0C7C7;
     --white: #FFFFFF;
@@ -13,7 +13,7 @@
     --darker-gray: #868686;
     --black: #1D2228;
 
-}
+} */
 
   body {
       font-family: 'Baloo 2', cursive;
