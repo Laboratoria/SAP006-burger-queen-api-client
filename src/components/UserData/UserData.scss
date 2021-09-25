@@ -45,6 +45,27 @@
   }
 }
 
+.register-content{
+  .auth-radio-input-div{
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .auth-radio-input {
+    margin: 0 0 3% 25%;
+    height: 2.5vh;
+    width: 2.5vh;
+  }
+  
+  .auth-label-radio-input{
+    font-size: 180%;
+    color: $light-brown-label;
+  }
+}
+
+
 /* Portrait Ipad PRO */
 @media (min-width: 1024px) and (max-height: 1366px){
   .login-and-register-content {
@@ -54,6 +75,12 @@
 
     .auth-input-label{
       font-size: 180%;
+    }
+  }
+
+  .register-content{
+    .auth-label-radio-input{
+      font-size: 220%;
     }
   }
 }
@@ -67,6 +94,12 @@
 
     .auth-input-label{
       font-size: 130%;
+    }
+  }
+
+  .register-content{
+    .auth-label-radio-input{
+      font-size: 150%;
     }
   }
 }

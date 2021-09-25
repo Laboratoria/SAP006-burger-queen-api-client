@@ -1,7 +1,3 @@
-header, .auth-header{
-  margin: auto;
-}
-
 .login-content {
   .logo{
     height: 50vh;
@@ -10,11 +6,15 @@ header, .auth-header{
   }
 }
 
-@media (orientation: 'landscape') {
-  .auth-header {
-    margin-left: 50%;
+.register-content {
+  .logo{
+    height: 25vh;
+    width: 25vh;
+    margin-bottom: -10%;
   }
-  
+}
+
+@media (orientation: 'landscape') {
   .auth-welcome {
     height: 50vh;
     width: 50vh;

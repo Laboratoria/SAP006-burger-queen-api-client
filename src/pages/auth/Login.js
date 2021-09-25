@@ -28,7 +28,7 @@ export function Login () {
   const isLandscape = useMediaQuery({ query: '(orientation: landscape)' })
 
   const handleLogin = (event) => {
-   authLogin(event, {userData})
+    authLogin(event, {userData})
     .then((responseJson) => {
       localStorage.setItem('currentEmployeeToken', responseJson.token);
       localStorage.setItem('currentEmployeeRole', responseJson.role);
@@ -41,7 +41,7 @@ export function Login () {
 
   return (
   <div className = 'login-and-register-content login-content'>
-    <header>
+    <header className = 'auth-header' data-testid='header'>
       <Header/>
     </header>
     <main className={isLandscape && 'auth-main-landscape'}>

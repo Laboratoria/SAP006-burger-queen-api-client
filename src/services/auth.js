@@ -21,3 +21,28 @@ export const authLogin = (event, {userData}) => {
   })
   return result 
 };
+
+
+export const authSignin = (event, {userData}) => {
+  const apiToSignin = 'https://lab-api-bq.herokuapp.com/users'
+  event.preventDefault();
+  const result = fetch(apiToSignin , {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify ({
+      name: userData.name,
+      email: userData.email,
+      password: userData.password,
+      role:userData.role,
+      restaurant:'Berg'})
+    }).then((response) => {
+      switch (response.status) {
+        case 200: 
+          return response.json();
+        default:
+          throw new Error(response.status)
+      }
+    })
+    return result 
+  };
+  

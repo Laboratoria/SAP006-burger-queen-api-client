@@ -7,7 +7,6 @@ import inputEmail from '../../assets/icons/input-email.png';
 import inputPassword from '../../assets/icons/input-password.png';
 
 import './UserData.scss'
-import './UserData2.scss'
 
 export function InputContentUserData ({Subject, Error, InputValue, InputOnChange}) {
   
@@ -101,37 +100,31 @@ export function InputContentUserData ({Subject, Error, InputValue, InputOnChange
   )
 }
 
-export function InputRadioUserData ({Subject, InputChecked, InputOnChange}) {
+export function InputRadioUserData ({LabelText, Subject, InputChecked, InputOnChange}) {
   const authInput = {
-      'room': {
-        'data-content':'role',
-        'InputClass':'auth-radio-input',
-        'InputValue':'room',
-        'LabelText':'Salão',
-        'LabelClass':'auth-label-radio-input',
-      },
-      'kitchen': {
-        'data-content':'role',
-        'InputClass':'auth-radio-input',
-        'InputValue':'kitchen',
-        'LabelText':'Cozinha',
-        'LabelClass':'auth-label-radio-input',
-      },
-      'test': {
-        'data-content':'test',
-        'InputClass':'test',
-        'InputValue':'test',
-        'LabelText':'test',
-        'LabelClass':'test',
-      },
-    }
+    'room': {
+    'data-content':'role',
+      'InputValue':'room',
+      'LabelText':'Salão',
+    },
+    'kitchen': {
+      'data-content':'role',
+      'InputValue':'kitchen',
+      'LabelText':'Cozinha',
+    },
+    'test': {
+      'data-content':'test',
+      'InputValue':'test',
+      'LabelText':'test',
+    },
+  }
 
   return (
-      <div data-testid='userDataDiv'>
+      <div className='auth-radio-input-div' data-testid='userDataDiv'>
         <input 
           required
           data-content = {Subject}
-          className={authInput[Subject].InputClass}
+          className='auth-radio-input'
           name='role'
           type='radio'
           
@@ -140,9 +133,7 @@ export function InputRadioUserData ({Subject, InputChecked, InputOnChange}) {
           checked={InputChecked}
           onChange={InputOnChange}
         />
-        <label className={authInput[Subject].LabelClass}> 
-          {authInput[Subject].LabelText}
-        </label>
+        <label className='auth-label-radio-input'> &nbsp;&nbsp;{LabelText} </label>
     </div>
   )
 }

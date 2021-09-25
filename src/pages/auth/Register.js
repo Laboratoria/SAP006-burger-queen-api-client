@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import { AuthErrorMessages } from '../../components/ErrorMessages/ErrorMessages';
 import { AuthModal } from '../../components/Modal/Modal';
@@ -10,7 +11,9 @@ import { InputRadioUserData } from '../../components/UserData/UserData';
 
 import inputRole from '../../assets/icons/input-role.png';
 
+import { authSignin } from '../../services/auth';
 import { login } from '../../routes/utils/auth';
+import logoBerg from '../../assets/images/logo-berg.png';
 
 import './Auth.scss'
 
@@ -38,12 +41,8 @@ export const Register = () => {
   const setAuthInputs = {setNameErrorInput, setEmailErrorInput, setPasswordErrorInput,
   setConfirmPasswordErrorInput, setRoleErrorInput}
 
-  const handleSignin = () => {
-    const token = localStorage.getItem('currentEmployeeToken')
-    const role = localStorage.getItem('currentEmployeeRole')
-    login(token)
-    role === 'kitchen' ? history.push('/kitchen') : history.push('/room')
-  }
+  const isLandscape = useMediaQuery({ query: '(orientation: landscape)' })
+
 
   const navigateTo = (history, path, setModalState) => {
     setModalState(false);
@@ -77,47 +76,30 @@ export const Register = () => {
     }
   }
 
-  const authSignin = (event, {userData}, {setAuthModals}, {setAuthInputs}) => {
-    const apiToSignin = 'https://lab-api-bq.herokuapp.com/users'
-    event.preventDefault();
-
+  const handleSignIn = () => {
     const userDataCheckResult = checkUserDataToSignin ({userData}, {setAuthInputs})
-    if (userDataCheckResult === 'Sucess') {
-      fetch(apiToSignin , {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify 
-          ({
-          name: userData.name,
-          email: userData.email,
-          password: userData.password,
-          role:userData.role,
-          restaurant:'Berg'
-          })
-      }).then((response) => { 
-        return response.json();
-      }).then((responseJson) => {
-        localStorage.setItem('currentEmployeeName', responseJson.name);
-        localStorage.setItem('currentEmployeeEmail', responseJson.email);
-        localStorage.setItem('currentEmployeeToken', responseJson.token);
-        localStorage.setItem('currentEmployeeRole', responseJson.role);
-        if (responseJson.token !== undefined) {
-          setAuthModals.setAuthSucessModal(true)
-        } else {
-          throw new Error (responseJson.message);
-        }
-      }).catch(() => {
-        setAuthModals.setAuthErrorModal(true)
-      })
-    }
-  }
+    userDataCheckResult === 'Sucess' &&
+    authSignin()
+    .then((responseJson) => {
+      localStorage.setItem('currentEmployeeName', responseJson.name);
+      localStorage.setItem('currentEmployeeToken', responseJson.token);
+      localStorage.setItem('currentEmployeeRole', responseJson.role);
+      setAuthModals.setAuthSucessModal(true)
+    })
+    .catch(() => setAuthModals.setAuthErrorModal(true))
+  } 
 
-  
   return (
     <div className = 'login-and-register-content register-content'>
-    <Header/>
-      <main>
-        <form>
+      <header className = 'auth-header' data-testid='header'>
+        <Header/>
+      </header>
+
+      <main className={isLandscape && 'auth-main-landscape'}>
+      {isLandscape && <img className='auth-logo-landscape' src={logoBerg} alt='Logo Berg'/>}
+      <div className='auth-content-div'>  
+        
+      <form className='auth-form'>
           <InputContentUserData 
             Subject='name'
             Error={nameErrorInput}
@@ -157,14 +139,16 @@ export const Register = () => {
           : <p className='auth-error-message'>&nbsp;</p>}
 
           <fieldset className = {roleErrorInput ? 'auth-role-input-fieldset auth-wrong-input' : 'auth-role-input-fieldset auth-correct-input'}>
-            <img src={inputRole} alt='Role'/>
+            <img src={inputRole} alt='Role' className='auth-input-img'/>
             <InputRadioUserData
               Subject='room'
+              LabelText='Salão'
               InputChecked={role === 'room'}
               InputOnChange={(event) => [setRole(event.target.value), setRoleErrorInput(false)]}
             />
             <InputRadioUserData
               Subject='kitchen'
+              LabelText='Cozinha'
               InputChecked={role === 'kitchen'}
               InputOnChange={(event) => [setRole(event.target.value), setRoleErrorInput(false)]}
             />
@@ -172,34 +156,39 @@ export const Register = () => {
           {roleErrorInput ? <AuthErrorMessages Subject='role'/> : <p className='auth-error-message auth-error-message-of-role'>&nbsp;</p>}
         </form>
         <Button 
-          Role = 'authSubmitForm'
-          ButtonOnClick = {(event) => authSignin(event, {userData}, {setAuthModals}, {setAuthInputs}, checkUserDataToSignin)} 
-          children = 'Registrar'
+          ButtonClass = 'auth-submit-form-button'
+          ButtonOnClick = {(event) => handleSignIn(event, {userData}, {setAuthModals}, {setAuthInputs})} 
+          children = 'REGISTRAR'
         /> 
-        <div className='auth-navigation-div'>
-          <p>Ou</p>
+        <div className='auth-route-navigation-div'>
+          <p className='auth-route-navigation-p'>Ou</p>
           <Button 
-            Role = 'authNavigateTo'
+            ButtonClass = 'auth-route-navigation-button'
             ButtonOnClick = {() => navigateTo(history, '/', setAuthSucessModal)} 
             children = 'entre'
           /> 
-          <p> com uma conta existente</p>
+          <p className='auth-route-navigation-p'> com uma conta existente</p>
+        </div>
         </div>
       </main>
       <section>
         {authSucessModal ? (
           <AuthModal 
-            Role = 'authSucessModal-register'
-            ButtonOnClick = {() => handleSignin()} 
+            ModalContent = 'Cadastro realizado com sucesso!'
+            Role = 'auth-sucess-modal'
+            ButtonChildren = 'Ir para Home'
+            ButtonOnClick = {() => role === 'kitchen' ? history.push('/kitchen') : history.push('/room')}
           />
         ): null}
       </section>
       <section>
         {authErrorModal ? (
           <AuthModal 
-            Role = 'authErrorModal-register'
-            ButtonOnClick = {() => navigateTo(history, '/register', setAuthErrorModal)}
-            ButtonOnClickSecondOption = {() => navigateTo(history, '/', setAuthErrorModal)}
+            ModalContent = 'Usuárie não encontrade!'
+            Role = 'auth-error-modal'
+          ButtonChildren = 'Tente novamente'
+          ButtonOnClick = {() => setAuthErrorModal(false)} 
+          ButtOnClickSecondAuthModalOption = {() => history.push('/register')} 
           />
         ): null}
       </section>
