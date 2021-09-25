@@ -1,9 +1,7 @@
-
 // color
-
 $btn-blue: rgb(171, 218, 214);
 $btn-white: rgb(255, 255, 255);
-
+$text-color: rgb(0 , 0 , 0);
 
 
 @mixin buttonProps {
@@ -25,7 +23,7 @@ $btn-white: rgb(255, 255, 255);
     background-color: $btn-white;       
     
     a {
-        color: black;
+        color: $text-color;
         font-weight: bold;
         text-decoration: none;
         margin: 1vh;
@@ -35,7 +33,7 @@ $btn-white: rgb(255, 255, 255);
 .button.primary{
     @include buttonProps;
     background-color: $btn-blue;
-    width: 252px;
+    width: 70%;
     font-size: 1em;
     margin: 4rem 4rem 3rem;   
 
@@ -44,5 +42,19 @@ $btn-white: rgb(255, 255, 255);
 .button.secondary{
     @include buttonProps;
     background-color: $btn-blue;
-    width: 252px;
+    width: 70%;
+    font-size: 1em;
+    margin: 2rem 4rem 3rem;
 }
+
+@media screen and (min-width: 768px){
+    .button.secondary{ 
+        margin:2rem;
+    }
+}
+@media screen and (min-width: 1180px){
+    .button.button.secondary{
+        width: 50%;
+        margin: 2rem 0 0 6rem;
+    }
+ }
