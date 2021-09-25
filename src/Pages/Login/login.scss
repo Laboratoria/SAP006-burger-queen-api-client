@@ -1,11 +1,19 @@
+$bg-color:rgb(244, 244, 244, 0.52);
+$bg-white: rgb(255,255,255);
+$blue-color: #008F83;
+$text-color: rgb(0 , 0 , 0);
+$font-family: 'Montserrat', sans-serif;
 
+@mixin align {
+    text-align:center;  
+    justify-content:center;
+}
 
 .mainBox{
-    background: rgba(244, 244, 244, 0.52);
+    background: $bg-color;
     height: 100%;
     width: 100%;
 }
-
 
 .imgLogo{
     height: 38vh;
@@ -14,20 +22,18 @@
 }
 
 .title{
-    font-family: 'Montserrat', sans-serif;
+    @include align;
+    font-family: $font-family;
     font-size: 1.6em;
     font-style: normal;
     font-weight: 1000;
-    text-align:center;
     text-transform: uppercase;
-    color: #008F83;
-    justify-content:center;
+    color: $blue-color;
     margin: 4vh 0 5vh;
 }
 
 .form{
-    justify-content:center;
-    text-align:center;
+    @include align;
 }
 
 .buttonLogin{
@@ -38,36 +44,32 @@
 }
 
 .phraseLogin{
-    font-family: 'Montserrat', sans-serif;
-    justify-content: center;
-    text-align: center;  
+    @include align;
+    font-family: $font-family;
     font-size: 1.1em;
     margin: 4vh 3vh;
         a {
-            color: black;
+            color: $text-color;
             font-weight: bold;
             text-decoration: none;
         }
 }
 
 @media screen and (min-width: 768px) {
-
     .mainBox{
         display: flex;
         margin: 10rem 0 0 0;
     }
     .loginBox { 
+        @include align;
         display: flex;
         flex-wrap: wrap;
         width: 40vw;
         height: 65vh;
-        background-color: #fff;
-        align-items: center;
-        justify-content:center;
-        border: 1px solid #008f83;
+        background-color: $bg-white;
+        border: 1px solid $blue-color;
         border-radius: 20px;   
-        margin: -20px;
-        
+        margin: -20px;        
     }
 
     .imgLogo{
@@ -78,7 +80,6 @@
 }
 
 @media screen and (min-width: 1180px){
-
     .imgLogo{
         width: 50vw;
         height: 65vh;
