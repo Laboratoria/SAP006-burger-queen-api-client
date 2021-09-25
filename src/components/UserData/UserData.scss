@@ -1,143 +1,72 @@
 @import '../../styles/Global.scss';
 
-.login-and-register-content {
-  main {
-    form {
-      display: flex;
-      flex-direction: column;
-      width: 60%;
-      position: relative;
-      
-      div {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        position: relative;
-        margin: 0 auto 10%;
-
-        input {
-          padding: 4% 4% 3% 10%;
-          
-          font-size: 180%;
-          color: $light-brown-txt;
-        }
-
-        ::placeholder{
-          color:$light-brown-label;
-        }
-
-        label {
-          display: none;
-
-          position: absolute;
-          left: 10%;
-          bottom: 85%;
-
-          color: $light-brown-label;
-          font-size: 160%;
-        }
-
-        input:valid ~ label,
-        .move-label-up {
-          display: block;
-        }
-      }
-    }
-    
-    img {
-      position: absolute;
-      bottom: 30%;
-      height: 3vh;
-      width: 3vh;
-    }
-  }
-}
-
-.login-content {
-  form {
-    margin: 5% auto;
-  } 
-}
-
-.register-content {
-  form {
-    margin: 1% auto 0;
-  }
-
-  .auth-label-radio-input {
-    display: block;
-    left: 40%;
-    bottom: 25%;
+.login-and-register-content{
+  .auth-input{
+    width: 100%;
+    padding: 4% 4% 3% 10%;
+    color: $light-brown-txt;
     font-size: 180%;
-    color: $light-brown-label;
+  }
+
+  ::placeholder{
+    color:$light-brown-label;
+  }
+
+  .auth-correct-input{
+    border-bottom: $light-brown-box solid;
   }
   
-  .auth-radio-input {
-    margin: 0 0 7% 25%;
-    height: 2.5vh;
-    width: 2.5vh;
+  .auth-wrong-input{
+    border-bottom: $red-box solid;
+  }
+
+  .auth-input-label{
+    display: none;
+
+    position: absolute;
+    left: 10%;
+    bottom: 80%;
+
+    color: $light-brown-label;
+    font-size: 160%;
+  }
+
+  .auth-input:valid ~ .auth-input-label,
+  .move-label-up {
+    display: block;
+  }
+
+  .auth-input-img {
+    position: absolute;
+    left: 0%;
+    bottom: 25%;
+    height: 3vh;
+    width: 3vh;
   }
 }
 
-.auth-correct-input{
-  border-bottom: $light-brown-box solid;
-}
-
-.auth-wrong-input{
-  border-bottom: $red-box solid;
-}
-
-
-@media (min-width: 1000px) {
+/* Portrait Ipad PRO */
+@media (min-width: 1024px) and (max-height: 1366px){
   .login-and-register-content {
-    main {
-      form {
-        width: 100%;
-        }
-      }
-  }
-
-  .login-content{
-    main {
-      form {
-        div{
-          margin-bottom: 7%;
-
-          input{
-            padding-bottom: 1%;
-          }
-        }
-      }
+    .auth-input{
+      font-size: 220%;
     }
-  }
 
-  .register-content{
-    main {
-      form {
-        div{
-          margin-bottom: 10%;
-
-          input{
-            padding-bottom: 1%;
-          }
-        }
-      }
+    .auth-input-label{
+      font-size: 180%;
     }
   }
 }
 
-@media (min-height: 1200px) {
-  .register-content{
-    main {
-      form {
-        div{
-          margin-bottom: 8%;
+/*Landscape Ipad MINI */
+@media (orientation: 'landscape') and (max-height: 768px){
+  .login-and-register-content {
+    .auth-input{
+      font-size: 140%;
+    }
 
-          input{
-            padding-bottom: 1%;
-          }
-        }
-      }
+    .auth-input-label{
+      font-size: 130%;
     }
   }
 }

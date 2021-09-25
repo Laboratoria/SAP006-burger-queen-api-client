@@ -1,94 +1,24 @@
-header{
-  display: flex;
-  flex-direction: column;
+header, .auth-header{
+  margin: auto;
 }
 
 .login-content {
   .logo{
-    margin: 5% auto 0;
+    height: 50vh;
+    width: 50vh;
+    margin-bottom: -10%;
+  }
+}
+
+@media (orientation: 'landscape') {
+  .auth-header {
+    margin-left: 50%;
+  }
+  
+  .auth-welcome {
     height: 50vh;
     width: 50vh;
   }
 }
-
-.register-content {
-  .logo{
-    margin: 1% auto 0%;
-    height: 30vh;
-    width: 30vh;
-  }
-}
-
-@media (min-height: 1366px) {
-  .register-content, .login-content{
-    .auth-welcome{
-      visibility: hidden;
-    }
-  }
- 
-} 
-
-@media (min-width: 1000px) {
-  .login-content{
-    .logo{
-      top:14%;
-      left: -2%;
-      height: 65vh;
-      width: 65vh;
-      position: absolute;   
-    }
-
-  .auth-welcome{
-    top:2%;
-    right: 13%;
-    height: 45vh;
-    width: 45vh;
-    position: absolute;
-    }
-  }
-
-  .register-content{
-    .logo{
-      top:35%;
-      left: -1%;
-      height: 60vh;
-      width: 60vh;
-      position: absolute;    
-    }
-
-  .auth-welcome{
-    top:0%;
-    left: 7%;
-    height: 40vh;
-    width: 40vh;
-    position: absolute;
-    }
-  }
-}
-
-@media (min-height: 1200px) {
-  .login-content{
-    .logo{
-      top:4%;
-      left: 10%;
-      height: 55vh;
-      width: 55vh;
-      position: absolute;   
-    }
-
-  }
-
-  .register-content{
-    .logo{
-      top:0%;
-      left: 25%;
-      height: 35vh;
-      width: 35vh;
-      position: absolute;    
-    }
-  }
-}
-
-
 
 

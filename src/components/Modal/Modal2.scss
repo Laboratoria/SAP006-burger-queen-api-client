@@ -1,0 +1,64 @@
+.menu-modal-title{
+  margin-bottom: 0%;
+  font-family: $berg-font;
+  font-size: 180%;
+  color:$medium-green;
+  text-align: center;
+}
+
+.menu-modal-content{
+  line-height: 130%;
+  font-size: 110%;
+  color:$even-darker-brown-txt;
+  text-align: justify;
+}
+
+.menu-modal-observations{
+  font-size: 80%;
+  text-align: justify;
+}
+
+.new-order-modal-content{
+  text-align: center;
+  font-size: 110%;
+  line-height: 130%;
+}  
+
+
+
+.kitchen-modal-content{
+  font-size: 130%;
+  text-align: center;
+}
+
+.kitchen-modal-delete-order-button-div{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  margin: auto;
+  justify-content: space-evenly;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 1024px) and (max-height: 768px),
+(min-width: 1366px) and (max-height: 1024px){
+  .menu-modal-content{
+    font-size: 90%;
+  }
+
+  .menu-modal-observations{
+    font-size: 70%;
+  }
+  
+}

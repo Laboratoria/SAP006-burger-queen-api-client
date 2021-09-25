@@ -3,53 +3,21 @@ import { Button } from '../Button/Button'
 
 import './Modal.scss';
 
-export function AuthModal ({ Role, ButtonOnClick, ButtonOnClickSecondOption }) {
-
-  const Modal = {
-    
-    'authSucessModal-login': {
-      'ModalContent':'Login realizado com sucesso!',
-      'ButtonChildren':'OK',
-    },
-    'authErrorModal-login': {
-      'ModalContent':'Usuárie não encontrade! Verifique seus dados.',
-      'ButtonChildren':'Tente Novamente'
-    },
-    'authSucessModal-register': {
-      'ModalContent':'Cadastro realizado com sucesso!',
-      'ButtonChildren':'OK',
-    },
-    'authErrorModal-register': {
-      'ModalContent':'Este email já está vinculado a outra conta.',
-      'ButtonChildren':'Tente Novamente'
-    },
-    'test': {
-      'ModalContent':'test',
-      'ButtonChildren':'test'
-    },
-  }
-
+export function AuthModal ({Role, ModalContent, ButtonChildren, ButtonOnClick, ButtOnClickSecondAuthModalOption}) {
   return (
     <section className='modal-background' data-testid='authModalSection'>
       <div className='modal-container' data-testid='authModalDiv'>
-        <p data-testid='authModalContent' className='auth-modal-content'> {Modal[Role].ModalContent} </p>
+        <p data-testid='authModalContent' className='auth-modal-content'> {ModalContent} </p>
         <Button 
-          Role={Role}
-          children={Modal[Role].ButtonChildren}
+          ButtonClass='modal-button'
+          children={ButtonChildren}
           ButtonOnClick={ButtonOnClick}
         />
-        { Role === 'authErrorModal-login' ?
+        {Role === 'auth-error-modal' ?
           <Button
-            Role={Role}
+            ButtonClass='modal-button'
             children='Crie uma nova conta'
-            ButtonOnClick={ButtonOnClickSecondOption}
-          /> : null
-        }
-        { Role === 'authErrorModal-register' ?
-          <Button 
-            Role={Role}
-            children='Entre com uma conta já existente'
-            ButtonOnClick={ButtonOnClickSecondOption}
+            ButtonOnClick={ButtOnClickSecondAuthModalOption}
           /> : null
         }
       </div>

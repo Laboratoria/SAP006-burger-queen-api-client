@@ -1,0 +1,22 @@
+@import '../../styles/Global.scss';
+
+
+.register-content {
+  
+
+  .auth-label-radio-input {
+    display: block;
+    left: 40%;
+    bottom: 25%;
+    font-size: 180%;
+    color: $light-brown-label;
+  }
+  
+  .auth-radio-input {
+    margin: 0 0 7% 25%;
+    height: 2.5vh;
+    width: 2.5vh;
+  }
+}
+
+

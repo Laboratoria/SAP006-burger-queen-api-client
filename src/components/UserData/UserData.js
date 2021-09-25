@@ -1,61 +1,57 @@
-import React from 'react';
+import { useState } from 'react';
+
 import { Button } from '../Button/Button';
 
 import inputName from '../../assets/icons/input-name.png';
 import inputEmail from '../../assets/icons/input-email.png';
 import inputPassword from '../../assets/icons/input-password.png';
 
-
 import './UserData.scss'
+import './UserData2.scss'
 
 export function InputContentUserData ({Subject, Error, InputValue, InputOnChange}) {
   
-  const [showPassword, setShowPassword] = React.useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const showOrNotShowPassword = (event, value, setValue) => {
-  event.preventDefault();
-  setValue(value ? false : true);
-  };
-
-  const UserDataProps = {
+  const authInput = {
     'name': {
       'data-content':'name',
-      'InputClass': Error ? 'auth-wrong-input' : InputValue.length < 1 ? 'auth-correct-input' : InputValue.length >= 7 ? 'auth-correct-input' : 'auth-wrong-input',
+      'InputClass': Error ? 'auth-input auth-wrong-input' : InputValue.length < 1 ? 'auth-input auth-correct-input' : InputValue.length >= 7 ? 'auth-input auth-correct-input' : 'auth-input auth-wrong-input',
       'InputType':'text',
       'InputPlaceholder':'Nome Completo',
-      'LabelClass':'',
+      'LabelClass':'auth-input-label',
       'IconSrc':inputName,
       'IconAlt':'Full Name',
     },
     'email': {
       'data-content':'email',
-      'InputClass': Error ? 'auth-wrong-input' : InputValue.length < 1 ? 'auth-correct-input' : InputValue.includes('@') ? 'auth-correct-input' : 'auth-wrong-input',
+      'InputClass': Error ? 'auth-input auth-wrong-input' : InputValue.length < 1 ? 'auth-input auth-correct-input' : InputValue.includes('@') ? 'auth-input auth-correct-input' : 'auth-input auth-wrong-input',
       'InputType':'email',
       'InputPlaceholder':'Email',
-      'LabelClass':InputValue.length > 1 ? 'move-label-up' : '',
+      'LabelClass':InputValue.length > 1 ? 'auth-input-label move-label-up' : 'auth-input-label',
       'IconSrc':inputEmail,
       'IconAlt':'Email', 
     },
     'password': {
       'data-content':'password',
-      'InputClass': Error ? 'auth-wrong-input' : InputValue.length < 1 ? 'auth-correct-input' : InputValue.length >= 6 ? 'auth-correct-input' : 'auth-wrong-input',
+      'InputClass': Error ? 'auth-input auth-wrong-input' : InputValue.length < 1 ? 'auth-input auth-correct-input' : InputValue.length >= 6 ? 'auth-input auth-correct-input' : 'auth-input auth-wrong-input',
       'InputType':showPassword ? 'text' : 'password',
       'InputPlaceholder':'Senha',
-      'LabelClass':'',
+      'LabelClass':'auth-input-label',
       'IconSrc':inputPassword,
       'IconAlt':'Password',
-      'ButtonOnClick':(event) => showOrNotShowPassword(event, showPassword, setShowPassword),
+      'ButtonOnClick':(event) => [event.preventDefault(), showPassword === false ? setShowPassword(true) : setShowPassword(false)] 
     },
     'confirmPassword': {
       'data-content':'confirmPassword',
-      'InputClass': Error ? 'auth-wrong-input' : InputValue.length < 1 ? 'auth-correct-input' : InputValue.length >= 6 ? 'auth-correct-input' : 'auth-wrong-input',
+      'InputClass': Error ? 'auth-input auth-wrong-input' : InputValue.length < 1 ? 'auth-input auth-correct-input' : InputValue.length >= 6 ? 'auth-input auth-correct-input' : 'auth-input auth-wrong-input',
       'InputType':showConfirmPassword ? 'text' : 'password',
       'InputPlaceholder':'Confirme a Senha',
-      'LabelClass':'',
+      'LabelClass':'auth-input-label',
       'IconSrc':inputPassword,
       'IconAlt':'Confirm Password',
-      'ButtonOnClick':(event) => showOrNotShowPassword(event, showConfirmPassword, setShowConfirmPassword),
+      'ButtonOnClick':(event) => [event.preventDefault(), showConfirmPassword === false ? setShowConfirmPassword(true) : setShowConfirmPassword(false)]
     },
     'test': {
       'data-content':'test',
@@ -70,33 +66,35 @@ export function InputContentUserData ({Subject, Error, InputValue, InputOnChange
   }
 
   return (
-    <div data-testid='userDataDiv'>
+    <div data-testid='userDataDiv' className='auth-input-div'>
       <input 
         data-testid='userDataInput'
         required
         autoComplete='off'
         data-content={Subject}
 
-        className={UserDataProps[Subject].InputClass}
-        type={UserDataProps[Subject].InputType}       
-        placeholder={UserDataProps[Subject].InputPlaceholder}
+        className={authInput[Subject].InputClass}
+        type={authInput[Subject].InputType}       
+        placeholder={authInput[Subject].InputPlaceholder}
 
         onChange={InputOnChange}
         value={InputValue}
       />
       <label data-testid='userDataLabel'
-        className={UserDataProps[Subject].LabelClass} > 
-        {UserDataProps[Subject].InputPlaceholder}
+        className={authInput[Subject].LabelClass}> 
+        {authInput[Subject].InputPlaceholder}
       </label>
       <img data-testid='userDataImg'
-        src={UserDataProps[Subject].IconSrc}
-        alt={UserDataProps[Subject].IconAlt}
+        className='auth-input-img'
+        src={authInput[Subject].IconSrc}
+        alt={authInput[Subject].IconAlt}
       />
-      { Subject === 'password' || Subject === 'confirmPassword' ?
+      {Subject === 'password' || Subject === 'confirmPassword' ?
        <Button 
-          Role='authShowOrNotShowPassword'
-          Conditional = {showPassword || showConfirmPassword}
-          ButtonOnClick={UserDataProps[Subject].ButtonOnClick}
+          ButtonClass={showPassword ? 
+          'auth-show-or-not-password-button auth-show-password-button' : 
+          'auth-show-or-not-password-button auth-not-show-password-button'}
+          ButtonOnClick={authInput[Subject].ButtonOnClick}
        /> : null
       }  
     </div>
@@ -104,7 +102,7 @@ export function InputContentUserData ({Subject, Error, InputValue, InputOnChange
 }
 
 export function InputRadioUserData ({Subject, InputChecked, InputOnChange}) {
-  const UserDataProps = {
+  const authInput = {
       'room': {
         'data-content':'role',
         'InputClass':'auth-radio-input',
@@ -133,17 +131,17 @@ export function InputRadioUserData ({Subject, InputChecked, InputOnChange}) {
         <input 
           required
           data-content = {Subject}
-          className={UserDataProps[Subject].InputClass}
+          className={authInput[Subject].InputClass}
           name='role'
           type='radio'
           
-          value={UserDataProps[Subject].InputValue}
+          value={authInput[Subject].InputValue}
 
           checked={InputChecked}
           onChange={InputOnChange}
         />
-        <label className={UserDataProps[Subject].LabelClass}> 
-          {UserDataProps[Subject].LabelText}
+        <label className={authInput[Subject].LabelClass}> 
+          {authInput[Subject].LabelText}
         </label>
     </div>
   )

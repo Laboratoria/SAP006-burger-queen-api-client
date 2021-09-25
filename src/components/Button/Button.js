@@ -1,7 +1,8 @@
 import React from 'react';
 import './Button.scss';
+import './Button2.scss';
 
-export const Button = ({productId, ButtonTitle, ButtonId, Role, Conditional, ButtonOnClick, children}) => {
+export const Button = ({ButtonClass, productId, ButtonTitle, ButtonId, Role, Conditional, ButtonOnClick, children}) => {
 
   const ButtonProps = {
     'test':{
@@ -149,7 +150,7 @@ export const Button = ({productId, ButtonTitle, ButtonId, Role, Conditional, But
     data-productid={productId}
     id={ButtonId}
     type='submit' 
-    className={ButtonProps[Role].ButtonClass}
+    className={ButtonClass} 
     onClick={ButtonOnClick}
     >
       {children}
