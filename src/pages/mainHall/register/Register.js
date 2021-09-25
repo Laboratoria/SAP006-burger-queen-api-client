@@ -117,6 +117,7 @@ export default function Registration() {
                         type='radio' 
                         name='ocupation'
                         value='salon' 
+                        placeholder='salon'
                     />
                     <img src={garcom} alt="waiter" className="waiter-icon"/>
 
@@ -124,6 +125,7 @@ export default function Registration() {
                         type='radio' 
                         name='ocupation'
                         value='kitchen' 
+                        placeholder='kitchen'
                     />
                     <img src={cozinheiro} alt="kitchen" className="kitchen-icon"/>
                 </div>
