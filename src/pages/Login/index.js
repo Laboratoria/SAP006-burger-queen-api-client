@@ -98,7 +98,6 @@ export default function Login() {
     <>
       {loading ? <Loader /> : false}
       <div className="container-bg">
-        {/* <img src={background} alt="background"></img> */}
       </div>
 
       <section className="container-login">

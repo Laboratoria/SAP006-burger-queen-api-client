@@ -21,6 +21,7 @@
 	border-top: 1px solid var(--stroke);
 	font-weight: bold;
 	color: var(--black);
+	
 
 	span {
 		font-weight: lighter;
@@ -29,27 +30,30 @@
 	p {
 		align-self: center;
 		margin: 1rem 0;
-		font-size: 1.3em;
+		
 	}
 }
 
 .card-order-template {
 	margin: 1rem;
-	width: 400px;
-	height: 625px;
+	width: 350px;
+	height: 530px;
 	background-image: url('../../img/bloco.png');
 	background-position: center;
-	background-size: 42rem;
+	background-size:cover;
 	padding: 3rem 2rem;
+	:last-child{
+		border-bottom: none;
+	}
 
 
 
 }
 
 .card-order-info {
-	height: 520px;
+	height: 445px;
 	padding: 20px;
-	line-height: 20px;
+	line-height: 12px;
 	overflow-y: auto;
 
 	/* width */
@@ -75,36 +79,73 @@
 .card-order-table {
 	display: flex;
 	justify-content: space-between;
-	font-size: 1.5em;
-	margin-bottom: 1rem;
-	background-color: #d979047a;
+	align-items:center;
+	font-size: 1.3em;
+	background-color: #d979046b;
 	padding: 0 1rem;
 	border-radius: 5px;
 }
 
+.btn-status{
+	letter-spacing: 0.01rem;
+	margin-top:1rem;
+	width:100%;
+
+}
+
+.btn-delivered{
+	display:none;
+	
+}
+
+.order-data{
+	margin-top:1.5rem;
+	margin-bottom: 1rem;
+}
+
+.products-title{
+	width:100%;
+	background-color:rgb(165, 158, 158);
+	padding: 0.5rem 0;
+	text-align: center;
+	color:white;
+	font-size:0.9rem;
+	margin-bottom:0 !important;
+	border-radius: 5px;
+
+}
+
 .order-products {
-	padding-top: 0.5rem;
-	border-top: 1px solid var(--dark-gray);
+	border-bottom: 1px solid rgb(165, 158, 158);
+	
 }
 
 .order-status {
-	border-radius: 5px;
-	padding: 0.2rem;
+	padding: 0.5rem 0.7rem;
+	border-radius:15px;
+	margin-left:5px;
+	font-size:1.1rem;
+	height: 1.7rem;
 }
 
 .status-pending {
-	background-color: rgb(240, 240, 70);
+	background-color: rgb(245, 67, 67);
 }
 
 .status-loading {
-	background-color: rgb(250, 125, 42);
+	background-color: rgb(240, 240, 70);
 }
+
 
 .status-done {
 	background-color: rgb(67, 202, 67);
+	
 }
 
 .status-delivered {
-	background-color: rgb(245, 67, 67);
+	background-color: rgb(177, 61, 212);
+	
 }
+
+
 
