@@ -8,6 +8,7 @@ import queijo from '../../img/queijo.png';
 import ovo from '../../img/ovo.png';
 import prato from '../../img/prato.png';
 import burger from '../../img/burger.png';
+import duplo from '../../img/burger-duplo.png';
 
 export default function Burgers({
 chooseBurger, chooseFlavor, chooseComplement, complementChecked
@@ -30,7 +31,7 @@ chooseBurger, chooseFlavor, chooseComplement, complementChecked
 					inputId="duplo"
 					inputName="burger"
 					inputValue="Hambúrguer duplo"
-					productImg={burger}
+					productImg={duplo}
 					productImgAlt="double burger"
 					productName="Duplo"
 					productPrice="R$ 15,00"

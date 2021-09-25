@@ -58,8 +58,9 @@ main {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 70vh;
-    margin: 2rem 0;
+    height: 100%;
+    margin-top: 2rem;
+    align-items: stretch;
 
     select{
         padding:0.3rem 0.8rem;
@@ -115,13 +116,15 @@ main {
 
     @media (min-device-width: 1025px) {
         height: 100vh;
-        padding-bottom: 3rem;
+        // padding-bottom: 3rem;
     }
 
     @media (min-device-width: 1400px) {
         height: 80vh;
         padding-bottom: 3rem;
     }
+
+   
 }
 
 

@@ -115,6 +115,9 @@ div {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom:1.2rem;
+
+    
 
     & .active {
       border: none;
@@ -123,12 +126,19 @@ div {
     @media (min-device-width : 1025px){
       width: 10rem;
       height: 10rem;
+      margin-bottom:2rem;
 
     }
 
     @media (min-device-width: 1400px) {
       width: 12rem;
       height: 12rem;
+      margin-bottom:2rem;
+    }
+
+    &.link3{
+      margin-bottom:0;
+
     }
 
   }

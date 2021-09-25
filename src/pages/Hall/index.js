@@ -461,7 +461,7 @@ export default function Hall() {
 								{labels.second}
 							</LinkAside>
 							<LinkAside
-								className={activation3 ? 'active' : null}
+								className={`link3 ${activation3 ? 'active' : null}`}
 								type={values.third}
 								onClick={changeProducts}
 							>
