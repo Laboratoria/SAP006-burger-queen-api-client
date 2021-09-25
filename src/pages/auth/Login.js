@@ -1,67 +1,36 @@
-import React from 'react';
-
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import { AuthModal } from '../../components/Modal/Modal';
 import { Button } from '../../components/Button/Button'
 import { Header } from '../../components/Header/Header'
 import { InputContentUserData } from '../../components/UserData/UserData';
 
-import { login } from '../../routes/utils/auth';
+import { authLogin } from '../../services/auth';
 
 import './Auth.scss'
 
 export function Login () {
   const history = useHistory();
 
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const userData = {email, password}
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
+  const [authErrorModal, setAuthErrorModal] = useState(false);
+  const [authSucessModal, setAuthSucessModal] = useState(false);
 
-  const [authErrorModal, setAuthErrorModal] = React.useState(false);
-  const [authSucessModal, setAuthSucessModal] = React.useState(false);
+  const userData = {email, password}
   const setAuthModals = {setAuthErrorModal, setAuthSucessModal}
 
-  const handleLogin = () => {
-    const token = localStorage.getItem('currentEmployeeToken')
-    const role = localStorage.getItem('currentEmployeeRole')
-    login(token)
-    role === 'kitchen' ? history.push('/kitchen') : history.push('/room')
-  }
-
-  const navigateTo = (history, path, setModalState) => {
-    setModalState(false);
-    history.push(path);
-  }
-
-  const authLogin = (event) => {
-    const apiToLogin = 'https://lab-api-bq.herokuapp.com/auth';
-    event.preventDefault();
-    fetch (apiToLogin, {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: userData.email,
-          password: userData.password
-        })
-    }).then((response) => {
-      if (response.status === 200) {
-          return response.json();
-      } else {
-        throw new Error(response.status);
-      }
-    }).then((responseJson) => {
-      localStorage.setItem('currentEmployeeName', responseJson.name);
-      localStorage.setItem('currentEmployeeEmail', responseJson.email);
+  const handleLogin = (event) => {
+   authLogin(event, {userData})
+    .then((responseJson) => {
       localStorage.setItem('currentEmployeeToken', responseJson.token);
       localStorage.setItem('currentEmployeeRole', responseJson.role);
-      if (responseJson.token !== undefined) {
-        setAuthModals.setAuthSucessModal(true);
-      }
-    }).catch(() => {
-        setAuthModals.setAuthErrorModal(true);
+      setRole(localStorage.getItem('currentEmployeeRole'))
+      setAuthModals.setAuthSucessModal(true)
     })
+    .catch(() => setAuthModals.setAuthErrorModal(true))
   };
 
   return (
@@ -82,14 +51,14 @@ export function Login () {
       </form>
         <Button 
           Role = 'authSubmitForm'
-          ButtonOnClick = {(event) => authLogin(event, {userData}, {setAuthModals})} 
+          ButtonOnClick = {(event) => handleLogin(event, {userData}, {setAuthModals})} 
           children = 'Entrar'
         /> 
         <div className='auth-navigation-div'>
           <p>Ou</p>
           <Button 
             Role = 'authNavigateTo'
-            ButtonOnClick = {() => navigateTo(history, '/register', setAuthSucessModal)} 
+            ButtonOnClick = {() => history.push('/register')} 
             children = 'registre-se'
           /> 
         </div>
@@ -98,7 +67,7 @@ export function Login () {
         {authSucessModal ? (
           <AuthModal 
             Role = 'authSucessModal-login'
-            ButtonOnClick = {() => handleLogin()}
+            ButtonOnClick = {() => role === 'kitchen' ? history.push('/kitchen') : history.push('/room')}
           />
         ): null}
       </section>
@@ -106,12 +75,11 @@ export function Login () {
         {authErrorModal ? (
           <AuthModal 
             Role = 'authErrorModal-login'
-            ButtonOnClick = {() => navigateTo(history, '/', setAuthErrorModal)}
-            ButtonOnClickSecondOption = {() => navigateTo(history, '/register', setAuthErrorModal)}
+            ButtonOnClick = {() => setAuthErrorModal(false)} 
+            ButtonOnClickSecondOption = {() => history.push('/register')} 
           />
         ): null}
       </section>
-    
   </div>
   )
 }

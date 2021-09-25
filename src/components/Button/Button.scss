@@ -168,12 +168,17 @@ nav {
     height: 17vh;
     width: 17vh;
     background-size:17vh;
-  }
-
-  .room-table-button:hover{
-    border: $medium-green solid 3pt;
     border-radius: 10px;
   }
+
+  [data-title='empty-table'] {
+    border: #62704d solid 3pt;
+  }
+
+  [data-title='full-table'] {
+    border: #c74b1a solid 3pt;
+  }
+
 
   .room-table-button-01{
     background-image: url('../../assets/images-tables/table-01.png');
@@ -392,6 +397,12 @@ nav {
     margin-left: 10%;
   }
 
+
+  .room-div{
+    .kitchen-change-order-status{
+      font-size: 50%;
+    }
+  }
 
   .kitchen-change-order-status{
     font-size: 110%;

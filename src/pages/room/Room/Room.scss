@@ -2,11 +2,19 @@
 
 .room-div{
   height: 100%;
+
+  .modal-container{
+    overflow-y: scroll;
+    height: 90vh;
+    padding-top: 70%;
+  }
 }
 
 .room-table-div{
   justify-content: center;
   margin: auto;
+
+  
 }
 
 .room-tables-section {
@@ -17,6 +25,8 @@
   grid-column-gap:2vh;
   justify-content: center;
 }
+
+
 
 @media (min-width: 1024px) and (max-height: 768px),
 (min-width: 1366px) and (max-height: 1024px){

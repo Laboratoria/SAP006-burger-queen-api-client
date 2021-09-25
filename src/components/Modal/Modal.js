@@ -78,6 +78,10 @@ export const MenuModal = ({Role, ModalTitle, ModalContent, ButtonOnClick}) => {
   )
 }
 
+
+
+
+
 export const NewOrderModal = ({Role, ModalContent, ButtonOnClick, children, childrenSecondButton, ButtonOnClickSecondOption}) => {
   return (
     <section className='modal-background'>
@@ -132,6 +136,18 @@ export const KitchenErrorModal = ({ModalContent, ButtonOnClick}) => {
           children='OK'
           ButtonOnClick={ButtonOnClick}
         />
+      </div>
+    </section>
+  )
+}
+
+
+export const TableOrdersModal = ({order}) => {
+  return (
+    <section className='modal-background'>
+      <div className='modal-container'>
+        {order.map((each) => 
+          <p>{each.status}</p>)}
       </div>
     </section>
   )

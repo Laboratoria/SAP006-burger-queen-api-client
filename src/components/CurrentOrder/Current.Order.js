@@ -13,7 +13,8 @@ export const CurrentOrder = ({
   order, 
   ButtonDeleteOrder, 
   OrderReadyButton,
-  OrderDeliveredButton
+  OrderDeliveredButton,
+  Location,
   }) => { 
     
   const orderCreationAgeSeconds = (Date.now() - new Date (order.createdAt).valueOf())/1000
@@ -121,11 +122,12 @@ const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
         </div>
       </div>
       <div className='current-order-button-div'>
-        <Button 
+      {Location === 'room-tables'? null :  <Button 
           Role='kitchen-delete-order' 
           ButtonId={order.id}
           ButtonOnClick={ButtonDeleteOrder}    
-        />
+        />} 
+       
        
         <div className='current-order-status-button-div'>
           {role === 'kitchen' ? 
@@ -146,10 +148,10 @@ const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
               children='Este pedido já foi entregue :)' 
               ButtonId={order.id}
           />
-            : order.status !== 'pending' ? order.status !== 'Entregue' ?
+            : order.status !== 'pending' ? order.status !== 'Entregue' ? 
           <Button 
-            Role='kitchen-change-order-status-delivered' 
-            children='ENTREGAR' 
+            Role={Location === 'room-tables'? 'kitchen-change-order-status-ready' : 'kitchen-change-order-status-delivered'} 
+            children={Location === 'room-tables'? 'Este pedido está aguardando entrega' : 'ENTREGAR'} 
             ButtonId={order.id}
             ButtonOnClick={OrderDeliveredButton}
           />
