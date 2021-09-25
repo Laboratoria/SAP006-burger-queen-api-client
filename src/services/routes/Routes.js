@@ -4,7 +4,8 @@ import {BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from '../../pages/mainHall/login/Login';
 import Registration from '../../pages/mainHall/register/Register';
 import Tables from '../../pages/mainHall/tables/Tables';
-import PrivateRoute from '../routes/PrivateRoutes'
+import Menus from '../../pages/mainHall/menus/Menus';
+import PrivateRoute from '../routes/PrivateRoutes';
 
 function Routes(){
     return (
@@ -12,9 +13,9 @@ function Routes(){
             <Switch>
                 <Route path="/" exact component={Login} />
                 <Route path="/cadastre-se" component={Registration} />
-                
+                <Route path="/menus" component={Menus} />
                 <PrivateRoute path="/mesas" component={ Tables }/>
-                {/* <PrivateRoute path="/cozinha" component={ } /> */}
+
                 <Route path="*" element={<h1>Not Found</h1>} />                                
             </Switch>
         </BrowserRouter> 

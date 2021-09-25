@@ -45,7 +45,7 @@ export default function Registration() {
                 localStorage.setItem('userName', token)
                 const role = returnJson.role
                 if(role === 'salon') {
-                    history.push('/mesas')
+                    history.push('/')
                 } else {
                     alert('Selecione uma opção')
                 } 

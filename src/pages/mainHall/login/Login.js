@@ -48,7 +48,7 @@ export default function Login() {
                 if(role === 'salon') {
                     history.push('/mesas')
                 } else {
-                    alert('Será direcionado para sua ár')
+                    alert('Será redirecionado para sua área')
                 }                  
             } 
         } catch (error) {

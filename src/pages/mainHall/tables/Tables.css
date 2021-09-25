@@ -1,37 +1,17 @@
 .container-tables{
     display: flex;
     align-items: center;
-    margin: 10% 0px;
-}
-
-.section-counter{
-    display: flex;
-    justify-content: space-evenly;
 }
 
 .counter{
-    width: 60%;
-}
-
-.section-table{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
 }
 
 .table-1{
-    width: 50%;
-    margin: 15% 0 13% 22%;
-}
-
-.section-sofa{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
 }
 
 .sofa{
-    width: 50%;
+    width: 100%;
     transform: rotate(-90deg);
-    margin: 22% 0;
 }
