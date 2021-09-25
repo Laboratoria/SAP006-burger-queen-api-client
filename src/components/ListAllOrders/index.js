@@ -53,6 +53,7 @@ export default function ListAllOrders() {
 				pendingOrdersList[index].status = status;
 				setAllOrders(pendingOrdersList);
 			});
+			
 
 	return (
 		<section className="cards-orders-container">
