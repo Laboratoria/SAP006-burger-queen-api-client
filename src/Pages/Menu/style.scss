@@ -1,4 +1,19 @@
 .products-list-perMeal {
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2vh;
 }
+
+.select-menu-perMeal {
+    display: flex;
+    justify-content: space-around;
+    margin: 2vh 0vh 3vh 0vh;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+

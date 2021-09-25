@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
+import { getStorageKey} from '../../services/storage'
 // import { GetProducts }from '../../services/data'
 import CartList from '../../components/ItemsMenu/CartList';
 import ItemCard from '../../components/ItemsMenu/ItemCard'
 import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
+import GeneralButton from '../../components/Button/Button';
 import MealNavBar from '../../components/Header/MealNavBar'
-import { getStorageKey} from '../../services/storage'
-import './style.scss';
 import Header from '../../components/Header/Header';
+import './style.scss';
 
 const Menu = ()  => {
     const [products, setProducts] = useState([]);
@@ -47,8 +48,8 @@ const Menu = ()  => {
             <Header />
             <MealNavBar />
             <header className="select-menu-perMeal">
-                <button onClick={() => handleClick('breakfast')}>Café da manhã</button>
-                <button onClick={() => handleClick('all-day')}>Almoço</button>
+                <GeneralButton variant="third" onClick={() => handleClick('breakfast')}>Café da manhã</GeneralButton>
+                <GeneralButton variant="third" onClick={() => handleClick('all-day')}>Almoço</GeneralButton>
             </header>
             <section className="products-list-perMeal" {...setSelectedProducts}>
 
@@ -75,7 +76,7 @@ const Menu = ()  => {
                     )
                 )}
             </section>
-            <button className="confirm-order">Confirmar pedido</button>        
+            <GeneralButton variant="fifth" className="confirm-order">Confirmar pedido</GeneralButton>        
 
             <CartList />
             <MenuOptionsNavBar /> 

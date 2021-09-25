@@ -7,8 +7,16 @@ const MealNavBar = () => {
     
     return (
         <section className="meal-navbar">
-            <GeneralButton className="GeneralButton">Café da Manhã</GeneralButton>
-            <GeneralButton className="GeneralButton">Almoço</GeneralButton>
+            <GeneralButton 
+                variant="fourth" 
+                className="GeneralButton meal">
+                Café da Manhã
+            </GeneralButton>
+            <GeneralButton 
+                variant="fourth" 
+                className="GeneralButton meal">
+                Almoço
+            </GeneralButton>
         </section>
     )
 }

@@ -18,3 +18,9 @@
 .input.primary {
     height: 35px;
 }
+
+@media screen and (min-width: 1180px){
+   .input.primary{
+       width: 50%;
+   }
+}

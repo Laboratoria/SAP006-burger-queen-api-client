@@ -22,26 +22,53 @@ const Tables = () => {
             <MealNavBar />
             <section className="tables-display">
                 <div className="doubleTables">
-                    <GeneralButton className="table">1</GeneralButton>
-                    <GeneralButton className="table">2</GeneralButton>
+                    <GeneralButton
+                        variant="sixth"
+                        className="table">1
+                    </GeneralButton>
+                    <GeneralButton 
+                        variant="sixth"
+                        className="table">2
+                    </GeneralButton>
                 </div>
                 <div className="doubleTables">
-                    <GeneralButton className="table">3</GeneralButton>
-                    <GeneralButton className="table">4</GeneralButton>
+                    <GeneralButton
+                        variant="sixth"
+                        className="table">3
+                    </GeneralButton>
+                    <GeneralButton 
+                        variant="sixth"
+                        className="table">4
+                    </GeneralButton>
                 </div>
                 <div className="doubleTables">
-                    <GeneralButton className="table">5</GeneralButton>
-                    <GeneralButton className="table">6</GeneralButton>
+                    <GeneralButton 
+                        variant="seventh"
+                        className="table">5
+                    </GeneralButton>
+                    <GeneralButton 
+                        variant="seventh"
+                        className="table">6
+                    </GeneralButton>
                 </div>
                 <div className="doubleTables">
-                     <GeneralButton className="table">7</GeneralButton>
-                    <GeneralButton className="table">8</GeneralButton>
+                    <GeneralButton 
+                        variant="seventh"
+                        className="table">7
+                    </GeneralButton>
+                    <GeneralButton 
+                        variant="seventh"
+                        className="table">8
+                    </GeneralButton>
                 </div>
-                <GeneralButton className="table">9</GeneralButton>
+                <GeneralButton 
+                    variant="eigth"
+                    className="table">9
+                </GeneralButton>
             </section>
             <form className="form-submitOrder">
                 <input className="input-clientName" type="text" placeholder="Nome do Cliente"/>
-                <GeneralButton onClick={handleOrderSubmit} className={["btn-submitOrder", "GeneralButton"]}>Confirmar Pedido</GeneralButton>
+                <GeneralButton onClick={handleOrderSubmit} variant="nineth" className="btn-submitOrder">Confirmar Pedido</GeneralButton>
             </form>
             <MenuOptionsNavBar />
         </main>

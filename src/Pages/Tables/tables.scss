@@ -7,12 +7,11 @@
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    margin: 3vh 0vh;
 }
 
 .doubleTables {
     width: 70%;
-    margin: 2.5vh;
+    margin: 1.7vh;
     display: flex;
     justify-content: space-evenly;
 }
@@ -37,15 +36,11 @@
     border: none;
     border-radius: 4px;
     padding: 6px;
-    margin: 6vh 0;
+    margin: 2vh 0;
     font-size: 1.1rem;
 }
 
 .btn-submitOrder {
     background-color: rgba(81, 104, 238, 1);
     height: 30vh;
-}
-
-.GeneralButton {
-    background-color: rgb(241, 226, 229);
 }
