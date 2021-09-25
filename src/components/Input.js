@@ -1,11 +1,14 @@
 import React from 'react';
-import styles from './Button.css'
+import './Input.css';
 
 const Input = ({label, type, name}) => {
     return (
-        <div> 
-            <label htmlFor={name}>{label}</label>
-            <input id={name} name={name} className={styles.input} type={type} />;
+        <div className='wrapper'> 
+            <label htmlFor={name} className='label'>
+                {label}
+            </label>
+            <input id={name} name={name} className='input' type={type} />
+            <p className='error'> Error</p>
         </div>
     );
 }

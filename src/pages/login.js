@@ -25,7 +25,7 @@ function Login() {
             body: JSON.stringify({username, password}),
             })
 
-            //para pegar a resposta
+            // para pegar a resposta
             .then(response => {
                 console.log(response);
                 return response.json();
@@ -35,21 +35,19 @@ function Login() {
             });
         }
 
-       
-
     return (
         <section>
             <div className="pagina-login" >
-                <header className="pagina-login-header">
-                    {/* <img src={logo} alt="Logo Burguer Queen" /> */}
-                </header>
-            </div>
+                <header className="pagina-login-header"> 
+                     {/* <img src={logo} alt="Logo Burguer Queen" /> */}
+            </header>
+            </div> 
 
                 <form action="" onSubmit={handleSubmit}>
                     <h1 className="login-name">login</h1>
                     <Input label="Usuário" type="text" name="username" />
                     <Input label="Senha" type="password" name="password" />
-                    <Button>Entrar</Button>
+                   <Button>Entrar</Button>  
                 </form>
             <Link className="link" to="/Register">Cadastre-se</Link>
         </section>
