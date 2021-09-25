@@ -89,7 +89,9 @@
 
 .order-status {
 	border-radius: 5px;
-	padding: 0.2rem;
+	padding: 0.1rem 0.7rem;
+	border-radius:15px;
+	margin-left:5px;
 }
 
 .status-pending {
@@ -100,11 +102,24 @@
 	background-color: rgb(250, 125, 42);
 }
 
+.status-doing {
+	background-color: rgb(250, 125, 42);
+}
+
 .status-done {
 	background-color: rgb(67, 202, 67);
 }
 
 .status-delivered {
 	background-color: rgb(245, 67, 67);
+}
+
+.btn-status{
+	letter-spacing: 0.03rem;
+
+}
+
+.btn-delivered{
+	display:none;
 }
 

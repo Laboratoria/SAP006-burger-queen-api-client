@@ -1,11 +1,15 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import { role } from '../../utils/auth';
 import ButtonDefault from '../ButtonDefault';
+import Popup from '../Popup';
 
 import './listAllOrders.scss';
 
 export default function ListAllOrders() {
 	const [allOrders, setAllOrders] = useState([]);
+	const [showPopup, setShowPopup] = useState(false);
+	const [popUpText, setPopUpText] = useState("")
 
 	const apiURL = 'https://lab-api-bq.herokuapp.com';
 	const apiOrders = `${apiURL}/orders/`;
@@ -26,6 +30,54 @@ export default function ListAllOrders() {
 				setAllOrders(sortById);
 			});
 	}, [apiOrders, token]);
+
+	const orderStatus = (status) => {
+		switch (status) {
+			case "pending":
+				return "Em espera"
+
+			case "doing":
+				return "Iniciado"
+
+			case "loading":// retirar pedidos com loading//
+				return "Iniciado"
+
+
+			case "done":
+				return "Finalizado"
+
+
+			case "delivered":
+				return "Entregue"
+
+			default:
+				return "Indeterminado"
+		}
+	}
+
+	const buttonText = (status) => {
+		switch (status) {
+			case "pending":
+				return "Atualizar pedido - Iniciado "
+
+			case "doing":
+				return "Atualizar pedido - Pronto"
+
+			case "loading":// retirar pedidos com loading//
+				return "Atualizar pedido - Pronto"
+
+
+			case "done":
+				return "Atualizar pedido - Entregue"
+
+
+			case "delivered":
+				return ""
+
+			default:
+				return ""
+		}
+	}
 
 	const putRequestOptions = (status) => {
 		const options = {
@@ -53,7 +105,41 @@ export default function ListAllOrders() {
 				pendingOrdersList[index].status = status;
 				setAllOrders(pendingOrdersList);
 			});
-			
+
+	const statusOnClick = (index, id, status) => {
+		switch (role()) {
+			case "kitchen":
+				switch (status) {
+					case "pending":
+						updateOrderStatus(index, id, 'doing', allOrders, setAllOrders)
+						break
+
+					case "doing":
+						updateOrderStatus(index, id, 'done', allOrders, setAllOrders)
+						break
+
+					default:
+						setPopUpText("Usuário não autorizado a alterar esse status.")
+						setShowPopup(true)
+				}
+				break
+			case "hall":
+				switch (status) {
+					case "done":
+						updateOrderStatus(index, id, 'delivered', allOrders, setAllOrders)
+
+						break
+					default:
+						setPopUpText("Usuário não autorizado a alterar esse status.")
+						setShowPopup(true)
+				}
+				break
+			default:
+				setPopUpText("A operação falhou.")
+				setShowPopup(true)
+		}
+	}
+
 
 	return (
 		<section className="cards-orders-container">
@@ -66,15 +152,20 @@ export default function ListAllOrders() {
 						</div>
 
 						<ButtonDefault
-							className="btn-default"
-							onClick={() => {
-								updateOrderStatus(index, order.id, 'loading', allOrders, setAllOrders)
-								updateOrderStatus(index, order.id, 'done', allOrders, setAllOrders)
-								updateOrderStatus(index, order.id, 'delivered', allOrders, setAllOrders)
-							}}
+							className={`btn-default btn-${order.status} btn-status`}
+							onClick={() => statusOnClick(index, order.id, order.status)
+
+
+								// updateOrderStatus(index, order.id, 'loading', allOrders, setAllOrders)
+								// updateOrderStatus(index, order.id, 'done', allOrders, setAllOrders)
+								// updateOrderStatus(index, order.id, 'delivered', allOrders, setAllOrders)
+							}
 						>
-							Atualizar status
+							{buttonText(order.status)}
 						</ButtonDefault>
+						<div>
+							
+						</div>
 
 						<div>
 							<p>
@@ -94,7 +185,7 @@ export default function ListAllOrders() {
 							<p>
 								Status:
 								<span className={`order-status status-${order.status}`}>
-									{order.status}
+									{orderStatus(order.status)}
 								</span>
 							</p>
 						</div>
@@ -122,6 +213,12 @@ export default function ListAllOrders() {
 					</div>
 				</div>
 			))}
+			{showPopup ? (
+				<Popup
+					popupText={popUpText}
+					onClose={() => setShowPopup(false)}
+				></Popup>
+			) : null}
 		</section>
 	);
 }
