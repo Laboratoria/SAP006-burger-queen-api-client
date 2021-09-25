@@ -1,6 +1,7 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable radix */
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import LinkAside from '../../components/LinkAside';
 import CartArea from '../../components/CartArea'
@@ -18,6 +19,7 @@ import Sides from '../../components/All-day/Sides';
 import Popup from '../../components/Popup';
 import PopupCancel from '../../components/PopupCancel';
 import Header from '../../components/Header';
+
 
 export default function Hall() {
 
@@ -400,6 +402,12 @@ export default function Hall() {
 
 	const tables = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+	const history = useHistory();
+
+	const seeOrders = () =>{
+		history.push('/salao-pedidos');
+	}
+
 
 	return (
 		<div className="pages-container">
@@ -417,12 +425,8 @@ export default function Hall() {
 				</ul>
 
 				<div className="order-progress">
-					<ButtonDefault className="btn-order-status btn-default">
-						Em andamento
-					</ButtonDefault>
-
-					<ButtonDefault className="btn-order-status btn-default margin-left-1">
-						Finalizados
+					<ButtonDefault className="btn-update-orders btn-default margin-left-1" onClick={seeOrders}>
+					 🔔 Pedidos
 					</ButtonDefault>
 				</div>
 			</nav>

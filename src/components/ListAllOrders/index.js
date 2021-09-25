@@ -6,7 +6,7 @@ import Popup from '../Popup';
 
 import './listAllOrders.scss';
 
-export default function ListAllOrders() {
+export default function ListAllOrders({session}) {
 	const [allOrders, setAllOrders] = useState([]);
 	const [showPopup, setShowPopup] = useState(false);
 	const [popUpText, setPopUpText] = useState("")
@@ -26,25 +26,30 @@ export default function ListAllOrders() {
 		fetch(apiOrders, getRequestOptions)
 			.then((response) => response.json())
 			.then((data) => {
-				const sortById = data.sort((itemA, itemB) => itemB.id - itemA.id);
-				setAllOrders(sortById);
+				setAllOrders(data);
+				
 			});
 	}, [apiOrders, token]);
+
+	const ordersFilteredByStatus = () =>{
+		const arrayOrders = [...allOrders]
+		const ordersFiltered = arrayOrders.filter(order => order.status === session)
+		return ordersFiltered
+	}
+
+	ordersFilteredByStatus()
 
 	const orderStatus = (status) => {
 		switch (status) {
 			case "pending":
 				return "Em espera"
 
-			case "doing":
-				return "Iniciado"
-
-			case "loading":// retirar pedidos com loading//
+			case "loading":
 				return "Iniciado"
 
 
 			case "done":
-				return "Finalizado"
+				return "Pronto"
 
 
 			case "delivered":
@@ -60,10 +65,7 @@ export default function ListAllOrders() {
 			case "pending":
 				return "Atualizar pedido - Iniciado "
 
-			case "doing":
-				return "Atualizar pedido - Pronto"
-
-			case "loading":// retirar pedidos com loading//
+			case "loading":
 				return "Atualizar pedido - Pronto"
 
 
@@ -111,15 +113,15 @@ export default function ListAllOrders() {
 			case "kitchen":
 				switch (status) {
 					case "pending":
-						updateOrderStatus(index, id, 'doing', allOrders, setAllOrders)
+						updateOrderStatus(index, id, 'loading', allOrders, setAllOrders)
 						break
 
-					case "doing":
+					case "loading":
 						updateOrderStatus(index, id, 'done', allOrders, setAllOrders)
 						break
 
 					default:
-						setPopUpText("Usuário não autorizado a alterar esse status.")
+						setPopUpText("Usuário não autorizado a alterar este status.")
 						setShowPopup(true)
 				}
 				break
@@ -130,7 +132,7 @@ export default function ListAllOrders() {
 
 						break
 					default:
-						setPopUpText("Usuário não autorizado a alterar esse status.")
+						setPopUpText("Usuário não autorizado a alterar este status.")
 						setShowPopup(true)
 				}
 				break
@@ -143,31 +145,25 @@ export default function ListAllOrders() {
 
 	return (
 		<section className="cards-orders-container">
-			{allOrders.map((order, index) => (
+			{session? ordersFilteredByStatus().map((order, index) => (
 				<div className="card-order-template" key={order.id}>
 					<div className="card-order-info">
 						<div className="card-order-table">
-							<p className="uppercase">Mesa</p>
-							<p>{order.table}</p>
+							<p className="uppercase">Mesa {order.table}</p>
+							<span className={`order-status status-${order.status}`}>
+									{orderStatus(order.status)}
+								</span>
 						</div>
 
 						<ButtonDefault
 							className={`btn-default btn-${order.status} btn-status`}
-							onClick={() => statusOnClick(index, order.id, order.status)
-
-
-								// updateOrderStatus(index, order.id, 'loading', allOrders, setAllOrders)
-								// updateOrderStatus(index, order.id, 'done', allOrders, setAllOrders)
-								// updateOrderStatus(index, order.id, 'delivered', allOrders, setAllOrders)
-							}
+							onClick={() => statusOnClick(index, order.id, order.status)}
 						>
 							{buttonText(order.status)}
 						</ButtonDefault>
-						<div>
-							
-						</div>
+					
 
-						<div>
+						<div className="order-data">
 							<p>
 								Nº do Pedido: <span>{order.id}</span>
 							</p>
@@ -182,13 +178,9 @@ export default function ListAllOrders() {
 									order.createdAt
 								).getMinutes()}h`}</span>
 							</p>
-							<p>
-								Status:
-								<span className={`order-status status-${order.status}`}>
-									{orderStatus(order.status)}
-								</span>
-							</p>
+			
 						</div>
+						<p className="products-title uppercase">Produtos</p>
 
 						{order.Products.map((products) => (
 							<div className="order-products" key={products.id}>
@@ -212,7 +204,70 @@ export default function ListAllOrders() {
 						))}
 					</div>
 				</div>
+			)):
+			allOrders.map((order, index) => (
+				<div className="card-order-template" key={order.id}>
+					<div className="card-order-info">
+						<div className="card-order-table">
+							<p className="uppercase">Mesa {order.table}</p>
+							<span className={`order-status status-${order.status}`}>
+									{orderStatus(order.status)}
+								</span>
+						</div>
+
+						<ButtonDefault
+							className={`btn-default btn-${order.status} btn-status`}
+							onClick={() => statusOnClick(index, order.id, order.status)}
+						>
+							{buttonText(order.status)}
+						</ButtonDefault>
+					
+
+						<div className="order-data">
+							<p>
+								Nº do Pedido: <span>{order.id}</span>
+							</p>
+							<p>
+								Cliente: <span>{order.client_name}</span>
+							</p>
+							<p>
+								Data e Hora:{' '}
+								<span>{`${new Date(order.createdAt).toLocaleDateString(
+									'pt-br'
+								)} - ${new Date(order.createdAt).getHours()}:${new Date(
+									order.createdAt
+								).getMinutes()}h`}</span>
+							</p>
+			
+						</div>
+						<p className="products-title uppercase">Produtos</p>
+
+						{order.Products.map((products) => (
+							<div className="order-products" key={products.id}>
+								<p>
+									Item: <span>{products.name}</span>
+								</p>
+								<p>
+									Qtd: <span>{products.qtd}</span>
+								</p>
+								<p>
+									{products.flavor !== null ? 'Sabor: ' : ''}
+									<span>{products.flavor !== null ? products.flavor : ''}</span>
+								</p>
+								<p>
+									{products.complement !== null ? 'Complemento: ' : ''}
+									<span>
+										{products.complement !== null ? products.complement : ''}
+									</span>
+								</p>
+								
+							</div>
+						))}
+					</div>
+				</div>
 			))}
+			
+		
 			{showPopup ? (
 				<Popup
 					popupText={popUpText}

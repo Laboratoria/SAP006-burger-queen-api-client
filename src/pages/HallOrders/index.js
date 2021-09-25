@@ -1,11 +1,7 @@
 import React from 'react';
 import OrdersPanel from '../../components/OrdersPanel';
 
-
-import './kitchen.scss';
-
-
-export default function Kitchen() {
+export default function HallOrders() {
 	return (
 		<>
 			<OrdersPanel />
