@@ -4,18 +4,21 @@ import { useState, useEffect } from "react";
 const useProducts = () => {
   const [products, setProducts] = useState([]);
   const [productsType, setProductsType] = useState('breakfast');
-  getProducts()
-  .then(data => setProducts(data))
-  
-  const handleButtonTypeClick = (e) => setProductsType(e.target.value);
 
-  const productsFiltered = products.filter((elem) => elem.type.includes(productsType));
+  const getData = async () => {
+    const data = await getProducts().then(data => data)
+    setProducts(data)
+  }
 
   useEffect(() => {
-    return { productsFiltered }
-  })
+    return getData()
+  }, [])
 
-  return { productsFiltered, handleButtonTypeClick, products }
+  const handleButtonTypeClick = (e) => setProductsType(e.target.value);
+
+  const productsFiltered = products.filter((elem) => elem.sub_type.includes(productsType));
+
+  return { handleButtonTypeClick, productsFiltered }
 }
 
 export default useProducts;

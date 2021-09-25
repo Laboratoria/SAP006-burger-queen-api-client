@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import MenuHamburger from "../../components/menuHamburger";
 import ProductInfo from "../../components/productinfo";
-import Requests from "../../components/requests";
+import Cart from "../../components/cart";
 import useProducts from "./useProducts";
 
 const Menu = () => {
-  const { productsFiltered, handleButtonTypeClick } = useProducts();
+  const { handleButtonTypeClick, productsFiltered } = useProducts();
   const [addItem, setAddItem] = useState([]);
-
+  
   return (
     <div className='main'>
       <MenuHamburger />
       <section className='big-container'>
         <div className='menu-list'>
           <button className='menu-button' onClick={handleButtonTypeClick} value={'breakfast'}>Café da manhã</button>
-          <button className='menu-button' onClick={handleButtonTypeClick} value={'all-day'}>Almoço/Jantar</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'hamburguer'}>Hambúrgueres</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'side'}>Acompanhamento</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'drinks'}>Bebidas</button>
         </div>
         <div className='products-list' {...productsFiltered}>
           <div className='list-area'>
@@ -29,12 +31,11 @@ const Menu = () => {
                 name={elem.name}
                 price={elem.price}i
                 flavor={elem.flavor}
+                complement={elem.complement}
                 onClick={() => {
                   setAddItem([...addItem, {id: elem.id, name: elem.name, price: elem.price, flavor: elem.flavor}])
                 }}
               />
-              
-              
             )
           })}
         </div>
@@ -57,7 +58,7 @@ const Menu = () => {
             <option value='10'>Mesa 10</option>
           </select>
           <div className='orders-list'>
-          <Requests data={addItem}/>
+          <Cart data={ addItem }/>
           </div>
           <button className='menu-button'>Finalizar pedido</button>
         </div>
