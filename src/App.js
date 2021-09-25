@@ -1,8 +1,35 @@
 import React from 'react';
-import './global.css';
-// import Register from './pages/Register';
-import Roots from './components/Roots';
+import { BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 
-const App = () => <Roots />
+import './global.css';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import NotFound from './pages/NotFound';
+import Hall from './pages/Hall';
+
+
+function App() {
+    const user = true;
+
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route exact path='/'>  
+                    <Login />
+                </Route>
+                <Route path='/login' >
+                    <Login />
+                </Route>
+                <Route path='/register'> 
+                    <Register />
+                </Route>
+                <Route path='/hall'> 
+                    {user ? <Hall /> : <Redirect to="/" />}  
+                </Route>
+                <Route component={NotFound}/>
+            </Switch>
+        </BrowserRouter>
+    )
+}
 
 export default App;

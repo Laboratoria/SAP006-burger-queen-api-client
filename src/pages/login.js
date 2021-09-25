@@ -1,18 +1,17 @@
 import React from 'react';
 import '../styles/login.css';
 // import logo from '../img/logo.png'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Input from '../components/Input';
 import Button from '../components/Button';
 
-
 function Login() {
+    const history = useHistory();
 
-    //o q precisamos para logar o usuário
-    // eslint-disable-next-line no-unused-vars
-    const [username] = React.useState('');
-    // eslint-disable-next-line no-unused-vars
-    const [password] = React.useState('');
+    // TODO gerenciar estados dos inputs 
+
+        const  [username] = React.useState('');
+        const  [password] = React.useState('');
 
         function handleSubmit(event){
             event.preventDefault();
@@ -35,6 +34,15 @@ function Login() {
             });
         }
 
+       const logar = (e) => {
+           e.preventDefault()
+           // TO DO login de usuário
+           console.log('fazer requisição na API em /auth');
+
+           // TO DO deu bom? navega para tela de menu
+           history.push('/hall');
+       }
+
     return (
         <section>
             <div className="pagina-login" >
@@ -47,7 +55,10 @@ function Login() {
                     <h1 className="login-name">login</h1>
                     <Input label="Usuário" type="text" name="username" />
                     <Input label="Senha" type="password" name="password" />
-                   <Button>Entrar</Button>  
+                    <Button type="submit"  onClick={logar}>Entrar</Button>
+                   
+
+                    
                 </form>
             <Link className="link" to="/Register">Cadastre-se</Link>
         </section>
