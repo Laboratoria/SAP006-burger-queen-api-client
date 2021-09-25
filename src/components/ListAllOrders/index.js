@@ -174,7 +174,9 @@ export default function ListAllOrders({session}) {
 										Data e Hora:{' '}
 										<span>{`${new Date(order.createdAt).toLocaleDateString(
 											'pt-br'
-										)}h`}</span>
+										)} - ${new Date(order.createdAt).getHours()}:${new Date(
+											order.createdAt
+										).getMinutes()}h`}</span>
 									</p>
 
 									<p>
@@ -252,12 +254,10 @@ export default function ListAllOrders({session}) {
 									<p>
 										Data e Hora:{' '}
 										<span>{`${new Date(order.createdAt).toLocaleDateString(
-											'pt-br',
-											{
-												hour: '2-digit',
-												minute: '2-digit',
-											}
-										)}h`}</span>
+											'pt-br', 
+										)} - ${new Date(order.createdAt).getHours()}:${new Date(
+											order.createdAt
+										).getMinutes()}h`}</span>
 									</p>
 								</div>
 								<p className="products-title uppercase">Produtos</p>
