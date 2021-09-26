@@ -9,7 +9,7 @@ import { MenuModal } from '../../../components/Modal/Modal';
 
 import { products } from '../../../data/products';
 
-import './Menu.scss'
+import './Menu.scss';
 
 export const Menu = () => { 
   const history = useHistory();
@@ -20,19 +20,19 @@ export const Menu = () => {
   const [showDrinks, setShowDrinks] = useState(false);
   const [showIngredients, setShowIngredients] = useState(false);
   const [productId, setProductId] = useState('');
-  const productsToPrint = Object.keys(products)
+  const productsToPrint = Object.keys(products);
 
-  const filterProducts = (condition, value) =>{
+  const filterProducts = (condition, value) => {
     const filteredProductsNames = [];
-    const  filteredProducts = Object.entries(products).filter((product) => product[1][condition].includes(value))
-    filteredProductsNames.push(filteredProducts.map((nome) => nome[0]))
-    return filteredProductsNames[0]
+    const  filteredProducts = Object.entries(products).filter((product) => product[1][condition].includes(value));
+    filteredProductsNames.push(filteredProducts.map((nome) => nome[0]));
+    return filteredProductsNames[0];
   }
 
   const getProductId = (event) => {
-    const id = (event.target.parentNode.id) 
-      setProductId({productId :id})
-      setShowIngredients(true)
+    const id = (event.target.parentNode.id) ;
+      setProductId({productId :id});
+      setShowIngredients(true);
       document.body.style.overflow = "hidden";
   }
 

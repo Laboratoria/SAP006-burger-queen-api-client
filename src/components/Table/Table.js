@@ -2,7 +2,6 @@
 import React from 'react';
 import './Table.scss';
 
-
 import { Button } from '../Button/Button';
 
 export const Table = ({Role, ButtonOnClick, ButtonId}) => { 

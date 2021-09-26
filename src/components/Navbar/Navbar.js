@@ -8,12 +8,12 @@ import { logout } from '../../routes/utils/auth';
 import './Navbar.scss';
 
 export function NavbarRoom () {
-  const location = window.location.pathname
+  const location = window.location.pathname;
   const history = useHistory();
 
-  const employeeName = localStorage.getItem('currentEmployeeName')
-  let employeRole = localStorage.getItem('currentEmployeeRole')
-  employeRole === 'room' ? employeRole = 'Salão' : employeRole ='Cozinha'
+  const employeeName = localStorage.getItem('currentEmployeeName');
+  let employeRole = localStorage.getItem('currentEmployeeRole');
+  employeRole === 'room' ? employeRole = 'Salão' : employeRole ='Cozinha';
 
   const handleLogout = () => {
     logout()
@@ -24,9 +24,9 @@ export function NavbarRoom () {
     <div>
       <nav>
       <section className='navbar-employee-information-div'>
-          <Button ButtonClass='navbar-sign-out'  ButtonOnClick={()=> handleLogout()}/>
-          <p>Bem vinde {employeeName} :)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Setor: {employeRole}</p>
-        </section>
+        <Button ButtonClass='navbar-sign-out'  ButtonOnClick={()=> handleLogout()}/>
+        <p>Bem vinde {employeeName} :)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Setor: {employeRole}</p>
+      </section>
         <ul>
           {employeRole === 'Salão' ? location === '/room' ? 
             <li> <Button ButtonClass='navbar-button navbar-button-menu' ButtonOnClick = {() => history.push('/menu')}/> </li> :

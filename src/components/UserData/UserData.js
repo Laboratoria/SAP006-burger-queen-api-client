@@ -89,7 +89,7 @@ export function InputContentUserData ({Subject, Error, InputValue, InputOnChange
         alt={authInput[Subject].IconAlt}
       />
       {Subject === 'password' || Subject === 'confirmPassword' ?
-       <Button 
+        <Button 
           ButtonClass={showPassword ? 
           'auth-show-or-not-password-button auth-show-password-button' : 
           'auth-show-or-not-password-button auth-not-show-password-button'}

@@ -25,47 +25,47 @@ export const NewOrder = () => {
   const [emptyOrderModal, setEmptyOrderModal] = useState(false);
  
   const token = localStorage.getItem('currentEmployeeToken');
-  const menu = JSON.parse(localStorage.getItem('menu'))
-  menu.length > 0 && menu.map((product) => product.id = product.id.toString())
+  const menu = JSON.parse(localStorage.getItem('menu'));
+  menu.length > 0 && menu.map((product) => product.id = product.id.toString());
 
   const productTotals = [];
   const orderedProductsQuantity = orderedProducts.reduce((acc, curr) => (acc[curr] = (acc[curr] || 0) + 1, acc), {});
-  const orderedProductsData = menu.filter((product) => orderedProducts.includes(product.id))
+  const orderedProductsData = menu.filter((product) => orderedProducts.includes(product.id));
 
-  orderedProductsData.map((product) => product.qtd = orderedProductsQuantity[product.id])
-  orderedProductsData.map((product) => product.total = [product.qtd]*[product.price])
-  orderedProductsData.map((product) => productTotals.push(product.total))
-  const bill = productTotals.reduce((acc, curr) => acc + curr, 0)
+  orderedProductsData.map((product) => product.qtd = orderedProductsQuantity[product.id]);
+  orderedProductsData.map((product) => product.total = [product.qtd]*[product.price]);
+  orderedProductsData.map((product) => productTotals.push(product.total));
+  const bill = productTotals.reduce((acc, curr) => acc + curr, 0);
 
   const filterMenuButtons = ([productProp], value) => {
-    const filteredMenu = menu.filter((product) => product[productProp] === value)
-    return filteredMenu
+    const filteredMenu = menu.filter((product) => product[productProp] === value);
+    return filteredMenu;
   }
 
   const decreaseProductQuantity = (value) => {
-    let array = [...orderedProducts]
-    const index = array.indexOf(value)
-    if (index >-1){
-      array.splice(index, 1)
+    let array = [...orderedProducts];
+    const index = array.indexOf(value);
+    if (index > -1){
+      array.splice(index, 1);
       setOrderedProducts(array);
     }
   }
 
   const orderResume = orderedProductsData.map(product => ({ id: product.id, qtd:product.qtd.toString()}));
-  const orderInformation = { token, customer, table, orderResume}
+  const orderInformation = { token, customer, table, orderResume};
 
   const checkCustomerData = () => {
     if(customer.length <2){
-      setEmptyCustomerModal(true)
-      return 'Error'
+      setEmptyCustomerModal(true);
+      return 'Error';
     }
     else if(table.length <2 || table.length >2){
-      setEmptyTableModal(true) 
-      return 'Error'
+      setEmptyTableModal(true) ;
+      return 'Error';
     }
     else if(orderResume.length <1){
-      setEmptyOrderModal(true) 
-      return "Error"
+      setEmptyOrderModal(true) ;
+      return "Error";
     }
   }
 
@@ -75,11 +75,11 @@ export const NewOrder = () => {
       sendOrderToKitchen({orderInformation})
       .then((responseJson) => {
         if(responseJson.code !== 401) {
-          setSucessModal(true)
+          setSucessModal(true);
         } else {
-          throw new Error (responseJson.message)
+          throw new Error (responseJson.message);
         }
-      }).catch(() => setErrorModal(true))
+      }).catch(() => setErrorModal(true));
     }
   }
 

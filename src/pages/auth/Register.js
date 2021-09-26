@@ -25,7 +25,7 @@ export const Register = () => {
   const [role, setRole] = useState ('');
   const [authErrorModal, setAuthErrorModal] = useState(false);
   const [authSucessModal, setAuthSucessModal] = useState(false);
-  const [authErrorModalMessage, setAutherrorModalMessage] = useState('')
+  const [authErrorModalMessage, setAutherrorModalMessage] = useState('');
   const [nameErrorInput, setNameErrorInput] = useState(false);
   const [emailErrorInput, setEmailErrorInput] = useState(false);
   const [passwordErrorInput, setPasswordErrorInput] = useState(false);
@@ -34,62 +34,62 @@ export const Register = () => {
 
   const userData = {name, email, password, confirmPassword, role};
   const setAuthInputs = {setNameErrorInput, setEmailErrorInput, setPasswordErrorInput,
-  setConfirmPasswordErrorInput, setRoleErrorInput}
-  const setAuthModals = {setAuthErrorModal, setAuthSucessModal}
+  setConfirmPasswordErrorInput, setRoleErrorInput};
+  const setAuthModals = {setAuthErrorModal, setAuthSucessModal};
 
-  const isLandscape = useMediaQuery({ query: '(orientation: landscape)' })
+  const isLandscape = useMediaQuery({ query: '(orientation: landscape)' });
 
   const checkUserDataToSignin = ({userData}, {setAuthInputs}) => {
     if (userData.name.length < 7) {   
       setAuthInputs.setNameErrorInput(true);
-      return 'Error'
+      return 'Error';
     }
     else if (!userData.email.includes('@')) {
       setAuthInputs.setEmailErrorInput(true);
-      return 'Error'
+      return 'Error';
     }
     else if (userData.password.length < 6) {
       setAuthInputs.setPasswordErrorInput(true);
       setAuthInputs.setConfirmPasswordErrorInput(true);
-      return 'Error'
+      return 'Error';
     }
     else if (userData.password !== userData.confirmPassword) {
       setAuthInputs.setPasswordErrorInput(true);
       setAuthInputs.setConfirmPasswordErrorInput(true);
-      return 'Error'
+      return 'Error';
     } 
     else if (userData.role === '') {
       setAuthInputs.setRoleErrorInput(true);
-      return 'Error'
+      return 'Error';
     } else {
-      return 'Sucess'
+      return 'Sucess';
     }
   }
 
   const handleSignIn = (event) => {
-    const userDataCheckResult = checkUserDataToSignin ({userData}, {setAuthInputs})
+    const userDataCheckResult = checkUserDataToSignin ({userData}, {setAuthInputs});
     userDataCheckResult === 'Sucess' &&
     authSignin(event, {userData})
     .then((responseJson) => {
       localStorage.setItem('currentEmployeeToken', responseJson.token);
       localStorage.setItem('currentEmployeeRole', responseJson.role);
       localStorage.setItem('currentEmployeeName', responseJson.name);
-      setRole(localStorage.getItem('currentEmployeeRole'))
-      setAuthModals.setAuthSucessModal(true)
+      setRole(localStorage.getItem('currentEmployeeRole'));
+      setAuthModals.setAuthSucessModal(true);
     })
     .catch((error) => {
       switch (error.message) {
         case '400':
-          setAutherrorModalMessage('Todos os campos são obrigatórios. Verifique seus dados.')
-          setAuthModals.setAuthErrorModal(true)
+          setAutherrorModalMessage('Todos os campos são obrigatórios. Verifique seus dados.');
+          setAuthModals.setAuthErrorModal(true);
           break;
           case '403':
-          setAutherrorModalMessage('Este email já está em uso.')
-          setAuthModals.setAuthErrorModal(true)
+          setAutherrorModalMessage('Este email já está em uso.');
+          setAuthModals.setAuthErrorModal(true);
           break;
         default:
-          setAutherrorModalMessage('Desculpe, ocorreu um erro. Verifique seus dados.')
-          setAuthModals.setAuthErrorModal(true)
+          setAutherrorModalMessage('Desculpe, ocorreu um erro. Verifique seus dados.');
+          setAuthModals.setAuthErrorModal(true);
       }
     })
   } 

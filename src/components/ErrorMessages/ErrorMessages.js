@@ -11,7 +11,7 @@ export function AuthErrorMessages ({Subject}) {
     'role':'Por favor, selecione um setor de trabalho.',
     'none':'&nbsp;',
     'test':'Test error message'
-  }
+  };
 
   return (
     <p 

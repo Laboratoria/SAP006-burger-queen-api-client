@@ -13,7 +13,7 @@ export const ProductCard = ({Role, ButtonOnClick}) => {
   } 
   const importedImages = importMenuImages(require.context('../../assets/images-menu', false, /\.(png)$/));
 
-  Object.entries(products).map(produt => produt[1].importedImg = importedImages[produt[0]].default)
+  Object.entries(products).map(produt => produt[1].importedImg = importedImages[produt[0]].default);
 
   return (
     <div className='menu-card-div' id={products[Role].id}>

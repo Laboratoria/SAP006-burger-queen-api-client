@@ -10,11 +10,11 @@ import './Unauthorized.scss'
 
 export const Unauthorized = () => {
   const history = useHistory();
-  const currentEmployeeRole = localStorage.getItem('currentEmployeeRole')
+  const currentEmployeeRole = localStorage.getItem('currentEmployeeRole');
 
   const handleLogout = () => {
-    logout()
-    history.push('/')
+    logout();
+    history.push('/');
   }
 
   return (

@@ -3,14 +3,14 @@ import { useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 import { StandardModal, StandardModalWithTwoOptions } from '../../components/Modal/Modal';
-import { Button } from '../../components/Button/Button'
-import { Header } from '../../components/Header/Header'
+import { Button } from '../../components/Button/Button';
+import { Header } from '../../components/Header/Header';
 import { InputContentUserData } from '../../components/UserData/UserData';
 
 import { authLogin } from '../../services/auth';
 
 import logoBerg from '../../assets/images/logo-berg.png';
-import './Auth.scss'
+import './Auth.scss';
 
 export function Login () {
   const history = useHistory();
@@ -21,10 +21,10 @@ export function Login () {
   const [authErrorModal, setAuthErrorModal] = useState(false);
   const [authSucessModal, setAuthSucessModal] = useState(false);
 
-  const userData = {email, password}
-  const setAuthModals = {setAuthErrorModal, setAuthSucessModal}
+  const userData = {email, password};
+  const setAuthModals = {setAuthErrorModal, setAuthSucessModal};
 
-  const isLandscape = useMediaQuery({ query: '(orientation: landscape)' })
+  const isLandscape = useMediaQuery({ query: '(orientation: landscape)' });
 
   const handleLogin = (event) => {
     authLogin(event, {userData})
@@ -32,10 +32,10 @@ export function Login () {
       localStorage.setItem('currentEmployeeToken', responseJson.token);
       localStorage.setItem('currentEmployeeRole', responseJson.role);
       localStorage.setItem('currentEmployeeName', responseJson.name);
-      setRole(localStorage.getItem('currentEmployeeRole'))
-      setAuthModals.setAuthSucessModal(true)
+      setRole(localStorage.getItem('currentEmployeeRole'));
+      setAuthModals.setAuthSucessModal(true);
     })
-    .catch(() => setAuthModals.setAuthErrorModal(true))
+    .catch(() => setAuthModals.setAuthErrorModal(true));
   };
 
   return (

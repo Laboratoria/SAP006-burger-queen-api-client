@@ -4,8 +4,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 
 import { Button} from '../Button/Button'
-import { orderAge } from '../../services/general';
-import { orderProcessAge } from '../../services/general';
+import { orderAge, orderProcessAge } from '../../services/general';
 
 import { getUserById } from '../../services/users';
 
@@ -13,32 +12,32 @@ import './CurrentOrder.scss';
 
 export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderDeliveredButton, Location, }) => { 
     
-  const orderCreationAgeSeconds = (Date.now() - new Date (order.createdAt).valueOf())/1000
-  const creationDateInSeconds = (new Date (order.createdAt).valueOf())/1000
-  const processDateInSeconds = (new Date (order.processedAt).valueOf())/1000
-  const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
+  const orderCreationAgeSeconds = (Date.now() - new Date (order.createdAt).valueOf())/1000;
+  const creationDateInSeconds = (new Date (order.createdAt).valueOf())/1000;
+  const processDateInSeconds = (new Date (order.processedAt).valueOf())/1000;
+  const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000;
 
-  const orderCreationAge = orderAge(orderCreationAgeSeconds)
-  const orderTimeToPrepare = orderProcessAge(processDateInSeconds - creationDateInSeconds)
-  const orderTimeToDeliver = orderProcessAge(updateDateInSeconds - processDateInSeconds)
-  const orderDuration = orderProcessAge(updateDateInSeconds - creationDateInSeconds)
+  const orderCreationAge = orderAge(orderCreationAgeSeconds);
+  const orderTimeToPrepare = orderProcessAge(processDateInSeconds - creationDateInSeconds);
+  const orderTimeToDeliver = orderProcessAge(updateDateInSeconds - processDateInSeconds);
+  const orderDuration = orderProcessAge(updateDateInSeconds - creationDateInSeconds);
 
-  const token = localStorage.getItem('currentEmployeeToken')
-  const role = localStorage.getItem('currentEmployeeRole')
-  const menu = (JSON.parse(localStorage.getItem('menu')))
+  const token = localStorage.getItem('currentEmployeeToken');
+  const role = localStorage.getItem('currentEmployeeRole');
+  const menu = (JSON.parse(localStorage.getItem('menu')));
   const [waitress, setWaitress] = useState('');
 
   const productTotals = [];
-  order.Products.map((element) => element.data = menu.filter((product) => product.id === element.id))
-  order.Products.map((element) => element.price = element.data[0].price)
-  order.Products.map((element) => element.total = element.price * element.qtd)
-  order.Products.map((product) => productTotals.push(product.total))
-  order.bill = productTotals.reduce((acc, curr) => acc + curr, 0)
+  order.Products.map((element) => element.data = menu.filter((product) => product.id === element.id));
+  order.Products.map((element) => element.price = element.data[0].price);
+  order.Products.map((element) => element.total = element.price * element.qtd);
+  order.Products.map((product) => productTotals.push(product.total));
+  order.bill = productTotals.reduce((acc, curr) => acc + curr, 0);
 
   useEffect(() => {
     getUserById(token, order.user_id)
     .then((reponseJson) => setWaitress(reponseJson.name))
-  }, [])
+  }, []);
 
   return (
     <div className= {order.status === 'Em Preparo' || order.status === 'pending'? 
@@ -88,44 +87,44 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
         <div className='current-order-all-products-column current-order-product-column-quantity'>
           <p className='current-order-header-third'>Qtd.</p>
           {order.Products.map((product) => 
-          <div className='current-order-product-content' key={product.qtd + product.id}>
-            <span>{product.qtd}</span>
-          </div>
+            <div className='current-order-product-content' key={product.qtd + product.id}>
+              <span>{product.qtd}</span>
+            </div>
           )}
         </div>
         <div className='current-order-all-products-column' >
           <p className='current-order-header-third'>Produto</p>
           {order.Products.map((product) => 
-          <div className='current-order-product-content' key={product.name + product.id}>
-            <span>{product.name}</span>
-          </div>
+            <div className='current-order-product-content' key={product.name + product.id}>
+              <span>{product.name}</span>
+            </div>
           )}
         </div>
         <div className='current-order-all-products-column current-order-product-column-flavor'>
           <p className='current-order-header-third'>Sabor</p>
           {order.Products.map((product) => 
-          <div className='current-order-product-content' key={product.flavor + product.id}>
-             {product.flavor === null ? <span>&nbsp;-&nbsp;</span> : <span>{product.flavor}</span>}
-          </div>
+            <div className='current-order-product-content' key={product.flavor + product.id}>
+              {product.flavor === null ? <span>&nbsp;-&nbsp;</span> : <span>{product.flavor}</span>}
+            </div>
           )}
         </div>
         <div className='current-order-all-products-column current-order-product-column-additional'>
           <p className='current-order-header-third'>Adc.</p>
           {order.Products.map((product) => 
-          <div className='current-order-product-content' key={product.complement + product.id}>
-            {product.complement === null ? <span>&nbsp;-&nbsp;</span> : <span>{product.complement}</span>}
-          </div>
+            <div className='current-order-product-content' key={product.complement + product.id}>
+              {product.complement === null ? <span>&nbsp;-&nbsp;</span> : <span>{product.complement}</span>}
+            </div>
           )}
         </div>
       </section>
       <div className='current-order-button-div'>
-      {Location !== 'room-tables'&&
-        <Button 
-          ButtonClass='delete-order' 
-          ButtonId={order.id}
-          ButtonOnClick={ButtonDeleteOrder}    
-        />
-      } 
+        {Location !== 'room-tables'&&
+          <Button 
+            ButtonClass='delete-order' 
+            ButtonId={order.id}
+            ButtonOnClick={ButtonDeleteOrder}    
+          />
+        } 
       <div className='current-order-status-button-div'>
         <p className='current-order-order-bill'> Total: R$ &nbsp;{order.bill}</p>
         {role === 'kitchen' ? 

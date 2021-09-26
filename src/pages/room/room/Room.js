@@ -21,7 +21,7 @@ export const Room = () => {
   const history = useHistory();
 
   const [userNotAuthenticatedErrorModal, setUserNotAuthenticatedErrorModal] = useState(false);
-  const [tablesWithOrders,setTablesWithOrders] = useState([])
+  const [tablesWithOrders,setTablesWithOrders] = useState([]);
   const [currentOrders, setCurrentOrders] = useState([]);
   const [emptyTableModal, setEmptyTableModal] = useState(false);
   const [fullTableModal, setFullTableModal] = useState(false);
@@ -47,10 +47,10 @@ export const Room = () => {
   const getProducts = () => {
     getAllProducts(token)
     .then((responseJson) => { 
-      const menu = responseJson
-      titleCorrespondance(menu)
-      localStorage.removeItem('menu')
-      localStorage.setItem('menu', JSON.stringify(menu))
+      const menu = responseJson;
+      titleCorrespondance(menu);
+      localStorage.removeItem('menu');
+      localStorage.setItem('menu', JSON.stringify(menu));
     }).catch(() => setUserNotAuthenticatedErrorModal(true))
   };
 
@@ -59,15 +59,15 @@ export const Room = () => {
     .then(responseJson => {
       switch (responseJson.code) {
         case 401:
-          return setUserNotAuthenticatedErrorModal(true)
+          return setUserNotAuthenticatedErrorModal(true);
         default:
-          const orders = responseJson
-          setCurrentOrders(orders)
-          tables.map((table) => table.orders = orders.filter((order) => order.table === table.table))
-          setTablesWithOrders(tables)
+          const orders = responseJson;
+          setCurrentOrders(orders);
+          tables.map((table) => table.orders = orders.filter((order) => order.table === table.table));
+          setTablesWithOrders(tables);
       } 
     })
-  },[])
+  },[]);
 
   useEffect(() => {
     setTargetTableOrders(currentOrders.filter((order) => order.table.toString() === targetTableId))

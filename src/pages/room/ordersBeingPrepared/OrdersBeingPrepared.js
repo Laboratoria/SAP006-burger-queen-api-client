@@ -16,8 +16,8 @@ import './OrderStatusGeneral.scss'
 export const OrdersBeingPrepared = () => { 
   const history = useHistory();
 
-  const token = localStorage.getItem('currentEmployeeToken')
-  const [orderToBeDeleted, setOrderToBeDeleted] = useState('')
+  const token = localStorage.getItem('currentEmployeeToken');
+  const [orderToBeDeleted, setOrderToBeDeleted] = useState('');
   const [currentOrders, setCurrentOrders] = useState([]);
   const [kitchenDeleteOrderModal, setKitchenDeleteOrderModal] = useState(false);
   const [missingDataOrNoChangesErrorModal, setMissingDataOrNoChangesErrorModal] = useState(false);
@@ -28,19 +28,19 @@ export const OrdersBeingPrepared = () => {
   const getErrorCase = (data) => {
     switch (data) {
       case 400:
-        setMissingDataOrNoChangesErrorModal(true)
+        setMissingDataOrNoChangesErrorModal(true);
         break;
       case 401:
-        setUserNotAuthenticatedErrorModal(true)
+        setUserNotAuthenticatedErrorModal(true);
         break;
       case 403: 
-        setOrderBelongsAnotherRestaurantErrorModal(true)
+        setOrderBelongsAnotherRestaurantErrorModal(true);
         break;
       case 404:
-        setOrderNotfoundErrorModal(true)
+        setOrderNotfoundErrorModal(true);
         break;
       default:
-        getCurrentOrders()
+        getCurrentOrders();
     }
   }
 
@@ -49,11 +49,11 @@ export const OrdersBeingPrepared = () => {
     .then(responseJson => {
       switch (responseJson.code) {
         case 401:
-          return setUserNotAuthenticatedErrorModal(true)
+          return setUserNotAuthenticatedErrorModal(true);
         default:
-          const orders = responseJson
-          const filteredOrders = orders.filter((order) => order.status === 'pending')
-          setCurrentOrders(filteredOrders) 
+          const orders = responseJson;
+          const filteredOrders = orders.filter((order) => order.status === 'pending');
+          setCurrentOrders(filteredOrders);
       } 
     })   
   }
@@ -61,24 +61,24 @@ export const OrdersBeingPrepared = () => {
   const deleteTargetOrder = () => {
     deleteOrder(orderToBeDeleted, token)
     .then(responseJson => {
-      getErrorCase(responseJson.code)
+      getErrorCase(responseJson.code);
     })
   }
 
   const changeTargetOrderStatus = (id, status) => {
     changeOrderStatus(id, token, status)
     .then((responseJson) => {
-      getErrorCase(responseJson.code)
+      getErrorCase(responseJson.code);
     })
   }
 
   useEffect(() => {
-    getCurrentOrders()
-  }, [])
+    getCurrentOrders();
+  }, []);
   
   const handleLogOut = () => {
-    logout()
-    history.push('/')
+    logout();
+    history.push('/');
   }
 
   return (

@@ -64,16 +64,15 @@ export function AuthModal ({Role, ModalContent, ButtonChildren, ButtonOnClick, B
 }
 
 export const TableOrdersModal = ({orders, FirstButtonClick, SecondButtonClick}) => {
-  const orderTotals = []
+  const orderTotals = [];
   orders.length > 0 && 
-    orders.map((order) => orderTotals.push(order.bill))
-    const TableTotalBill = orderTotals.reduce((acc, curr) => acc + curr, 0)
+    orders.map((order) => orderTotals.push(order.bill));
+    const TableTotalBill = orderTotals.reduce((acc, curr) => acc + curr, 0);
 
   return (
     <section className='modal-background'>
       <div className='modal-container modal-container-room-table-orders'>
-        {orders.length > 0 && 
-        orders.sort((a,b) => a.createdAt - b.createdAt).map((order) => 
+        {orders.length > 0 && orders.sort((a,b) => a.createdAt - b.createdAt).map((order) => 
           <CurrentOrder
             Location='room-tables'
             key={order.createdAt}
