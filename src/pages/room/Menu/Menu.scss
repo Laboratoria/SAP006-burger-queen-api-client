@@ -22,18 +22,28 @@
   align-items: center;
 }
 
-@media (min-width: 1024px) and (max-height: 768px),
-(min-width: 1366px) and (max-height: 1024px){
+@media (orientation: 'landscape') {
   .filter-buttons-div{
     margin-bottom: 1%;
+    position: absolute;
+    right: 0%;
+    width:80%;
+    top:8%;
   }
 
   .menu-cards-section {
+    overflow-y: scroll;
     padding: 2%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 27vh 27vh 27vh 27vh ;
     grid-row-gap:2vh;
     grid-column-gap:2vh;
+    width: 80%;
+    height: 80vh;
+    position: absolute;
+    right: 1%;
+    bottom: 3%;
   }
   
 }

@@ -25,11 +25,9 @@ export const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState ('');
-
   const [authErrorModal, setAuthErrorModal] = useState(false);
   const [authSucessModal, setAuthSucessModal] = useState(false);
   const [authErrorModalMessage, setAutherrorModalMessage] = useState('')
- 
   const [nameErrorInput, setNameErrorInput] = useState(false);
   const [emailErrorInput, setEmailErrorInput] = useState(false);
   const [passwordErrorInput, setPasswordErrorInput] = useState(false);

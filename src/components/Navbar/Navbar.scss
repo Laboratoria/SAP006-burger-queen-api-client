@@ -40,11 +40,9 @@ nav {
     border-radius: 10px;
   }
 }
-
 .logo{
   height: 12vh;
 }
-
 
 .navbar-kitchen{
   .header-title{
@@ -79,6 +77,22 @@ nav {
 }
 
 @media (orientation: 'landscape') {
+  nav {
+    ul {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+      padding: 0;
+      height: 92vh;
+    }
+  
+    li {
+      list-style: none;
+      margin: auto;
+    }
+  }
+
   .navbar-employee-information-div{
     p {
       font-size:160%;

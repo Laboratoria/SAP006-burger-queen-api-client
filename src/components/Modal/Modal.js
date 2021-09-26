@@ -64,10 +64,16 @@ export function AuthModal ({Role, ModalContent, ButtonChildren, ButtonOnClick, B
 }
 
 export const TableOrdersModal = ({orders, FirstButtonClick, SecondButtonClick}) => {
+  const orderTotals = []
+  orders.length > 0 && 
+    orders.map((order) => orderTotals.push(order.bill))
+    const TableTotalBill = orderTotals.reduce((acc, curr) => acc + curr, 0)
+
   return (
     <section className='modal-background'>
       <div className='modal-container modal-container-room-table-orders'>
-        {orders.length > 0 && orders.map((order) => 
+        {orders.length > 0 && 
+        orders.sort((a,b) => a.createdAt - b.createdAt).map((order) => 
           <CurrentOrder
             Location='room-tables'
             key={order.createdAt}
@@ -75,6 +81,7 @@ export const TableOrdersModal = ({orders, FirstButtonClick, SecondButtonClick}) 
             ButtonId={order.id}
           />
         )}
+        <p className='room-orders-modal-table-bill-p'>Total da Mesa R$: &nbsp;{TableTotalBill}</p>
         <div className='room-orders-modal-button-div'>
           <Button children='OK' ButtonClass='modal-button' ButtonOnClick={FirstButtonClick}/> 
           <Button children='Limpar mesa'ButtonClass='modal-button'ButtonOnClick={SecondButtonClick}/> 
@@ -84,9 +91,7 @@ export const TableOrdersModal = ({orders, FirstButtonClick, SecondButtonClick}) 
   )
 }
 
-
-
-export const MenuModal = ({Role, ModalTitle, ModalContent, ButtonOnClick}) => {
+export const MenuModal = ({ModalTitle, ModalContent, ButtonOnClick}) => {
   return (
     <section className='modal-background'>
       <div className='modal-container'>
@@ -98,71 +103,8 @@ export const MenuModal = ({Role, ModalTitle, ModalContent, ButtonOnClick}) => {
         <br/>
         <span className='menu-modal-observations'>As galinhas correm soltas por aí e passam o dia fofocando da vida alheia...</span>
         <Button 
-          Role={Role}
+          ButtonClass='menu-close-ingredients-modal'
           children='Fechar'
-          ButtonOnClick={ButtonOnClick}
-        />
-      </div>
-    </section>
-  )
-}
-
-
-
-
-
-export const NewOrderModal = ({Role, ModalContent, ButtonOnClick, children, childrenSecondButton, ButtonOnClickSecondOption}) => {
-  return (
-    <section className='modal-background'>
-      <div className='modal-container'>
-        <p className='new-order-modal-content'> {ModalContent} </p>
-        <Button 
-          Role={Role}
-          children={children}
-          ButtonOnClick={ButtonOnClick}
-        />
-        { Role === 'new-order-sucess-modal' ?
-         <Button 
-         Role={Role}
-         children={childrenSecondButton}
-         ButtonOnClick={ButtonOnClickSecondOption}
-       /> : null}
-      </div>
-    </section>
-  )
-}
-
-
-export const KitchenDeleteOrderModal = ({Role, ModalContent, ButtonOnClick, children, childrenSecondButton, ButtonOnClickSecondOption}) => {
-  return (
-    <section className='modal-background'>
-      <div className='modal-container'>
-        <p className='kitchen-modal-content'> {ModalContent} </p>
-        <div className='kitchen-modal-delete-order-button-div'>
-          <Button 
-            Role={Role}
-            children={children}
-            ButtonOnClick={ButtonOnClick}
-          />
-          <Button 
-          Role={Role}
-          children={childrenSecondButton}
-          ButtonOnClick={ButtonOnClickSecondOption}
-          />
-        </div>
-      </div>
-    </section>
-  )
-}
-
-export const KitchenErrorModal = ({ModalContent, ButtonOnClick}) => {
-  return (
-    <section className='modal-background'>
-      <div className='modal-container'>
-        <p className='kitchen-modal-content'> {ModalContent} </p>
-        <Button 
-          Role='kitchen-modal'
-          children='OK'
           ButtonOnClick={ButtonOnClick}
         />
       </div>

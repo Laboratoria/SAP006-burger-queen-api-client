@@ -3,7 +3,9 @@
 import {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../../../components/Button/Button';
-import { NewOrderModal } from '../../../components/Modal/Modal';
+
+import { StandardModal } from '../../../components/Modal/Modal';
+import { StandardModalWithTwoOptions } from '../../../components/Modal/Modal';
 
 import { sendOrderToKitchen } from '../../../services/orders';
 
@@ -12,27 +14,20 @@ import './NewOrder.scss';
 export const NewOrder = () => {
   const history = useHistory();
 
-  const token = localStorage.getItem('currentEmployeeToken');
   const [table, setTable] = useState('');
   const [customer, setCustomerName] = useState('');
-  const [menu, setMenu] = useState(JSON.parse(localStorage.getItem('menu')))
   const [filteredMenu, setFilteredMenu] = useState([]);
-
   const [showAllProducts, setShowAllProducts] = useState(true);
- 
-
   const [orderedProducts, setOrderedProducts] = useState([]);
   const [sucessModal, setSucessModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const [emptyTableModal, setEmptyTableModal] = useState(false);
   const [emptyCustomerModal, setEmptyCustomerModal] = useState(false);
   const [emptyOrderModal, setEmptyOrderModal] = useState(false);
-  menu.map((product) => product.id = product.id.toString())
-
-  const filterMenuButtons = ([productProp], value) => {
-    const filteredMenu = menu.filter((product) => product[productProp] === value)
-    return filteredMenu
-  }
+ 
+  const token = localStorage.getItem('currentEmployeeToken');
+  const menu = JSON.parse(localStorage.getItem('menu'))
+  menu.length > 0 && menu.map((product) => product.id = product.id.toString())
 
   const productTotals = [];
   const orderedProductsQuantity = orderedProducts.reduce((acc, curr) => (acc[curr] = (acc[curr] || 0) + 1, acc), {});
@@ -42,6 +37,11 @@ export const NewOrder = () => {
   orderedProductsData.map((product) => product.total = [product.qtd]*[product.price])
   orderedProductsData.map((product) => productTotals.push(product.total))
   const bill = productTotals.reduce((acc, curr) => acc + curr, 0)
+
+  const filterMenuButtons = ([productProp], value) => {
+    const filteredMenu = menu.filter((product) => product[productProp] === value)
+    return filteredMenu
+  }
 
   const decreaseProductQuantity = (value) => {
     let array = [...orderedProducts]
@@ -87,7 +87,8 @@ export const NewOrder = () => {
 
   return (
     <div>
-      <main>
+      <main className='new-order-main'>
+        <Button ButtonClass='new-order-go-back-button' ButtonOnClick={() => history.push('/room')}/>
         <section className='new-order-section'>
           <div className='new-order-note-div'>
             <fieldset>
@@ -110,29 +111,29 @@ export const NewOrder = () => {
                 <div className='new-order-products-list-content' key={product.id}>
                   <p className='new-order-product-list-name'>{product.name}</p>
                   <div className='new-order-quantity-div'>
-                    <Button Role='new-order-modify-quantity-minus' ButtonOnClick={ () => decreaseProductQuantity(product.id)}/>
+                    <Button ButtonClass='new-order-modify-quantity new-order-modify-quantity-minus' ButtonOnClick={ () => decreaseProductQuantity(product.id)}/>
                     <p className='new-order-product-list-quantity'>{product.qtd}</p>
-                    <Button Role='new-order-modify-quantity-plus' ButtonOnClick={ () => setOrderedProducts(orderedProducts => [...orderedProducts, product.id])}/>
+                    <Button ButtonClass='new-order-modify-quantity new-order-modify-quantity-plus' ButtonOnClick={ () => setOrderedProducts(orderedProducts => [...orderedProducts, product.id])}/>
                   </div>
                   <p className='new-order-product-list-price'>{product.total}</p>
-                  <Button Role='new-order-trash' ButtonOnClick={ () => setOrderedProducts(orderedProducts.filter(elements => elements !== product.id))}/>
+                  <Button ButtonClass='new-order-trash' ButtonOnClick={ () => setOrderedProducts(orderedProducts.filter(elements => elements !== product.id))}/>
                 </div>
-                )}
+              )}
             </div>
             <div className='new-order-price'>
                 <h1>Total</h1>
                 <h1>R$ {bill}</h1>
             </div>
           </div>
-          <Button Role='new-order-save-order' children='Enviar para cozinha' ButtonOnClick={()=> sendOrder()}/>
+          <Button ButtonClass='new-order-send-order-to-kitchen' children='Enviar para cozinha' ButtonOnClick={()=> sendOrder()}/>
           <div className='new-order-filter-buttons-div'>
             <Button 
-              Role='new-order-filter' 
+              ButtonClass='new-order-filter' 
               children='Alles' 
               ButtonOnClick={() => setShowAllProducts(true)}
             />
             <Button 
-              Role='new-order-filter' 
+              ButtonClass='new-order-filter' 
               children='Snacks'
               ButtonOnClick={() => [
                 setShowAllProducts(false), 
@@ -140,7 +141,7 @@ export const NewOrder = () => {
               ]}
             />
             <Button 
-              Role='new-order-filter' 
+              ButtonClass='new-order-filter' 
               children='Burgers' 
               ButtonOnClick={() => [
                 setShowAllProducts(false), 
@@ -148,7 +149,7 @@ export const NewOrder = () => {
               ]}
             />
             <Button 
-              Role='new-order-filter' 
+              ButtonClass='new-order-filter' 
               children='Drinken'
               ButtonOnClick={() => [
                 setShowAllProducts(false), 
@@ -156,7 +157,7 @@ export const NewOrder = () => {
               ]}
             />
             <Button 
-              Role='new-order-filter'  
+              ButtonClass='new-order-filter'  
               children='Morgen' 
               ButtonOnClick={() => [
                 setShowAllProducts(false), 
@@ -164,7 +165,7 @@ export const NewOrder = () => {
               ]}
             />
             <Button 
-              Role='new-order-filter'  
+              ButtonClass='new-order-filter'  
               children='Dag' 
               ButtonOnClick={() => [
                 setShowAllProducts(false), 
@@ -173,79 +174,74 @@ export const NewOrder = () => {
             />
           </div>
           <div className='new-order-product-buttons-div'>
-          {showAllProducts ?
-            menu.map((product) => 
+            {showAllProducts ?
+              menu.map((product) => 
+                <Button 
+                  key={product.id}
+                  ButtonId={product.id}
+                  ButtonClass='new-order-product-button' 
+                  ButtonTitle={product.title}
+                  ButtonOnClick={(event)=> [setOrderedProducts(orderedProducts => [...orderedProducts, event.target.id])]}
+                />
+              ) 
+            :filteredMenu.map((product) => 
               <Button 
                 key={product.id}
                 ButtonId={product.id}
-                Role='new-order-product-button' 
+                ButtonClass='new-order-product-button' 
                 ButtonTitle={product.title}
                 ButtonOnClick={(event)=> [setOrderedProducts(orderedProducts => [...orderedProducts, event.target.id])]}
-              />
-            ) 
-          :filteredMenu.map((product) => 
-            <Button 
-              key={product.id}
-              ButtonId={product.id}
-              Role='new-order-product-button' 
-              ButtonTitle={product.title}
-              ButtonOnClick={(event)=> [setOrderedProducts(orderedProducts => [...orderedProducts, event.target.id])]}
-            /> 
-          )}
+              /> 
+            )}
           </div>
         </section> 
       </main>
       <section>
-      {emptyCustomerModal ? (
-        <NewOrderModal
-          children='OK'
-          Role = 'new-order-modal'
-          ModalContent='Por favor, insira o nome do cliente.'
-          ButtonOnClick = {() => setEmptyCustomerModal(false)}
+      {emptyCustomerModal && 
+        <StandardModal 
+        ModalContent='Por favor, insira o nome do cliente.'
+        ButtonChildren='OK'
+        ButtonOnClick = {() => setEmptyCustomerModal(false)}
         />
-      ): null}
+      }
     </section>
     <section>
-      {emptyTableModal ? (
-        <NewOrderModal
-          children='OK'
-          Role = 'new-order-modal'
+      {emptyTableModal && 
+        <StandardModal 
+          ButtonChildren='OK'
           ModalContent='Por favor, insira o número da mesa de acordo com o exemplo a seguir: "01", "02", "03" ... "10", "11" e "12".'
           ButtonOnClick = {() => setEmptyTableModal(false)}
         />
-      ): null}
+      }
     </section>
     <section>
-      {emptyOrderModal ? (
-        <NewOrderModal
-          children='OK'
-          Role = 'new-order-modal'
+      {emptyOrderModal && 
+         <StandardModal 
+          ButtonChildren='OK'
           ModalContent='O resumo do pedido está vazio. Por favor, o verifique.'
           ButtonOnClick = {() => setEmptyOrderModal(false)}
         />
-      ): null}
+      }
     </section>
     <section>
-      {sucessModal ? (
-        <NewOrderModal
-          children='Voltar para o salão'
-          childrenSecondButton = 'Fazer um novo pedido'
-          Role = 'new-order-sucess-modal'
+      {sucessModal &&
+        <StandardModalWithTwoOptions
+          ButtonChildren = 'Voltar para o salão'
+          ButtonSecondAuthModalOptionChildren = 'Fazer um novo pedido'
           ModalContent='As chefs já estão dando conta do pedido! Aguarde atualizações.'
           ButtonOnClick = {() => history.push('/room')}
-          ButtonOnClickSecondOption = {() => setSucessModal(false)}
+          ButtOnClickSecondAuthModalOption = {() => setSucessModal(false)}
         />
-      ): null}
+      }
     </section>
     <section>
-      {errorModal ? (
-        <NewOrderModal
-          children='OK'
-          Role = 'new-order-sucess-modal'
+      {errorModal &&
+        <StandardModal 
+          ButtonChildren='OK'
           ModalContent='Algo deu errado. Verifique as informações registradas.'
           ButtonOnClick = {() => setErrorModal(false)}
         />
-      ): null}
+      }
     </section>
   </div>
   )

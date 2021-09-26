@@ -1,6 +1,7 @@
 @import '../../../styles/Global.scss';
 
 .new-order-section{
+  margin-top: -3%;
   display: flex;
   flex-direction: column;
 
@@ -55,8 +56,9 @@
 }
 
 .new-order-product-buttons-div{
-  margin: 4% 0 0 1%;
+  margin:5% auto;
   padding: 2%;
+  width: 80%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-row-gap:2vh;
@@ -120,14 +122,21 @@
 }
 
 .new-order-filter-buttons-div{
-  margin-top: 4%;
-  margin-bottom: -2%;
+  margin: 4% auto -2%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-@media (min-width: 1024px) and (max-height: 1366px){
+.current-order-product-column-quantity{
+  span{
+    font-size: 130%;
+  }
+  
+}
+
+@media (min-width: 1024px) and (min-height: 1366px){
   .new-order-products-list-content{
     font-size: 155%;
   }
@@ -153,107 +162,96 @@
 
 }
 
-@media (min-width: 1024px) and (max-height: 768px),
-(min-width: 1366px) and (max-height: 1024px){
-
+@media (orientation: 'landscape') {
   .new-order-section{
-    display: flex;
-    flex-direction: row;
+    fieldset{
+      label, input{
+        font-size: 190%;
+      }
+    }
+  }
+
+.new-order-note-div{
+  margin:5% auto 5%;
+  width: 90%;
+  min-height: 40vh;
+  border-radius: 10px;
+  border: $orange-btn solid 3pt;
+  position: relative;
+  background-color: $light-brown-bg;
   }
 
   .new-order-products-list-head{
-    margin-bottom: -4%;
+    margin-bottom: -3%;
+    font-size: 110%;
   }
 
-  .new-order-filter-buttons-div{
-    position:absolute;
-    width: 20%;
-    height: 8vh;
+  .new-order-products-list-content{
+    font-size: 130%;
   }
-    .new-order-note-div{
-      position: absolute;
-      margin-left: 4%;
-      height:60vh;
-    }
 
-    .new-order-product-buttons-div{
-      grid-template-rows: 19vh 19vh 19vh 19vh 19vh 19vh;
-      position: absolute;
-      right: 0.5%;
-      margin-top: 1%;
-      height: 95vh;
-      overflow-y: scroll;
+  .new-order-full-list{
+    height: 38vh;
+  }
+
+  .new-order-note-div{
+    position: absolute;
+    width: 55%;
+    margin-left: 2%;
+    top: 14%;
+    height:60vh;
+  }
+
+  .new-order-product-buttons-div{
+    position: absolute;
+    right: 0%;
+    margin-bottom: 2%;
+    bottom: 0%;
+    height: 80vh;
+    width: 43%;
+    overflow-y: scroll;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 15vh 15vh 15vh 15vh 15vh 15vh 15vh 15vh ;
+  }
+    
+  .new-order-price{
+    position: absolute;
+    bottom: 0%;
+    font-size: 120%;
+  }
+
+  .current-order-product-column-quantity{
+    span{
+      font-size: 120%;
     }
     
-
-    .new-order-price{
-      position: absolute;
-      bottom: 0%;
-    }
+  }
 
   }
  
-
-  @media (min-width: 1366px) and (max-height: 1024px){
-
-    .new-order-section{
-      fieldset{
-        label{
-          font-size:180%;
-        }
+/*Landscape Ipad MINI */
+@media (orientation: 'landscape') and (max-height: 768px){
+  .new-order-section{
+    fieldset{
+      label, input{
+        font-size: 140%;
       }
-    }
-
-    .new-order-product-buttons-div{
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .new-order-note-div{
-      width: 45%;
-    }
-
-    .new-order-full-list{
-      height: 36vh;
-    }
-
-    .new-order-filter-buttons-div{
-      left: 16%;
-      bottom: 20%;
     }
   }
 
-
-  @media (min-width: 1024px) and (max-height: 768px){
-    .new-order-section{
-      fieldset{
-        label{
-          font-size:160%;
-        }
-      }
-    }
-
-    .new-order-note-div{
-      position: absolute;
-      width: 60%;
-      margin-left: 4%;
-      height:65vh;
-      margin-top: 3%;
-    }
-
-    .new-order-product-buttons-div{
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .new-order-full-list{
-      height: 40vh;
-    }
-
-    .new-order-filter-buttons-div{
-      left: 24%;
-      bottom: 22%;
-    }
-
-    .new-order-products-list-content{
-      font-size: 140%;
-    }
+  .new-order-products-list-head{
+    font-size: 90%;
   }
+  
+  .new-order-products-list-content{
+    font-size: 103%;
+  }
+
+  .new-order-full-list{
+    height: 34vh;
+  }
+
+  .new-order-price{
+    font-size: 100%;
+  }
+}

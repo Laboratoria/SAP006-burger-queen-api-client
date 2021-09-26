@@ -54,7 +54,7 @@ export const products = {
     'hamburguer-simples-bovino':{
       'title':'Hambúrguer Simples Bovino',
       'id':'hamburguer-simples-bovino',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer  de proteína de soja temperada, saborizada e texturizada como picanha. 4. Alface, tomate e pepino.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer  de proteína de soja temperada, saborizada e texturizada como picanha. 4. Alface, tomate e pepino. Este produto aceita adicional de queijo ou ovo por mais um real.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -67,7 +67,7 @@ export const products = {
     'hamburguer-duplo-bovino':{
       'title':'Hambúrguer Duplo Bovino',
       'id':'hamburguer-duplo-bovino',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer  de proteína de soja temperada, saborizada e texturizada como picanha. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes da versão simples.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer  de proteína de soja temperada, saborizada e texturizada como picanha. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes da versão simples. Este produto aceita adicional de queijo ou ovo por mais um real.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -80,7 +80,7 @@ export const products = {
     'hamburguer-simples-frango':{
       'title':'Hambúrguer Simples de Frango',
       'id':'hamburguer-simples-frango',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo. 3. Hambúrguer de proteína de soja temperada, saborizada e texturizada como frango. 4. Alface, tomate e pepino.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo. 3. Hambúrguer de proteína de soja temperada, saborizada e texturizada como frango. 4. Alface, tomate e pepino. Este produto aceita adicional de queijo ou ovo por mais um real.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -93,7 +93,7 @@ export const products = {
     'hamburguer-duplo-frango':{
       'title':'Hambúrguer Duplo de Frango',
       'id':'hamburguer-duplo-frango',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer de proteína de soja temperada, saborizada e texturizada como frango. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes da versão  simples.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer de proteína de soja temperada, saborizada e texturizada como frango. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes da versão  simples. Este produto aceita adicional de queijo ou ovo por mais um real.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -106,7 +106,7 @@ export const products = {
     'hamburguer-simples-vegetariano':{
       'title':'Hambúrguer Simples Vegetariano',
       'id':'hamburguer-simples-vegetariano',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer cremoso de abóbora japonesa. 4. Alface, tomate e pepino.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal. 3. Hambúrguer cremoso de abóbora japonesa. 4. Alface, tomate e pepino. Este produto aceita adicional de queijo ou ovo por mais um real.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',
@@ -119,7 +119,7 @@ export const products = {
     'hamburguer-duplo-vegetariano':{
       'title':'Hambúrguer Duplo Vegetariano',
       'id':'hamburguer-duplo-vegetariano',
-      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal.  3. Hambúrguer cremoso de abóbora japonesa. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes da versão simples.',
+      'ingredientes':'1. Pão de fermentação natural feito em casa. 2. Queijo artesanal.  3. Hambúrguer cremoso de abóbora japonesa. 4. Alface, tomate e pepino. Este produto contém o dobro de ingredientes da versão simples. Este produto aceita adicional de queijo ou ovo por mais um real.',
       'setor':'comida',
       'tipo':'sanduiche',
       'menu':'dia',

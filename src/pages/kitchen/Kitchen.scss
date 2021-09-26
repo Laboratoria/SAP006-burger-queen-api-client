@@ -1,18 +1,17 @@
 @import '../../styles/Global.scss';
 
-.current-orders-section{
-  margin: 3%;
- overflow-y: scroll;
- height: 48vh;
+.kichen-current-orders-section{
+  margin: auto;
+  width: 90%;
 }
 
-@media (min-width: 1024px) and (max-height: 768px),
-(min-width: 1366px) and (max-height: 1024px){
-  .current-orders-section{
+@media (orientation: 'landscape'){
+  .kichen-current-orders-section{
     position: absolute;
-    width: 73%;
-    top:20%;
-    left: 20%;
-   height: 70vh;
+    right: 3%;
+    top:18%;
+    height: 80vh;
+    overflow-y: scroll;
+    width: 75%;
   }
 }

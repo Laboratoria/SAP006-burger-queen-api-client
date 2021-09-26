@@ -44,18 +44,51 @@
 .room-div{
   .modal-container-room-table-orders{
     width: 95%;
-    height: 95vh;
+    justify-content: flex-start;
+    height: 80vh;
     overflow-y: scroll;
-    padding-top: 80%;
+  }
+
+  .current-order-div{
+    position: relative;
   }
 }
 
 .standard-two-options-modal-buttons-div{
   display: flex;
-  flex-direction: row;
-  width: 80%;
-  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
 }
+
+.room-orders-modal-table-bill-p{
+  margin-left: -70%;
+  font-size: 130%;
+  font-family: $berg-font;
+  margin-bottom: -1%;
+}
+
+.menu-modal-title{
+  margin-bottom: 0%;
+  font-family: $berg-font;
+  font-size: 180%;
+  color:$medium-green;
+  text-align: center;
+}
+
+.menu-modal-content{
+  line-height: 130%;
+  font-size: 140%;
+  color:$even-darker-brown-txt;
+  text-align: justify;
+}
+
+.menu-modal-observations{
+  font-size: 120%;
+  text-align: justify;
+}
+
+
 
 /* Portrait Ipad PRO */
 @media (min-width: 1024px) and (max-height: 1366px){
@@ -63,10 +96,22 @@
     font-size: 230%;
   }
 
-  .room-div{
-    .modal-container{
-      padding-top: 70%;
-    }
+  .room-orders-modal-table-bill-p{
+    margin-left: -75%;
+    font-size: 140%;
+  }
+
+
+  .menu-modal-title{
+    font-size: 280%;
+  }
+
+  .menu-modal-content{
+    font-size: 170%;
+  }
+  
+  .menu-modal-observations{
+    font-size: 150%;
   }
 }
 
@@ -81,11 +126,52 @@
       width: 60%;
     }
   }
+
+  .room-div{
+    .modal-container-room-table-orders{
+      width: 85%;
+    }
+  }
+
+  .room-orders-modal-table-bill-p{
+    margin-left: -78%;
+    font-size: 145%;
+  }
+
+  .menu-modal-title{
+    font-size: 320%;
+  }
+
+  .menu-modal-content{
+    font-size: 230%;
+  }
+  
+  .menu-modal-observations{
+    font-size: 180%;
+  }
+  
 }
 
 /*Landscape Ipad MINI */
 @media (orientation: 'landscape') and (max-height: 768px){
   .modal-content{
     font-size: 150%;
+  }
+
+  .room-orders-modal-table-bill-p{
+    margin-left: -70%;
+    font-size: 135%;
+  }
+
+  .menu-modal-title{
+    font-size: 280%;
+  }
+
+  .menu-modal-content{
+    font-size: 180%;
+  }
+  
+  .menu-modal-observations{
+    font-size: 140%;
   }
 }

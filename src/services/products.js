@@ -6,6 +6,6 @@ export const getAllProducts = (token) => {
         Authorization:`${token}`
       },
   })
-    .then((response) => response.json)
+    .then((response) => response.json())
   return result
 };

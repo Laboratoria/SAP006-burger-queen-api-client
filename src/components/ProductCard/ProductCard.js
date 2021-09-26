@@ -17,7 +17,7 @@ export const ProductCard = ({Role, ButtonOnClick}) => {
 
   return (
     <div className='menu-card-div' id={products[Role].id}>
-      <Button Role='menu-open-ingredients-modal' children='+' ButtonOnClick={ButtonOnClick}/>
+      <Button ButtonClass='menu-open-ingredients-modal' children='+' ButtonOnClick={ButtonOnClick}/>
       <img className='menu-card-img' src={products[Role].importedImg}  alt={products[Role].alt}/>
     </div>
     )

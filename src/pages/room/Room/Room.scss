@@ -28,5 +28,21 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-row-gap:4vh;
     grid-column-gap:4vh;
+    position: absolute;
+    right: 13%;
+    bottom: 5%;
+    width: 55%;
+  }
+}
+
+@media (orientation: 'landscape') and (max-height: 768px){
+  .room-tables-section {
+    position:absolute;
+    right: 6%;
+    bottom: 5%;
+    width: 70%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row-gap:4vh;
+    grid-column-gap:4vh;
   }
 }

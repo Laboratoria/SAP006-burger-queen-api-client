@@ -11,13 +11,7 @@ import { getUserById } from '../../services/users';
 
 import './CurrentOrder.scss';
 
-export const CurrentOrder = ({
-  order, 
-  ButtonDeleteOrder, 
-  OrderReadyButton,
-  OrderDeliveredButton,
-  Location,
-  }) => { 
+export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderDeliveredButton, Location, }) => { 
     
   const orderCreationAgeSeconds = (Date.now() - new Date (order.createdAt).valueOf())/1000
   const creationDateInSeconds = (new Date (order.createdAt).valueOf())/1000
@@ -31,8 +25,16 @@ export const CurrentOrder = ({
 
   const token = localStorage.getItem('currentEmployeeToken')
   const role = localStorage.getItem('currentEmployeeRole')
+  const menu = (JSON.parse(localStorage.getItem('menu')))
   const [waitress, setWaitress] = useState('');
- 
+
+  const productTotals = [];
+  order.Products.map((element) => element.data = menu.filter((product) => product.id === element.id))
+  order.Products.map((element) => element.price = element.data[0].price)
+  order.Products.map((element) => element.total = element.price * element.qtd)
+  order.Products.map((product) => productTotals.push(product.total))
+  order.bill = productTotals.reduce((acc, curr) => acc + curr, 0)
+
   useEffect(() => {
     getUserById(token, order.user_id)
     .then((reponseJson) => setWaitress(reponseJson.name))
@@ -86,47 +88,48 @@ export const CurrentOrder = ({
         <div className='current-order-all-products-column current-order-product-column-quantity'>
           <p className='current-order-header-third'>Qtd.</p>
           {order.Products.map((product) => 
-          <div className='current-order-product-content'>
+          <div className='current-order-product-content' key={product.qtd + product.id}>
             <span>{product.qtd}</span>
           </div>
           )}
         </div>
-        <div className='current-order-all-products-column'>
+        <div className='current-order-all-products-column' >
           <p className='current-order-header-third'>Produto</p>
           {order.Products.map((product) => 
-          <div className='current-order-product-content'>
+          <div className='current-order-product-content' key={product.name + product.id}>
             <span>{product.name}</span>
           </div>
           )}
         </div>
-        <div className='current-order-all-products-column current-order-product-column-favlor'>
+        <div className='current-order-all-products-column current-order-product-column-flavor'>
           <p className='current-order-header-third'>Sabor</p>
           {order.Products.map((product) => 
-          <div className='current-order-product-content'>
-            <span>{product.flavor}</span>
+          <div className='current-order-product-content' key={product.flavor + product.id}>
+             {product.flavor === null ? <span>&nbsp;-&nbsp;</span> : <span>{product.flavor}</span>}
           </div>
           )}
         </div>
         <div className='current-order-all-products-column current-order-product-column-additional'>
           <p className='current-order-header-third'>Adc.</p>
           {order.Products.map((product) => 
-          <div className='current-order-product-content'>
-            <span>{product.complement}</span>
+          <div className='current-order-product-content' key={product.complement + product.id}>
+            {product.complement === null ? <span>&nbsp;-&nbsp;</span> : <span>{product.complement}</span>}
           </div>
           )}
         </div>
       </section>
       <div className='current-order-button-div'>
-      {Location === 'room-tables'? null :  <Button 
-          Role='kitchen-delete-order' 
+      {Location !== 'room-tables'&&
+        <Button 
+          ButtonClass='delete-order' 
           ButtonId={order.id}
           ButtonOnClick={ButtonDeleteOrder}    
-        />} 
-       
-       
-        <div className='current-order-status-button-div'>
-          {role === 'kitchen' ? 
-           order.status !== 'Entregue' ? order.status !== 'Pronto' ?
+        />
+      } 
+      <div className='current-order-status-button-div'>
+        <p className='current-order-order-bill'> Total: R$ &nbsp;{order.bill}</p>
+        {role === 'kitchen' ? 
+          order.status !== 'Entregue' ? order.status !== 'Pronto' ?
             <Button 
               ButtonClass='kitchen-order-status-button kitchen-ready-order-button' 
               children='PRONTO' 
@@ -134,34 +137,33 @@ export const CurrentOrder = ({
               ButtonOnClick={OrderReadyButton}
             /> : 
             <Button 
-            ButtonClass='kitchen-order-status-button kitchen-ready-order-button' 
+              ButtonClass='kitchen-order-status-button kitchen-ready-order-button' 
               children='Este pedido já está pronto! :)' 
               ButtonId={order.id}
             /> :
             <Button 
-            ButtonClass='kitchen-order-status-button kitchen-delivered-order-button' 
+              ButtonClass='kitchen-order-status-button kitchen-delivered-order-button' 
               children='Este pedido já foi entregue :)' 
               ButtonId={order.id}
-          />
+            /> 
             : order.status !== 'pending' ? order.status !== 'Entregue' ? 
-          <Button 
-            ButtonClass={Location === 'room-tables'? 'kitchen-order-status-button kitchen-ready-order-button' : 'kitchen-order-status-button kitchen-delivered-order-button'} 
-            children={Location === 'room-tables'? 'Este pedido está aguardando entrega' : 'ENTREGAR'} 
-            ButtonId={order.id}
-            ButtonOnClick={OrderDeliveredButton}
-          />
-           : 
-           <Button 
-            ButtonClass='kitchen-order-status-button kitchen-delivered-order-button' 
-             children='Este pedido já foi entregue!' 
-             ButtonId={order.id}
-           /> 
-           : 
-           <Button 
-           ButtonClass='kitchen-order-status-button kitchen-being-prepared-order-button' 
-           children='Este pedido está sendo preparado!' 
-           ButtonId={order.id}
-         />}
+              <Button 
+                ButtonClass={Location === 'room-tables'? 'kitchen-order-status-button kitchen-ready-order-button' : 'kitchen-order-status-button kitchen-delivered-order-button'} 
+                children={Location === 'room-tables'? 'Este pedido está aguardando entrega' : 'ENTREGAR'} 
+                ButtonId={order.id}
+                ButtonOnClick={OrderDeliveredButton}
+              /> : 
+              <Button 
+                ButtonClass='kitchen-order-status-button kitchen-delivered-order-button' 
+                children='Este pedido já foi entregue!' 
+                ButtonId={order.id}
+              /> : 
+              <Button 
+                ButtonClass='kitchen-order-status-button kitchen-being-prepared-order-button' 
+                children='Este pedido está sendo preparado!' 
+                ButtonId={order.id}
+              />
+            }
         </div>
       </div>
     </div>
