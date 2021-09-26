@@ -7,14 +7,14 @@ import { Unauthorized } from '../../pages/unauthorized/Unauthorized'
 import { Login } from '../../pages/auth/Login'
 import { Register } from '../../pages/auth/Register';
 
-import { Room } from '../../pages/room/Room/Room'
+import { Room } from '../../pages/room/room/Room'
 import { Kitchen } from '../../pages/kitchen/Kitchen'
 
-import { Menu } from '../../pages/room/Menu/Menu';
-import { NewOrder } from '../../pages/room/NewOrder/NewOrder';
-import { OrdersBeingPrepared } from '../../pages/room/OrdersBeingPrepared/OrdersBeingPrepared'
-import { OrdersReady } from '../../pages/room/OrdersReady/OrdersReady'
-import { OrdersDelivered} from '../../pages/room/OrdersDelivered/OrdersDelivered'
+import { Menu } from '../../pages/room/menu/Menu';
+import { NewOrder } from '../../pages/room/newOrder/NewOrder';
+import { OrdersBeingPrepared } from '../../pages/room/ordersBeingPrepared/OrdersBeingPrepared'
+import { OrdersReady } from '../../pages/room/ordersReady/OrdersReady'
+import { OrdersDelivered} from '../../pages/room/ordersDelivered/OrdersDelivered'
 
 import { PrivateRoute } from '../routeComponents/private/PrivateRoute';
 import { PrivateRouteRoom } from '../routeComponents/private/PrivateRouteRoom';

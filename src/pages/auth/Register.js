@@ -3,17 +3,15 @@ import { useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 import { AuthErrorMessages } from '../../components/ErrorMessages/ErrorMessages';
-import { AuthModal } from '../../components/Modal/Modal';
+import { StandardModal, StandardModalWithTwoOptions } from '../../components/Modal/Modal';
 import { Button } from '../../components/Button/Button';
 import { Header } from '../../components/Header/Header';
-import { InputContentUserData } from '../../components/UserData/UserData';
-import { InputRadioUserData } from '../../components/UserData/UserData';
-
-import inputRole from '../../assets/icons/input-role.png';
+import { InputContentUserData, InputRadioUserData } from '../../components/UserData/UserData';
 
 import { authSignin } from '../../services/auth';
-import logoBerg from '../../assets/images/logo-berg.png';
 
+import logoBerg from '../../assets/images/logo-berg.png';
+import inputRole from '../../assets/icons/input-role.png';
 import './Auth.scss'
 
 export const Register = () => {
@@ -175,9 +173,8 @@ export const Register = () => {
       </main>
       <section>
         {authSucessModal && (
-          <AuthModal 
+          <StandardModal 
             ModalContent = 'Cadastro realizado com sucesso!'
-            Role = 'auth-sucess-modal'
             ButtonChildren = 'Ir para Home'
             ButtonOnClick = {() => role === 'kitchen' ? history.push('/kitchen') : history.push('/room')}
           />
@@ -185,13 +182,12 @@ export const Register = () => {
       </section>
       <section>
         {authErrorModal && (
-          <AuthModal 
+          <StandardModalWithTwoOptions
             ModalContent = {authErrorModalMessage}
-            Role = 'auth-error-modal'
-          ButtonChildren = 'Tente novamente'
-          ButtonOnClick = {() => setAuthErrorModal(false)} 
-          ButtonSecondAuthModalOptionChildren = 'Entre com uma conta já existente.'
-          ButtOnClickSecondAuthModalOption = {() => history.push('/register')} 
+            ButtonChildren = 'Tente novamente'
+            ButtonOnClick = {() => setAuthErrorModal(false)} 
+            ButtonSecondAuthModalOptionChildren = 'Entre com uma conta já existente.'
+            ButtOnClickSecondAuthModalOption = {() => history.push('/register')} 
           />
         )}
       </section>

@@ -2,10 +2,9 @@
 /* eslint-disable no-sequences */
 import {useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button } from '../../../components/Button/Button';
 
-import { StandardModal } from '../../../components/Modal/Modal';
-import { StandardModalWithTwoOptions } from '../../../components/Modal/Modal';
+import { Button } from '../../../components/Button/Button';
+import { StandardModal, StandardModalWithTwoOptions } from '../../../components/Modal/Modal';
 
 import { sendOrderToKitchen } from '../../../services/orders';
 
@@ -54,7 +53,6 @@ export const NewOrder = () => {
 
   const orderResume = orderedProductsData.map(product => ({ id: product.id, qtd:product.qtd.toString()}));
   const orderInformation = { token, customer, table, orderResume}
-
 
   const checkCustomerData = () => {
     if(customer.length <2){
@@ -197,53 +195,53 @@ export const NewOrder = () => {
         </section> 
       </main>
       <section>
-      {emptyCustomerModal && 
-        <StandardModal 
-        ModalContent='Por favor, insira o nome do cliente.'
-        ButtonChildren='OK'
-        ButtonOnClick = {() => setEmptyCustomerModal(false)}
-        />
-      }
-    </section>
-    <section>
-      {emptyTableModal && 
-        <StandardModal 
+        {emptyCustomerModal && 
+          <StandardModal 
+          ModalContent='Por favor, insira o nome do cliente.'
           ButtonChildren='OK'
-          ModalContent='Por favor, insira o número da mesa de acordo com o exemplo a seguir: "01", "02", "03" ... "10", "11" e "12".'
-          ButtonOnClick = {() => setEmptyTableModal(false)}
-        />
-      }
-    </section>
-    <section>
-      {emptyOrderModal && 
-         <StandardModal 
-          ButtonChildren='OK'
-          ModalContent='O resumo do pedido está vazio. Por favor, o verifique.'
-          ButtonOnClick = {() => setEmptyOrderModal(false)}
-        />
-      }
-    </section>
-    <section>
-      {sucessModal &&
-        <StandardModalWithTwoOptions
-          ButtonChildren = 'Voltar para o salão'
-          ButtonSecondAuthModalOptionChildren = 'Fazer um novo pedido'
-          ModalContent='As chefs já estão dando conta do pedido! Aguarde atualizações.'
-          ButtonOnClick = {() => history.push('/room')}
-          ButtOnClickSecondAuthModalOption = {() => setSucessModal(false)}
-        />
-      }
-    </section>
-    <section>
-      {errorModal &&
-        <StandardModal 
-          ButtonChildren='OK'
-          ModalContent='Algo deu errado. Verifique as informações registradas.'
-          ButtonOnClick = {() => setErrorModal(false)}
-        />
-      }
-    </section>
-  </div>
+          ButtonOnClick = {() => setEmptyCustomerModal(false)}
+          />
+        }
+      </section>
+      <section>
+        {emptyTableModal && 
+          <StandardModal 
+            ButtonChildren='OK'
+            ModalContent='Por favor, insira o número da mesa de acordo com o exemplo a seguir: "01", "02", "03" ... "10", "11" e "12".'
+            ButtonOnClick = {() => setEmptyTableModal(false)}
+          />
+        }
+      </section>
+      <section>
+        {emptyOrderModal && 
+          <StandardModal 
+            ButtonChildren='OK'
+            ModalContent='O resumo do pedido está vazio. Por favor, o verifique.'
+            ButtonOnClick = {() => setEmptyOrderModal(false)}
+          />
+        }
+      </section>
+      <section>
+        {sucessModal &&
+          <StandardModalWithTwoOptions
+            ButtonChildren = 'Voltar para o salão'
+            ButtonSecondAuthModalOptionChildren = 'Fazer um novo pedido'
+            ModalContent='As chefs já estão dando conta do pedido! Aguarde atualizações.'
+            ButtonOnClick = {() => history.push('/room')}
+            ButtOnClickSecondAuthModalOption = {() => setSucessModal(false)}
+          />
+        }
+      </section>
+      <section>
+        {errorModal &&
+          <StandardModal 
+            ButtonChildren='OK'
+            ModalContent='Algo deu errado. Verifique as informações registradas.'
+            ButtonOnClick = {() => setErrorModal(false)}
+          />
+        }
+      </section>
+    </div>
   )
 }
 

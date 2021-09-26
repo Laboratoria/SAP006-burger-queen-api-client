@@ -5,8 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import { NavbarRoom } from '../../../components/Navbar/Navbar';
 import { CurrentOrder } from '../../../components/CurrentOrder/Current.Order';
-import { StandardModalWithTwoOptions } from '../../../components/Modal/Modal';
-import { StandardModal } from '../../../components/Modal/Modal';
+import { StandardModal, StandardModalWithTwoOptions } from '../../../components/Modal/Modal';
 import { Button } from '../../../components/Button/Button';
 
 import { getAllOrders } from '../../../services/orders';
@@ -14,7 +13,7 @@ import { deleteOrder } from '../../../services/orders';
 import { changeOrderStatus } from '../../../services/orders';
 import { logout } from "../../../routes/utils/auth";
 
-import './../OrdersBeingPrepared/OrderStatusGeneral.scss'
+import './../ordersBeingPrepared/OrderStatusGeneral.scss'
 
 export const OrdersDelivered = () => { 
   const history = useHistory();
@@ -90,23 +89,23 @@ export const OrdersDelivered = () => {
         <NavbarRoom />
       </header>
       <main className='order-status-main'>
-      <Button ButtonClass='order-status-get-orders' children='Carregar Pedidos' ButtonOnClick={()=> getCurrentOrders()}/>
-      <Button Role='kitchen-sign-out' ButtonOnClick={()=>handleLogOut()}/>
-      <section className='current-orders-section'>
-        {Object.keys(currentOrders).length > 0 &&   
-          currentOrders.map((order) => 
-            <CurrentOrder
-              key={order.id}
-              order={order}
-              ButtonId={order.id}
-              
-              ButtonDeleteOrder = {(event)=> [setKitchenDeleteOrderModal(true), setOrderToBeDeleted(event.target.id)]}
-              OrderBeingPreparedButton = {() => changeTargetOrderStatus(order.id, 'Em Preparo')}
-              OrderReadyButton = {() => changeTargetOrderStatus(order.id, 'Pronto')}
-              OrderDeliveredButton = {() => changeTargetOrderStatus(order.id, 'Entregue')}
-            /> 
-          )}
-      </section>
+        <Button ButtonClass='order-status-get-orders' children='Carregar Pedidos' ButtonOnClick={()=> getCurrentOrders()}/>
+        <Button Role='kitchen-sign-out' ButtonOnClick={()=>handleLogOut()}/>
+        <section className='current-orders-section'>
+          {Object.keys(currentOrders).length > 0 &&   
+            currentOrders.map((order) => 
+              <CurrentOrder
+                key={order.id}
+                order={order}
+                ButtonId={order.id}
+                
+                ButtonDeleteOrder = {(event)=> [setKitchenDeleteOrderModal(true), setOrderToBeDeleted(event.target.id)]}
+                OrderBeingPreparedButton = {() => changeTargetOrderStatus(order.id, 'Em Preparo')}
+                OrderReadyButton = {() => changeTargetOrderStatus(order.id, 'Pronto')}
+                OrderDeliveredButton = {() => changeTargetOrderStatus(order.id, 'Entregue')}
+              /> 
+            )}
+        </section>
       </main>
       <section>
         {kitchenDeleteOrderModal && 

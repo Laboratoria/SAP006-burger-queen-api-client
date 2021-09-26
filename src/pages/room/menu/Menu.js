@@ -2,13 +2,14 @@
 import { useState }  from 'react';
 import { useHistory } from 'react-router-dom';
 
-import './Menu.scss'
-
 import { NavbarRoom } from '../../../components/Navbar/Navbar';
 import { Button } from '../../../components/Button/Button';
 import { ProductCard } from '../../../components/ProductCard/ProductCard';
 import { MenuModal } from '../../../components/Modal/Modal';
+
 import { products } from '../../../data/products';
+
+import './Menu.scss'
 
 export const Menu = () => { 
   const history = useHistory();
@@ -19,6 +20,7 @@ export const Menu = () => {
   const [showDrinks, setShowDrinks] = useState(false);
   const [showIngredients, setShowIngredients] = useState(false);
   const [productId, setProductId] = useState('');
+  const productsToPrint = Object.keys(products)
 
   const filterProducts = (condition, value) =>{
     const filteredProductsNames = [];
@@ -26,13 +28,13 @@ export const Menu = () => {
     filteredProductsNames.push(filteredProducts.map((nome) => nome[0]))
     return filteredProductsNames[0]
   }
+
   const getProductId = (event) => {
     const id = (event.target.parentNode.id) 
       setProductId({productId :id})
       setShowIngredients(true)
       document.body.style.overflow = "hidden";
   }
-  let productsToPrint = Object.keys(products)
 
   return (
     <div className='product-card-div'>
@@ -53,8 +55,9 @@ export const Menu = () => {
               setShowBreakfast(false),
               setShowRestOfTheDay(false),
               setShowFood(false),
-              setShowDrinks(false)]}
-            />
+              setShowDrinks(false)
+            ]}
+          />
           <Button 
             ButtonClass='menu-filter menu-petit-dej' 
             children='Morgen'
@@ -64,7 +67,8 @@ export const Menu = () => {
               setShowBreakfast(true),
               setShowRestOfTheDay(false),
               setShowFood(false),
-              setShowDrinks(false)]}
+              setShowDrinks(false)
+            ]}
           />
           <Button 
             ButtonClass='menu-filter menu-pour-la-journee' 
@@ -75,7 +79,8 @@ export const Menu = () => {
               setShowBreakfast(false),
               setShowRestOfTheDay(true),
               setShowFood(false),
-              setShowDrinks(false)]}
+              setShowDrinks(false)
+            ]}
           />
           <Button 
             ButtonClass='menu-filter menu-to-drink' 
@@ -86,7 +91,8 @@ export const Menu = () => {
               setShowBreakfast(false),
               setShowRestOfTheDay(false),
               setShowFood(true),
-              setShowDrinks(false)]}
+              setShowDrinks(false)
+            ]}
           />
           <Button 
             ButtonClass='menu-filter menu-to-eat' 
@@ -97,7 +103,8 @@ export const Menu = () => {
               setShowBreakfast(false),
               setShowRestOfTheDay(false),
               setShowFood(false),
-              setShowDrinks(true)]}
+              setShowDrinks(true)
+            ]}
           />
         </section>
         <section className='menu-cards-section'>

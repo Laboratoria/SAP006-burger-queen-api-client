@@ -1,26 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import {useState, useEffect} from 'react';
-import { useHistory } from 'react-router-dom';
 
 import { NavbarRoom } from '../../components/Navbar/Navbar';
 import { CurrentOrder } from '../../components/CurrentOrder/Current.Order';
-import { StandardModal } from '../../components/Modal/Modal';
-import { StandardModalWithTwoOptions } from '../../components/Modal/Modal';
+import { StandardModal, StandardModalWithTwoOptions } from '../../components/Modal/Modal';
 import { Button } from '../../components/Button/Button';
 
-import { getAllOrders } from '../../services/orders';
-import { deleteOrder } from '../../services/orders';
-import { changeOrderStatus } from '../../services/orders';
-import { logout } from "../../routes/utils/auth";
+import { getAllOrders, deleteOrder, changeOrderStatus } from '../../services/orders';
 
 import './Kitchen.scss';
 
 export const Kitchen = () => { 
-  const history = useHistory();
-
   const token = localStorage.getItem('currentEmployeeToken')
   const [orderToBeDeleted, setOrderToBeDeleted] = useState('')
-  const [currentOrders, setCurrentOrders] = useState({});
+  const [currentOrders, setCurrentOrders] = useState([]);
   const [kitchenDeleteOrderModal, setKitchenDeleteOrderModal] = useState(false);
   const [missingDataOrNoChangesErrorModal, setMissingDataOrNoChangesErrorModal] = useState(false);
   const [userNotAuthenticatedErrorModal, setUserNotAuthenticatedErrorModal] = useState(false);
@@ -77,11 +71,6 @@ export const Kitchen = () => {
     getCurrentOrders()
   }, [])
   
-  const handleLogOut = () => {
-    logout()
-    history.push('/')
-  }
-
   return (
     <div>
       <header>
@@ -90,7 +79,7 @@ export const Kitchen = () => {
       <main className='kitchen-main'>
       <Button ButtonClass='kitchen-get-orders' children='Carregar Pedidos' ButtonOnClick={()=> getCurrentOrders()}/>
       <section className='kichen-current-orders-section'>
-        {Object.keys(currentOrders).length > 0 ?   
+        {currentOrders.length > 0 &&   
           currentOrders.map((order) => 
             <CurrentOrder
               key={order.id}
@@ -102,7 +91,7 @@ export const Kitchen = () => {
               OrderReadyButton = {() => changeTargetOrderStatus(order.id, 'Pronto')}
               OrderDeliveredButton = {() => changeTargetOrderStatus(order.id, 'Entregue')}
             /> 
-          ): null}
+          )}
       </section>
       </main>
       <section>

@@ -2,15 +2,14 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
-import logoBerg from '../../assets/images/logo-berg.png';
-
-import { AuthModal } from '../../components/Modal/Modal';
+import { StandardModal, StandardModalWithTwoOptions } from '../../components/Modal/Modal';
 import { Button } from '../../components/Button/Button'
 import { Header } from '../../components/Header/Header'
 import { InputContentUserData } from '../../components/UserData/UserData';
 
 import { authLogin } from '../../services/auth';
 
+import logoBerg from '../../assets/images/logo-berg.png';
 import './Auth.scss'
 
 export function Login () {
@@ -76,9 +75,8 @@ export function Login () {
     </main>
     <section>
       {authSucessModal && (
-        <AuthModal 
+        <StandardModal
           ModalContent = 'Login realizado com sucesso!'
-          Role = 'auth-sucess-modal'
           ButtonChildren = 'Ir para Home'
           ButtonOnClick = {() => role === 'kitchen' ? history.push('/kitchen') : history.push('/room')}
         />
@@ -86,15 +84,14 @@ export function Login () {
     </section>
     <section>
       {authErrorModal && (
-        <AuthModal 
+        <StandardModalWithTwoOptions
           ModalContent = 'Usuárie não encontrade!'
-          Role = 'auth-error-modal'
           ButtonChildren = 'Tente novamente'
           ButtonOnClick = {() => setAuthErrorModal(false)} 
           ButtonSecondAuthModalOptionChildren = 'Crie uma nova conta.'
           ButtOnClickSecondAuthModalOption = {() => history.push('/register')} 
         />
-       )}
+      )}
     </section>
   </div>
   )
