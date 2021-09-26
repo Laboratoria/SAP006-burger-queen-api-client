@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import Formulario from '../../components/FormRegister/form';
+import React, {Component, Fragment } from 'react';
+import Formulario from '../../components/FormRegister/Form';
+import Routes from '../../utils/routes';
 
-class Register extends Component {
-    render() {
+function Register(){
         return (
             <Fragment>
                 <Formulario />
             </Fragment>);
-    }
+    
 }
 
 export default Register
