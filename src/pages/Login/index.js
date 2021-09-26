@@ -54,7 +54,7 @@ export default function Login() {
       Object.keys(errorsObject).length === 0 &&
       errorsObject.constructor === Object
     ) {
-      setLoading(true);
+     ;
       const loginData = {
         method: 'POST',
         headers: {
