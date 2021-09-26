@@ -1,13 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
      
 import React from 'react';
 import {useState, useEffect} from 'react';
-import './CurrentOrder.scss';
 
 import { Button} from '../Button/Button'
 import { orderAge } from '../../services/general';
 import { orderProcessAge } from '../../services/general';
 
 import { getUserById } from '../../services/users';
+
+import './CurrentOrder.scss';
 
 export const CurrentOrder = ({
   order, 
@@ -18,18 +20,14 @@ export const CurrentOrder = ({
   }) => { 
     
   const orderCreationAgeSeconds = (Date.now() - new Date (order.createdAt).valueOf())/1000
-const creationDateInSeconds = (new Date (order.createdAt).valueOf())/1000
-const processDateInSeconds = (new Date (order.processedAt).valueOf())/1000
-const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
-
-  const orderProcessedAgeSeconds = processDateInSeconds - creationDateInSeconds
-  const orderUpdateAgeSeconds = updateDateInSeconds - processDateInSeconds
-  const orderDurationSeconds = updateDateInSeconds - creationDateInSeconds
+  const creationDateInSeconds = (new Date (order.createdAt).valueOf())/1000
+  const processDateInSeconds = (new Date (order.processedAt).valueOf())/1000
+  const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
 
   const orderCreationAge = orderAge(orderCreationAgeSeconds)
-  const orderTimeToPrepare = orderProcessAge(orderProcessedAgeSeconds)
-  const orderTimeToDeliver = orderProcessAge(orderUpdateAgeSeconds)
-  const orderDuration = orderProcessAge(orderDurationSeconds)
+  const orderTimeToPrepare = orderProcessAge(processDateInSeconds - creationDateInSeconds)
+  const orderTimeToDeliver = orderProcessAge(updateDateInSeconds - processDateInSeconds)
+  const orderDuration = orderProcessAge(updateDateInSeconds - creationDateInSeconds)
 
   const token = localStorage.getItem('currentEmployeeToken')
   const role = localStorage.getItem('currentEmployeeRole')
@@ -48,7 +46,7 @@ const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
     order.status === 'Entregue' ? 
     'current-order-div order-delivered-div' :
     'current-order-div'}>
-      <div className='current-order-header current-order-header-first'>
+      <section className='current-order-header current-order-header-first'>
         <div>
           <span>Mesa:&nbsp;</span><span>{order.table}</span>
         </div>
@@ -58,8 +56,8 @@ const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
         <div>
           <span>Pedido ID:&nbsp;</span><span>{order.id}</span>
         </div>
-      </div>
-      <div className='current-order-header current-order-header-second'>
+      </section>
+      <section className='current-order-header current-order-header-second'>
         <div>
           <span>Status:&nbsp;</span><span>{order.status === 'pending' ? 'Em preparo' : order.status}</span>
         </div>
@@ -71,23 +69,20 @@ const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
           <span>Pedido criado &nbsp;{orderCreationAge}</span> :
           <span>Pedido criado há &nbsp;{orderCreationAge}</span> }
         </div>
-      </div>
-      
-      <div className='current-order-header current-order-header-second'>
-          <span>Duração:&nbsp;</span>
-          <span>Preparo:&nbsp;{orderTimeToPrepare}</span>
-          {order.status === 'pending' ?
-            <span>Entrega: ENF</span>
-          : <span>Entrega:&nbsp;{orderTimeToDeliver}</span>
-          }
-
-          {order.status === 'Entregue' ?
-          <span>Total:&nbsp;{orderDuration}</span>
-          :<span>Total:ENF</span>
-          }
-          
-      </div>
-      <div className='current-order-all-products'>
+      </section>
+      <section className='current-order-header current-order-header-second'>
+        <span>Duração:&nbsp;</span>
+        <span>Preparo:&nbsp;{orderTimeToPrepare}</span>
+        {order.status === 'pending' ?
+          <span>Entrega: ENF</span> : 
+          <span>Entrega:&nbsp;{orderTimeToDeliver}</span>
+        }
+        {order.status === 'Entregue' ?
+        <span>Total:&nbsp;{orderDuration}</span> :
+        <span>Total: ENF</span>
+        }
+      </section>
+      <section className='current-order-all-products'>
         <div className='current-order-all-products-column current-order-product-column-quantity'>
           <p className='current-order-header-third'>Qtd.</p>
           {order.Products.map((product) => 
@@ -120,7 +115,7 @@ const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
           </div>
           )}
         </div>
-      </div>
+      </section>
       <div className='current-order-button-div'>
       {Location === 'room-tables'? null :  <Button 
           Role='kitchen-delete-order' 
@@ -133,37 +128,37 @@ const updateDateInSeconds = (new Date (order.updatedAt).valueOf())/1000
           {role === 'kitchen' ? 
            order.status !== 'Entregue' ? order.status !== 'Pronto' ?
             <Button 
-              Role='kitchen-change-order-status-ready' 
+              ButtonClass='kitchen-order-status-button kitchen-ready-order-button' 
               children='PRONTO' 
               ButtonId={order.id}
               ButtonOnClick={OrderReadyButton}
             /> : 
             <Button 
-              Role='kitchen-change-order-status-ready' 
+            ButtonClass='kitchen-order-status-button kitchen-ready-order-button' 
               children='Este pedido já está pronto! :)' 
               ButtonId={order.id}
             /> :
             <Button 
-              Role='kitchen-change-order-status-delivered' 
+            ButtonClass='kitchen-order-status-button kitchen-delivered-order-button' 
               children='Este pedido já foi entregue :)' 
               ButtonId={order.id}
           />
             : order.status !== 'pending' ? order.status !== 'Entregue' ? 
           <Button 
-            Role={Location === 'room-tables'? 'kitchen-change-order-status-ready' : 'kitchen-change-order-status-delivered'} 
+            ButtonClass={Location === 'room-tables'? 'kitchen-order-status-button kitchen-ready-order-button' : 'kitchen-order-status-button kitchen-delivered-order-button'} 
             children={Location === 'room-tables'? 'Este pedido está aguardando entrega' : 'ENTREGAR'} 
             ButtonId={order.id}
             ButtonOnClick={OrderDeliveredButton}
           />
            : 
            <Button 
-             Role='kitchen-change-order-status-delivered' 
+            ButtonClass='kitchen-order-status-button kitchen-delivered-order-button' 
              children='Este pedido já foi entregue!' 
              ButtonId={order.id}
            /> 
            : 
            <Button 
-           Role='kitchen-change-order-status-being-prepared' 
+           ButtonClass='kitchen-order-status-button kitchen-being-prepared-order-button' 
            children='Este pedido está sendo preparado!' 
            ButtonId={order.id}
          />}

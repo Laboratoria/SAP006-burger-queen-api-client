@@ -1,36 +1,32 @@
 @import '../../../styles/Global.scss';
 
 .room-div{
-  height: 100%;
-
-  .modal-container{
-    overflow-y: scroll;
-    height: 90vh;
-    padding-top: 70%;
-  }
+  padding-bottom: 5%;
 }
 
-.room-table-div{
-  justify-content: center;
+.room-main{
+  display: flex;
+  flex-direction: column;
   margin: auto;
-
-  
+  justify-content: center;
 }
 
 .room-tables-section {
-  padding: 2%;
+  width: 80%;
+  margin: auto;
   display: grid;
+
   grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap:2vh;
+  grid-row-gap:3vh;
   grid-column-gap:2vh;
+
   justify-content: center;
 }
 
-
-
-@media (min-width: 1024px) and (max-height: 768px),
-(min-width: 1366px) and (max-height: 1024px){
+@media (orientation: 'landscape') {
   .room-tables-section {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row-gap:4vh;
+    grid-column-gap:4vh;
   }
 }

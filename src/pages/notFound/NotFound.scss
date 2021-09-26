@@ -27,7 +27,31 @@
   }
 
   h2 {
-    font-size: 250%;
+    font-size: 200%;
     color:$yellow-logo;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 1366px){
+  .not-found-page{
+    h2 {
+      font-size: 280%;
+    }
+  }
+}
+
+@media (orientation: 'landscape') {
+  .not-found-page{
+    h2 {
+      font-size: 280%;
+    }
+  }
+}
+
+@media (orientation: 'landscape') and (max-height: 768px){
+  .not-found-page{
+    h2 {
+      font-size: 190%;
+    }
   }
 }

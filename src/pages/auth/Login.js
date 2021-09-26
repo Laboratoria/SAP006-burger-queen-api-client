@@ -91,6 +91,7 @@ export function Login () {
           Role = 'auth-error-modal'
           ButtonChildren = 'Tente novamente'
           ButtonOnClick = {() => setAuthErrorModal(false)} 
+          ButtonSecondAuthModalOptionChildren = 'Crie uma nova conta.'
           ButtOnClickSecondAuthModalOption = {() => history.push('/register')} 
         />
        )}

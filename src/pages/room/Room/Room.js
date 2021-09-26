@@ -1,48 +1,52 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { getAllProducts } from '../../../services/products';
 import { getAllOrders } from '../../../services/orders';
-import { logout } from '../../../routes/utils/auth';
+
 import { titleCorrespondance } from '../../../data/titleCorrespondance';
 
 import { NavbarRoom } from '../../../components/Navbar/Navbar';
 import { Button } from '../../../components/Button/Button';
-import { CurrentOrder } from '../../../components/CurrentOrder/Current.Order';
-import { Table } from '../../../components/Table/Table';
+import { AuthModal } from '../../../components/Modal/Modal';
+import { StandardModal } from '../../../components/Modal/Modal';
+import { StandardModalWithTwoOptions } from '../../../components/Modal/Modal';
 import { TableOrdersModal } from '../../../components/Modal/Modal';
 
 import './Room.scss';
 
 export const Room = () => { 
   const history = useHistory();
+
   const token = localStorage.getItem('currentEmployeeToken');
   const tables = [
-    {'table':1, 'tableName':'table-01'},
-    {'table':2, 'tableName':'table-02'},
-    {'table':3, 'tableName':'table-03'},
-    {'table':4, 'tableName':'table-04'},
-    {'table':5, 'tableName':'table-05'},
-    {'table':6, 'tableName':'table-06'},
-    {'table':7, 'tableName':'table-07'},
-    {'table':8, 'tableName':'table-08'},
-    {'table':9, 'tableName':'table-09'},
-    {'table':10, 'tableName':'table-10'},
-    {'table':11, 'tableName':'table-11'},
-    {'table':12, 'tableName':'table-12'},
+    {'table':1, 'tableName':'table-01', 'orders':[]},
+    {'table':2, 'tableName':'table-02', 'orders':[]},
+    {'table':3, 'tableName':'table-03', 'orders':[]},
+    {'table':4, 'tableName':'table-04', 'orders':[]},
+    {'table':5, 'tableName':'table-05', 'orders':[]},
+    {'table':6, 'tableName':'table-06', 'orders':[]},
+    {'table':7, 'tableName':'table-07', 'orders':[]},
+    {'table':8, 'tableName':'table-08', 'orders':[]},
+    {'table':9, 'tableName':'table-09', 'orders':[]},
+    {'table':10, 'tableName':'table-10', 'orders':[]},
+    {'table':11, 'tableName':'table-11', 'orders':[]},
+    {'table':12, 'tableName':'table-12', 'orders':[]},
   ]
-  const [tablesWithOrders,setTablesWithOrders] = useState('')
-  const [currentOrders, setCurrentOrders] = useState([]);
   const [userNotAuthenticatedErrorModal, setUserNotAuthenticatedErrorModal] = useState(false);
+
+  const [tablesWithOrders,setTablesWithOrders] = useState([])
+  const [currentOrders, setCurrentOrders] = useState([]);
+
   const [emptyTableModal, setEmptyTableModal] = useState(false);
   const [fullTableModal, setFullTableModal] = useState(false);
   const [clearTableModal, setClearTableModal] = useState(false);
+
   const [targetTableId, setTargetTableId] = useState('');
-  const [targetTableOrders, setTargetTableOrders] = useState('');
-
-
-
+  const [targetTableOrders, setTargetTableOrders] = useState([]);
+  
   const getProducts = () => {
     getAllProducts(token)
     .then((responseJson) => { 
@@ -50,10 +54,10 @@ export const Room = () => {
       titleCorrespondance(menu)
       localStorage.removeItem('menu')
       localStorage.setItem('menu', JSON.stringify(menu))
-    }).catch((error) => alert(error))
+    }).catch(() => setUserNotAuthenticatedErrorModal(true))
   };
 
-  const getCurrentOrders = () => {
+  useEffect(() => {
     getAllOrders(token)
     .then(responseJson => {
       switch (responseJson.code) {
@@ -65,83 +69,75 @@ export const Room = () => {
           tables.map((table) => table.orders = orders.filter((order) => order.table === table.table))
           setTablesWithOrders(tables)
       } 
-    })   
-  }
-
-  useEffect(() => {
-    getCurrentOrders()
-  }, [])
-
-  const handleLogout = () => {
-    logout()
-    history.push('/')
-  }
-
-  const openOrderModal = (tableStatus) => {
-    if (tableStatus === 'empty-table' ) {
-      setEmptyTableModal(true)
-    } else {
-     setFullTableModal(true)
-    }
-  }
+    })
+  },[])
 
   useEffect(() => {
     setTargetTableOrders(currentOrders.filter((order) => order.table.toString() === targetTableId))
   }, [targetTableId, currentOrders]);
+
+console.log(currentOrders)
 
   return (
     <div className='room-div'>
       <header>
         <NavbarRoom/>
       </header>
-      <main>
+      <main className='room-main'>
         <Button 
-          Role='room-new-order' 
+          ButtonClass='room-new-order-button'
           children='Novo Pedido' 
-          ButtonOnClick={()=>[getProducts(), history.push('/neworder')]}
+          ButtonOnClick={() => [getProducts(), history.push('/neworder')]}
         />
         <section className='room-tables-section'>
-          {tablesWithOrders !== '' ? tablesWithOrders.map((table) => 
+          {tablesWithOrders.length > 0 && tablesWithOrders.map((table) => 
             <Button 
               key={table.tableName}
-              Role='room-table' 
+              ElementName={table.tableName}
+              ButtonClass='room-table-button'
               ButtonTitle={table.orders.length < 1 ? 'empty-table' : 'full-table'} 
               ButtonId={table.table}
-              ButtonOnClick={(event)=>[
-                openOrderModal(event.target.getAttribute('data-title')), 
-                setTargetTableId(event.target.id),
-              ]}              
+              ButtonOnClick={(event) => 
+                event.target.getAttribute('data-title') === 'empty-table' ? setEmptyTableModal(true) : 
+                [setFullTableModal(true), 
+                setTargetTableId(event.target.id)]
+              }              
             />
-          ):null}
-          </section>
-        <Button Role='room-sign-out' ButtonOnClick={()=> handleLogout()}/>
+          )}
+        </section>
       </main>
-      {fullTableModal ? 
-      <section className='modal-background'>
-        <div className='modal-container'>
-            {targetTableOrders.map((order) => 
-            <CurrentOrder
-              Location='room-tables'
-              key={order.id}
-              order={order}
-              ButtonId={order.id}
-            /> 
-            )}
-            <div>
-            <Button Role='new-order-sucess-modal' children='OK' ButtonOnClick={() => setFullTableModal(false)}/>
-            <Button Role='new-order-sucess-modal' children='Limpar Mesa' ButtonOnClick={() => setClearTableModal(true)}/>
-            </div>
-        </div>
-      </section>
-    : null}
-       {clearTableModal? 
-      <section className='modal-background'>
-        <div className='modal-container'>
-          <p>Você tem certeza que deseja limpar esta mesa? TODOS os pedidos serão excluídos.</p>
-          <Button Role='new-order-sucess-modal' children='Não' ButtonOnClick={() => setClearTableModal(false)}/>
-        </div>
-      </section>
-    : null}
+      {userNotAuthenticatedErrorModal && 
+        <AuthModal 
+        Role='auth-error-modal'
+        ModalContent='Usuário não autenticado.'
+        ButtonChildren='Ok'
+        ButtonOnClick={() => setUserNotAuthenticatedErrorModal(false)}
+        ButtonSecondAuthModalOptionChildren = 'Autenticar'
+        ButtOnClickSecondAuthModalOption={() => history.push('/')}
+        />
+      }
+      {emptyTableModal &&
+        <StandardModal 
+          ModalContent='Esta mesa ainda não possui pedidos.'
+          ButtonChildren='OK'
+          ButtonOnClick={()  => setEmptyTableModal(false)}
+        />
+      }
+      {fullTableModal && 
+      <TableOrdersModal 
+        orders={targetTableOrders}
+        FirstButtonClick={() => setFullTableModal(false)}
+        SecondButtonClick={() => setClearTableModal(true)}
+      />
+      }
+      {clearTableModal && 
+       <StandardModalWithTwoOptions 
+          ModalContent='Você tem certeza que deseja excluir todos os pedidos desta mesa?'
+          ButtonChildren='Cancelar'
+          ButtonSecondAuthModalOptionChildren='Excluir'
+          ButtonOnClick={() => setClearTableModal(false)}
+       />
+      }
     </div>
     
   )

@@ -25,7 +25,7 @@
 .auth-input-div {
   width: 100%;
   position: relative;
-  margin: 6% auto;
+  margin: 3% auto;
 }
 
 .auth-route-navigation-div{
@@ -46,8 +46,7 @@
   height: 7.5vh;
 }
 
-
-@media (min-width: 1024px) and (max-height: 1366px){
+@media (min-width: 1024px) and (min-height: 1366px){
   .auth-route-navigation-p{
     font-size: 190%;
   } 
@@ -94,7 +93,6 @@
   }
 }
 
-/*Landscape Ipad Mini */
 @media (orientation: 'landscape') and (max-height: 768px){
   .auth-route-navigation-p{
     font-size: 120%;

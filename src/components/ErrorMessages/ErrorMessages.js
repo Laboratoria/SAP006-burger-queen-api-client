@@ -3,7 +3,7 @@ import './ErrorMessages.scss'
 
 export function AuthErrorMessages ({Subject}) {
 
-  const ErrorMessagesProps = {
+  const ErrorMessages = {
     'name':'Por favor, digite um nome válido.',
     'email':'Por favor, digite um email válido',
     'password':'As senhas devem conter ao menos 6 caracteres',
@@ -17,7 +17,7 @@ export function AuthErrorMessages ({Subject}) {
     <p 
       data-testid='errorMessage'
       className={Subject === 'role' ? 'auth-error-message auth-error-message-of-role' : 'auth-error-message'}>
-      {ErrorMessagesProps[Subject]}
+      {ErrorMessages[Subject]}
     </p>
   )
 }

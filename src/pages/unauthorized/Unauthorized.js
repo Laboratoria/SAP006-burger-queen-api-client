@@ -18,19 +18,21 @@ export const Unauthorized = () => {
   }
 
   return (
-  <div className = 'unauthorized'>
+  <main className = 'unauthorized-main'>
     <h1> ERROR 401 </h1>
     <img src = {logoBerg} alt = 'Logo Berg'/>
     <h2> Desculpe-nos, mas você não possui permissão para acessar esta seção :( <br/>
     <br/>Entre em contato com um administrador.</h2>
-       <Button Role='unauhtorized-sign-out'
+       <Button 
+        ButtonClass = 'unauthorized-button unauthorized-sign-out-button'
         ButtonOnClick={() => handleLogout ()}
       />
   
-       <Button Role='unauhtorized-goback' 
+       <Button 
+        ButtonClass = 'unauthorized-button unauthorized-go-back-button'
         ButtonOnClick = {() => currentEmployeeRole === 'kitchen' ? 
         history.push('/kitchen') : history.push('/room')}
       />
-  </div>
+  </main>
   )
 }

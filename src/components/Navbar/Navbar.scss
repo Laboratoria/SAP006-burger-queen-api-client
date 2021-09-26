@@ -1,7 +1,6 @@
 @import '../../styles/Global.scss';
 
 nav {
-
   ul {
     display: flex;
     flex-direction: row;
@@ -9,6 +8,7 @@ nav {
     width: 100%;
     padding: 0;
   }
+
   li {
     list-style: none;
     margin: auto;
@@ -19,19 +19,23 @@ nav {
   align-items: center;
 }
 
-.employee-information-div{
-  align-items: center;
-  height: 4vh;
-  margin: 0% auto -2%;
+.navbar-employee-information-div{
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -2%;
+  padding-left: 3%;
+
+  height: 5vh;
   background-color: $light-brown-box;
 
   p {
-    font-size:130%;
-    padding: 0% 5%;
+    padding: 0% 4%;
+
     color:$even-lighter-brown-txt;
+    font-family: $berg-font;
+    font-size:140%;
     font-weight: 500;
     border-radius: 10px;
   }
@@ -66,46 +70,26 @@ nav {
 }
 
 
-@media (min-width: 1024px) and (max-height: 1366px){
-  .navbar-kitchen{
-    .header-title{
-      p{
-        font-size: 950%;
-      }
+@media (min-width: 1024px) and (min-height: 1366px){
+  .navbar-employee-information-div{
+    p {
+      font-size:180%;
     }
   }
 }
 
-@media (min-width: 1024px) and (max-height: 768px),
-(min-width: 1366px) and (max-height: 1024px){
-  .navbar-kitchen{
-    ul {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top:0%;
-      width:25%;
-      height: 95vh;
-    }
-
-    .header-title{
-      p{
-        position: absolute;
-        font-size: 550%;
-        margin: auto;
-        left: 24%;
-        top:8%
-      }
+@media (orientation: 'landscape') {
+  .navbar-employee-information-div{
+    p {
+      font-size:160%;
     }
   }
 }
 
-@media (min-width: 1366px) and (max-height: 1024px){
-  .navbar-kitchen{
-    .header-title{
-      p{
-        font-size: 850%;
-      }
+@media (orientation: 'landscape') and (max-height: 768px){
+  .navbar-employee-information-div{
+    p {
+      font-size:140%;
     }
   }
 }

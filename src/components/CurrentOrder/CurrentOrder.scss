@@ -95,24 +95,24 @@
   justify-content: end;
 }
 
-
-.room-div{
-  .current-order-header-first{
-    font-size: 100%;
-  }
-
+.modal-container{
   .current-order-header-second{
-    font-size: 80%;
+    font-size: 140%;
   }
 
-  .current-order-header-third, .current-order-product-content{
-    font-size: 90%;
+  .current-order-product-content{
+    font-size: 140%;
   }
-
 }
 
-
-
+/* Portrait Ipad PRO */
+@media (min-width: 1024px) and (max-height: 1366px){
+  .modal-container{
+    .current-order-header-third, .current-order-product-content{
+      font-size: 150%;
+    }
+  }
+}
 
 
 @media (min-width: 768px)  and (max-height:1024px){
@@ -121,11 +121,25 @@
   }
 
   .current-order-header-second{
-    font-size: 120%;
+    font-size: 110%;
   }
 
   .current-order-header-third, .current-order-product-content{
     font-size: 125%;
+  }
+
+  .modal-container{
+    .current-order-header-first{
+      font-size: 150%;
+    }
+  
+    .current-order-header-second{
+      font-size: 110%;
+    }
+  
+    .current-order-header-third, .current-order-product-content{
+      font-size: 125%;
+    }
   }
     
 }

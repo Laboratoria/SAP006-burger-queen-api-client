@@ -1,7 +1,7 @@
 
 @import '../../styles/Global.scss';
 
-.unauthorized{
+.unauthorized-main{
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -14,10 +14,7 @@
   img {
     height: 40vh;
     width: 40vh;
-  }
-
-  h1 {
-    margin-top: -10%;
+    margin-top: -5%;
   }
 
   h1, h2, h3 {
@@ -31,17 +28,48 @@
   }
 
   h2 {
-    font-size: 210%;
+    margin-top: 2%;
+    font-size: 200%;
     color:$light-brown-label;
   }
-
 }
 
-@media (min-width: 1000px) {
-  .unauthorized{
+/*Landscape IpadMini */
+@media (orientation: 'landscape') {
+  .unauthorized-main{
     h1 {
-      margin-top: 5%;
+      font-size: 750%;
+    }
+  
+    h2 {
+      font-size: 200%;
     }
   }
-
 }
+
+/* Portrait Ipad PRO */
+@media (min-width: 1024px) and (min-height: 1366px){
+  .unauthorized-main{
+    h1 {
+      font-size: 900%;
+    }
+  
+    h2 {
+      font-size: 260%;
+    }
+  }
+}
+
+/*Landscape Ipad PRO */
+@media (orientation: 'landscape') and (min-height: 1024px) {
+  .unauthorized-main{
+    h1 {
+      font-size: 950%;
+    }
+  
+    h2 {
+      font-size: 260%;
+    }
+  }
+}
+
