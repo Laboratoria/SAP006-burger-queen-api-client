@@ -1,5 +1,6 @@
 @import './pages/Login/login.css';
 @import './pages/Register/register.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
     margin: 0;
@@ -8,8 +9,8 @@
   }
   
   :root {
-    --white: #ECF0F1;
-    --ice: #ECF0F1;
+    --white: #ffffff;
+    --ice: #DCDCDC;
     --black: #252525;
     --grey: #c1c1c1;
     --aqua: #2BBCBA;

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="icon" href="http://localhost:3000/favicon.ico" type="icon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <title>Best's Burger</title>
+    
+  <style>@import url(https://fonts.googleapis.com/css2?family=Frijole&display=swap);</style><style>@import url(https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap);</style><style>.logo {
+  position: fixed;
+  justify-content: center;
+  margin-top: -20rem;
+  text-align:right;
+
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 630px;
+  }
+
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 12% auto;
+}
+
+
+h1 {
+    width: 318px;
+    height: 25px;
+    left: 230px;
+    top: 446px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 25px;
+    color: var(--grey);
+    margin-bottom: 30px;
+    text-align:right;
+}
+
+.form-inputs input {
+    width: 400px;
+    left: 463px;
+    top: 325px;
+    border-radius: 30px;
+    background: var(--grey);
+    color: var(--black);
+    font-size: 15px;
+    font-family: Roboto;
+    text-align: center;
+    border: none;
+    width: 22rem;
+    height: 2.900rem;
+    margin-bottom: 20px;
+}
+
+.footer-login{
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    /*line-height: 25px;*/
+    color: var(--grey);
+    margin-top: 60px;
+    text-align:center;
+}
+
+.login-btn {
+    border-radius: 30px;
+    background: var(--aqua);
+    color: var(--grey);
+    font-size: 20px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    border: none;
+    cursor: pointer;
+    width: 22rem;
+    height: 2.900rem;
+}
+
+.form-inputs p {
+    color: var(--pink);
+    font-size: 18px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvcGFnZXMvTG9naW4vbG9naW4uY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUlBO0VBQ0UsZUFBZTtFQUNmLHVCQUF1QjtFQUN2QixrQkFBa0I7RUFDbEIsZ0JBQWdCOztBQUVsQjs7QUFFQTtJQUNJLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLGFBQWE7RUFDZjs7QUFFRjtFQUNFLGFBQWE7RUFDYixXQUFXO0VBQ1gsdUJBQXVCO0VBQ3ZCLGdCQUFnQjtBQUNsQjs7O0FBR0E7SUFDSSxZQUFZO0lBQ1osWUFBWTtJQUNaLFdBQVc7SUFDWCxVQUFVO0lBQ1YseUJBQXlCO0lBQ3pCLGtCQUFrQjtJQUNsQixtQkFBbUI7SUFDbkIsZUFBZTtJQUNmLGlCQUFpQjtJQUNqQixrQkFBa0I7SUFDbEIsbUJBQW1CO0lBQ25CLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixXQUFXO0lBQ1gsVUFBVTtJQUNWLG1CQUFtQjtJQUNuQix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLGVBQWU7SUFDZixtQkFBbUI7SUFDbkIsa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWixZQUFZO0lBQ1osZ0JBQWdCO0lBQ2hCLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6QixrQkFBa0I7SUFDbEIsbUJBQW1CO0lBQ25CLGVBQWU7SUFDZixxQkFBcUI7SUFDckIsa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixpQkFBaUI7QUFDckI7O0FBRUE7SUFDSSxtQkFBbUI7SUFDbkIsdUJBQXVCO0lBQ3ZCLGtCQUFrQjtJQUNsQixlQUFlO0lBQ2YseUJBQXlCO0lBQ3pCLGtCQUFrQjtJQUNsQixZQUFZO0lBQ1osZUFBZTtJQUNmLFlBQVk7SUFDWixnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsZUFBZTtJQUNmLHlCQUF5QjtJQUN6QixrQkFBa0I7QUFDdEIiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0IHVybCgnaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Gcmlqb2xlJmRpc3BsYXk9c3dhcCcpO1xuQGltcG9ydCB1cmwoJ2h0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzMj9mYW1pbHk9Q2FiaW4rU2tldGNoOndnaHRANDAwOzcwMCZkaXNwbGF5PXN3YXAnKTtcblxuXG4ubG9nbyB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIG1hcmdpbi10b3A6IC0yMHJlbTtcbiAgdGV4dC1hbGlnbjpyaWdodDtcblxufVxuXG5tYWluIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgaGVpZ2h0OiA2MzBweDtcbiAgfVxuXG4uY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgd2lkdGg6IDEwMCU7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBtYXJnaW46IDEyJSBhdXRvO1xufVxuXG5cbmgxIHtcbiAgICB3aWR0aDogMzE4cHg7XG4gICAgaGVpZ2h0OiAyNXB4O1xuICAgIGxlZnQ6IDIzMHB4O1xuICAgIHRvcDogNDQ2cHg7XG4gICAgZm9udC1mYW1pbHk6IENhYmluIFNrZXRjaDtcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgICBmb250LXNpemU6IDI1cHg7XG4gICAgbGluZS1oZWlnaHQ6IDI1cHg7XG4gICAgY29sb3I6IHZhcigtLWdyZXkpO1xuICAgIG1hcmdpbi1ib3R0b206IDMwcHg7XG4gICAgdGV4dC1hbGlnbjpyaWdodDtcbn1cblxuLmZvcm0taW5wdXRzIGlucHV0IHtcbiAgICB3aWR0aDogNDAwcHg7XG4gICAgbGVmdDogNDYzcHg7XG4gICAgdG9wOiAzMjVweDtcbiAgICBib3JkZXItcmFkaXVzOiAzMHB4O1xuICAgIGJhY2tncm91bmQ6IHZhcigtLWdyZXkpO1xuICAgIGNvbG9yOiB2YXIoLS1ibGFjayk7XG4gICAgZm9udC1zaXplOiAxNXB4O1xuICAgIGZvbnQtZmFtaWx5OiBSb2JvdG87XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGJvcmRlcjogbm9uZTtcbiAgICB3aWR0aDogMjJyZW07XG4gICAgaGVpZ2h0OiAyLjkwMHJlbTtcbiAgICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuXG4uZm9vdGVyLWxvZ2lue1xuICAgIGZvbnQtZmFtaWx5OiBDYWJpbiBTa2V0Y2g7XG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gICAgZm9udC1zaXplOiAxOHB4O1xuICAgIC8qbGluZS1oZWlnaHQ6IDI1cHg7Ki9cbiAgICBjb2xvcjogdmFyKC0tZ3JleSk7XG4gICAgbWFyZ2luLXRvcDogNjBweDtcbiAgICB0ZXh0LWFsaWduOmNlbnRlcjtcbn1cblxuLmxvZ2luLWJ0biB7XG4gICAgYm9yZGVyLXJhZGl1czogMzBweDtcbiAgICBiYWNrZ3JvdW5kOiB2YXIoLS1hcXVhKTtcbiAgICBjb2xvcjogdmFyKC0tZ3JleSk7XG4gICAgZm9udC1zaXplOiAyMHB4O1xuICAgIGZvbnQtZmFtaWx5OiBDYWJpbiBTa2V0Y2g7XG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgIGJvcmRlcjogbm9uZTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgd2lkdGg6IDIycmVtO1xuICAgIGhlaWdodDogMi45MDByZW07XG59XG5cbi5mb3JtLWlucHV0cyBwIHtcbiAgICBjb2xvcjogdmFyKC0tcGluayk7XG4gICAgZm9udC1zaXplOiAxOHB4O1xuICAgIGZvbnQtZmFtaWx5OiBDYWJpbiBTa2V0Y2g7XG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>@import url(https://fonts.googleapis.com/css2?family=Frijole&display=swap);</style><style>@import url(https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap);</style><style>/*.container {
+    display: contents;
+}*/
+
+
+h2{
+    width: 305px;
+    height: 142px;
+    left: 547px;
+    top: 50px;
+    position: absolute;
+    width: 318px;
+    height: 25px;
+    font-family: Cabin Sketch;
+    /*font-style: normal;*/
+    font-weight: normal;
+    font-size: 100px;
+    line-height: 80px;
+    color: var(--ice);
+    
+}
+
+h3{
+    width: 500px;
+    height: 25px;
+    left: 230px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    /*line-height: 25px;*/
+    color: var(--ice);
+    margin-bottom: 40px;
+    top: 100px;
+    text-align: left;
+}
+
+.form-inputs  {
+    position: absolute;
+    width: 400px;
+    left: 463px;
+    top: 325px;
+    border-radius: 30px;
+}
+
+h4{
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    /*line-height: 25px;*/
+    color: var(--ice);
+    margin-bottom: 40px;
+    top: 100px;
+    text-align: left;
+
+}
+
+.select {
+    width: 318px;
+    height: 25px;
+    left: 230px;
+    top: 446px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: var(--grey);
+
+}
+
+.footer-register{
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    /*line-height: 25px;*/
+    color: var(--ice);
+    margin-top: 20px;
+    text-align:center;
+}
+
+.link{
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: var(--aqua);
+
+}
+
+.register-btn {
+    border-radius: 30px;
+    background: var(--aqua);
+    color: var(--ice);
+    font-size: 20px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    border: none;
+    cursor: pointer;
+    width: 22rem;
+    height: 2.900rem;
+}
+
+.form-inputs p {
+    color: var(--pink);
+    font-size: 15px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+}
+
+/*@media (max-width: 870px) {
+    img {
+      width: 40%;
+    }
+    main {
+      height: 403px;
+    }
+  }
+  
+  @media (max-width: 587px) {
+    main {
+      flex-direction: column;
+    }
+    img {
+      width: 45%;
+    }
+  }
+  
+  @media (max-width: 437px) {
+    img {
+      width: 60%;
+      margin-top: 25%;
+    }
+  }*/
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvcGFnZXMvUmVnaXN0ZXIvcmVnaXN0ZXIuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUtBOztFQUVFOzs7QUFHRjtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsV0FBVztJQUNYLFNBQVM7SUFDVCxrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLFlBQVk7SUFDWix5QkFBeUI7SUFDekIsc0JBQXNCO0lBQ3RCLG1CQUFtQjtJQUNuQixnQkFBZ0I7SUFDaEIsaUJBQWlCO0lBQ2pCLGlCQUFpQjs7QUFFckI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osWUFBWTtJQUNaLFdBQVc7SUFDWCx5QkFBeUI7SUFDekIsa0JBQWtCO0lBQ2xCLG1CQUFtQjtJQUNuQixlQUFlO0lBQ2YscUJBQXFCO0lBQ3JCLGlCQUFpQjtJQUNqQixtQkFBbUI7SUFDbkIsVUFBVTtJQUNWLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixZQUFZO0lBQ1osV0FBVztJQUNYLFVBQVU7SUFDVixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSx5QkFBeUI7SUFDekIsa0JBQWtCO0lBQ2xCLG1CQUFtQjtJQUNuQixlQUFlO0lBQ2YscUJBQXFCO0lBQ3JCLGlCQUFpQjtJQUNqQixtQkFBbUI7SUFDbkIsVUFBVTtJQUNWLGdCQUFnQjs7QUFFcEI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osWUFBWTtJQUNaLFdBQVc7SUFDWCxVQUFVO0lBQ1YseUJBQXlCO0lBQ3pCLGtCQUFrQjtJQUNsQixtQkFBbUI7SUFDbkIsZUFBZTtJQUNmLGlCQUFpQjtJQUNqQixrQkFBa0I7O0FBRXRCOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLGtCQUFrQjtJQUNsQixtQkFBbUI7SUFDbkIsZUFBZTtJQUNmLHFCQUFxQjtJQUNyQixpQkFBaUI7SUFDakIsZ0JBQWdCO0lBQ2hCLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6QixrQkFBa0I7SUFDbEIsbUJBQW1CO0lBQ25CLGVBQWU7SUFDZixrQkFBa0I7O0FBRXRCOztBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLHVCQUF1QjtJQUN2QixpQkFBaUI7SUFDakIsZUFBZTtJQUNmLHlCQUF5QjtJQUN6QixrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLGVBQWU7SUFDZixZQUFZO0lBQ1osZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGVBQWU7SUFDZix5QkFBeUI7SUFDekIsa0JBQWtCO0FBQ3RCOztBQUVBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQXVCSSIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgdXJsKCdodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PUZyaWpvbGUmZGlzcGxheT1zd2FwJyk7XG5AaW1wb3J0IHVybCgnaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1DYWJpbitTa2V0Y2g6d2dodEA0MDA7NzAwJmRpc3BsYXk9c3dhcCcpO1xuXG5cblxuLyouY29udGFpbmVyIHtcbiAgICBkaXNwbGF5OiBjb250ZW50cztcbn0qL1xuXG5cbmgye1xuICAgIHdpZHRoOiAzMDVweDtcbiAgICBoZWlnaHQ6IDE0MnB4O1xuICAgIGxlZnQ6IDU0N3B4O1xuICAgIHRvcDogNTBweDtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgd2lkdGg6IDMxOHB4O1xuICAgIGhlaWdodDogMjVweDtcbiAgICBmb250LWZhbWlseTogQ2FiaW4gU2tldGNoO1xuICAgIC8qZm9udC1zdHlsZTogbm9ybWFsOyovXG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgICBmb250LXNpemU6IDEwMHB4O1xuICAgIGxpbmUtaGVpZ2h0OiA4MHB4O1xuICAgIGNvbG9yOiB2YXIoLS1pY2UpO1xuICAgIFxufVxuXG5oM3tcbiAgICB3aWR0aDogNTAwcHg7XG4gICAgaGVpZ2h0OiAyNXB4O1xuICAgIGxlZnQ6IDIzMHB4O1xuICAgIGZvbnQtZmFtaWx5OiBDYWJpbiBTa2V0Y2g7XG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gICAgZm9udC1zaXplOiAyNXB4O1xuICAgIC8qbGluZS1oZWlnaHQ6IDI1cHg7Ki9cbiAgICBjb2xvcjogdmFyKC0taWNlKTtcbiAgICBtYXJnaW4tYm90dG9tOiA0MHB4O1xuICAgIHRvcDogMTAwcHg7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbn1cblxuLmZvcm0taW5wdXRzICB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHdpZHRoOiA0MDBweDtcbiAgICBsZWZ0OiA0NjNweDtcbiAgICB0b3A6IDMyNXB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDMwcHg7XG59XG5cbmg0e1xuICAgIGZvbnQtZmFtaWx5OiBDYWJpbiBTa2V0Y2g7XG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gICAgZm9udC1zaXplOiAxOHB4O1xuICAgIC8qbGluZS1oZWlnaHQ6IDI1cHg7Ki9cbiAgICBjb2xvcjogdmFyKC0taWNlKTtcbiAgICBtYXJnaW4tYm90dG9tOiA0MHB4O1xuICAgIHRvcDogMTAwcHg7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcblxufVxuXG4uc2VsZWN0IHtcbiAgICB3aWR0aDogMzE4cHg7XG4gICAgaGVpZ2h0OiAyNXB4O1xuICAgIGxlZnQ6IDIzMHB4O1xuICAgIHRvcDogNDQ2cHg7XG4gICAgZm9udC1mYW1pbHk6IENhYmluIFNrZXRjaDtcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgICBmb250LXNpemU6IDE4cHg7XG4gICAgbGluZS1oZWlnaHQ6IDI1cHg7XG4gICAgY29sb3I6IHZhcigtLWdyZXkpO1xuXG59XG5cbi5mb290ZXItcmVnaXN0ZXJ7XG4gICAgZm9udC1mYW1pbHk6IENhYmluIFNrZXRjaDtcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgICBmb250LXNpemU6IDE4cHg7XG4gICAgLypsaW5lLWhlaWdodDogMjVweDsqL1xuICAgIGNvbG9yOiB2YXIoLS1pY2UpO1xuICAgIG1hcmdpbi10b3A6IDIwcHg7XG4gICAgdGV4dC1hbGlnbjpjZW50ZXI7XG59XG5cbi5saW5re1xuICAgIGZvbnQtZmFtaWx5OiBDYWJpbiBTa2V0Y2g7XG4gICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gICAgZm9udC1zaXplOiAxOHB4O1xuICAgIGNvbG9yOiB2YXIoLS1hcXVhKTtcblxufVxuXG4ucmVnaXN0ZXItYnRuIHtcbiAgICBib3JkZXItcmFkaXVzOiAzMHB4O1xuICAgIGJhY2tncm91bmQ6IHZhcigtLWFxdWEpO1xuICAgIGNvbG9yOiB2YXIoLS1pY2UpO1xuICAgIGZvbnQtc2l6ZTogMjBweDtcbiAgICBmb250LWZhbWlseTogQ2FiaW4gU2tldGNoO1xuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgICBib3JkZXI6IG5vbmU7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHdpZHRoOiAyMnJlbTtcbiAgICBoZWlnaHQ6IDIuOTAwcmVtO1xufVxuXG4uZm9ybS1pbnB1dHMgcCB7XG4gICAgY29sb3I6IHZhcigtLXBpbmspO1xuICAgIGZvbnQtc2l6ZTogMTVweDtcbiAgICBmb250LWZhbWlseTogQ2FiaW4gU2tldGNoO1xuICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbn1cblxuLypAbWVkaWEgKG1heC13aWR0aDogODcwcHgpIHtcbiAgICBpbWcge1xuICAgICAgd2lkdGg6IDQwJTtcbiAgICB9XG4gICAgbWFpbiB7XG4gICAgICBoZWlnaHQ6IDQwM3B4O1xuICAgIH1cbiAgfVxuICBcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDU4N3B4KSB7XG4gICAgbWFpbiB7XG4gICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIH1cbiAgICBpbWcge1xuICAgICAgd2lkdGg6IDQ1JTtcbiAgICB9XG4gIH1cbiAgXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA0MzdweCkge1xuICAgIGltZyB7XG4gICAgICB3aWR0aDogNjAlO1xuICAgICAgbWFyZ2luLXRvcDogMjUlO1xuICAgIH1cbiAgfSovXG4iXSwic291cmNlUm9vdCI6IiJ9 */</style><style>@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);</style><style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --white: #ECF0F1;
+    --ice: #DCDCDC;
+    --black: #252525;
+    --grey: #c1c1c1;
+    --aqua: #2BBCBA;
+    --green: #10A9A8;
+    --pink: #A31163;
+    --yellow: #DFB202;
+    --orange: #D65500;
+    --blue:#1158A9;
+    --bege: #A5A066;
+  }
+
+  body {
+    background-image: url(/static/media/texture.2611c084.png);
+  }
+   
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvaW5kZXguY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUlBO0lBQ0ksU0FBUztJQUNULFVBQVU7SUFDVixzQkFBc0I7RUFDeEI7O0VBRUE7SUFDRSxnQkFBZ0I7SUFDaEIsY0FBYztJQUNkLGdCQUFnQjtJQUNoQixlQUFlO0lBQ2YsZUFBZTtJQUNmLGdCQUFnQjtJQUNoQixlQUFlO0lBQ2YsaUJBQWlCO0lBQ2pCLGlCQUFpQjtJQUNqQixjQUFjO0lBQ2QsZUFBZTtFQUNqQjs7RUFFQTtJQUNFLHlEQUFvRDtFQUN0RCIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgJy4vcGFnZXMvTG9naW4vbG9naW4uY3NzJztcbkBpbXBvcnQgJy4vcGFnZXMvUmVnaXN0ZXIvcmVnaXN0ZXIuY3NzJztcbkBpbXBvcnQgdXJsKCdodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PVJvYm90byZkaXNwbGF5PXN3YXAnKTtcblxuKiB7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgfVxuICBcbiAgOnJvb3Qge1xuICAgIC0td2hpdGU6ICNFQ0YwRjE7XG4gICAgLS1pY2U6ICNEQ0RDREM7XG4gICAgLS1ibGFjazogIzI1MjUyNTtcbiAgICAtLWdyZXk6ICNjMWMxYzE7XG4gICAgLS1hcXVhOiAjMkJCQ0JBO1xuICAgIC0tZ3JlZW46ICMxMEE5QTg7XG4gICAgLS1waW5rOiAjQTMxMTYzO1xuICAgIC0teWVsbG93OiAjREZCMjAyO1xuICAgIC0tb3JhbmdlOiAjRDY1NTAwO1xuICAgIC0tYmx1ZTojMTE1OEE5O1xuICAgIC0tYmVnZTogI0E1QTA2NjtcbiAgfVxuXG4gIGJvZHkge1xuICAgIGJhY2tncm91bmQtaW1hZ2U6IHVybCgnL3NyYy9hc3NldHMvaW1nL3RleHR1cmUucG5nJyk7XG4gIH1cbiAgICJdLCJzb3VyY2VSb290IjoiIn0= */</style><script charset="utf-8" src="Best's%20Burger_arquivos/main_003.js"></script><script charset="utf-8" src="Best's%20Burger_arquivos/main_002.js"></script><script charset="utf-8" src="Best's%20Burger_arquivos/main.js"></script><script charset="utf-8" src="Best's%20Burger_arquivos/main_004.js"></script><script charset="utf-8" src="/main.0ccb87f57cbc3f678736.hot-update.js"></script></head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><main><div class="container"><form class="form"><h2> BEST'S BURGER</h2><div class="form-inputs"><h3>Faça seu cadastro para ter acesso ao serviço</h3><input type="text" name="username" placeholder="Nome Completo"><input type="text" name="email" placeholder="Email"><input type="password" name="password" placeholder="Crie sua senha" value=""><input type="password" name="password2" placeholder="Confirme sua senha" value=""><div class="select"></div><h4 class="Time">Selecione sua área de trabalho:</h4><select name="equipe"><option value="select" selected="selected">Setor</option><option value="salão">Salão</option><option value="cozinha">Cozinha</option></select><button type="submit" class="register-btn" value="Cadastrar">Cadastrar</button><div class="footer-register">Já tem uma conta cadastrada?<a class="link" href="http://localhost:3000/Login"> Entre aqui</a></div></div></form></div></main></div>
+  <script src="Best's%20Burger_arquivos/bundle.js"></script><script src="Best's%20Burger_arquivos/vendorsmain.js"></script><script src="Best's%20Burger_arquivos/main_005.js"></script>
+
+<iframe style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; border: medium none; z-index: 2147483647;"></iframe></body></html>

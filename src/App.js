@@ -19,7 +19,6 @@ function App() {
         <PrivateRoute path="/hall" component={Hall} />
         <PrivateRoute path="/kitchen" component={Kitchen} />
         <Route component={(NotFound)} />
-        <PrivateRoute path="/app" component={() => <h1>Você está logado?</h1>} />
       </Switch>
     </BrowserRouter>
   );

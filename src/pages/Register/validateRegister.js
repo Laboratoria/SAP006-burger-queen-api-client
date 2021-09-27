@@ -1,9 +1,9 @@
-export default function validateRegister(values) {
+export function validateRegister(values) {
     let errors = {}
 
     if (!values.username.trim()) {
         errors.username = 'Nome completo obrigatório';
-    } else if (values.username.length < 6) {
+    } else if (values.username.length < 10) {
         errors.username = 'Necessário nome completo';
     }
     // else if (!/^[A-Za-z]+/.test(values.name.trim())) {
@@ -26,5 +26,14 @@ export default function validateRegister(values) {
     } else if (values.password2 !== values.password) {
         errors.password2 = 'As senhas não coincidem';
     }
+
+    /*if(values.role === null){
+        errors.role = "Selecione sua área de trabalho"
+    }*/
+
+    if(values.role !== "salão" && values.role !== "cozinha") {
+        errors.role = "Selecione sua área de trabalho"
+      }
+      
     return errors;
 }

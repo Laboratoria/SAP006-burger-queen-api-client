@@ -1,3 +1,149 @@
 @import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
 
 
+.burgerLeft {
+    position: fixed;
+    display: flex;
+    width: 400px;
+    margin-bottom: 300px;
+    content: "";
+    position: absolute;
+    right: 80%;
+    transform: translate(-40%, 30%);
+    z-index: 100;
+    opacity:0.7;
+}
+
+.burgerRight {
+    position: fixed;
+    display: flex;
+    width: 400px;
+    content: "";
+    left: 60%;
+    transform: translate(130%, -90%);
+    position: fixed;
+    z-index: 100;
+    opacity:0.7;
+}
+
+.burgerRight::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(0%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+}
+
+
+.container-register {
+   display: flex;
+   width: 22rem;
+   height: 2.900rem;
+   margin-bottom: 20px;
+}
+
+
+h2{
+    top: 90px;
+    position: absolute;
+    width: 318px;
+    height: 25px;
+    font-family: Cabin Sketch;
+    font-size: 100px;
+    line-height: 80px;
+    color: var(--white);
+    justify-content: center;
+    text-align:right;
+    opacity:0.7;
+    
+}
+
+h3{
+    width: 500px;
+    height: 25px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: var(--ice);
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.form-register-inputs input  {
+    border-radius: 30px;
+    background: var(--grey);
+    color: var(--black);
+    font-size: 15px;
+    font-family: Roboto;
+    text-align: center;
+    border: none;
+    width: 22rem;
+    height: 2.900rem;
+    margin-bottom: 20px;
+}
+
+h4{
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: var(--ice);
+    text-align: left;
+}
+
+.form-select {
+    border-radius: 30px;
+    width: 22rem;
+    height: 2.900rem;
+    background: var(--grey);
+    color: var(--black);
+    font-size: 15px;
+    font-family: Roboto;
+    margin-bottom: 20px;
+    text-align: center;
+    border: none;
+}
+
+.footer-register{
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: var(--ice);
+    margin-top: 20px;
+}
+
+.link{
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: var(--aqua);
+
+}
+
+.register-btn {
+    border-radius: 30px;
+    background: var(--aqua);
+    color: var(--ice);
+    font-size: 20px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    border: none;
+    cursor: pointer;
+    width: 22rem;
+    height: 2.900rem;
+}
+
+.form-register-inputs p {
+    color: var(--pink);
+    font-size: 15px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    margin-bottom: 10px;
+}
