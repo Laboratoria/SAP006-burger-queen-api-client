@@ -1,6 +1,7 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '../Button/Button'
 import { CurrentOrder } from '../CurrentOrder/Current.Order';
+
 
 import './Modal.scss';
 
@@ -64,15 +65,22 @@ export function AuthModal ({Role, ModalContent, ButtonChildren, ButtonOnClick, B
 }
 
 export const TableOrdersModal = ({orders, FirstButtonClick, SecondButtonClick}) => {
-  const orderTotals = [];
-  orders.length > 0 && 
-    orders.map((order) => orderTotals.push(order.bill));
-    const TableTotalBill = orderTotals.reduce((acc, curr) => acc + curr, 0);
+  const [tableTotalBill, setTableTotalBill] = useState();
+
+
+  useEffect(() => {
+    const orderTotals = [];
+    orders.length > 0 && 
+      orders.map((order) => orderTotals.push(order.bill));
+      setTableTotalBill(orderTotals.reduce((acc, curr) => acc + curr, 0));
+  }, [tableTotalBill, orders]);
+
 
   return (
     <section className='modal-background'>
       <div className='modal-container modal-container-room-table-orders'>
-        {orders.length > 0 && orders.sort((a,b) => a.createdAt - b.createdAt).map((order) => 
+        {orders.length > 0 && 
+          orders.sort((a,b) => a.createdAt - b.createdAt).map((order) => 
           <CurrentOrder
             Location='room-tables'
             key={order.createdAt}
@@ -80,7 +88,7 @@ export const TableOrdersModal = ({orders, FirstButtonClick, SecondButtonClick}) 
             ButtonId={order.id}
           />
         )}
-        <p className='room-orders-modal-table-bill-p'>Total da Mesa R$: &nbsp;{TableTotalBill}</p>
+        <p className='room-orders-modal-table-bill-p'>Total da Mesa R$: &nbsp;{tableTotalBill}</p>
         <div className='room-orders-modal-button-div'>
           <Button children='OK' ButtonClass='modal-button' ButtonOnClick={FirstButtonClick}/> 
           <Button children='Limpar mesa'ButtonClass='modal-button'ButtonOnClick={SecondButtonClick}/> 

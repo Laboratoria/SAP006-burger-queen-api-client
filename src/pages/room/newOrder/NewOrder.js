@@ -1,12 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-sequences */
-import {useState} from 'react';
+import { useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Button } from '../../../components/Button/Button';
 import { StandardModal, StandardModalWithTwoOptions } from '../../../components/Modal/Modal';
 
-import { sendOrderToKitchen } from '../../../services/orders';
+import { sendOrderToKitchen, getAllOrders  } from '../../../services/orders';
 
 import './NewOrder.scss';
 
@@ -23,6 +24,9 @@ export const NewOrder = () => {
   const [emptyTableModal, setEmptyTableModal] = useState(false);
   const [emptyCustomerModal, setEmptyCustomerModal] = useState(false);
   const [emptyOrderModal, setEmptyOrderModal] = useState(false);
+  const [occupiedTables, setOccupiedTables] = useState([]);
+  const [tableIsOccupiedModal, setTableIsOccupiedModal] = useState(false);
+  const [userNotAuthenticatedErrorModal, setUserNotAuthenticatedErrorModal] = useState(false);
  
   const token = localStorage.getItem('currentEmployeeToken');
   const menu = JSON.parse(localStorage.getItem('menu'));
@@ -54,18 +58,45 @@ export const NewOrder = () => {
   const orderResume = orderedProductsData.map(product => ({ id: product.id, qtd:product.qtd.toString()}));
   const orderInformation = { token, customer, table, orderResume};
 
+  const getCurrentOrders = () => {
+    getAllOrders(token)
+    .then(responseJson => {
+      switch (responseJson.code) {
+        case 401:
+          return setUserNotAuthenticatedErrorModal(true);
+        default:
+          const orders = responseJson;
+          const orderTables = []
+          orders.map((order) => orderTables.push(order.table.toString()));
+          setOccupiedTables(orderTables.filter((v, i, a) => a.indexOf(v) === i))
+      } 
+    })   
+  }
+
+  useEffect(() => {
+    getCurrentOrders();
+  }, []);
+  
   const checkCustomerData = () => {
     if(customer.length <2){
       setEmptyCustomerModal(true);
       return 'Error';
     }
-    else if(table.length <2 || table.length >2){
+    else if(table.length > 2){
+      setEmptyTableModal(true) ;
+      return 'Error';
+    }
+    else if(table[0] === "0"){
       setEmptyTableModal(true) ;
       return 'Error';
     }
     else if(orderResume.length <1){
       setEmptyOrderModal(true) ;
       return "Error";
+    }
+    else if(occupiedTables.includes(table)) {
+      setTableIsOccupiedModal(true)
+      return "Error"
     }
   }
 
@@ -83,6 +114,17 @@ export const NewOrder = () => {
     }
   }
 
+  const sendOrderWithoutCheck = () =>{
+    sendOrderToKitchen({orderInformation})
+    .then((responseJson) => {
+      if(responseJson.code !== 401) {
+        setSucessModal(true);
+      } else {
+        throw new Error (responseJson.message);
+      }
+     }).catch(() => setErrorModal(true));
+  }
+  
   return (
     <div>
       <main className='new-order-main'>
@@ -207,7 +249,7 @@ export const NewOrder = () => {
         {emptyTableModal && 
           <StandardModal 
             ButtonChildren='OK'
-            ModalContent='Por favor, insira o número da mesa de acordo com o exemplo a seguir: "01", "02", "03" ... "10", "11" e "12".'
+            ModalContent='Por favor, insira o número da mesa SEM o 0 (zero) à esquerda.".'
             ButtonOnClick = {() => setEmptyTableModal(false)}
           />
         }
@@ -233,11 +275,31 @@ export const NewOrder = () => {
         }
       </section>
       <section>
+        {tableIsOccupiedModal &&
+          <StandardModalWithTwoOptions
+            ButtonChildren='Escolha outra mesa'
+            ModalContent='Atenção! Mesa ocupada!'
+            ButtonOnClick = {() => setTableIsOccupiedModal(false)}
+            ButtonSecondAuthModalOptionChildren = 'Inserir novos pedidos nesta mesa'
+            ButtOnClickSecondAuthModalOption = {() => [setTableIsOccupiedModal(false), sendOrderWithoutCheck()]}
+          />
+        }
+      </section>
+      <section>
         {errorModal &&
           <StandardModal 
             ButtonChildren='OK'
             ModalContent='Algo deu errado. Verifique as informações registradas.'
             ButtonOnClick = {() => setErrorModal(false)}
+          />
+        }
+      </section>
+      <section>
+        {userNotAuthenticatedErrorModal &&
+          <StandardModal 
+            ButtonChildren='OK'
+            ModalContent='Usuário não autenticado.'
+            ButtonOnClick = {() => setUserNotAuthenticatedErrorModal(false)}
           />
         }
       </section>

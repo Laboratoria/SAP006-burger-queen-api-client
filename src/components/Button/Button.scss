@@ -116,8 +116,25 @@
   background-image: url('./../../assets/images-buttons/navbar-ready-orders.png');
 }
 
+.navbar-button-home-gray {
+  margin-top: -12%;
+  background-image: url('./../../assets/images-buttons/navbar-gray-home.png');
+}
+
 .navbar-button-delivered-orders {
   background-image: url('./../../assets/images-buttons/navbar-delivered-orders.png');
+}
+
+.navbar-button-ready-orders-gray {
+  background-image: url('./../../assets/images-buttons/navbar-gray-ready.png');
+}
+
+.navbar-button-delivered-orders-gray {
+  background-image: url('./../../assets/images-buttons/navbar-gray-delivered.png');
+}
+
+.navbar-button-being-prepared-orders-gray {
+  background-image: url('./../../assets/images-buttons/navbar-gray-being-prepared.png');
 }
 
 .room-div {

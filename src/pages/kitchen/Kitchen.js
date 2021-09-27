@@ -80,7 +80,7 @@ export const Kitchen = () => {
       <Button ButtonClass='kitchen-get-orders' children='Carregar Pedidos' ButtonOnClick={()=> getCurrentOrders()}/>
       <section className='kichen-current-orders-section'>
         {currentOrders.length > 0 &&   
-          currentOrders.map((order) => 
+          currentOrders.sort((a,b) => a.createdAt - b.createdAt).map((order) => 
             <CurrentOrder
               key={order.id}
               order={order}

@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-     
+
 import React from 'react';
 import {useState, useEffect} from 'react';
 
@@ -37,7 +36,7 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
   useEffect(() => {
     getUserById(token, order.user_id)
     .then((reponseJson) => setWaitress(reponseJson.name))
-  }, []);
+  }, [token, order.user_id]);
 
   return (
     <div className= {order.status === 'Em Preparo' || order.status === 'pending'? 
@@ -87,7 +86,7 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
         <div className='current-order-all-products-column current-order-product-column-quantity'>
           <p className='current-order-header-third'>Qtd.</p>
           {order.Products.map((product) => 
-            <div className='current-order-product-content' key={product.qtd + product.id}>
+            <div className='current-order-product-content' key={product.qtd + product.id.toString()}>
               <span>{product.qtd}</span>
             </div>
           )}
@@ -95,7 +94,7 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
         <div className='current-order-all-products-column' >
           <p className='current-order-header-third'>Produto</p>
           {order.Products.map((product) => 
-            <div className='current-order-product-content' key={product.name + product.id}>
+            <div className='current-order-product-content' key={product.name + product.id.toString()}>
               <span>{product.name}</span>
             </div>
           )}
@@ -103,7 +102,7 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
         <div className='current-order-all-products-column current-order-product-column-flavor'>
           <p className='current-order-header-third'>Sabor</p>
           {order.Products.map((product) => 
-            <div className='current-order-product-content' key={product.flavor + product.id}>
+            <div className='current-order-product-content' key={product.flavor + product.id.toString()}>
               {product.flavor === null ? <span>&nbsp;-&nbsp;</span> : <span>{product.flavor}</span>}
             </div>
           )}
@@ -111,7 +110,7 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
         <div className='current-order-all-products-column current-order-product-column-additional'>
           <p className='current-order-header-third'>Adc.</p>
           {order.Products.map((product) => 
-            <div className='current-order-product-content' key={product.complement + product.id}>
+            <div className='current-order-product-content' key={product.complement + product.id.toString()}>
               {product.complement === null ? <span>&nbsp;-&nbsp;</span> : <span>{product.complement}</span>}
             </div>
           )}

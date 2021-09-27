@@ -93,7 +93,7 @@ export const OrdersReady = () => {
         <Button Role='kitchen-sign-out' ButtonOnClick={()=>handleLogOut()}/>
         <section className='current-orders-section'>
           {Object.keys(currentOrders).length > 0 &&   
-            currentOrders.map((order) => 
+            currentOrders.sort((a,b) => a.createdAt - b.createdAt).map((order) => 
               <CurrentOrder
                 key={order.id}
                 order={order}

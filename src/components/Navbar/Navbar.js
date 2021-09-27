@@ -32,11 +32,11 @@ export function NavbarRoom () {
             <li> <Button ButtonClass='navbar-button navbar-button-menu' ButtonOnClick = {() => history.push('/menu')}/> </li> :
             <li> <Button ButtonClass='navbar-button navbar-button-home' ButtonOnClick = {  () => history.push('/room')}/> </li> 
             :  
-            <li> <Button ButtonClass='navbar-button navbar-button-home' ButtonOnClick = {  () => history.push('/kitchen')}/> </li>
+            <li> <Button ButtonClass={location === '/kitchen' ? 'navbar-button navbar-button-home-gray' : 'navbar-button navbar-button-home'} ButtonOnClick = {  () => history.push('/kitchen')}/> </li>
           }
-          <li> <Button ButtonClass='navbar-button navbar-button-being-prepared-orders' ButtonOnClick = {() => history.push('/orders/being-prepared')}/> </li>
-          <li> <Button ButtonClass='navbar-button navbar-button-ready-orders' ButtonOnClick = {() => history.push('/orders/ready')} /> </li>
-          <li> <Button ButtonClass='navbar-button navbar-button-delivered-orders' ButtonOnClick = {() => history.push('/orders/delivered')}/> </li>
+          <li> <Button ButtonClass={location === '/orders/being-prepared' ? 'navbar-button navbar-button-being-prepared-orders-gray' : 'navbar-button navbar-button-being-prepared-orders' }ButtonOnClick = {() => history.push('/orders/being-prepared')}/> </li>
+          <li> <Button ButtonClass={location ==='/orders/ready' ? 'navbar-button navbar-button-ready-orders-gray' : 'navbar-button navbar-button-ready-orders'} ButtonOnClick = {() => history.push('/orders/ready')} /> </li>
+          <li> <Button ButtonClass={location === '/orders/delivered' ? 'navbar-button navbar-button-delivered-orders-gray' : 'navbar-button navbar-button-delivered-orders'} ButtonOnClick = {() => history.push('/orders/delivered')}/> </li>
         </ul> 
       </nav> 
     </div>

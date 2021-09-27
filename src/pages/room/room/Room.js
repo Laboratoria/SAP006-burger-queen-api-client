@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { getAllProducts } from '../../../services/products';
-import { getAllOrders } from '../../../services/orders';
+import { getAllOrders, deleteOrder } from '../../../services/orders';
 
 import { titleCorrespondance } from '../../../data/titleCorrespondance';
 
@@ -28,6 +28,11 @@ export const Room = () => {
   const [clearTableModal, setClearTableModal] = useState(false);
   const [targetTableId, setTargetTableId] = useState('');
   const [targetTableOrders, setTargetTableOrders] = useState([]);
+  const [orderBelongsAnotherRestaurantErrorModal, setOrderBelongsAnotherRestaurantErrorModal] = useState(false);
+  const [orderNotfoundErrorModal, setOrderNotfoundErrorModal] = useState('');
+  const [defaultErrorModal, setDefaultErrorModal] = useState(false);
+  const [tableCleanedModal, setTableCleanedModal] = useState(false);
+
   const token = localStorage.getItem('currentEmployeeToken');
   const tables = [
     {'table':1, 'tableName':'table-01', 'orders':[]},
@@ -72,6 +77,31 @@ export const Room = () => {
   useEffect(() => {
     setTargetTableOrders(currentOrders.filter((order) => order.table.toString() === targetTableId))
   }, [targetTableId, currentOrders]);
+
+ 
+  const getErrorCase = (data) => {
+    switch (data) {
+      case 401:
+        setUserNotAuthenticatedErrorModal(true);
+        break;
+      case 403: 
+        setOrderBelongsAnotherRestaurantErrorModal(true);
+        break;
+      case 404:
+        setOrderNotfoundErrorModal(true);
+        break;
+      default:
+        setDefaultErrorModal(true);
+    }
+  }
+
+  const deleteTargetOrder = (orderToBeDeleted) => {
+    deleteOrder(orderToBeDeleted, token)
+    .then(responseJson => {
+      getErrorCase(responseJson.code);
+    })
+  }
+
 
   return (
     <div className='room-div'>
@@ -139,7 +169,52 @@ export const Room = () => {
             ButtonChildren='Cancelar'
             ButtonSecondAuthModalOptionChildren='Excluir'
             ButtonOnClick={() => setClearTableModal(false)}
+            ButtOnClickSecondAuthModalOption = {() =>  
+              {
+                const orderIds = [];
+                targetTableOrders.map((order) => orderIds.push(order.id))
+                orderIds.map((order) => deleteTargetOrder(order)) 
+                setTableCleanedModal(true)
+                setClearTableModal(false)
+              }
+            }
         />
+        }
+      </section>
+      <section>
+        {tableCleanedModal && 
+          <StandardModal 
+            ModalContent = 'Mesa limpa com sucesso!'
+            ButtonChildren = 'Voltar para o salão'
+            ButtonOnClick = {() => [setTableCleanedModal(false), setFullTableModal(false), window.location.reload()]}
+          />
+        }
+      </section>
+      <section>
+        {defaultErrorModal && 
+          <StandardModal
+            ModalContent='Desculpe-nos, mas um erro ocorreu.'
+            ButtonChildren='OK'
+            ButtonOnClick={() => setDefaultErrorModal(false)}
+          />
+        }
+      </section>
+      <section>
+        {orderBelongsAnotherRestaurantErrorModal && 
+          <StandardModal
+            ModalContent='Desculpe-nos, mas este pedido não pertence ao BERG.'
+            ButtonChildren='OK'
+            ButtonOnClick={() => setOrderBelongsAnotherRestaurantErrorModal(false)}
+          />
+        }
+      </section>
+      <section>
+        {orderNotfoundErrorModal && 
+          <StandardModal
+            ModalContent='Desculpe-nos, mas este pedido não foi encontrado.'
+            ButtonChildren='OK'
+            ButtonOnClick={() => setOrderNotfoundErrorModal(false)}
+          />
         }
       </section>
     </div>
