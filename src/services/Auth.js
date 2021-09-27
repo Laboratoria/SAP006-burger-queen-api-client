@@ -14,11 +14,6 @@ export const LoginWithEmail = (users) => {
             "password": users.password,
         }),
     })
-        // .then((response) => response.json())
-        // .then((json) => {
-        //     const { token } = json;
-        //     return token
-        // })
 };
 
 export const RegisterUser = (users) => {

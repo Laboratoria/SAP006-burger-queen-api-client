@@ -30,9 +30,6 @@ function Tables () {
                 <NavBar />
                 <h3 className="infosUser"> Atendente: {localStorage.getItem("userName")} </h3>
             </div> 
-            <div>
-
-            </div>
                 <div className="container-tables">
                     <div>
                         <label htmlFor="t1"><img src={balcao} alt="counter" className="counter"/>1</label>

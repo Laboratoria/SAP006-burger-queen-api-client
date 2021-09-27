@@ -46,9 +46,9 @@ export default function Registration() {
                 localStorage.setItem('userName', token)
                 const role = returnJson.role
                 if(role === 'salon') {
-                    history.push('/mesas')
+                    history.push('/')
                 } else {
-                    history.push('/preparacao')
+                    history.push('/')
                 }             
             } 
         } catch (error) {
