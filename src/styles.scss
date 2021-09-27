@@ -5,11 +5,6 @@
   font-family: 'Pixels';
 }
 
-@font-face {
-  font-family: 'Pixels';
-  src: url('./FreePixel.ttf');
-}
-
 $background-color: #332D23;
 $pink: #BC435C;
 $light-pink: #AD7F85;
@@ -17,6 +12,40 @@ $black: #1B1A15;
 $dark-cyan: #294742;
 $light-blue: #84A8A4;
 $light-cyan: #4E6764;
+$white: #E9E9E9;
+
+@font-face {
+  font-family: 'Pixels';
+  src: url('./FreePixel.ttf');
+}
+
+@mixin box-sizes($width, $height){
+  width: $width;
+  height: $height;
+}
+
+@mixin button-style($text-color, $background-color) {
+  font-size: 1em;
+  color: $text-color;
+  background: $background-color;
+  font-weight: bolder;
+  box-shadow: inset 0 0 0 2px $dark-cyan;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+@mixin box-style() {
+  display: flex;
+  flex-direction: column;
+  background-color: $black;
+  color: $light-blue;
+  border: 0.15em dotted $dark-cyan;
+  border-radius: 1.6em;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0.4em 0.4em $black;
+}
 
 body {
   width: 100%;
@@ -49,22 +78,10 @@ body {
   justify-content: center;
 }
 
-.cards, .login-page, .signup-page, .products-list, .orders-list {
-  display: flex;
-  flex-direction: column;
-  background-color: $black;
-  color: $light-blue;
-  border: 0.15em dotted $dark-cyan;
-  border-radius: 1.6em;
-  align-items: center;
-  justify-content: space-around;
-  box-shadow: 0.4em 0.4em $black;
-}
-
 .cards {
+  @include box-sizes(17em, 24em);
+  @include box-style();
   margin: 30px;
-  width: 17em;
-  height: 24em;  
   cursor: pointer;
   position: relative;
 
@@ -90,14 +107,16 @@ body {
   border-radius: 1em;
 }
 
-.login-page, .signup-page {
+.login-page {
+  @include box-sizes(32em, 26em);
+  @include box-style();
   margin-top: 50px;
-  width: 32em;
-  height: 26em;
 }
 
 .signup-page {
-  height: 37em;
+  @include box-sizes(32em, 37em);
+  @include box-style();
+  margin-top: 50px;
 }
 
 .form-title {
@@ -105,20 +124,10 @@ body {
 }
 
 .form-button {
-  width: 7em;
-  height: 2.5em;
-  font-size: 1em;
-  cursor: pointer;
-  color: $black;
-  border-radius: 0.5em;
-  font-weight: bolder;
-  border: none;
-  background: $light-blue;
-  box-sizing: border-box;
+  @include button-style($black, $light-blue);
+  @include box-sizes(7em, 2.5em);
   margin-bottom: 1em;
-  box-shadow: inset 0 0 0 2px $dark-cyan;
   position: relative;
-  vertical-align: middle;
 
   &::before,
   &::after {
@@ -223,21 +232,42 @@ body {
 
 //página de menu
 
+.big-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  @include box-sizes(100vw,  50px);
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 10px;
+}
+
 .menu-button {
-  margin-top: 5%;
-  margin-left: 5%;
-  margin-bottom: 1em;
-  width: 9em;
-  height: 2.5em;
-  font-size: 1em;
-  cursor: pointer;
-  color: $light-blue;
-  border-radius: 0.5em;
-  font-weight: bolder;
-  background: $dark-cyan;
-  box-sizing: border-box;
-  box-shadow: inset 0 0 0 2px $dark-cyan;
-  border: none;
+  @include box-sizes(10em, 2.7em);
+  @include button-style($white, $dark-cyan);
+  margin: 15px;
+
+  &:hover {
+    background: $light-blue;
+    color: $black;
+  }
+}
+
+.menu-types {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .menu-labels {
@@ -247,54 +277,74 @@ body {
   font-weight: bolder;
 }
 
-.products-list{
-  background-color: $light-pink;
-  border-radius: 0.8em;
-  margin-top: 5%;
-  width: 32em;
-  height: 26em;
-  border: $black;
-  justify-content: right;
-
-}
-
-.orders-list {
-  background-color: $light-cyan;
-  border-radius: 0.8em;
-  width: 25em;
-  height: 15em;
-  border: none;
-  margin-top: 10%;
-}
-
-.list-area {
-  display: inline-block;
-  margin: 10px;
-}
-
 .list-labels {
-  padding: 50px;
-  color: black;
-  font-size: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 15px;
 }
 
 .product-item {
-  font-size: 25px;
-  color: $black;
-  display: flex;
-  flex-direction: row;
-  margin: 5px;
+  display: grid;
+  grid-template-columns: 110px 120px 130px 100px;
+  font-size: 18px;
+  font-weight: bolder;
+  color: #e9e9e9;
+  margin-bottom: 25px;
 }
 
 .product-info {
-  margin: 5px 25px;
+  text-align: center;
 }
 
-.big-container{
+.list-label {
+  color: $pink;
+  font-weight: bolder;
+  font-size: 23px;
+}
+
+.products-list {
+  @include box-sizes(30em, 36em);
+  @include box-style();
+}
+
+.list-area {
+  @include box-sizes(29em, 36em);
   display: flex;
-  grid-auto-rows: minmax(100px, auto);
+  flex-direction: column;
+  flex-wrap: nowrap;
+  background-color: $black;
+  margin-top: 5%;
+  border: $black;
+  overflow: scroll;
+}
+
+.orders-area {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  grid-gap: 70px; 
+  @include box-sizes(30em, 19em);
+  @include box-style();
+  background-color: $light-cyan;
+}
+
+.orders-list {
+  @include box-sizes(30em, 15em);
+  flex-wrap: nowrap;
+  overflow: scroll;
+  border-radius: 0.8em;
+  border: none;
+  margin-top: 10px;
+}
+
+.total-area {
+  @include box-sizes(24em, 1em);
+  display: flex;
+  justify-content: space-between;
+  color: $black;
+  font-weight: bolder;
+  font-size: 20px;
+  padding: 30px;
 }
 
 .menu-input, .menu-select {
@@ -312,8 +362,8 @@ body {
 }
 
 .menu-title {
-  color: $light-blue;
-  margin-top: 10%;
+  color: $light-pink;
+  font-size: 30px;
 }
 
 //menu-hamburguer
@@ -322,11 +372,9 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  position: fixed;
-  width: 200px;
-  height: 100px;
-  top: 1em;
-  right: 1em;
+  position: relative;
+  cursor: pointer;
+  margin: 15px;
 }
 
 .bar {
@@ -340,7 +388,7 @@ body {
     &::after {
       width: 2em;
       height: 6px;
-      background-color: $dark-cyan;
+      background-color: $light-pink;
       border: none;
     }
 
@@ -369,14 +417,15 @@ body {
   padding: 10px 10px;
   position: relative;
   font-size: 18px;
-  color: $light-blue;
+  font-weight: bolder;
+  color: $black;
   width: 125px;
 }
 
 .show-item {
   display: flex;
   animation: slide 1s;
-  background-color: $dark-cyan;
+  background-color: $light-pink;
 
   &:hover {
     background-color: $light-pink;

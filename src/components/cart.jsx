@@ -2,9 +2,8 @@ import React from "react";
 import ProductInfo from "./productinfo";
 
 export default function Cart({ data }) {
-
   return (
-    <div>
+    <div className='orders-list'>
       {data.map((elem) => {
         return (
           <ProductInfo
