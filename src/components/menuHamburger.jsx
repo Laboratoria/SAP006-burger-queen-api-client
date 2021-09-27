@@ -6,12 +6,12 @@ const MenuHamburger = () => {
   const history = useHistory();
 
   return (
-    <nav className='menu-nav'>
-      <div className='bar' onClick={() => {
+    <nav className='menu-nav' onClick={() => {
         openNavBar === false ?
           setOpenNavBar(true)
           : setOpenNavBar(false);
       }}>
+      <div className='bar'>
         <hr className='bar-icon'></hr>
       </div>
       <div className='nav-links'>

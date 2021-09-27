@@ -2,9 +2,8 @@ import React from "react";
 import ProductInfo from "./productinfo";
 
 export default function Cart({ data }) {
-
   return (
-    <div>
+    <div className='orders-list'>
       {data.map((elem) => {
         return (
           <ProductInfo
@@ -13,7 +12,8 @@ export default function Cart({ data }) {
             price={elem.price}
             flavor={elem.flavor}
             complement={elem.complement}
-          />)
+          >
+          </ProductInfo>)
       })}
     </div>
   )

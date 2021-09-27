@@ -38,3 +38,17 @@ export const getProducts = () => {
   .then(res => res.json())
 }
 
+export const sendOrder = (orderInfo, addItem) => {
+  return fetch('https://lab-api-bq.herokuapp.com/orders', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    body: JSON.stringify({
+      client: orderInfo.client,
+      table: orderInfo.table,
+      products: addItem,  
+    })
+  })
+}
