@@ -42,11 +42,10 @@ export const OrdersReady = () => {
         setOrderNotfoundErrorModal(true);
         break;
       default:
-        getCurrentOrders();
     }
   }
 
-  const getCurrentOrders = () => {
+  useEffect(() => {
     getAllOrders(token)
     .then(responseJson => {
       switch (responseJson.code) {
@@ -55,10 +54,11 @@ export const OrdersReady = () => {
         default:
           const orders = responseJson;
           const filteredOrders = orders.filter((order) => order.status === 'Pronto');
-          setCurrentOrders(filteredOrders) ;
+          setCurrentOrders(filteredOrders);
       } 
     })   
-  }
+  }, []);
+
 
   const deleteTargetOrder = () => {
     deleteOrder(orderToBeDeleted, token)
@@ -74,10 +74,6 @@ export const OrdersReady = () => {
     })
   }
 
-  useEffect(() => {
-    getCurrentOrders();
-  }, []);
-  
   const handleLogOut = () => {
     logout();
     history.push('/');
@@ -89,7 +85,6 @@ export const OrdersReady = () => {
         <NavbarRoom />
       </header>
       <main className='order-status-main'>
-        <Button ButtonClass='order-status-get-orders' children='Carregar Pedidos' ButtonOnClick={()=> getCurrentOrders()}/>
         <Button Role='kitchen-sign-out' ButtonOnClick={()=>handleLogOut()}/>
         <section className='current-orders-section'>
           {Object.keys(currentOrders).length > 0 &&   

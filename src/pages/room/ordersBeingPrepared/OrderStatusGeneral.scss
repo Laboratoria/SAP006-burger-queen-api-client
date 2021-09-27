@@ -3,19 +3,20 @@
 .order-status-main {
   .current-orders-section{
     width: 85%;
-    margin: 3% auto;
+    margin: auto;
     overflow-y: scroll;
   }
 }
 
 @media (orientation: 'landscape') {
-.order-status-main {
-  .current-orders-section{
-   position: absolute;
-   width: 75%;
-   top:16%;
-   height: 75vh;
-   right: 2%;
+  .order-status-main {
+    .current-orders-section{
+      position: absolute;
+      right: 3%;
+      top:8%;
+      height: 85vh;
+      overflow-y: scroll;
+      width: 75%;
+    }
   }
-}
 }

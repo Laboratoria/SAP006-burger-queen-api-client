@@ -3,10 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { getAllProducts } from '../../../services/products';
 import { getAllOrders, deleteOrder } from '../../../services/orders';
-
-import { titleCorrespondance } from '../../../data/titleCorrespondance';
 
 import { NavbarRoom } from '../../../components/Navbar/Navbar';
 import { Button } from '../../../components/Button/Button';
@@ -27,6 +24,10 @@ export const Room = () => {
   const [fullTableModal, setFullTableModal] = useState(false);
   const [clearTableModal, setClearTableModal] = useState(false);
   const [targetTableId, setTargetTableId] = useState('');
+  
+  const [deleteOrderModal, setDeleteOrderModal] = useState(false);
+  const [orderToDeleteId, setOrderToDeleteId] = useState(false);
+  
   const [targetTableOrders, setTargetTableOrders] = useState([]);
   const [orderBelongsAnotherRestaurantErrorModal, setOrderBelongsAnotherRestaurantErrorModal] = useState(false);
   const [orderNotfoundErrorModal, setOrderNotfoundErrorModal] = useState('');
@@ -49,16 +50,6 @@ export const Room = () => {
     {'table':12, 'tableName':'table-12', 'orders':[]},
   ]
 
-  const getProducts = () => {
-    getAllProducts(token)
-    .then((responseJson) => { 
-      const menu = responseJson;
-      titleCorrespondance(menu);
-      localStorage.removeItem('menu');
-      localStorage.setItem('menu', JSON.stringify(menu));
-    }).catch(() => setUserNotAuthenticatedErrorModal(true))
-  };
-
   useEffect(() => {
     getAllOrders(token)
     .then(responseJson => {
@@ -72,13 +63,12 @@ export const Room = () => {
           setTablesWithOrders(tables);
       } 
     })
-  },[]);
+  },[currentOrders]);
 
   useEffect(() => {
     setTargetTableOrders(currentOrders.filter((order) => order.table.toString() === targetTableId))
   }, [targetTableId, currentOrders]);
 
- 
   const getErrorCase = (data) => {
     switch (data) {
       case 401:
@@ -91,7 +81,7 @@ export const Room = () => {
         setOrderNotfoundErrorModal(true);
         break;
       default:
-        setDefaultErrorModal(true);
+        ;
     }
   }
 
@@ -102,7 +92,6 @@ export const Room = () => {
     })
   }
 
-
   return (
     <div className='room-div'>
       <header>
@@ -112,7 +101,7 @@ export const Room = () => {
         <Button 
           ButtonClass='room-new-order-button'
           children='Novo Pedido' 
-          ButtonOnClick={() => [getProducts(), history.push('/neworder')]}
+          ButtonOnClick={() => [history.push('/neworder')]}
         />
         <section className='room-tables-section'>
           {tablesWithOrders.length > 0 && tablesWithOrders.map((table) => 
@@ -159,6 +148,18 @@ export const Room = () => {
           orders={targetTableOrders}
           FirstButtonClick={() => setFullTableModal(false)}
           SecondButtonClick={() => setClearTableModal(true)}
+          ButtonDeleteOrder={(event) => [setOrderToDeleteId(event.target.id),setDeleteOrderModal(true)]}
+        />
+        } 
+      </section>
+      <section>
+        {deleteOrderModal && 
+        <StandardModalWithTwoOptions
+          ModalContent = 'Você tem certeza que deseja excluir este pedido?'
+          ButtonChildren = 'SIM'
+          ButtonSecondAuthModalOptionChildren = 'NÃO'
+          ButtonOnClick = {() => [deleteTargetOrder(orderToDeleteId), setDeleteOrderModal(false)]}
+          ButtOnClickSecondAuthModalOption = {() => setDeleteOrderModal(false)}
         />
         } 
       </section>
@@ -186,7 +187,7 @@ export const Room = () => {
           <StandardModal 
             ModalContent = 'Mesa limpa com sucesso!'
             ButtonChildren = 'Voltar para o salão'
-            ButtonOnClick = {() => [setTableCleanedModal(false), setFullTableModal(false), window.location.reload()]}
+            ButtonOnClick = {() => [setTableCleanedModal(false), setFullTableModal(false)]}
           />
         }
       </section>

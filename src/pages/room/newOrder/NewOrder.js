@@ -1,11 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-sequences */
+
 import { useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Button } from '../../../components/Button/Button';
 import { StandardModal, StandardModalWithTwoOptions } from '../../../components/Modal/Modal';
+
+import { getAllProducts } from '../../../services/products';
+import { titleCorrespondance } from '../../../data/titleCorrespondance';
 
 import { sendOrderToKitchen, getAllOrders  } from '../../../services/orders';
 
@@ -14,6 +15,7 @@ import './NewOrder.scss';
 export const NewOrder = () => {
   const history = useHistory();
 
+  const [menu, setMenu] = useState([])
   const [table, setTable] = useState('');
   const [customer, setCustomerName] = useState('');
   const [filteredMenu, setFilteredMenu] = useState([]);
@@ -24,12 +26,38 @@ export const NewOrder = () => {
   const [emptyTableModal, setEmptyTableModal] = useState(false);
   const [emptyCustomerModal, setEmptyCustomerModal] = useState(false);
   const [emptyOrderModal, setEmptyOrderModal] = useState(false);
+  const [currentOrders, setCurrentOrders] = useState([]);
   const [occupiedTables, setOccupiedTables] = useState([]);
   const [tableIsOccupiedModal, setTableIsOccupiedModal] = useState(false);
   const [userNotAuthenticatedErrorModal, setUserNotAuthenticatedErrorModal] = useState(false);
  
   const token = localStorage.getItem('currentEmployeeToken');
-  const menu = JSON.parse(localStorage.getItem('menu'));
+
+  useEffect(() => {
+    getAllProducts(token)
+    .then((responseJson) => { 
+      const menu = responseJson;
+      titleCorrespondance(menu);
+      setMenu(menu)
+    }).catch(() => setUserNotAuthenticatedErrorModal(true))
+  },[menu]);
+
+  useEffect(() => {
+    getAllOrders(token)
+    .then(responseJson => {
+      switch (responseJson.code) {
+        case 401:
+          return setUserNotAuthenticatedErrorModal(true);
+        default:
+          const orders = responseJson;
+          setCurrentOrders(orders)
+          const orderTables = []
+          currentOrders.map((order) => orderTables.push(order.table.toString()));
+          setOccupiedTables(orderTables.filter((v, i, a) => a.indexOf(v) === i))
+      } 
+    })   
+  }, [currentOrders]);
+  
   menu.length > 0 && menu.map((product) => product.id = product.id.toString());
 
   const productTotals = [];
@@ -58,25 +86,6 @@ export const NewOrder = () => {
   const orderResume = orderedProductsData.map(product => ({ id: product.id, qtd:product.qtd.toString()}));
   const orderInformation = { token, customer, table, orderResume};
 
-  const getCurrentOrders = () => {
-    getAllOrders(token)
-    .then(responseJson => {
-      switch (responseJson.code) {
-        case 401:
-          return setUserNotAuthenticatedErrorModal(true);
-        default:
-          const orders = responseJson;
-          const orderTables = []
-          orders.map((order) => orderTables.push(order.table.toString()));
-          setOccupiedTables(orderTables.filter((v, i, a) => a.indexOf(v) === i))
-      } 
-    })   
-  }
-
-  useEffect(() => {
-    getCurrentOrders();
-  }, []);
-  
   const checkCustomerData = () => {
     if(customer.length <2){
       setEmptyCustomerModal(true);

@@ -48,3 +48,17 @@ export const orderProcessAge = (timeInSeconds) => {
     return `${timeInYears} a.`;
   }
 };
+
+export const getErrorCase = (data) => {
+  switch (data) {
+    case 400:
+        return 'Informações insuficientes!'
+    case 401:
+        return 'Usuário não autenticado!'
+    case 403: 
+        return 'Este pedido não pertence ao BERG!'
+    case 404:
+        return 'Pedido não encontrado!'
+    default:
+  }
+}

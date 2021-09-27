@@ -7,6 +7,9 @@ import { orderAge, orderProcessAge } from '../../services/general';
 
 import { getUserById } from '../../services/users';
 
+import { getAllProducts } from '../../services/products';
+import { titleCorrespondance } from '../../data/titleCorrespondance';
+
 import './CurrentOrder.scss';
 
 export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderDeliveredButton, Location, }) => { 
@@ -23,20 +26,40 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
 
   const token = localStorage.getItem('currentEmployeeToken');
   const role = localStorage.getItem('currentEmployeeRole');
-  const menu = (JSON.parse(localStorage.getItem('menu')));
-  const [waitress, setWaitress] = useState('');
 
-  const productTotals = [];
-  order.Products.map((element) => element.data = menu.filter((product) => product.id === element.id));
-  order.Products.map((element) => element.price = element.data[0].price);
-  order.Products.map((element) => element.total = element.price * element.qtd);
-  order.Products.map((product) => productTotals.push(product.total));
-  order.bill = productTotals.reduce((acc, curr) => acc + curr, 0);
+  const [waitress, setWaitress] = useState('');
+  const [menu, setMenu] = useState([]);
+ const [userNotAuthenticatedErrorModal, setUserNotAuthenticatedErrorModal] = useState(false);
+ const [orderBill, setOrderBill] = useState([])
+
+  useEffect(() => {
+    getAllProducts(token)
+    .then((responseJson) => { 
+      const menu = responseJson;
+      titleCorrespondance(menu);
+      setMenu(menu)
+
+      const productTotals = []
+      order.Products.map((element) => element.data = menu.filter((product) => product.id === element.id));
+      order.Products.map((element) => element.price = element.data[0].price);
+      order.Products.map((element) => element.total = element.price * element.qtd);
+      order.Products.map((product) => productTotals.push(product.total));
+      setOrderBill(productTotals.reduce((acc, curr) => acc + curr, 0))
+
+  
+  
+    }).catch(() => setUserNotAuthenticatedErrorModal(true))
+  },[]);
+
 
   useEffect(() => {
     getUserById(token, order.user_id)
     .then((reponseJson) => setWaitress(reponseJson.name))
   }, [token, order.user_id]);
+
+
+ 
+  
 
   return (
     <div className= {order.status === 'Em Preparo' || order.status === 'pending'? 
@@ -125,7 +148,7 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
           />
         } 
       <div className='current-order-status-button-div'>
-        <p className='current-order-order-bill'> Total: R$ &nbsp;{order.bill}</p>
+        <p className='current-order-order-bill'> Total: R$ &nbsp;{orderBill}</p>
         {role === 'kitchen' ? 
           order.status !== 'Entregue' ? order.status !== 'Pronto' ?
             <Button 
