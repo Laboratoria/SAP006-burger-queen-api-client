@@ -1,7 +1,3 @@
-import React, { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
-
-
 export const LoginWithEmail = (users) => {
     return fetch('https://lab-api-bq.herokuapp.com/auth', {
         method:'POST',
@@ -34,6 +30,24 @@ export const RegisterUser = (users) => {
 };
 
 
+// export const Products = (product) => {
+//     return fetch('https://lab-api-bq.herokuapp.com/products', {
+//         method:'GET',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authentication': 'Token'
+//         },
+//         body: JSON.stringify({
+//             'name': product.name,
+//             'price': product.price,
+//             'flavor': product.flavor,
+//             'complement': product.complement,
+//             'image': '',
+//             'type': '',
+//             'subtype': '',
+//         }),
+//     })
+// };
 
 // export const useEffect(() => {
 //     fetch('https://lab-api-bq.herokuapp.com/products', {
@@ -104,3 +118,32 @@ export const RegisterUser = (users) => {
 
 
 
+    //   export const LoginWithEmail = async (users) => {
+    //     try {
+    //       const response = await fetch("https://lab-api-bq.herokuapp.com/auth", {
+    //         method: "POST",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //           email: workerInfo.emailLogin,
+    //           password: workerInfo.passLogin,
+    //         }),
+    //       });
+    //       const json = await response.json();
+    //       const token = json.token;
+    //       const email = json.email;
+    //       const occupation = json.role;
+    //       localStorage.setItem("workerToken", token);
+    //       localStorage.setItem("workerEmail", email);
+    //       localStorage.setItem("workerOccupation", occupation);
+    //       if (token) {
+    //         console.log("Usuário logado!");
+    //       }
+    //     } catch (json) {
+    //       const code = json.code;
+    //       if (code === 400 || code === 403) {
+    //         throw new Error(json.message);
+    //       }
+    //     }
+    //   };

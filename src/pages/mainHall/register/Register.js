@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { RegisterUser } from '../../../services/Auth';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -15,7 +15,7 @@ import garcom from '../../../img/garcom.png'
 import './Register.css';
 
 
-export default function Registration() { 
+export default function Register() { 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
