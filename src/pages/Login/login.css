@@ -1,2 +1,85 @@
 @import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
 
+
+.logo {
+  position: fixed;
+  justify-content: center;
+  margin-top: -10rem;
+  text-align:right;
+  width: 700px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 630px;
+  }
+
+ .container-login {
+  display: flex;
+  margin-bottom: -600px;
+}
+
+
+h1 {
+    width: 318px;
+    height: 25px;
+    left: 230px;
+    top: 446px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 25px;
+    color: var(--grey);
+    margin-bottom: 30px;
+    text-align:right;
+}
+
+.form-login-inputs input {
+    display: flex;
+    border-radius: 30px;
+    background: var(--grey);
+    color: var(--black);
+    font-size: 15px;
+    font-family: Roboto;
+    text-align: center;
+    border: none;
+    width: 22rem;
+    height: 2.900rem;
+    margin-bottom: 20px;
+}
+
+.footer-login{
+    font-family: Cabin Sketch;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    /*line-height: 25px;*/
+    color: var(--grey);
+    margin-top: 60px;
+    text-align:center;
+}
+
+.login-btn {
+    border-radius: 30px;
+    background: var(--aqua);
+    color: var(--grey);
+    font-size: 20px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    border: none;
+    cursor: pointer;
+    width: 22rem;
+    height: 2.900rem;
+}
+
+.form-login-inputs p {
+    color: var(--pink);
+    font-size: 15px;
+    font-family: Cabin Sketch;
+    font-style: normal;
+    margin-bottom: 10px;
+}

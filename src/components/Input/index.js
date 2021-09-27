@@ -1,23 +1,19 @@
 import React from "react";
 
-export function Input({
+export function Input ({
     inputType,
     inputName,
     inputPlaceholder,
     inputOnChange,
-    inputValue,
-    inputChecked
-
+    inputValue  
 }) {
     return (
-        <input
+        <input 
             type={inputType}
             name={inputName}
             placeholder={inputPlaceholder}
             onChange={inputOnChange}
             value={inputValue}
-            checked={inputChecked}
-        />
+            />
     )
-
 }

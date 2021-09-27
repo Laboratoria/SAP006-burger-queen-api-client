@@ -1,17 +1,19 @@
-import React from 'react';
-//import { Link } from 'react-router-dom';
-//import Button from '../../components/Button/button';
+import { useHistory } from 'react-router';
+//import { Button } from '../../components/Button/index.js';
 //import './login.css';
 
-export const NotFound = () => (
-    <div>
-        <header>
-            Page 404! Está página não foi encontrada, verifique se as informações estão corretas
-        </header>
+export const NotFound = () => {
 
-    </div>
-);
+    const history = useHistory()
 
-
-
-//export default NotFound;
+    return (
+        <div className="container-notFound">
+            <h1>Page 404! Está página não foi encontrada</h1>
+            <button className="return" onClick={() => {
+                localStorage.removeItem('token')
+                history.push('/')
+            }}>Sair
+        </button>
+        </div >
+    );
+};

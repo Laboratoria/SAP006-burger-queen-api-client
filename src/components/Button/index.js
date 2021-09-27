@@ -3,13 +3,15 @@ import React from 'react'
 export function Button({
     type,
     className,
-    value
+    value,
+    onClick
 }) {
     return (
         <button
             type={type}
             className={className}
-            value={value}>
+            value={value}
+            onClick={onClick}>
             {value}
         </button>
 

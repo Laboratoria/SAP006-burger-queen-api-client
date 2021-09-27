@@ -1,10 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
+import { useHistory } from 'react-router';
+import { userLogin } from '../../services/data';
 import { Button } from '../../components/Button/index.js';
 import { Input } from '../../components/Input/index.js';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
-import validateLogin from '../Login/validateLogin'
+import validateLogin from '../Login/validateLogin';
+
 //import Burger from '../../assets/img/burger.png';
 
 //import './login.css';
@@ -18,39 +21,53 @@ export function Login() {
 
     const [errors, setErrors] = useState({});
 
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        console.log('handleInputChange', name, value);
         setFormValues({ ...formValues, [name]: value })
     };
 
-    // const[value, setValue] = useState ('');
-
-    // const handleInputChange = (e) => {
-    //     console.log('handleInputChange', e.target.value);
-    //     setValue(e.target.value)
-    // };
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
-
-        console.log('handleSubmit', data);
-
         setErrors(validateLogin(formValues));
+
+        userLogin(formValues)
+            .then(response => response.json())
+            .then((json) => {
+                console.log(json);
+
+                const token = json.token
+                localStorage.setItem("token", token);
+
+                if (json.role === "salão") {
+                    history.push('/Hall');
+                } else if
+                    (json.role === "cozinha") {
+                    history.push('/Kitchen');
+                }
+            })
+
+            .catch(errors => {
+                console.log(errors)
+            })
     };
 
-    console.log('***formValues', formValues);
+
+
+    //console.log('***formValues', formValues);
 
     return (
 
         <main>
             <img src={logo} className="logo" alt="logo" />
-            <div className="container">
-                <h1>Entrar com email e senha</h1>
+            <div className="container-login">
                 <form onSubmit={handleSubmit}>
-                    <div className="form-inputs">
+                    <div className="form-login-inputs">
+                        <h1>
+                            Entrar com email e senha
+                        </h1>
                         <Input
                             inputType="text"
                             inputName="email"
@@ -72,7 +89,7 @@ export function Login() {
                         </Button>
                         <div className="footer-login">
                             Não tem uma conta?
-                    <Link className="link" to="/Register">Cadastre-se</Link>
+                    <Link className="link" to="/Register"> Cadastre-se </Link>
                         </div>
                     </div>
                 </form>
