@@ -1,3 +1,6 @@
+import React, { useEffect } from "react";
+import { useState } from "react/cjs/react.development";
+
 
 export const LoginWithEmail = (users) => {
     return fetch('https://lab-api-bq.herokuapp.com/auth', {
@@ -34,6 +37,31 @@ export const RegisterUser = (users) => {
         }),
     })
 };
+
+
+
+// export const useEffect(() => {
+//     fetch('https://lab-api-bq.herokuapp.com/products', {
+//         headers: {
+//             accept: 'application/json',
+//             Authorization: `${token}`,
+//         },
+//     })
+
+//         .then((response) => {
+//             response.json()
+//                 .then((json) => {
+//                     setProducts(json)
+//                 })
+//         })
+// }, [token])
+
+
+
+
+
+
+
 
 // export const RegisterUser = (users) => {
 //     return fetch('https://lab-api-bq.herokuapp.com/products', {
