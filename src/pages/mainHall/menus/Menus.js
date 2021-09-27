@@ -12,10 +12,11 @@ function Menus () {
         history.push('/mesas')
       }
 
+      
     return(
         <div className="container-menus">
             <div>
-                
+
             </div>
             <h3> Atendente: {localStorage.getItem("userName")} </h3>
             <h3> Mesa: {localStorage.getItem("table")} </h3>
