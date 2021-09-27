@@ -7,6 +7,7 @@ import useProducts from "./useProducts";
 const Menu = () => {
   const { productsFiltered, handleButtonTypeClick } = useProducts();
   const [addItem, setAddItem] = useState([]);
+ 
 
   return (
     <div className='main'>
@@ -27,16 +28,17 @@ const Menu = () => {
               <ProductInfo
                 id={elem.id}
                 name={elem.name}
-                price={elem.price}i
+                price={elem.price}
                 flavor={elem.flavor}
                 onClick={() => {
-                  setAddItem([...addItem, {id: elem.id, name: elem.name, price: elem.price, flavor: elem.flavor}])
+                  setAddItem([...addItem, { id: elem.id, name: elem.name, price: elem.price, flavor: elem.flavor }])
                 }}
+                
               />
-              
-              
             )
+      
           })}
+          
         </div>
         <div className='orders-card'>
           <h1 className='menu-title'>Pedidos</h1>
@@ -57,7 +59,7 @@ const Menu = () => {
             <option value='10'>Mesa 10</option>
           </select>
           <div className='orders-list'>
-          <Requests data={addItem}/>
+            <Requests data={addItem} />
           </div>
           <button className='menu-button'>Finalizar pedido</button>
         </div>

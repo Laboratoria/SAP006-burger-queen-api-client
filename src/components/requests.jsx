@@ -6,13 +6,17 @@ export default function Requests({ data }) {
     <div>
       {data.map((elem) => {
         return (
-            <ProductInfo
-                key={elem.id}
-                name={elem.name}
-                price={elem.price}
-                flavor={elem.flavor}
-                    />)
-            })}
+          <ProductInfo
+            key={elem.id}
+            name={elem.name}
+            price={elem.price}
+            flavor={elem.flavor}
+
+            
+          />) 
+      })}
+       <button>excluir</button>
     </div>
-    )
+   
+  )
 }
