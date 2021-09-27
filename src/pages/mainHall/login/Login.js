@@ -69,6 +69,7 @@ export default function Login() {
                     <Input 
                         type='text' 
                         name='email'
+                        id='emailText'
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
                         placeholder='Digite o seu e-mail'
@@ -77,6 +78,7 @@ export default function Login() {
                     <Input 
                         type={showPassword ? 'type': 'password'} 
                         name='password'
+                        id='emailText'
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
                         placeholder='Digite a sua senha'
@@ -148,4 +150,3 @@ export default function Login() {
     //     }
         
     // }
-    

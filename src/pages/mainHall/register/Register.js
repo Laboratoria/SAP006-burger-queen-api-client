@@ -20,12 +20,13 @@ export default function Registration() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [role, setRole] = useState('');
+    const history = useHistory();
+    
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
     // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
-    const [role, setRole] = useState('');
-    const history = useHistory();
-
+    
     // evento de clique do olhinho
     function eyeClick (e){
         e.preventDefault()
@@ -70,7 +71,7 @@ export default function Registration() {
     function handleRoleChange (e) {
         e.preventDefault()
         if(e.target.checked){
-            setRole(e.target.name)
+            setRole(e.target.value)
         }
     }
 
@@ -115,18 +116,21 @@ export default function Registration() {
                             }
                         </span> 
                 </div>
-                <div className='container-checkbox'>
+                <div className='container-checkbox' value={role} onChange={(event) => handleRoleChange(event)}
+>
                     <Input 
                         type='radio' 
-                        name='salon' 
-                        onChange={(event) => handleRoleChange(event)}
+                        name='ocupation'
+                        value='salon' 
+                        placeholder='salon'
                     />
                     <img src={garcom} alt="waiter" className="waiter-icon"/>
 
                     <Input 
                         type='radio' 
-                        name='kitchen' 
-                        onChange={(event) => handleRoleChange(event)}
+                        name='ocupation'
+                        value='kitchen' 
+                        placeholder='kitchen'
                     />
                     <img src={cozinheiro} alt="kitchen" className="kitchen-icon"/>
                 </div>
