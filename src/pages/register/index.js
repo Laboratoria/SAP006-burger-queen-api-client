@@ -1,6 +1,5 @@
-import React, {Component, Fragment } from 'react';
-import Formulario from '../../components/FormRegister/Form';
-import Routes from '../../utils/routes';
+import React, {Fragment } from 'react';
+import Formulario from '../../components/FormRegister';
 
 function Register(){
         return (

@@ -1,4 +1,5 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import React from 'react';
 
 import Hall from "../pages/hall/index.js";
 import Kitchen from "../pages/kitchen/index.js";
