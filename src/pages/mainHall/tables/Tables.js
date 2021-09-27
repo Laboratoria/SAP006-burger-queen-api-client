@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Footer from '../../../components/footer/Footer';
 
-import balcao from '../../../img/balcao.png'
+import balcao from '../../../Img/balcao.png'
 import mesas from '../../../img/mesas.png'
 import sofa from '../../../img/sofa.png'
 

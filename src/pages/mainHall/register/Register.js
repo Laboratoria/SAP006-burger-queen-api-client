@@ -4,7 +4,7 @@ import { RegisterUser } from '../../../services/Auth';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import Input from '../../../components/inputs/Input';
-import Button from '../../../components/button/Button';
+import Button from '../../../components/Button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title'
