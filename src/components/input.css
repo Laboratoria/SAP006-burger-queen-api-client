@@ -5,7 +5,7 @@
 .input{
     border: 1px solid #eee;
     display: block;
-    width: 100%;
+    /* width: 100%; */
     font-size: 1rem;
     padding: 0.8rem;
     border-radius: 0.4rem;
@@ -33,4 +33,9 @@ input:hover{
     font-size: .875rem;
     margin-top: 0.25rem;
 
+}
+.login {
+    display: grid;
+    min-height: 100vh;
+    gap: 2rem;
 }
