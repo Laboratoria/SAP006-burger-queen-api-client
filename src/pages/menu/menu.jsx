@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MenuHamburger from "../../components/menuHamburger";
 import ProductInfo from "../../components/productinfo";
 import Cart from "../../components/cart";
@@ -6,7 +6,19 @@ import ResultPrice from "../../components/resultprice";
 import useProducts from "./useProducts";
 
 const Menu = () => {
-  const { handleButtonTypeClick, productsFiltered, setAddItem, addItem, total } = useProducts();
+  const { handleButtonTypeClick, productsFiltered, setAddItem, addItem, total, sendToKitchen, handleOrderChange } = useProducts();
+  const [qtd, setQtd] = useState(0);
+  const addProducts = (elem) => {
+    console.log(elem);
+    const foundItem = addItem.findIndex((item) => item.id === elem.id);
+    console.log(foundItem)
+    if(foundItem !== -1) {
+      console.log('achei o danado');
+    } else {
+      setAddItem([...addItem, { id: elem.id, qtd: qtd, name: elem.name, price: elem.price, flavor: elem.flavor }])
+      console.log('tá aqui não');
+    }
+  }
 
   return (
     <div className='main'>
@@ -32,13 +44,14 @@ const Menu = () => {
               {productsFiltered().map((elem) => {
                 return (
                   <ProductInfo
-                    id={elem.id}
+                    key={elem.id}
                     name={elem.name}
-                    price={elem.price} i
+                    price={elem.price}
                     flavor={elem.flavor}
                     complement={elem.complement}
+                    qtd={elem.qtd}
                     onClick={() => {
-                      setAddItem([...addItem, { id: elem.id, name: elem.name, price: elem.price, flavor: elem.flavor }])
+                      addProducts(elem);
                     }}
                   />
                 )
@@ -47,9 +60,9 @@ const Menu = () => {
           </section>
           <section className='orders-card'>
             <label className='menu-labels'>Cliente</label>
-            <input className='menu-input' type='text' placeholder='Nome' name='name' autoComplete='off' />
+            <input className='menu-input' type='text' placeholder='Nome' name='name' autoComplete='off' onChange={handleOrderChange} />
             <label className='menu-labels'>Mesa</label>
-            <select className='menu-select' autoComplete='off' name='role'>
+            <select className='menu-select' autoComplete='off' name='table' onChange={handleOrderChange}>
               <option value=''>Selecione uma mesa</option>
               <option value='1'>Mesa 1</option>
               <option value='2'>Mesa 2</option>
@@ -66,7 +79,7 @@ const Menu = () => {
               <Cart data={addItem} />
               <ResultPrice value={total} />
             </div>
-            <button className='menu-button draw'>Finalizar pedido</button>
+            <button className='menu-button draw' onClick={sendToKitchen}>Finalizar pedido</button>
           </section>
         </main>
       </section>

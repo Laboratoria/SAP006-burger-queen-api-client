@@ -1,12 +1,14 @@
 import React from "react";
 
-const ProductInfo = ({ id, name, price, flavor, complement, onClick }) => {
+const ProductInfo = ({ name, price, flavor, complement, onClick }) => {
   return (
-    <article className='product-item' key={id} onClick={onClick}>
+    <article className='product-item'>
       <p className='product-info'>{name}</p>
       <p className='product-info'>{flavor}</p>
       <p className='product-info'>{complement}</p>
-      <p className='product-info'>R${price},00</p> 
+      <p className='product-info'>R${price},00</p>
+      <button onClick={onClick}>+</button>
+      <p>{}</p>
     </article>
   )
 }

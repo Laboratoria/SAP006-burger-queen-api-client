@@ -12,7 +12,8 @@ export default function Cart({ data }) {
             price={elem.price}
             flavor={elem.flavor}
             complement={elem.complement}
-          />)
+          >
+          </ProductInfo>)
       })}
     </div>
   )
