@@ -8,6 +8,11 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+
+    // @media screen and (min-width: 801px){
+    //     display: none;
+    // }
+
 }
 
 .GeneralButton .meal { 
@@ -50,16 +55,15 @@
     color: #000000;
     text-decoration: none;
     cursor: pointer;
+    padding: 3.5vh;
+}
+
+.header-button:hover {
+    background-color:  rgba(94, 116, 238, 0.089);
 }
 
 button.header-button {
     background-color: transparent;
     border: none;
     cursor: pointer;
-
-    // :hover {
-    //     background-color:  rgba(94, 116, 238, 0.089);
-    //     width: 5vh;
-    //     height: 5vh;
-    // }
 }

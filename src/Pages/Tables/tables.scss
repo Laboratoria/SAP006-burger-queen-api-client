@@ -2,6 +2,13 @@
     background-color: rgba(245, 247, 251, 0.7);
 }
 
+.tables-title {
+    color: rgba(81, 104, 238, 1);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1vh;
+}
+
 .tables-display {
     display: flex;
     flex-direction: column;
@@ -11,7 +18,7 @@
 
 .doubleTables {
     width: 70%;
-    margin: 1.7vh;
+    margin-bottom: 1.7vh;
     display: flex;
     justify-content: space-evenly;
 }
@@ -40,7 +47,9 @@
     font-size: 1.1rem;
 }
 
-.btn-submitOrder {
-    background-color: rgba(81, 104, 238, 1);
-    height: 30vh;
-}
+// .btn-submitOrder {
+//     background-color: rgba(81, 104, 238, 1);
+//     height: 30vh;
+//     width:auto;
+//     padding: 1vh;
+// }

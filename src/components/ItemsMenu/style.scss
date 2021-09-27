@@ -4,6 +4,7 @@ $nameItemColor: #5168EE;
 $fontFamily: 'Montserrat', sans-serif;
 $font600: 600;
 
+// CartList.jsx
 .section-ordersList {
     border-radius: 6.47px;
     border: solid #ebebeb 2px;
@@ -14,15 +15,34 @@ $font600: 600;
     padding: 3vh;
     text-align: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         display: none;
     }
+
+    @media screen and (min-width: 801px){
+        background: rgba(81, 104, 238, 0.07);
+        border-radius: 42px 0px 0px 42px;
+        width: auto;
+        height: 81vh;
+        margin: 0;
+        padding: 3; 
+    }
+
+}
+
+.text-orders {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .text-ordersList {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    height: 70%;
 }
 
 .btn-confirmOrder {
@@ -30,6 +50,8 @@ $font600: 600;
 }
 
 // ItemCard.jsx
+
+    // ItemCard
 .item-card {
     height: 25vh;
     width: 19vh;
@@ -46,12 +68,22 @@ $font600: 600;
     color: #5168EE;
     background-color: $white;
     box-shadow: 0px 5.13419px 5.13419px rgba(0, 0, 0, 0.25);
+
+    @media screen and (min-width:801px) {
+        height: 35vh;
+        width: 30vh;
+        margin: 1vh;
+        padding: 9px 0px 0px 5px;
+        border-radius: 6.42px;
+        font-size: 0.5rem;
+    }
+    
 }
 
 .product-info.name {
     margin: 1.5vh 0vh;
     font-weight: bold;
-    font-size: 1.8em;
+    font-size: 2em;
     font-family: 'Montserrat', sans-serif;
     color: $nameItemColor;
 }
@@ -70,6 +102,11 @@ $font600: 600;
     height: 15vh;
     object-fit: fill;
     border-radius: 9px;
+
+    @media screen and (min-width:801px) {
+        width: 25vh;
+        height: 20vh;   
+    }
 }
 
 .product-info {
@@ -88,7 +125,7 @@ $font600: 600;
     border-radius: 19.9951px 6.42064px 6.42064px 6.42064px;
     font-family: $fontFamily;
     font-weight: $font600;
-    font-size: 1.4rem;
+    font-size: 2rem;
     line-height: 32px;
     text-align: center;
     align-items: center;
@@ -99,6 +136,11 @@ $font600: 600;
     height: 5vh;
     width: 5vh;
     cursor: pointer;
+
+    @media screen and (min-width:801px) {
+        width: 8vh;
+        height: 8vh;   
+    }
 }
 
 .footer-card {
@@ -107,4 +149,46 @@ $font600: 600;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+    // SelectedItem
+.itemSelected {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: #44433E;
+}
+
+.info-item {
+    width: 40%;
+    font-size: 1.1rem;
+}
+
+.buttons-qtd {
+    width: 30%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.4rem;
+}
+
+.btn-addItem-qtd {
+    background: $btnColor;
+    border-radius: 6.42064px;
+    font-weight: $font600;
+    font-size: 1.4rem;
+    line-height: 32px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: $white;
+    border: none;
+    height: 4vh;
+    width: 4vh;
+    cursor: pointer;
 }

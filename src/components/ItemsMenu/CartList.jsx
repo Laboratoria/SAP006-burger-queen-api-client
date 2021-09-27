@@ -1,32 +1,27 @@
 import React from 'react'
-import GeneralButton from '../Button/Button';
+import { SelectedItem } from './ItemCard';
 import './style.scss';
 
-const OrdersList = () => {
+const OrdersList = ({ data }) => {
     
     return (
-        <section className="section-ordersList">
-            <article className="text-ordersList">
-                <h3>Pedidos</h3>
-                <h3>Mesa</h3>
-            </article>
-
-            <article className="text-ordersList">
-                <h4>nome.produto</h4>
-                <p>-</p>
-                <p>1</p>
-                <p>+</p>
-                <p>preço.produto</p>
-            </article>
-
-            <article className="text-ordersList">
-                <GeneralButton className="btn-confirmOrder">
-                    Confirmar pedido
-                </GeneralButton>
-                <p>Total preço</p>
-            </article>
-            
-        </section>
+        <article className="text-ordersList">
+            {data.map((item) => {
+                return (
+                    // const order = () => {
+                        <SelectedItem
+                            key={item.id}
+                            name={item.name}
+                            price={item.price}
+                            flavor={item.flavor}
+                            complement={item.complement}
+                            qtd={item.qtd}    
+                        />
+                    // }
+                    // return order
+                )
+            })}
+        </article>  
     )
 }
 

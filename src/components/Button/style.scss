@@ -62,12 +62,13 @@ $font-1em: 1em;
 }
 
 .button.third:active {
-    background-color: $btn-white;
-    width: max-content;
-    background: #FFFFFF;
-    border: 0.896278px solid #008F83;
-    box-sizing: border-box;
+    background-color: #008F83;
+    color: $btn-white;
 }
+
+// .button.third::after {
+//     border: 1px solid #008F83;
+// }
 
 .button.fourth {
     @include buttonProps;
@@ -138,7 +139,7 @@ $font-1em: 1em;
     font-weight: 600;
     margin: 1vh 0vh;
     height: 6vh;
-    width: 23vh;
+    width: max-content;
 }
 
 @media screen and (min-width: 768px){

@@ -1,16 +1,16 @@
 import { useHistory, Link } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import { removeStorageKey } from '../../services/storage';
-import { getRouteHeaderMenu } from '../../routes/redirections';
+// import { getRouteHeaderMenu } from '../../routes/redirections';
 import './style.scss'
 
 const Header = () => {
     const history = useHistory();
 
-    const handleRoute  = (path) => {
-        const route = getRouteHeaderMenu(path)
-        history.push(route)
-    }
+    // const handleRoute  = (path) => {
+    //     const route = getRouteHeaderMenu(path)
+    //     history.push(route)
+    // }
 
     const handleLogout = () => {
         removeStorageKey();

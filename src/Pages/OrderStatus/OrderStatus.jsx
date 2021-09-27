@@ -11,6 +11,7 @@ const OrderStatus = () => {
     return (
         <div className='div-style'>
             OrderStatus
+            {'<em construção>'}
             {/* <Button /> */}
         </div>
     )

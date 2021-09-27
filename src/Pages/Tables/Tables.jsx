@@ -20,6 +20,7 @@ const Tables = () => {
         <main> 
             {/* <Header /> */}
             <MealNavBar />
+            <h2 className="tables-title">MESAS</h2>
             <section className="tables-display">
                 <div className="doubleTables">
                     <GeneralButton
@@ -68,7 +69,7 @@ const Tables = () => {
             </section>
             <form className="form-submitOrder">
                 <input className="input-clientName" type="text" placeholder="Nome do Cliente"/>
-                <GeneralButton onClick={handleOrderSubmit} variant="nineth" className="btn-submitOrder">Confirmar Pedido</GeneralButton>
+                <GeneralButton onClick={handleOrderSubmit} variant="nineth" className="btn-submitOrder">Fazer Pedido</GeneralButton>
             </form>
             <MenuOptionsNavBar />
         </main>

@@ -1,3 +1,23 @@
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-side {
+    @media screen and (min-width: 801px){
+        width: 67%;
+        height: 88vh;
+        margin-top: 1.5vh;
+    }
+}
+
+.right-side {
+    @media screen and (min-width: 801px){
+        width: 33%;
+        height: 86vh;
+    }
+}
+
 .products-list-perMeal {
     display: flex;
     flex-direction: row;
@@ -5,6 +25,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin-top: 2vh;
+
 }
 
 .select-menu-perMeal {
@@ -15,5 +36,11 @@
     @media (max-width: 768px) {
         display: none;
     }
+
+    @media screen and (min-width: 801px){
+        width: 70%;
+    }
+
 }
+
 
