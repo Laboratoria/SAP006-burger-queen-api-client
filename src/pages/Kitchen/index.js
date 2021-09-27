@@ -8,7 +8,7 @@ import './kitchen.scss';
 export default function Kitchen() {
 	return (
 		<>
-			<OrdersPanel />
+			<OrdersPanel classBtn="btn-hidden"/>
 		</>
 
 	)

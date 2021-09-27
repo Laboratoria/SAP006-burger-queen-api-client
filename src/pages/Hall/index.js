@@ -97,9 +97,15 @@ export default function Hall() {
 	}
 
 	const chooseComplement = (e) => {
+		let complementValue
+		if (e.target.value===""){
+			complementValue = null
+		}else{
+			complementValue = e.target.value
+		}
 		setProductSelected(prevProduct => ({
 			...prevProduct,
-			complement: e.target.value,
+			complement: complementValue,
 			priceComplement: e.target.getAttribute('price'),
 
 		}))
@@ -229,6 +235,7 @@ export default function Hall() {
 
 
 	const addProduct = () => {
+
 
 		if (productSelected.name !== undefined && productSelected.price !== undefined && productSelected.name !== "") {
 			if (productSelected.flavor === undefined) {
@@ -411,7 +418,7 @@ export default function Hall() {
 
 	return (
 		<div className="pages-container">
-			<Header />
+			<Header classBtn="btn-hidden"/>
 			<nav>
 				<ul className="menu-types">
 					<li className={breakfastClass} onClick={selectBreakfast}>

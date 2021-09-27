@@ -18,7 +18,7 @@
 	padding: 30px;
 	margin-bottom: 40px;
 	align-items: baseline;
-	border-top: 1px solid var(--stroke);
+	// border-top: 1px solid var(--stroke);
 	font-weight: bold;
 	color: var(--black);
 	
@@ -147,5 +147,20 @@
 	
 }
 
+.btn-list-orders{
+	background-color: var(--light-gray);
+	font-size: 0.8rem;
+	letter-spacing: 0.1rem;
+	margin-right:1rem;
+	margin-top:1rem;
 
+}
+
+.btn-visible{
+	display:inline-block
+}
+
+.btn-invisible{
+	display:none
+}
 

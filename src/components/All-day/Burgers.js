@@ -83,7 +83,7 @@ chooseBurger, chooseFlavor, chooseComplement, complementChecked
 <ProductArea
 					inputId="none"
 					inputName="complement"
-					inputValue= {null}
+					inputValue= ""
 					productImg={prato}
 					productImgAlt="dish"
 					productName="Sem extra"

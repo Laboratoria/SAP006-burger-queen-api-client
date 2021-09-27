@@ -4,7 +4,8 @@ import OrdersPanel from '../../components/OrdersPanel';
 export default function HallOrders() {
 	return (
 		<>
-			<OrdersPanel />
+		
+			<OrdersPanel classBtn="goback" />
 		</>
 
 	)

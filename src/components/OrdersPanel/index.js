@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable object-curly-newline */
 import React, {useState, useEffect} from 'react';
 import ListAllOrders from '../ListAllOrders'
@@ -6,7 +7,7 @@ import ButtonDefault from '../ButtonDefault';
 
 
 
-export default function OrdersPanel() {
+export default function OrdersPanel({classBtn}) {
 
   const [navClass, setNavClass] = useState({
     pending:"selected",
@@ -18,12 +19,14 @@ export default function OrdersPanel() {
 
   const lastStatus =  localStorage.getItem('lastOrderStatus');
   const [status, setStatus] = useState("pending")
+	const[visibilityBtn, setVisibilityBtn]= useState("btn-invisible")
 
   useEffect(() => {
 		if(lastStatus){
 			setNavClass({[lastStatus]:"selected"})
 			if (lastStatus==="all"){
 				setStatus(false)
+				setVisibilityBtn("btn-visible")
 			}else{
 				setStatus(lastStatus)
 			}
@@ -32,20 +35,30 @@ export default function OrdersPanel() {
 
 
  	const handleUpdateOrders = () => {
+		 
 		window.location.reload()
 	}
 
   setTimeout(handleUpdateOrders,60000)
 	
   const navOrders = (chosenStatus) =>{
-		setStatus(chosenStatus)
-    localStorage.setItem('lastOrderStatus', chosenStatus);
+		if (chosenStatus==="all"){
+			setStatus(false)
+			setVisibilityBtn("btn-visible")
+			localStorage.setItem('lastOrderStatus', "all");
+
+		}else{
+			setStatus(chosenStatus)
+			localStorage.setItem('lastOrderStatus', chosenStatus);
+	
+		}
+	
 	}
 
 
 	return (
 		<div className="pages-container">
-			<Header />
+			<Header classBtn={classBtn}/>
 			<nav>
 				<ul className="menu-types">
 					<li className={navClass.pending} onClick={()=>{handleUpdateOrders(); setNavClass({pending:"selected"}); navOrders("pending")}}>
@@ -67,9 +80,9 @@ export default function OrdersPanel() {
 						Entregues{' '}
 					</li>
 
-					<li className={navClass.all} onClick={()=>{setNavClass({all:"selected"}); navOrders(false)}}>
+					<li className={navClass.all} onClick={()=>{setNavClass({all:"selected"}); navOrders("all")}}>
 						{' '}
-						Todos{' '}
+						Histórico{' '}
 					</li>
 				</ul>
 
@@ -81,7 +94,7 @@ export default function OrdersPanel() {
 			</nav>
 
 
-			<ListAllOrders session ={status} orderUpdate = {handleUpdateOrders}/>
+			<ListAllOrders session ={status} orderUpdate = {handleUpdateOrders} className={visibilityBtn}/>
 		</div>
 	);
 }

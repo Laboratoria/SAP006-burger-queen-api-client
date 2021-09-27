@@ -7,7 +7,7 @@ import Loader from '../Loader';
 
 import './listAllOrders.scss';
 
-export default function ListAllOrders({ session, orderUpdate }) {
+export default function ListAllOrders({ session, className }) {
 	const [allOrders, setAllOrders] = useState([]);
 	const [showPopup, setShowPopup] = useState(false);
 	const [popUpText, setPopUpText] = useState("")
@@ -16,6 +16,8 @@ export default function ListAllOrders({ session, orderUpdate }) {
 	const apiURL = 'https://lab-api-bq.herokuapp.com';
 	const apiOrders = `${apiURL}/orders/`;
 	const token = localStorage.getItem('token');
+
+	
 
 	useEffect(() => {
 		const getRequestOptions = {
@@ -33,13 +35,24 @@ export default function ListAllOrders({ session, orderUpdate }) {
 			});
 	}, [apiOrders, token]);
 
-	const ordersFilteredByStatus = () => {
+
+
+	// const ordersFilteredByStatus = () => {
+	// 	const arrayOrders = [...allOrders]
+	// 	const ordersFiltered = arrayOrders.filter(order => order.status === session)
+	// 	return ordersFiltered
+	// }
+
+	const [ordersFilteredByStatus, setOrdersFilteredByStatus] = useState([])
+
+	useEffect(() => {
 		const arrayOrders = [...allOrders]
 		const ordersFiltered = arrayOrders.filter(order => order.status === session)
-		return ordersFiltered
-	}
+		setOrdersFilteredByStatus(ordersFiltered)
+	
+	}, [allOrders, session])
 
-	ordersFilteredByStatus()
+
 
 	const orderStatus = (status) => {
 		switch (status) {
@@ -167,10 +180,23 @@ export default function ListAllOrders({ session, orderUpdate }) {
 
 	}
 
+	const todayOrders=()=>{
+		const newArray = [...allOrders]
+		const today = new Date().toLocaleDateString('pt-br')
+		const todayOrdersArray = newArray.filter(order=> new Date(order.createdAt).toLocaleDateString('pt-br') === today )
+		setAllOrders(todayOrdersArray)
+
+	}
+
 
 	return (
+		<>
+		
+		<ButtonDefault className={`btn-default btn-list-orders ${className}`} onClick={todayOrders}>Pedidos do dia</ButtonDefault>
+			<ButtonDefault className={`btn-default btn-list-orders ${className}`} onClick={()=>window.location.reload()}>Todos</ButtonDefault>
 		<section className="cards-orders-container">
-			{session ? ordersFilteredByStatus().map((order, index) => (
+			
+			{session ? ordersFilteredByStatus.map((order, index) => (
 				<div className="card-order-template" key={order.id}>
 					<div className="card-order-info">
 						<div className="card-order-table">
@@ -302,5 +328,6 @@ export default function ListAllOrders({ session, orderUpdate }) {
 
 			{loading ? <Loader /> : false}
 		</section>
+		</>
 	);
 }
