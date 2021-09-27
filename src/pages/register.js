@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link /*useHistory*/ } from 'react-router-dom';
 
 
 // import logo from '../img/logo.png'
@@ -10,10 +10,8 @@ import Button from '../components/Button';
 import '../styles/login.css';
 import '../global.css';
 
-
-
 function Register() {
-    const history = useHistory();
+    /*const history = useHistory();*/
 
     const [errors, setErrors] = useState({});
     const [values, setValues] = useState({
@@ -28,7 +26,6 @@ function Register() {
             ...values,
             [event.target.name]: event.target.value,
         })
-        
     }
 
     const handleFormSubmit = (event) => {
@@ -49,11 +46,11 @@ function Register() {
                 const role = json.role
                 localStorage.setItem("usersToken", token);
                 localStorage.setItem("role", role)
-                /*if (json.id !== undefined && role === "hall") {
-                    //navigateToRoles();
-                    navigateToMenu()
-                } else if (json.id !== undefined && role === "kitchen") {
-                    navigateToKitchen() */
+                // /*if (json.id !== undefined && role === "hall") {
+                //     //navigateToRoles();
+                //     navigateToMenu()
+                // } else if (json.id !== undefined && role === "kitchen") {
+                //     navigateToKitchen() */
                 }
             )
     }
@@ -82,7 +79,7 @@ function Register() {
                 value={values.password}
                 onChange={handleChange}
             />
-            {errors.password && <p className="msgErro">{errors.password}</p>}
+            {/* {errors.password && <p className="msgErro">{errors.password}</p>} */}
 
             <div className="radioBtn">
                 <div className="radioBtn1">
@@ -106,7 +103,7 @@ function Register() {
                     </label>
                 </div>
             </div>
-            {errors.role && <p className="msgErro">{errors.role}</p>}
+            {/* {errors.role && <p className="msgErro">{errors.role}</p>} */}
 
 
             <Button type="submit"
@@ -118,6 +115,7 @@ function Register() {
                 <Link className="link" to="/login">Faça login </Link>
             </button>
         </div>    
+        
     );
 }
 export default Register;
