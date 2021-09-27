@@ -4,10 +4,14 @@ import React, {useState, useEffect} from 'react';
 import ListAllOrders from '../ListAllOrders'
 import Header from '../Header'
 import ButtonDefault from '../ButtonDefault';
+import Loader from '../Loader';
 
 
 
 export default function OrdersPanel({classBtn}) {
+
+	const [loading, setLoading] = useState(false);
+
 
   const [navClass, setNavClass] = useState({
     pending:"selected",
@@ -35,11 +39,9 @@ export default function OrdersPanel({classBtn}) {
 
 
  	const handleUpdateOrders = () => {
-		 
+		setLoading(true);
 		window.location.reload()
 	}
-
-  setTimeout(handleUpdateOrders,60000)
 	
   const navOrders = (chosenStatus) =>{
 		if (chosenStatus==="all"){
@@ -61,26 +63,26 @@ export default function OrdersPanel({classBtn}) {
 			<Header classBtn={classBtn}/>
 			<nav>
 				<ul className="menu-types">
-					<li className={navClass.pending} onClick={()=>{handleUpdateOrders(); setNavClass({pending:"selected"}); navOrders("pending")}}>
+					<li className={navClass.pending} onClick={()=>{ handleUpdateOrders(); setNavClass({pending:"selected"}); navOrders("pending")}}>
 						{' '}
 						Em espera{' '}
 					</li>
-					<li className={navClass.loading} onClick={()=>{setNavClass({loading:"selected"}); navOrders("loading")}}>
+					<li className={navClass.loading} onClick={()=>{handleUpdateOrders(); setNavClass({loading:"selected"}); navOrders("loading")}}>
 						{' '}
 						Iniciados{' '}
 					</li>
 
-					<li className={navClass.done} onClick={()=>{setNavClass({done:"selected"}); navOrders("done")}}>
+					<li className={navClass.done} onClick={()=>{handleUpdateOrders(); setNavClass({done:"selected"}); navOrders("done")}}>
 						{' '}
 						Prontos{' '}
 					</li>
 
-          <li className={navClass.delivered} onClick={()=>{setNavClass({delivered:"selected"}); navOrders("delivered")}}>
+          <li className={navClass.delivered} onClick={()=>{handleUpdateOrders(); setNavClass({delivered:"selected"}); navOrders("delivered")}}>
 						{' '}
 						Entregues{' '}
 					</li>
 
-					<li className={navClass.all} onClick={()=>{setNavClass({all:"selected"}); navOrders("all")}}>
+					<li className={navClass.all} onClick={()=>{handleUpdateOrders(); setNavClass({all:"selected"}); navOrders("all")}}>
 						{' '}
 						Histórico{' '}
 					</li>
@@ -95,6 +97,7 @@ export default function OrdersPanel({classBtn}) {
 
 
 			<ListAllOrders session ={status} orderUpdate = {handleUpdateOrders} className={visibilityBtn}/>
+			{loading ? <Loader /> : false}
 		</div>
 	);
 }
