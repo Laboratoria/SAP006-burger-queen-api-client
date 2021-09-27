@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import MenuHamburger from "../../components/menuHamburger";
 import ProductInfo from "../../components/productinfo";
-import Requests from "../../components/requests";
+import Cart from "../../components/cart";
+import ResultPrice from "../../components/resultprice";
 import useProducts from "./useProducts";
 
 const Menu = () => {
-  const { productsFiltered, handleButtonTypeClick } = useProducts();
-  const [addItem, setAddItem] = useState([]);
+  const { handleButtonTypeClick, productsFiltered, setAddItem, addItem, total } = useProducts();
  
-
+  
   return (
     <div className='main'>
       <MenuHamburger />
       <section className='big-container'>
         <div className='menu-list'>
           <button className='menu-button' onClick={handleButtonTypeClick} value={'breakfast'}>Café da manhã</button>
-          <button className='menu-button' onClick={handleButtonTypeClick} value={'all-day'}>Almoço/Jantar</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'hamburguer'}>Hambúrgueres</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'side'}>Acompanhamento</button>
+          <button className='menu-button' onClick={handleButtonTypeClick} value={'drinks'}>Bebidas</button>
         </div>
         <div className='products-list' {...productsFiltered}>
           <div className='list-area'>
@@ -23,13 +25,14 @@ const Menu = () => {
             <label className='list-labels'>Sabor</label>
             <label className='list-labels'>Valor</label>
           </div>
-          {productsFiltered.map((elem) => {
+          {productsFiltered().map((elem) => {
             return (
               <ProductInfo
                 id={elem.id}
                 name={elem.name}
                 price={elem.price}
                 flavor={elem.flavor}
+                complement={elem.complement}
                 onClick={() => {
                   setAddItem([...addItem, { id: elem.id, name: elem.name, price: elem.price, flavor: elem.flavor }])
                 }}
@@ -38,6 +41,7 @@ const Menu = () => {
             )
       
           })}
+          
           
         </div>
         <div className='orders-card'>
@@ -59,8 +63,11 @@ const Menu = () => {
             <option value='10'>Mesa 10</option>
           </select>
           <div className='orders-list'>
-            <Requests data={addItem} />
+          <Cart data={ addItem }/>
+          <ResultPrice value={ total }/>
           </div>
+          
+         
           <button className='menu-button'>Finalizar pedido</button>
         </div>
       </section>

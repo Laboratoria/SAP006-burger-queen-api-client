@@ -15,18 +15,18 @@ const useForm = () => {
 
   useEffect(() => {
     return { errors }
-  })
+  }, [errors])
 
   const handleChange = (e) => {
     const auxValues = { ...values };
     auxValues[e.target.name] = e.target.value;
     setValues(auxValues);
-    setErrors(validateForm(values).message);
+    setErrors(() => validateForm(values).message);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors(validateForm(values).message)
+    setErrors(() => validateForm(values).message)
     if (validateForm(values).validationFulfilled === true) {
       createUser(values)
         .then(res => res.json())
