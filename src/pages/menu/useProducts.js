@@ -1,4 +1,4 @@
-import { getProducts } from "../../services/auth";
+import { getProducts, sendOrder } from "../../services/auth";
 import { useState, useEffect } from "react";
 
 const useProducts = () => {
@@ -6,6 +6,22 @@ const useProducts = () => {
   const [productsType, setProductsType] = useState('breakfast');
   const [addItem, setAddItem] = useState([]);
   const [total, setTotal] = useState(0);
+  const [orderInfo, setOrderInfo] = useState({ client: '', table: '' });
+
+
+  const handleOrderChange = (e) => {
+    return setOrderInfo(() => {
+      const auxValues = { ...orderInfo };
+      auxValues[e.target.name] = e.target.value;
+      console.log(auxValues);
+    });
+  }
+
+  const sendToKitchen = () => {
+    sendOrder(orderInfo, addItem)
+      .then((res => res.json()))
+      .then((data) => console.log(data));
+  }
 
   const getData = async () => {
     const data = await getProducts().then(data => data)
@@ -27,9 +43,9 @@ const useProducts = () => {
   const handleButtonTypeClick = (e) => setProductsType(e.target.value);
 
   const productsFiltered = () => products.filter((elem) => elem.sub_type.includes(productsType));
-  
 
-  return { handleButtonTypeClick, productsFiltered, setAddItem, addItem, total }
+
+  return { handleButtonTypeClick, productsFiltered, setAddItem, addItem, total, sendToKitchen, handleOrderChange }
 }
 
 export default useProducts;
