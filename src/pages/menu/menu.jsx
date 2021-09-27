@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import MenuHamburger from "../../components/menuHamburger";
 import ProductInfo from "../../components/productinfo";
 import Cart from "../../components/cart";
+import ResultPrice from "../../components/resultprice";
 import useProducts from "./useProducts";
 
 const Menu = () => {
-  const { handleButtonTypeClick, productsFiltered } = useProducts();
-  const [addItem, setAddItem] = useState([]);
-  
+  const { handleButtonTypeClick, productsFiltered, setAddItem, addItem, total } = useProducts();
+   
   return (
     <div className='main'>
       <MenuHamburger />
@@ -24,7 +24,7 @@ const Menu = () => {
             <label className='list-labels'>Sabor</label>
             <label className='list-labels'>Valor</label>
           </div>
-          {productsFiltered.map((elem) => {
+          {productsFiltered().map((elem) => {
             return (
               <ProductInfo
                 id={elem.id}
@@ -59,6 +59,7 @@ const Menu = () => {
           </select>
           <div className='orders-list'>
           <Cart data={ addItem }/>
+          <ResultPrice value={ total }/>
           </div>
           <button className='menu-button'>Finalizar pedido</button>
         </div>

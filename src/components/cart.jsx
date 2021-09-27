@@ -2,6 +2,7 @@ import React from "react";
 import ProductInfo from "./productinfo";
 
 export default function Cart({ data }) {
+
   return (
     <div>
       {data.map((elem) => {
