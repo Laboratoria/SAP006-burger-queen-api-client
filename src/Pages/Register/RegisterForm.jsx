@@ -68,7 +68,7 @@ const Register = () => {
                         name='fullName'
                         values={values.fullName}
                         onChange={handleChange}
-                        placeholder='nome completo' 
+                        placeholder='Nome completo' 
                         errormessage='Por favor, insira um nome válido.' />
                     {errors.fullName && <p className='error'>{errors.fullName}</p>}
                     <Input variant="primary"
@@ -77,7 +77,7 @@ const Register = () => {
                         name='email'
                         values={values.email}
                         onChange={handleChange}
-                        placeholder='e-mail'
+                        placeholder='E-mail'
                         errormessage='Por favor, insira um e-mail válido.' />
                     {errors.email && <p className='error errorsMessage'>{errors.email}</p>}
                     <Input variant="primary"
@@ -86,7 +86,7 @@ const Register = () => {
                         name='password'
                         value={values.password}
                         onChange={handleChange}
-                        placeholder='senha'
+                        placeholder='Senha'
                         errormessage='Por favor, insira uma senha válida.' />
                     {errors.password && <p className='error errorsMessage'>{errors.password}</p>}
                     <Input variant="primary"
@@ -95,7 +95,7 @@ const Register = () => {
                         name='confirmPassword'
                         value={values.confirmPassword}
                         onChange={handleChange}
-                        placeholder='confirmar senha'
+                        placeholder='Confirmar senha'
                         errormessage='As senhas não conferem.' />
                     {errors.confirmPassword && <p className='error errorsMessage'>{errors.confirmPassword}</p>}
                     </form>

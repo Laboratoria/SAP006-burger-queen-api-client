@@ -15,7 +15,7 @@ const OrdersList = ({ data }) => {
                             price={item.price}
                             flavor={item.flavor}
                             complement={item.complement}
-                            qtd={item.qtd}    
+                            // qtd={item.qtd}    
                         />
                     // }
                     // return order

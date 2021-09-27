@@ -33,12 +33,13 @@ const Menu = ()  => {
                     console.log(res)
                     setProducts(res)
                     const breakfast = res.filter((item) => item.type === 'breakfast')
-                    const burger = res.filter((item) => item.sub_type === 'hamburguer')
-                    setSelectedProducts(breakfast || burger)
+                    setSelectedProducts(breakfast)
+                    // const burger = res.filter((item) => item.sub_type === 'hamburguer')
+                    // setSelectedProducts(breakfast || burger)
 
                     return res;
                 })
-                .catch((error) => console.log(error, 'erro ao acessar a lista de produtos'))
+                .catch((error) => console.log(error, 'Erro ao acessar a lista de produtos'))
     }, [token])
 
     const handleClick = (meal) => { 
@@ -49,6 +50,12 @@ const Menu = ()  => {
         //     products.filter((item) => item.sub_type === 'hamburguer')
         // } return setBurger(compileBurger)
     }
+
+    // const homeBtnSidebar = rootElement.querySelector('#sidebarHome');
+    // homeBtnSidebar.addEventListener('click', () => {
+    //   postSection.style.display = 'none';
+    //   profileSection.style.display = 'none';
+    // });
 
     return (
         <>
@@ -78,6 +85,7 @@ const Menu = ()  => {
                                                 name: item.name,
                                                 price: item.price,
                                                 flavor: item.flavor,
+                                                complement: item.complement,
                                                 image: item.image,
                                             }
                                         ])

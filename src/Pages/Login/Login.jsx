@@ -34,19 +34,6 @@ const Login = () => {
         })
     }
     
-    // function handleSubmit() {
-    //     const user = {
-    //         email,
-    //         password,
-    //     }
-
-    //     loginWithEmail(user)
-    //     .then((json) => {
-    //         const route = getRouteByRole(json.role);
-    //         history.push(route);      
-    //     })
-    // }
-
     return (
             <section className="mainBox">
                 <img className="imgLogo" src={vixiLogo} alt='icon-login' />
@@ -56,7 +43,7 @@ const Login = () => {
                         <Input
                             type='email' 
                             id='email' 
-                            placeholder='email'
+                            placeholder='Email'
                             value={email}
                             errormessage='Por favor, insira um e-mail válido.'
                             onChange={(event) => setEmail(event.target.value)}
@@ -64,7 +51,7 @@ const Login = () => {
                         <Input
                             type='password' 
                             id='password' 
-                            placeholder="senha"
+                            placeholder="Senha"
                             value={password}
                             errormessage='Por favor, insira uma senha válida.'
                             onChange={(event) => setPassword(event.target.value)}
