@@ -7,10 +7,11 @@ import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
-import Title from '../../../components/title/Title'
+import Title from '../../../components/title/Title';
+// import Error from '../../../services/Error';
 
-import cozinheiro from '../../../img/cozinheiro.png'
-import garcom from '../../../img/garcom.png'
+import cozinheiro from '../../../img/cozinheiro.png';
+import garcom from '../../../img/garcom.png';
 
 import './Register.css';
 
@@ -54,13 +55,13 @@ export default function Register() {
         } catch (error) {
             console.log('errrrou')
         }
-    }
+    };
 
-
+    // evento de clique para voltar
     const btnBack = () => {
       localStorage.clear()
       history.push('/')
-    }
+    };
 
     // seleciona o role - se cozinha ou salão - pega value e salva no role do servidor
     function handleRoleChange (e) {
@@ -68,7 +69,7 @@ export default function Register() {
         if(e.target.checked){
             setRole(e.target.value)
         }
-    }
+    };
 
     return(
         <div className='container-register'>

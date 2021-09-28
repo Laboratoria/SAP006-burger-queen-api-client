@@ -46,9 +46,10 @@ export default function Login() {
                 const role = roleUser
                 
                 if(role === 'salon') {
+                    alert('Login com Salão')
                     history.push('/menus')
                 } else {
-                    alert('Será redirecionado para sua área')
+                    alert('Login com Cozinha')
                     history.push('/preparacao')
                 }                  
             } 

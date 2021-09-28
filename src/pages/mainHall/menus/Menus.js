@@ -12,55 +12,55 @@ function Menus () {
     const [allProducts, setAllProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
     const history = useHistory();
-    const STORAGE_KEY = 'burger-queen-api-client'
-    const getStorageKey = () => localStorage.getItem(STORAGE_KEY)
-    const token = getStorageKey();
+    const token = localStorage.getItem('userToken');
+    
+    // const STORAGE_KEY = 'burger-queen-api-client'
+    // const getStorageKey = () => localStorage.getItem(STORAGE_KEY)
+    // const token = getStorageKey();    
+    // useffect - metodo que da inicio a renderização e só 1 coisa com as promisses juntas, sobre a condição de um array
 
     useEffect(() => {
-      const apiURL = 'https://lab-api-bq.herokuapp.com';
-      const apiProducts = `${apiURL}/products`;
-      console.log(token)
-
-      fetch(apiProducts, {
-          method: 'GET',
+      fetch('https://lab-api-bq.herokuapp.com/products', {
+          method:'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'token',
+            'Authorization': token,
           }
-      })
-        .then((response) => response.json())
-        .then((res) => {                    
-          console.log(res)
-          setAllProducts(res)
-          const breakfast = res.filter((item) => item.type === 'breakfast')
-          setSelectedProducts(breakfast)
-          return res;
-        });
-    }, [token]);  
-
-
-// useffect - metodo que da inicio a renderização e só 1 coisa com as promisses juntas, sobre a condição de um array
+        })
+          .then(response => response.json())
+          .then((json) => {                                
+            console.log(json)
+            setAllProducts(json)
+            const menus = json.filter((item) => item.type)
+            setSelectedProducts(menus)
+            return json;
+          });
+      }, [token]);
     
     const btnMenus = (e) => {
       e.preventDefault()
       history.push('/menus')
     }
 
-      const btnRequests = (e) => {
-        e.preventDefault()
-        history.push('/pedidos')
-      }
-
-      const btnHistoric = (e) => {
-        e.preventDefault()
-        history.push('/historico')
-      }
-
-      const handleClick = (meal) => { 
-      const selectedMenu = allProducts.filter((item) => item.type === meal)
-        setSelectedProducts(selectedMenu)
+    const btnRequests = (e) => {
+      e.preventDefault()
+      history.push('/pedidos')
     }
 
+    const btnHistoric = (e) => {
+      e.preventDefault()
+      history.push('/historico')
+    }
+
+    const handleClick = (meal) => {
+      const selectedMenu = allProducts.filter((item) => item.type === meal)
+      setSelectedProducts(selectedMenu)
+    }
+
+    const [nome, setNome] = useState('');
+    const handleChange = (e) => {
+      setNome(e.target.value)
+  };
 
     return(
         <div>
@@ -88,6 +88,10 @@ function Menus () {
             </div>
 
             <h3> Atendente: {localStorage.getItem("userName")} </h3>
+            <h3> Mesa: {localStorage.getItem("userName")} </h3>
+            <label>Nome do Cliente</label>
+            <input onChange={handleChange} className="input" type="text" name="nameClient"></input>
+            {nome} 
 
             <select>
               <option value="">Mesas</option>
@@ -98,9 +102,7 @@ function Menus () {
               <option value="">05</option>
               <option value="">06</option>
               <option value="">07</option>
-            </select>
-            <p>EM CONSTRUÇÃO - PÁGINA DE MENUS</p>
-        
+            </select>        
 
             <Button 
               label="Café da manha"
@@ -110,20 +112,24 @@ function Menus () {
               label="Almoço/Jantar"
               onClick={handleClick}
             />
+
             <section
               {...setSelectedProducts}       
             />
+
               {selectedProducts.map(item => (<Itens 
-                id={item.id} 
-                name={item.name}
-                flavor={item.flavor}
-                complement={item.complement}
-                price={item.price}
-                image={item.image}/>)) 
+                  id={item.id} 
+                  name={item.name}
+                  flavor={item.flavor}
+                  complement={item.complement}
+                  price={item.price}
+                  image={item.image}
+                  type={item.type}
+                />)) 
               }
           <Footer />
         </div>
-    )
-}
+    );
+};
 
 export default Menus;

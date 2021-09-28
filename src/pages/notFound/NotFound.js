@@ -3,7 +3,7 @@ import notfound from '../../img/notfound.gif';
 
 import './NotFound.css';
 
-const NotFound = () => {
+export default function NotFound () {
     return (
 
         <div className="container-notfound">
@@ -12,5 +12,4 @@ const NotFound = () => {
         </div>
 
     );
-}
-export default NotFound;
+};

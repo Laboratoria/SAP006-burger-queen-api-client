@@ -4,7 +4,7 @@ import Itens from './Itens';
 import './Style.css';
 
 
-function Cards () {
+export default function Cards () {
     return(
         <div>
             <label>Pedido Nº1</label>
@@ -19,7 +19,5 @@ function Cards () {
                     <h3> Ag. Preparação. </h3>
                 </div>
         </div>
-    )
+    );
 };
-
-export default Cards;

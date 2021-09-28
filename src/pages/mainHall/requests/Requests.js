@@ -6,7 +6,7 @@ import Button from '../../../components/button/Button';
 
 import './Requests.css';
 
-function Requests () {
+export default function Requests () {
     const history = useHistory();
 
       const btnMenus = (e) => {
@@ -52,9 +52,7 @@ function Requests () {
             <div>
                 Pedidos aqui
             </div>
-
+            
         </div>
-    )
-}
-
-export default Requests;
+    );
+};

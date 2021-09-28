@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Style.css';
 
-function Itens ({id, name, flavor, complement, price, image}) {
+export default function Itens ({id, name, flavor, complement, price, image, type}) {
     return(
         <div
             id={id}
@@ -11,8 +11,8 @@ function Itens ({id, name, flavor, complement, price, image}) {
             complement={complement}
             price={price}
             image={image}
-        />
-    )
-};
+            type={type}
 
-export default Itens;
+        />
+    );
+};

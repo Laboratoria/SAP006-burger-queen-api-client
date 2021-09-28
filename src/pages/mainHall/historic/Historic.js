@@ -7,7 +7,7 @@ import Button from '../../../components/button/Button';
 
 import './Historic.css';
 
-function Historic () {
+export default function Historic () {
     const history = useHistory();
 
       const btnMenus = (e) => {
@@ -55,7 +55,5 @@ function Historic () {
           </div>
 
         </div>
-    )
-}
-
-export default Historic;
+    );
+};
