@@ -2,7 +2,6 @@
 /* eslint-disable radix */
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import './hall.scss';
 
 import LinkAside from '../../components/LinkAside';
@@ -18,6 +17,9 @@ import Sides from '../../components/All-day/Sides';
 import Popup from '../../components/Popup';
 import PopupCancel from '../../components/PopupCancel';
 import Header from '../../components/Header';
+
+import cart from '../../img/shopping-cart.png'
+import close from '../../img/close.png'
 
 
 export default function Hall() {
@@ -363,6 +365,12 @@ export default function Hall() {
 		history.push('/salao-pedidos');
 	}
 
+	const [visibilityCart, setVisibilityCart] = useState(false)
+
+	const closeCart = () =>{
+		setVisibilityCart(false)
+	}
+
 	return (
 		<div className="pages-container">
 			<Header classBtn="btn-hidden" />
@@ -401,8 +409,12 @@ export default function Hall() {
 							value={client}
 							onChange={onChangeClient}
 						/>
+						<button className="cart-portrait" onClick={() => setVisibilityCart(true)}>
+							<img src={cart} alt="carrinho" />
+						</button>
 					</div>
 					<div className="menu">
+
 						<aside>
 							<LinkAside
 								className={activation1 ? 'active' : null}
@@ -439,6 +451,11 @@ export default function Hall() {
 					</div>
 				</section>
 				<CartArea content={cartContent} plus={addUnit} minus={removeUnit} openPopupCancel={() => setShowPopupCancel(true)} sendOrder={sendOrder} />
+				{visibilityCart ? (<div className="cart-wrapper">
+					<button onClick={closeCart} className="close-cart">
+						<img src={close} alt="Fechar carrinho" />
+					</button><CartArea className="cart-area-portrait" content={cartContent} plus={addUnit} minus={removeUnit} openPopupCancel={() => setShowPopupCancel(true)} sendOrder={sendOrder} />
+					</div>) : ""}
 
 				{showPopup ? (
 					<Popup

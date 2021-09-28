@@ -7,7 +7,7 @@ import ButtonDefault from '../ButtonDefault';
 import CartItem from '../CartItem';
 
 export default function CartArea({
-content, plus, minus, openPopupCancel, sendOrder
+content, plus, minus, openPopupCancel, sendOrder, className
 }) {
 
 const arrayPrices = content.map(product=>{
@@ -22,7 +22,7 @@ const totalPrice = arrayPrices.reduce((total, price) => total+price , 0)
 
 
 	return (
-		<div className="cart-container">
+		<div className={`cart-container ${className}`}>
 			<header>
 			<div className="title-card">
 				<img

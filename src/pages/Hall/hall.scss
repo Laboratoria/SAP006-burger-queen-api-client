@@ -82,6 +82,7 @@ main {
             flex-direction: row;
             height: 100%;
             width: 55vw;
+        
             @media (min-device-width: 1025px) {
                 width: 60vw;
             }
@@ -89,13 +90,47 @@ main {
             @media (min-device-width: 1400px) {
                 width: 55vw;
             }
-           
+            @media (orientation:portrait){
+                justify-self: center;
+                width:60vw;
+                flex-direction: column;
+                align-items: center;
+                
+            }
+        }
+
+        .client-data{
+            display:flex;
+            
+            @media (orientation:portrait){
+                width:100vw;
+            }
+
+            .cart-portrait{
+                display:none;
+                @media (orientation:portrait){
+                    display:inline-flex;
+                    position:absolute;
+                    right:3rem;
+                }
+            }
+
         }
         aside {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
+            @media (orientation:portrait){
+                position:absolute;
+                width:60vw;
+                flex-direction: row;
+                margin-bottom: 3rem;
+                left:50%;
+                transform:translate(-50%, 0%);
+                height: auto;
+               
+            }
         }
         .products {
             width: 100%;
@@ -107,12 +142,29 @@ main {
                 margin-left: auto;
                 margin-right: auto;
             }
+
+            @media (orientation:portrait){
+                position:absolute;
+                width:60vw;
+                flex-direction: row;
+                margin-bottom: 3rem;
+                left:50%;
+                top:45vh;
+                transform:translate(-50%, 0%);
+                margin:0;
+                height: auto;
+            }
         }
 
         .btn-add-item {
             align-self: center;
             width: 100%;
+            @media (orientation:portrait){
+                margin-top: 2rem;
+            }
         }
+
+      
     }
 
     @media (min-device-width: 1025px) {
@@ -124,6 +176,9 @@ main {
         padding-bottom: 3rem;
     }
 }
+
+
+
 
 
   
