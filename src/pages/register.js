@@ -1,10 +1,10 @@
 import { React, useState } from 'react';
-import { Link, useHistory} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-
-// import logo from '../img/logo.png'
+import '../styles/register.css';
+import logo from '../img/logo.png'
 import { registerUser } from "../auth";
-import {validation} from '../validation';
+import { validation } from '../validation';
 import Input from '../components/Input';
 import Button from '../components/Button';
 /*import useForm from '../Hooks/useForm';*/
@@ -51,64 +51,71 @@ function Register() {
         }
     }
     return (
-        <div className="pagina-login">
-            <header className="pagina-login-header">
-                 {/* <img src={logo} alt="Logo Burguer Queen" />  */}
+        <section className="register-page">
+            <div className="elipse-background"> </div>
+            <header className="header-register">
+                {<img src={logo} alt="Logo Burguer Queen" />}
             </header>
-            
-        
-                <h1 className="title">Cadastre-se</h1>
-              
-            <Input
-                type="email"
-                name="email"
-                inputClass="inputEmail"
-                value={infoUser.email}
-                onChange={handleChange}
-            />
-            {errors.email && <span className='form-error email'>{errors.email}</span>}
+            <div className="main-register">
 
-            <p className="labelInputs">Senha</p>
-            <Input
-                type="password"
-                name="password"
-                inputClass="inputPassword"
-                value={infoUser.password}
-                onChange={handleChange}
-            />
-            {errors.password && <span className='form-error'>{errors.password}</span>}
+                <div className="box-register">
 
-            <div className="radioBtn">
-                <div className="radioBtn1">
-                    <label className="roleLabel">
-                        <input type="radio" name="role" value="hall"
-                            onChange={handleChange}
-                        />
-                        &nbsp;Salão
-                    </label>
-                </div>
 
-                <div className="radioBtn2">
-                    <label className="roleLabel">
-                        <input
-                            type="radio"
-                            name="role"
-                            value="kitchen"
-                            onChange={handleChange}
-                        />
-                        &nbsp;Cozinha
-                    </label>
+                    <h1 className="title">Cadastre-se</h1>
+
+                    <Input
+                        type="email"
+                        name="email"
+                        inputClass="inputEmail"
+                        value={infoUser.email}
+                        onChange={handleChange}
+                    />
+                    {errors.email && <span className='form-error email'>{errors.email}</span>}
+
+                    <p className="labelInputs">Senha</p>
+                    <Input
+                        type="password"
+                        name="password"
+                        inputClass="inputPassword"
+                        value={infoUser.password}
+                        onChange={handleChange}
+                    />
+                    {errors.password && <span className='form-error'>{errors.password}</span>}
+
+                    <div className="radio-buttons">
+                        <div className="radio">
+                            <label className="roleLabel">
+                                <input type="radio" name="role" value="hall"
+                                    onChange={handleChange}
+                                />
+                                &nbsp;Salão
+                            </label>
+                        </div>
+
+                        <div className="radioBtn2">
+                            <label className="roleLabel">
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    value="kitchen"
+                                    onChange={handleChange}
+                                />
+                                &nbsp;Cozinha
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <Button type='submit' onClick={handleRegister}>Cadaste-se</Button>
+
+                    <button type="submit">
+                        <Link className="link" to="/login">Faça login </Link>
+                    </button>
                 </div>
             </div>
 
+        </section>
 
-          <Button type='submit' onClick={handleRegister}>Cadaste-se</Button>
-
-            <button type="submit">
-                <Link className="link" to="/login">Faça login </Link>
-            </button>
-        </div>    
-        
     );
 }
 export default Register;

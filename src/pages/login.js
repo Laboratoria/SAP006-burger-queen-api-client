@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/login.css';
-// import logo from '../img/logo.png'
+import logo from '../img/logo.png'
 import { Link, useHistory } from 'react-router-dom';
 import Input from '../components/Input';
 import Button from '../components/Button';
@@ -48,21 +48,38 @@ function Login() {
        }
 
     return (
-        <section>
-            <div className="pagina-login" >
-                <header className="pagina-login-header"> 
-                     {/* <img src={logo} alt="Logo Burguer Queen" /> */}
-            </header>
-            </div> 
+        <section className="login-page" >
+                <div className="elipse-background"> </div>
+                <header className="header-login"> 
+                     {<img src={logo} alt="Logo Burguer Queen" />}
+                </header>
+                <div className="main-login">
+                    <div className="box-login" >
+                        <form className="forms" action="" onSubmit={handleSubmit}>
+                            <h1 className="title">Login</h1>
+                            <Input 
+                                label="Usuário" 
+                                type="text" 
+                                name="username" {...username}
+                            />
+                            <Input 
+                                label="Senha" 
+                                type="password" 
+                                name="password" {...password} 
+                            />
+                            <Button 
+                                type="submit"  
+                                onClick={logar}> 
+                                Entrar
+                            </Button>
 
-                <form action="" onSubmit={handleSubmit}>
-                    <h1 className="login-name">login</h1>
-                    <Input label="Usuário" type="text" name="username" {...username}/>
-                    <Input label="Senha" type="password" name="password" {...password} />
-                    <Button type="submit"  onClick={logar}>Entrar</Button>
-                    
-                </form>
-            <Link className="link" to="/Register">Cadastre-se</Link>
+                            <Link 
+                                className="link" to="/Register"> 
+                                Cadastre-se 
+                            </Link>
+                        </form>
+                    </div>
+                </div>
         </section>
      );
 }
