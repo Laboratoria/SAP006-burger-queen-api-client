@@ -45,7 +45,6 @@ export const OrdersBeingPrepared = () => {
     })
   }
 
-
   const [modal, setModal] = useState(false);
   const [modalContent, setModalContent] = useState({
     Type:'',
@@ -55,7 +54,6 @@ export const OrdersBeingPrepared = () => {
     ButtonSecondChildren:'',
     ButtonSecondClick:'',
   })
-
 
   return (
     <div>

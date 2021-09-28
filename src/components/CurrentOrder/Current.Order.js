@@ -144,7 +144,6 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
               ButtonClass='kitchen-order-status-button kitchen-delivered-order-button'  
               children='Este pedido já foi entregue!' 
               ButtonId={order.id}
-              ButtonOnClick={OrderDeliveredButton}
             /> 
           }
         </div>
