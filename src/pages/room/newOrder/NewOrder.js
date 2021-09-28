@@ -275,6 +275,7 @@ export const NewOrder = () => {
       <section>
         {sucessModal &&
           <StandardModalWithTwoOptions
+            Type='two-buttons-modal'
             ButtonChildren = 'Voltar para o salão'
             ButtonSecondAuthModalOptionChildren = 'Fazer um novo pedido'
             ModalContent='As chefs já estão dando conta do pedido! Aguarde atualizações.'

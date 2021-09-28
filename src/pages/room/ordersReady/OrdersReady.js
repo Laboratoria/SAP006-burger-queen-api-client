@@ -1,152 +1,103 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
 import {useState, useEffect} from 'react';
-import { useHistory } from 'react-router-dom';
 
 import { NavbarRoom } from '../../../components/Navbar/Navbar';
 import { CurrentOrder } from '../../../components/CurrentOrder/Current.Order';
-import { StandardModal, StandardModalWithTwoOptions } from '../../../components/Modal/Modal';
-import { Button } from '../../../components/Button/Button';
+import { DefaultModal } from '../../../components/Modal/Modal';
 
-import { getAllOrders } from '../../../services/orders';
-import { deleteOrder } from '../../../services/orders';
-import { changeOrderStatus } from '../../../services/orders';
-import { logout } from "../../../routes/utils/auth";
+import { getErrorCase } from '../../../services/general';
+import { getAllOrders, deleteOrder, changeOrderStatus } from '../../../services/orders';
 
-import './../ordersBeingPrepared/OrderStatusGeneral.scss'
+import '../ordersBeingPrepared/OrderStatusGeneral.scss'
 
 export const OrdersReady = () => { 
-  const history = useHistory();
-
   const token = localStorage.getItem('currentEmployeeToken');
+
   const [orderToBeDeleted, setOrderToBeDeleted] = useState('');
   const [currentOrders, setCurrentOrders] = useState([]);
-  const [kitchenDeleteOrderModal, setKitchenDeleteOrderModal] = useState(false);
-  const [missingDataOrNoChangesErrorModal, setMissingDataOrNoChangesErrorModal] = useState(false);
-  const [userNotAuthenticatedErrorModal, setUserNotAuthenticatedErrorModal] = useState(false);
-  const [orderBelongsAnotherRestaurantErrorModal, setOrderBelongsAnotherRestaurantErrorModal] = useState(false);
-  const [orderNotfoundErrorModal, setOrderNotfoundErrorModal] = useState('');
 
-  const getErrorCase = (data) => {
-    switch (data) {
-      case 400:
-        setMissingDataOrNoChangesErrorModal(true);
-        break;
-      case 401:
-        setUserNotAuthenticatedErrorModal(true);
-        break;
-      case 403: 
-        setOrderBelongsAnotherRestaurantErrorModal(true);
-        break;
-      case 404:
-        setOrderNotfoundErrorModal(true);
-        break;
-      default:
-    }
+  const [modal, setModal] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    Type:'',
+    Text:'',
+    ButtonChildren:'',
+    ButtonClick:'',
+    ButtonSecondChildren:'',
+    ButtonSecondClick:'',
+  })
+
+  const handleAPIErrors = (data) => {
+    const result = getErrorCase(data.code);
+    Object.keys(data).includes('code') && setModalContent(modalContent => ({...modalContent, Text: result, Type: 'one-button-modal'}));
+    Object.keys(data).includes('code') && setModal(true);
   }
 
   useEffect(() => {
     getAllOrders(token)
     .then(responseJson => {
-      switch (responseJson.code) {
-        case 401:
-          return setUserNotAuthenticatedErrorModal(true);
-        default:
-          const orders = responseJson;
-          const filteredOrders = orders.filter((order) => order.status === 'Pronto');
-          setCurrentOrders(filteredOrders);
-      } 
-    })   
-  }, []);
-
+      const filteredOrders = responseJson.filter((order) => order.status === 'Pronto');
+      setCurrentOrders(filteredOrders);
+      handleAPIErrors(responseJson);
+    })  
+  }, [currentOrders, token]);
 
   const deleteTargetOrder = () => {
     deleteOrder(orderToBeDeleted, token)
     .then(responseJson => {
-      getErrorCase(responseJson.code);
+      handleAPIErrors(responseJson);
     })
   }
 
   const changeTargetOrderStatus = (id, status) => {
     changeOrderStatus(id, token, status)
     .then((responseJson) => {
-      getErrorCase(responseJson.code);
+      handleAPIErrors(responseJson);
     })
-  }
-
-  const handleLogOut = () => {
-    logout();
-    history.push('/');
   }
 
   return (
     <div>
       <header>
-        <NavbarRoom />
+        <NavbarRoom/>
       </header>
       <main className='order-status-main'>
-        <Button Role='kitchen-sign-out' ButtonOnClick={()=>handleLogOut()}/>
         <section className='current-orders-section'>
-          {Object.keys(currentOrders).length > 0 &&   
-            currentOrders.sort((a,b) => a.createdAt - b.createdAt).map((order) => 
+          {currentOrders.length > 0 &&   
+            currentOrders.sort((a,b) => a.id - b.id).map((order) => 
               <CurrentOrder
                 key={order.id}
                 order={order}
                 ButtonId={order.id}
-                
-                ButtonDeleteOrder = {(event)=> [setKitchenDeleteOrderModal(true), setOrderToBeDeleted(event.target.id)]}
+                ButtonDeleteOrder = {(event)=> [
+                  setModalContent(modalContent => ({...modalContent, 
+                    Type: 'two-buttons-modal',
+                    Text: 'Você tem certeza que deseja deletar este pedido?',
+                    ButtonSecondClick: () => {
+                      deleteTargetOrder();
+                      setModal(false);
+                    }
+                  })), 
+                  setModal(true), 
+                  setOrderToBeDeleted(event.target.id)
+                ]}
                 OrderBeingPreparedButton = {() => changeTargetOrderStatus(order.id, 'Em Preparo')}
                 OrderReadyButton = {() => changeTargetOrderStatus(order.id, 'Pronto')}
                 OrderDeliveredButton = {() => changeTargetOrderStatus(order.id, 'Entregue')}
               /> 
-            )}
-        </section>
+            )
+          }
+        </section>  
       </main>
       <section>
-        {kitchenDeleteOrderModal && 
-          <StandardModalWithTwoOptions
-            ButtonChildren='SIM'
-            ButtonSecondAuthModalOptionChildren='NÃO'
-            ModalContent='Você tem certeza que deseja deletar este pedido?'
-            ButtonOnClick={()=> [deleteTargetOrder(), setKitchenDeleteOrderModal(false)]}
-            ButtOnClickSecondAuthModalOption = {() => setKitchenDeleteOrderModal(false)}
+        {modal && 
+          <DefaultModal
+            Type = {modalContent.Type}
+            ModalContent = {modalContent.Text === 'Informações insuficientes!' ? 
+            'Não há alterações para fazer neste pedido' : modalContent.Text }
+            ButtonChildren = 'Fechar'
+            ButtonOnClick = {() => setModal(false)}
+            ButtonSecondAuthModalOptionChildren= 'Excluir'
+            ButtOnClickSecondAuthModalOption = {modalContent.ButtonSecondClick}
           />
-        }
-      </section>
-      <section>
-        {missingDataOrNoChangesErrorModal && 
-          <StandardModal 
-            ButtonChildren = 'OK'
-            ModalContent='Não há mudanças a serem feitas para este pedido.'
-            ButtonOnClick={()=>setMissingDataOrNoChangesErrorModal(false)}
-          /> 
-        }
-      </section>
-      <section>
-        {userNotAuthenticatedErrorModal && 
-           <StandardModal 
-            ButtonChildren = 'OK'
-            ModalContent='Usuário não autenticado.'
-            ButtonOnClick={()=>setUserNotAuthenticatedErrorModal(false)}
-          /> 
-        }
-      </section>
-      <section>
-        {orderBelongsAnotherRestaurantErrorModal && 
-           <StandardModal 
-            ButtonChildren = 'OK'
-            ModalContent='Este pedido não pertence ao BERG.'
-            ButtonOnClick={()=>setOrderBelongsAnotherRestaurantErrorModal(false)}
-          /> 
-        }
-      </section>
-      <section>
-        {orderNotfoundErrorModal && 
-           <StandardModal 
-            ButtonChildren = 'OK'
-            ModalContent='Pedido não encontrado!'
-            ButtonOnClick={()=>setOrderNotfoundErrorModal(false)}
-          /> 
         }
       </section>
     </div>

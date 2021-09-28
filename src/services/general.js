@@ -60,5 +60,6 @@ export const getErrorCase = (data) => {
     case 404:
         return 'Pedido não encontrado!'
     default:
+      return 'Desculpe-nos, mas um erro ocorreu.'
   }
 }

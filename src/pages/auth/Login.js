@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
-import { StandardModal, StandardModalWithTwoOptions } from '../../components/Modal/Modal';
+import { DefaultModal } from '../../components/Modal/Modal';
 import { Button } from '../../components/Button/Button';
 import { Header } from '../../components/Header/Header';
 import { InputContentUserData } from '../../components/UserData/UserData';
@@ -17,12 +17,18 @@ export function Login () {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
-  const [authErrorModal, setAuthErrorModal] = useState(false);
-  const [authSucessModal, setAuthSucessModal] = useState(false);
+
+  const [modal, setModal] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    Type:'',
+    Text:'',
+    ButtonChildren:'',
+    ButtonClick:'',
+    ButtonSecondChildren:'',
+    ButtonSecondClick:'',
+  })
 
   const userData = {email, password};
-  const setAuthModals = {setAuthErrorModal, setAuthSucessModal};
 
   const isLandscape = useMediaQuery({ query: '(orientation: landscape)' });
 
@@ -32,10 +38,28 @@ export function Login () {
       localStorage.setItem('currentEmployeeToken', responseJson.token);
       localStorage.setItem('currentEmployeeRole', responseJson.role);
       localStorage.setItem('currentEmployeeName', responseJson.name);
-      setRole(localStorage.getItem('currentEmployeeRole'));
-      setAuthModals.setAuthSucessModal(true);
+      const role = responseJson.role;
+      setModalContent(modalContent => ({...modalContent, 
+        Type: 'one-button-modal',
+        Text: 'Login realizado com sucesso!', 
+        ButtonChildren: 'Ir para Home',
+        ButtonClick: () => role === 'kitchen' ? history.push('/kitchen') : history.push('/room')
+      }))
+      setModal(true);
     })
-    .catch(() => setAuthModals.setAuthErrorModal(true));
+    .catch(() => {setModalContent(modalContent => 
+      ({...modalContent, 
+        Type: 'two-buttons-modal',
+        Text: 'Usuárie não encontrade!', 
+        ButtonChildren: 'Tente Novamente',
+        ButtonClick: () => setModal(false),
+        ButtonSecondChildren:'Criar uma nova conta',
+        ButtonSecondClick:() => history.push('/register')   
+      })
+      )
+      setModal(true)
+    })
+    ;
   };
 
   return (
@@ -60,7 +84,7 @@ export function Login () {
         </form>
           <Button 
             ButtonClass = 'auth-submit-form-button'
-            ButtonOnClick = {(event) => handleLogin(event, {userData}, {setAuthModals})} 
+            ButtonOnClick = {(event) => handleLogin(event, {userData})} 
             children = 'ENTRAR'
           /> 
           <div className='auth-route-navigation-div'>
@@ -74,22 +98,14 @@ export function Login () {
       </div>
     </main>
     <section>
-      {authSucessModal && (
-        <StandardModal
-          ModalContent = 'Login realizado com sucesso!'
-          ButtonChildren = 'Ir para Home'
-          ButtonOnClick = {() => role === 'kitchen' ? history.push('/kitchen') : history.push('/room')}
-        />
-      )}
-    </section>
-    <section>
-      {authErrorModal && (
-        <StandardModalWithTwoOptions
-          ModalContent = 'Usuárie não encontrade!'
-          ButtonChildren = 'Tente novamente'
-          ButtonOnClick = {() => setAuthErrorModal(false)} 
-          ButtonSecondAuthModalOptionChildren = 'Crie uma nova conta.'
-          ButtOnClickSecondAuthModalOption = {() => history.push('/register')} 
+      {modal && (
+        <DefaultModal
+          Type = {modalContent.Type}
+          ModalContent = {modalContent.Text}
+          ButtonChildren = {modalContent.ButtonChildren}
+          ButtonOnClick = {modalContent.ButtonClick} 
+          ButtonSecondAuthModalOptionChildren = {modalContent.ButtonSecondChildren}
+          ButtOnClickSecondAuthModalOption = {modalContent.ButtonSecondClick} 
         />
       )}
     </section>

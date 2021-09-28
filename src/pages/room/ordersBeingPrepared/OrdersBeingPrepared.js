@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 
 import { NavbarRoom } from '../../../components/Navbar/Navbar';
 import { CurrentOrder } from '../../../components/CurrentOrder/Current.Order';
-import { StandardModal, StandardModalWithTwoOptions,  } from '../../../components/Modal/Modal';
+import { DefaultModal } from '../../../components/Modal/Modal';
 
 import { getErrorCase } from '../../../services/general';
 import { getAllOrders, deleteOrder, changeOrderStatus } from '../../../services/orders';
@@ -10,24 +10,25 @@ import { getAllOrders, deleteOrder, changeOrderStatus } from '../../../services/
 import './OrderStatusGeneral.scss'
 
 export const OrdersBeingPrepared = () => { 
-
   const token = localStorage.getItem('currentEmployeeToken');
+
   const [orderToBeDeleted, setOrderToBeDeleted] = useState('');
   const [currentOrders, setCurrentOrders] = useState([]);
 
-  const [defaultModal, setDefaultModal] = useState(false);
-  const [personalizedModal, setPersonalizedModal] = useState(false);
-
-  const [defaultModalContent, setDefaultModalContent] = useState({
+  const [modal, setModal] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    Type:'',
     Text:'',
     ButtonChildren:'',
     ButtonClick:'',
+    ButtonSecondChildren:'',
+    ButtonSecondClick:'',
   })
 
   const handleAPIErrors = (data) => {
     const result = getErrorCase(data.code);
-    Object.keys(data).includes('code') && setDefaultModalContent(defaultModalContent => ({...defaultModalContent, Text: result}));
-    Object.keys(data).includes('code') && setDefaultModal(true);
+    Object.keys(data).includes('code') && setModalContent(modalContent => ({...modalContent, Text: result, Type: 'one-button-modal'}));
+    Object.keys(data).includes('code') && setModal(true);
   }
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export const OrdersBeingPrepared = () => {
     .then(responseJson => {
       const filteredOrders = responseJson.filter((order) => order.status === 'pending');
       setCurrentOrders(filteredOrders);
+      handleAPIErrors(responseJson);
     })  
   }, [currentOrders, token]);
 
@@ -55,17 +57,28 @@ export const OrdersBeingPrepared = () => {
   return (
     <div>
       <header>
-      <NavbarRoom/>
+        <NavbarRoom/>
       </header>
-      <main className='kitchen-main'>
-        <section className='kichen-current-orders-section'>
+      <main className='order-status-main'>
+        <section className='current-orders-section'>
           {currentOrders.length > 0 &&   
             currentOrders.sort((a,b) => a.id - b.id).map((order) => 
               <CurrentOrder
                 key={order.id}
                 order={order}
                 ButtonId={order.id}
-                ButtonDeleteOrder = {(event)=> [setPersonalizedModal(true), setOrderToBeDeleted(event.target.id)]}
+                ButtonDeleteOrder = {(event)=> [
+                  setModalContent(modalContent => ({...modalContent, 
+                    Type: 'two-buttons-modal',
+                    Text: 'Você tem certeza que deseja deletar este pedido?',
+                    ButtonSecondClick: () => {
+                      deleteTargetOrder();
+                      setModal(false);
+                    }
+                  })), 
+                  setModal(true), 
+                  setOrderToBeDeleted(event.target.id)
+                ]}
                 OrderBeingPreparedButton = {() => changeTargetOrderStatus(order.id, 'Em Preparo')}
                 OrderReadyButton = {() => changeTargetOrderStatus(order.id, 'Pronto')}
                 OrderDeliveredButton = {() => changeTargetOrderStatus(order.id, 'Entregue')}
@@ -75,20 +88,15 @@ export const OrdersBeingPrepared = () => {
         </section>  
       </main>
       <section>
-        {defaultModal && 
-          <StandardModal
-            ModalContent = {defaultModalContent.Text}
+        {modal && 
+          <DefaultModal
+            Type = {modalContent.Type}
+            ModalContent = {modalContent.Text === 'Informações insuficientes!' ? 
+            'Não há alterações para fazer neste pedido' : modalContent.Text }
             ButtonChildren = 'Fechar'
-            ButtonOnClick = {() => setDefaultModal(false)}
-          />
-        }
-        {personalizedModal && 
-          <StandardModalWithTwoOptions
-            ModalContent='Você tem certeza que deseja deletar este pedido?'
-            ButtonChildren='SIM'
-            ButtonOnClick={()=> [deleteTargetOrder(), setPersonalizedModal(false)]}
-            ButtonSecondAuthModalOptionChildren='NÃO'
-            ButtOnClickSecondAuthModalOption = {() => setPersonalizedModal(false)}
+            ButtonOnClick = {() => setModal(false)}
+            ButtonSecondAuthModalOptionChildren= 'Excluir'
+            ButtOnClickSecondAuthModalOption = {modalContent.ButtonSecondClick}
           />
         }
       </section>

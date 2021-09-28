@@ -19,7 +19,7 @@ export const StandardModal = ({ModalContent, ButtonChildren, ButtonOnClick}) => 
   )
 }
 
-export const StandardModalWithTwoOptions = ({ModalContent, ButtonChildren, ButtonOnClick, ButtonSecondAuthModalOptionChildren, ButtOnClickSecondAuthModalOption}) => {
+export const StandardModalWithTwoOptions = ({Type, ModalContent, ButtonChildren, ButtonOnClick, ButtonSecondAuthModalOptionChildren, ButtOnClickSecondAuthModalOption}) => {
   return (
     <section className='modal-background'>
       <div className='modal-container'>
@@ -30,16 +30,46 @@ export const StandardModalWithTwoOptions = ({ModalContent, ButtonChildren, Butto
             children={ButtonChildren}
             ButtonOnClick={ButtonOnClick}
           />
-          <Button 
-            ButtonClass='modal-button'
-            children={ButtonSecondAuthModalOptionChildren}
-            ButtonOnClick={ButtOnClickSecondAuthModalOption}
-          />
+          {
+          Type === 'two-buttons-modal' &&
+            <Button 
+              ButtonClass='modal-button'
+              children={ButtonSecondAuthModalOptionChildren}
+              ButtonOnClick={ButtOnClickSecondAuthModalOption}
+            />
+          }
         </div>
       </div>
     </section>
   )
 }
+
+
+export const DefaultModal = ({Type, ModalContent, ButtonChildren, ButtonOnClick, ButtonSecondAuthModalOptionChildren, ButtOnClickSecondAuthModalOption}) => {
+  return (
+    <section className='modal-background'>
+      <div className='modal-container'>
+        <p className='modal-content'>{ModalContent}</p>
+        <div className='standard-two-options-modal-buttons-div'>
+          <Button 
+            ButtonClass='modal-button'
+            children={ButtonChildren}
+            ButtonOnClick={ButtonOnClick}
+          />
+          {
+          Type === 'two-buttons-modal' &&
+            <Button 
+              ButtonClass='modal-button'
+              children={ButtonSecondAuthModalOptionChildren}
+              ButtonOnClick={ButtOnClickSecondAuthModalOption}
+            />
+          }
+        </div>
+      </div>
+    </section>
+  )
+}
+
 
 export function AuthModal ({Role, ModalContent, ButtonChildren, ButtonOnClick, ButtOnClickSecondAuthModalOption, ButtonSecondAuthModalOptionChildren}) {
   return (
