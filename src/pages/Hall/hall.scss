@@ -89,6 +89,7 @@ main {
             @media (min-device-width: 1400px) {
                 width: 55vw;
             }
+           
         }
         aside {
             display: flex;
@@ -116,15 +117,12 @@ main {
 
     @media (min-device-width: 1025px) {
         height: 100vh;
-        // padding-bottom: 3rem;
     }
 
     @media (min-device-width: 1400px) {
         height: 80vh;
         padding-bottom: 3rem;
     }
-
-   
 }
 
 

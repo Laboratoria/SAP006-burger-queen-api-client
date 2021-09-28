@@ -3,19 +3,18 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import './hall.scss';
+
 import LinkAside from '../../components/LinkAside';
 import CartArea from '../../components/CartArea'
 import ButtonDefault from '../../components/ButtonDefault';
-import './hall.scss';
 import Input from '../../components/Input';
-
 import Snack from '../../components/Breakfast/Snack';
 import Coffee from '../../components/Breakfast/Coffee';
 import Juice from '../../components/Breakfast/Juice';
 import Burgers from '../../components/All-day/Burgers';
 import Drinks from '../../components/All-day/Drinks';
 import Sides from '../../components/All-day/Sides';
-
 import Popup from '../../components/Popup';
 import PopupCancel from '../../components/PopupCancel';
 import Header from '../../components/Header';
@@ -24,7 +23,6 @@ import Header from '../../components/Header';
 export default function Hall() {
 
 	const [allProducts, setAllProducts] = useState([]);
-
 
 	useEffect(() => {
 		const apiURL = 'https://lab-api-bq.herokuapp.com';
@@ -70,37 +68,31 @@ export default function Hall() {
 			quantity: 1,
 			flavor: null,
 			complement: null,
-
-
 		})
 	}
 
 	const chooseBurger = (e) => {
 		setProductSelected(prevProduct => ({
 			...prevProduct,
-
 			name: e.target.value,
 			price: e.target.getAttribute('price'),
 			quantity: 1,
 			complement: (prevProduct.complement ? prevProduct.complement : null)
-
 		}))
 	}
 
 	const chooseFlavor = (e) => {
-
 		setProductSelected(prevProduct => ({
 			...prevProduct,
 			flavor: e.target.value,
 		}))
-
 	}
 
 	const chooseComplement = (e) => {
 		let complementValue
-		if (e.target.value===""){
+		if (e.target.value === "") {
 			complementValue = null
-		}else{
+		} else {
 			complementValue = e.target.value
 		}
 		setProductSelected(prevProduct => ({
@@ -109,11 +101,9 @@ export default function Hall() {
 			priceComplement: e.target.getAttribute('price'),
 
 		}))
-
 	}
 
 	const chooseDrink = (e) => {
-
 		setProductSelected(prevProduct => ({
 			...prevProduct,
 			name: `${e.target.value} ${prevProduct.size ? prevProduct.size : ""}`,
@@ -123,7 +113,6 @@ export default function Hall() {
 	}
 
 	const chooseSizeDrink = (e) => {
-
 		setProductSelected(prevProduct => ({
 			...prevProduct,
 			name: `${prevProduct.name ? `${prevProduct.name.split(" ")[0]} ${e.target.getAttribute('data-item')}` : ""}`,
@@ -131,13 +120,10 @@ export default function Hall() {
 			price: e.target.getAttribute('price'),
 			flavor: null,
 			complement: null
-
 		}))
 	}
 
-
 	const [products, setProducts] = useState(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
-
 	const [breakfastClass, setBreakfastClass] = useState("")
 	const [allDayClass, setAllDayClass] = useState("selected")
 
@@ -181,48 +167,35 @@ export default function Hall() {
 		setProducts(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
 	}
 
+	const switchMenu = (act1, act2, act3, component) => {
+		setActivation1(act1)
+		setActivation2(act2)
+		setActivation3(act3)
+		setProducts(component)
+	}
+
 	const changeProducts = (e) => {
 		setProductSelected("")
 		const click = e.target.innerText
 		switch (click) {
 			case "BURGERS":
-				setActivation1(true)
-				setActivation2(false)
-				setActivation3(false)
-				setProducts(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
+				switchMenu(true, false, false, <Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
 				break;
 			case "ADICIONAIS":
-				setActivation1(false)
-				setActivation2(true)
-				setActivation3(false)
-				setProducts(<Sides onClick={chooseProduct} />)
-
+				switchMenu(false, true, false, <Sides onClick={chooseProduct} />)
 				break
 			case "BEBIDAS":
-				setActivation1(false)
-				setActivation2(false)
-				setActivation3(true)
-				setProducts(<Drinks chooseDrink={chooseDrink} chooseSizeDrink={chooseSizeDrink} />)
+				switchMenu(false, false, true, <Drinks chooseDrink={chooseDrink} chooseSizeDrink={chooseSizeDrink} />)
 				break
 			case "LANCHES":
-				setActivation1(true)
-				setActivation2(false)
-				setActivation3(false)
-				setProducts(<Snack onClick={chooseProduct} />)
+				switchMenu(true, false, false, <Snack onClick={chooseProduct} />)
 				break;
 			case "CAFÉS":
-				setActivation1(false)
-				setActivation2(true)
-				setActivation3(false)
-				setProducts(<Coffee onClick={chooseProduct} />)
+				switchMenu(false, true, false, <Coffee onClick={chooseProduct} />)
 				break
 			case "SUCOS":
-				setActivation1(false)
-				setActivation2(false)
-				setActivation3(true)
-				setProducts(<Juice onClick={chooseProduct} />)
+				switchMenu(false, false, true, <Juice onClick={chooseProduct} />)
 				break
-
 			default:
 		}
 	}
@@ -230,14 +203,9 @@ export default function Hall() {
 	const [showPopup, setShowPopup] = useState(false);
 	const [showPopupCancel, setShowPopupCancel] = useState(false);
 	const [popUpText, setPopUpText] = useState("")
-
 	const [cartContent, setCartContent] = useState([])
 
-
 	const addProduct = () => {
-
-
-
 		if (productSelected.name !== undefined && productSelected.price !== undefined && productSelected.name !== "") {
 			if (productSelected.flavor === undefined) {
 				setPopUpText("Selecione um item antes de adicioná-lo!")
@@ -256,13 +224,11 @@ export default function Hall() {
 					productInCart.quantity += 1
 					setCartContent(newArray)
 				}
-				// setComplementChecked(false)
 			}
 
 		} else {
 			setPopUpText("Selecione um item antes de adicioná-lo!")
 			setShowPopup(true);
-
 		}
 	}
 
@@ -290,7 +256,6 @@ export default function Hall() {
 		} else {
 			setCartContent(newArray)
 		}
-
 	}
 
 	const cancelAndCloseOrder = () => {
@@ -301,33 +266,27 @@ export default function Hall() {
 	const [client, setClient] = useState('');
 	const [table, setTable] = useState('');
 
-
 	const onChangeClient = (e) => {
 		const name = e.target.value
 		setClient(name)
-
 	};
 
-	const[selectTable, setSelectTable] = useState("")
+	const [selectTable, setSelectTable] = useState("")
 
 	const onChangeTable = (e) => {
 		setTable(e.target.value)
 		setSelectTable(e.target.value)
 	}
 
-
 	const sendOrder = () => {
-		
 		if (table === "" || client === "") {
 			setPopUpText("Dados do cliente incompletos. Preencha antes de enviar o pedido!")
 			setShowPopup(true)
 			setSelectTable("")
-		
+
 		} else if (cartContent.length === 0) {
 			setPopUpText("O Carrinho está vazio. Adicione os produtos antes de enviar o pedido!")
 			setShowPopup(true)
-		
-			
 
 		} else {
 			const newArray = [...cartContent]
@@ -337,8 +296,7 @@ export default function Hall() {
 					id: productAPI.id,
 					qtd: productCart.quantity
 				}
-			}
-			)
+			})
 
 			const order =
 			{
@@ -347,7 +305,6 @@ export default function Hall() {
 				products: orderProducts
 
 			}
-
 			setCartContent([])
 			setClient('')
 			setSelectTable("")
@@ -372,7 +329,6 @@ export default function Hall() {
 				body: JSON.stringify(order),
 			};
 
-
 			fetch(apiOrders, requestOptions)
 				.then((response) => response.json())
 				.then((orderData) => {
@@ -390,36 +346,26 @@ export default function Hall() {
 						setAllDayClass("selected")
 						setBreakfastClass('')
 						setProducts(<Burgers chooseBurger={chooseBurger} chooseFlavor={chooseFlavor} chooseComplement={chooseComplement} />)
-
 					}
-
 				})
 
 				.catch(() => {
 					setPopUpText('Ocorreu um erro no envio do pedido. Tente novamente.')
 					setShowPopup(true)
-
 				})
-
 		}
-
-
-
-
 	}
 
 	const tables = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 	const history = useHistory();
-
-	const seeOrders = () =>{
+	const seeOrders = () => {
 		history.push('/salao-pedidos');
 	}
 
-
 	return (
 		<div className="pages-container">
-			<Header classBtn="btn-hidden"/>
+			<Header classBtn="btn-hidden" />
 			<nav>
 				<ul className="menu-types">
 					<li className={breakfastClass} onClick={selectBreakfast}>
@@ -434,7 +380,7 @@ export default function Hall() {
 
 				<div className="order-progress">
 					<ButtonDefault className="btn-update-orders btn-default margin-left-1" onClick={seeOrders}>
-					 🔔 Pedidos
+						🔔 Pedidos
 					</ButtonDefault>
 				</div>
 			</nav>

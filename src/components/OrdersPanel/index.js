@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable object-curly-newline */
 import React, {useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
+import { createBrowserHistory } from "history";
 import ListAllOrders from '../ListAllOrders'
 import Header from '../Header'
 import ButtonDefault from '../ButtonDefault';
@@ -8,10 +10,11 @@ import Loader from '../Loader';
 
 
 
+
 export default function OrdersPanel({classBtn}) {
-
+	
 	const [loading, setLoading] = useState(false);
-
+	
 
   const [navClass, setNavClass] = useState({
     pending:"selected",
@@ -54,9 +57,7 @@ export default function OrdersPanel({classBtn}) {
 			localStorage.setItem('lastOrderStatus', chosenStatus);
 	
 		}
-	
 	}
-
 
 	return (
 		<div className="pages-container">

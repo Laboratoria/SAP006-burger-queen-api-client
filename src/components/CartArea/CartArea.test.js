@@ -53,5 +53,4 @@ describe('Tests for CartArea component', () => {
 
   });
 
- 
 });
