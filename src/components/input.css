@@ -1,4 +1,4 @@
-.wrapper {
+.input-container {
     margin-bottom: 1rem;
 }
 
@@ -39,3 +39,4 @@ input:hover{
     min-height: 100vh;
     gap: 2rem;
 }
+

@@ -1,8 +1,8 @@
 import { React, useState } from 'react';
 import { Link /*useHistory*/ } from 'react-router-dom';
 
-
-// import logo from '../img/logo.png'
+import '../styles/register.css';
+import logo from '../img/logo.png'
 import validation from '../validation';
 import Input from '../components/Input';
 import Button from '../components/Button';
@@ -55,66 +55,69 @@ function Register() {
             )
     }
     return (
-        <div className="pagina-login">
-            <header className="pagina-login-header">
-                 {/* <img src={logo} alt="Logo Burguer Queen" />  */}
+        <section className="register-page">
+            <div className="elipse-background"> </div>
+            <header className="header-register">
+                 { <img src={logo} alt="Logo Burguer Queen" /> }
             </header>
-            
-        
-                <h1 className="title">Cadastre-se</h1>
-            <Input
-                type="email"
-                name="email"
-                inputClass="inputEmail"
-                value={values.email}
-                onChange={handleChange}
-            />
-            {errors.email && <p className="msgErro">{errors.email}</p>}
+            <div className="main-register">
+                <div className="box-register">
+                    <h1 className="title">Cadastro</h1>
+                    <Input
+                        label="E-mail"
+                        type="email"
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
+                    />
+                    {errors.email && <p className="msgErro">{errors.email}</p>}
 
-            <p className="labelInputs">Senha</p>
-            <Input
-                type="password"
-                name="password"
-                inputClass="inputPassword"
-                value={values.password}
-                onChange={handleChange}
-            />
-            {/* {errors.password && <p className="msgErro">{errors.password}</p>} */}
+                    <p className="labelInputs">Senha</p>
+                    <Input
+                        type="password"
+                        name="password"
+                        inputClass="inputPassword"
+                        value={values.password}
+                        onChange={handleChange}
+                    />
+                    {/* {errors.password && <p className="msgErro">{errors.password}</p>} */}
 
-            <div className="radioBtn">
-                <div className="radioBtn1">
-                    <label className="roleLabel">
-                        <input type="radio" name="role" value="hall"
-                            onChange={handleChange}
-                        />
-                        &nbsp;Salão
-                    </label>
-                </div>
+                    <div className="radio-buttons">
+                        <div className="radio">
+                            <label className="roleLabel">
+                                <input type="radio" name="role" value="hall"
+                                    onChange={handleChange}
+                                />
+                                &nbsp;Salão
+                            </label>
+                        </div>
 
-                <div className="radioBtn2">
-                    <label className="roleLabel">
-                        <input
-                            type="radio"
-                            name="role"
-                            value="kitchen"
-                            onChange={handleChange}
-                        />
-                        &nbsp;Cozinha
-                    </label>
+                        <div className="radio">
+                            <label className="roleLabel">
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    value="kitchen"
+                                    onChange={handleChange}
+                                />
+                                &nbsp;Cozinha
+                            </label>
+                        </div>
+                    </div>
+                    {/* {errors.role && <p className="msgErro">{errors.role}</p>} */}
+
+
+                    <Button type="submit"
+                        className="orangeBtn"
+                        id="registerBtn"
+                        onClick={handleFormSubmit}>Cadastrar</Button>
+
+                    <button type="submit">
+                        <Link className="link" to="/login">Faça login </Link>
+                    </button>
                 </div>
             </div>
-            {/* {errors.role && <p className="msgErro">{errors.role}</p>} */}
-
-
-            <Button type="submit"
-                className="orangeBtn"
-                id="registerBtn"
-                onClick={handleFormSubmit}>Cadastrar</Button>
-
-            <button type="submit">
-                <Link className="link" to="/login">Faça login </Link>
-            </button>
-        </div>    
+        </section>    
         
     );
 }
