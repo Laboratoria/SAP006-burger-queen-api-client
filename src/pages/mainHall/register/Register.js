@@ -4,7 +4,7 @@ import { RegisterUser } from '../../../services/Auth';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import Input from '../../../components/inputs/Input';
-import Button from '../../../components/Button/Button';
+import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title'
@@ -46,9 +46,9 @@ export default function Registration() {
                 localStorage.setItem('userName', token)
                 const role = returnJson.role
                 if(role === 'salon') {
-                    history.push('/mesas')
+                    history.push('/')
                 } else {
-                    history.push('/preparacao')
+                    history.push('/')
                 }             
             } 
         } catch (error) {

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Footer from '../../../components/footer/Footer';
 
-import balcao from '../../../Img/balcao.png'
+import balcao from '../../../img/balcao.png'
 import mesas from '../../../img/mesas.png'
 import sofa from '../../../img/sofa.png'
 
@@ -30,9 +30,6 @@ function Tables () {
                 <NavBar />
                 <h3 className="infosUser"> Atendente: {localStorage.getItem("userName")} </h3>
             </div> 
-            <div>
-
-            </div>
                 <div className="container-tables">
                     <div>
                         <label htmlFor="t1"><img src={balcao} alt="counter" className="counter"/>1</label>

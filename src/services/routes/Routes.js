@@ -1,24 +1,29 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route } from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
 import Login from '../../pages/mainHall/login/Login';
 import Registration from '../../pages/mainHall/register/Register';
 import Tables from '../../pages/mainHall/tables/Tables';
 import Menus from '../../pages/mainHall/menus/Menus';
-// import Pedidos from '../../pages/mainHall/';
-// import Historico from '../../pages/mainHall/';
+import Pedidos from '../../pages/mainHall/requests/Requests';
+import Historico from '../../pages/mainHall/historic/Historic';
 // import Preparacao from '../../pages/kitchen/';
 // import Finalizado from '../../pages/kitchen/';
-// import NotFound from '../../pages/notFound/';
+import NotFound from '../../pages/notFound/NotFound';
 import PrivateRoute from '../routes/PrivateRoutes';
 
 function Routes(){
+    
     return (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Login} />
                 <Route path="/cadastre-se" component={Registration} />
                 <Route path="/menus" component={Menus} />
+                <Route path="/pedidos" component={Pedidos} />
+                <Route path="/historico" component={Historico} />
+                <Route path="/notfound" component={NotFound} />
+
                 <PrivateRoute path="/mesas" component={ Tables }/>
 
                 <Route path="*" element={<h1>Not Found</h1>} />                                

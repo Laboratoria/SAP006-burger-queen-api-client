@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import LogoImg from '../images/LogoImg';
-import ButtonLogout from '../../components/Button/logout/ButtonLogout';
+import ButtonLogout from '../button/logout/ButtonLogout';
 import garcom from '../../img/garcom.png'
 
 

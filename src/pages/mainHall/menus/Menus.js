@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from '../../../components/Button/Button';
-import construcao2 from '../../../img/construcao2.jpg'; 
+import Button from '../../../components/button/Button'
+import construcao2 from '../../../img/construcao2.jpg' 
 
 import './Menus.css';
 
