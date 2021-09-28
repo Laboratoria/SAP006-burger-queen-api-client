@@ -1,3 +1,15 @@
-.nav-bar {
-    background-color: red;
+.hall-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 5%;
+}
+
+.menu {
+   width: 50%;
+}
+
+.cart-container {
+    width: 30%;
+    background-color: white;
 }

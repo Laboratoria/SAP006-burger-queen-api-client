@@ -1,4 +1,4 @@
-import './validationMessage.css'
+import './ValidationMessage.css'
 
 const ValidationMessage = (props) => {
   return(
