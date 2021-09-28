@@ -147,3 +147,8 @@ export const RegisterUser = (users) => {
     //       }
     //     }
     //   };
+
+
+
+// export const role = () => localStorage.getItem('role');
+// export const token = () => localStorage.getItem('token');

@@ -51,7 +51,7 @@ function Historic () {
           </div>
 
           <div>
-            Pedidos aqui
+            Histórico aqui
           </div>
 
         </div>

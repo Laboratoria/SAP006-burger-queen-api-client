@@ -2,7 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
-import Cards from '../../../components/itensMenu/Cards';
 // import Footer from '../../../components/footer/Footer';
 
 import './Requests.css';
@@ -50,9 +49,8 @@ function Requests () {
                 /> 
             </div>
 
-            <div className="pedidos">
-                <Cards />
-                <Cards />
+            <div>
+                Pedidos aqui
             </div>
 
         </div>

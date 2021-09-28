@@ -101,7 +101,8 @@ export default function Login() {
                 <Button 
                     label='Entrar' 
                     type="submit"
-                    onClick={handleClick} 
+                    onClick={handleClick}
+                    className="buttons" 
                 />
 
                 <div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import exit from '../../../img/exit.png'
-import './ButtonLogout.css';
+import exit from '../../img/exit.png'
 
 export default function ButtonLogout() {
     const history = useHistory()

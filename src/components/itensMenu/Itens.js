@@ -2,12 +2,17 @@ import React from 'react';
 
 import './Style.css';
 
-function Itens () {
+function Itens ({id, name, flavor, complement, price, image}) {
     return(
-        <div>
-            <p>01 Hamburguer</p>
-            <p>Tempo de Preparo: 2min</p>
-        </div>  
+        <div
+            id={id}
+            name={name}
+            flavor={flavor}
+            complement={complement}
+            price={price}
+            image={image}
+        />
     )
 };
+
 export default Itens;

@@ -5,6 +5,7 @@
     --green-water-color: #40C1AC;
     --brown-color: #5C3D31;
     --white-color: #FFF; 
+    --red-hover: #360608;
 }
 
 .container-form{
@@ -45,4 +46,19 @@
 
 .container-inputs{
     width: 100%;
+}
+
+.buttons{
+    color: var(--white-color);
+    background-color: var(--red-color);
+    border: none;
+    width: 70%;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 15px;
+    margin: 4% 0 0 0;
+}
+
+.buttons:hover{
+    background-color: var(--red-hover);
 }
