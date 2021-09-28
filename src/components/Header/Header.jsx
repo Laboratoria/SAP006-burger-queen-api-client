@@ -20,7 +20,6 @@ const Header = () => {
     return (
         <nav className="header-navbar-desktop">
             <h2 className="header-title">VIXI!</h2>
-            <Link to='/tables' className="header-button">mesas</Link>
             <Link to='/menu' className="header-button">cardápio</Link>
             <Link to='/orders-status' className="header-button">status dos pedidos</Link>
             <button className="header-button" onClick={handleLogout}><Icon icon="carbon:logout" color="black" /></button>

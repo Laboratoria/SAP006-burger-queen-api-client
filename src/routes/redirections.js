@@ -3,7 +3,7 @@ import  { paths } from './paths'
 export const getRouteByRole = (role) => {
     switch (role) {
         case 'salão':
-            return paths.tables
+            return paths.menu
         case 'cozinha':
             return paths.kitchen
         default: 
@@ -18,6 +18,6 @@ export const getRouteHeaderMenu = (path) => {
         case 'status dos pedidos':
             return paths.ordersStatus
         default:
-            return paths.tables
+            return console.log("Desculpe, não conseguimos te redirecionar")
     }
 }
