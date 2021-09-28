@@ -7,8 +7,6 @@ import ButtonDefault from '../ButtonDefault';
 import Loader from '../Loader';
 
 
-
-
 export default function OrdersPanel({classBtn}) {
 	
 	const [loading, setLoading] = useState(false);

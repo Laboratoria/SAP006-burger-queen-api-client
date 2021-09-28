@@ -17,7 +17,6 @@ export default function ListAllOrders({ session, className }) {
 	const apiOrders = `${apiURL}/orders/`;
 	const token = localStorage.getItem('token');
 
-	
 
 	useEffect(() => {
 		const getRequestOptions = {
@@ -35,13 +34,6 @@ export default function ListAllOrders({ session, className }) {
 			});
 	}, [apiOrders, token]);
 
-
-
-	// const ordersFilteredByStatus = () => {
-	// 	const arrayOrders = [...allOrders]
-	// 	const ordersFiltered = arrayOrders.filter(order => order.status === session)
-	// 	return ordersFiltered
-	// }
 
 	const [ordersFilteredByStatus, setOrdersFilteredByStatus] = useState([])
 
