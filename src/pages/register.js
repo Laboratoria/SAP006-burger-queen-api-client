@@ -1,9 +1,10 @@
 import { React, useState } from 'react';
-import { Link /*useHistory*/ } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 
 
 // import logo from '../img/logo.png'
-import validation from '../validation';
+import { registerUser } from "../auth";
+import {validation} from '../validation';
 import Input from '../components/Input';
 import Button from '../components/Button';
 /*import useForm from '../Hooks/useForm';*/
@@ -13,46 +14,41 @@ import '../global.css';
 function Register() {
     /*const history = useHistory();*/
 
-    const [errors, setErrors] = useState({});
-    const [values, setValues] = useState({
-        email: "",
-        password: "",
-        role: "",
-        restaurant: "testeBurger"
-    })
-
-    const handleChange = (event) => {
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value,
-        })
+    const [errors, setErrors] = useState({})
+    function validationValues(values) {
+        const errorsResult = validation(values)
+        setErrors(errorsResult)
+        return errorsResult
     }
 
-    const handleFormSubmit = (event) => {
-        event.preventDefault()
-        setErrors(validation(values))
+    const [infoUser, setInfoUser] = useState({ email: '', password: '' });
 
-        fetch('https://lab-api-bq.herokuapp.com/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(values)
+    const handleChange = (e) => {
+        const informationUser = e.target.id;
+        setInfoUser({ ...infoUser, [informationUser]: e.target.value })
+        console.log(e.target.value, infoUser)
+        // if (informationUser === 'password') {      
+        // }
+    }
 
-        })
-            .then(res => res.json())
-            .then((json) => {
-                const token = json.token
-                const role = json.role
-                localStorage.setItem("usersToken", token);
-                localStorage.setItem("role", role)
-                // /*if (json.id !== undefined && role === "hall") {
-                //     //navigateToRoles();
-                //     navigateToMenu()
-                // } else if (json.id !== undefined && role === "kitchen") {
-                //     navigateToKitchen() */
-                }
-            )
+    let history = useHistory()
+    const handleRegister = (e) => {
+        e.preventDefault();
+
+        const resultErrors = validationValues(infoUser);
+
+        if (!resultErrors.email && !resultErrors.password) {
+            console.log(resultErrors.email, 'não tem erros')
+
+            registerUser(infoUser.email, infoUser.password)
+                .then(() => {
+                    console.log('usuário foi criado');
+                    history.push('/') //trocar pelo modal de aviso de cadastro com sucesso 
+                })
+        } else {
+            console.log(resultErrors, resultErrors.email, 'cadastro não concluído ')
+            //se quisermos colocar um modal avisando que nao foi concluído
+        }
     }
     return (
         <div className="pagina-login">
@@ -62,24 +58,25 @@ function Register() {
             
         
                 <h1 className="title">Cadastre-se</h1>
+              
             <Input
                 type="email"
                 name="email"
                 inputClass="inputEmail"
-                value={values.email}
+                value={infoUser.email}
                 onChange={handleChange}
             />
-            {errors.email && <p className="msgErro">{errors.email}</p>}
+            {errors.email && <span className='form-error email'>{errors.email}</span>}
 
             <p className="labelInputs">Senha</p>
             <Input
                 type="password"
                 name="password"
                 inputClass="inputPassword"
-                value={values.password}
+                value={infoUser.password}
                 onChange={handleChange}
             />
-            {/* {errors.password && <p className="msgErro">{errors.password}</p>} */}
+            {errors.password && <span className='form-error'>{errors.password}</span>}
 
             <div className="radioBtn">
                 <div className="radioBtn1">
@@ -103,13 +100,9 @@ function Register() {
                     </label>
                 </div>
             </div>
-            {/* {errors.role && <p className="msgErro">{errors.role}</p>} */}
 
 
-            <Button type="submit"
-                className="orangeBtn"
-                id="registerBtn"
-                onClick={handleFormSubmit}>Cadastrar</Button>
+          <Button type='submit' onClick={handleRegister}>Cadaste-se</Button>
 
             <button type="submit">
                 <Link className="link" to="/login">Faça login </Link>

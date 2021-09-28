@@ -1,19 +1,26 @@
-export default function validation(values) {
-    let errors = {};
 
+export const validation = (values) => {
+    const errors = {};
+
+    if (!values.email.includes('@')) {
+        errors.email = 'Por favor, insira um email válido com @!'
+    }
     if (values.email === '') {
-        errors.email = 'Email inválido'
+        errors.email = 'Por favor, insira um email!'
+    }
+
+    if (values.password.length < 6) {
+        errors.password = 'Por favor, insira uma senha válida com seis ou mais caracteres'
     }
 
     if (values.password === '') {
-        errors.password = 'Favor digitar a senha.'
-    } else if (values.password.length < 6) {
-        errors.password = 'Senha precisa ter 6 caracteres ou mais.'
-    }
+        errors.password = 'Por favor, insira uma senha válida'
 
+    }
     if (values.role === '') {
         errors.role = 'Setor de trabalho não selecionado.'
     }
+
 
     return errors;
 }

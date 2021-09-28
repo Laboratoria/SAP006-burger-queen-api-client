@@ -16,6 +16,7 @@ const  type = {
 
 const useForm = (type) => {
     const [value, setValue] = React.useState('');
+  
     const [error, setError] = React.useState(null);
     
     function validate(value){
