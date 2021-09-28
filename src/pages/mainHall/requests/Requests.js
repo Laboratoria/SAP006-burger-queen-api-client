@@ -26,10 +26,12 @@ function Requests () {
       }
 
     return(
-        <div className="container-menus">
+        <div>
+
             <div>
                 <NavBar />
             </div>
+
             <div>
                 <Button 
                     label="Menus" 
@@ -47,10 +49,12 @@ function Requests () {
                     onClick={btnHistoric} 
                 /> 
             </div>
+
             <div className="pedidos">
                 <Cards />
                 <Cards />
             </div>
+
         </div>
     )
 }

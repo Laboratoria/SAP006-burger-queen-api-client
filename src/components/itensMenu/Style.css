@@ -1,8 +1,14 @@
+:root {
+    --red-color: #AB2328;
+    --red-transp-color: #ab232887;
+    --white-color: #FFF; 
+}
+
 .container-card{
-    background-color: white;
+    background-color: var(--white-color);
     box-shadow: 0 0 8px 0 rgb(0 0 0 / 59%);
-    border: solid 1px #AB2328;
-    border-top: solid 25px #AB2328;
+    border: solid 1px var(--red-color);
+    border-top: solid 25px var(--red-color);
     border-radius: 10px;
     width: 130%;
     height: 260px;
@@ -28,7 +34,7 @@
     margin: 3% auto;
     border-radius: 15px;
     padding: 3%;
-    background-color: #ab232887;
+    background-color: var(--red-transp-color);
 }
 
 .btn-cards{
@@ -38,6 +44,6 @@
 
 .status{
     align-items: center;
-    color: #ab2328;
+    color: var(--red-color);
     font-size: 22px;
 }

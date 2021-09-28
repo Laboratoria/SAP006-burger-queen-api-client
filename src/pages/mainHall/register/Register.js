@@ -74,11 +74,13 @@ export default function Register() {
         <div className='container-register'>
             <form className="container-form">
                 <LogoImg />
+                
                 <div>
                     <Title 
                         title='Cadastre-se' 
                     />
                 </div>
+
                 <div>
                     <Input 
                         type='text' 
@@ -87,7 +89,6 @@ export default function Register() {
                         onChange={(event) => setName(event.target.value)}
                         placeholder='Digite o seu Nome'
                     />
-
                     <Input 
                         type='text' 
                         name='email'
@@ -103,16 +104,16 @@ export default function Register() {
                         placeholder='Digite a sua senha'
                     />
                     <span className="login-eye">
-                            {showPassword ? 
+                        {showPassword ? 
                             (<FaEye
                                 onClick={eyeClick} /> ):
                             (<FaEyeSlash
                                 onClick={eyeClick} />)
                             }
-                        </span> 
+                    </span> 
                 </div>
-                <div className='container-checkbox' value={role} onChange={(event) => handleRoleChange(event)}
->
+
+                <div className='container-checkbox' value={role} onChange={(event) => handleRoleChange(event)}>
                     <Input 
                         type='radio' 
                         name='ocupation'
@@ -120,7 +121,6 @@ export default function Register() {
                         placeholder='salon'
                     />
                     <img src={garcom} alt="waiter" className="waiter-icon"/>
-
                     <Input 
                         type='radio' 
                         name='ocupation'
@@ -129,7 +129,7 @@ export default function Register() {
                     />
                     <img src={cozinheiro} alt="kitchen" className="kitchen-icon"/>
                 </div>
-                
+
                 <Button 
                     label="Cadastrar" 
                     type="submit"
@@ -140,9 +140,9 @@ export default function Register() {
                     type="submit"
                     onClick={btnBack} 
                 /> 
-            </form>
 
-        <Footer />    
+            </form>
+            <Footer />    
         </div>
     );
 };

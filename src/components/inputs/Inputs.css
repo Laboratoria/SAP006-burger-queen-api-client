@@ -7,9 +7,8 @@
     display: flex;
     border-radius: 10px;
     height: 30px;
-    width: 60%;
-    margin: 10px;
-    margin-left: 20%;
+    width: 100%;
+    margin: 10px 0;
     border: none;
     background-color: var(--gray-color);
     font-size: 15px;

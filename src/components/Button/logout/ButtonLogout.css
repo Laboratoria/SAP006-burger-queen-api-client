@@ -13,7 +13,3 @@
     background: var(--white-color);
     display: flex;
 }
-
-.btn-logout:hover{
-    background-color: var(--red-hover);
-}
