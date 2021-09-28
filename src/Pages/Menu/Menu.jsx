@@ -21,6 +21,9 @@ const Menu = ()  => {
     })
 
     const token = getStorageKey();
+    useEffect(() => {
+        addItemOnCart()
+    }, [addItem]) // eslint-disable-line
 
     useEffect(() => {
         GetProducts()
@@ -58,8 +61,22 @@ const Menu = ()  => {
         console.log(item);
     }
     
-    const addItemOnCart = (item) => {
-        console.log(item);
+    const addItemOnCart = () => {
+
+        let countTypes = addItem.reduce(function (allTypes, atualType) {
+        
+
+            if (allTypes[atualType.name]) {
+                allTypes[atualType.name].qtd++;
+            } else {
+                allTypes[atualType.name] = atualType;
+                console.log(allTypes);
+                console.log(atualType);
+            }
+            return allTypes;
+        }, {})
+        // console.log(countTypes);
+        return countTypes;
     }
 
     return (
@@ -83,19 +100,19 @@ const Menu = ()  => {
                                     img={item.image}
                                     flavor={item.flavor}
                                     complement={item.complement}
-                                    // onClick={() => {
-                                    //     setAddItem([...addItem, 
-                                    //         {
-                                    //             id: item.id,
-                                    //             name: item.name,
-                                    //             price: item.price,
-                                    //             image: item.image,
-                                    //             flavor: item.flavor,
-                                    //             complement: item.complement,
-                                    //             qtd: 1,
-                                    //         }
-                                    //     ])
-                                    // }}
+                                    onClick={() => {
+                                        setAddItem([...addItem, 
+                                            {
+                                                id: item.id,
+                                                name: item.name,
+                                                price: item.price,
+                                                image: item.image,
+                                                flavor: item.flavor,
+                                                complement: item.complement,
+                                                qtd: 1,
+                                            }
+                                        ])
+                                    }}
                                 />  
                             )
                         )}
@@ -133,7 +150,7 @@ const Menu = ()  => {
                                         complement={item.complement}
                                         qtd={item.qtd}
                                         removeItemOnCart={() => removeItemOnCart(item)}
-                                        addItemOnCart={() => addItemOnCart(item)}
+                                        addItemOnCart={() => addItemOnCart()}
                                     />
                                 )
                             })}
