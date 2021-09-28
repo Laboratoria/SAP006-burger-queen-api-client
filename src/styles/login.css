@@ -38,8 +38,10 @@ body {
 };
 
 .box-login {
-    background-color: #F2DFBA;
+   color: #F2DFBA;
     border-radius: 10px;
+    padding: 28px;
+    height: 100%
 };
 
 h1 .title {
