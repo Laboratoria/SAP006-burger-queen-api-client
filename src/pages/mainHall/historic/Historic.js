@@ -1,16 +1,14 @@
-import './Historic.css';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
-import Footer from '../../../components/footer/Footer';
+import Cards from '../../../components/itensMenu/Cards';
+// import Footer from '../../../components/footer/Footer';
 
-function Historico () {
+import './Historic.css';
+
+function Historic () {
     const history = useHistory();
-    
-    const btnBack = () => {
-        history.push('/mesas')
-      }
 
       const btnMenus = (e) => {
         e.preventDefault()
@@ -49,19 +47,12 @@ function Historico () {
                     onClick={btnHistoric} 
                 /> 
             </div>
-            <h3> Atendente: {localStorage.getItem("userName")} </h3>
-            <h3> Mesa: {localStorage.getItem("table")} </h3>
-
-            <p className="paragrafo">EM CONSTRUÇÃO - PÁGINA DE HISTÓRICO</p>
-            <Button 
-                label="Voltar" 
-                type="submit"
-                onClick={btnBack} 
-            /> 
-            
-            <Footer /> 
+            <div className="pedidos">
+                <Cards />
+                <Cards />
+            </div>
         </div>
     )
 }
 
-export default Historico;
+export default Historic;

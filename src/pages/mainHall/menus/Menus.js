@@ -1,38 +1,99 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from '../../../components/button/Button'
-import construcao2 from '../../../img/construcao2.jpg' 
-
+import NavBar from '../../../components/navbar/Navbar'
+import Button from '../../../components/button/Button';
+import Footer from '../../../components/footer/Footer';
+import Input
 import './Menus.css';
 
+
 function Menus () {
+
     const history = useHistory();
+    const [allProducts, setAllProducts] = useState([]);
+    const [selectedProducts, setSelectedProducts] = useState([]);
     
-    const btnBack = () => {
-        history.push('/mesas')
-      }
+    const btnMenus = (e) => {
+      e.preventDefault()
+      history.push('/menus')
+    }
 
-      
+    const btnRequests = (e) => {
+      e.preventDefault()
+      history.push('/pedidos')
+    }
+
+    const btnHistoric = (e) => {
+      e.preventDefault()
+      history.push('/historico')
+    }
+
+    const handleClick = (meal) => { 
+    const selectedMenu = allProducts.filter((item) => item.type === meal)
+      setSelectedProducts(selectedMenu)
+    }
+
+
     return(
-        <div className="container-menus">
+        <div>
+          
+          <div>
+            <NavBar />
+          </div>
+
             <div>
-
-            </div>
-            <h3> Atendente: {localStorage.getItem("userName")} </h3>
-            <h3> Mesa: {localStorage.getItem("table")} </h3>
-
-            <p className="paragrafo">EM CONSTRUÇÃO</p>
-            <p className="paragrafo">Terá toda a parte de menus e resumo de pedidos</p>
-            <img src={construcao2} alt="counter" className="construcao"/>
-            <>
-            <Button 
-                label="Voltar" 
+              <Button 
+                label="Menus" 
                 type="submit"
-                onClick={btnBack} 
-            /> 
-            </>
+                onClick={btnMenus} 
+              /> 
+              <Button 
+                label="Pedidos" 
+                type="submit"
+                onClick={btnRequests} 
+              /> 
+              <Button 
+                label="Histórico" 
+                type="submit"
+                onClick={btnHistoric} 
+              /> 
+            </div>
+
+            <h3> Atendente: {localStorage.getItem("userName")} </h3>
+
+            <select>
+              <option value="">Mesas</option>
+              <option value="">01</option>
+              <option value="">02</option>
+              <option value="">03</option>
+              <option value="">04</option>
+              <option value="">05</option>
+              <option value="">06</option>
+              <option value="">07</option>
+            </select>        
+
+            <Button 
+              label="Café da manha"
+              onClick={handleClick}
+            />
+            <Button 
+              label="Almoço/Jantar"
+              onClick={handleClick}
+            />
+            <section
+              {...setSelectedProducts}       
+            />
+              {selectedProducts.map(item => (<Itens 
+                id={item.id} 
+                name={item.name}
+                flavor={item.flavor}
+                complement={item.complement}
+                price={item.price}
+                image={item.image}/>)) 
+              }
+          <Footer />
         </div>
-    )
-}
+    );
+};
 
 export default Menus;

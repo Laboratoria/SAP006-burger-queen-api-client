@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
-
+import { useEffect } from "react";
 
 export const LoginWithEmail = (users) => {
     return fetch('https://lab-api-bq.herokuapp.com/auth', {
@@ -35,72 +33,17 @@ export const RegisterUser = (users) => {
 
 
 
-// export const useEffect(() => {
-//     fetch('https://lab-api-bq.herokuapp.com/products', {
-//         headers: {
-//             accept: 'application/json',
-//             Authorization: `${token}`,
-//         },
-//     })
-
-//         .then((response) => {
-//             response.json()
-//                 .then((json) => {
-//                     setProducts(json)
-//                 })
-//         })
-// }, [token])
-
-
-
-
-
-
-
-
-// export const RegisterUser = (users) => {
-//     return fetch('https://lab-api-bq.herokuapp.com/products', {
-//         method:'GET',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authentication': 'Token'
-//         },
-//         body: JSON.stringify({
-//             'name': users.name,
-//             'email': users.email,
-//             'password': users.password,
-//             'role': users.role,
-//             'restaurant': 'retro burger',
-//         }),
-//     })
-// };
-
-
-// export const getAllProducts = () => {
-//     fetch('https://lab-api-bq.herokuapp.com/products', {
-//       headers: {
-//         accept: 'application/json',
-//         Authorization: `${token}`,
-
-//       },
-
-//     })
-//       .then((response) => response.json())
-//       .then((json) => {
-//         const breakfast = json.filter((item) => item.type === 'breakfast');
-//         setMenuCafe(breakfast);
-//         const allDayMenu = json.filter((item) => item.type === 'all-day');
-//         setMenuAlmoco(allDayMenu);
-//       });
-//   };
-
-
-// export const RegisterSuccess = () => {
-//     return (
-//         alert('Sua conta foi criada com sucesso!')
-//     )
-// }
-
-
-
-
+export const Products = () => {
+    const token = localStorage.getItem('userToken');
+    useEffect(() => {
+        fetch('https://lab-api-bq.herokuapp.com/products', {
+                method:'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token,
+                }
+            })
+                .then(response => response.json())
+                .catch((error) => console.log(error, 'erro ao acessar a API de produtos'))
+    }, [token])
+}

@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import Input from '../../components/inputs/Input'
 
 describe('Input.js', () => {
-    it('Should render Input without errors', () => {
+    test('Should render Input without errors', () => {
         render(<Input onChange={() => {}} />)
     })
 })

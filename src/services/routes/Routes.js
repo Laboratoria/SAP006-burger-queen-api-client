@@ -1,14 +1,13 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Login from '../../pages/mainHall/login/Login';
-import Registration from '../../pages/mainHall/register/Register';
-import Tables from '../../pages/mainHall/tables/Tables';
+import Register from '../../pages/mainHall/register/Register';
 import Menus from '../../pages/mainHall/menus/Menus';
-import Pedidos from '../../pages/mainHall/requests/Requests';
-import Historico from '../../pages/mainHall/historic/Historic';
-// import Preparacao from '../../pages/kitchen/';
-// import Finalizado from '../../pages/kitchen/';
+import Requests from '../../pages/mainHall/requests/Requests';
+import Historic from '../../pages/mainHall/historic/Historic';
+import Preparation from '../../pages/kitchen/preparation/Preparation';
+import Ready from '../../pages/kitchen/ready/Ready';
 import NotFound from '../../pages/notFound/NotFound';
 import PrivateRoute from '../routes/PrivateRoutes';
 
@@ -18,15 +17,13 @@ function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Login} />
-                <Route path="/cadastre-se" component={Registration} />
-                <Route path="/menus" component={Menus} />
-                <Route path="/pedidos" component={Pedidos} />
-                <Route path="/historico" component={Historico} />
-                <Route path="/notfound" component={NotFound} />
-
-                <PrivateRoute path="/mesas" component={ Tables }/>
-
-                <Route path="*" element={<h1>Not Found</h1>} />                                
+                <Route path="/cadastre-se" component={Register} />
+                <PrivateRoute path="/menus" component={ Menus }/>
+                <PrivateRoute path="/pedidos" component={ Requests }/>
+                <PrivateRoute path="/historico" component={ Historic }/>
+                <PrivateRoute path="/notfound" component={ NotFound }/>
+                <PrivateRoute path="/preparacao" component={ Preparation }/>
+                <PrivateRoute path="/prontos" component={ Ready }/>
             </Switch>
         </BrowserRouter> 
     );  

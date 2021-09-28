@@ -46,15 +46,21 @@ export default function Login() {
                 const role = roleUser
                 
                 if(role === 'salon') {
-                    history.push('/mesas')
+                    history.push('/menus')
                 } else {
                     alert('Será redirecionado para sua área')
+                    history.push('/preparacao')
                 }                  
             } 
-        } catch (error) {
-            console.log('cagou')
+        } catch (json) {
+            const code = json.code;
+            console.log(code)
+            if (code === 400 || code === 403) {
+                throw new Error(json.message);
+            }
         }
     }
+
     
     return(
         <div>
