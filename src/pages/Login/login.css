@@ -3,7 +3,7 @@
 
 
 .logo {
-  position: fixed;
+  position: absolute;
   justify-content: center;
   margin-top: -10rem;
   text-align:right;
@@ -91,7 +91,7 @@ h1 {
       }
 
     .container-login {
-        margin-bottom: -520px;
+        margin-bottom: -620px;
       }
     .form-login-inputs input {
        width: 18rem;

@@ -6,9 +6,6 @@ export function validateRegister(values) {
     } else if (values.username.length < 10) {
         errors.username = 'Necessário nome completo';
     }
-    // else if (!/^[A-Za-z]+/.test(values.name.trim())) {
-    //   errors.name = 'Enter a valid name';
-    // }
 
     if (!values.email) {
         errors.email = 'Email obrigatório';
@@ -27,13 +24,9 @@ export function validateRegister(values) {
         errors.password2 = 'As senhas não coincidem';
     }
 
-    /*if(values.role === null){
+    if (values.role !== "salão" && values.role !== "cozinha") {
         errors.role = "Selecione sua área de trabalho"
-    }*/
+    }
 
-    if(values.role !== "salão" && values.role !== "cozinha") {
-        errors.role = "Selecione sua área de trabalho"
-      }
-      
     return errors;
 }
