@@ -7,7 +7,7 @@
   justify-content: center;
   margin-top: -10rem;
   text-align:right;
-  width: 700px;
+  width: 655px;
 }
 
 main {
@@ -19,7 +19,7 @@ main {
 
  .container-login {
   display: flex;
-  margin-bottom: -600px;
+  margin-bottom: -720px;
 }
 
 
@@ -82,4 +82,32 @@ h1 {
     font-family: Cabin Sketch;
     font-style: normal;
     margin-bottom: 10px;
+}
+
+@media screen and (max-width: 640px) {
+    .logo {
+        width: 470px;
+        margin-top: -12rem;
+      }
+
+    .container-login {
+        margin-bottom: -520px;
+      }
+    .form-login-inputs input {
+       width: 18rem;
+     }
+
+    .login-btn {
+       width: 18rem;
+    }
+
+    h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .form-login-inputs p {
+        margin-bottom: 8px;
+    }
+
 }

@@ -21,28 +21,16 @@
     width: 400px;
     content: "";
     left: 60%;
-    transform: translate(130%, -90%);
+    transform: translate(130%, -100%);
     position: fixed;
     z-index: 100;
     opacity:0.7;
 }
 
-.burgerRight::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translate(0%, -50%);
-    width: 100px;
-    height: 100px;
-    border: 1px solid #000;
-}
-
-
 .container-register {
    display: flex;
    width: 22rem;
-   height: 2.900rem;
+   height: 7.000rem;
    margin-bottom: 20px;
 }
 
@@ -54,12 +42,11 @@ h2{
     height: 25px;
     font-family: Cabin Sketch;
     font-size: 100px;
-    line-height: 80px;
+    line-height: 60px;
     color: var(--white);
     justify-content: center;
     text-align:right;
     opacity:0.7;
-    
 }
 
 h3{
@@ -146,4 +133,97 @@ h4{
     font-family: Cabin Sketch;
     font-style: normal;
     margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1440px) {
+
+    .burgerLeft {
+        transform: translate(1%, 8%);
+    }
+    
+    .burgerRight {
+        transform: translate(70%, -90%);
+    }
+
+}
+
+@media screen and (max-width: 1024px) {
+
+    .burgerLeft {
+        transform: translate(5%, 10%);
+    }
+    
+    .burgerRight {
+        transform: translate(40%, -50%);
+    }
+
+}
+
+@media screen and (max-width: 840px) {
+
+    .burgerLeft {
+        transform: translate(5%, 10%);
+    }
+    
+    .burgerRight {
+        transform: translate(30%, -50%);
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .burgerLeft {
+        transform: translate(5%, 10%);
+    }
+    
+    .burgerRight {
+        transform: translate(30%, -50%);
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .burgerLeft {
+        visibility:hidden;
+    }
+    
+    .burgerRight {
+        visibility:hidden;
+    }
+
+    .container-register {
+        width: 18rem;
+     }
+     
+
+     .form-register-inputs input {
+       width: 18rem;
+     }
+
+     .register-btn  {
+       width: 18rem;
+    }
+
+    .form-select {
+        width: 18rem;
+    }
+
+    h2{
+        font-size: 80px;
+        text-align: center;
+        top: 60px;
+    }
+
+    h3 {
+        font-size: 18px;
+        text-align: left;
+        width: 300px;
+    }
+
+    .form-login-inputs p {
+        margin-bottom: 8px;
+    }
+
 }

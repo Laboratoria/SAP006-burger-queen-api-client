@@ -73,14 +73,14 @@ export function Login() {
                             inputName="email"
                             inputPlaceholder="Email"
                             inputOnChange={handleInputChange}
-                            inputValue={formValues.email || ''} />
+                            inputValue={formValues.email} />
                         {errors.email && <p>{errors.email}</p>}
                         <Input
                             inputType="password"
                             inputName="password"
                             inputPlaceholder="Senha"
                             inputOnChange={handleInputChange}
-                            inputValue={formValues.password || ''} />
+                            inputValue={formValues.password} />
                         {errors.password && <p>{errors.password}</p>}
                         <Button
                             className="login-btn"
