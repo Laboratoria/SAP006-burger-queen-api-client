@@ -8,7 +8,6 @@ const ProductInfo = ({ name, price, flavor, complement, onClick }) => {
       <p className='product-info'>{complement}</p>
       <p className='product-info'>R${price},00</p>
       <button onClick={onClick}>+</button>
-      <p>{}</p>
     </article>
   )
 }

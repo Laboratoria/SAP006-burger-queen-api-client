@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MenuHamburger from "../../components/menuHamburger";
 import ProductInfo from "../../components/productinfo";
 import Cart from "../../components/cart";
@@ -7,17 +7,20 @@ import useProducts from "./useProducts";
 
 const Menu = () => {
   const { handleButtonTypeClick, productsFiltered, setAddItem, addItem, total, sendToKitchen, handleOrderChange } = useProducts();
-  const [qtd, setQtd] = useState(0);
+  const initialQtd = 1;
   const addProducts = (elem) => {
-    console.log(elem);
+
     const foundItem = addItem.findIndex((item) => item.id === elem.id);
     console.log(foundItem)
-    if(foundItem !== -1) {
+    if (foundItem !== -1) {
+      addItem[foundItem].qtd++;
+      setAddItem([...addItem])
       console.log('achei o danado');
     } else {
-      setAddItem([...addItem, { id: elem.id, qtd: qtd, name: elem.name, price: elem.price, flavor: elem.flavor }])
+      setAddItem([...addItem, { id: elem.id, qtd: initialQtd, name: elem.name, price: elem.price, flavor: elem.flavor }])
       console.log('tá aqui não');
     }
+    console.log(addItem[foundItem]);
   }
 
   return (

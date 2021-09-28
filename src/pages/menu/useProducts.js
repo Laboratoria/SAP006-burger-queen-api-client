@@ -6,21 +6,21 @@ const useProducts = () => {
   const [productsType, setProductsType] = useState('breakfast');
   const [addItem, setAddItem] = useState([]);
   const [total, setTotal] = useState(0);
-  const [orderInfo, setOrderInfo] = useState({client: '', table: ''});
-  
+  const [orderInfo, setOrderInfo] = useState({ client: '', table: '' });
+
 
   const handleOrderChange = (e) => {
     return setOrderInfo(() => {
-      const auxValues = {...orderInfo};
+      const auxValues = { ...orderInfo };
       auxValues[e.target.name] = e.target.value;
       console.log(auxValues);
     });
   }
-  
+
   const sendToKitchen = () => {
     sendOrder(orderInfo, addItem)
-    .then((res => res.json()))
-    .then((data) => console.log(data));
+      .then((res => res.json()))
+      .then((data) => console.log(data));
   }
 
   const getData = async () => {
@@ -43,6 +43,7 @@ const useProducts = () => {
   const handleButtonTypeClick = (e) => setProductsType(e.target.value);
 
   const productsFiltered = () => products.filter((elem) => elem.sub_type.includes(productsType));
+
 
   return { handleButtonTypeClick, productsFiltered, setAddItem, addItem, total, sendToKitchen, handleOrderChange }
 }
