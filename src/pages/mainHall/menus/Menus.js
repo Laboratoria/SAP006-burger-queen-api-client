@@ -57,9 +57,9 @@ function Menus () {
       setSelectedProducts(selectedMenu)
     }
 
-    const [nome, setNome] = useState('');
+    const [name, setName] = useState('');
     const handleChange = (e) => {
-      setNome(e.target.value)
+      setName(e.target.value)
   };
 
     return(
@@ -88,10 +88,10 @@ function Menus () {
             </div>
 
             <h3> Atendente: {localStorage.getItem("userName")} </h3>
-            <h3> Mesa: {localStorage.getItem("userName")} </h3>
+            <h3> Mesa:  </h3>
             <label>Nome do Cliente</label>
             <input onChange={handleChange} className="input" type="text" name="nameClient"></input>
-            {nome} 
+            {name}
 
             <select>
               <option value="">Mesas</option>
