@@ -58,8 +58,7 @@ export function Login () {
       })
       )
       setModal(true)
-    })
-    ;
+    });
   };
 
   return (

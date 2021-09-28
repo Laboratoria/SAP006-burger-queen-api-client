@@ -35,8 +35,8 @@ export const OrdersReady = () => {
     getAllOrders(token)
     .then(responseJson => {
       const filteredOrders = responseJson.filter((order) => order.status === 'Pronto');
-      setCurrentOrders(filteredOrders);
       handleAPIErrors(responseJson);
+      setCurrentOrders(filteredOrders);
     })  
   }, [currentOrders, token]);
 

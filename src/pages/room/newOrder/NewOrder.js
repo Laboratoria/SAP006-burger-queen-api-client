@@ -1,12 +1,14 @@
+/* eslint-disable no-sequences */
 
 import { useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Button } from '../../../components/Button/Button';
-import { StandardModal, StandardModalWithTwoOptions } from '../../../components/Modal/Modal';
+import { DefaultModal } from '../../../components/Modal/Modal';
 
 import { getAllProducts } from '../../../services/products';
 import { titleCorrespondance } from '../../../data/titleCorrespondance';
+import { getErrorCase } from '../../../services/general';
 
 import { sendOrderToKitchen, getAllOrders  } from '../../../services/orders';
 
@@ -21,45 +23,21 @@ export const NewOrder = () => {
   const [filteredMenu, setFilteredMenu] = useState([]);
   const [showAllProducts, setShowAllProducts] = useState(true);
   const [orderedProducts, setOrderedProducts] = useState([]);
-  const [sucessModal, setSucessModal] = useState(false);
-  const [errorModal, setErrorModal] = useState(false);
-  const [emptyTableModal, setEmptyTableModal] = useState(false);
-  const [emptyCustomerModal, setEmptyCustomerModal] = useState(false);
-  const [emptyOrderModal, setEmptyOrderModal] = useState(false);
   const [currentOrders, setCurrentOrders] = useState([]);
   const [occupiedTables, setOccupiedTables] = useState([]);
-  const [tableIsOccupiedModal, setTableIsOccupiedModal] = useState(false);
-  const [userNotAuthenticatedErrorModal, setUserNotAuthenticatedErrorModal] = useState(false);
- 
+
+  const [modal, setModal] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    Type:'',
+    Text:'',
+    ButtonChildren:'',
+    ButtonClick:'',
+    ButtonSecondChildren:'',
+    ButtonSecondClick:'',
+  })
+
   const token = localStorage.getItem('currentEmployeeToken');
-
-  useEffect(() => {
-    getAllProducts(token)
-    .then((responseJson) => { 
-      const menu = responseJson;
-      titleCorrespondance(menu);
-      setMenu(menu)
-    }).catch(() => setUserNotAuthenticatedErrorModal(true))
-  },[menu]);
-
-  useEffect(() => {
-    getAllOrders(token)
-    .then(responseJson => {
-      switch (responseJson.code) {
-        case 401:
-          return setUserNotAuthenticatedErrorModal(true);
-        default:
-          const orders = responseJson;
-          setCurrentOrders(orders)
-          const orderTables = []
-          currentOrders.map((order) => orderTables.push(order.table.toString()));
-          setOccupiedTables(orderTables.filter((v, i, a) => a.indexOf(v) === i))
-      } 
-    })   
-  }, [currentOrders]);
-  
   menu.length > 0 && menu.map((product) => product.id = product.id.toString());
-
   const productTotals = [];
   const orderedProductsQuantity = orderedProducts.reduce((acc, curr) => (acc[curr] = (acc[curr] || 0) + 1, acc), {});
   const orderedProductsData = menu.filter((product) => orderedProducts.includes(product.id));
@@ -69,6 +47,37 @@ export const NewOrder = () => {
   orderedProductsData.map((product) => productTotals.push(product.total));
   const bill = productTotals.reduce((acc, curr) => acc + curr, 0);
 
+  const orderResume = orderedProductsData.map(product => ({ id: product.id, qtd:product.qtd.toString()}));
+  const orderInformation = { token, customer, table, orderResume};
+
+  const handleAPIErrors = (data) => {
+    const result = getErrorCase(data.code);
+    Object.keys(data).includes('code') && setModalContent(modalContent => ({...modalContent, Text: result, Type: 'one-button-modal'}));
+    Object.keys(data).includes('code') && setModal(true);
+  }
+
+  useEffect(() => {
+    getAllProducts(token)
+    .then((responseJson) => { 
+      const menu = responseJson;
+      titleCorrespondance(menu);
+      setMenu(menu);
+      handleAPIErrors(responseJson);
+    })
+  },[menu, token]);
+
+
+  useEffect(() => {
+    getAllOrders(token)
+    .then(responseJson => {
+      setCurrentOrders(responseJson);
+      const orderTables = [];
+      currentOrders.map((order) => orderTables.push(order.table.toString()));
+      setOccupiedTables(orderTables.filter((v, i, a) => a.indexOf(v) === i));
+      handleAPIErrors(responseJson);
+    })   
+  }, [currentOrders, token]);
+  
   const filterMenuButtons = ([productProp], value) => {
     const filteredMenu = menu.filter((product) => product[productProp] === value);
     return filteredMenu;
@@ -83,57 +92,66 @@ export const NewOrder = () => {
     }
   }
 
-  const orderResume = orderedProductsData.map(product => ({ id: product.id, qtd:product.qtd.toString()}));
-  const orderInformation = { token, customer, table, orderResume};
-
   const checkCustomerData = () => {
+    setModalContent(modalContent =>
+      ({...modalContent, 
+        Type: 'one-button-modal',
+        ButtonChildren:'Fechar',
+      }))
+      setModal(true);
     if(customer.length <2){
-      setEmptyCustomerModal(true);
+      setModalContent(modalContent => ({...modalContent, 
+        Text: 'Por favor, insira o nome do cliente'
+      }))
       return 'Error';
     }
-    else if(table.length > 2){
-      setEmptyTableModal(true) ;
-      return 'Error';
-    }
-    else if(table[0] === "0"){
-      setEmptyTableModal(true) ;
+    else if(table.length < 1||table.length > 2 || table[0] === "0" || parseInt(table) > 12){
+      setModalContent(modalContent =>
+        ({...modalContent, 
+          Text: 'Por favor, insira um número de mesa válido. O zero à esquerda não deve ser incluso.', 
+        }))
       return 'Error';
     }
     else if(orderResume.length <1){
-      setEmptyOrderModal(true) ;
+      setModalContent(modalContent =>
+        ({...modalContent, 
+          Text: 'O resumo do pedido está vazio!', 
+        }))
       return "Error";
-    }
-    else if(occupiedTables.includes(table)) {
-      setTableIsOccupiedModal(true)
-      return "Error"
     }
   }
 
   const sendOrder = () =>{
     const checkDataResult = checkCustomerData()
-    if (checkDataResult !== 'Error') {
-      sendOrderToKitchen({orderInformation})
-      .then((responseJson) => {
-        if(responseJson.code !== 401) {
-          setSucessModal(true);
-        } else {
-          throw new Error (responseJson.message);
-        }
-      }).catch(() => setErrorModal(true));
-    }
-  }
-
-  const sendOrderWithoutCheck = () =>{
+    checkDataResult !== 'Error' &&
     sendOrderToKitchen({orderInformation})
     .then((responseJson) => {
-      if(responseJson.code !== 401) {
-        setSucessModal(true);
-      } else {
-        throw new Error (responseJson.message);
-      }
-     }).catch(() => setErrorModal(true));
+      handleAPIErrors(responseJson);
+      setModalContent(modalContent =>
+        ({...modalContent, 
+          Text: 'As chefs já estão dando conta do pedido! O que você  deseja fazer?.', 
+          Type: 'two-buttons-modal',
+          ButtonChildren:'Fazer um novo pedido',
+          ButtonSecondChildren:'Voltar para o salão',
+          ButtonSecondClick: () => history.push('/room')
+        }))
+      setModal(true);
+    })
   }
-  
+
+  const sendWithTableStatusCheck = () => {
+    !occupiedTables.includes(table) ? sendOrder() :
+    setModalContent(modalContent =>
+      ({...modalContent, 
+        Text: 'Atenção! Esta mesa está ocupada.', 
+        Type: 'two-buttons-modal',
+        ButtonChildren:'Escolha outra mesa',
+        ButtonSecondChildren:'Insira novos pedidos nesta mesa',
+        ButtonSecondClick: () => [sendOrder(), setModal(false)]
+      }))
+    setModal(true); 
+  }
+
   return (
     <div>
       <main className='new-order-main'>
@@ -174,7 +192,11 @@ export const NewOrder = () => {
                 <h1>R$ {bill}</h1>
             </div>
           </div>
-          <Button ButtonClass='new-order-send-order-to-kitchen' children='Enviar para cozinha' ButtonOnClick={()=> sendOrder()}/>
+          <Button 
+            ButtonClass='new-order-send-order-to-kitchen' 
+            children='Enviar para cozinha' 
+            ButtonOnClick={() =>  sendWithTableStatusCheck()}
+          />
           <div className='new-order-filter-buttons-div'>
             <Button 
               ButtonClass='new-order-filter' 
@@ -246,70 +268,14 @@ export const NewOrder = () => {
         </section> 
       </main>
       <section>
-        {emptyCustomerModal && 
-          <StandardModal 
-          ModalContent='Por favor, insira o nome do cliente.'
-          ButtonChildren='OK'
-          ButtonOnClick = {() => setEmptyCustomerModal(false)}
-          />
-        }
-      </section>
-      <section>
-        {emptyTableModal && 
-          <StandardModal 
-            ButtonChildren='OK'
-            ModalContent='Por favor, insira o número da mesa SEM o 0 (zero) à esquerda.".'
-            ButtonOnClick = {() => setEmptyTableModal(false)}
-          />
-        }
-      </section>
-      <section>
-        {emptyOrderModal && 
-          <StandardModal 
-            ButtonChildren='OK'
-            ModalContent='O resumo do pedido está vazio. Por favor, o verifique.'
-            ButtonOnClick = {() => setEmptyOrderModal(false)}
-          />
-        }
-      </section>
-      <section>
-        {sucessModal &&
-          <StandardModalWithTwoOptions
-            Type='two-buttons-modal'
-            ButtonChildren = 'Voltar para o salão'
-            ButtonSecondAuthModalOptionChildren = 'Fazer um novo pedido'
-            ModalContent='As chefs já estão dando conta do pedido! Aguarde atualizações.'
-            ButtonOnClick = {() => history.push('/room')}
-            ButtOnClickSecondAuthModalOption = {() => setSucessModal(false)}
-          />
-        }
-      </section>
-      <section>
-        {tableIsOccupiedModal &&
-          <StandardModalWithTwoOptions
-            ButtonChildren='Escolha outra mesa'
-            ModalContent='Atenção! Mesa ocupada!'
-            ButtonOnClick = {() => setTableIsOccupiedModal(false)}
-            ButtonSecondAuthModalOptionChildren = 'Inserir novos pedidos nesta mesa'
-            ButtOnClickSecondAuthModalOption = {() => [setTableIsOccupiedModal(false), sendOrderWithoutCheck()]}
-          />
-        }
-      </section>
-      <section>
-        {errorModal &&
-          <StandardModal 
-            ButtonChildren='OK'
-            ModalContent='Algo deu errado. Verifique as informações registradas.'
-            ButtonOnClick = {() => setErrorModal(false)}
-          />
-        }
-      </section>
-      <section>
-        {userNotAuthenticatedErrorModal &&
-          <StandardModal 
-            ButtonChildren='OK'
-            ModalContent='Usuário não autenticado.'
-            ButtonOnClick = {() => setUserNotAuthenticatedErrorModal(false)}
+        {modal && 
+          <DefaultModal
+            Type = {modalContent.Type}
+            ModalContent = {modalContent.Text}
+            ButtonChildren = {modalContent.ButtonChildren}
+            ButtonOnClick = {() => setModal(false)}
+            ButtonSecondAuthModalOptionChildren= {modalContent.ButtonSecondChildren}
+            ButtOnClickSecondAuthModalOption = {modalContent.ButtonSecondClick}
           />
         }
       </section>

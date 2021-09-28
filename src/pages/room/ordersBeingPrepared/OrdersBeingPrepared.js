@@ -15,15 +15,6 @@ export const OrdersBeingPrepared = () => {
   const [orderToBeDeleted, setOrderToBeDeleted] = useState('');
   const [currentOrders, setCurrentOrders] = useState([]);
 
-  const [modal, setModal] = useState(false);
-  const [modalContent, setModalContent] = useState({
-    Type:'',
-    Text:'',
-    ButtonChildren:'',
-    ButtonClick:'',
-    ButtonSecondChildren:'',
-    ButtonSecondClick:'',
-  })
 
   const handleAPIErrors = (data) => {
     const result = getErrorCase(data.code);
@@ -35,8 +26,8 @@ export const OrdersBeingPrepared = () => {
     getAllOrders(token)
     .then(responseJson => {
       const filteredOrders = responseJson.filter((order) => order.status === 'pending');
-      setCurrentOrders(filteredOrders);
       handleAPIErrors(responseJson);
+      setCurrentOrders(filteredOrders); 
     })  
   }, [currentOrders, token]);
 
@@ -53,6 +44,18 @@ export const OrdersBeingPrepared = () => {
       handleAPIErrors(responseJson);
     })
   }
+
+
+  const [modal, setModal] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    Type:'',
+    Text:'',
+    ButtonChildren:'',
+    ButtonClick:'',
+    ButtonSecondChildren:'',
+    ButtonSecondClick:'',
+  })
+
 
   return (
     <div>

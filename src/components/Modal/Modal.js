@@ -4,47 +4,6 @@ import { CurrentOrder } from '../CurrentOrder/Current.Order';
 
 import './Modal.scss';
 
-export const StandardModal = ({ModalContent, ButtonChildren, ButtonOnClick}) => {
-  return (
-    <section className='modal-background'>
-      <div className='modal-container'>
-        <p className='modal-content'>{ModalContent}</p>
-        <Button 
-          ButtonClass='modal-button'
-          children={ButtonChildren}
-          ButtonOnClick={ButtonOnClick}
-        />
-      </div>
-    </section>
-  )
-}
-
-export const StandardModalWithTwoOptions = ({Type, ModalContent, ButtonChildren, ButtonOnClick, ButtonSecondAuthModalOptionChildren, ButtOnClickSecondAuthModalOption}) => {
-  return (
-    <section className='modal-background'>
-      <div className='modal-container'>
-        <p className='modal-content'>{ModalContent}</p>
-        <div className='standard-two-options-modal-buttons-div'>
-          <Button 
-            ButtonClass='modal-button'
-            children={ButtonChildren}
-            ButtonOnClick={ButtonOnClick}
-          />
-          {
-          Type === 'two-buttons-modal' &&
-            <Button 
-              ButtonClass='modal-button'
-              children={ButtonSecondAuthModalOptionChildren}
-              ButtonOnClick={ButtOnClickSecondAuthModalOption}
-            />
-          }
-        </div>
-      </div>
-    </section>
-  )
-}
-
-
 export const DefaultModal = ({Type, ModalContent, ButtonChildren, ButtonOnClick, ButtonSecondAuthModalOptionChildren, ButtOnClickSecondAuthModalOption}) => {
   return (
     <section className='modal-background'>
@@ -65,29 +24,6 @@ export const DefaultModal = ({Type, ModalContent, ButtonChildren, ButtonOnClick,
             />
           }
         </div>
-      </div>
-    </section>
-  )
-}
-
-
-export function AuthModal ({Role, ModalContent, ButtonChildren, ButtonOnClick, ButtOnClickSecondAuthModalOption, ButtonSecondAuthModalOptionChildren}) {
-  return (
-    <section className='modal-background' data-testid='authModalSection'>
-      <div className='modal-container' data-testid='authModalDiv'>
-        <p data-testid='authModalContent' className='modal-content'> {ModalContent} </p>
-        <Button 
-          ButtonClass='modal-button'
-          children={ButtonChildren}
-          ButtonOnClick={ButtonOnClick}
-        />
-        {Role === 'auth-error-modal' &&
-          <Button
-            ButtonClass='modal-button'
-            children={ButtonSecondAuthModalOptionChildren}
-            ButtonOnClick={ButtOnClickSecondAuthModalOption}
-          />
-        }
       </div>
     </section>
   )

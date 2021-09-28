@@ -35,8 +35,8 @@ export const OrdersDelivered = () => {
     getAllOrders(token)
     .then(responseJson => {
       const filteredOrders = responseJson.filter((order) => order.status === 'Entregue');
-      setCurrentOrders(filteredOrders);
       handleAPIErrors(responseJson);
+      setCurrentOrders(filteredOrders);
     })  
   }, [currentOrders, token]);
 

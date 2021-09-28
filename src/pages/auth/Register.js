@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
+import { DefaultModal } from '../../components/Modal/Modal';
 import { AuthErrorMessages } from '../../components/ErrorMessages/ErrorMessages';
-import { StandardModal, StandardModalWithTwoOptions } from '../../components/Modal/Modal';
 import { Button } from '../../components/Button/Button';
 import { Header } from '../../components/Header/Header';
 import { InputContentUserData, InputRadioUserData } from '../../components/UserData/UserData';
@@ -23,43 +23,47 @@ export const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState ('');
-  const [authErrorModal, setAuthErrorModal] = useState(false);
-  const [authSucessModal, setAuthSucessModal] = useState(false);
-  const [authErrorModalMessage, setAutherrorModalMessage] = useState('');
+  const userData = {name, email, password, confirmPassword, role};
+
   const [nameErrorInput, setNameErrorInput] = useState(false);
   const [emailErrorInput, setEmailErrorInput] = useState(false);
   const [passwordErrorInput, setPasswordErrorInput] = useState(false);
   const [confirmPasswordErrorInput, setConfirmPasswordErrorInput] = useState(false);
   const [roleErrorInput, setRoleErrorInput] = useState(false);
 
-  const userData = {name, email, password, confirmPassword, role};
-  const setAuthInputs = {setNameErrorInput, setEmailErrorInput, setPasswordErrorInput,
-  setConfirmPasswordErrorInput, setRoleErrorInput};
-  const setAuthModals = {setAuthErrorModal, setAuthSucessModal};
+  const [modal, setModal] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    Type:'',
+    Text:'',
+    ButtonChildren:'',
+    ButtonClick:'',
+    ButtonSecondChildren:'',
+    ButtonSecondClick:'',
+  })
 
   const isLandscape = useMediaQuery({ query: '(orientation: landscape)' });
 
-  const checkUserDataToSignin = ({userData}, {setAuthInputs}) => {
+  const checkUserDataToSignin = ({userData}) => {
     if (userData.name.length < 7) {   
-      setAuthInputs.setNameErrorInput(true);
+      setNameErrorInput(true);
       return 'Error';
     }
     else if (!userData.email.includes('@')) {
-      setAuthInputs.setEmailErrorInput(true);
+      setEmailErrorInput(true);
       return 'Error';
     }
     else if (userData.password.length < 6) {
-      setAuthInputs.setPasswordErrorInput(true);
-      setAuthInputs.setConfirmPasswordErrorInput(true);
+      setPasswordErrorInput(true);
+      setConfirmPasswordErrorInput(true);
       return 'Error';
     }
     else if (userData.password !== userData.confirmPassword) {
-      setAuthInputs.setPasswordErrorInput(true);
-      setAuthInputs.setConfirmPasswordErrorInput(true);
+      setPasswordErrorInput(true);
+      setConfirmPasswordErrorInput(true);
       return 'Error';
     } 
     else if (userData.role === '') {
-      setAuthInputs.setRoleErrorInput(true);
+      setRoleErrorInput(true);
       return 'Error';
     } else {
       return 'Sucess';
@@ -67,32 +71,37 @@ export const Register = () => {
   }
 
   const handleSignIn = (event) => {
-    const userDataCheckResult = checkUserDataToSignin ({userData}, {setAuthInputs});
+    const userDataCheckResult = checkUserDataToSignin ({userData});
     userDataCheckResult === 'Sucess' &&
     authSignin(event, {userData})
     .then((responseJson) => {
       localStorage.setItem('currentEmployeeToken', responseJson.token);
       localStorage.setItem('currentEmployeeRole', responseJson.role);
       localStorage.setItem('currentEmployeeName', responseJson.name);
-      setRole(localStorage.getItem('currentEmployeeRole'));
-      setAuthModals.setAuthSucessModal(true);
+      const role = responseJson.role;
+      setModalContent(modalContent => ({...modalContent, 
+        Type: 'one-button-modal',
+        Text: 'Login realizado com sucesso!', 
+        ButtonChildren: 'Ir para Home',
+        ButtonClick: () => role === 'kitchen' ? history.push('/kitchen') : history.push('/room')
+      }))
+      setModal(true)
     })
-    .catch((error) => {
-      switch (error.message) {
-        case '400':
-          setAutherrorModalMessage('Todos os campos são obrigatórios. Verifique seus dados.');
-          setAuthModals.setAuthErrorModal(true);
-          break;
-          case '403':
-          setAutherrorModalMessage('Este email já está em uso.');
-          setAuthModals.setAuthErrorModal(true);
-          break;
-        default:
-          setAutherrorModalMessage('Desculpe, ocorreu um erro. Verifique seus dados.');
-          setAuthModals.setAuthErrorModal(true);
-      }
-    })
-  } 
+    .catch((error) => {setModalContent(modalContent => 
+      ({...modalContent, 
+        Type: 'two-buttons-modal',
+        ButtonChildren: 'Tente Novamente',
+        ButtonClick: () => setModal(false),
+        ButtonSecondChildren:'Entrar com uma conta já existente',
+        ButtonSecondClick:() => history.push('/')   
+      })
+    )
+      error.message === '400' ? 
+      setModalContent(modalContent => ({...modalContent,  Text: 'Todos os campos são obrigatórios. Verifique seus dados.'})) :
+      setModalContent(modalContent => ({...modalContent,  Text: 'Este email já está em uso.'}))
+      setModal(true)
+    });
+  }
 
   return (
     <div className = 'login-and-register-content register-content'>
@@ -172,25 +181,17 @@ export const Register = () => {
         </div>
       </main>
       <section>
-        {authSucessModal && (
-          <StandardModal 
-            ModalContent = 'Cadastro realizado com sucesso!'
-            ButtonChildren = 'Ir para Home'
-            ButtonOnClick = {() => role === 'kitchen' ? history.push('/kitchen') : history.push('/room')}
-          />
-        )}
-      </section>
-      <section>
-        {authErrorModal && (
-          <StandardModalWithTwoOptions
-            ModalContent = {authErrorModalMessage}
-            ButtonChildren = 'Tente novamente'
-            ButtonOnClick = {() => setAuthErrorModal(false)} 
-            ButtonSecondAuthModalOptionChildren = 'Entre com uma conta já existente.'
-            ButtOnClickSecondAuthModalOption = {() => history.push('/register')} 
-          />
-        )}
-      </section>
+      {modal && (
+        <DefaultModal
+          Type = {modalContent.Type}
+          ModalContent = {modalContent.Text}
+          ButtonChildren = {modalContent.ButtonChildren}
+          ButtonOnClick = {modalContent.ButtonClick} 
+          ButtonSecondAuthModalOptionChildren = {modalContent.ButtonSecondChildren}
+          ButtOnClickSecondAuthModalOption = {modalContent.ButtonSecondClick} 
+        />
+      )}
+    </section>
     </div>
   )
 }

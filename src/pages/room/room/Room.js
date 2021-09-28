@@ -42,6 +42,7 @@ export const Room = () => {
   useEffect(() => {
     getAllOrders(token)
     .then(responseJson => {
+      handleAPIErrors(responseJson);
       const tables = [
         {'table':1, 'tableName':'table-01', 'orders':[]},
         {'table':2, 'tableName':'table-02', 'orders':[]},
@@ -59,7 +60,6 @@ export const Room = () => {
       setCurrentOrders(responseJson);
       tables.map((table) => table.orders = responseJson.filter((order) => order.table === table.table));
       setTablesWithOrders(tables);
-      handleAPIErrors(responseJson);
     })
   },[token, currentOrders]);
 

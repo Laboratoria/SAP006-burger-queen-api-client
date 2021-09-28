@@ -68,7 +68,7 @@
   background-color: $light-brown-order-bg;
 }
 
-.current-order-product-column-quantity, .current-order-product-column-flavor, .current-order-product-column-additional{
+.current-order-product-column-qtd, .current-order-product-column-flavor, .current-order-product-column-complement{
   text-align: center;
   align-items: center;
   height: 100%;
@@ -142,7 +142,7 @@
     font-size: 130%;
   }
   
-  .current-order-product-column-quantity, .current-order-product-column-flavor, .current-order-product-column-additional{
+  .current-order-product-column-qtd, .current-order-product-column-flavor, .current-order-product-column-complement{
     span{
       line-height: 2.9vh;
     }
@@ -171,7 +171,7 @@
     }
   }
 
-  .current-order-product-column-quantity, .current-order-product-column-flavor, .current-order-product-column-additional{
+  .current-order-product-column-qtd, .current-order-product-column-flavor, .current-order-product-column-complement{
     span{
       line-height: 2.2vh;
     }  
@@ -194,7 +194,7 @@
       font-size: 150%;
     }
     
-    .current-order-product-column-quantity, .current-order-product-column-flavor, .current-order-product-column-additional{
+    .current-order-product-column-qtd, .current-order-product-column-flavor, .current-order-product-column-complement{
       span{
         line-height: 2.5vh;
       }
@@ -238,7 +238,7 @@
     }
   }
 
-  .current-order-product-column-quantity, .current-order-product-column-flavor, .current-order-product-column-additional{
+  .current-order-product-column-qtd, .current-order-product-column-flavor, .current-order-product-column-complement{
     span{
       line-height: 3.75vh;
     }
@@ -261,7 +261,7 @@
       font-size: 170%;
     }
 
-    .current-order-product-column-quantity, .current-order-product-column-flavor, .current-order-product-column-additional{
+    .current-order-product-column-qtd, .current-order-product-column-flavor, .current-order-product-column-complement{
       span{
         line-height: 3.75vh;
       }
@@ -305,7 +305,7 @@
       font-size: 125%;
     }
 
-    .current-order-product-column-quantity, .current-order-product-column-flavor, .current-order-product-column-additional{
+    .current-order-product-column-qtd, .current-order-product-column-flavor, .current-order-product-column-complement{
       span{
         line-height: 3.75vh;
       }

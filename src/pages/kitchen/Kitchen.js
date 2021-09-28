@@ -34,8 +34,8 @@ export const Kitchen = () => {
   useEffect(() => {
     getAllOrders(token)
     .then(responseJson => {
-      setCurrentOrders(responseJson);
       handleAPIErrors(responseJson);
+      setCurrentOrders(responseJson);
     })
   },[token, currentOrders]);
 
