@@ -29,12 +29,12 @@ body {
 }
 
 .header-login img{
-height: 20rem;
+    height: 20rem;
 }
 .main-login{
     display: flex;
-    height: 18rem;
     justify-content: space-around;
+    min-height: 75vh;
 };
 
 .box-login {
@@ -45,6 +45,7 @@ height: 20rem;
 h1 .title {
     font-weight: 700;
     padding: 2rem;
+    color: #F2DFBA;
 };
 
 .forms{
