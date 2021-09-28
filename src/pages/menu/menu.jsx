@@ -8,10 +8,12 @@ import useProducts from "./useProducts";
 const Menu = () => {
   const { handleButtonTypeClick, productsFiltered, setAddItem, addItem, total, sendToKitchen, handleOrderChange } = useProducts();
   const initialQtd = 1;
+
+  
   const addProducts = (elem) => {
 
     const foundItem = addItem.findIndex((item) => item.id === elem.id);
-    console.log(foundItem)
+    
     if (foundItem !== -1) {
       addItem[foundItem].qtd++;
       setAddItem([...addItem])
@@ -21,7 +23,29 @@ const Menu = () => {
       console.log('tá aqui não');
     }
     console.log(addItem[foundItem]);
+
+    
   }
+  
+  const deleteProducts = (elem) => {
+
+    const foundItem = addItem.findIndex((item) => item.id === elem.id);
+    console.log(foundItem)
+    if (foundItem !== 1) {
+      addItem[foundItem].qtd -- 
+      setAddItem([...addItem])
+      
+    } else {
+      setAddItem([...addItem, { id: elem.id, qtd: initialQtd, name: elem.name, price: elem.price, flavor: elem.flavor }])
+      console.log('tá aqui não');
+    }
+    
+
+    
+  }
+  
+
+  
 
   return (
     <div className='main'>
@@ -55,7 +79,12 @@ const Menu = () => {
                     qtd={elem.qtd}
                     onClick={() => {
                       addProducts(elem);
+                      deleteProducts(elem);
                     }}
+                    onClickDelete={() => {
+                      deleteProducts(elem);
+                    }}
+                   
                   />
                 )
               })}

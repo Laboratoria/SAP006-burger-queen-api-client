@@ -1,6 +1,7 @@
 import React from "react";
 import ProductInfo from "./productinfo";
 
+
 export default function Cart({ data }) {
   return (
     <div className='orders-list'>
@@ -13,10 +14,15 @@ export default function Cart({ data }) {
               price={elem.price}
               flavor={elem.flavor}
               complement={elem.complement}
+              
             >
             </ProductInfo>
             <p>{elem.qtd}</p>
-          </div>)
+            
+          </div>
+          
+          )
+
 
       })}
 

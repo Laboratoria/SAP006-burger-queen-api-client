@@ -1,6 +1,7 @@
 import React from "react";
 
-const ProductInfo = ({ name, price, flavor, complement, onClick }) => {
+
+const ProductInfo = ({ name, price, flavor, complement, onClick, }) => {
   return (
     <article className='product-item'>
       <p className='product-info'>{name}</p>
@@ -8,6 +9,8 @@ const ProductInfo = ({ name, price, flavor, complement, onClick }) => {
       <p className='product-info'>{complement}</p>
       <p className='product-info'>R${price},00</p>
       <button onClick={onClick}>+</button>
+      <button onClickDelete={onClick}>-</button>
+     
     </article>
   )
 }
