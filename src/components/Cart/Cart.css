@@ -1,0 +1,22 @@
+.each-item-cart {
+    color: black;
+    font-size: 1.0rem;
+    font-weight: bold;
+}
+
+.order-total {
+    color: black;
+}
+
+.data-clients {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.data-clients-input {
+    border: 2px solid #500405;
+    background-color: transparent;
+    width: 10vh;
+    height: 5vh;
+}

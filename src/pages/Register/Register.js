@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import Button from "../../components/Button/button";
-import Input from "../../components/Input/input";
+import Button from "../../components/Button/Button";
+import Input from "../../components/Input/Input";
 import { useHistory } from 'react-router-dom';
 import ValidateInputs from '../Register/ValidationRegister';
-import ValidationMessage from "../../components/ValidationMessage/validationMessage";
+import ValidationMessage from "../../components/ValidationMessage/ValidationMessage";
 import './Register.css'
 
 

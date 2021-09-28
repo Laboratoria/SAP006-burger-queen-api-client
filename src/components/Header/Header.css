@@ -1,0 +1,28 @@
+.nav-bar {
+    top: 0;
+    width: 100%;
+    height: 20%;
+    background-color: rgba(141, 31, 32, 1)
+}
+
+.logo-header img {
+    width: 30%;
+    height: 15%;
+    background-image: url("../../img/Logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.links-hall {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.links-hall a {
+    padding-top: 1%;
+    padding-bottom: 2%;
+    text-decoration: none;
+    color: white;
+}
+

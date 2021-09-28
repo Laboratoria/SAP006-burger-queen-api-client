@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
-import Header from '../../components/Header/header'
+import Header from '../../components/Header/Header'
 import Menu from "../../components/Menu/Menu";
+import Cart from "../../components/Cart/Cart";
 
 import './Hall.css'
 
 const Hall = () => {
-    const [products, setProducts] = useState({});
+    const [products, setProducts] = useState([]);
+
+    const [cartItem, setCartItem] = useState([]);
 
     const token = localStorage.getItem('userToken');
     console.log(token);
@@ -27,20 +30,33 @@ const Hall = () => {
             })
     }, [token])
 
+    const addProducts = (sendProducts) => {
+        console.log(sendProducts);
+        let newArray;
+        newArray = [...cartItem, { ...sendProducts }]
+        setCartItem(newArray)
+        console.log(newArray);
+    }
+
     return (
         <>
-            <Header>
+            <Header className='nav-header'>
 
             </Header>,
 
-            <div className='menu'>
-                <Menu products={products}>
+            <div className='hall-container'>
 
-                </Menu>
-            </div>
+                <div className='menu'>
+                    <Menu products={products} addProducts={addProducts}>
 
-            <div className='comander'>
+                    </Menu>
+                </div>
 
+                <div className='cart-container'>
+                    <Cart cartItem={cartItem}>
+
+                    </Cart>
+                </div>
             </div>
         </>
     )
