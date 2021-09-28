@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './style.scss'
 
 export const ItemCard = ({id, name, price, img, flavor, complement, onClick}) => {
@@ -47,32 +47,7 @@ export const ItemCard = ({id, name, price, img, flavor, complement, onClick}) =>
     )
 };
 
-export const SelectedItem = ({id, name, price, flavor, complement}) => {
-    const [qtd, setQtd] = useState(0);
-    const [addItem, setAddItem] = useState([]);
-    // const [itemCart, dispatchItemCart] = useReducer([]);
-
-    const addItemOnCart = (item) => {
-        setQtd(qtd + 1);
-
-            // Number(setAddItem([...addItem, 
-            //     {
-            //         id: item.id,
-            //         name: item.name,
-            //         price: item.price,
-            //         flavor: item.flavor,
-            //         complement: item.complement,
-            //     }
-            // ]+ 1))
-    }
-
-    const removeItemOnCart = (id) => {
-        setQtd(qtd - 1)
-        // if (qtd === 0) {
-        //     dispatchItemCart({ type: 'REMOVE_ITEM', id: id });
-        // } else {
-        // }
-    }
+export const SelectedItem = ({id, name, price, flavor, complement, qtd, removeItemOnCart, addItemOnCart}) => {
 
     return (
         <article className="itemSelected" key={id}>
@@ -95,9 +70,24 @@ export const SelectedItem = ({id, name, price, flavor, complement}) => {
                     data-add={id} 
                     onClick={addItemOnCart}>
                 +</button>
-                {/* onClick={this.removeItem} data-remove={item.id} */}
             </section>
             <p className="product-info price">R$ {price}</p>
         </article>
     )
 }
+
+export const totalPrice = (value) => {
+    value.reduce((priceItem, item) => (priceItem * item.qtd), 0)
+}
+
+export const Total = ({ cartItems }) => {
+    const [total, setTotal] = useState(0);
+  
+    useEffect(() => {
+      const newTotal = cartItems.reduce((acc, cur) => acc + (cur.price * cur.qtd), 0);
+      setTotal(newTotal);
+    }, [cartItems]);
+  
+    return <div className="CartTotal">Total: {(total)}</div>;
+  };
+  

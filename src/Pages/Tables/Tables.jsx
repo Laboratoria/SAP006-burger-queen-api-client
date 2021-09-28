@@ -8,7 +8,7 @@ import GeneralButton from '../../components/Button/Button';
 import '../../components/Button/style.scss';
 import './tables.scss';
 
-const Tables = () => {
+const Tables = ({data, setData}) => {
 
     const history = useHistory();
 
@@ -33,9 +33,9 @@ const Tables = () => {
     const handleClick = (event) => {
         setValues({
             ...values,
-            [event.target.innerHTML]: event.target.value, 
+            [event.target.name]: event.target.value, 
         })
-        console.log(event.target.value);
+        console.log(event.target.parentNode.value);
     }
 
     // const getNumberOfTable = e => {
@@ -54,10 +54,10 @@ const Tables = () => {
                     <GeneralButton
                         variant="sixth"
                         name="mesa"
+                        value="1"
                         className="table"
                         data-tables="numberTable"
                         onClick={handleClick}>1
-                        
                     </GeneralButton>
                     <GeneralButton 
                         variant="sixth"

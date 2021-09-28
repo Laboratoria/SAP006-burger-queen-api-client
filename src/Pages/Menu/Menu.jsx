@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getStorageKey} from '../../services/storage'
 // import { GetProducts }from '../../services/data'
-import CartList from '../../components/ItemsMenu/CartList';
-import { ItemCard } from '../../components/ItemsMenu/ItemCard'
+import { ItemCard, SelectedItem, totalPrice } from '../../components/ItemsMenu/ItemsMenu'
 import MenuOptionsNavBar from '../../components/Footer/NavBarOptions';
 import GeneralButton from '../../components/Button/Button';
 // import MealNavBar from '../../components/Header/MealNavBar'
@@ -12,9 +11,10 @@ import './style.scss';
 const Menu = ()  => {
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
-    // const [burguer, setBurger] = useState([])
+    // const [orders, setOrders] = useState([]);
+    const [burger, setBurger] = useState([])
     const [addItem, setAddItem] = useState([]);
-    // const[total, setTotal] = useState(0);
+    const[total, setTotal] = useState(0);
 
     const token = getStorageKey();
 
@@ -34,6 +34,8 @@ const Menu = ()  => {
                     setProducts(res)
                     const breakfast = res.filter((item) => item.type === 'breakfast')
                     setSelectedProducts(breakfast)
+                    const burger = res.filter(item => item.id === 33 || item.id === 42)
+                    setBurger(burger);
                     // const burger = res.filter((item) => item.sub_type === 'hamburguer')
                     // setSelectedProducts(breakfast || burger)
 
@@ -46,16 +48,17 @@ const Menu = ()  => {
         const selectedMenu = products.filter((item) => item.type === meal)
         setSelectedProducts(selectedMenu)
         
-        // function compileBurger (hamburguer) {}
-        //     products.filter((item) => item.sub_type === 'hamburguer')
-        // } return setBurger(compileBurger)
+        const compileBurger = products.filter((item) => item.sub_type === 'hamburguer')
+        setBurger(compileBurger)     
     }
 
-    // const homeBtnSidebar = rootElement.querySelector('#sidebarHome');
-    // homeBtnSidebar.addEventListener('click', () => {
-    //   postSection.style.display = 'none';
-    //   profileSection.style.display = 'none';
-    // });
+    const removeItemOnCart = (item) => {
+        console.log(item);
+    }
+    
+    const addItemOnCart = (item) => {
+        console.log(item);
+    }
 
     return (
         <>
@@ -87,6 +90,7 @@ const Menu = ()  => {
                                                 flavor: item.flavor,
                                                 complement: item.complement,
                                                 image: item.image,
+                                                qtd: 1,
                                             }
                                         ])
                                     }}
@@ -94,11 +98,6 @@ const Menu = ()  => {
                             )
                         )}
                     </section>
-                    {/* <GeneralButton 
-                        
-                        className="confirm-order">
-                        Confirmar pedido
-                    </GeneralButton>         */}
                 </div>
                 <div className="right-side cartList-display">
                     <section className="section-ordersList">
@@ -106,15 +105,25 @@ const Menu = ()  => {
                             <h3>Pedidos</h3>
                             <h3>Mesa</h3>
                         </article>
-                        <CartList 
-                            data={addItem}
-                            // onClick={() => {
-                            //     setAddItem
-                            // }}
-                        
-                        />
+                        <article className="text-ordersList">
+                            {addItem.map((item) => {
+                                return (
+                                    <SelectedItem
+                                        key={item.id}
+                                        name={item.name}
+                                        price={item.price}
+                                        // pricePerQtd={}
+                                        flavor={item.flavor}
+                                        complement={item.complement}
+                                        qtd={item.qtd}
+                                        removeItemOnCart={() => removeItemOnCart(item)}
+                                        addItemOnCart={() => addItemOnCart(item)}
+                                    />
+                                )
+                            })}
+                        </article>                        
+                        <p>Total: R$ {totalPrice} </p>
                         <hr/>
-                        <p>Total: R$ </p>
                         <GeneralButton variant="fifth"  className="btn-confirmOrder">
                             Confirmar pedido
                         </GeneralButton>

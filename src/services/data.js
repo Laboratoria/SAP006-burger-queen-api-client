@@ -16,3 +16,28 @@ export const GetProducts = () => {
                 .catch((error) => console.log(error, 'erro ao acessar a API de produtos'))
     }, [token])
 }
+
+
+export const createOrder = (order, item) => {
+
+    return fetch('https://lab-api-bq.herokuapp.com/orders', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': getStorageKey(),
+        },
+        body: JSON.stringify ({
+            "client": order.client,
+            "table": order.table,
+            "products": [
+                {
+                "id": item.id,
+                "qtd": item.qtd
+                }
+            ]
+        })
+    })
+        .then(response => response.json())
+        .catch((error) => console.log(error, 'Erro ao criar o pedido'))
+
+}
