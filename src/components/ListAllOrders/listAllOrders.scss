@@ -157,7 +157,10 @@
 }
 
 .btn-visible{
-	display:inline-block
+	display:inline-block;
+	@media (min-device-width: 1400px) {
+    font-size:1.1rem;
+  }
 }
 
 .btn-invisible{

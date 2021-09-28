@@ -1,20 +1,17 @@
 import React from 'react'
-import { render, screen, cleanup, fireEvent} from '@testing-library/react'
-// import user from "@testing-library/user-event";
-// import act from 'react-dom/test-utils'
+import { render, screen, fireEvent} from '@testing-library/react'
 import ButtonDefault from './index'
 
-afterEach(cleanup)
 
-describe('Tests for ButtonFefault component', () => {
-  it('Deve renderizar um botão com o texto fornecido', () => {
+describe('Tests for ButtonDefault component', () => {
+  it('should render a button with the text provided', () => {
     const texto = "Nome botão";
     render(<ButtonDefault>{texto}</ButtonDefault>);
     const btn = screen.getByText(texto)
     expect(btn).toBeInTheDocument();
   });
 
-  it('Deve disparar uma função quando clicado', () => {
+  it('should call a function when clicked', () => {
     const onClick = jest.fn()
     render(<ButtonDefault onClick={onClick}/>)
     const btn = screen.getByRole('button')

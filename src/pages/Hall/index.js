@@ -237,6 +237,7 @@ export default function Hall() {
 	const addProduct = () => {
 
 
+
 		if (productSelected.name !== undefined && productSelected.price !== undefined && productSelected.name !== "") {
 			if (productSelected.flavor === undefined) {
 				setPopUpText("Selecione um item antes de adicioná-lo!")
