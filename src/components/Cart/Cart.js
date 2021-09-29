@@ -4,52 +4,48 @@ import Button from '../Button/Button';
 
 import './Cart.css'
 
-function Cart({
-    cartItem
-}) {
-    return (
+function Cart({	cartItem }) {
+	
+	return (
+		<div className='container-cart'>
 
-        <div className='container-cart'>
+			<div className='data-clients'>
+				<Input type='text'
+					placeholder='Nome'
+					className='data-clients-input'
+					name='email'>Cliente</Input>
+				<Input type='text'
+					placeholder='Mesa'
+					className='data-clients-input'
+					name='email'>Mesa</Input>
+			</div>
 
-            <div className='data-clients'>
-                <Input type='text'
-                    placeholder='Nome'
-                    className='data-clients-input'
-                    name='email'>Cliente</Input>
-                <Input type='text'
-                    placeholder='Mesa'
-                    className='data-clients-input'
-                    name='email'>Mesa</Input>
-            </div>
+			<div>
+				<ul className='list'>
+					<li>Nome</li>
+					<li>Quantidade</li>
+					<li>Valor</li>
+				</ul>
+			</div>
 
-            <div>
-                <ul className='list'>
-                    <li>Nome</li>
-                    <li>Quantidade</li>
-                    <li>Valor</li>
-                </ul>
-            </div>
+			{cartItem.map((item) => {
+				return (
+					<div className='order-list'>
+						<p className='each-item-cart' key={item.id}>Nome:{item.name} Qtd: {item.qtd} Preço: {item.price}</p>
+					</div>
+				)
+			})}
 
-            {Object.keys(cartItem).map((item, index) => {
-                return (
-                    <div className='order-list'>
-                        <p className='each-item-cart' key={index}>{cartItem[item].name} {cartItem[item].price}</p>
-                    </div>
-                )
-            })}
+			<div className='order-total'>
+				<p>Total:</p>
+				<p>R$0,00</p>
+			</div>
 
-            <div className='order-total'>
-                <p>Total:</p>
-                <p>R$12,00</p>
-            </div>
-
-            <Button
-                buttonText='Enviar pedido'
-                className='button-menu'
-            >
-            </Button>
-        </div>
-    );
+			<Button
+				buttonText='Enviar pedido'
+				className='btn-send-order'	/>
+		</div>
+	);
 }
 
 export default Cart;

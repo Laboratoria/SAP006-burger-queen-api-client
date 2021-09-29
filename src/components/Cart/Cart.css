@@ -4,6 +4,9 @@
     font-weight: bold;
 }
 
+.list {
+    display: flex;
+}
 .order-total {
     color: black;
 }
@@ -23,4 +26,16 @@
 
 .list li {
     font-size: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn-send-order {
+    width: 35vh;
+    height: 8vh;
+    color: white;
+    font-weight: bold;
+    font-size: 1.0rem;
+    background-color: var(--color-red-font);
 }
