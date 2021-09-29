@@ -20,19 +20,25 @@ function Register() {
         return errorsResult
     }
 
-    const [infoUser, setInfoUser] = useState({ email: '', password: '' });
+    const [infoUser, setInfoUser] = useState({
+        email: '', 
+        password: '',
+        role: '',
+    });
 
     //Essa função captura qualquer mudança que faço no campo
 
     const handleChange = (e) => {
         const informationUser = e.target.id;
         setInfoUser({ ...infoUser, [informationUser]: e.target.value })
+        console.log(informationUser)
         console.log(e.target.value, infoUser)
         // if (informationUser === 'password') {      
         // }
     }
 
     let history = useHistory()
+
     const handleRegister = (e) => {
         e.preventDefault();
 
@@ -41,8 +47,9 @@ function Register() {
         if (!resultErrors.email && !resultErrors.password) {
             console.log(resultErrors.email, 'não tem erros')
 
-            registerUser(infoUser.email, infoUser.password)
-                .then(() => {
+            registerUser(infoUser.email, infoUser.password, infoUser.role)
+                .then((banana) => {
+                    console.log(banana)
                     console.log('usuário foi criado');
                     history.push('/') //trocar pelo modal de aviso de cadastro com sucesso 
                 })
@@ -83,27 +90,27 @@ function Register() {
                     />
                     {errors.password && <span className='form-error'>{errors.password}</span>}
 
-                    <div className="radio-buttons">
-                        <div className="radio">
+                    <div className="radio-buttons" onChange={handleChange} >
+                       
                             <label className="roleLabel">
-                                <input type="radio" name="role" value="hall"
-                                    onChange={handleChange}
+                                <input type="radio" 
+                                    name="role" 
+                                    value="hall"
+                                    id = "role"
                                 />
                                 &nbsp;Salão
                             </label>
-                        </div>
-
-                        <div className="radioBtn2">
+          
                             <label className="roleLabel">
                                 <input
                                     type="radio"
                                     name="role"
                                     value="kitchen"
-                                    onChange={handleChange}
+                                    id = "role"
                                 />
                                 &nbsp;Cozinha
                             </label>
-                        </div>
+                
                     </div>
 
 
