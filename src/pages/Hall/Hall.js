@@ -30,11 +30,12 @@ const Hall = () => {
 		const foundProduct = cartItem.find((item) => item.id === product.id)
 		if (foundProduct) {
 			setCartItem(cartItem.map((item) =>
-				item.id === product.id ? { ...foundProduct, qtd: foundProduct.qtd + 1 } : item))
+				item.id === product.id ? { ...foundProduct, qtd: foundProduct.qtd + 1} : item))
 		} else {
 			setCartItem([...cartItem, { ...product, qtd: 1 }])
 		}
 	}
+	
 
 	return (
 		<>
