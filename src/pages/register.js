@@ -12,8 +12,7 @@ import '../styles/login.css';
 import '../global.css';
 
 function Register() {
-    /*const history = useHistory();*/
-
+    // const history = useHistory();
     const [errors, setErrors] = useState({})
     function validationValues(values) {
         const errorsResult = validation(values)
@@ -22,6 +21,8 @@ function Register() {
     }
 
     const [infoUser, setInfoUser] = useState({ email: '', password: '' });
+
+    //Essa função captura qualquer mudança que faço no campo
 
     const handleChange = (e) => {
         const informationUser = e.target.id;
@@ -113,6 +114,7 @@ function Register() {
                     </button>
                 </div>
             </div>
+
 
         </section>
 

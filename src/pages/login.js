@@ -1,51 +1,57 @@
-import React from 'react';
+import { React, useState } from 'react';
 import '../styles/login.css';
 import logo from '../img/logo.png'
 import { Link, useHistory } from 'react-router-dom';
 import Input from '../components/Input';
 import Button from '../components/Button';
-import useForm from '../Hooks/useForm';
+import { validation } from '../validation';
+import { loginUser, loginConfirmed } from '../auth';
+// import useForm from '../Hooks/useForm';
 
 function Login() {
-    const history = useHistory();
+    const [errors, setErrors] = useState({})
+    function validationValues(values) {
+        const errorsResult = validation(values)
+        setErrors(errorsResult)
+        return errorsResult;
+    }
 
-    const username = useForm();
-    const password = useForm();
+    const [infoUser, setInfoUser] = useState({ email: '', password: '' });
 
+    const handleChange = (e) => {
+        const informationUser = e.target.id;
+        setInfoUser({ ...infoUser, [informationUser]: e.target.value })
+        console.log(e.target.value, infoUser)
+        // if (informationUser === 'password') {      
+        // }
+    }
 
-    // TODO gerenciar estados dos inputs 
-        function handleSubmit(event){
-            event.preventDefault();
-            
-            if(username.validate() && password.validate()){
+    let history = useHistory()
+    const handleLogin = (e) => {
+        e.preventDefault();
 
-            fetch('https://lab-api-bq.herokuapp.com/auth', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json', //tipo de conteúdo
-            },
-            body: JSON.stringify(),
-            })
+        const resultErrorsLogin = validationValues(infoUser);
 
-            // para pegar a resposta
-            .then(response => {
-                console.log(response);
-                return response.json();
-            })
-            .then((json) => {
-                console.log(json);
-            });
-         }
+        if (!resultErrorsLogin.email && !resultErrorsLogin.password) {
+
+            loginUser(infoUser.email, infoUser.password)
+                .then((responseLogin) => {
+                    responseLogin.json().then((user) => {
+                        if (user) {
+                            loginConfirmed(user.token)
+                            console.log(user, user.token)
+                            history.push('/home')
+                        }
+                    })
+                })
+            /*.catch((error) => {
+              console.log(error.message)
+            })*/
+        } else {
+            console.log(resultErrorsLogin, resultErrorsLogin.email, 'usuário não conectado')
         }
+    };
 
-       const logar = (e) => {
-           e.preventDefault()
-           // TO DO login de usuário
-           console.log('fazer requisição na API em /auth');
-
-           // TO DO deu bom? navega para tela de menu
-           history.push('/hall');
-       }
 
     return (
         <section className="login-page" >
@@ -55,21 +61,30 @@ function Login() {
                 </header>
                 <div className="main-login">
                     <div className="box-login" >
-                        <form className="forms" action="" onSubmit={handleSubmit}>
+                        <form className="forms" action="">
                             <h1 className="title">Login</h1>
+
+                        {errors.email && <span className='form-error email'>{errors.email}</span>}
                             <Input 
                                 label="Usuário" 
-                                type="text" 
-                                name="username" {...username}
+                                type="email" 
+                                name="email" 
+                            value={infoUser.email}
+                            onChange={handleChange}
+
                             />
+                        {errors.password && <span className='form-error'>{errors.password}</span>}
                             <Input 
                                 label="Senha" 
                                 type="password" 
-                                name="password" {...password} 
+                                name="password" 
+                            value={infoUser.password}
+                            onChange={handleChange}
                             />
+                        
                             <Button 
                                 type="submit"  
-                                onClick={logar}> 
+                            onClick={handleLogin}>
                                 Entrar
                             </Button>
 
