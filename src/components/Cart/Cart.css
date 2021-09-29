@@ -20,3 +20,7 @@
     width: 10vh;
     height: 5vh;
 }
+
+.list li {
+    font-size: 0.8rem;
+}

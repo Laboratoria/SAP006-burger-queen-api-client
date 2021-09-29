@@ -32,7 +32,7 @@ function Menu({
                 {
                     showMenu ?
                         <div className='breakfast'>
-                            {Object.keys(products).slice(0, 4).map((key, item) => (
+                            {(products).slice(0, 4).map((key, item) => (
                                 <Cards
                                     key={key}
                                     name={products[item].name}

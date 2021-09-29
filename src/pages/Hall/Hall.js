@@ -25,13 +25,13 @@ const Hall = () => {
             .then((response) => {
                 response.json()
                     .then((json) => {
+                        console.log(json);
                         setProducts(json)
                     })
             })
     }, [token])
 
     const addProducts = (sendProducts) => {
-        console.log(sendProducts);
         let newArray;
         newArray = [...cartItem, { ...sendProducts }]
         setCartItem(newArray)
