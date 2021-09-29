@@ -39,6 +39,8 @@ export const RegisterUser = (users) => {
 };
 
 
+
+
 // export const getAllProducts = () => {
 //     fetch('https://lab-api-bq.herokuapp.com/products', {
          //method: 'GET',
