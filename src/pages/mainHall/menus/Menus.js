@@ -7,17 +7,16 @@ import Itens from '../../../components/itensMenu/Itens';
 
 import './Menus.css';
 
+
 function Menus () {
 
     const [allProducts, setAllProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
+    // const [breakfast, setBreakfast] = useState([])
+    // const [allDay, setAllDay] = useState([])
     const history = useHistory();
     const token = localStorage.getItem('userToken');
     
-    // const STORAGE_KEY = 'burger-queen-api-client'
-    // const getStorageKey = () => localStorage.getItem(STORAGE_KEY)
-    // const token = getStorageKey();    
-    // useffect - metodo que da inicio a renderização e só 1 coisa com as promisses juntas, sobre a condição de um array
 
     useEffect(() => {
       fetch('https://lab-api-bq.herokuapp.com/products', {
@@ -29,9 +28,9 @@ function Menus () {
         })
           .then(response => response.json())
           .then((json) => {                                
-            console.log(json)
             setAllProducts(json)
-            const menus = json.filter((item) => item.type)
+            const menus = json.filter((item) => item.type === 'breakfast')
+            console.log(menus)
             setSelectedProducts(menus)
             return json;
           });
@@ -52,19 +51,18 @@ function Menus () {
       history.push('/historico')
     }
 
-    const handleClick = (meal) => {
-      const selectedMenu = allProducts.filter((item) => item.type === meal)
-      setSelectedProducts(selectedMenu)
+    const filterMenu = (meal) => {
+      const filterItensByType = allProducts.filter((item) => item.type === meal);
+      setSelectedProducts(filterItensByType)
     }
 
     const [name, setName] = useState('');
     const handleChange = (e) => {
       setName(e.target.value)
-  };
+    };
 
     return(
         <div>
-          
           <div>
             <NavBar />
           </div>
@@ -109,30 +107,32 @@ function Menus () {
             <div>
               <Button 
                 label="Café da manha"
-                onClick={handleClick}
+                onClick={() => filterMenu('breakfast')}
                 className="buttons buttons-menu" 
               />
               <Button 
                 label="Almoço/Jantar"
-                onClick={handleClick}
+                onClick={() => filterMenu('all-day')}
                 className="buttons buttons-menu" 
               />
             </div>
-
-            <section
-              {...setSelectedProducts}       
-            />
-
-              {selectedProducts.map(item => (<Itens 
-                  id={item.id} 
-                  name={item.name}
-                  flavor={item.flavor}
-                  complement={item.complement}
-                  price={item.price}
-                  image={item.image}
-                  type={item.type}
-                />)) 
-              }
+            <div>
+              {selectedProducts.map((item) => {
+                return (
+                  <Itens
+                    key={item.id} 
+                    id={item.id} 
+                    name={item.name}
+                    flavor={item.flavor}
+                    complement={item.complement}
+                    price={item.price}
+                    image={item.image}
+                    type={item.type}
+                  />
+                )
+              })}
+            </div>
+            
           <Footer />
         </div>
     );

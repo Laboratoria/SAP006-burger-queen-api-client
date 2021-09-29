@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import { LoginWithEmail } from '../../../services/Auth';
 import Input from '../../../components/inputs/Input';
-import Button from '../../../components/button/Button';
+import Button from '../../../components/button/Button'
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title';
@@ -54,12 +54,9 @@ export default function Login() {
                 }                  
             } 
         } catch (json) {
-            const code = json.code;
-            console.log(code)
-            if (code === 400 || code === 403) {
-                throw new Error(json.message);
-            }
+            console.log(json)
         }
+            
     }
 
     

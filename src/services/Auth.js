@@ -1,3 +1,4 @@
+
 export const LoginWithEmail = (users) => {
     return fetch('https://lab-api-bq.herokuapp.com/auth', {
         method:'POST',
@@ -10,6 +11,14 @@ export const LoginWithEmail = (users) => {
             "password": users.password,
         }),
     })
+    // .then((response) => {
+    //     if (!response.ok) {
+    //         return response.json().then(err => { throw new Error(err.message)})
+    //     }
+    //     return response.json()
+    // })
+    
+    
 };
 
 export const RegisterUser = (users) => {
@@ -28,6 +37,8 @@ export const RegisterUser = (users) => {
         }),
     })
 };
+
+
 
 
 // export const getAllProducts = () => {
