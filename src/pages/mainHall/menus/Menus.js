@@ -29,11 +29,10 @@ function Menus () {
           .then((json) => {                                
             setAllProducts(json)
             const menus = json.filter((item) => item.type === 'breakfast')
-            console.log(menus)
             setSelectedProducts(menus)
             return json;
           });
-      }, [token]);
+    }, [token]);
     
     const btnMenus = (e) => {
       e.preventDefault()
@@ -51,7 +50,7 @@ function Menus () {
     }
 
     const filterMenu = (meal) => {
-      const filterItensByType = allProducts.filter((item) => item.type === meal);
+      const filterItensByType = allProducts.filter((item) => item.sub_type === meal);
       setSelectedProducts(filterItensByType)
     }
 
@@ -81,16 +80,26 @@ function Menus () {
                 className="buttons buttons-menu" 
               /> 
             </div>
-            <div>
+            <div className="container-cardapio">
               <Button 
-                label="Café da manha"
+                label="Café da Manhã"
                 onClick={() => filterMenu('breakfast')}
-                className="buttons buttons-menu" 
+                className="btn-cardapio" 
               />
               <Button 
-                label="Almoço/Jantar"
-                onClick={() => filterMenu('all-day')}
-                className="buttons buttons-menu" 
+                label="Hamburguer"
+                onClick={() => filterMenu('hamburguer')}
+                className="btn-cardapio" 
+              />
+              <Button 
+                label="Aperitivos"
+                onClick={() => filterMenu('side')}
+                className="btn-cardapio" 
+              />
+              <Button 
+                label="Bebidas"
+                onClick={() => filterMenu('drinks')}
+                className="btn-cardapio" 
               />
             </div>
               <InfoCards />

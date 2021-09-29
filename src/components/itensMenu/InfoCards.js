@@ -4,12 +4,14 @@ import Button from '../button/Button';
 import './Style.css';
 
 
-export default function InfoCards ({number, price}) {
+export default function InfoCards ({price}) {
+
+
 
     return(
         <div className="container-cards">
             <>
-                <h3>Pedido: {number}</h3>
+                <h3>Carrinho</h3>
             </>
             <div className="card">
                 <label className="info-card">Atendente: {localStorage.getItem("userName")} </label>

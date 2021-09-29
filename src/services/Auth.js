@@ -20,18 +20,28 @@ export const LoginWithEmail = (users) => {
 };
 
 export const RegisterUser = (users) => {
-    return fetch('https://lab-api-bq.herokuapp.com/users', {
-        method:'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authentication': 'Token'
-        },
-        body: JSON.stringify({
-            'name': users.name,
-            'email': users.email,
-            'password': users.password,
-            'role': users.role,
-            'restaurant': 'retro burger',
-        }),
-    })
+    return request ('/users', 'POST', {
+        name: users.name,
+        email: users.email,
+        password: users.password,
+        role: users.role,
+        restaurant: 'retro burger',
+    }) 
+    
 };
+
+
+
+
+// export const RegisterUser = (users) => {
+//     return fetch('https://lab-api-bq.herokuapp.com/users', {
+//         method:'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authentication': 'Token'
+//         },
+//         body: JSON.stringify({
+            
+//         }),
+//     })
+// };

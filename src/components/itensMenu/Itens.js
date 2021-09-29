@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Style.css';
 
-export default function Itens ({id, name, flavor, complement, price, type, image}) {
+export default function Itens ({id, name, flavor, complement, price, image}) {
     return(
         <div>
             <p>Nº {id}</p>
@@ -10,7 +10,6 @@ export default function Itens ({id, name, flavor, complement, price, type, image
             <p>Tipo: {flavor}</p>
             <p>Complemento: {complement}</p>
             <p>Preço: R$ {price},00</p>
-            <p>{type}</p>
             <img className="img-product" src={image} alt={`imagem do produto ${name}`}/>
         </div>
     );
