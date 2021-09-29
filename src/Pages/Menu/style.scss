@@ -43,4 +43,37 @@
 
 }
 
+.form-inputs-order {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 600;
+}
 
+.text-orders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-order {
+    height: 4vh;
+    width: max-content;
+    background-color: #ffff;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    padding: 6px;
+    margin: 4%;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.input-order.table {
+    width: 20%;
+}
+
+.input-order.clientName {
+    width: 60%;
+}

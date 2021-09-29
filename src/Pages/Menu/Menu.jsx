@@ -44,8 +44,8 @@ const Menu = ()  => {
     const handleClick = (meal) => { 
         const selectedMenu = products.filter((item) => item.type === meal)
         setSelectedProducts(selectedMenu)  
-        const compileBurger = products.filter((item) => item.sub_type === 'hamburguer')
-        setBurger(compileBurger)     
+        // const compileBurger = products.filter((item) => item.sub_type === 'hamburguer')
+        // setBurger(compileBurger)     
     }
 
     const handleChange = (event) => {
@@ -57,27 +57,54 @@ const Menu = ()  => {
         console.log(value);
     }
 
-    const removeItemOnCart = (item) => {
-        console.log(item);
+    const removeItemOnCart = () => {
+        let countItems = addItem.reduce(function (allItems, currentItem) {
+            if (allItems[currentItem.name]) {
+                allItems[currentItem.name].qtd--;    
+            } else {
+                allItems[currentItem.name] = currentItem;
+                console.log(allItems);
+                console.log(currentItem);
+            }
+            return allItems;
+        }, {})
+        console.log(countItems, 'console remove');
+        return countItems;
     }
     
-    const addItemOnCart = () => {
+    const addItemOnCart = (item) => {
+        const addItemArray = addItem;
+        console.log(addItem);
 
-        let countTypes = addItem.reduce(function (allTypes, atualType) {
-        
-
-            if (allTypes[atualType.name]) {
-                allTypes[atualType.name].qtd++;
-            } else {
-                allTypes[atualType.name] = atualType;
-                console.log(allTypes);
-                console.log(atualType);
-            }
-            return allTypes;
-        }, {})
-        // console.log(countTypes);
-        return countTypes;
+        const countElement = addItemArray.find(element => element === item)
+        if(countElement) {
+            countElement.qtd += 1
+            console.log(countElement);
+            setAddItem(teste => teste.map(
+                teste2 => teste2.id === countElement.id ? countElement : teste2)
+            )
+        } else {
+            // .qtd = 1;
+            // setAddItem([...addItem])
+        }
     }
+    // let countItems = addItem.reduce(function (allItems, currentItem) {
+    //     if (allItems[currentItem.name]) {
+    //         allItems[currentItem.name].qtd++;
+    //         setAddItem(allItems[currentItem.name])
+    //             // .map(item => item.name === 
+    //             // allItems[currentItem.name] ? allItems : item)
+    //         console.log('oi')
+    //     } else {
+    //         allItems[currentItem.name] = currentItem;
+    //         console.log('tchau')
+    //         // console.log(allItems);
+    //         // console.log(currentItem);
+    //     }
+    //     return allItems;
+    // }, {})
+    // console.log(countItems, 'console add');
+    // return countItems;
 
     return (
         <>
@@ -100,7 +127,11 @@ const Menu = ()  => {
                                     img={item.image}
                                     flavor={item.flavor}
                                     complement={item.complement}
-                                    onClick={() => {
+                                    addItemOnCart={() => {
+                                        addItemOnCart(item)
+                                        // item.qtd >= 1 ? 
+                                        //     addItemOnCart(item) && console.log('oi')
+                                        //     : 
                                         setAddItem([...addItem, 
                                             {
                                                 id: item.id,
@@ -111,8 +142,12 @@ const Menu = ()  => {
                                                 complement: item.complement,
                                                 qtd: 1,
                                             }
-                                        ])
+                                        ]) 
                                     }}
+
+                                        // setAddItem(teste => teste.map(
+                                        //     teste2 => teste2.id === countElement.id ? countElement : teste2)
+                                        // )
                                 />  
                             )
                         )}
@@ -121,21 +156,12 @@ const Menu = ()  => {
                 <div className="right-side cartList-display">
                     <section className="section-ordersList">
                         <article className="text-orders">
-                            <h3>Pedidos</h3>
-                            <form>
-                                <select name="Mesa">
-                                    <option>Escolha a mesa</option>
-                                    <option name="1" value="1" onChange={handleChange}>1</option>
-                                    <option name="2" value="2" onChange={handleChange}>2</option>
-                                    <option name="3" value="3" onChange={handleChange}>3</option>
-                                    <option name="4" value="4">4</option>
-                                    <option name="5" value="5">5</option>
-                                    <option name="6" value="6">6</option>
-                                    <option name="7" value="7">7</option>
-                                    <option name="8" value="8">8</option>
-                                    <option name="9" value="9">9</option>
-                                </select>
-                                <input className="input-clientName" name="cliente" data-name="input-clientName" type="text" placeholder="Nome do Cliente" onChange={handleChange}/>
+                            <h3 className="title-orders">Pedidos</h3>
+                            <form className="form-inputs-order">
+                                <label>Mesa</label>
+                                <input className="input-order table" name="mesa" data-name="input-table" type="number" min="1" max="9" placeholder="0" onChange={handleChange}/> <br />
+                                <label>Cliente</label>
+                                <input className="input-order clientName" name="cliente" type="text" autoComplete="off" onChange={handleChange}/>
                             </form>
                         </article>
                         <article className="text-ordersList">
@@ -149,14 +175,14 @@ const Menu = ()  => {
                                         flavor={item.flavor}
                                         complement={item.complement}
                                         qtd={item.qtd}
-                                        removeItemOnCart={() => removeItemOnCart(item)}
-                                        addItemOnCart={() => addItemOnCart()}
+                                        removeItemOnCart={() => removeItemOnCart()}
+                                        addItemOnCart={() => addItemOnCart(item)}
                                     />
                                 )
                             })}
                         </article>                        
-                        <p>Total: R$ {totalPrice} </p>
                         <hr/>
+                        <p>Total: R$ {totalPrice} </p>
                         <GeneralButton variant="fifth"  className="btn-confirmOrder">
                             Confirmar pedido
                         </GeneralButton>

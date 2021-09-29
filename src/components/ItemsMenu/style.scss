@@ -14,6 +14,9 @@ $font600: 600;
     margin: 4vh;
     padding: 3vh;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     @media (max-width: 767px) {
         display: none;
@@ -27,14 +30,6 @@ $font600: 600;
         margin: 0;
         padding: 3; 
     }
-
-}
-
-.text-orders {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .text-ordersList {
@@ -42,7 +37,7 @@ $font600: 600;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    height: 70%;
+    height: 66%;
 }
 
 .btn-confirmOrder {

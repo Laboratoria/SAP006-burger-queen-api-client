@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './style.scss'
 
-export const ItemCard = ({id, name, price, img, flavor, complement, onClick}) => {
+export const ItemCard = ({id, name, price, img, flavor, complement, addItemOnCart}) => {
     const [values, setValues] = useState({
         'sabor': '',
         'adicional': '', 
@@ -41,7 +41,7 @@ export const ItemCard = ({id, name, price, img, flavor, complement, onClick}) =>
             </form>
             <div className="footer-card">
                 <p className="product-info price">R$ {price}</p>
-                <button className="btn-addItem" onClick={onClick}>+</button>
+                <button className="btn-addItem" onClick={addItemOnCart}>+</button>
             </div>
         </article>
     )
