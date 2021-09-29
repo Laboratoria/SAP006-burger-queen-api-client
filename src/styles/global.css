@@ -1,21 +1,27 @@
-:root {
+/*:root {
     --rosa-seco: #a28788;
     --azul-escuro: #050522;
     --rosa-claro: #c2857a;
     --lilas: #312f5b;
+    --cinza: #676767;
     
 } 
-
-body {
-    background: var(--azul-escuro);
-    color: var(--rosa-seco);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+.salao {
+    width: 100%;
+    height: 100%;
+}
+
 
 body ,input, button {
     font: 400 'Poppins', sans-serif;
 }
 
-button {
+/*button {
     height: 3rem;
     width: 400px;
     border: var(--rosa-seco) solid 1pt;
@@ -50,3 +56,127 @@ button:hover{
     left: 350px;
     text-align: center;
 }*/
+
+:root {
+    --preto: #0B090A;
+    --cinza-escuro: #161A1D;
+    --vermelho-escuro: #660708;
+    --vermelho-medio: #A4161A;
+    --vermelho: #BA181B;
+    --vermelho-rosado: #E5383B;
+    --cinza: #B1A7A6;
+    --cinza-medio: #D3D3D3;
+    --cinza-claro: #DCDCDC;
+    --platinum: #E3E3E3;
+    --cinza2: #757575;
+    --cinza3: #efefef;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+    overflow: hidden;
+}
+.container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;  
+    height: 100vh;  
+}
+
+.co1 {
+    width: 50%;
+
+}
+
+.align-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 28rem;
+}
+
+.form {
+    padding: 1rem;
+    background-color: var(--cinza-medio);
+    border-radius: 1.5rem;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: var(--cinza2);
+}
+
+.input-group input, .style-option{
+    width: 100%;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    background-color: var(--cinza3);
+    border-radius: .5rem;
+    border: 0.125rem solid var(--platinum);
+    outline: none;
+}
+
+.input-group input:focus {
+    border: 0.125rem solid var(--cinza-escuro);
+}
+
+.form button {
+    cursor: pointer;
+    width: 100%;
+    padding: .6rem 0;
+    border-radius: .5rem;
+    border: none;
+    background-color: var(--preto);
+    color: var(--platinum);
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.form p {
+    margin: 1rem 0;
+    font-size: .7rem;
+}
+.flex-co1 {
+    border-radius:0 0 50%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.style-option {
+    color: var(--cinza2);
+
+}
+
+.link-class {
+    text-decoration: none;
+    color: var(--vermelho-escuro);
+    margin: .2rem;
+}
+

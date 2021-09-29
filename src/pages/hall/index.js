@@ -1,7 +1,10 @@
-export default function salao() {
+import Fundo from '../../components/imgs/Add a subheading.svg'
+export default function Hall() {
     return(
         <>
-    <h1>olá</h1>
+        <div className='container2'>
+            <img className='salao' src={Fundo} alt='fundo'/>
+        </div>
     </>
     )
     

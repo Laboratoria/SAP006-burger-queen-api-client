@@ -1,19 +1,77 @@
-.logo img {
-    height: 350px;
-    left: 350px;
-    text-align: center;
+* {
+    margin: 0;
+    padding: 0;
 }
 
+.img-create {
+    height: 200px;
+    left: 200px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+:root {
+    --rosa-seco: #a28788;
+    --azul-escuro: #050522;
+    --rosa-claro: #c2857a;
+    --lilas: #312f5b;
+    --cinza: #676767;
+    --azul: #204766;
+    
+} 
 
 .main-class{
     position:absolute;
-   background: #312F5B;
-   border-radius: 20%;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%,-50%);
-   padding: 60px;
-   width: min-content;
+    border: solid 1pt var(--rosa-claro);
+    border-radius: 5%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 30px;
+    width: min-content;
+    margin-top: 90px;
+}
+
+.name-create, .email-create, .password-create, .option-style {
+    font-family: 'Roboto', sans-serif;
+    color: var(--rosa-seco);
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 300px;
+    height: 50px;
+    margin:2%;
+    border: solid 1pt var(--rosa-claro);
+    font-size: 110%;
+    font-weight: 600;
+    background-color: var(--azul-escuro);
+}
+
+.name-label, .email-label, .password-label {
+    position: absolute;
+    left: 10%;
+    margin-top: 6%;
+    color: var(--cinza);
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-left: 30px;
+}
+
+.btn-create {
+    font-family: 'Roboto', sans-serif;
+        background-color: var(--rosa-seco);
+        outline: none;
+        cursor: pointer;
+        border-radius: 25px;
+        width: 300px;
+        height: 50px;
+        margin:2%;
+        margin-bottom: 4%;
+        border: solid 1pt white;
+        color: white;
+        font-size: 110%;
+        font-weight: 600;
+        letter-spacing: 2px;
 }
 
 

@@ -1,18 +1,19 @@
-/*import Home from "../pages/home-page";
 import Login from '../pages/login';
-import CreateUser from "../pages/create-user";
-import { BrowserRouter, Switch, Route} from "react-router-dom";
+import Hall from '../pages/hall';
+import CreateUser from '../pages/create-user';
+import Kitchen from '../pages/kitchen';
+import { BrowserRouter, Route } from "react-router-dom";
+import PrivateRoutes from './private-routes';
 
-function Routes() {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route path='/' exact component={Home}/>
-                <Route path='/login' component={Login}/>
-                <Route path='/cadastrar' component={CreateUser}/>
-            </Switch>
-        </BrowserRouter>
-    )
+function App() {
+  return(
+    <BrowserRouter>
+      <Route path='/' exact component={Login}/>
+      <Route path='/cadastrar' component={CreateUser}/>
+      <PrivateRoutes path='/salão' component={Hall}/>
+      <PrivateRoutes path='/cozinha' component={Kitchen}/>
+    </BrowserRouter>
+    
+  )
 }
-
-export default Routes;*/
+export default App;

@@ -1,31 +1,109 @@
+:root {
+    --preto: #0B090A;
+    --cinza-escuro: #161A1D;
+    --vermelho-escuro: #660708;
+    --vermelho-medio: #A4161A;
+    --vermelho: #BA181B;
+    --vermelho-rosado: #E5383B;
+    --cinza: #B1A7A6;
+    --cinza-medio: #D3D3D3;
+    --cinza-claro: #DCDCDC;
+    --platinum: #E3E3E3;
+    --cinza2: #757575;
+    --cinza3: #efefef;
+}
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
+    box-sizing: border-box;
 }
-    
-:root {
-    --rosa-seco: #a28788;
-    --azul-escuro: #050522;
-    --rosa-claro: #c2857a;
-    --lilas: #312f5b;
-    
-} 
+body{
+    background-color: var(--platinum);
+}
 
-img {
+.img-login {
     height: 350px;
     left: 350px;
     text-align: center;
 }
 
 .login-class {
+    margin-top: 100px;
     position:absolute;
-    background: #312F5B;
     border-radius: 20%;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    padding: 60px;
+    border: solid 1pt var(--rosa-claro);
+    padding: 40px;
     width: min-content;
+    margin-top: 10%;
+}
+
+
+.input-email, .input-password {
+    font-family: 'Roboto', sans-serif;
+    color: var(--rosa-seco);
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 300px;
+    height: 50px;
+    margin:2%;
+    border: solid 1pt var(--rosa-claro);
+    font-size: 110%;
+    font-weight: 600;
+    background-color: var(--azul-escuro);
+    }
+    
+.label-email, .label-password{
+    position: absolute;
+    left: 10%;
+    margin-top: 6%;
+    color: var(--cinza);
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-left: 10%;
+}
+
+.div-email, .div-password{
+    width: 100%;
+    justify-content: center;
+}
+    
+    
+.input-email:focus ~ .label-email,
+.input-email:not(:placeholder-shown).input-email:not(:focus) ~ .label-email{
+    margin-top: 10%;
+    font-size: 13px;
+    color: var(--cinza);
+}
+    
+.input-password:focus ~ .label-password,
+.input-password:not(:placeholder-shown).input-password:not(:focus) ~ .label-password{
+    margin-top: 1.8%;
+    font-size: 13px;
+    color: var(--cinza);
+}
+
+.input-email:hover, .input-password:hover {
+    background-color: var(--rosa-seco);
+    color: var(--azul-escuro);
+}
+
+.btn-login{
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--rosa-seco);
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 300px;
+    height: 50px;
+    margin:2%;
+    margin-bottom: 4%;
+    border: solid 1pt white;
+    color: white;
+    font-size: 110%;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
