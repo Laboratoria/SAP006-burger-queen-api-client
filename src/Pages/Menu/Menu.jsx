@@ -9,25 +9,22 @@ import Header from '../../components/Header/Header';
 import './style.scss';
 
 const Menu = ()  => {
+    // const[total, setTotal] = useState(0);
+    // const [orders, setOrders] = useState([]);
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
-    // const [orders, setOrders] = useState([]);
     const [burger, setBurger] = useState([])
     const [addItem, setAddItem] = useState([]);
-    const[total, setTotal] = useState(0);
+    const [removeItem, setRemoveItem] = useState([]);
     const [values, setValues] = useState({
         'mesa': '',
         'cliente': '', 
     })
 
     const token = getStorageKey();
-    useEffect(() => {
-        addItemOnCart()
-    }, [addItem]) // eslint-disable-line
 
     useEffect(() => {
         GetProducts()
-
         .then((res) => {                    
             console.log(res)
             setProducts(res)
@@ -57,54 +54,53 @@ const Menu = ()  => {
         console.log(value);
     }
 
-    const removeItemOnCart = () => {
-        let countItems = addItem.reduce(function (allItems, currentItem) {
-            if (allItems[currentItem.name]) {
-                allItems[currentItem.name].qtd--;    
-            } else {
-                allItems[currentItem.name] = currentItem;
-                console.log(allItems);
-                console.log(currentItem);
-            }
-            return allItems;
-        }, {})
-        console.log(countItems, 'console remove');
-        return countItems;
+    const removeItemOfCart = (item) => {
+        console.log(item, 'console do item');
+        const removeItemArray = [removeItem];
+        console.log(removeItem, 'console do removeItem');
+
+        const countElement = removeItemArray.find(element => element.id === item.id)
+        console.log(item.id);
+        console.log(countElement, 'console do countElement');
+        if(countElement >= 1) {
+            countElement.qtd -= 1
+            setRemoveItem(itemArray => itemArray.map(
+                itemProduct => itemProduct.id === countElement.id ? countElement : itemProduct)
+            )
+            console.log(setRemoveItem, 'console do setRemoveItem');
+        } else if (countElement === 0){
+            console.log(countElement, 'console do countElement no else if');
+            console.log('caiu no else do removeItemOfCart');
+            setRemoveItem([...removeItem]);
+        }
     }
     
     const addItemOnCart = (item) => {
+        console.log(item);
         const addItemArray = addItem;
         console.log(addItem);
 
-        const countElement = addItemArray.find(element => element === item)
+        const countElement = addItemArray.find(element => element.id === item.id)
+        console.log(countElement);
         if(countElement) {
             countElement.qtd += 1
-            console.log(countElement);
-            setAddItem(teste => teste.map(
-                teste2 => teste2.id === countElement.id ? countElement : teste2)
+            setAddItem(itemArray => itemArray.map(
+                itemProduct => itemProduct.id === countElement.id ? countElement : itemProduct)
             )
         } else {
-            // .qtd = 1;
-            // setAddItem([...addItem])
+            console.log('caiu no else do addItemOnCart');
+            const newItem = { 
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                flavor: item.flavor,
+                complement: item.complement,
+                qtd: 1,
+            }
+            console.log(newItem);
+            setAddItem([...addItem, newItem])
         }
     }
-    // let countItems = addItem.reduce(function (allItems, currentItem) {
-    //     if (allItems[currentItem.name]) {
-    //         allItems[currentItem.name].qtd++;
-    //         setAddItem(allItems[currentItem.name])
-    //             // .map(item => item.name === 
-    //             // allItems[currentItem.name] ? allItems : item)
-    //         console.log('oi')
-    //     } else {
-    //         allItems[currentItem.name] = currentItem;
-    //         console.log('tchau')
-    //         // console.log(allItems);
-    //         // console.log(currentItem);
-    //     }
-    //     return allItems;
-    // }, {})
-    // console.log(countItems, 'console add');
-    // return countItems;
 
     return (
         <>
@@ -129,25 +125,7 @@ const Menu = ()  => {
                                     complement={item.complement}
                                     addItemOnCart={() => {
                                         addItemOnCart(item)
-                                        // item.qtd >= 1 ? 
-                                        //     addItemOnCart(item) && console.log('oi')
-                                        //     : 
-                                        setAddItem([...addItem, 
-                                            {
-                                                id: item.id,
-                                                name: item.name,
-                                                price: item.price,
-                                                image: item.image,
-                                                flavor: item.flavor,
-                                                complement: item.complement,
-                                                qtd: 1,
-                                            }
-                                        ]) 
                                     }}
-
-                                        // setAddItem(teste => teste.map(
-                                        //     teste2 => teste2.id === countElement.id ? countElement : teste2)
-                                        // )
                                 />  
                             )
                         )}
@@ -159,9 +137,9 @@ const Menu = ()  => {
                             <h3 className="title-orders">Pedidos</h3>
                             <form className="form-inputs-order">
                                 <label>Mesa</label>
-                                <input className="input-order table" name="mesa" data-name="input-table" type="number" min="1" max="9" placeholder="0" onChange={handleChange}/> <br />
+                                <input className="input-order table" value={values.mesa} name="mesa" data-name="input-table" type="number" min="1" max="9" placeholder="0" onChange={handleChange}/> <br />
                                 <label>Cliente</label>
-                                <input className="input-order clientName" name="cliente" type="text" autoComplete="off" onChange={handleChange}/>
+                                <input className="input-order clientName" value={values.cliente} name="cliente" type="text" autoComplete="off" onChange={handleChange}/>
                             </form>
                         </article>
                         <article className="text-ordersList">
@@ -171,11 +149,10 @@ const Menu = ()  => {
                                         key={item.id}
                                         name={item.name}
                                         price={item.price}
-                                        // pricePerQtd={}
                                         flavor={item.flavor}
                                         complement={item.complement}
                                         qtd={item.qtd}
-                                        removeItemOnCart={() => removeItemOnCart()}
+                                        removeItemOfCart={() => removeItemOfCart(item)}
                                         addItemOnCart={() => addItemOnCart(item)}
                                     />
                                 )

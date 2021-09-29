@@ -47,7 +47,7 @@ export const ItemCard = ({id, name, price, img, flavor, complement, addItemOnCar
     )
 };
 
-export const SelectedItem = ({id, name, price, flavor, complement, qtd, removeItemOnCart, addItemOnCart}) => {
+export const SelectedItem = ({id, name, price, flavor, complement, qtd, removeItemOfCart, addItemOnCart}) => {
 
     return (
         <article className="itemSelected" key={id}>
@@ -62,7 +62,7 @@ export const SelectedItem = ({id, name, price, flavor, complement, qtd, removeIt
                 <button 
                     className="btn-addItem-qtd"
                     data-remove={id} 
-                    onClick={removeItemOnCart}>        
+                    onClick={removeItemOfCart}>        
                 -</button>
                 <p className="product-info">{qtd}</p>
                 <button 

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { getStorageKey } from './storage';
 
 export const GetProducts = async () => {
@@ -15,7 +14,6 @@ export const GetProducts = async () => {
             .catch((error) => console.log(error, 'erro ao acessar a API de produtos'))
     
 }
-
 
 export const createOrder = async (order, item) => {
 
