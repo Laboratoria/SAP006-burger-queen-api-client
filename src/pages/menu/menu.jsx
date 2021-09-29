@@ -34,8 +34,10 @@ const Menu = () => {
     if (foundItem !== -1) {
       const qtd = addItem[foundItem].qtd
        if(qtd === 1) {
-         const removed = addItem.splice(foundItem,1)
-         setAddItem(removed)
+         const removed = addItem
+         removed.splice(foundItem,1)
+         setAddItem([...removed])
+         
        } else {
          const newArray = addItem;
         newArray[foundItem].qtd--;
