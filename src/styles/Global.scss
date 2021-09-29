@@ -17,16 +17,17 @@
   $dark-green:#202e28;
 
 
-  @import url(https://allfont.net/allfont.css?fonts=norwester);
+  /*@import url(https://allfont.net/allfont.css?fonts=norwester); */
 
-  $berg-font: 'Norwester', arial;
+  $berg-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+  
   
 * { 
   background-color: transparent;
   box-sizing: border-box;
   font-family: Raleway, sans-serif;
   border: none;
-  outline: none;
+
 }
 
 html {

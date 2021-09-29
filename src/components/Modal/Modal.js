@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Button } from '../Button/Button'
 import { CurrentOrder } from '../CurrentOrder/Current.Order';
 
@@ -29,15 +28,7 @@ export const DefaultModal = ({Type, ModalContent, ButtonChildren, ButtonOnClick,
   )
 }
 
-export const TableOrdersModal = ({orders, FirstButtonClick, SecondButtonClick, ButtonDeleteOrder}) => {
-  const [tableTotalBill, setTableTotalBill] = useState();
-
-  useEffect(() => {
-    const orderTotals = [];
-    orders.length > 0 && 
-      orders.map((order) => orderTotals.push(order.bill));
-      setTableTotalBill(orderTotals.reduce((acc, curr) => acc + curr, 0));
-  }, [tableTotalBill, orders]);
+export const TableOrdersModal = ({orders, FirstButtonClick, SecondButtonClick, ButtonDeleteOrder, TableTotalBill}) => {
 
   return (
     <section>
@@ -53,7 +44,7 @@ export const TableOrdersModal = ({orders, FirstButtonClick, SecondButtonClick, B
               ButtonDeleteOrder={ButtonDeleteOrder}
             />
           )}
-          <p className='room-orders-modal-table-bill-p'>Total da Mesa R$: &nbsp;{tableTotalBill}</p>
+          <p className='room-orders-modal-table-bill-p'>Total da Mesa R$: &nbsp;{TableTotalBill}</p>
           <div className='room-orders-modal-button-div'>
             <Button children='OK' ButtonClass='modal-button' ButtonOnClick={FirstButtonClick}/> 
             <Button children='Limpar mesa'ButtonClass='modal-button'ButtonOnClick={SecondButtonClick}/> 

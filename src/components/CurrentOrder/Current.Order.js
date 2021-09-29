@@ -1,6 +1,5 @@
 
 import React from 'react';
-import {useState, useEffect} from 'react';
 
 import { Button} from '../Button/Button'
 import { OrderTimeSection } from '../OrderTimeSection/OrderTimeSection'
@@ -8,64 +7,11 @@ import { OrderHeaderDiv } from '../OrderHeaderDiv/OrderHeaderDiv'
 import { OrderListColumn } from '../OrderListColumn/OrderListColumn';
 import { timeToProcess, orderCurrentAge } from '../../services/general';
 
-import { DefaultModal } from '../Modal/Modal';
-
-import { getUserById } from '../../services/users';
-import { getErrorCase } from '../../services/general';
-
-import { getAllProducts } from '../../services/products';
-import { titleCorrespondance } from '../../data/titleCorrespondance';
-
 import './CurrentOrder.scss';
 
-export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderDeliveredButton, Location, }) => { 
+export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderDeliveredButton, WaitressName}) => { 
 
-  const token = localStorage.getItem('currentEmployeeToken');
   const role = localStorage.getItem('currentEmployeeRole');
-
-  const [waitress, setWaitress] = useState('');
-  const [menu, setMenu] = useState([]);
- 
- const [orderBill, setOrderBill] = useState([])
-
- const [modal, setModal] = useState(false);
- const [modalContent, setModalContent] = useState({
-   Type:'',
-   Text:'',
-   ButtonChildren:'',
-   ButtonClick:'',
- })
-
- const handleAPIErrors = (data) => {
-  const result = getErrorCase(data.code);
-  Object.keys(data).includes('code') && setModalContent(modalContent => ({...modalContent, Text: result,}));
-  Object.keys(data).includes('code') && setModal(true);
-}
-  useEffect(() => {
-    getAllProducts(token)
-    .then((responseJson) => { 
-      handleAPIErrors(responseJson);
-      const menu = responseJson;
-      titleCorrespondance(responseJson);
-      setMenu(menu)
-
-      const productTotals = []
-      order.Products.map((element) => element.data = menu.filter((product) => product.id === element.id));
-      order.Products.map((element) => element.price = element.data[0].price);
-      order.Products.map((element) => element.total = element.price * element.qtd);
-      order.Products.map((product) => productTotals.push(product.total));
-      setOrderBill(productTotals.reduce((acc, curr) => acc + curr, 0))
-    })
-  },[order.Products, token]);
-
-
-  useEffect(() => {
-    getUserById(token, order.user_id)
-    .then(responseJson => {
-      handleAPIErrors(responseJson);
-      setWaitress(responseJson.name);
-    })
-  }, [token, order.user_id]);
 
   return (
     <div className= {
@@ -82,7 +28,7 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
       </section>
       <section className='current-order-header current-order-header-second'>
         <OrderHeaderDiv Title='Status' Value={order.status === 'pending' ? 'Em preparo' : order.status}/> 
-        <OrderHeaderDiv Title='Responsável' Value={waitress}/>
+        <OrderHeaderDiv Title='Responsável' Value={WaitressName}/>
         <OrderHeaderDiv Title='Pedido criado' Value={orderCurrentAge(order.createdAt)}/>
       </section>
       {order.status === 'pending' && <OrderTimeSection Time1='-'  Time2='-' Time3='-' />}
@@ -101,7 +47,7 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
       <div className='current-order-button-div'>
         <Button ButtonClass='delete-order' ButtonId={order.id} ButtonOnClick={ButtonDeleteOrder} />
       <div className='current-order-status-button-div'>
-        <p className='current-order-order-bill'> Total: R$ &nbsp;{orderBill}</p>
+        <p className='current-order-order-bill'> Total: R$ &nbsp;{order.orderTotalBill}</p>
           {role === 'kitchen' && order.status === 'pending' &&
             <Button 
               ButtonClass='kitchen-order-status-button kitchen-ready-order-button' 
@@ -148,17 +94,6 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
           }
         </div>
       </div>
-      <section>
-        {modal && 
-          <DefaultModal
-            Type = 'one-button-modal'
-            ModalContent = {modalContent.Text === 'Informações insuficientes!' ? 
-            'Não há alterações para fazer neste pedido' : modalContent.Text }
-            ButtonChildren = 'Fechar'
-            ButtonOnClick = {() => setModal(false)}
-          />
-        }
-      </section>
     </div>
     )
   }

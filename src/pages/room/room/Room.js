@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { getErrorCase } from '../../../services/general';
+import { getErrorCase, getTotalOrderBill, getTotalTableBill } from '../../../services/general';
+import { getUserById } from '../../../services/users';
 import { getAllOrders, deleteOrder } from '../../../services/orders';
+import { getAllProducts } from '../../../services/products';
+import { tables } from '../../../data/tables'
+
 
 import { NavbarRoom } from '../../../components/Navbar/Navbar';
 import { Button } from '../../../components/Button/Button';
@@ -17,12 +21,14 @@ export const Room = () => {
 
   const [tablesWithOrders,setTablesWithOrders] = useState([]);
   const [currentOrders, setCurrentOrders] = useState([]);
-  const [targetTableOrders, setTargetTableOrders] = useState([]);
+  const [waitress, setWaitress] = useState([]);
 
-  const [targetTableId, setTargetTableId] = useState('');
-  const [orderToDeleteId, setOrderToDeleteId] = useState('');
+  const [targetTableOrders, setTargetTableOrders] = useState([]);
+  const [targetTableId, setTargetTableId] = useState();
+  const [totalTableBill, setTotalTableBill] = useState();
  
   const [fullTableModal, setFullTableModal] = useState(false);
+
   const [modal, setModal] = useState(false);
   const [modalContent, setModalContent] = useState({
     Type:'',
@@ -39,34 +45,43 @@ export const Room = () => {
     Object.keys(data).includes('code') && setModal(true);
   }
 
+  const getWaitressName = (userIdFromOrder) => {
+    getUserById(token, userIdFromOrder)
+    .then(responseJson=> {
+      handleAPIErrors(responseJson);
+      setWaitress(responseJson.name)
+    })
+  }
+
+  useEffect(() => {
+    getAllProducts(token)
+      .then((responseJson) => { 
+        handleAPIErrors(responseJson);
+        localStorage.removeItem('menu')
+        localStorage.setItem('menu',  JSON.stringify(responseJson))
+      })
+    },[token]);
+
   useEffect(() => {
     getAllOrders(token)
-    .then(responseJson => {
-      handleAPIErrors(responseJson);
-      const tables = [
-        {'table':1, 'tableName':'table-01', 'orders':[]},
-        {'table':2, 'tableName':'table-02', 'orders':[]},
-        {'table':3, 'tableName':'table-03', 'orders':[]},
-        {'table':4, 'tableName':'table-04', 'orders':[]},
-        {'table':5, 'tableName':'table-05', 'orders':[]},
-        {'table':6, 'tableName':'table-06', 'orders':[]},
-        {'table':7, 'tableName':'table-07', 'orders':[]},
-        {'table':8, 'tableName':'table-08', 'orders':[]},
-        {'table':9, 'tableName':'table-09', 'orders':[]},
-        {'table':10, 'tableName':'table-10', 'orders':[]},
-        {'table':11, 'tableName':'table-11', 'orders':[]},
-        {'table':12, 'tableName':'table-12', 'orders':[]},
-      ]
-      setCurrentOrders(responseJson);
-      tables.map((table) => table.orders = responseJson.filter((order) => order.table === table.table));
-      setTablesWithOrders(tables);
-    })
-  },[token, currentOrders]);
+      .then(responseJson => {
+        handleAPIErrors(responseJson);
+        const menu = (JSON.parse(localStorage.getItem('menu')));
+        getTotalOrderBill(responseJson, menu);
+
+        responseJson.map((order) => order.waitress = )
+        setCurrentOrders(responseJson);
+
+        tables.map((table) => table.orders = responseJson.filter((order) => order.table === table.table));
+        setTablesWithOrders(tables);
+      })
+    },[token, currentOrders]);
 
   useEffect(() => {
-    setTargetTableOrders(currentOrders.filter((order) => order.table.toString() === targetTableId))
+    setTargetTableOrders(currentOrders.filter((order) => order.table.toString() === targetTableId));
+    setTotalTableBill(getTotalTableBill(currentOrders, targetTableId));
   },[targetTableId, currentOrders]);
-
+  
   const deleteTargetOrder = (orderToBeDeleted) => {
     deleteOrder(orderToBeDeleted, token)
     .then(responseJson => {
@@ -100,7 +115,9 @@ export const Room = () => {
                   Text: 'Esta mesa ainda não possui pedidos!',
                 })), setModal(true)] 
                 : 
-                [setFullTableModal(true), setTargetTableId(event.target.id),  document.body.style.overflow = 'hidden']
+                [setTargetTableId(event.target.id),
+                setFullTableModal(true), 
+                document.body.style.overflow = 'hidden']
               }              
             />
           )}
@@ -110,6 +127,7 @@ export const Room = () => {
         {fullTableModal && 
         <TableOrdersModal 
           orders={targetTableOrders}
+          TableTotalBill={totalTableBill}
           FirstButtonClick={() => setFullTableModal(false)}
           SecondButtonClick={() => [setModalContent(modalContent => 
             ({...modalContent, 
@@ -131,19 +149,20 @@ export const Room = () => {
             })
           ), setModal(true)
         ]}
-          ButtonDeleteOrder={(event) => [
-            setOrderToDeleteId(event.target.id),
+          ButtonDeleteOrder={(event) => {
+            const orderIdToDelete = event.target.id;
             setModalContent(modalContent => 
               ({...modalContent, 
                 Type:'two-buttons-modal',
                 Text: 'Você tem certeza que deseja excluir este pedido?',
                 ButtonSecondClick: () => {
-                  deleteTargetOrder(orderToDeleteId);
+                  deleteTargetOrder(orderIdToDelete);
                   setModal(false);
                 }
               })
-            ), setModal(true)
-          ]}
+            )
+            setModal(true);
+          }}
         />
         } 
       </section>

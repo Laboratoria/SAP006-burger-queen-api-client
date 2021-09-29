@@ -1,3 +1,5 @@
+import { tables } from "../data/tables"
+
 export const getErrorCase = (data) => {
   switch (data) {
     case 400:
@@ -73,3 +75,21 @@ export const orderCurrentAge = (creationTime) => {
   const orderCurrentAge = orderAge((Date.now() - new Date (creationTime).valueOf())/1000);
   return orderCurrentAge
 }
+
+export const getTotalOrderBill = (orders, menu) => {
+  orders.map((order) => order.Products.map((element) => element = Object.assign(element, Object.assign({}, ...menu.filter((product) =>  product.id === element.id)) ) ));
+  orders.map((order) => order.Products.map((element) => element.total = element.price * element.qtd));
+  orders.map((order) => order.orderTotals = order.Products.map((element) => element.total));
+  orders.map((order) => order.orderTotalBill = order.orderTotals.reduce((acc, curr) => acc + curr, 0));
+}
+  
+export const getTotalTableBill = (orders, tableId) => {
+  orders = orders.filter((order) => order.table.toString() === tableId)
+  const tableOrdersBill = orders.map((order) => order.orderTotalBill)
+  const totalTableBill = tableOrdersBill.reduce((acc, curr) => acc + curr, 0);
+  return totalTableBill
+}
+  
+  
+ 
+  
