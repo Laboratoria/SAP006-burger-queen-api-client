@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import Hall from './pages/Hall';
+import Kitchen from './pages/Kitchen';
 
 
 function App() {
@@ -23,8 +24,11 @@ function App() {
                 <Route path='/register'> 
                     <Register />
                 </Route>
-                <Route path='/hall'> 
+                <Route path='/salao'> 
                     {user ? <Hall /> : <Redirect to="/" />}  
+                </Route>
+                <Route path='/cozinha'> 
+                    {user ? <Kitchen /> : <Redirect to="/" />}  
                 </Route>
                 <Route component={NotFound}/>
             </Switch>

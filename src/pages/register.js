@@ -95,7 +95,7 @@ function Register() {
                             <label className="roleLabel">
                                 <input type="radio" 
                                     name="role" 
-                                    value="hall"
+                                    value="salao"
                                     id = "role"
                                 />
                                 &nbsp;Salão
@@ -105,7 +105,7 @@ function Register() {
                                 <input
                                     type="radio"
                                     name="role"
-                                    value="kitchen"
+                                    value="cozinha"
                                     id = "role"
                                 />
                                 &nbsp;Cozinha
