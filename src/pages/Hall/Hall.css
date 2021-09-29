@@ -1,15 +1,36 @@
 .hall-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 2%;
 }
 
 .menu {
-   width: 50%;
+  width: 50%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 600px;
+}
+
+.menu::-webkit-scrollbar {
+  width: 16px;
+}
+
+.menu::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background-color: #d4aa70;
+  border-radius: 100px;
+ 
 }
 
 .cart-container {
-    width: 30%;
-    background-color: white;
+  width: 30%;
+  background-image: url('../../img/comanda.png');
+  background-size: 100% 100%;
+  background-position: center;
+  height: 80vh;
 }

@@ -4,8 +4,10 @@ import Button from '../Button/Button';
 
 import './Cart.css'
 
-function Cart({	cartItem }) {
-	
+function Cart({ cartItem }) {
+	const totalPrice = cartItem.reduce((acumulador, item) => acumulador + item.price * item.qtd, 0)
+	console.log(cartItem)
+
 	return (
 		<div className='container-cart'>
 
@@ -20,30 +22,38 @@ function Cart({	cartItem }) {
 					name='email'>Mesa</Input>
 			</div>
 
-			<div>
-				<ul className='list'>
-					<li>Nome</li>
-					<li>Quantidade</li>
-					<li>Valor</li>
-				</ul>
-			</div>
+		
+			<ul className='list'>
+				<li>Nome</li>
+				<li>Quantidade</li>
+				<li>Valor</li>
+			</ul>
+
 
 			{cartItem.map((item) => {
 				return (
 					<div className='order-list'>
-						<p className='each-item-cart' key={item.id}>Nome:{item.name} Qtd: {item.qtd} Preço: {item.price}</p>
+						<p className='each-item-cart' key={item.id}>
+							Nome: {item.name}
+							Qtd: {item.qtd}
+							Preço: R$ {(item.price * item.qtd).toFixed(2)}</p>
 					</div>
 				)
 			})}
 
 			<div className='order-total'>
-				<p>Total:</p>
-				<p>R$0,00</p>
+				<div className='total-price'>
+					<p>Total:</p>
+					<p>R$ {(totalPrice).toFixed(2)}</p>
+				</div>
+				<div>
+					<Button
+						buttonText='Enviar pedido'
+						className='button-menu' />
+				</div>
 			</div>
 
-			<Button
-				buttonText='Enviar pedido'
-				className='button-menu'	/>
+
 		</div>
 	);
 }
