@@ -41,7 +41,7 @@ function Register() {
         if (!resultErrors.email && !resultErrors.password) {
             console.log(resultErrors.email, 'não tem erros')
 
-            registerUser(infoUser.email, infoUser.password)
+            registerUser(infoUser.email, infoUser.password, infoUser.role)
                 .then(() => {
                     console.log('usuário foi criado');
                     history.push('/') //trocar pelo modal de aviso de cadastro com sucesso 
@@ -83,22 +83,25 @@ function Register() {
                     />
                     {errors.password && <span className='form-error'>{errors.password}</span>}
 
-                    <div className="radio-buttons">
+                    <div className="radio1">
                         <div className="radio">
                             <label className="roleLabel">
-                                <input type="radio" name="role" value="hall"
-                                    onChange={handleChange}
+                                <input
+                                type="radio" 
+                                name="role" 
+                                value="salao"
+                                onChange={handleChange}
                                 />
                                 &nbsp;Salão
                             </label>
                         </div>
 
-                        <div className="radioBtn2">
+                        <div className="radio2">
                             <label className="roleLabel">
                                 <input
                                     type="radio"
                                     name="role"
-                                    value="kitchen"
+                                    value="cozinha"
                                     onChange={handleChange}
                                 />
                                 &nbsp;Cozinha

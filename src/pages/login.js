@@ -26,7 +26,7 @@ function Login() {
         // }
     }
 
-    let history = useHistory()
+    const history = useHistory()
     const handleLogin = (e) => {
         e.preventDefault();
 
@@ -37,12 +37,15 @@ function Login() {
             loginUser(infoUser.email, infoUser.password)
                 .then((responseLogin) => {
                     responseLogin.json().then((user) => {
-                        if (user) {
-                            loginConfirmed(user.token)
-                            console.log(user, user.token)
-                            history.push('/home')
+                        loginConfirmed(user.token)
+                        console.log(user, user.token)
+                      
+                        if (user.role) {
+                            history.push(`/${user.role}`)
                         }
+
                     })
+
                 })
             /*.catch((error) => {
               console.log(error.message)
