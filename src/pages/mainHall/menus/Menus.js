@@ -30,7 +30,6 @@ function Menus () {
           .then((json) => {                                
             setAllProducts(json)
             const menus = json.filter((item) => item.type === 'breakfast')
-            console.log(menus)
             setSelectedProducts(menus)
             return json;
           });
@@ -110,9 +109,9 @@ function Menus () {
               onClick={() => filterMenu('all-day')}
             />
             
-            {/* <section
+            <section
               {...setAllProducts}       
-            /> */}
+            />
   
             <div>
               {selectedProducts.map((item) => {
