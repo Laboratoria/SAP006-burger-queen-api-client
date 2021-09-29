@@ -135,11 +135,13 @@ export default function Register() {
                     label="Cadastrar" 
                     type="submit"
                     onClick={handleClick} 
+                    className="buttons" 
                 /> 
                 <Button 
                     label="Já tenho conta" 
                     type="submit"
                     onClick={btnBack} 
+                    className="buttons" 
                 /> 
 
             </form>
