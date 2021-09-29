@@ -1,23 +1,21 @@
-
-export const LoginWithEmail = (users) => {
-    return fetch('https://lab-api-bq.herokuapp.com/auth', {
-        method:'POST',
+const host = 'https://lab-api-bq.herokuapp.com';
+const request = (endpoint, method, body) => {
+    return fetch(`${host}${endpoint}`, {
+        method,
         headers: {
             'Content-Type': 'application/json',
             'Authentication': 'Token'
         },
-        body: JSON.stringify ({
-            "email": users.email,
-            "password": users.password,
-        }),
-    })
-    // .then((response) => {
-    //     if (!response.ok) {
-    //         return response.json().then(err => { throw new Error(err.message)})
-    //     }
-    //     return response.json()
-    // })
-    
+        body: JSON.stringify (body),
+    }) 
+
+}
+
+export const LoginWithEmail = (users) => {
+    return request ('/auth', 'POST', {
+        email: users.email,
+        password: users.password,
+    }) 
     
 };
 
@@ -37,26 +35,3 @@ export const RegisterUser = (users) => {
         }),
     })
 };
-
-
-
-
-// export const getAllProducts = () => {
-//     fetch('https://lab-api-bq.herokuapp.com/products', {
-         //method: 'GET',
-//       headers: {
-//         accept: 'application/json',
-//         Authorization: `${token}`,
-
-//       },
-
-//     })
-//       .then((response) => response.json())
-//       .then((json) => {
-//         const breakfast = json.filter((item) => item.type === 'breakfast');
-//         setMenuCafe(breakfast);
-//         const allDayMenu = json.filter((item) => item.type === 'all-day');
-//         setMenuAlmoco(allDayMenu);
-//       });
-//   };
-

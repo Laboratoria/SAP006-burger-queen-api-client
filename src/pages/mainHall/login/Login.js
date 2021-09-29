@@ -37,6 +37,7 @@ export default function Login() {
             const token = returnJson.token
             const name = returnJson.name
             const roleUser = returnJson.role
+            console.log(response)
 
             if (token) {
                 localStorage.setItem('userName', name)
@@ -53,8 +54,12 @@ export default function Login() {
                     history.push('/preparacao')
                 }                  
             } 
+            if(response.status !== 200){
+                throw new Error(response.status)  
+            }
         } catch (json) {
-            console.log(json)
+            history.push('/notfound') 
+            // colocar o modal aqui depois   
         }
             
     }
@@ -114,43 +119,3 @@ export default function Login() {
         </div>
     );
 };
-
- // function handleClick (e){
-    //     e.preventDefault()
-    //     const user = {email, password}
-    //     LoginWithEmail(user)
-    //     .then(token => {
-    //         if (token) {
-    //             localStorage.setItem('arroz', token)
-    //             // localStorage.setItem(name, response.id);
-    //             history.push('/mesas');
-    //             alert('Login Correto')
-    //         } else {
-    //             alert('Insira uma conta válida')
-    //         }
-    //     })
-    // }
-
-// async function handleClick (e) {
-    //     try {
-    //         e.preventDefault()
-    //         const user = {email, password, role}
-    //         const responseLogin = await LoginWithEmail(user)
-    //         const returnJsonLogin = await responseLogin.json()
-    //         const token = returnJsonLogin.token
-    //         console.log(responseLogin.json())
-
-    //         if (token){
-    //             localStorage.setItem('arroz', token)
-    //             const role = returnJsonLogin.role
-    //             if(role === 'salon') {
-    //             history.push('/mesas')
-    //             } else {
-    //                 alert('manda pra cozinha')
-    //             }     
-    //         } 
-    //     } catch (error) {
-    //         console.log('mel')
-    //     }
-        
-    // }
