@@ -2,12 +2,11 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
-import Cards from '../../../components/itensMenu/Cards';
 // import Footer from '../../../components/footer/Footer';
 
 import './Requests.css';
 
-function Requests () {
+export default function Requests () {
     const history = useHistory();
 
       const btnMenus = (e) => {
@@ -26,10 +25,12 @@ function Requests () {
       }
 
     return(
-        <div className="container-menus">
+        <div>
+
             <div>
                 <NavBar />
             </div>
+
             <div>
                 <Button 
                     label="Menus" 
@@ -47,12 +48,11 @@ function Requests () {
                     onClick={btnHistoric} 
                 /> 
             </div>
-            <div className="pedidos">
-                <Cards />
-                <Cards />
-            </div>
-        </div>
-    )
-}
 
-export default Requests;
+            <div>
+                Pedidos aqui
+            </div>
+            
+        </div>
+    );
+};

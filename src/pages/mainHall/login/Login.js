@@ -46,55 +46,52 @@ export default function Login() {
                 const role = roleUser
                 
                 if(role === 'salon') {
+                    alert('Login com Salão')
                     history.push('/menus')
                 } else {
-                    alert('Será redirecionado para sua área')
+                    alert('Login com Cozinha')
                     history.push('/preparacao')
                 }                  
             } 
         } catch (json) {
-            const code = json.code;
-            console.log(code)
-            if (code === 400 || code === 403) {
-                throw new Error(json.message);
-            }
+            console.log(json)
         }
+            
     }
 
     
     return(
-        <div>
+        <div  className="container-inputs">
             <form className="container-form">
                 <LogoImg />
+
                 <div>
                     <Title 
-                        title='Entre com uma conta' >
-                    </Title>
+                        title='Entre com uma conta'
+                    />
                 </div>
-                <div className="container-inputs">
+
+                <div>
                     <Input 
                         type='text' 
                         name='email'
-                        id='emailText'
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
                         placeholder='Digite o seu e-mail'
                     />
-
                     <Input 
                         type={showPassword ? 'type': 'password'} 
                         name='password'
-                        id='emailText'
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
                         placeholder='Digite a sua senha'
                     />
                     <span className="login-eye">
                         {showPassword ? 
-                        (<FaEye
-                            onClick={eyeClick} /> ):
-                        (<FaEyeSlash
-                            onClick={eyeClick} />)
+                            (<FaEye
+                                onClick={eyeClick} /> ):
+                            (<FaEyeSlash
+                                onClick={eyeClick} />)
                         }
                     </span> 
                 </div>
@@ -102,7 +99,8 @@ export default function Login() {
                 <Button 
                     label='Entrar' 
                     type="submit"
-                    onClick={handleClick} 
+                    onClick={handleClick}
+                    className="buttons" 
                 />
 
                 <div>
@@ -110,9 +108,9 @@ export default function Login() {
                         Não tem uma conta? <Link to="/cadastre-se">Cadastre-se</Link> 
                     </div>
                 </div>
-            </form>
-                        
-        <Footer /> 
+
+            </form>        
+            <Footer /> 
         </div>
     );
 };

@@ -7,10 +7,11 @@ import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
-import Title from '../../../components/title/Title'
+import Title from '../../../components/title/Title';
+// import Error from '../../../services/Error';
 
-import cozinheiro from '../../../img/cozinheiro.png'
-import garcom from '../../../img/garcom.png'
+import cozinheiro from '../../../img/cozinheiro.png';
+import garcom from '../../../img/garcom.png';
 
 import './Register.css';
 
@@ -54,13 +55,13 @@ export default function Register() {
         } catch (error) {
             console.log('errrrou')
         }
-    }
+    };
 
-
+    // evento de clique para voltar
     const btnBack = () => {
       localStorage.clear()
       history.push('/')
-    }
+    };
 
     // seleciona o role - se cozinha ou salão - pega value e salva no role do servidor
     function handleRoleChange (e) {
@@ -68,17 +69,19 @@ export default function Register() {
         if(e.target.checked){
             setRole(e.target.value)
         }
-    }
+    };
 
     return(
         <div className='container-register'>
             <form className="container-form">
                 <LogoImg />
+                
                 <div>
                     <Title 
                         title='Cadastre-se' 
                     />
                 </div>
+
                 <div>
                     <Input 
                         type='text' 
@@ -87,7 +90,6 @@ export default function Register() {
                         onChange={(event) => setName(event.target.value)}
                         placeholder='Digite o seu Nome'
                     />
-
                     <Input 
                         type='text' 
                         name='email'
@@ -103,16 +105,16 @@ export default function Register() {
                         placeholder='Digite a sua senha'
                     />
                     <span className="login-eye">
-                            {showPassword ? 
+                        {showPassword ? 
                             (<FaEye
                                 onClick={eyeClick} /> ):
                             (<FaEyeSlash
                                 onClick={eyeClick} />)
                             }
-                        </span> 
+                    </span> 
                 </div>
-                <div className='container-checkbox' value={role} onChange={(event) => handleRoleChange(event)}
->
+
+                <div className='container-checkbox' value={role} onChange={(event) => handleRoleChange(event)}>
                     <Input 
                         type='radio' 
                         name='ocupation'
@@ -120,7 +122,6 @@ export default function Register() {
                         placeholder='salon'
                     />
                     <img src={garcom} alt="waiter" className="waiter-icon"/>
-
                     <Input 
                         type='radio' 
                         name='ocupation'
@@ -129,7 +130,7 @@ export default function Register() {
                     />
                     <img src={cozinheiro} alt="kitchen" className="kitchen-icon"/>
                 </div>
-                
+
                 <Button 
                     label="Cadastrar" 
                     type="submit"
@@ -140,9 +141,9 @@ export default function Register() {
                     type="submit"
                     onClick={btnBack} 
                 /> 
-            </form>
 
-        <Footer />    
+            </form>
+            <Footer />    
         </div>
     );
 };

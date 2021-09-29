@@ -3,6 +3,10 @@ body{
     background-repeat: repeat;
 }
 
+.container-register{
+    width: 100%;
+}
+
 .container-checkbox{
     display: flex;
     align-items: flex-end;

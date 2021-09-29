@@ -1,17 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, } from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
-import Input
+import Itens from '../../../components/itensMenu/Itens';
+
 import './Menus.css';
 
 
 function Menus () {
 
-    const history = useHistory();
     const [allProducts, setAllProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
+    const [breakfast, setBreakfast] = useState([])
+    const [allDay, setAllDay] = useState([])
+    const history = useHistory();
+    const token = localStorage.getItem('userToken');
+    
+    // const STORAGE_KEY = 'burger-queen-api-client'
+    // const getStorageKey = () => localStorage.getItem(STORAGE_KEY)
+    // const token = getStorageKey();    
+    // useffect - metodo que da inicio a renderização e só 1 coisa com as promisses juntas, sobre a condição de um array
+
+    useEffect(() => {
+      fetch('https://lab-api-bq.herokuapp.com/products', {
+          method:'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token,
+          }
+        })
+          .then(response => response.json())
+          .then((json) => {                                
+            console.log(json)
+            setAllProducts(json)
+            const menus = json.filter((item) => item.type)
+            setSelectedProducts(menus)
+            return json;
+          });
+      }, [token]);
     
     const btnMenus = (e) => {
       e.preventDefault()
@@ -28,11 +55,22 @@ function Menus () {
       history.push('/historico')
     }
 
-    const handleClick = (meal) => { 
-    const selectedMenu = allProducts.filter((item) => item.type === meal)
-      setSelectedProducts(selectedMenu)
+    const handleClick = (meal) => {
+      const filterByItems = allProducts.filter((item) => item.type === meal);
+      if (meal === 'breakfast') {
+        return setBreakfast(filterByItems)
+      } else {
+        return setAllDay(filterByItems)
+      }
     }
 
+    useEffect(() => handleClick('breakfast'), [allProducts])
+    useEffect(() => handleClick('all-day'), [allProducts])
+
+    const [name, setName] = useState('');
+    const handleChange = (e) => {
+      setName(e.target.value)
+  };
 
     return(
         <div>
@@ -60,6 +98,10 @@ function Menus () {
             </div>
 
             <h3> Atendente: {localStorage.getItem("userName")} </h3>
+            <h3> Mesa:  </h3>
+            <label>Nome do Cliente</label>
+            <input onChange={handleChange} className="input" type="text" name="nameClient"></input>
+            {name}
 
             <select>
               <option value="">Mesas</option>
@@ -72,24 +114,36 @@ function Menus () {
               <option value="">07</option>
             </select>        
 
-            <Button 
+            {/* <Button 
               label="Café da manha"
               onClick={handleClick}
             />
             <Button 
               label="Almoço/Jantar"
               onClick={handleClick}
-            />
+            /> */}
+            <div>
+              {breakfast.map((item) => {
+                return (
+                  <div>
+                    {item.name}
+                  </div>
+                )
+              })}
+            </div>
             <section
               {...setSelectedProducts}       
             />
+
               {selectedProducts.map(item => (<Itens 
-                id={item.id} 
-                name={item.name}
-                flavor={item.flavor}
-                complement={item.complement}
-                price={item.price}
-                image={item.image}/>)) 
+                  id={item.id} 
+                  name={item.name}
+                  flavor={item.flavor}
+                  complement={item.complement}
+                  price={item.price}
+                  image={item.image}
+                  type={item.type}
+                />)) 
               }
           <Footer />
         </div>

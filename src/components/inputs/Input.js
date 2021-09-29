@@ -1,7 +1,7 @@
 import React from 'react';
 import './Inputs.css';
 
-const Input = ({name, id, placeholder, type, value, onChange}) => {
+export default function Input ({name, id, placeholder, type, value, onChange}) {
     
     return (
             <input 
@@ -14,7 +14,4 @@ const Input = ({name, id, placeholder, type, value, onChange}) => {
                 className="inputs"
             />  
     );
-}
-
-export default Input;
-
+};

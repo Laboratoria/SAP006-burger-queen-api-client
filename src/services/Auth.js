@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 
 export const LoginWithEmail = (users) => {
     return fetch('https://lab-api-bq.herokuapp.com/auth', {
@@ -12,6 +11,14 @@ export const LoginWithEmail = (users) => {
             "password": users.password,
         }),
     })
+    // .then((response) => {
+    //     if (!response.ok) {
+    //         return response.json().then(err => { throw new Error(err.message)})
+    //     }
+    //     return response.json()
+    // })
+    
+    
 };
 
 export const RegisterUser = (users) => {
@@ -32,18 +39,22 @@ export const RegisterUser = (users) => {
 };
 
 
+// export const getAllProducts = () => {
+//     fetch('https://lab-api-bq.herokuapp.com/products', {
+         //method: 'GET',
+//       headers: {
+//         accept: 'application/json',
+//         Authorization: `${token}`,
 
-export const Products = () => {
-    const token = localStorage.getItem('userToken');
-    useEffect(() => {
-        fetch('https://lab-api-bq.herokuapp.com/products', {
-                method:'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': token,
-                }
-            })
-                .then(response => response.json())
-                .catch((error) => console.log(error, 'erro ao acessar a API de produtos'))
-    }, [token])
-}
+//       },
+
+//     })
+//       .then((response) => response.json())
+//       .then((json) => {
+//         const breakfast = json.filter((item) => item.type === 'breakfast');
+//         setMenuCafe(breakfast);
+//         const allDayMenu = json.filter((item) => item.type === 'all-day');
+//         setMenuAlmoco(allDayMenu);
+//       });
+//   };
+
