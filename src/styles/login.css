@@ -1,69 +1,60 @@
-@import '../global.css';
+/*@import '../global.css';*/
 
-/* Imagem*/
-/* .pagina-login-header img {
-    width: 40%;
-    height: auto; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* position: absolute;
-    top: 0;
-    left: 40%;
-}  */
+body {
+    background: #DFB120;
+}
 
-/* Container do login */
- /* .pagina-login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+/* tablet */ 
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .elipse-background{
+        position: absolute;
+        margin-top: -45%;
+        width: 150%;
+        height: 200%;
+        left: -25%;
+        border-radius: 50%;
+        -webkit-transform: scaleY(0.4);
+        background: #9B2D0A;
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    }
+}
+
+.header-login{
     width: 100%;
-}  */
-
-/* h1 login  */
- /* .login-name {
-    padding: 2%;
-}  */
-
-/* inputs dentro do login */
-    /* .login-form {
+    height: 15%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;  */
-    /* background-color: #F2DFBA; 
- } 
+    display: flex;
+    justify-content: space-around;
+}
 
-/* Container do login 
-     .card-login {
-        width: 100%;
-        padding: 5%;
-        display: inline-block;
-        border: 0;
-        background-color: #F2DFBA;
-        outline: none;
-        min-width: 180px;
-        font-size: 16px;
-        transition: all .3s ease-out;
-        border-radius: 10px;
-        box-shadow: 3px 3px 1px 0px #00000060;
-} 
+.header-login img{
+    height: 20rem;
+}
+.main-login{
+    display: flex;
+    justify-content: space-around;
+    min-height: 75vh;
+};
 
-  /* padding: 5%;
-  border-radius: 10px;
-  box-shadow: 3px 3px 1px 0px #00000060;
-  margin: 5%;
-  background-color: #F2DFBA; */
+.box-login {
+   color: #F2DFBA;
+    border-radius: 10px;
+    padding: 28px;
+    height: 100%
+};
+
+h1 .title {
+    font-weight: 700;
+    padding: 2rem;
+    color: #F2DFBA;
+};
+
+.forms{
+    max-width: 30rem;
+    padding: 2rem;
+};
 
 
-
-  /* width: 40%;
-  height: auto;
-  /* align-items: center; */
-  /* justify-content: center; 
-  position: absolute;
-  top: 0;
-  left: 20%;
-  margin: 3%; */
 
 
