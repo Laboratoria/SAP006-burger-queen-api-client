@@ -7,59 +7,50 @@ import Cart from "../../components/Cart/Cart";
 import './Hall.css'
 
 const Hall = () => {
-    const [products, setProducts] = useState([]);
+	const [products, setProducts] = useState([]);
+	const [cartItem, setCartItem] = useState([]);
 
-    const [cartItem, setCartItem] = useState([]);
+	const token = localStorage.getItem('userToken');
 
-    const token = localStorage.getItem('userToken');
-    console.log(token);
 
-    useEffect(() => {
-        fetch('https://lab-api-bq.herokuapp.com/products', {
-            headers: {
-                accept: 'application/json',
-                Authorization: `${token}`,
-            },
-        })
+	useEffect(() => {
+		fetch('https://lab-api-bq.herokuapp.com/products', {
+			headers: {
+				accept: 'application/json',
+				Authorization: `${token}`,
+			},
+		})
+			.then((response) => response.json())
+			.then((json) => {				
+				setProducts(json)
+			})
+	}, [token])
 
-            .then((response) => {
-                response.json()
-                    .then((json) => {
-                        setProducts(json)
-                    })
-            })
-    }, [token])
+	const addProducts = (product) => {
+		const foundProduct = cartItem.find((item) => item.id === product.id)
+		if (foundProduct) {
+			setCartItem(cartItem.map((item) =>
+				item.id === product.id ? { ...foundProduct, qtd: foundProduct.qtd + 1 } : item))
+		} else {
+			setCartItem([...cartItem, { ...product, qtd: 1 }])
+		}
+	}
 
-    const addProducts = (sendProducts) => {
-        console.log(sendProducts);
-        let newArray;
-        newArray = [...cartItem, { ...sendProducts }]
-        setCartItem(newArray)
-        console.log(newArray);
-    }
+	return (
+		<>
+			<Header className='nav-header' />
 
-    return (
-        <>
-            <Header className='nav-header'>
+			<div className='hall-container'>
+				<div className='menu'>
+					<Menu products={products} addProducts={addProducts} />
+				</div>
 
-            </Header>,
-
-            <div className='hall-container'>
-
-                <div className='menu'>
-                    <Menu products={products} addProducts={addProducts}>
-
-                    </Menu>
-                </div>
-
-                <div className='cart-container'>
-                    <Cart cartItem={cartItem}>
-
-                    </Cart>
-                </div>
-            </div>
-        </>
-    )
+				<div className='cart-container'>
+					<Cart cartItem={cartItem} />
+				</div>
+			</div>
+		</>
+	)
 }
 
 export default Hall;

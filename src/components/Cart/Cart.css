@@ -4,6 +4,9 @@
     font-weight: bold;
 }
 
+.list {
+    display: flex;
+}
 .order-total {
     color: black;
 }
