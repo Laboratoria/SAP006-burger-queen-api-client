@@ -7,7 +7,7 @@ import Register from './pages/Register/Register';
 import Hall from './pages/Hall/Hall';
 import Kitchen from './pages/Kitchen/Kitchen';
 import OrderReady from './pages/Pedidos/OrderReady';
-
+import PrivateRoute from './PrivateRoute';
 
 
 
@@ -20,9 +20,9 @@ ReactDOM.render (
     <Route path='/' component={Login} exact />
     <Route path='/Register' component={Register} />
     <Route path='/Login' component={Login} />
-    <Route path='/Hall' component={Hall} exact />
-    <Route path='/Kitchen' component={Kitchen} exact />
-    <Route path='/OrderReady' component={OrderReady} exact />
+    <PrivateRoute path='/Hall' component={Hall} exact />
+    <PrivateRoute path='/Kitchen' component={Kitchen} exact />
+    <PrivateRoute path='/OrderReady' component={OrderReady} exact />
     
 
 </Switch>

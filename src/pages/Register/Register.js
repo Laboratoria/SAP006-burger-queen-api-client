@@ -6,8 +6,6 @@ import ValidateInputs from '../Register/ValidationRegister';
 import ValidationMessage from "../../components/ValidationMessage/ValidationMessage";
 import './Register.css'
 
-
-
 const Register = () => {
 
   const goToLogin = () => {
@@ -24,13 +22,13 @@ const Register = () => {
     role: '',
   })
 
+  console.log(values)
+
   const onChangeValues = (event) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value
-      
     })
-    console.log(values)
   }
 
   const history = useHistory();
@@ -46,16 +44,16 @@ const Register = () => {
         },
         body: `email=${values.email}&password=${values.password}&name=${values.name}&role=${values.role}&restaurant=Deburger`
       })
-        .then((response) => {
-          response.json()
-            .then((json) => {
-              console.log(json);
-              if (json.id) {
-                history.push('/Login')
-              } else {
-                console.log(' não rodouuuuuu')
-              }
-            })
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json.data)
+          if (json.token) {
+            console.log(json.token)
+            console.log(json.data)
+            history.push('/Login')
+          } else {
+            console.log(' não rodouuuuuu')
+          }
         })
     }
   }
@@ -117,6 +115,7 @@ const Register = () => {
           <label>Atendimento</label>
           <input type='radio' name='role' value='kitchen' onChange={onChangeValues} />
           <label>Cozinha</label>
+          {errors.role && <ValidationMessage>{errors.role}</ValidationMessage>}
         </div>
 
         <Button
@@ -124,7 +123,7 @@ const Register = () => {
           className='button-register'
           buttonOnClick={buttonRegister} />
         <p onClick={goToLogin} className='go-of-register'>Não tem uma conta? Faça o login aqui. </p>
-    </form>
+      </form>
     </section>
   )
 }
