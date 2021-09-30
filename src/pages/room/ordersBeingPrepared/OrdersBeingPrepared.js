@@ -29,7 +29,7 @@ export const OrdersBeingPrepared = () => {
       handleAPIErrors(responseJson);
       setCurrentOrders(filteredOrders); 
     })  
-  }, [currentOrders, token]);
+  }, [token]);
 
   const deleteTargetOrder = () => {
     deleteOrder(orderToBeDeleted, token)

@@ -5,9 +5,9 @@ import { useHistory } from 'react-router-dom';
 
 import { Button } from '../../../components/Button/Button';
 import { DefaultModal } from '../../../components/Modal/Modal';
+import { NewOrderTextInput } from '../../../components/NewOrderTextInput/NewOrderTextInput';
+import { NewOrderFilterButton, NewOrderProductButton } from '../../../components/NewOrderFilterButton/NewOrderFilterButton';
 
-import { getAllProducts } from '../../../services/products';
-import { titleCorrespondance } from '../../../data/titleCorrespondance';
 import { getErrorCase } from '../../../services/general';
 
 import { sendOrderToKitchen, getAllOrders  } from '../../../services/orders';
@@ -17,7 +17,6 @@ import './NewOrder.scss';
 export const NewOrder = () => {
   const history = useHistory();
 
-  const [menu, setMenu] = useState([])
   const [table, setTable] = useState('');
   const [customer, setCustomerName] = useState('');
   const [filteredMenu, setFilteredMenu] = useState([]);
@@ -36,7 +35,9 @@ export const NewOrder = () => {
     ButtonSecondClick:'',
   })
 
+  const menu = (JSON.parse(localStorage.getItem('menu')));
   const token = localStorage.getItem('currentEmployeeToken');
+
   menu.length > 0 && menu.map((product) => product.id = product.id.toString());
   const productTotals = [];
   const orderedProductsQuantity = orderedProducts.reduce((acc, curr) => (acc[curr] = (acc[curr] || 0) + 1, acc), {});
@@ -57,32 +58,23 @@ export const NewOrder = () => {
   }
 
   useEffect(() => {
-    getAllProducts(token)
-    .then((responseJson) => { 
-      const menu = responseJson;
-      titleCorrespondance(menu);
-      setMenu(menu);
-      handleAPIErrors(responseJson);
-    })
-  },[menu, token]);
-
-
-  useEffect(() => {
     getAllOrders(token)
     .then(responseJson => {
-      setCurrentOrders(responseJson);
-      const orderTables = [];
-      currentOrders.map((order) => orderTables.push(order.table.toString()));
-      setOccupiedTables(orderTables.filter((v, i, a) => a.indexOf(v) === i));
       handleAPIErrors(responseJson);
+      setCurrentOrders(responseJson);
     })   
-  }, [currentOrders, token]);
+  }, [token]);
+  
+  useEffect(() => {
+    const orderTables = [];
+    currentOrders.map((order) => orderTables.push(order.table.toString()));
+    setOccupiedTables(orderTables.filter((v, i, a) => a.indexOf(v) === i));
+  }, [currentOrders]);
   
   const filterMenuButtons = ([productProp], value) => {
     const filteredMenu = menu.filter((product) => product[productProp] === value);
     return filteredMenu;
   }
-
   const decreaseProductQuantity = (value) => {
     let array = [...orderedProducts];
     const index = array.indexOf(value);
@@ -93,64 +85,87 @@ export const NewOrder = () => {
   }
 
   const checkCustomerData = () => {
-    setModalContent(modalContent =>
-      ({...modalContent, 
-        Type: 'one-button-modal',
-        ButtonChildren:'Fechar',
-      }))
-      setModal(true);
     if(customer.length <2){
       setModalContent(modalContent => ({...modalContent, 
-        Text: 'Por favor, insira o nome do cliente'
+        Type: 'one-button-modal',
+        Text: 'Por favor, insira o nome do cliente',
+        ButtonChildren: 'OK'
       }))
+      setModal(true);
       return 'Error';
     }
     else if(table.length < 1||table.length > 2 || table[0] === "0" || parseInt(table) > 12){
       setModalContent(modalContent =>
         ({...modalContent, 
-          Text: 'Por favor, insira um número de mesa válido. O zero à esquerda não deve ser incluso.', 
+          Type: 'one-button-modal',
+          Text: 'Por favor, insira um número de mesa válido. O zero à esquerda não deve ser incluso.',
+          ButtonChildren: 'OK' 
         }))
+      setModal(true);
       return 'Error';
     }
     else if(orderResume.length <1){
       setModalContent(modalContent =>
         ({...modalContent, 
+          Type: 'one-button-modal',
           Text: 'O resumo do pedido está vazio!', 
+          ButtonChildren: 'OK'
         }))
+      setModal(true);
       return "Error";
     }
   }
 
   const sendOrder = () =>{
-    const checkDataResult = checkCustomerData()
-    checkDataResult !== 'Error' &&
-    sendOrderToKitchen({orderInformation})
-    .then((responseJson) => {
-      handleAPIErrors(responseJson);
+    if (occupiedTables.includes(table)) {
       setModalContent(modalContent =>
         ({...modalContent, 
-          Text: 'As chefs já estão dando conta do pedido! O que você  deseja fazer?.', 
           Type: 'two-buttons-modal',
-          ButtonChildren:'Fazer um novo pedido',
-          ButtonSecondChildren:'Voltar para o salão',
-          ButtonSecondClick: () => history.push('/room')
-        }))
-      setModal(true);
-    })
+          Text: 'Atenção! Esta mesa está ocupada.', 
+          ButtonChildren:'Escolha outra mesa',
+          ButtonSecondChildren:'Insira novos pedidos nesta mesa',
+          ButtonSecondClick: () => {
+            sendOrderToKitchen({orderInformation})
+            .then((responseJson) => {
+              handleAPIErrors(responseJson);
+              setModalContent(modalContent =>
+                ({...modalContent, 
+                  Type: 'two-buttons-modal',
+                  Text: 'As chefs já estão dando conta do pedido! O que você  deseja fazer?.', 
+                  ButtonChildren:'Fazer um novo pedido',
+                  ButtonSecondChildren:'Voltar para o salão',
+                  ButtonSecondClick: () => history.push('/room')
+                })
+              )
+              setCurrentOrders(currentOrders => [...currentOrders, ...currentOrders])
+            }).then(() => setModal(true)) 
+          }
+        })
+      )
+      setModal(true)
+    } else {
+      sendOrderToKitchen({orderInformation})
+      .then((responseJson) => {
+        handleAPIErrors(responseJson);
+        setModalContent(modalContent =>
+          ({...modalContent, 
+            Type: 'two-buttons-modal',
+            Text: 'As chefs já estão dando conta do pedido! O que você  deseja fazer?.', 
+            ButtonChildren:'Fazer um novo pedido',
+            ButtonSecondChildren:'Voltar para o salão',
+            ButtonSecondClick: () => history.push('/room')
+          })
+        )
+        setCurrentOrders(currentOrders => [...currentOrders, ...currentOrders])
+      }).then(() => setModal(true))
+    }
+   
   }
+    
+    
 
-  const sendWithTableStatusCheck = () => {
-    !occupiedTables.includes(table) ? sendOrder() :
-    setModalContent(modalContent =>
-      ({...modalContent, 
-        Text: 'Atenção! Esta mesa está ocupada.', 
-        Type: 'two-buttons-modal',
-        ButtonChildren:'Escolha outra mesa',
-        ButtonSecondChildren:'Insira novos pedidos nesta mesa',
-        ButtonSecondClick: () => [sendOrder(), setModal(false)]
-      }))
-    setModal(true); 
-  }
+
+
 
   return (
     <div>
@@ -159,14 +174,8 @@ export const NewOrder = () => {
         <section className='new-order-section'>
           <div className='new-order-note-div'>
             <fieldset>
-              <div>
-                <label>Mesa:&nbsp;&nbsp;</label>
-                <input className='table-input' type='text' placeholder='____' autoComplete='off' onChange={(event)=> setTable(event.target.value)}/>
-              </div>
-              <div>
-                <label>Cliente:&nbsp;&nbsp;</label>
-                <input className='customer-name-input' type='text' placeholder='______________' autoComplete='off' onChange={(event)=> setCustomerName(event.target.value)}/>
-              </div>
+              <NewOrderTextInput Label = 'Mesa' onChangeInput={(event)=> setTable(event.target.value)}/>
+              <NewOrderTextInput Label = 'Cliente' onChangeInput={(event)=> setCustomerName(event.target.value)}/>
             </fieldset>
             <div className='new-order-products-list-head'>
               <h1>Produto</h1>
@@ -176,14 +185,18 @@ export const NewOrder = () => {
             <div className='new-order-full-list'>
               {orderedProductsData.map((product) => 
                 <div className='new-order-products-list-content' key={product.id}>
+
                   <p className='new-order-product-list-name'>{product.name}</p>
+
                   <div className='new-order-quantity-div'>
                     <Button ButtonClass='new-order-modify-quantity new-order-modify-quantity-minus' ButtonOnClick={ () => decreaseProductQuantity(product.id)}/>
                     <p className='new-order-product-list-quantity'>{product.qtd}</p>
                     <Button ButtonClass='new-order-modify-quantity new-order-modify-quantity-plus' ButtonOnClick={ () => setOrderedProducts(orderedProducts => [...orderedProducts, product.id])}/>
                   </div>
+
                   <p className='new-order-product-list-price'>{product.total}</p>
                   <Button ButtonClass='new-order-trash' ButtonOnClick={ () => setOrderedProducts(orderedProducts.filter(elements => elements !== product.id))}/>
+                
                 </div>
               )}
             </div>
@@ -195,74 +208,40 @@ export const NewOrder = () => {
           <Button 
             ButtonClass='new-order-send-order-to-kitchen' 
             children='Enviar para cozinha' 
-            ButtonOnClick={() =>  sendWithTableStatusCheck()}
+            ButtonOnClick={() => checkCustomerData() !== 'Error' && sendOrder()}
           />
           <div className='new-order-filter-buttons-div'>
-            <Button 
-              ButtonClass='new-order-filter' 
-              children='Alles' 
-              ButtonOnClick={() => setShowAllProducts(true)}
-            />
-            <Button 
-              ButtonClass='new-order-filter' 
-              children='Snacks'
-              ButtonOnClick={() => [
-                setShowAllProducts(false), 
-                setFilteredMenu(filterMenuButtons(['sub_type'], 'snacks')), 
-              ]}
-            />
-            <Button 
-              ButtonClass='new-order-filter' 
-              children='Burgers' 
-              ButtonOnClick={() => [
-                setShowAllProducts(false), 
-                setFilteredMenu(filterMenuButtons(['sub_type'], 'hamburguer')), 
-              ]}
-            />
-            <Button 
-              ButtonClass='new-order-filter' 
-              children='Drinken'
-              ButtonOnClick={() => [
-                setShowAllProducts(false), 
-                setFilteredMenu(filterMenuButtons(['sub_type'], 'drinks')), 
-              ]}
-            />
-            <Button 
-              ButtonClass='new-order-filter'  
-              children='Morgen' 
-              ButtonOnClick={() => [
-                setShowAllProducts(false), 
-                setFilteredMenu(filterMenuButtons(['type'], 'breakfast')), 
-              ]}
-            />
-            <Button 
-              ButtonClass='new-order-filter'  
-              children='Dag' 
-              ButtonOnClick={() => [
-                setShowAllProducts(false), 
-                setFilteredMenu(filterMenuButtons(['type'], 'all-day')), 
-              ]}
-            />
+            <NewOrderFilterButton children='Alles' ButtonOnClick ={() => 
+              setShowAllProducts(true)
+            } />
+            <NewOrderFilterButton children='Snacks' ButtonOnClick ={() => [
+              setShowAllProducts(false), 
+              setFilteredMenu(filterMenuButtons(['sub_type'], 'snacks')), 
+            ]} />
+            <NewOrderFilterButton children='Burgers'   ButtonOnClick={() => [
+              setShowAllProducts(false), 
+              setFilteredMenu(filterMenuButtons(['sub_type'], 'hamburguer')), 
+            ]} />
+            <NewOrderFilterButton children='Drinken'   ButtonOnClick={() => [
+              setShowAllProducts(false), 
+              setFilteredMenu(filterMenuButtons(['sub_type'], 'drinks')), 
+            ]} />
+            <NewOrderFilterButton children='Morgen'    ButtonOnClick={() => [
+              setShowAllProducts(false), 
+              setFilteredMenu(filterMenuButtons(['type'], 'breakfast')), 
+            ]} />
+            <NewOrderFilterButton children='Dag'     ButtonOnClick={() => [
+              setShowAllProducts(false), 
+              setFilteredMenu(filterMenuButtons(['type'], 'all-day')), 
+            ]} />
           </div>
           <div className='new-order-product-buttons-div'>
             {showAllProducts ?
               menu.map((product) => 
-                <Button 
-                  key={product.id}
-                  ButtonId={product.id}
-                  ButtonClass='new-order-product-button' 
-                  ButtonTitle={product.title}
-                  ButtonOnClick={(event)=> [setOrderedProducts(orderedProducts => [...orderedProducts, event.target.id])]}
-                />
+              <NewOrderProductButton product={product} ButtonOnClick={(event)=> [setOrderedProducts(orderedProducts => [...orderedProducts, event.target.id])]}/>
               ) 
             :filteredMenu.map((product) => 
-              <Button 
-                key={product.id}
-                ButtonId={product.id}
-                ButtonClass='new-order-product-button' 
-                ButtonTitle={product.title}
-                ButtonOnClick={(event)=> [setOrderedProducts(orderedProducts => [...orderedProducts, event.target.id])]}
-              /> 
+              <NewOrderProductButton product={product} ButtonOnClick={(event)=> [setOrderedProducts(orderedProducts => [...orderedProducts, event.target.id])]}/>
             )}
           </div>
         </section> 

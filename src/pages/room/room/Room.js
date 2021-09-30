@@ -6,7 +6,7 @@ import { getUserById } from '../../../services/users';
 import { getAllOrders, deleteOrder } from '../../../services/orders';
 import { getAllProducts } from '../../../services/products';
 import { tables } from '../../../data/tables'
-
+import { titleCorrespondance } from '../../../data/titleCorrespondance';
 
 import { NavbarRoom } from '../../../components/Navbar/Navbar';
 import { Button } from '../../../components/Button/Button';
@@ -21,7 +21,6 @@ export const Room = () => {
 
   const [tablesWithOrders,setTablesWithOrders] = useState([]);
   const [currentOrders, setCurrentOrders] = useState([]);
-  const [waitress, setWaitress] = useState([]);
 
   const [targetTableOrders, setTargetTableOrders] = useState([]);
   const [targetTableId, setTargetTableId] = useState();
@@ -45,18 +44,11 @@ export const Room = () => {
     Object.keys(data).includes('code') && setModal(true);
   }
 
-  const getWaitressName = (userIdFromOrder) => {
-    getUserById(token, userIdFromOrder)
-    .then(responseJson=> {
-      handleAPIErrors(responseJson);
-      setWaitress(responseJson.name)
-    })
-  }
-
   useEffect(() => {
     getAllProducts(token)
       .then((responseJson) => { 
         handleAPIErrors(responseJson);
+        titleCorrespondance(responseJson);
         localStorage.removeItem('menu')
         localStorage.setItem('menu',  JSON.stringify(responseJson))
       })
@@ -66,26 +58,38 @@ export const Room = () => {
     getAllOrders(token)
       .then(responseJson => {
         handleAPIErrors(responseJson);
+        
         const menu = (JSON.parse(localStorage.getItem('menu')));
         getTotalOrderBill(responseJson, menu);
-
-        responseJson.map((order) => order.waitress = )
-        setCurrentOrders(responseJson);
-
-        tables.map((table) => table.orders = responseJson.filter((order) => order.table === table.table));
-        setTablesWithOrders(tables);
+       
+        responseJson.map((order) => 
+          getUserById(token, order.user_id)
+          .then((response) => {
+            order.waitress = response.name
+            setCurrentOrders(responseJson);
+          })
+        )       
       })
-    },[token, currentOrders]);
+    },[token]);
+    
+    useEffect(() => {
+      tables.map((table) => table.orders = currentOrders.filter((order) => order.table === table.table));
+      setTablesWithOrders(tables);
+    }, [currentOrders])
 
   useEffect(() => {
     setTargetTableOrders(currentOrders.filter((order) => order.table.toString() === targetTableId));
     setTotalTableBill(getTotalTableBill(currentOrders, targetTableId));
+    console.log(currentOrders)
   },[targetTableId, currentOrders]);
   
   const deleteTargetOrder = (orderToBeDeleted) => {
     deleteOrder(orderToBeDeleted, token)
     .then(responseJson => {
+      console.log(responseJson.id)
       handleAPIErrors(responseJson);
+      const newOrders = currentOrders.filter((order) => order.id !== responseJson.id)
+      setCurrentOrders([...newOrders])
     })
   }
 
@@ -134,9 +138,7 @@ export const Room = () => {
               Type: 'two-buttons-modal',
               Text: 'Você tem certeza que deseja excluir todos os pedidos desta mesa?',
               ButtonSecondClick: () => {
-                const orderIds = [];
-                targetTableOrders.map((order) => orderIds.push(order.id));
-                orderIds.map((order) => deleteTargetOrder(order)) ;
+                targetTableOrders.map((order) => deleteTargetOrder(order.id)) ;
                 setModalContent(modalContent => 
                   ({...modalContent, 
                     Type: 'one-button-modal',

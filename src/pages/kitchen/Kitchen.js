@@ -37,7 +37,7 @@ export const Kitchen = () => {
       handleAPIErrors(responseJson);
       setCurrentOrders(responseJson);
     })
-  },[token, currentOrders]);
+  },[token]);
 
   const deleteTargetOrder = () => {
     deleteOrder(orderToBeDeleted, token)

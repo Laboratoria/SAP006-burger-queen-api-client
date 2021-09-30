@@ -28,7 +28,7 @@ export const CurrentOrder = ({order, ButtonDeleteOrder, OrderReadyButton, OrderD
       </section>
       <section className='current-order-header current-order-header-second'>
         <OrderHeaderDiv Title='Status' Value={order.status === 'pending' ? 'Em preparo' : order.status}/> 
-        <OrderHeaderDiv Title='Responsável' Value={WaitressName}/>
+        <OrderHeaderDiv Title='Responsável' Value={order.waitress}/>
         <OrderHeaderDiv Title='Pedido criado' Value={orderCurrentAge(order.createdAt)}/>
       </section>
       {order.status === 'pending' && <OrderTimeSection Time1='-'  Time2='-' Time3='-' />}
