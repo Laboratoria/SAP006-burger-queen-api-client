@@ -1,5 +1,5 @@
 import React from 'react';
-import notfound from '../../img/notfound.gif';
+import notfound from '../../../public/img/notfound.gif';
 
 import './NotFound.css';
 
