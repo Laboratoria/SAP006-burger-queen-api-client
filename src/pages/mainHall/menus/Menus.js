@@ -65,54 +65,56 @@ function Menus () {
           <div>
             <NavBar />
           </div>
-            <div>
+
+            <div className="container-btn-menu">
               <Button 
                 label="Menus" 
                 type="submit"
                 onClick={btnMenus} 
+                className="buttons buttons-menu" 
               /> 
               <Button 
                 label="Pedidos" 
                 type="submit"
                 onClick={btnRequests} 
+                className="buttons buttons-menu" 
               /> 
               <Button 
                 label="Histórico" 
                 type="submit"
                 onClick={btnHistoric} 
+                className="buttons buttons-menu" 
               /> 
             </div>
-
-            <h3> Atendente: {localStorage.getItem("userName")} </h3>
-            <h3> Mesa:  </h3>
-            <label>Nome do Cliente</label>
-            <input onChange={handleChange} className="input" type="text" name="nameClient"></input>
-            {name}
-
-            <select>
-              <option value="">Mesas</option>
-              <option value="">01</option>
-              <option value="">02</option>
-              <option value="">03</option>
-              <option value="">04</option>
-              <option value="">05</option>
-              <option value="">06</option>
-              <option value="">07</option>
-            </select>        
-
-            <Button 
-              label="Café da manha"
-              onClick={() => filterMenu('breakfast')}
-            />
-            <Button 
-              label="Almoço/Jantar"
-              onClick={() => filterMenu('all-day')}
-            />
-            
-            <section
-              {...setAllProducts}       
-            />
-  
+            <div>
+              <h3> Atendente: {localStorage.getItem("userName")} </h3>
+              <h3> Mesa:
+                <select>
+                  <option value="">01</option>
+                  <option value="">02</option>
+                  <option value="">03</option>
+                  <option value="">04</option>
+                  <option value="">05</option>
+                  <option value="">06</option>
+                  <option value="">07</option>
+                </select>  
+              </h3>
+              <label>Nome do Cliente</label>
+              <input onChange={handleChange} className="input" type="text" name="nameClient"></input>
+              {name}
+            </div>
+            <div>
+              <Button 
+                label="Café da manha"
+                onClick={() => filterMenu('breakfast')}
+                className="buttons buttons-menu" 
+              />
+              <Button 
+                label="Almoço/Jantar"
+                onClick={() => filterMenu('all-day')}
+                className="buttons buttons-menu" 
+              />
+            </div>
             <div>
               {selectedProducts.map((item) => {
                 return (
@@ -129,7 +131,6 @@ function Menus () {
                 )
               })}
             </div>
-            
             
           <Footer />
         </div>

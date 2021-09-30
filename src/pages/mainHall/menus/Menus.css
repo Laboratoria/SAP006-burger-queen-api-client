@@ -1,0 +1,11 @@
+.container-btn-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-menu{
+    width: 30%;
+    margin: 3% 1%;
+}
