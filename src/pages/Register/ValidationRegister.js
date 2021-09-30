@@ -1,5 +1,5 @@
 function ValidateInputs(values) {
-    let errors = { empty: true }
+    let errors = {}
 
     if(!values.name) {
         errors.name = "Por favor preencha o campo com seu nome"
@@ -25,6 +25,12 @@ function ValidateInputs(values) {
        errors.confirmPassword = "As senhas não conferem"
        errors.empty = false
     }
+
+    if(!values.role) {
+        errors.role = "Escolha uma função"
+        errors.empty = false
+    }
+    
     
     return errors;
 }

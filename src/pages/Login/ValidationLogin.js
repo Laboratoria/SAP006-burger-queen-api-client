@@ -1,5 +1,10 @@
-function ValidateInputs(values) {
-    let errors = { }
+function ValidateInputs(values, erro) {
+    let errors = {}
+
+    if (erro === 400) {
+        errors.email = "Email e/ou senha inválidos"
+        errors.password = "Email e/ou senha inválidos"        
+    }
 
     if (!values.email) {
         errors.email = "Por favor preencha o campo de e-mail"

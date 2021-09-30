@@ -35,19 +35,15 @@ const Login = () => {
 				},
 				body: `email=${values.email}&password=${values.password}`
 			})
-				.then((response) => {
-					response.json()
-						.then((json) => {
-							const userToken = json.token;
-							
-							localStorage.setItem('userToken', userToken)
-							
-							if (json.id) {
-								history.push('/Hall')
-							} else {
-								console.log('nao rodou')
-							}
-						})
+				.then((response) => response.json())
+				.then((json) => {
+					const userToken = json.token;
+					localStorage.setItem('userToken', userToken)
+					if (json.id) {
+						history.push('/Hall')
+					} else {
+						setErrors(ValidateInputs(values, json.code))
+					}
 				})
 		}
 
