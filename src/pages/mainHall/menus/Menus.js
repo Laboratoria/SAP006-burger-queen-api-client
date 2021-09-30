@@ -15,7 +15,9 @@ function Menus () {
     const [selectedProducts, setSelectedProducts] = useState([]);
     const history = useHistory();
     const token = localStorage.getItem('userToken');
-    
+    const [itemsList, setItemsList] = useState([])
+
+   
 
     useEffect(() => {
       fetch('https://lab-api-bq.herokuapp.com/products', {
@@ -102,13 +104,13 @@ function Menus () {
                 className="btn-cardapio" 
               />
             </div>
-              <InfoCards />
+              <InfoCards/>
             <div>
               {selectedProducts.map((item) => {
                 return (
                   <Itens
                     {...item}
-                    key={item.id} 
+                      key={item.id} 
                   />
                 )
               })}

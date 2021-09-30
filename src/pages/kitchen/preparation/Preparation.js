@@ -36,6 +36,9 @@ function Preparation () {
                     onClick={btnReady} 
                 /> 
               </div>
+
+
+              
             <p>EM CONSTRUÇÃO - PREPARAÇÃO COZINHA</p>
         </div>  
     )
