@@ -4,6 +4,7 @@ import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
 import Itens from '../../../components/itensMenu/Itens';
+import InfoCards from '../../../components/itensMenu/InfoCards';
 
 import './Menus.css';
 
@@ -12,11 +13,11 @@ function Menus () {
 
     const [allProducts, setAllProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
-    // const [breakfast, setBreakfast] = useState([])
-    // const [allDay, setAllDay] = useState([])
     const history = useHistory();
     const token = localStorage.getItem('userToken');
-    
+    const [itemsList, setItemsList] = useState([])
+
+   
 
     useEffect(() => {
       fetch('https://lab-api-bq.herokuapp.com/products', {
@@ -33,7 +34,7 @@ function Menus () {
             setSelectedProducts(menus)
             return json;
           });
-      }, [token]);
+    }, [token]);
     
     const btnMenus = (e) => {
       e.preventDefault()
@@ -51,14 +52,9 @@ function Menus () {
     }
 
     const filterMenu = (meal) => {
-      const filterItensByType = allProducts.filter((item) => item.type === meal);
+      const filterItensByType = allProducts.filter((item) => item.sub_type === meal);
       setSelectedProducts(filterItensByType)
     }
-
-    const [name, setName] = useState('');
-    const handleChange = (e) => {
-      setName(e.target.value)
-    };
 
     return(
         <div>
@@ -86,47 +82,35 @@ function Menus () {
                 className="buttons buttons-menu" 
               /> 
             </div>
-            <div>
-              <h3> Atendente: {localStorage.getItem("userName")} </h3>
-              <h3> Mesa:
-                <select>
-                  <option value="">01</option>
-                  <option value="">02</option>
-                  <option value="">03</option>
-                  <option value="">04</option>
-                  <option value="">05</option>
-                  <option value="">06</option>
-                  <option value="">07</option>
-                </select>  
-              </h3>
-              <label>Nome do Cliente</label>
-              <input onChange={handleChange} className="input" type="text" name="nameClient"></input>
-              {name}
-            </div>
-            <div>
+            <div className="container-cardapio">
               <Button 
-                label="Café da manha"
+                label="Café da Manhã"
                 onClick={() => filterMenu('breakfast')}
-                className="buttons buttons-menu" 
+                className="btn-cardapio" 
               />
               <Button 
-                label="Almoço/Jantar"
-                onClick={() => filterMenu('all-day')}
-                className="buttons buttons-menu" 
+                label="Hamburguer"
+                onClick={() => filterMenu('hamburguer')}
+                className="btn-cardapio" 
+              />
+              <Button 
+                label="Aperitivos"
+                onClick={() => filterMenu('side')}
+                className="btn-cardapio" 
+              />
+              <Button 
+                label="Bebidas"
+                onClick={() => filterMenu('drinks')}
+                className="btn-cardapio" 
               />
             </div>
+              <InfoCards/>
             <div>
               {selectedProducts.map((item) => {
                 return (
                   <Itens
-                    key={item.id} 
-                    id={item.id} 
-                    name={item.name}
-                    flavor={item.flavor}
-                    complement={item.complement}
-                    price={item.price}
-                    image={item.image}
-                    type={item.type}
+                    {...item}
+                      key={item.id} 
                   />
                 )
               })}

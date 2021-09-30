@@ -9,3 +9,12 @@
     width: 30%;
     margin: 3% 1%;
 }
+
+.btn-cardapio{
+    background: #5C3D31;
+    color: white;
+    width: 15%;
+    height: 30px;
+    font-size: 17px;
+    border-radius: 9px;
+}

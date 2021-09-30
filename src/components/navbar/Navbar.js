@@ -17,4 +17,3 @@ export default function NavBar ({value}) {
 };
 
 // <img src={garcom} alt="waiter" className="waiter-icon-tables"/>
-// <p className="tables-title">{role}</p>

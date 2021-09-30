@@ -10,6 +10,5 @@ export default function NotFound () {
           <h1> 404 ERROR - Página não encontrada</h1>
           <img src={notfound} alt="counter" className="notfound"/>
         </div>
-
     );
 };
