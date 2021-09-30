@@ -8,20 +8,52 @@ import useProducts from "./useProducts";
 const Menu = () => {
   const { handleButtonTypeClick, productsFiltered, setAddItem, addItem, total, sendToKitchen, handleOrderChange } = useProducts();
   const initialQtd = 1;
+
+
   const addProducts = (elem) => {
 
     const foundItem = addItem.findIndex((item) => item.id === elem.id);
-    console.log(foundItem)
+
     if (foundItem !== -1) {
-      addItem[foundItem].qtd++;
-      setAddItem([...addItem])
-      console.log('achei o danado');
+      const newArray = addItem;
+      newArray[foundItem].qtd++;
+      setAddItem([...newArray])
+     
     } else {
       setAddItem([...addItem, { id: elem.id, qtd: initialQtd, name: elem.name, price: elem.price, flavor: elem.flavor }])
-      console.log('tá aqui não');
+     
     }
-    console.log(addItem[foundItem]);
+   
+
+
   }
+
+  const deleteProducts = (elem) => {
+    const foundItem = addItem.findIndex((item) => item.id === elem.id);
+     console.log(addItem[foundItem].qtd)
+    if (foundItem !== -1) {
+      const qtd = addItem[foundItem].qtd
+       if(qtd === 1) {
+         const removed = addItem
+         removed.splice(foundItem,1)
+         setAddItem([...removed])
+         
+       } else {
+         const newArray = addItem;
+        newArray[foundItem].qtd--;
+        setAddItem([...newArray])
+       }
+
+    } else {
+
+      setAddItem([...addItem, { id: elem.id, qtd: initialQtd, name: elem.name, price: elem.price, flavor: elem.flavor }])
+
+    }
+
+
+
+  }
+
 
   return (
     <div className='main'>
@@ -55,7 +87,12 @@ const Menu = () => {
                     qtd={elem.qtd}
                     onClick={() => {
                       addProducts(elem);
+
                     }}
+                    onClickDelete={() => {
+                      deleteProducts(elem);
+                    }}
+
                   />
                 )
               })}
@@ -79,7 +116,7 @@ const Menu = () => {
               <option value='10'>Mesa 10</option>
             </select>
             <div className='orders-area'>
-              <Cart data={addItem} />
+              <Cart data={addItem} onClick={addProducts} onClickDelete={deleteProducts}/>
               <ResultPrice value={total} />
             </div>
             <button className='menu-button draw' onClick={sendToKitchen}>Finalizar pedido</button>
