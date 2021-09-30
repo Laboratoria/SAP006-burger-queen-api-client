@@ -15,7 +15,7 @@ function Menus () {
     const [selectedProducts, setSelectedProducts] = useState([]);
     const history = useHistory();
     const token = localStorage.getItem('userToken');
-    const [itemsList, setItemsList] = useState([])
+    // const [itemsList, setItemsList] = useState([])
 
    
 

@@ -8,10 +8,8 @@ import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title';
-// import Error from '../../../services/Error';
-
-import cozinheiro from '../../../img/cozinheiro.png';
 import garcom from '../../../img/garcom.png';
+import cozinheiro from '../../../img/garcom.png';
 
 import './Register.css';
 

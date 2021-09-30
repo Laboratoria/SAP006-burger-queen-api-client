@@ -12,7 +12,7 @@ export default function ButtonLogout () {
   
       return (
               <button onClick={logout} className="btn-logout">
-                  <img className="logout" src={exit} alt="logout" />
+                  <img className={exit} src='/img/exit.png' alt="logout" />
               </button>
       );
   };
