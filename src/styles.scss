@@ -432,6 +432,11 @@ body {
   }
 }
 
+.complement-area {
+  @include box-sizes(5em, 36em);
+  @include box-style();
+}
+
 @keyframes slide {
   from {
     top: -50px;

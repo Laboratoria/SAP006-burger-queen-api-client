@@ -8,7 +8,6 @@ export default function Cart({ data }) {
         return (
           <div key={elem.id}>
             <ProductInfo
-
               name={elem.name}
               price={elem.price}
               flavor={elem.flavor}
@@ -17,7 +16,6 @@ export default function Cart({ data }) {
             </ProductInfo>
             <p>{elem.qtd}</p>
           </div>)
-
       })}
 
     </div>
