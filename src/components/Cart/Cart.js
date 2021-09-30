@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 import './Cart.css'
 
 function Cart({ cartItem }) {
+	//aqui ele vai receber o parâmetro do remove
 	const totalPrice = cartItem.reduce((acumulador, item) => acumulador + item.price * item.qtd, 0)
 	console.log(cartItem)
 
@@ -25,18 +26,17 @@ function Cart({ cartItem }) {
 		
 			<ul className='list'>
 				<li>Nome</li>
-				<li>Quantidade</li>
+				<li>Qntd.</li>
 				<li>Valor</li>
 			</ul>
 
 
 			{cartItem.map((item) => {
 				return (
-					<div className='order-list'>
-						<p className='each-item-cart' key={item.id}>
-							Nome: {item.name}
-							Qtd: {item.qtd}
-							Preço: R$ {(item.price * item.qtd).toFixed(2)}</p>
+					<div className='order-list' key={item.id}>
+							<li className='name-item'>{item.name}</li>
+							<li className='qtd-item'>{item.qtd}</li>
+							<li className='price-item'>R$ {(item.price * item.qtd).toFixed(2)}</li>
 					</div>
 				)
 			})}
@@ -49,7 +49,7 @@ function Cart({ cartItem }) {
 				<div>
 					<Button
 						buttonText='Enviar pedido'
-						className='button-menu' />
+						className='btn-send-order'/>
 				</div>
 			</div>
 

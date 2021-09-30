@@ -26,6 +26,7 @@ const Hall = () => {
 			})
 	}, [token])
 
+
 	const addProducts = (product) => {
 		const foundProduct = cartItem.find((item) => item.id === product.id)
 		if (foundProduct) {
