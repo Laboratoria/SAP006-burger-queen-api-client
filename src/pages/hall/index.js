@@ -1,7 +1,7 @@
 import React from 'react';
-//import ReactDOM from 'react-dom';
+import { useHistory } from "react-router";
 
-const Hall = () => {
+export const Hall = () => {
 
     return (
         <div className='div-style'>
@@ -9,5 +9,3 @@ const Hall = () => {
         </div>
     )
 }
-
-export default Hall;

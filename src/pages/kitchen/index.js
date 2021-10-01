@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Kitchen = () => {
+export const Kitchen = () => {
 
     return (
         <div className='div-style'>
@@ -8,5 +8,3 @@ const Kitchen = () => {
         </div>
     )
 }
-
-export default Kitchen;
