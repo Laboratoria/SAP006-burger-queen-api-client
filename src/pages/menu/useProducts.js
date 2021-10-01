@@ -9,7 +9,7 @@ const useProducts = () => {
   const [flavor, setFlavor] = useState('');
   const [complement, setComplement] = useState('');
   const [orderInfo, setOrderInfo] = useState({ client: '', table: '' });
-  const [qtd, setQtd] = useState(1);
+  const initialQtd = 1;
 
   const getData = async () => {
     const data = await getProducts().then(data => data)
@@ -17,39 +17,39 @@ const useProducts = () => {
   }
 
   useEffect(() => {
-    return getData()
+    return getData();
   }, [])
 
-
-
-  const addProducts = (elem) => {
+  const addProducts = async (elem) => {
     const foundItem = addItem.findIndex((item) => item.id === elem.id);
+    const newArray = addItem;
     if (foundItem !== -1) {
-      if (complement) {
-        console.log('adicionando pela segunda vez COM complemento')
-        const lancho = filterFlavor().filter((item) => item.name === elem.name && item.complement === complement);
-        setAddItem([...addItem, { id: lancho[0].id, qtd: setQtd(() => addItem[foundItem].qtd++), name: elem.name, price: lancho[0].price, flavor: flavor, complement: complement }])
-        console.log(qtd)
-      } else {
-        console.log('adicionando pela segunda vez SEM complemento')
-        console.log(setQtd(() => addItem[foundItem].qtd++))
-        setAddItem([...addItem]);
-      }
+      newArray[foundItem].qtd++;
+      setAddItem(() => [...newArray]);
+      console.log(addItem)
     } else {
-      if (complement) {
-        console.log('adicionando pela primeira vez COM complemento')
-        const lancho = filterFlavor().filter((item) => item.name === elem.name && item.complement === complement);
-        setAddItem([...addItem, { id: lancho[0].id, qtd: qtd, name: elem.name, price: lancho[0].price, flavor: flavor, complement: complement }])
+      if (flavor === '' && productsType === 'hamburguer') {
+        console.log('selecione um sabor primeiro')
+      } else if (flavor !== '') {
+        const foundLancho = filterFlavor().filter((item) => item.name === elem.name && item.complement === null);
+        const newlancho = foundLancho[0];
+        console.log(newlancho)
+        setAddItem(() => [...addItem, { id: newlancho.id, qtd: initialQtd, name: newlancho.name, price: newlancho.price, flavor: flavor, complement: complement }])
+        console.log(addItem);
+      } else if (complement !== '') {
+        console.log('adicionando pela primeira vez COM complemento');
+        const foundLancho = filterFlavor().filter((item) => item.name === elem.name && item.complement === complement);
+        const newlancho = foundLancho[0];
+        console.log(newlancho)
+        setAddItem(() => [...addItem, { id: newlancho.id, qtd: initialQtd, name: newlancho.name, price: newlancho.price, flavor: flavor, complement: complement }])
+        console.log(addItem);
       } else {
-        console.log('adicionando pela primeira vez SEM complemento')
-        setAddItem([...addItem, { id: elem.id, qtd: qtd, name: elem.name, price: elem.price, flavor: flavor, complement: complement }])
+        console.log('adicionando pela primeira vez SEM complemento');
+        setAddItem(() => [...addItem, { id: elem.id, qtd: initialQtd, name: elem.name, price: elem.price, flavor: flavor, complement: complement }])
+        console.log(addItem);
       }
     }
   }
-
-  useEffect(() => {
-
-  }, [])
 
   useEffect(() => {
     const sum = (previousValue, currentValue) => previousValue + currentValue;
