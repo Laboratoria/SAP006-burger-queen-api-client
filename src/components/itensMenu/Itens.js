@@ -3,15 +3,13 @@ import Button from '../button/Button';
 
 import './Style.css';
 
-export default function Itens ({id, name, flavor, complement, price, image, onClick}) {
+export default function Itens ({id, name, price, image, onClick}) {
     return(
         <div>
             <article key={id} className="item-card">
                 <img className="img-product" src={image} alt={`imagem do produto ${name}`}/>
-                <span>Nº {id}</span>
+                <span>{id}</span>
                 <span>{name}</span>
-                <span>Tipo: {flavor}</span>
-                <span>Complemento: {complement}</span>
                 <span>Preço: R$ {price},00</span>
                 <Button onClick={onClick} label="+" />
             </article>
@@ -31,4 +29,8 @@ export const Total = ({ cartItems }) => {
   
     return <div className="CartTotal">Total: {newTotal}</div>;
   };
+
+                <span>Tipo: {flavor}</span>
+                <span>Complemento: {complement}</span>
+
   */
