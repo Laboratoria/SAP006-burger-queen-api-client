@@ -7,7 +7,7 @@ import useProducts from "./useProducts";
 
 const Menu = () => {
   const { handleButtonTypeClick, productsFiltered, addItem, total, sendToKitchen, handleOrderChange, addProducts, selectComplement, selectFlavor } = useProducts();
-  
+
   return (
     <div className='main'>
       <section className='big-container'>
@@ -45,19 +45,19 @@ const Menu = () => {
                 )
               })}
             </section>
-          </section>
-          <section className='complement-area'>
-            <select autoComplete='off' onChange={selectComplement}>
-              <option value=''>Adicionar complemento</option>
-              <option value='queijo'>Queijo</option>
-              <option value='ovo'>Ovo</option>
-            </select>
-            <select autoComplete='off' onChange={selectFlavor}>
-              <option value=''>Selecionar sabor</option>
-              <option value='carne'>Carne</option>
-              <option value='frango'>Frango</option>
-              <option value='vegetariano'>Vegetariano</option>
-            </select>
+            <section className='complement-area'>
+              <select autoComplete='off' className='select-options' onChange={selectComplement}>
+                <option value=''>Adicionar complemento</option>
+                <option value='queijo'>Queijo</option>
+                <option value='ovo'>Ovo</option>
+              </select>
+              <select autoComplete='off' className='select-options' onChange={selectFlavor}>
+                <option value=''>Selecionar sabor</option>
+                <option value='carne'>Carne</option>
+                <option value='frango'>Frango</option>
+                <option value='vegetariano'>Vegetariano</option>
+              </select>
+            </section>
           </section>
           <section className='orders-card'>
             <label className='menu-labels'>Cliente</label>
