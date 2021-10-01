@@ -130,13 +130,13 @@ export default function Register() {
                 </div>
 
                 <Button 
-                    label="Cadastrar" 
+                    text="Cadastrar" 
                     type="submit"
                     onClick={handleClick} 
                     className="buttons" 
                 /> 
                 <Button 
-                    label="Já tenho conta" 
+                    text="Já tenho conta" 
                     type="submit"
                     onClick={btnBack} 
                     className="buttons" 

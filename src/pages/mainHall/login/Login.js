@@ -102,7 +102,7 @@ export default function Login() {
                 </div>
 
                 <Button 
-                    label='Entrar' 
+                    text='Entrar' 
                     type="submit"
                     onClick={handleClick}
                     className="buttons" 

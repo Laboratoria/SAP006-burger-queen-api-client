@@ -52,3 +52,9 @@
 .img-product{
     width: 10%;
 }
+
+.btn-delet{
+    width: 3%;
+    height: 20px;
+    background: red;
+}
