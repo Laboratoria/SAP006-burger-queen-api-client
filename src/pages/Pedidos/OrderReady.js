@@ -1,6 +1,8 @@
 import React from "react";
 
 const OrderReady = () => {
+
+    
     return(
         <>
         <h1>Pedidos</h1>

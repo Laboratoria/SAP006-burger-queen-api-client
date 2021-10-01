@@ -21,22 +21,34 @@ const Hall = () => {
 			},
 		})
 			.then((response) => response.json())
-			.then((json) => {				
+			.then((json) => {
 				setProducts(json)
 			})
 	}, [token])
+
 
 	const addProducts = (product) => {
 		const foundProduct = cartItem.find((item) => item.id === product.id)
 		if (foundProduct) {
 			setCartItem(cartItem.map((item) =>
-				item.id === product.id ? { ...foundProduct, qtd: foundProduct.qtd + 1} : item))
+				item.id === product.id ? { ...foundProduct, qtd: foundProduct.qtd + 1 } : item))
 		} else {
 			setCartItem([...cartItem, { ...product, qtd: 1 }])
 		}
 	}
-	
 
+	const removeProducts = (itemList) => {
+		const foundProduct = cartItem.find((item) => item.id === itemList.id)
+    if (foundProduct.qtd > 1) {
+			setCartItem(cartItem.map((item) => 
+				item.id === itemList.id ? {...foundProduct, qtd: foundProduct.qtd - 1} : item))
+		} else {
+			const updateItemsList = [...cartItem];
+			updateItemsList.splice(updateItemsList.indexOf(itemList), 1);
+			setCartItem(updateItemsList);
+		}
+	}
+	
 	return (
 		<>
 			<Header className='nav-header' />
@@ -47,7 +59,7 @@ const Hall = () => {
 				</div>
 
 				<div className='cart-container'>
-					<Cart cartItem={cartItem} />
+					<Cart cartItem={cartItem} removeProducts={removeProducts} />
 				</div>
 			</div>
 		</>

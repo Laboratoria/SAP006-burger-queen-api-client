@@ -3,9 +3,10 @@ import React from "react";
 import './Kitchen.css'
 
 const Kitchen = () => {
-    return(
+   
+    return (
         <>
-        <h1>Cozinha</h1>
+            <h1>Cozinha</h1>
         </>
     )
 }
