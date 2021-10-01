@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
+import Cards from '../../../components/itensMenu/Cards';
 
 import './Requests.css';
 
@@ -51,7 +52,7 @@ export default function Requests () {
                     className="buttons buttons-menu"
                 /> 
             </div>
-            
+            <Cards />
         <Footer />
         </div>
     );
