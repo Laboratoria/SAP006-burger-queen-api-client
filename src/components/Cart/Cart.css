@@ -25,10 +25,14 @@
   font-weight: bold;
 }
 
+table {
+  width: 100%;
+}
+
 .order-list {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     color: black;
     font-size: 0.7rem;
     font-weight: bold;
@@ -62,12 +66,8 @@
     width: 30%;
 }
 
-.name-item li {
-    width: 40%;
-}
-
-.qtd-item, .price-item li {
-    width: 20%;
+.name-item {
+  overflow-wrap: break-word;
 }
 
 .qtd-item {
