@@ -6,8 +6,19 @@ import ResultPrice from "../../components/resultprice";
 import useProducts from "./useProducts";
 
 const Menu = () => {
-  const { handleButtonTypeClick, productsFiltered, addItem, total, sendToKitchen, handleOrderChange, addProducts, selectComplement, selectFlavor } = useProducts();
-  
+  const {
+    handleButtonTypeClick,
+    productsFiltered,
+    addItem,
+    total,
+    sendToKitchen,
+    handleOrderChange,
+    addProducts,
+    deleteProducts,
+    selectComplement,
+    selectFlavor,
+  } = useProducts();
+
   return (
     <div className='main'>
       <section className='big-container'>
@@ -24,8 +35,6 @@ const Menu = () => {
           <section className='products-list'>
             <div className='list-labels'>
               <label className='list-label'>Produto</label>
-              <label className='list-label'>Sabor</label>
-              <label className='list-label'>Acréscimo</label>
               <label className='list-label'>Valor</label>
             </div>
             <section className='list-area' {...productsFiltered}>
@@ -35,29 +44,32 @@ const Menu = () => {
                     key={elem.id}
                     name={elem.name}
                     price={elem.price}
-                    flavor={elem.flavor}
-                    complement={elem.complement}
+                    // flavor={elem.flavor}
+                    // complement={elem.complement}
                     qtd={elem.qtd}
                     onClick={() => {
                       addProducts(elem);
+                    }}
+                    onClickDelete={() => {
+                      deleteProducts(elem);
                     }}
                   />
                 )
               })}
             </section>
-          </section>
-          <section className='complement-area'>
-            <select autoComplete='off' onChange={selectComplement}>
-              <option value=''>Adicionar complemento</option>
-              <option value='queijo'>Queijo</option>
-              <option value='ovo'>Ovo</option>
-            </select>
-            <select autoComplete='off' onChange={selectFlavor}>
-              <option value=''>Selecionar sabor</option>
-              <option value='carne'>Carne</option>
-              <option value='frango'>Frango</option>
-              <option value='vegetariano'>Vegetariano</option>
-            </select>
+            <section className='complement-area'>
+              <select autoComplete='off' className='select-options' onChange={selectComplement}>
+                <option value=''>Adicionar complemento</option>
+                <option value='queijo'>Queijo</option>
+                <option value='ovo'>Ovo</option>
+              </select>
+              <select autoComplete='off' className='select-options' onChange={selectFlavor}>
+                <option value=''>Selecionar sabor</option>
+                <option value='carne'>Carne</option>
+                <option value='frango'>Frango</option>
+                <option value='vegetariano'>Vegetariano</option>
+              </select>
+            </section>
           </section>
           <section className='orders-card'>
             <label className='menu-labels'>Cliente</label>
@@ -77,7 +89,7 @@ const Menu = () => {
               <option value='10'>Mesa 10</option>
             </select>
             <div className='orders-area'>
-              <Cart data={addItem} />
+              <Cart data={addItem} onClick={addProducts} onClickDelete={deleteProducts} />
               <ResultPrice value={total} />
             </div>
             <button className='menu-button draw' onClick={sendToKitchen}>Finalizar pedido</button>
