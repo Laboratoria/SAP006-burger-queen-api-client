@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
+import exit from '../../img/exit.png'
 
 export default function ButtonLogout () {
     const history = useHistory()
@@ -12,7 +12,7 @@ export default function ButtonLogout () {
   
       return (
               <button onClick={logout} className="btn-logout">
-                  <img className="logout" src='/img/exit.png' alt="logout" />
+                  <img className='logout' src={exit} alt="logout" />
               </button>
       );
   };

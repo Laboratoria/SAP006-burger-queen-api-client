@@ -4,10 +4,9 @@ import Button from '../button/Button';
 import './Style.css';
 
 export default function Itens ({id, name, flavor, complement, price, image, onClick}) {
-
     return(
         <div>
-            <article className="item-card">
+            <article key={id} className="item-card">
                 <img className="img-product" src={image} alt={`imagem do produto ${name}`}/>
                 <span>Nº {id}</span>
                 <span>{name}</span>

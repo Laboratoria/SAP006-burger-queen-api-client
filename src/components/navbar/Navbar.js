@@ -2,8 +2,6 @@ import React from 'react';
 import './Navbar.css';
 import LogoImg from '../images/LogoImg';
 import ButtonLogout from '../button/ButtonLogout';
-// import garcom from '../../img/garcom.png'
-
 
 export default function NavBar ({value}) {
 

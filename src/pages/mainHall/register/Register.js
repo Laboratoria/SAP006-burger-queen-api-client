@@ -8,7 +8,8 @@ import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title';
-// import Error from '../../../services/Error';
+import garcom from '../../../img/garcom.png';
+import cozinheiro from '../../../img/garcom.png';
 
 import './Register.css';
 
@@ -118,14 +119,14 @@ export default function Register() {
                         value='salon' 
                         placeholder='salon'
                     />
-                    <img src='/img/garcom.png' alt="waiter" className="waiter-icon"/>
+                    <img src={garcom} alt="waiter" className="waiter-icon"/>
                     <Input 
                         type='radio' 
                         name='ocupation'
                         value='kitchen' 
                         placeholder='kitchen'
                     />
-                    <img src='/img/cozinheiro.png' alt="kitchen" className="kitchen-icon"/>
+                    <img src={cozinheiro} alt="kitchen" className="kitchen-icon"/>
                 </div>
 
                 <Button 

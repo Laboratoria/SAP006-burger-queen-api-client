@@ -4,7 +4,7 @@ import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
 import Itens from '../../../components/itensMenu/Itens';
-import InfoCards from '../../../components/itensMenu/InfoCards';
+import Cart from '../../../components/itensMenu/Cart';
 
 import './Menus.css';
 
@@ -15,8 +15,7 @@ function Menus () {
     const [selectedProducts, setSelectedProducts] = useState([]);
     const history = useHistory();
     const token = localStorage.getItem('userToken');
-    const [itemsList, setItemsList] = useState([])
-
+    const [itemsList, setItemsList] = useState([]);
    
 
     useEffect(() => {
@@ -57,7 +56,7 @@ function Menus () {
     }
 
     return(
-        <div>
+        <>
           <div>
             <NavBar />
           </div>
@@ -104,20 +103,23 @@ function Menus () {
                 className="btn-cardapio" 
               />
             </div>
-              <InfoCards/>
+            
             <div>
               {selectedProducts.map((item) => {
                 return (
                   <Itens
                     {...item}
-                      key={item.id} 
+                      key={item.id}
+                      onClick={() => {
+                        setItemsList([...itemsList, {...item}])
+                      }} 
                   />
                 )
               })}
             </div>
-            
+            <Cart arrItem={itemsList}/>
           <Footer />
-        </div>
+        </>
     );
 };
 

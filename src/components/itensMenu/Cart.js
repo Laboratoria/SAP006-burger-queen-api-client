@@ -1,21 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '../button/Button';
+import Itens from './Itens';
 
 import './Style.css';
 
 
-export default function InfoCards ({price}) {
-
-    // const [ valor, setValor ] = useState(1);
-    
-    // function most() {
-    //     setValor(valor + 1);
-    // }
-
-    // function anyLess() {
-    //     setValor(valor - 1);
-    // }
-
+export default function Cart ({price, arrItem}) { 
 
     return(
         <div className="container-cards">
@@ -36,11 +26,18 @@ export default function InfoCards ({price}) {
                 <label className="info-card">Cliente: <input className="input-client" type="text" name="nameClient"></input></label>
             </div>
             <div>
-                {/* <>
-                    Quantidade no carrinho: {valor}
-                </>
-                <Button label="+" onClick={most}/>
-                <Button label="-" onClick={anyLess}/> */}
+                <section>
+                    {arrItem.map((item) => {
+                        return (
+                            <Itens 
+                                key={item.id}
+                                image={item.image}
+                                name={item.name}
+                                price={item.price}
+                            />
+                        )
+                    })}
+                </section>
                 
                 <p>Total: R${price}</p>
             </div>
