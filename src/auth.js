@@ -10,12 +10,13 @@ export const logout = () => {
     localStorage.clear()
 };
 
-export const registerUser = async (emailUser, passwordUser, roleUser) => {
+export const registerUser = async (nameUser, emailUser, passwordUser, roleUser) => {
     const url = 'https://lab-api-bq.herokuapp.com/users';
     const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
+            name: nameUser,
             email: emailUser,
             password: passwordUser,
             role: roleUser,

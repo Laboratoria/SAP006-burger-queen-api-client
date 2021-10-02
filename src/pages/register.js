@@ -12,8 +12,9 @@ import '../styles/login.css';
 import '../global.css';
 
 function Register() {
-    // const history = useHistory();
+
     const [errors, setErrors] = useState({})
+
     function validationValues(values) {
         const errorsResult = validation(values)
         setErrors(errorsResult)
@@ -21,6 +22,7 @@ function Register() {
     }
 
     const [infoUser, setInfoUser] = useState({
+        name: '',
         email: '', 
         password: '',
         role: '',
@@ -44,10 +46,11 @@ function Register() {
 
         const resultErrors = validationValues(infoUser);
 
-        if (!resultErrors.email && !resultErrors.password) {
+        if (!resultErrors.name && !resultErrors.email && !resultErrors.password) {
             console.log(resultErrors.email, 'não tem erros')
+            console.log(resultErrors.name, 'name error')
 
-            registerUser(infoUser.email, infoUser.password, infoUser.role)
+            registerUser(infoUser.name, infoUser.email, infoUser.password, infoUser.role)
                 .then((banana) => {
                     console.log(banana)
                     console.log('usuário foi criado');
@@ -67,64 +70,65 @@ function Register() {
             <div className="main-register">
 
                 <div className="box-register">
+                    <form onSubmit={handleRegister}> 
 
+                        <h1 className="title">Cadastre-se</h1>
+                        <Input
+                            label="Nome Completo"
+                            type="text"
+                            name="name"
+                            inputClass="inputName"
+                            value={infoUser.name}
+                            onChange={handleChange}
+                        />
+                        {errors.name && <span className='form-error'>{errors.name}</span>} 
+                        {/*não tá funiconando o tratamento acima */}
+                        <Input
+                            label="E-mail"
+                            type="email"
+                            name="email"
+                            inputClass="inputEmail"
+                            value={infoUser.email}
+                            onChange={handleChange}
+                        />
+                        {errors.email && <span className='form-error'>{errors.email}</span>}
 
-                    <h1 className="title">Cadastre-se</h1>
+                        <Input
+                            label="Senha"
+                            type="password"
+                            name="password"
+                            inputClass="inputPassword"
+                            value={infoUser.password}
+                            onChange={handleChange}
+                        />
+                        {errors.password && <span className='form-error'>{errors.password}</span>}
 
-                    <Input
-                        type="email"
-                        name="email"
-                        inputClass="inputEmail"
-                        value={infoUser.email}
-                        onChange={handleChange}
-                    />
-                    {errors.email && <span className='form-error email'>{errors.email}</span>}
-
-                    <p className="labelInputs">Senha</p>
-                    <Input
-                        type="password"
-                        name="password"
-                        inputClass="inputPassword"
-                        value={infoUser.password}
-                        onChange={handleChange}
-                    />
-                    {errors.password && <span className='form-error'>{errors.password}</span>}
-
-                    <div className="radio-buttons" onChange={handleChange} >
-                       
-                            <label className="roleLabel">
-                                <input type="radio" 
+                        <div className="radio-buttons" onChange={handleChange} >
+                                <Input 
+                                    type="radio" 
                                     name="role" 
                                     value="salao"
-                                    id = "role"
+                                    id="role"
+                                    label="Salão"
+                                    className="btn-radio"
                                 />
-                                &nbsp;Salão
-                            </label>
-          
-                            <label className="roleLabel">
-                                <input
+                                <Input
                                     type="radio"
                                     name="role"
                                     value="cozinha"
-                                    id = "role"
-                                />
-                                &nbsp;Cozinha
-                            </label>
-                
-                    </div>
-
-
-                    <Button type='submit' onClick={handleRegister}>Cadaste-se</Button>
-
+                                    id="role"
+                                    label="Cozinha"
+                                    className="btn-radio"
+                                /> 
+                        </div>
+                        <Button type='submit' onClick={handleRegister}>Cadaste-se</Button>
+                    </form>
                     <button type="submit">
                         <Link className="link" to="/login">Faça login </Link>
                     </button>
                 </div>
             </div>
-
-
         </section>
-
     );
 }
 export default Register;
