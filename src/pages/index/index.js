@@ -1,10 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../../componentes/button.js";
-import Cadastro from "../cadastro/cadastro.js";
-import Login from "../login/login.js";
 
-const Home = () => {
+
+const Index = () => {
   const history = useHistory();
   const Login = () => {
     history.push('/Login')
@@ -14,8 +13,8 @@ const Home = () => {
   }
 
 return (
-    <div className="home">
-      <main className="home-main">
+    <div className="index">
+      <main className="index-main">
         <h3>Clique na opção desejada</h3>
         <Button variant="tertiary" onClick={Login} msg="Login" > 
         </Button>
@@ -28,4 +27,4 @@ return (
   )
 }
 
-export default Home;
+export default Index;
