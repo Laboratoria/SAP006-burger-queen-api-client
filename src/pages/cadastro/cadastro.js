@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Input from "../../componentes/input.js";
 import Button from "../../componentes/button.js";
 import validacao from "./validacao.js";
@@ -106,6 +107,11 @@ const Cadastro = () => {
           <Button type="submit" onClick={handleSubmit} msg="Enviar">
             {" "}
           </Button>
+          <span className="return-login">Já tem cadastro?</span>
+          <Link className="tologin" to="/Login">
+            {" "}
+            Faça Login{" "}
+          </Link>
         </form>
       </div>
    );

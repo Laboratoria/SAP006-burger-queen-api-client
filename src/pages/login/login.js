@@ -43,12 +43,14 @@ const Login = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // console.log(e.target.value)
+    console.log(e.target.value)
     setValues({
       ...values,
       [name]: value,
     });
   };
+
+  
 
   const history = useHistory();
   const Pedidos = () => {
@@ -115,20 +117,18 @@ const Login = () => {
               {errors.password && <p>{errors.password}</p>}
             </div>
           </div>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={handleSubmit}
+            msg="Login"
+          >
+          </Button>
           <span className="novo-cadastro">Ainda não tem cadastro?</span>
           <Link className="tocadastro" to="/Cadastro">
             {" "}
             Cadastre-se{" "}
           </Link>
-
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={handleSubmit}
-            msg="Enviar"
-          >
-            Login
-          </Button>
         </form>
       </main>
     </div>
