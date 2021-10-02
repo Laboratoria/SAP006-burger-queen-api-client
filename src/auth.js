@@ -6,9 +6,9 @@ export const isUserActive = localStorage[STORAGE_KEY];
 export const loginConfirmed = (token) => { //Aqui terei de chamar a função com os parametros infoUser
     localStorage.setItem(STORAGE_KEY, token)
 };
-export const logout = () => {
-    localStorage.clear()
-};
+// export const logout = () => {
+//     localStorage.clear()
+// };
 
 export const registerUser = async (nameUser, emailUser, passwordUser, roleUser) => {
     const url = 'https://lab-api-bq.herokuapp.com/users';
@@ -16,7 +16,7 @@ export const registerUser = async (nameUser, emailUser, passwordUser, roleUser) 
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
-            name: nameUser,
+            name:nameUser,
             email: emailUser,
             password: passwordUser,
             role: roleUser,

@@ -6,7 +6,6 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import { validation } from '../validation';
 import { loginUser, loginConfirmed } from '../auth';
-// import useForm from '../Hooks/useForm';
 
 function Login() {
     const [errors, setErrors] = useState({})
@@ -19,16 +18,18 @@ function Login() {
     const [infoUser, setInfoUser] = useState({ email: '', password: '' });
 
     const handleChange = (e) => {
-        const informationUser = e.target.id;
-        setInfoUser({ ...infoUser, [informationUser]: e.target.value })
+        const selectedInput = e.target.id;
+        const inputValue = e.target.value;
+        setInfoUser({
+            ...infoUser,
+            [selectedInput]: inputValue
+        })
         console.log(e.target.value, infoUser)
-        // if (informationUser === 'password') {      
-        // }
     }
 
-    let history = useHistory()
-    const handleLogin = (e) => {  //handleSubmit? 
-        e.preventDefault();
+    const history = useHistory()
+    const handleLogin = (e) => { //handleSubmit?
+        e.preventDefault();//previne o comportamento padrão o carregamento 
 
         const resultErrorsLogin = validationValues(infoUser);
 
@@ -63,8 +64,10 @@ function Login() {
                 <header className="header-login"> 
                      {<img src={logo} alt="Logo Burguer Queen" />}
                 </header>
+            <div className="container-login">
                 <div className="main-login">
-                    <div className="box-login" >
+                    
+                    <div className="box-login" > 
                         <form className="forms" action="">
                             <h1 className="title">Login</h1>
 
@@ -92,14 +95,16 @@ function Login() {
                                 onClick={handleLogin}>
                                 Entrar
                             </Button>
-
-                            <Link 
-                                className="link" to="/Register"> 
-                                Cadastre-se 
-                            </Link>
                         </form>
+                        <p>Não tem uma conta?</p> 
+                        <Link
+                            className="link" to="/Register">
+                            Cadastre-se
+                        </Link>
+                        
                     </div>
                 </div>
+            </div>
         </section>
      );
 }

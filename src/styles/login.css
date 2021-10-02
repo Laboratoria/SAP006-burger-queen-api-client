@@ -4,6 +4,26 @@ body {
     background: #DFB120;
 }
 
+
+
+.container-login {
+    background-color: #F2DFBA;
+    height: 430px;
+    width: 40%;
+    /* left: 86px; */
+    /* top: 308px; */
+    border-radius: 36px;
+    /* position: absolute; */
+    margin-left: 30%;
+}
+
+.box-login{
+    margin: 12%;
+}
+
+h1{
+        text-align: center;
+}
 /* tablet */ 
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -69,6 +89,7 @@ h1 .title {
     padding: 2rem;
     margin:0 auto; 
 };
+
 
 
 
