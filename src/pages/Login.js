@@ -28,8 +28,8 @@ function Login() {
     }
 
     const history = useHistory()
-    const handleLogin = (e) => {
-        e.preventDefault();//previne o comportamento padrão o carregamento
+    const handleLogin = (e) => { //handleSubmit?
+        e.preventDefault();//previne o comportamento padrão o carregamento 
 
         const resultErrorsLogin = validationValues(infoUser);
 
@@ -71,16 +71,16 @@ function Login() {
                         <form className="forms" action="">
                             <h1 className="title">Login</h1>
 
-                        {errors.email && <span className='form-error email'>{errors.email}</span>}
+                       
                             <Input 
                                 label="Usuário" 
                                 type="email" 
                                 name="email" 
                             value={infoUser.email}
                             onChange={handleChange}
-
                             />
-                        {errors.password && <span className='form-error'>{errors.password}</span>}
+                            {errors.email && <span className='form-error'>{errors.email}</span>}
+                        
                             <Input 
                                 label="Senha" 
                                 type="password" 
@@ -88,10 +88,11 @@ function Login() {
                             value={infoUser.password}
                             onChange={handleChange}
                             />
+                            {errors.password && <span className='form-error'>{errors.password}</span>}
                         
                             <Button 
                                 type="submit"  
-                            onClick={handleLogin}>
+                                onClick={handleLogin}>
                                 Entrar
                             </Button>
                         </form>
