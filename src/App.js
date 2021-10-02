@@ -6,10 +6,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import Hall from './pages/Hall';
-import { Kitchen } from '@material-ui/icons';
+import Kitchen from './pages/Kitchen';
 
-function App() {
-    const user = true;
+
+function App(user) {
+    // const user = true;
 
     return (
         <BrowserRouter>
@@ -26,8 +27,8 @@ function App() {
                 <Route path='/salao'> 
                     {user ? <Hall /> : <Redirect to="/" />}  
                 </Route>
-                <Route path='/cozinha'>
-                    {user ? <Kitchen /> : <Redirect to="/" />}
+                <Route path='/cozinha'> 
+                    {user ? <Kitchen /> : <Redirect to="/" />}  
                 </Route>
                 <Route component={NotFound}/>
             </Switch>

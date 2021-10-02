@@ -4,6 +4,22 @@
     background-color: #DFB120;
 };  */
 
+.main-register {
+    background-color: #F2DFBA;
+    height: 383px;
+    width: 40%;
+    border-radius: 36px;
+    margin-left: 30%;
+}
+
+.box-register {
+    margin: 12%;
+}
+
+h1 {
+    text-align: center;
+}
+
 .elipse-background{
     position: absolute;
     margin-top: -70%;
@@ -51,3 +67,4 @@ h1 {
 form{
     padding: 1rem;
 };
+
