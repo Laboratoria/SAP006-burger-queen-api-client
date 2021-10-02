@@ -9,8 +9,8 @@ import Hall from './pages/Hall';
 import Kitchen from './pages/Kitchen';
 
 
-function App() {
-    const user = true;
+function App(user) {
+    // const user = true;
 
     return (
         <BrowserRouter>

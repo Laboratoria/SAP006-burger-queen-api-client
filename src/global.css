@@ -7,19 +7,6 @@
    
 }
 
-/* :root {
-    --red: #9B2D0A;
-    --light: #D0C7C7;
-    --white: #FFFFFF;
-    --gray: #ABABAB;
-    --darker-gray: #868686;
-    --black: #1D2228;
-
-} */
-
-  body {
-    background-color: #F2DFBA;
-      /*font-family: 'Baloo 2', cursive;*/
-      /* background: var(--red); */
-      /*background-color: #DFB120;*/
-  }
+.form-error {
+    color: red;
+}
