@@ -3,6 +3,6 @@
 * {
     /* display: flex; */
     /* flex-direction: column; */
-    background-color: #5EC8F9;
+    box-sizing: border-box;
     margin: 0;
 }

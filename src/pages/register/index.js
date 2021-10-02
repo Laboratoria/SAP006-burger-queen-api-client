@@ -1,156 +1,137 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router';
-import monsterLogo from "../../img/monsterLogo.png";
-import { createUser } from "../../services/api";
-import { validateRegister } from "../register/validateRegister";
+import { userRegister } from '../../services/api.js'
+import { validateRegister } from '../register/validateRegister';
+import { Button } from '../../components/Button.js';
+import { Input } from '../../components/Input.js';
+import { Link } from 'react-router-dom';
+import logoMonsterGrande from '../../img/logoMonsterGrande.png'
 
-function FormRegister() {
-  const BtnRegister = (e) => {
-    createUser({});
-    e.preventDefault();
-    console.log("fazer requisição da API em auth/");
-  };
+export function Register() {
 
-  const history = useHistory();
+    const history = useHistory();
 
-  const [values, setValues] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    role: "",
-  })
+    const [formValues, setFormValues] = useState({
+        username: '',
+        email: '',
+        password: '',
+        password2: '',
+        role: ''
+    });
 
-  const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({
+        username: '',
+        email: '',
+        password: '',
+        password2: '',
+        role: ''
+    });
 
-  const handleChange = e => {
-      console.log(handleChange)
-      const { name, value } = e.target
-      setValues({
-          ...values,
-          [name]: value     
-      })
-  }
-
-  const handleSubmit = (e) => {
-    console.log('handleSubmit');
-    e.preventDefault();
-    setErrors(validateRegister(values));
-
-    createUser(values)
-        .then(response => response.json())
-        .then((json) => {
-            const token = json.token
-            localStorage.setItem("token", token);
-
-            if (json.id !== undefined) {
-                history.push('/login');
-                alert("Cadastro efetuado com sucesso")
-            }
-
-            /*if (json.role === "salão") {
-                history.push('/hall');
-            } else if
-                (json.role === "cozinha") {
-                history.push('/kitchen');
-            }else {
-        setErrors()
-      }*/
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormValues({
+            ...formValues,
+            [name]: value
         })
-        /*.then(alert("Cadastro efetuado com sucesso"))*/
+    };
 
-        .catch(errors => {
-            console.log(errors)
-        });
+    const handleSubmit = (e) => {
+        console.log('handleSubmit');
+        e.preventDefault();
+        setErrors(validateRegister(formValues));
+
+        userRegister(formValues)
+            .then(response => response.json())
+            .then((json) => {
+                const token = json.token
+                localStorage.setItem("token", token);
+
+                if (json.id !== undefined) {
+                    history.push('/login');
+                    alert("Cadastro efetuado com sucesso")
+                }
+
+                /*if (json.role === "salão") {
+                    history.push('/hall');
+                } else if
+                    (json.role === "cozinha") {
+                    history.push('/kitchen');
+                }else {
+            setErrors()
+          }*/
+            })
+            /*.then(alert("Cadastro efetuado com sucesso"))*/
+
+            .catch(errors => {
+                console.log(errors)
+            });
+    };
+    //console.log('***formValues', formValues);
+
+    return (
+        <main>
+             <div>
+              <img className="imgRegister" src={logoMonsterGrande} alt="icon-register" />
+              <h1 className="letra-logo">Monster Burguer</h1>
+            </div>
+            <div className="container-register">
+                <form className="form" onSubmit={handleSubmit}>
+                    <h2>Cadastre-se</h2>
+                    <div className="form-register-inputs">
+                        <Input
+                            inputType="text"
+                            inputName="username"
+                            inputPlaceholder="Nome Completo"
+                            inputOnChange={handleInputChange}
+                            inputValue={formValues.username} />
+                        {errors.username && <p>{errors.username}</p>}
+                        <Input
+                            inputType="text"
+                            inputName="email"
+                            inputPlaceholder="Email"
+                            inputOnChange={handleInputChange}
+                            inputValue={formValues.email} />
+                        {errors.email && <p>{errors.email}</p>}
+                        <Input
+                            inputType="password"
+                            inputName="password"
+                            inputPlaceholder="Crie sua senha"
+                            inputOnChange={handleInputChange}
+                            inputValue={formValues.password} />
+                        {errors.password && <p>{errors.password}</p>}
+                        <Input
+                            inputType="password"
+                            inputName="password2"
+                            inputPlaceholder="Confirme sua senha"
+                            inputOnChange={handleInputChange}
+                            inputValue={formValues.password2} />
+                        {errors.password2 && <p>{errors.password2}</p>}
+                        <div className="select"></div>
+                        <select
+                            className="form-select"
+                            name="role"
+                            autoComplete="off"
+                            onChange={handleInputChange}
+                            value={formValues.role}>
+                            <option value=" ">Selecione sua área de trabalho</option>
+                            <option value="salão">Salão</option>
+                            <option value="cozinha">Cozinha</option>
+                        {errors.role && <p>{errors.role}</p>}
+                        </select>
+                        <Button
+                            className="register-btn"
+                            type="submit"
+                            value="Cadastrar">
+                        </Button>
+                        <div className="footer-register">
+                            Já tem uma conta cadastrada?
+                            <Link className="link" to="/Login"> Entre aqui</Link>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </main>
+    );
 };
-//console.log('***formValues', formValues);
-  
-  return (
-    <section className="mainBox">
-      <img className="imgRegister" src={monsterLogo} alt="icon-register" />
-      <div className="signUpBox">
-        <p className="titleRegister">Crie sua conta</p>
-        <form className="form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            id="name"
-            name="fullName"
-            values={values.fullName}
-            onChange={(event) => setValues(event.target.value)}
-            placeholder="Nome completo"
-            errormessage="Por favor, insira um nome válido."
-          />
-          {errors.fullName && <p className='error'>{errors.fullName}</p>}
-          <input
-            type="email"
-            id="email"
-            name="email"
-            values={values.email}
-            onChange={(event) => setValues(event.target.value)}
-            placeholder="E-mail"
-            errormessage="Por favor, insira um e-mail válido."
-          />
-          {errors.email && <p className='error errorsMessage'>{errors.email}</p>} 
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={values.password}
-            onChange={(event) => setValues(event.target.value)}
-            placeholder="Senha"
-            errormessage="Por favor, insira uma senha válida."
-          />
-          {errors.password && <p className='error errorsMessage'>{errors.password}</p>}
-          <input
-            type="password"
-            id="confirm-password"
-            name="confirmPassword"
-            value={values.confirmPassword}
-            onChange={(event) => setValues(event.target.value)}
-            placeholder="Confirmar senha"
-            errormessage="As senhas não conferem."
-          />
-          {errors.confirmPassword && <p className='error errorsMessage'>{errors.confirmPassword}</p>}
-        </form>
-        <form className="inputRadioBox">
-          <label className="labelRadioInput">
-            <input
-              variant="true"
-              type="radio"
-              name="role"
-              className="input-radio"
-              onChange={handleChange}
-              value="Salão"
-              labelText="Salão"
-            />
-            Salão
-          </label>
-          <label className="labelRadioInput">
-            <input
-              variant="true"
-              type="radio"
-              name="role"
-              className="input-radio"
-              onChange={handleChange}
-              value="cozinha"
-              labelText="Cozinha"
-            />
-            Cozinha
-          </label>
-          {errors.role && <p className='error errorsMessage'>{errors.role}</p>}
-        </form>
-        <button variant="secondary" onClick={BtnRegister}>
-          Entrar
-        </button>
-        <p className="phraseRegister">
-          Já possui uma conta?
-          <br />
-          <Link to="/">Faça seu login aqui</Link>
-        </p>
-      </div>
-    </section>
-  );
-}
-
-export default FormRegister;

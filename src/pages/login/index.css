@@ -1,42 +1,129 @@
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap'); 
 
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 18px;
-    background-color: #F79767;
-    font-family: Creepster;
-    
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  --salmao: #F79767 ;
+  --azul: #5ec8f9;
+  --verde: #CDDC2D;
+  --amarelo: #FFE600;
 }
 
-.buttonLogin {
+.letra-logo{
+  font-family: Creepster;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 75px;
+  color: var(--amarelo);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+h2{
+  font-family: Creepster;
+}
+
+.container{
+  background-color: var(--azul);
+}
+
+.div-login{
     align-items: center;
-    background-color: #CDDC2D;
+    font-size: 18px;
+    background-color: var(--salmao);
+}
+
+.input{
+  border-radius: 5px;
+  background-color: var(--verde);
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+}
+
+
+button{
+    align-items: center;
+    background-color: var(--verde);
     border-radius: 10px;
     width: 10rem;
     border-style: none;
     padding: 0.5rem;
+    margin: 00.5rem;
     font-family: Creepster;
 }
 
-.loginBox { 
-    background-color: #F79767;
-    border-radius: 20px;   
-    margin: 1px;    
+a {
+  text-decoration: none;
+  margin-left: 5px;
+  font-family: Creepster;
+  color: black;
 }
 
-.mainBox {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+a:active,
+a:hover {
+  text-decoration: underline;
+  color: var(--verde);
 }
 
-.imgLogo {
-    width: 50vw;
+p {
+  margin-bottom: 0;
 }
 
-.phraseLogin {
-    align-items: center;
-    font-family: Creepster;
+.body-default {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}  
+
+img {
+  margin: 50px 50px 25px;
+}
+
+img.logo {
+  margin: 0;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.input {
+  min-width: 260px;
+  border: none;
+  border-bottom: 2px solid;
+  background-color: var(--verde);
+  outline: none;
+  margin: 12px 0px 20px;
+  padding: 5px 8px 5px; 
+  color: #584944;
+}
+
+.input::placeholder {
+  color: white;
+  font-family: Creepster;
+}
+
+.message-text {
+  text-align: center;
+}
+
+.container-logo-btn {
+  display: flex;
 }
