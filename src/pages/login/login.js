@@ -118,12 +118,13 @@ const Login = () => {
               {errors.password && <p>{errors.password}</p>}
             </div>
           </div>
+          <div className="botao-login">
           <Button
             variant="primary"
             type="submit"
             onClick={handleSubmit}
             msg="ENVIAR"
-          ></Button>
+          ></Button> </div>
           <span className="novo-cadastro">Ainda não tem cadastro?</span>
           <Link className="tocadastro" to="/Cadastro">
             {" "}
