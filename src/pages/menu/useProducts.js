@@ -21,58 +21,43 @@ const useProducts = () => {
   }, [])
 
   const addProducts = (elem) => {
-    console.log(addItem)
-    const newArray = addItem;
-    const foundItem = addItem.findIndex((item) => item.id === elem.id);
+    const foundItem = addItem.findIndex((item) => item.name === elem.name && item.flavor === flavor && item.complement === complement);
     if (flavor === '' && productsType === 'hamburguer') {
-      console.log('selecione um sabor primeiro') //ok
-    } else if (flavor !== '' && complement === '' && foundItem === -1) {
-      console.log('adicionando pela primeira vez SEM complemento e COM sabor'); //ok
-      // const foundItem = addItem.findIndex((item) => item.id === elem.id);
-      const foundLancho = filterFlavor().filter((item) => item.name === elem.name && item.complement === null);
-      const newLancho = foundLancho[0];
-      console.log(newLancho)
-      setAddItem(() => [...newArray, { id: newLancho.id, qtd: initialQtd, name: newLancho.name, price: newLancho.price, flavor: newLancho.flavor, complement: newLancho.complement }])
-      // if (foundItem === -1) {
-        // const foundLancho = filterFlavor().filter((item) => item.name === elem.name && item.complement === null);
-        // const newLancho = foundLancho[0];
-        // console.log(newLancho.id)
-      // } else {
-        // newArray[foundItem].qtd++;
-        // setAddItem(() => [...newArray]);
-      // }
-      // console.group(addItem)
-      // setAddItem(() => [...newArray]);
-      
-      // } else if (flavor !== '' & complement === '') {
-      // console.log('adicionando pela segunda vez COM sabor e COM complemento')
-      // console.log(elem.id)
-      // const foundLancho = filterFlavor().filter((item) => item.name === elem.name && item.complement === null);
-      // const newLancho = foundLancho[0];
-      // console.log(newLancho.id)
-      // const foundItem = addItem.findIndex((item) => item.id === newLancho.id);
-      // newArray[foundItem].qtd++;
-      // setAddItem(() => [...newArray]);
-      // } else if (complement !== '') {
-      // console.log('adicionando pela primeira vez COM complemento'); //ok
-
-      // } else if (foundItem !== -1) {
-
-    } else if (flavor !== '' && complement === '' && foundItem !== -1) {
-      console.log('adicionando pela segunda vez SEM complemento e COM sabor')
-    }else {
-      console.log('sem sabor e sem complemento'); //ok
-      if (foundItem !== -1) {
-        console.log('adicionando pela segunda vez')
-        newArray[foundItem].qtd++;
-        setAddItem(() => [...newArray]);
+      console.log('selecione um sabor primeiro')
+    } else if (foundItem !== -1) {
+      console.log('adicionando pela segunda vez')
+      addItem[foundItem].qtd++
+      setAddItem([...addItem]);
+    } else {
+      if (complement !== '' && productsType === 'hamburguer') {
+        console.log('adicionando pela primeira vez COM complemento')
+        const lancho = filterFlavor().filter((item) => item.name === elem.name && item.complement === complement);
+        setAddItem([...addItem, { id: lancho[0].id, qtd: initialQtd, name: elem.name, price: lancho[0].price, flavor: flavor, complement: complement }])
       } else {
-        console.log('adicionando pela primeira vez')
-        setAddItem(() => [...addItem, { id: elem.id, qtd: initialQtd, name: elem.name, price: elem.price, flavor: flavor, complement: complement }])
+        console.log('adicionando pela primeira vez SEM complemento')
+        setAddItem([...addItem, { id: elem.id, qtd: initialQtd, name: elem.name, price: elem.price, flavor: flavor, complement: complement }])
       }
     }
   }
 
+  const deleteProducts = (elem) => {
+    const foundItem = addItem.findIndex((item) => item.id === elem.id);
+    console.log(addItem[foundItem].qtd)
+    if (foundItem !== -1) {
+      const qtd = addItem[foundItem].qtd
+      if (qtd === 1) {
+        const removed = addItem
+        removed.splice(foundItem, 1)
+        setAddItem([...removed])
+      } else {
+        const newArray = addItem;
+        newArray[foundItem].qtd--;
+        setAddItem([...newArray])
+      }
+    } else {
+      setAddItem([...addItem, { id: elem.id, qtd: initialQtd, name: elem.name, price: elem.price, flavor: elem.flavor }])
+    }
+  }
 
   useEffect(() => {
     const sum = (previousValue, currentValue) => previousValue + currentValue;
@@ -120,6 +105,7 @@ const useProducts = () => {
     sendToKitchen,
     handleOrderChange,
     addProducts,
+    deleteProducts,
     selectComplement,
     selectFlavor
   }
