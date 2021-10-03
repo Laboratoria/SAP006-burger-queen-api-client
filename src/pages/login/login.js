@@ -1,13 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import "../login/login.css";
+import Logo from "../../componentes/logo";
 import Input from "../../componentes/input.js";
 import Button from "../../componentes/button.js";
 import { loginEmailAndPassword } from "./validacao";
 
 const Login = () => {
-  const textEmail = "E-mail";
-  const textPassword = "Senha";
+  const textEmail = "E-MAIL";
+  const textPassword = "SENHA";
   const typeInputEmail = "email";
   const typeInputPassword = "password";
 
@@ -43,14 +45,12 @@ const Login = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target.value)
+    console.log(e.target.value);
     setValues({
       ...values,
       [name]: value,
     });
   };
-
-  
 
   const history = useHistory();
   const Pedidos = () => {
@@ -91,6 +91,7 @@ const Login = () => {
 
   return (
     <div className="login">
+      <Logo />
       <main className="login-page-main">
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group input">
@@ -121,9 +122,8 @@ const Login = () => {
             variant="primary"
             type="submit"
             onClick={handleSubmit}
-            msg="Login"
-          >
-          </Button>
+            msg="ENVIAR"
+          ></Button>
           <span className="novo-cadastro">Ainda não tem cadastro?</span>
           <Link className="tocadastro" to="/Cadastro">
             {" "}

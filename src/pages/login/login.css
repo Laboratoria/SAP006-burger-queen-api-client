@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,600&display=swap");
+.login {
+  background: #fef6d1;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  height: 100vh;
+}
+.logo-posicao {
+  position: absolute;
+  width: 484px;
+  height: 378px;
+  left: 48px;
+  top: 120px;
+}
+
+.login .login-page-main .login-form {
+  position: absolute;
+  width: 350px;
+  height: 414px;
+  left: 700px;
+  top: 228px;
+  color: #ff4e28;
+  font-family: Work Sans;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.login .login-page-main .form-group {
+  display: grid;
+  margin-bottom: 20px;
+}
+
+.login .login-page-main .form-group input {
+  width: 301.1px;
+  height: 30.52px;
+  padding: 15px 20px;
+  background: #ff893a;
+  border: #ff893a;
+  border-radius: 20px;
+  color: #fef6d1;
+  font-family: Work Sans;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.login .login-page-main .form-group input::placeholder {
+  color: #fef6d1;
+  font-family: Work Sans;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+button {
+  cursor: pointer;
+  width: 191px;
+  height: 56px;
+  left: 805px;
+  top: 516px;
+  background: #ff4e28;
+  border: #ff4e28;
+  border-radius: 20px;
+  font-family: Work Sans;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fef6d1;
+}
+
+.tocadastro {
+  color: black;
+}
+span {
+  display: block;
+}
