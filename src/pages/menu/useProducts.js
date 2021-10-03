@@ -12,7 +12,7 @@ const useProducts = () => {
   const initialQtd = 1;
 
   const getData = async () => {
-    const data = await getProducts().then(data => data)
+    const data = await getProducts('/products').then(data => data)
     setProducts(data)
   }
 
@@ -95,7 +95,7 @@ const useProducts = () => {
   }
 
   const sendToKitchen = () => {
-    sendOrder(orderInfo, addItem)
+    sendOrder('/orders', orderInfo, addItem)
       .then((res => res.json()))
       .then((data) => console.log(data));
   }

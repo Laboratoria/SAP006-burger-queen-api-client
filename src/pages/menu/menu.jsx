@@ -44,8 +44,8 @@ const Menu = () => {
                     key={elem.id}
                     name={elem.name}
                     price={elem.price}
-                    // flavor={elem.flavor}
-                    // complement={elem.complement}
+                    flavor={elem.flavor}
+                    complement={elem.complement}
                     qtd={elem.qtd}
                     onClick={() => {
                       addProducts(elem);
