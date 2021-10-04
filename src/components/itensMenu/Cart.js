@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../button/Button';
 import Itens from './Itens';
 
@@ -6,7 +6,6 @@ import './Style.css';
 
 
 export default function Cart ({price, arrItem}) { 
-
     return(
         <div className="container-cards">
             <h3>Carrinho</h3>

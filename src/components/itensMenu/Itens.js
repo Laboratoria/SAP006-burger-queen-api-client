@@ -6,12 +6,12 @@ import './Style.css';
 export default function Itens ({id, name, flavor, complement, price, image, onClick}) {
     return(
         <div>
-            <article key={id} className="item-card">
+            <article key={id} >
                 <img className="img-product" src={image} alt={`imagem do produto ${name}`}/>
                 <span>Nº {id}</span>
                 <span>{name}</span>
-                <span>Tipo: {flavor}</span>
-                <span>Complemento: {complement}</span>
+                <span> {flavor}</span>
+                <span> {complement}</span>
                 <span>Preço: R$ {price},00</span>
                 <Button onClick={onClick} label="+" />
             </article>
