@@ -6,6 +6,7 @@ import ResultPrice from "../../components/resultprice";
 import useProducts from "./useProducts";
 
 const Menu = () => {
+
   const { handleButtonTypeClick, productsFiltered, addItem, total, sendToKitchen, handleOrderChange, addProducts, deleteProducts, selectComplement, selectFlavor } = useProducts();
 
   return (
@@ -24,8 +25,6 @@ const Menu = () => {
           <section className='products-list'>
             <div className='list-labels'>
               <label className='list-label'>Produto</label>
-              <label className='list-label'>Sabor</label>
-              <label className='list-label'>Acréscimo</label>
               <label className='list-label'>Valor</label>
             </div>
             <section className='list-area' {...productsFiltered}>
@@ -80,7 +79,7 @@ const Menu = () => {
               <option value='10'>Mesa 10</option>
             </select>
             <div className='orders-area'>
-              <Cart data={addItem} onClick={addProducts} onClickDelete={deleteProducts}/>
+              <Cart data={addItem} onClick={addProducts} onClickDelete={deleteProducts} />
               <ResultPrice value={total} />
             </div>
             <button className='menu-button draw' onClick={sendToKitchen}>Finalizar pedido</button>

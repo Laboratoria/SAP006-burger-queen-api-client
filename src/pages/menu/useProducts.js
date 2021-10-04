@@ -12,7 +12,7 @@ const useProducts = () => {
   const initialQtd = 1;
 
   const getData = async () => {
-    const data = await getProducts().then(data => data)
+    const data = await getProducts('/products').then(data => data)
     setProducts(data)
   }
 
@@ -36,13 +36,16 @@ const useProducts = () => {
       } else {
         console.log('adicionando pela primeira vez SEM complemento')
         setAddItem([...addItem, { id: elem.id, qtd: initialQtd, name: elem.name, price: elem.price, flavor: flavor, complement: complement }])
+  
       }
     }
   }
 
   const deleteProducts = (elem) => {
     const foundItem = addItem.findIndex((item) => item.id === elem.id);
+
     console.log(addItem[foundItem].qtd)
+
     if (foundItem !== -1) {
       const qtd = addItem[foundItem].qtd
       if (qtd === 1) {
@@ -91,7 +94,9 @@ const useProducts = () => {
   }
 
   const sendToKitchen = () => {
+
     sendOrder(orderInfo, addItem)
+
       .then((res => res.json()))
       .then((data) => console.log(data));
   }
@@ -108,6 +113,7 @@ const useProducts = () => {
     deleteProducts,
     selectComplement,
     selectFlavor
+
   }
 }
 
