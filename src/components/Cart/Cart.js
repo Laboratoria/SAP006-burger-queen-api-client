@@ -5,16 +5,21 @@ import Button from '../Button/Button';
 
 import './Cart.css'
 
-function Cart({ cartItem, removeProducts }) {
+function Cart({ cartItem, removeProducts, setCartItem}) {
 	const token = localStorage.getItem('userToken')
 
 	const [valuesClient, setValuesClient] = useState({
 		client: '',
 		table: '',
+		products: []
 	})
 	
 	
 	const ButtonSendOrder = () => {
+		if (valuesClient.client !== "") {
+			const products = cartItem.map((item) => ({id: item.id, qtd: item.qtd}));
+			valuesClient.products = products;
+		} 
 		
 		fetch('https://lab-api-bq.herokuapp.com/orders', {
 			method: 'POST',
@@ -37,8 +42,14 @@ function Cart({ cartItem, removeProducts }) {
 			.then((response) => response.json())
 			.then((json) => {
 				console.log(json);
+				if(json.id !== undefined) {
+					setValuesClient({ client: '', table: ''})
+					setCartItem([{}])
+				}
 			})
 	}
+
+	console.log(cartItem);
 
 	const totalPrice = cartItem.reduce((acumulador, item) => acumulador + item.price * item.qtd, 0)
 
