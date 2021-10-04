@@ -10,10 +10,7 @@ body {
     background-color: #F2DFBA;
     height: 430px;
     width: 40%;
-    /* left: 86px; */
-    /* top: 308px; */
     border-radius: 36px;
-    /* position: absolute; */
     margin-left: 30%;
 }
 
@@ -89,8 +86,6 @@ h1 .title {
     padding: 2rem;
     margin:0 auto; 
 };
-
-
 
 
 
