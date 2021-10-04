@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Input from '../Input/Input'
 import Button from '../Button/Button';
 
@@ -6,45 +6,39 @@ import Button from '../Button/Button';
 import './Cart.css'
 
 function Cart({ cartItem, removeProducts }) {
-
-
 	const token = localStorage.getItem('userToken')
-	
 
 	const [valuesClient, setValuesClient] = useState({
 		client: '',
 		table: '',
 	})
-	console.log(valuesClient);
-
+	
+	
 	const ButtonSendOrder = () => {
 		
-		fetch('https://lab-api-bq.herokuapp.com/orders/', {
-				method: 'POST',
-				headers: {
-						accept: 'application/json',
-						Authorization: `${token}`,
-						'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				body: JSON.stringify({
-						client: 'Fulana',
-						table: 2,
-						products: [
-								{
-								 id: '',
-								 qtd: 1
-								}
-
-						]
-				})
+		fetch('https://lab-api-bq.herokuapp.com/orders', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',	
+				accept: 'application/json',
+				Authorization: `${token}`			
+			},
+			body: JSON.stringify({
+				client: valuesClient.client,
+				table: valuesClient.table,
+				products: cartItem.map((item) => (
+					{
+					id: Number(item.id),
+					qtd: Number(item.qtd)
+				}
+				))
+			}),
 		})
-		.then((response) => response.json())
-		.then((json) => {
+			.then((response) => response.json())
+			.then((json) => {
 				console.log(json);
-		})
-}
-
-
+			})
+	}
 
 	const totalPrice = cartItem.reduce((acumulador, item) => acumulador + item.price * item.qtd, 0)
 
@@ -80,17 +74,17 @@ function Cart({ cartItem, removeProducts }) {
 					<th>Qntd.</th>
 					<th>Valor</th>
 				</tr>
-			
-				{cartItem.map((item, index) => {
+
+				{cartItem.map((item) => {
 					return (
-								<tr className='order-list' key={item.id}>
-					      <td className='name-item'>{item.name}</td>
-								<td className='qtd-item'>{item.qtd}</td>
-								<td className='price-item'>{(item.price * item.qtd).toFixed(2)}</td>
-								<td>
+						<tr className='order-list' key={item.id}>
+							<td className='name-item'>{item.name}</td>
+							<td className='qtd-item'>{item.qtd}</td>
+							<td className='price-item'>{(item.price * item.qtd).toFixed(2)}</td>
+							<td>
 								<button className='btn-remove' onClick={() => removeProducts(item)}>-</button>
-								</td>
-				        </tr>
+							</td>
+						</tr>
 					)
 				})}
 			</table>
@@ -102,8 +96,8 @@ function Cart({ cartItem, removeProducts }) {
 				<div>
 					<Button
 						buttonText='Enviar pedido'
-						className='btn-send-order' 
-						buttonOnClick={() => ButtonSendOrder()}/>
+						className='btn-send-order'
+						buttonOnClick={ButtonSendOrder} />
 				</div>
 			</div>
 
