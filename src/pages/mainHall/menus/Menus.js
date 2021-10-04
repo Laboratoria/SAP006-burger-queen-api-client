@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
-import Itens from '../../../components/itensMenu/Itens';
-import Cart from '../../../components/itensMenu/Cart';
+import ItemCard from '../../../components/itensMenu/ItemCard';
+import CartArea from '../../../components/itensMenu/CartArea';
 
 import './Menus.css';
 
@@ -17,7 +17,6 @@ function Menus () {
     const token = localStorage.getItem('userToken');
     const [itemsList, setItemsList] = useState([]);
    
-
     useEffect(() => {
       fetch('https://lab-api-bq.herokuapp.com/products', {
           method:'GET',
@@ -55,6 +54,19 @@ function Menus () {
       setSelectedProducts(filterItensByType)
     }
 
+    const removeButton = (event, index) => {
+      event.preventDefault();
+      const updatedItemsList = [...itemsList];
+      updatedItemsList.splice(index, 1);
+      setItemsList(updatedItemsList);
+    };
+
+    // const removeButton = (el) => {
+    //   const hardCopy = [...itemsList];
+    //   hardCopy.filter((arrItem) => arrItem.id !== el.id);
+    //   setItemsList(hardCopy);
+    // };
+
     return(
         <>
           <div>
@@ -63,19 +75,19 @@ function Menus () {
 
             <div className="container-btn-menu">
               <Button 
-                label="Menus" 
+                text="Menus" 
                 type="submit"
                 onClick={btnMenus} 
                 className="buttons buttons-menu" 
               /> 
               <Button 
-                label="Pedidos" 
+                text="Pedidos" 
                 type="submit"
                 onClick={btnRequests} 
                 className="buttons buttons-menu" 
               /> 
               <Button 
-                label="Histórico" 
+                text="Histórico" 
                 type="submit"
                 onClick={btnHistoric} 
                 className="buttons buttons-menu" 
@@ -83,22 +95,22 @@ function Menus () {
             </div>
             <div className="container-cardapio">
               <Button 
-                label="Café da Manhã"
+                text="Café da Manhã"
                 onClick={() => filterMenu('breakfast')}
                 className="btn-cardapio" 
               />
               <Button 
-                label="Hamburguer"
+                text="Hamburguer"
                 onClick={() => filterMenu('hamburguer')}
                 className="btn-cardapio" 
               />
               <Button 
-                label="Aperitivos"
+                text="Aperitivos"
                 onClick={() => filterMenu('side')}
                 className="btn-cardapio" 
               />
               <Button 
-                label="Bebidas"
+                text="Bebidas"
                 onClick={() => filterMenu('drinks')}
                 className="btn-cardapio" 
               />
@@ -107,17 +119,21 @@ function Menus () {
             <div>
               {selectedProducts.map((item) => {
                 return (
-                  <Itens
+                  // aqui seria o cardItem e nao os itens
+                  <ItemCard 
                     {...item}
                       key={item.id}
                       onClick={() => {
-                        setItemsList([...itemsList, {...item}])
+                        setItemsList([...itemsList, { name: item.name, price: item.price }])
                       }} 
                   />
                 )
               })}
             </div>
-            <Cart arrItem={itemsList}/>
+            <CartArea 
+              arrItem={itemsList}
+              removeButton={removeButton}>
+            </CartArea>
           <Footer />
         </>
     );

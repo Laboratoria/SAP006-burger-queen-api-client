@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
+import Cards from '../../../components/itensMenu/Cards';
 
 import './Requests.css';
 
@@ -33,28 +34,25 @@ export default function Requests () {
 
             <div className="container-btn-menu">
                 <Button 
-                    label="Menus" 
+                    text="Menus" 
                     type="submit"
                     onClick={btnMenus} 
                     className="buttons buttons-menu"
                 /> 
                 <Button 
-                    label="Pedidos" 
+                    text="Pedidos" 
                     type="submit"
                     onClick={btnRequests} 
                     className="buttons buttons-menu"
                 /> 
                 <Button 
-                    label="Histórico" 
+                    text="Histórico" 
                     type="submit"
                     onClick={btnHistoric} 
                     className="buttons buttons-menu"
                 /> 
             </div>
-
-            <div>
-                Pedidos aqui
-            </div>
+            <Cards />
         <Footer />
         </div>
     );

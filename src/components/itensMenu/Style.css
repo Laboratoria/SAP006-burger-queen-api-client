@@ -52,12 +52,9 @@
 .img-product{
     width: 10%;
 }
-/* 
-.item-card{
-    background: #F8EF5B;
-    border-radius: 15px;
-    padding: 5px;
-    width: 18%;
-    height: 390px;
-    margin: 2% 1%;
-} */
+
+.btn-delet{
+    width: 3%;
+    height: 20px;
+    background: red;
+}
