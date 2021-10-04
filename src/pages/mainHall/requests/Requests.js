@@ -53,7 +53,9 @@ export default function Requests () {
                 /> 
             </div>
             <Cards />
-        <Footer />
+        <Footer 
+          className="footer"
+        />
         </div>
     );
 };

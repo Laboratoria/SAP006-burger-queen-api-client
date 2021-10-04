@@ -1,22 +1,5 @@
 :root {
-    --gray-color: #c4c4c449;
     --gray-placeholder: #C4C4C4; 
-}
-
-.inputs{
-    display: flex;
-    border-radius: 10px;
-    height: 30px;
-    width: 100%;
-    margin: 10px 0;
-    border: none;
-    background-color: var(--gray-color);
-    font-size: 15px;
-}
-
-.input:focus {
-    box-shadow: 0 0 0 0;
-    outline: 0;
 }
 
 input::placeholder{

@@ -1,10 +1,9 @@
 import React from 'react';
-import './Footer.css';
 
-export default function Footer () {
+export default function Footer ({className}) {
     
     return (
-            <h3 className="footer">
+            <h3 className={className}>
                 Desenvolvido por Bianca Alves e Thalita Neves   |   Copyright © 2021
             </h3>
     );

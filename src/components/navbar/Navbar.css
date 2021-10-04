@@ -14,14 +14,14 @@
     justify-content: space-between;
 }
 
-.waiter-icon-tables{
-    height: 60px;
-    margin: 4% -21% 0;
+.logout{
+    width: 100%;
+    height: 65px;
 }
 
-.tables-title{
+/* .tables-title{
     font-size: 35px;
     margin: 6% 0 0;
     color: var(--brown-color);
     font-weight: bold;
-}
+}*/

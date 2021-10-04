@@ -9,9 +9,9 @@ import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title';
 import garcom from '../../../img/garcom.png';
-import cozinheiro from '../../../img/garcom.png';
+import cozinheiro from '../../../img/cozinheiro.png';
 
-import './Register.css';
+import '../Style.css';
 
 
 export default function Register() { 
@@ -77,6 +77,7 @@ export default function Register() {
                 <div>
                     <Title 
                         title='Cadastre-se' 
+                        className="title-login"
                     />
                 </div>
 
@@ -86,21 +87,24 @@ export default function Register() {
                         name='name'
                         value={name}
                         onChange={(event) => setName(event.target.value)}
-                        placeholder='Digite o seu Nome'
+                        placeholder='Nome'
+                        className="inputs"
                     />
                     <Input 
                         type='text' 
                         name='email'
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
-                        placeholder='Digite o seu e-mail'
+                        placeholder='E-mail'
+                        className="inputs"
                     />
                     <Input 
                         type={showPassword ? 'type': 'password'}  
                         name='password'
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
-                        placeholder='Digite a sua senha'
+                        placeholder='Senha'
+                        className="inputs"
                     />
                     <span className="login-eye">
                         {showPassword ? 
@@ -139,11 +143,13 @@ export default function Register() {
                     text="Já tenho conta" 
                     type="submit"
                     onClick={btnBack} 
-                    className="buttons" 
+                    className="buttons btn-back" 
                 /> 
 
             </form>
-            <Footer />    
+            <Footer
+                className="footer"
+            />    
         </div>
     );
 };

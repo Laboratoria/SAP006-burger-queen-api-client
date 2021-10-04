@@ -55,7 +55,9 @@ export default function Historic () {
           <div>
             Histórico aqui
           </div>
-        <Footer />
+        <Footer 
+          className="footer"
+        />
         </div>
     );
 };

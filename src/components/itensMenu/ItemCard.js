@@ -4,11 +4,14 @@ import './Style.css';
 
 export default function ItemCard ({id, name, price, image, onClick}) {
   return (
-    <article key={id} onClick={onClick}>
-      <img className="img-product" src={image} alt={`imagem do produto ${name}`}></img>
-      <p>{name}</p>
-      <p>R${price},00</p>
-    </article>
+ 
+      <div className="container-products">
+        <article key={id} onClick={onClick} className="products">
+          <img className="img-product" src={image} alt={`imagem do produto ${name}`}></img>
+          <p className="name-product">{name}</p>
+          <p className="price">R${price},00</p>
+        </article>
+      </div>
  )
 };
 
