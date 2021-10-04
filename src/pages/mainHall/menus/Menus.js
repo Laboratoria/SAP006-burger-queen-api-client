@@ -113,7 +113,6 @@ function Menus () {
             <div>
               {selectedProducts.map((item) => {
                 return (
-                  // aqui seria o cardItem e nao os itens
                   <ItemCard 
                     {...item}
                       key={item.id}
