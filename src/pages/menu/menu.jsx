@@ -6,6 +6,7 @@ import ResultPrice from "../../components/resultprice";
 import useProducts from "./useProducts";
 
 const Menu = () => {
+
   const {
     handleButtonTypeClick,
     productsFiltered,
@@ -18,6 +19,7 @@ const Menu = () => {
     selectComplement,
     selectFlavor,
   } = useProducts();
+
 
   return (
     <div className='main'>
@@ -49,10 +51,12 @@ const Menu = () => {
                     qtd={elem.qtd}
                     onClick={() => {
                       addProducts(elem);
+
                     }}
                     onClickDelete={() => {
                       deleteProducts(elem);
                     }}
+
                   />
                 )
               })}
