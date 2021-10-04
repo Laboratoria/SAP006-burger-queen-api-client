@@ -13,6 +13,7 @@ function Cart({ cartItem, removeProducts }) {
 		table: '',
 	})
 	
+	
 	const ButtonSendOrder = () => {
 		
 		fetch('https://lab-api-bq.herokuapp.com/orders', {
