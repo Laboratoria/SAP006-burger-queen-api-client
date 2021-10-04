@@ -1,0 +1,505 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pixels';
+}
+
+$background-color: #332D23;
+$pink: #BC435C;
+$light-pink: #AD7F85;
+$black: #1B1A15;
+$dark-cyan: #294742;
+$light-blue: #84A8A4;
+$light-cyan: #4E6764;
+$white: #E9E9E9;
+
+@font-face {
+  font-family: 'Pixels';
+  src: url('./FreePixel.ttf');
+}
+
+@mixin box-sizes($width, $height){
+  width: $width;
+  height: $height;
+}
+
+@mixin button-style($text-color, $background-color) {
+  font-size: 1em;
+  color: $text-color;
+  background: $background-color;
+  font-weight: bolder;
+  box-shadow: inset 0 0 0 2px $dark-cyan;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+@mixin box-style() {
+  display: flex;
+  flex-direction: column;
+  background-color: $black;
+  color: $light-blue;
+  border: 0.15em dotted $dark-cyan;
+  border-radius: 1.6em;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0.4em 0.4em $black;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+.main {
+  background-color: $background-color;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 20em;
+  margin: 1em;
+}
+
+//home, login e signup
+
+.card-container {
+  width: auto;
+  height: auto;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cards {
+  @include box-sizes(17em, 24em);
+  @include box-style();
+  margin: 30px;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+  transform: scale(1.1);
+  border: 0.15em dotted $pink;
+  }
+}
+
+.card-name {
+  font-size: 3em;
+  font-weight: bolder;
+  color: $light-cyan;
+  
+  &:hover {
+    color: $pink;
+  }
+}
+
+.card-photo {
+  width: 95%;
+  margin: -1em;
+  border-radius: 1em;
+}
+
+.login-page {
+  @include box-sizes(32em, 26em);
+  @include box-style();
+  margin-top: 50px;
+}
+
+.signup-page {
+  @include box-sizes(32em, 37em);
+  @include box-style();
+  margin-top: 50px;
+}
+
+.form-title {
+  margin: 1em;
+}
+
+.form-button {
+  @include button-style($black, $light-blue);
+  @include box-sizes(7em, 2.5em);
+  margin-bottom: 1em;
+  position: relative;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.draw {
+  transition: color 0.20s;
+
+  &::before,
+  &::after {
+    border-radius: 0.5em;
+    border: 2px solid transparent;
+    width: 0;
+    height: 0;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+  }
+
+  &::after {
+    bottom: 0;
+    right: 0;
+  }
+  
+  &:hover {
+    color: $pink;
+  }
+
+  &:hover::before,
+  &:hover::after {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover::before {
+    border-top-color: $pink;
+    border-right-color: $pink;
+    transition:
+      width 0.25s ease-out,
+      height 0.25s ease-out 0.25s;
+  }
+
+  &:hover::after {
+    border-bottom-color: $pink;
+    border-left-color: $pink;
+    transition:
+      border-color 0s ease-out 0.5s,
+      width 0.25s ease-out 0.5s,
+      height 0.25s ease-out 0.75s;
+  }
+}
+
+.form-input, .form-select {
+  width: 28em;
+  height: 3em;
+  margin: 0.30em;
+  background: $light-pink;
+  border: none;
+  border-radius: 0.25em;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  color: $black;
+  font-size: 0.94em;
+  font-weight: bolder;
+}
+
+.form-labels {
+  align-self: start;
+  margin-left: 2.6em;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.errors-message, .new-user {
+  color: $pink;
+  font-size: 1.13em;
+  width: auto;
+  height: 1.1em;
+  margin: 0.30em;
+  font-weight: bolder;
+}
+
+.new-user {
+  color: $light-blue;
+  font-size: 0.94em;
+}
+
+.test {
+  color: $light-pink;
+  margin-top: 10em;
+}
+
+//página de menu
+
+.big-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  @include box-sizes(100vw,  50px);
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.menu-button {
+  @include box-sizes(10em, 2.7em);
+  @include button-style($white, $dark-cyan);
+  margin: 15px;
+
+  &:hover {
+    background: $light-blue;
+    color: $black;
+  }
+}
+
+.menu-types {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.menu-labels {
+  margin-top: 10%;
+  color: $light-blue;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.list-labels {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 15px;
+}
+
+.product-item {
+  display: grid;
+  grid-template-columns: 110px 120px 130px 100px;
+  font-size: 18px;
+  font-weight: bolder;
+  color: #e9e9e9;
+  margin-bottom: 25px;
+}
+
+.product-info {
+  text-align: center;
+}
+
+.list-label {
+  color: $pink;
+  font-weight: bolder;
+  font-size: 23px;
+}
+
+.products-list {
+  @include box-sizes(30em, 36em);
+  @include box-style();
+}
+
+.list-area {
+  @include box-sizes(29em, 36em);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  background-color: $black;
+  margin-top: 5%;
+  border: $black;
+  overflow: scroll;
+}
+
+.orders-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include box-sizes(30em, 19em);
+  @include box-style();
+  background-color: $light-cyan;
+}
+
+.orders-list {
+  @include box-sizes(30em, 15em);
+  flex-wrap: nowrap;
+  overflow: scroll;
+  border-radius: 0.8em;
+  border: none;
+  margin-top: 10px;
+}
+
+.total-area {
+  @include box-sizes(24em, 1em);
+  display: flex;
+  justify-content: space-between;
+  color: $black;
+  font-weight: bolder;
+  font-size: 20px;
+  padding: 30px;
+}
+
+.menu-input, .menu-select {
+  height: 3em;
+  margin: 0.30em;
+  background: $light-cyan;
+  border-color:#1B1A15;
+  border-radius: 0.8em;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: $black;
+  font-size: 0.94em;
+  font-weight: bolder;
+}
+
+.menu-title {
+  color: $light-pink;
+  font-size: 30px;
+}
+
+.complement-area {
+  @include box-sizes(29em, 19em);
+  @include box-style();
+}
+
+.product-button {
+  @include box-sizes(1.8em, 1.8em);
+  border-radius: 50%;
+}
+
+.select-options {
+  @include box-sizes(15em, 2em);
+  font-size: 17px;
+}
+
+//menu-hamburguer
+
+.menu-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: relative;
+  cursor: pointer;
+  margin: 15px;
+}
+
+.bar {
+  background-color: $pink;
+  position: fixed;
+  margin-top: 15px;
+
+  &-icon{
+    &,
+    &::before,
+    &::after {
+      width: 2em;
+      height: 6px;
+      background-color: $light-pink;
+      border: none;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+    }
+
+    &::before {
+      transform: translateY(-10px);
+    }
+
+    &::after {
+      transform: translateY(10px);
+    }
+  }
+}
+
+.nav-links {
+  margin-right: 40px;
+}
+
+.nav-item {
+  display: none;
+  padding: 10px 10px;
+  position: relative;
+  font-size: 18px;
+  font-weight: bolder;
+  color: $black;
+  width: 125px;
+}
+
+.show-item {
+  display: flex;
+  animation: slide 1s;
+  background-color: $light-pink;
+
+  &:hover {
+    background-color: $light-pink;
+  }
+}
+
+.complement-area {
+  @include box-sizes(29em, 19em);
+  @include box-style();
+}
+
+.product-button {
+  @include box-sizes(1.8em, 1.8em);
+  border-radius: 50%;
+}
+
+.select-options {
+  @include box-sizes(15em, 2em);
+  font-size: 17px;
+}
+
+@keyframes slide {
+  from {
+    top: -50px;
+    opacity: 0;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+//responsividade
+
+@media screen and (max-width: 420px) {
+  .login-page, .signup-page {
+    width: 22em;
+  }
+
+  .form-input, .form-select {
+    width: 21em;
+  }
+
+  .form-labels {
+    margin-left: 1.5em;
+  }
+
+  .cards {
+    height: 7em;
+    margin: 18px;
+    border: 0.15em dotted $pink;
+  }
+
+  .card-photo {
+    display: none;
+  }
+
+  .card-name {
+    color: $pink;
+  }
+
+}
