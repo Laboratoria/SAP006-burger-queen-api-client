@@ -6,7 +6,7 @@ const Kitchen = () => {
    
     return (
         <>
-            <h1>Cozinha</h1>
+          
         </>
     )
 }
