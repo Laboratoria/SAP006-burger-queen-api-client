@@ -1,8 +1,14 @@
+import Register from './Pages/Register/register';
+import Login from './Pages/Login/login';
+//import Menu from './Pages/Menu/menu';
+
+
 function App() {
   return (
-    <div className="App">
-        <h1>Konoha Burguer</h1>
-    </div>
+    <>
+      <Login />
+      <Register />
+    </>
   );
 }
 
