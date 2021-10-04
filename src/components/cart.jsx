@@ -13,18 +13,14 @@ export default function Cart({ data, onClick, onClickDelete }) {
               price={elem.price}
               flavor={elem.flavor}
               complement={elem.complement}
-              onClick={()=> onClick(elem) }
+              onClick={() => onClick(elem)}
               onClickDelete={() => onClickDelete(elem)}
             />
             <p>{elem.qtd}</p>
-            
           </div>
-          
-          )
-
+        )
 
       })}
-
     </div>
   )
 }
