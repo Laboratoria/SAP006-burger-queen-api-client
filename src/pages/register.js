@@ -18,7 +18,8 @@ function Register() {
         return errorsResult //retorna o resultado
     }
     //useState que recebe os valores iniciais
-    //infoUser são os value(nome, email e senha)
+    //infoUser são os objetos (nome, email e senha)
+    //SetInfouser define o valor do objeto
     const [infoUser, setInfoUser] = useState({
         name: '',
         email: '',
@@ -41,7 +42,7 @@ function Register() {
     const history = useHistory()
 
     const handleRegister = (e) => {
-        e.preventDefault();
+        e.preventDefault(); //previne o comportamento padrão 
 
         const resultErrors = validationValues(infoUser);
 
@@ -78,7 +79,7 @@ function Register() {
                             name="name"
                             inputClass="inputName"
                             value={infoUser.name}
-                            onChange={handleChange}
+                            onChange={handleChange}//escutador de evento
                         />
 
                         <p className="labelInputs">E-mail</p>

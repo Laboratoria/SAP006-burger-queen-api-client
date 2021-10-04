@@ -91,7 +91,7 @@ function Login() {
                             {errors.password && <span className='form-error'>{errors.password}</span>}
                         
                             <Button 
-                                type="submit"  
+                                type="submit" 
                                 onClick={handleLogin}>
                                 Entrar
                             </Button>

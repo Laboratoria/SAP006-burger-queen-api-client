@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import Hall from './pages/Hall';
 import Kitchen from './pages/Kitchen';
+// import { SettingsBackupRestore } from '@material-ui/icons';
 
 
 function App(user) {

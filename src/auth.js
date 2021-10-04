@@ -1,5 +1,5 @@
 
-const STORAGE_KEY = 'BurguerQueen';
+const STORAGE_KEY = 'token';
 export const isLogged = () => !!localStorage.getItem(STORAGE_KEY);
 
 export const isUserActive = localStorage[STORAGE_KEY]; 
