@@ -28,7 +28,7 @@ function Cart({ cartItem, removeProducts }) {
 				},
 				body: JSON.stringify({
 						client: 'Fulana',
-						table: 02,
+						table: 2,
 						products: [
 								{
 								 id: '',
@@ -112,21 +112,3 @@ function Cart({ cartItem, removeProducts }) {
 }
 
 export default Cart;
-
-<table>
-	<tr>
-		<th>Company</th>
-		<th>Contact</th>
-		<th>Country</th>
-	</tr>
-	<tr>
-		<td>Alfreds Futterkiste</td>
-		<td>Maria Anders</td>
-		<td>Germany</td>
-	</tr>
-	<tr>
-		<td>Centro comercial Moctezuma</td>
-		<td>Francisco Chang</td>
-		<td>Mexico</td>
-	</tr>
-</table>
