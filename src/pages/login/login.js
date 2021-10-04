@@ -2,12 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { userLogin } from '../../services/api.js';
-import { Input } from '../../components/Input.js';
-import { Button } from '../../components/Button.js';
+import { Input } from '../../components/Input/Input.js';
+import { Button } from '../../components/Button/Button.js';
 import { Link } from 'react-router-dom';
-import validateLogin from '../login/validateLogin';
-import logoMonsterGrande from '../../img/logoMonsterGrande.png'
-import './index.css'
+import validateLogin from './validateLogin';
+import logoMonsterGrande from '../../img/logoMonsterGrande.png';
+import './login.css';
 
 export function Login() {
 
@@ -55,8 +55,8 @@ export function Login() {
 
         <main className="container">
             <div>
-              <img className="imgRegister" src={logoMonsterGrande} alt="icon-register" />
               <h1 className="letra-logo">Monster Burguer</h1>
+              <img className="imgRegister" src={logoMonsterGrande} alt="icon-register" />
             </div>
             <div className="div-login">
                 <form onSubmit={handleSubmit}>

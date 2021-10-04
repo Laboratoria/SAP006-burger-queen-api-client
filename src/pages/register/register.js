@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { userRegister } from '../../services/api.js'
 import { validateRegister } from '../register/validateRegister';
-import { Button } from '../../components/Button.js';
-import { Input } from '../../components/Input.js';
+import { Button } from '../../components/Button/Button.js';
+import { Input } from '../../components/Input/Input.js';
 import { Link } from 'react-router-dom';
-import logoMonsterGrande from '../../img/logoMonsterGrande.png'
+import logoMonsterGrande from '../../img/logoMonsterGrande.png';
+import '../login/login.css';
 
 export function Register() {
 
@@ -135,3 +136,5 @@ export function Register() {
         </main>
     );
 };
+
+export default Register;
