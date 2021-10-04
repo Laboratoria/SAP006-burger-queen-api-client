@@ -1,10 +1,9 @@
 import React from "react";
 import ProductInfo from "./productinfo";
 
-
 export default function Cart({ data, onClick, onClickDelete }) {
   return (
-    <div className='orders-list'>
+    <article className='orders-list'>
       {data.map((elem) => {
         return (
           <div key={elem.id}>
@@ -17,10 +16,10 @@ export default function Cart({ data, onClick, onClickDelete }) {
               onClickDelete={() => onClickDelete(elem)}
             />
             <p>{elem.qtd}</p>
-          </div>
-        )
 
+          </div>)
       })}
-    </div>
+    </article>
+
   )
 }

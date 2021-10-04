@@ -7,19 +7,7 @@ import useProducts from "./useProducts";
 
 const Menu = () => {
 
-  const {
-    handleButtonTypeClick,
-    productsFiltered,
-    addItem,
-    total,
-    sendToKitchen,
-    handleOrderChange,
-    addProducts,
-    deleteProducts,
-    selectComplement,
-    selectFlavor,
-  } = useProducts();
-
+  const { handleButtonTypeClick, productsFiltered, addItem, total, sendToKitchen, handleOrderChange, addProducts, deleteProducts, selectComplement, selectFlavor } = useProducts();
 
   return (
     <div className='main'>
@@ -46,8 +34,6 @@ const Menu = () => {
                     key={elem.id}
                     name={elem.name}
                     price={elem.price}
-                    flavor={elem.flavor}
-                    complement={elem.complement}
                     qtd={elem.qtd}
                     onClick={() => {
                       addProducts(elem);
