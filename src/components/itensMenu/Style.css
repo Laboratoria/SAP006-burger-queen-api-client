@@ -20,7 +20,7 @@
     float: right;
     flex-direction: column;
     width: 35%;
-    height: 1000px;
+    height: 600px;
     box-shadow: 0px 0px 20px 5px var(--shadow-color);
     border-radius: 20px;
 }
@@ -74,6 +74,7 @@
     align-items: center;
     font-size: 20px;
 }
+
 /* FIM DO CARRINHO(AQR:CARTAREA)*/
 
 
