@@ -9,7 +9,7 @@ export default function CartItem(props) {
       <article key={props.id} className="container-products-cart">
         <div className="container-product">
           <p>{props.name}</p>
-          <p>R${props.price},00</p>
+          <p>R${(props.price) * props.qtd},00</p>
             <Button
               type='text'
               onClick={() => props.remove(props.id)}

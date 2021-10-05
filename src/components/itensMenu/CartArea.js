@@ -3,8 +3,9 @@ import CartItem from './CartItem';
 import Button from '../button/Button';
 import './Style.css';
 
-export default function CartArea({ arrItem, removeButton, addButton, price }) {
-  let totalCost = 0;
+export default function CartArea({ arrItem, removeButton, addButton }) {
+  
+  const totalPrice = arrItem.reduce((total, item) => total + (item.price * item.qtd), 0);
 
   return (
     <section className="container-cart">
@@ -12,7 +13,6 @@ export default function CartArea({ arrItem, removeButton, addButton, price }) {
         <p className="info-card text-cart">🛒 Carrinho </p>
         
           {arrItem.map((item) => {
-            totalCost = totalCost + Number(item.price) * item.qtd;
             return (
               <CartItem
                 key={item.id}  
@@ -28,7 +28,7 @@ export default function CartArea({ arrItem, removeButton, addButton, price }) {
       </div>
 
       <div className="total">
-          <p>Total do Pedido: R$ {totalCost},00</p>
+          <p>Total: R$ {totalPrice},00</p>
       </div>
 
       <Button
