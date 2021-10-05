@@ -1,19 +1,17 @@
 import { React, useState } from 'react'
 import Input from '../components/Input';
 import Button from '../components/Button';
-
-import '../global.css';
 import Products from '../components/Products';
+
+import '../styles/products.css';
+import '../global.css';
+import '../styles/hall.css'
+
 
 
 
 function Hall() {
-    /*const [formValues, setFormValues] = useState({});
 
-     const handleSelectChange = (e) => {
-         const {name, value} = e.target;
-         setFormValues({...formValues, [name]: value});
-     };*/
 
     const token = localStorage.getItem('token');
 
@@ -22,8 +20,10 @@ function Hall() {
         const name = e.target.value
         setClient(name)
     };
-
-    const [menuCafe, setMenuCafe] = useState([]);
+    
+    //criamos um estado inicial passamos todos os
+    const [products, setProducts] = useState ([]);                                     
+    const [selectedMenu, setSelectedMenu] = useState('breakfast');
 
 
     fetch('https://lab-api-bq.herokuapp.com/products', {
@@ -37,19 +37,18 @@ function Hall() {
             response.json()
         )
         .then((json) => {
-            const Breakfast = json.filter((produtos) => produtos.type === 'breakfast')
-            // const allDay = json.filter((produtos) => produtos.type === 'all-day')
-            setMenuCafe(Breakfast)
-            // console.log(allDay);
+            setProducts(json)
         })
 
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        /*const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);*/
     }
+
+    const selectedProducts = products.filter((produtos) => produtos.type === selectedMenu)
+
+
     return (
 
 
@@ -71,17 +70,18 @@ function Hall() {
                 value={client}
                 onChange={onChangeClient} />
 
-            <section className="">
+            <section className="buttonMenu">
                 <Button
-                    buttonClass="menu-button"
-                    buttonOnClick={() => {
+                    className='buttonMenu'  
+                    onClick={() => {
+                        setSelectedMenu('breakfast')
                     }}
                 >Breakfast
                 </Button>
                 <Button
-
-                    buttonClass="menu-button"
-                    buttonOnClick={() => {
+                   className='buttonMenu'
+                    onClick={() => {
+                        setSelectedMenu('all-day')
                     }}
                 >All Day
                 </Button>
@@ -90,17 +90,17 @@ function Hall() {
 
             <section>
 
-                <div className="menu">
-                    {menuCafe && menuCafe.map((products, index) => (
+                <div className="menu-container">
+                    {selectedProducts && selectedProducts.map((item, index) => (
+                    // {menuCafe && menuCafe.map((products, index) => (
                 <Products
-                            divClassName="container-food"
-                            divKey={Math.random()}
-                            productsName={products.name}
-                            divId={products.id}
-                            ImgSrc={products.image}
-                            productsPrice={products.price}
-                            qnt={products.qnt}
-                            productsNameKey={products.id}
+                            divClassName="products-img"
+                            // divKey={Math.random()}
+                            productsName={item.name}
+                            divId={item.id}
+                            ImgSrc={item.image}
+                            productsPrice={item.price}
+                            productsNameKey={item.id}
                 />
                     ))}
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import '../styles/products.css';
 
 
 function Products({
@@ -29,7 +30,9 @@ function Products({
                     <h1 className="divFlavor"> {productsFlavor}</h1>
                     <h1 className="divComplement"> {productsComplement}</h1>
                 </div>
-                <Button buttonOnClick={divOnClick} buttonClass="add-button"> ADD </Button>
+                <Button onClick={divOnClick} className="add-button" 
+                    style={{ 'borderRadius': '50%', backgroundColor: '#EAAF36', minWidth: '1rem', padding: '0.3rem 1rem'}}
+> + </Button>
             </div>
         </>
     );
