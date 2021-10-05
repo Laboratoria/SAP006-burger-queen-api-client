@@ -1,10 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,600&display=swap");
+*{
+  margin: 0;
+  padding: 0;   
+  background-color: #fef6d1;
+}
 .login {
-  background: #fef6d1;
   display: flex;
   align-items: stretch;
   flex-direction: column;
   height: 100vh;
+      
 }
 .logo-posicao {
   position: absolute;

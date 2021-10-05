@@ -4,6 +4,8 @@ import "../cadastro/cadastro.css";
 import Logo from "../../componentes/logo";
 import Input from "../../componentes/input.js";
 import Button from "../../componentes/button.js";
+import SalaoIcon from "../../componentes/salao.js";
+import CozinhaIcon from "../../componentes/cozinha.js";
 import validacao from "./validacao.js";
 import { cadastro } from "../services/auth.js";
 
@@ -14,7 +16,6 @@ const Cadastro = () => {
     email: "",
     password: "",
     role: "",
-    restaurant: "Chilli Burger",
   });
 
   const [error, setError] = useState({
@@ -30,9 +31,9 @@ const Cadastro = () => {
     cadastro(values.name, values.email, values.password, values.role)
       .then((response) => {
         if (response.code === 400) {
-          console.log("deu ruim");
+          console.log("Deu ruim");
         } else if (response.code === 403) {
-          console.log("deu ruim");
+          console.log("Deu ruim");
         } else {
           console.log(response.token);
 
@@ -72,6 +73,7 @@ const Cadastro = () => {
                 name="role"
                 id="Atendente"
               />
+              <SalaoIcon />
               <Input
                 type="radio"
                 onChange={handleChange}
@@ -79,6 +81,7 @@ const Cadastro = () => {
                 name="role"
                 id="Cozinha"
               />
+              <CozinhaIcon />
             </div>
             <div className="hidden"> {error.role && <p>{error.role}</p>} </div>
             <div className="form-group input">

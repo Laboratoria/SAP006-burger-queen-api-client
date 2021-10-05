@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "../../componentes/button.js";
 import { useHistory } from "react-router";
-
+import "../notfound/notfound.css";
+import NotLogo from "../../componentes/notflogo.js";
 
 const NotFound = () => {
 
@@ -12,6 +13,7 @@ const NotFound = () => {
 
   return (
   <div className="not-found">
+    <NotLogo />
     <main className="not-found-main">
       <div className="notfound-404">
         <h1>Not Found</h1>
