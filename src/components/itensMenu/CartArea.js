@@ -3,7 +3,8 @@ import CartItem from './CartItem';
 import Button from '../button/Button';
 import './Style.css';
 
-export default function CartArea({ arrItem, removeButton, addButton }) {
+export default function CartArea({ arrItem, removeButton, addButton, price }) {
+  
   return (
     <section className="container-cart">
       <div className="cart">
@@ -22,8 +23,8 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
               />)
           })}
       </div>
-      <div>
-          total R$
+      <div className="total">
+          TOTAL: R${price},00
       </div>
 
       <Button

@@ -55,19 +55,6 @@ function Menus () {
       setSelectedProducts(filterItensByType)
     }
     
-    // const onAdd = (data) => {
-    //   const add = [...itemsList]
-    //   const exist = add.find(x => x.id === data.id);
-    //   if (exist) {
-    //     setItemsList(
-    //       add.map((x) => x.id === data.id ? {...exist, qty: exist.qty +1 } : x
-    //       )
-    //     );
-    //   } else {
-    //     setItemsList([...add, {...data, qty: 1}]);
-    //   }
-    // }
-
     const removeButton = (id) => {
       const item = itemsList.find((item) => item.id === id)
       if(item.qtd > 1){
@@ -118,7 +105,7 @@ function Menus () {
 
             <div className="container-info">
               <label className="info-card">Mesa:
-                <select onChange={(e) => setTable(e.target.value)} value={table}>
+                <select className="select-table" onChange={(e) => setTable(e.target.value)} value={table}>
                   <option value="1">01</option>
                   <option value="2">02</option>
                   <option value="3">03</option>
@@ -128,7 +115,16 @@ function Menus () {
                   <option value="7">07</option>
                 </select>  
               </label>
-              <label className="info-card">Cliente: <input className="input-client" type="text" name="nameClient" onChange={(e) => setClient(e.target.value)} value={client}></input></label>
+              <label className="info-card">Cliente: 
+                <input 
+                  className="input-client" 
+                  type="text" 
+                  name="nameClient" 
+                  onChange={(e) => 
+                    setClient(e.target.value)} 
+                    value={client}>
+                </input>
+              </label>
             </div>
 
             <div className="container-btn-cardapio">
