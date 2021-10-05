@@ -20,7 +20,7 @@
     float: right;
     flex-direction: column;
     width: 35%;
-    height: 500px;
+    height: 1000px;
     box-shadow: 0px 0px 20px 5px var(--shadow-color);
     border-radius: 20px;
 }
@@ -66,6 +66,13 @@
     justify-content: center;
     align-items: center;
     margin-left: 15%;
+}
+
+.total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
 }
 /* FIM DO CARRINHO(AQR:CARTAREA)*/
 
@@ -122,19 +129,10 @@
     font-size: 17px;
 }
 
-.name-cart{
-    
-}
-
-.price-cart{
-
-}
-
-.btn-remove-item{
-
-}
-
-.btn-add-item{
-
+.container-product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
 }
 /* FIM DOS ITENS CARRINHO(AQR:CARTITEM)*/

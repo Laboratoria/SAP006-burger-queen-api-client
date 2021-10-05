@@ -7,23 +7,21 @@ export default function CartItem(props) {
 
     return (
       <article key={props.id} className="container-products-cart">
-        <div>
-          <p className="name-cart">{props.name}</p>
-          <p className="price-cart">R${props.price},00</p>
+        <div className="container-product">
+          <p>{props.name}</p>
+          <p>R${props.price},00</p>
+            <Button
+              type='text'
+              onClick={() => props.remove(props.id)}
+              text='-'
+            />
+            <p type="number" name="qtd">{props.qtd}</p>
+            <Button
+              type='text'
+              onClick={() => props.add(props.id)}
+              text='+'
+            />
         </div>
-        <Button
-          type='text'
-          onClick={() => props.remove(props.id)}
-          text='-'
-          className="btn-remove-item"
-        />
-        <p className="qtd" type="number" name="qtd">{props.qtd}</p>
-        <Button
-          type='text'
-          onClick={() => props.add(props.id)}
-          text='+'
-          className="btn-add-item"
-        />
       </article> 
    )
 }
