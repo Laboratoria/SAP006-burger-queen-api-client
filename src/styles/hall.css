@@ -1,5 +1,27 @@
+.main.hall{
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+}
+
 .menu-container{
     display:flex;
     background-color: blanchedalmond;
-    
+    flex-wrap: wrap;
+    width: 42%;
+    height: fit-content;  
+    justify-content: center;
+    border-radius: 10px;
+    margin: 5%;
 };
+
+.request-container {
+    display:flex;
+    background-color: blanchedalmond;
+    flex-wrap: wrap;
+    width: 35%; 
+    height: 300px;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 5%;   
+}

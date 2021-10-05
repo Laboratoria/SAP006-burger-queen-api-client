@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from './Button';
-import '../styles/products.css';
+import Button from '../Button/Button';
+import './products.css';
 
 
 function Products({

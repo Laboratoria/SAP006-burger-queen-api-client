@@ -5,8 +5,8 @@ import '../styles/register.css';
 import logo from '../img/logo.png'
 import { registerUser } from "../auth";
 import { validation } from '../validation';
-import Input from '../components/Input';
-import Button from '../components/Button';
+import Input from '../components/Input/Input';
+import Button from '../components/Button/Button';
 import '../styles/login.css';
 import '../global.css';
 
@@ -18,8 +18,7 @@ function Register() {
         return errorsResult //retorna o resultado
     }
     //useState que recebe os valores iniciais
-    //infoUser são os objetos (nome, email e senha)
-    //SetInfouser define o valor do objeto
+    //infoUser são os value(nome, email e senha)
     const [infoUser, setInfoUser] = useState({
         name: '',
         email: '',
@@ -42,7 +41,7 @@ function Register() {
     const history = useHistory()
 
     const handleRegister = (e) => {
-        e.preventDefault(); //previne o comportamento padrão 
+        e.preventDefault();
 
         const resultErrors = validationValues(infoUser);
 
@@ -79,7 +78,7 @@ function Register() {
                             name="name"
                             inputClass="inputName"
                             value={infoUser.name}
-                            onChange={handleChange}//escutador de evento
+                            onChange={handleChange}
                         />
 
                         <p className="labelInputs">E-mail</p>

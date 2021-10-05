@@ -20,6 +20,7 @@ const Input = ({label, type, name, value, onChange }) => {
     );
 }
 
+
 export default Input;
 
 

@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import  Button  from '../components/Button';
+import  Button  from '../components/Button/Button';
 
 test('click button in screen login', () => {
     const handleSubmit = jest.fn()

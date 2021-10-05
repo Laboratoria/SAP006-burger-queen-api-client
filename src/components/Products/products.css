@@ -1,0 +1,19 @@
+.img-food {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-left: 25%;
+}
+
+.box-item{
+        font-size: 10px;
+        width: 120px;
+        height: 150px;
+        background-color: #9B2D0A;
+        border-radius: 20px;
+        margin: 20px;
+        margin-top: 15px;
+        justify-content: center;
+}
+
+

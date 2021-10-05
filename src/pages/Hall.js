@@ -1,9 +1,9 @@
 import { React, useState } from 'react'
-import Input from '../components/Input';
-import Button from '../components/Button';
-import Products from '../components/Products';
+import Input from '../components/Input/Input';
+import Button from '../components/Button/Button';
+import Products from '../components/Products/Products';
 
-import '../styles/products.css';
+import '../components/Products/products.css';
 import '../global.css';
 import '../styles/hall.css'
 
@@ -88,22 +88,24 @@ function Hall() {
             </section>
 
 
-            <section>
+            <section className="main-hall">
 
                 <div className="menu-container">
-                    {selectedProducts && selectedProducts.map((item, index) => (
+                    {selectedProducts && selectedProducts.map((item) => (
                     // {menuCafe && menuCafe.map((products, index) => (
-                <Products
-                            divClassName="products-img"
+                        <Products
+                            divClassName="box-item"
                             // divKey={Math.random()}
                             productsName={item.name}
                             divId={item.id}
                             ImgSrc={item.image}
                             productsPrice={item.price}
                             productsNameKey={item.id}
-                />
+                        />
                     ))}
-
+                </div>
+                <div className="request-container"> 
+                       <h1> COMANDA </h1>
                 </div>
 
             </section>
