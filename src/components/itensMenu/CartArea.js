@@ -6,7 +6,7 @@ import './Style.css';
 export default function CartArea({ arrItem, removeButton, addButton }) {
   
   const totalPrice = arrItem.reduce((total, item) => total + (item.price * item.qtd), 0);
-
+  
   return (
     <section className="container-cart">
       <div className="cart">
