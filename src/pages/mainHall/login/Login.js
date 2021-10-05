@@ -8,7 +8,7 @@ import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title';
 
-import './Login.css';
+import '../Style.css';
 
 
 export default function Login() { 
@@ -60,19 +60,19 @@ export default function Login() {
         } catch (json) {
             history.push('/notfound') 
             // colocar o modal aqui depois   
-        }
-            
+        } 
     }
 
     
     return(
-        <div  className="container-inputs">
+        <div  className="container-main">
             <form className="container-form">
-                <LogoImg />
+                <LogoImg/>
 
                 <div>
                     <Title 
                         title='Entre com uma conta'
+                        className="title-login"
                     />
                 </div>
 
@@ -82,14 +82,16 @@ export default function Login() {
                         name='email'
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
-                        placeholder='Digite o seu e-mail'
+                        placeholder='E-mail'
+                        className="inputs"
                     />
                     <Input 
                         type={showPassword ? 'type': 'password'} 
                         name='password'
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
-                        placeholder='Digite a sua senha'
+                        placeholder='Senha'
+                        className="inputs"
                     />
                     <span className="login-eye">
                         {showPassword ? 
@@ -110,12 +112,14 @@ export default function Login() {
 
                 <div>
                     <div className="register"> 
-                        Não tem uma conta? <Link to="/cadastre-se">Cadastre-se</Link> 
+                        Não tem uma conta? <Link className="link-register" to="/cadastre-se">Cadastre-se</Link> 
                     </div>
                 </div>
 
             </form>        
-            <Footer /> 
+            <Footer 
+                className="footer"
+            /> 
         </div>
     );
 };
