@@ -90,6 +90,8 @@ function Cart({ cartItem, removeProducts, setCartItem}) {
 					return (
 						<tr className='order-list' key={item.id}>
 							<td className='name-item'>{item.name}</td>
+							<td className='qtd-item'>{item.flavor}</td>
+							<td className='qtd-item'>{item.complement}</td>
 							<td className='qtd-item'>{item.qtd}</td>
 							<td className='price-item'>{(item.price * item.qtd).toFixed(2)}</td>
 							<td>

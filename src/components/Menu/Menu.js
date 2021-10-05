@@ -35,6 +35,8 @@ function Menu({	products, addProducts }) {
 								<Cards
 									key={item.id}
 									name={item.name}
+									flavor={item.flavor}
+									complement={item.complement}
 									price={item.price}
 									image={item.image}	
 									qtd={item.qtd}
@@ -49,6 +51,8 @@ function Menu({	products, addProducts }) {
 								<Cards
 									key={item.id}
 									name={item.name}
+									flavor={item.flavor}
+									complement={item.complement}
 									price={item.price}
 									image={item.image}
 									qtd={item.qtd}

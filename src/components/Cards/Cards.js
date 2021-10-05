@@ -3,7 +3,7 @@ import React from 'react';
 import './Cards.css'
 
 function Cards({
-	name, price, image, onClick
+	image, name, flavor, complement, price, onClick
 }) {
 	return (
 		<div className='each-card'>
@@ -12,6 +12,10 @@ function Cards({
 					<img src={image} alt='Item'></img>
 				</div>
 				<li>{name}</li>
+				<section className='add-item'>
+				<li  className='flavor' value='sabor'>Sabor: {flavor}</li>
+				<li className='complement' name='complemento'>Complemento: {`${complement !== null ? complement : '' }`}</li>
+				</section>
 				<li>R${price}</li>
 			</ul>
 			<button className='add-btn' onClick={onClick}>Adicionar</button>

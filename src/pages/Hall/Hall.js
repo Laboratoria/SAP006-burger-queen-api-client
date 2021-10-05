@@ -34,7 +34,6 @@ const Hall = () => {
 				item.id === product.id ? { ...foundProduct, qtd: foundProduct.qtd + 1 } : item))
 		} else {
 			setCartItem([...cartItem, { ...product, qtd: 1 }])
-			console.log(setCartItem);
 		}
 	}
 
