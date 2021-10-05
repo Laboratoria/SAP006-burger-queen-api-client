@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,600&display=swap");
+*{
+  margin: 0;
+  padding: 0;   
+  background-color: #fef6d1;
+}
+
+.cadastro {
+  display: flex;
+  margin-top: -100px;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.cargo {
+  display:flex;
+  margin-left: -30px;
+  flex-direction:row;
+  align-items:center;
+  width:43vh;
+  height: 15vh;
+}
+  
+.iconSalao {
+  display:flex;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+}
+
+.iconCozinha {
+  display:flex;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+}
+
+.logo-posicao {
+  position: absolute;
+  width: 484px;
+  height: 378px;
+  left: 48px;
+  top: 120px;
+}
+
+.cadastro .cadastro-page-main .cadastro-form {
+  position: absolute;
+  margin-top: 200px;
+  width: 350px;
+  height: 414px;
+  left: 700px;
+  color: #ff4e28;
+  font-family: Work Sans;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.cadastro .cadastro-page-main .form-group {
+  margin-bottom: 20px;
+}
+
+.cadastro .cadastro-page-main .form-group input {
+  width: 301.1px;
+  height: 30.52px;
+  padding: 15px 20px;
+  background: #ff893a;
+  border: #ff893a;
+  border-radius: 20px;
+  color: #fef6d1;
+  font-family: Work Sans;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.cadastro .cadastro-page-main .form-group input::placeholder {
+  color: #fef6d1;
+  font-family: Work Sans;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.tologin {
+    color: black;
+  }
+
+span {
+  display: block;
+  margin-top: 10px;
+}

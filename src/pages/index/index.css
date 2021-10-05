@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #fef6d1;
+}
+.index {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  height: 100vh;
+}
+.logo-posicao {
+  position: absolute;
+  width: 484px;
+  height: 378px;
+  left: 48px;
+  top: 120px;
+}
+
+.index-main {
+  display: row;
+  margin-bottom: 20px;
+  position: absolute;
+  width: 350px;
+  height: 414px;
+  left: 700px;
+  top: 228px;
+  color: black;
+  font-family: Work Sans;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.botaoLogin .botaoCadastro {
+  display: flex;
+  margin-top: 20px;
+  font-family: Work Sans;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.botaoCadastro {
+    background-color: #d2691e;
+}
