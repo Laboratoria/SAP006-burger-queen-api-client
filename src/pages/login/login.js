@@ -54,7 +54,7 @@ export function Login() {
     return (
 
         <main className="container">
-            <div>
+            <div className="div-logo">
               <h1 className="letra-logo">Monster Burguer</h1>
               <img className="imgRegister" src={logoMonsterGrande} alt="icon-register" />
             </div>

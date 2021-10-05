@@ -1,47 +1,67 @@
-import React, {useState,} from 'react';
-import MenuArea from '../../components/MenuArea';
-import MenuPage from '../../components/MenuPage';
-import ItemCard from '../../components/ItemCard';
-import CartArea from '../../components/CartArea';
-import cardapio from '../../services/cardapio';
-
+import React, { useState } from "react";
+// import Button from "../../components/Button/Button.js";
+import "../hall/hall.css";
 
 export function Hall() {
-  
-    const [itemsList, setItemsList] = useState([])
-  
-    const removeButton = (event, index) => {
-      event.preventDefault();
-      const updatedItemsList = [...itemsList];
-      updatedItemsList.splice(index, 1);
-      setItemsList(updatedItemsList);
-    };
-  
-    return (
-    <>
-      <h1>título da página</h1>
-      <MenuPage>
-        <MenuArea {...cardapio}>
-          {cardapio.map((item) => {
-            return (
-              <ItemCard
-                img={item.img}
-                key={item.id}
-                nome={item.nome}
-                descricao={item.descricao}
-                preco={item.preco}
-                onClick={() => {
-                  setItemsList([...itemsList, { nome: item.nome, preco: item.preco }])
-                }}
-              />)
-          })}
-        </MenuArea>
-        <CartArea
-          arrItem={itemsList}
-          removeButton={removeButton}>
-        </CartArea>
-      </MenuPage>
-    </>
-    )};
+  const token = localStorage.getItem("token");
+  const [menu, setMenu] = useState([]);
+  const [tab, setTab] = useState("all-day");
+
+  fetch("https://lab-api-bq.herokuapp.com/products", {
+    headers: {
+      accept: "application/json",
+      Authorization: `${token}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      setMenu(json);
+    });
+
+  const selectProducts = menu.filter((produtos) => produtos.type === tab);
+  // const showMenuTab = !showSummary && !loading;
+  // const total = calculateTotal(summary)
+
+  return (
+    <div>
+      <h1>Monster Burguer</h1>
+      <p></p>
+      <section>
+        <button
+          className="button-geral"
+          onClick={(e) => {
+            e.preventDefault();
+            setTab("all-day");
+          }}
+        >
+          Geral
+        </button>
+        <button
+          className="button-geral"
+          onClick={(e) => {
+            e.preventDefault();
+            setTab("breakfast");
+          }}
+        >
+          Café da Manhã
+        </button>
+      </section>
+      <section>
+        {selectProducts &&
+          selectProducts.map((item) => (
+            <div key={item.id} className="menu-item">
+              <img className="img-item" src={item.image} alt="itens menu"/>
+              <h2>
+                {item.name} {item.flavor}
+              </h2>
+              <p>{item.complement}</p>
+              <p>{item.price}</p>
+              <button>Adicionar</button>
+            </div>
+          ))}
+      </section>
+    </div>
+  );
+}
 
 export default Hall;
