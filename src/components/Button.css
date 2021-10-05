@@ -1,5 +1,5 @@
 
-.button {
+.button-global {
     font-size: 1rem;
     font-family: var(--type-first);
     cursor: pointer;
@@ -12,9 +12,12 @@
     box-sizing: border-box;
     transition: 0.1s;
 }
-.button:hover,
-.button:focus{
+.button-global:hover,
+.button-global:focus{
     outline: none;
     box-shadow: 0 0 0 3px #fff,
     0 0 0 4px #EAAF36;
 }
+
+
+

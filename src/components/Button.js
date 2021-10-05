@@ -3,7 +3,7 @@ import './Button.css';
 
 const Button = ({children, ...props}) => {
     return (
-        <button {...props} className='button'>
+        <button {...props} className='button-global'>
         {children}
     </button>
     );
