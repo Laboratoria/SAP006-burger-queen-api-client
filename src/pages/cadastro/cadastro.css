@@ -7,12 +7,15 @@
 
 .cadastro {
   display: flex;
+  margin-top: -100px;
   align-items: center;
   flex-direction: column;
   height: 100vh;
 }
+
 .cargo {
   display:flex;
+  margin-left: -30px;
   flex-direction:row;
   align-items:center;
   width:43vh;
@@ -43,10 +46,10 @@
 
 .cadastro .cadastro-page-main .cadastro-form {
   position: absolute;
+  margin-top: 200px;
   width: 350px;
   height: 414px;
   left: 700px;
-  top: 228px;
   color: #ff4e28;
   font-family: Work Sans;
   text-align: center;
@@ -84,4 +87,5 @@
 
 span {
   display: block;
+  margin-top: 10px;
 }

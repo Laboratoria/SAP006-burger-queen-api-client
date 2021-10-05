@@ -19,6 +19,10 @@
   top: 120px;
 }
 
+h1 {
+  margin-bottom: 20px;
+}
+
 .login .login-page-main .login-form {
   position: absolute;
   width: 350px;
@@ -60,6 +64,7 @@
 
 Button {
   cursor: pointer;
+  margin-bottom: 20px;
   width: 191px;
   height: 56px;
   left: 805px;
