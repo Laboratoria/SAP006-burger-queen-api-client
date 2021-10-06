@@ -59,7 +59,7 @@ function Menus () {
       const item = itemsList.find((item) => item.id === id)
       if(item.qtd > 1){
         setItemsList(
-          itemsList.map((x) => x.id === id ? {...item, qtd: item.qtd -1 } : x
+          itemsList.map((x) => x.id === id ? {...item, qtd: item.qtd -1 } : x //{...} = spread operator
           )
         );
       } else {

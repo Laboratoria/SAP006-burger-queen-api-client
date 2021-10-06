@@ -15,6 +15,3 @@ export default function ItemCard ({id, name, price, image, onClick}) {
  )
 };
 
-/*    <p>{flavor}</p>
-      <p>{complement}</p>
-*/
