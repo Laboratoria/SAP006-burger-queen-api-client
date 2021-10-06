@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -7,7 +8,7 @@ const Register = () => {
 
   return (
     <>
-      <h1>cadastro</h1>
+      <h1>Cadastro</h1>
       <form>
         <input type="name" name="name" placeholder="Nome" />
         <select name="role">
