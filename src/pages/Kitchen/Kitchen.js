@@ -8,10 +8,8 @@ import './Kitchen.css'
 const Kitchen = () => {
     const token = localStorage.getItem('userToken');
 
-    const [pending, setPeding] = useState([]);
+    const [pending, setPending] = useState([]);
     const [doing, setDoing] = useState([])
-    console.log(pending);
-    console.log(doing);
 
 
     useEffect(() => {
@@ -26,7 +24,7 @@ const Kitchen = () => {
             .then((json) => {
                 if (json) {
                     const allOrders = json;
-                    setPeding(allOrders.filter((item) =>
+                    setPending(allOrders.filter((item) =>
                         item.status.includes('pending')
                     ));
                     setDoing(allOrders.filter((item) =>
@@ -37,6 +35,38 @@ const Kitchen = () => {
     }, [token])
 
 
+    const handleClick = (item, index) => {       
+        const orderId = item.id
+        let  statusOrder = ''
+        if(item.status === 'pending') {
+           statusOrder = { 'status': 'doing'}
+           
+        }
+        if(item.status === 'doing') {
+            statusOrder = { 'status': 'done'} 
+        }
+
+        fetch(`https://lab-api-bq.herokuapp.com/orders/${orderId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`,
+            },
+            body: JSON.stringify(statusOrder)              
+            
+        }).then((response) => response.json())
+        .then((json) => {
+            if(item.status === 'pending' && json.id === pending[index].id ) {
+                pending.splice(index, 1)
+                setPending([...pending])
+                setDoing([...doing, json])   
+                           
+            }
+            console.log(json)  
+        })
+
+    }
+
 
 
     return (
@@ -46,27 +76,53 @@ const Kitchen = () => {
                 <article className='prepare'>
                     <p>PREPARAR</p>
                     <div className='each-order'>
-                        {pending.map((item) =>
-                         <OrderInfo
-                         key={item.id}
-                         id={item.id}
-                         client={item.client_name}
-                         table={item.table}
-                         status={item.status}
-                         itens={item.Products.map((products) => (
-                             <OrderProducts
-                             name={products.name}
-                             qtd={products.qtd}
-                             >
-                            </OrderProducts>
-                         ))}
-                         >
-                         </OrderInfo> 
+                        {pending.map((item, index) =>
+                            <OrderInfo
+                                key={item.id}
+                                id={item.id}
+                                date={new Date(item.createdAt).toLocaleString()}
+                                client={item.client_name}
+                                table={item.table}
+                                status={item.status}
+                                itens={item.Products.map((products) => (
+                                    <OrderProducts
+                                        name={products.name}
+                                        qtd={products.qtd}
+                                    >
+                                    </OrderProducts>
+                                ))}
+                                onClick={() => handleClick(item, index)}
+                                buttonText='Preparar Pedido'
+                            >
+
+                            </OrderInfo>
                         )}
                     </div>
                 </article>
                 <article className='finished'>
                     <p>FINALIZADOS</p>
+                    <div className='each-order'>
+                        {doing.map((item, index) =>
+                            <OrderInfo
+                                key={item.id}
+                                id={item.id}
+                                client={item.client_name}
+                                table={item.table}
+                                status={item.status}
+                                itens={item.Products.map((products) => (
+                                    <OrderProducts
+                                        name={products.name}
+                                        qtd={products.qtd}
+                                    >
+                                    </OrderProducts>
+                                ))}
+                                onClick={() => handleClick(item, index)}
+                                buttonText='Finalizar Pedido'
+                            >
+
+                            </OrderInfo>
+                        )}
+                    </div>
                 </article>
             </section>
         </>

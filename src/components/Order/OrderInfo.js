@@ -3,12 +3,13 @@ import Button from '../Button/Button';
 import './OrderInfo.css'
 
 function OrderInfo({
-  id, client, table, status, itens
+  date, id, client, table, status, itens, onClick, buttonText
 }) {
   return (
     <>
         <div className='each-card'>
           <div className='info-clients'>
+            <p>Pedido feito em:{date}</p>
             <p>Nº do pedido:{id}</p>
             <p>Cliente:{client}</p>
             <p>Mesa:{table}</p>
@@ -21,7 +22,7 @@ function OrderInfo({
           </div>
 
           <div className='btn-prepare'>
-            <Button buttonText='Preparar pedido'></Button>
+            <Button buttonOnClick={onClick}  buttonText={buttonText}></Button>
           </div>
         </div>
 
