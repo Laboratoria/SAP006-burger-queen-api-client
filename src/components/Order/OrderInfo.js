@@ -7,24 +7,25 @@ function OrderInfo({
 }) {
   return (
     <>
-        <div className='each-card'>
+      <div className='each-card-order'>
+        <div className='all-infos'>
           <div className='info-clients'>
-            <p>Pedido feito em:{date}</p>
-            <p>Nº do pedido:{id}</p>
-            <p>Cliente:{client}</p>
-            <p>Mesa:{table}</p>
+            <p className='each-info'><span>Pedido feito em:</span> {date}</p>
+            <p className='each-info'><span>Nº do pedido:</span> {id}</p>
+            <p className='each-info'><span>Cliente: {client}</span></p>
+            <p className='each-info'><span>Mesa: {table}</span></p>
           </div>
           <div className='status-order'>
-            <p>Status:{status}</p>
+            <p className='each-info'><span>Status:</span> {status}</p>
           </div>
           <div className='itens-order'>
-            <p>{itens}</p>
-          </div>
-
-          <div className='btn-prepare'>
-            <Button buttonOnClick={onClick}  buttonText={buttonText}></Button>
+            <p className='each-info'><span> {itens}</span></p>
           </div>
         </div>
+        <div className='btn-prepare'>
+          <Button className='btn-change-status' buttonOnClick={onClick} buttonText={buttonText}></Button>
+        </div>
+      </div>
 
     </>
   );

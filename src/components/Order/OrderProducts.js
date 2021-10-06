@@ -6,7 +6,7 @@ function OrderProducts({
 }) {
   return (
     <>
-        <p>Produto:{name} - Qtd: {qtd}</p>
+        <p className='each-info'><span>Produto:</span> {name} - <span>Qtd:</span> {qtd}</p>
     </>
   );
 }

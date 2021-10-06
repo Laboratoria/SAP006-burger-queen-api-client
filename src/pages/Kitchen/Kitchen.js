@@ -35,15 +35,15 @@ const Kitchen = () => {
     }, [token])
 
 
-    const handleClick = (item, index) => {       
+    const handleClick = (item, index) => {
         const orderId = item.id
-        let  statusOrder = ''
-        if(item.status === 'pending') {
-           statusOrder = { 'status': 'doing'}
-           
+        let statusOrder = ''
+        if (item.status === 'pending') {
+            statusOrder = { 'status': 'doing' }
+
         }
-        if(item.status === 'doing') {
-            statusOrder = { 'status': 'done'} 
+        if (item.status === 'doing') {
+            statusOrder = { 'status': 'done' }
         }
 
         fetch(`https://lab-api-bq.herokuapp.com/orders/${orderId}`, {
@@ -52,29 +52,26 @@ const Kitchen = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `${token}`,
             },
-            body: JSON.stringify(statusOrder)              
-            
+            body: JSON.stringify(statusOrder)
+
         }).then((response) => response.json())
-        .then((json) => {
-            if(item.status === 'pending' && json.id === pending[index].id ) {
-                pending.splice(index, 1)
-                setPending([...pending])
-                setDoing([...doing, json])   
-                           
-            }
-            console.log(json)  
-        })
+            .then((json) => {
+                if (item.status === 'pending' && json.id === pending[index].id) {
+                    pending.splice(index, 1)
+                    setPending([...pending])
+                    setDoing([...doing, json])
+
+                }
+                console.log(json)
+            })
 
     }
-
-
-
     return (
         <>
+            <Header></Header>
             <section className='container-kitchen'>
-                <Header></Header>
-                <article className='prepare'>
-                    <p>PREPARAR</p>
+                <article className='prepare'>    
+                    <h2 className='title-status'>PREPARAR</h2>              
                     <div className='each-order'>
                         {pending.map((item, index) =>
                             <OrderInfo
@@ -99,8 +96,9 @@ const Kitchen = () => {
                         )}
                     </div>
                 </article>
+               
                 <article className='finished'>
-                    <p>FINALIZADOS</p>
+                   <h2 className='title-status'>FINALIZADOS</h2>
                     <div className='each-order'>
                         {doing.map((item, index) =>
                             <OrderInfo
