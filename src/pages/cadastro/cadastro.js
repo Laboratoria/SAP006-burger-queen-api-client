@@ -65,7 +65,7 @@ const Cadastro = () => {
       <main className="cadastro-page-main">
         <form className="cadastro-form" onSubmit={handleSubmit}>
           <div className="form-group input">
-          <h1>SELECIONE ABAIXO</h1>
+          <h2>SELECIONE ABAIXO</h2>
             <div className="cargo">
               <Input
                 type="radio"

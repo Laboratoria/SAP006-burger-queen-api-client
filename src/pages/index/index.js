@@ -17,13 +17,13 @@ const Index = () => {
     <div className="index">
       <Logo />
       <main className="index-main">
-        <h1>CLIQUE NA OPÇÃO DESEJADA</h1>
+        <h2>ESCOLHA UMA DAS OPÇÕES</h2>
         <div className="btnLogin">
           <Button
             className="botaoLogin"
             variant="tertiary"
             onClick={Login}
-            msg="Login"
+            msg="LOGIN"
           ></Button>
         </div>
         <div className="btnCadastro">
@@ -31,7 +31,7 @@ const Index = () => {
             className="botaoCadastro"
             variant="tertiary"
             onClick={Cadastro}
-            msg="Cadastro"
+            msg="CADASTRO"
           ></Button>
         </div>
       </main>
