@@ -3,9 +3,23 @@
         height: 80px;
         border-radius: 50%;
         margin-left: 25%;
+
+
+        
+}
+/* container com todos os produtos */
+.flex-container {
+        display: flex;
+        background-color: #F2DFBA;
+        flex-wrap: wrap;
+        width: 50%;
+        height: fit-content;
+        box-shadow: 10px 5px 5px black;
 }
 
-.products-img{
+
+.flex-item {
+        flex-direction: column;
             font-size: 6px;
             width: 140px;
             height: 160px;
@@ -15,4 +29,9 @@
             margin-top: 15px;
 }
 
-
+.button-menu {
+    display: flex;
+    justify-content: space-evenly;
+    width: 49%;
+    margin: 1%;
+}

@@ -27,7 +27,7 @@ h1 {
     height: 225%;
     border-radius: 50%;
     /* -moz-transform: scaleY(0.4); */
-    -webkit-transform: scaleY(0.4);
+    /* -webkit-transform: scaleY(0.4); */
     left: -25%;
     top: -60%;
     background: #9B2D0A;
