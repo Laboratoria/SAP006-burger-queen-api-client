@@ -17,7 +17,10 @@
   left: 48px;
   top: 120px;
 }
-
+h2 {
+    margin-bottom: 15px;
+  }
+  
 .index-main {
   display: row;
   margin-bottom: 20px;
@@ -33,15 +36,13 @@
   font-size: 1.1rem;
 }
 
-.botaoLogin .botaoCadastro {
-  display: flex;
-  margin-top: 20px;
-  font-family: Work Sans;
-  text-align: center;
-  font-weight: 700;
-  font-size: 1.5rem;
-}
+
 
 .botaoCadastro {
-    background-color: #d2691e;
+    background-color: #ff893a;
+    width: 100%;
+}
+
+.botaoLogin {
+    width: 100%;
 }

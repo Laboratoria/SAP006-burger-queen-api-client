@@ -6,11 +6,11 @@
 }
 .login {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   flex-direction: column;
   height: 100vh;
-      
 }
+
 .logo-posicao {
   position: absolute;
   width: 484px;
@@ -20,11 +20,12 @@
 }
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .login .login-page-main .login-form {
   position: absolute;
+  margin-top: -50px;
   width: 350px;
   height: 414px;
   left: 700px;
