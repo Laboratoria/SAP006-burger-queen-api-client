@@ -1,4 +1,4 @@
-import Login from '../pages/login';
+import {Login} from '../pages/login';
 import Hall from '../pages/hall';
 import CreateUser from '../pages/create-user';
 import Kitchen from '../pages/kitchen';

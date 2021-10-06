@@ -17,7 +17,7 @@ function Home(){
 
     return (
         <>
-  
+            
                 <div className='container'>
                     <div className= 'content'>
                         <div className='first-content'>

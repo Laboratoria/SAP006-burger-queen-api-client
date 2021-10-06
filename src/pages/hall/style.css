@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    font-family: 'Poppins';
+}
+
+:root {
+    --preto: #0B090A;
+    --cinza-escuro: #161A1D;
+    --vermelho-escuro: #660708;
+    --vermelho-medio: #A4161A;
+    --vermelho: #BA181B;
+    --vermelho-rosado: #E5383B;
+    --cinza: #B1A7A6;
+    --cinza-medio: #D3D3D3;
+    --cinza-claro: #DCDCDC;
+    --platinum: #E3E3E3;
+    --cinza2: #757575;
+    --cinza3: #efefef;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+  
+body {
+background-color: var(--platinum);
+}
+
+
+.container-hall{
+   display: flex;
+   justify-content: center;
+    
+}
+
+.button-hall{
+    cursor: pointer;
+    padding: .6rem 0;
+    border-radius: .7rem;
+    border: 2px solid var(--vermelho-escuro);
+    background-color: var(--platinum);
+    color: var(--vermelho-escuro);
+    font-size: 1.2rem;
+    margin: 10px;
+    text-align: center;
+    justify-content: center;
+    width: 50vw;
+    height: 5rem;
+    outline: none;
+
+}
+
+.button-hall:hover{
+    background-color: var(--cinza-medio);
+    color: var(--cinza-escuro);
+    border: none;
+}
+
+.item {
+    border-radius:0 0 50%;
+    margin-top: 30px;
+
+}
+
+.input-area{
+    display:inline;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--preto);
+    height: 2rem;
+    width: 50%;
+    color: var(--vermelho-escuro); 
+
+}
+
+.input-area::placeholder{
+    color: var(--vermelho-escuro);
+    text-align: center;
+    font-family: 'Poppins';
+}
+
+.nav{
+    display: flex;
+    color: var(--vermelho);
+    text-align: center;
+  /*  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;*/
+}
+
+.products-img {
+    height: 100px;
+    width: 150px;
+}
+
+.item-list{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    border-radius: .7rem;
+    border: 2px solid var(--vermelho-escuro);
+    margin: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: var(--cinza-medio);
+    color: var(--vermelho-escuro);
+   
+}
+.cartItem {
+    border: none;
+ /*   border: 1px dotted var(--cinza-escuro);*/
+    display: grid;
+    width: 45vw;
+    height: 5rem;
+    margin: 35px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.remove {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

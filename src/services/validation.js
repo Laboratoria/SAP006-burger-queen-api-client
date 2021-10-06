@@ -1,27 +1,23 @@
-import { useState } from "react/cjs/react.development";
-import ValidateInfo from "./errors";
+const validation = (values) => {
 
-const useForm = (validate) => {
-    const [values, setValues] = useState({
-        fname:'',
-        femail:'',
-        fpassword:''
-    })
-    const [errors, setErrors]= useState({})
-    
+    let errors = {};
 
-const handleChange = e => {
-    const {name, value} = e.target;
-    setValues({
-        ...value,
-        [name]:value
-    })
-}
+    if(!values.name){
+        errors.name='É necessário digitar seu nome!'
+    }
+    if(!values.email){
+        errors.email= 'É necessario digitar seu e-mail!'
+    } else if(!/\S+@\S+\.\S+/.test(values.email)){
+        errors.email= 'Digite um e-mail válido!'
+    }
+    if(!values.password){
+        errors.password= 'É necessario digitar sua senha!'
+    } else if (values.password.length < 6){
+        errors.password='Digite uma senha com 6 caracteres ou mais!'
+    }
 
-const handleSubmit = e => {
-    e.preventDefault();
-    setErrors(ValidateInfo(values))
+    return(
+     errors
+    )
 }
-return {handleChange, values, handleSubmit, errors}
-}
-export default useForm;
+export default validation;

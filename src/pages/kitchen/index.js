@@ -1,7 +1,13 @@
+    import './style.css'
+    //import Button from '../../components/button/button';
+    //import { useState, useEffect } from 'react';
     function cozinha(){
         return(
-            <>
-            <p>cozinha</p>
+            < >
+            <div className='container-kitchen'>
+              <button>-</button>
+            </div>
+
             </>
         )
     }

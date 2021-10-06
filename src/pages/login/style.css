@@ -86,11 +86,6 @@ body{
     color: var(--cinza);
 }
 
-.input-email:hover, .input-password:hover {
-    background-color: var(--rosa-seco);
-    color: var(--azul-escuro);
-}
-
 .btn-login{
     font-family: 'Roboto', sans-serif;
     background-color: var(--rosa-seco);
@@ -107,3 +102,5 @@ body{
     font-weight: 600;
     letter-spacing: 2px;
 }
+
+

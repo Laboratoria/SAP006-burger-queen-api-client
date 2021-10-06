@@ -1,61 +1,8 @@
-/*:root {
-    --rosa-seco: #a28788;
-    --azul-escuro: #050522;
-    --rosa-claro: #c2857a;
-    --lilas: #312f5b;
-    --cinza: #676767;
-    
-} 
-* {
+*{
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-.salao {
-    width: 100%;
-    height: 100%;
-}
-
-
-body ,input, button {
-    font: 400 'Poppins', sans-serif;
-}
-
-/*button {
-    height: 3rem;
-    width: 400px;
-    border: var(--rosa-seco) solid 1pt;
-    background-color: var(--azul-escuro);
-    border-radius: 20%;
-    color: var(--rosa-seco);
-    padding: 10px 20px;
-    flex-direction: column;
-    cursor: pointer;
-    margin: 10%;
-    margin-top: 20px;
-    margin-block-end: 6px;
-    font-size: 100%;
-}
-
-button:hover{
-    background-color: var(--rosa-seco);
-    color: var(--azul-escuro);
-}
-/*button {
-    border-radius: 30%;
-    height: 50px;
-    width: 300px;
-    margin-top: 70px;
-    cursor: pointer;
-}
-
-
-
-.logo img {
-    height: 350px;
-    left: 350px;
-    text-align: center;
-}*/
 
 :root {
     --preto: #0B090A;
@@ -71,16 +18,113 @@ button:hover{
     --cinza2: #757575;
     --cinza3: #efefef;
 }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+html, body, #root, .App{
+    position: relative;
+    min-height: 30vh;
+    max-width: 100vh;
+    width: 100vh;
+
+}
+.icon {
+    position: absolute;
+    z-index: 4;
+    left: 1%;
+    width: fit-content;
+    height: 44px;
+    cursor: pointer;
 }
 
-html, body {
+.hamburguer {
+    top: 50%;
+    left: 10%;
+    width: 30px;
+    height: 3px;
+    background:var(--preto) ;
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+.hamburguer:before {
+    top: -12px;
+    content: '';
+    position: absolute;
+    width: 37px;
+    background: var(--vermelho);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+.hamburguer:after {
+    top: 12px;
+    content: '';
+    position: absolute;
+    width: 37px;
+    background: var(--vermelho);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    left: 1%;
+    padding: 45px 0 0;
+    flex-wrap: nowrap;
+    color: var(--cinza2);
+    font-size: 1.2 rem;
+    font-weight: 600;
+}
+
+.list .listItems {
+    padding: 0;
+    list-style: none;
+}
+
+.list .listItems li {
+    margin: 2px 8px;
+    cursor: pointer;
+}
+
+.list .listItems li:hover {
+    font-weight: 800;
+}
+
+.icon .iconActive .hamburguer {
+    background: transparent;
+    box-shadow: 0 2px 5 transparent;
+}
+
+.icon .iconActive .hamburguer:after {
+    top: o;
+    background: var(--preto);
+    transform: rotate(225deg);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+.icon .iconActive .hamburguer:before {
+    top: o;
+    background: var(--preto);
+    transform: rotate(135deg);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.menu .menuOpen {
+    width: 150px;
+    height: 100vh;
+    background: var(--cinza2);
+}
+
+
+
+
+
+
+
+/*html, body {
     height: 100vh;
     overflow: hidden;
-}
+}*/
 .container {
     position: relative;
     min-height: 100vh;
@@ -180,3 +224,8 @@ html, body {
     margin: .2rem;
 }
 
+@media (max-width: 946px){
+    .align-items-center {
+        display: grid;
+    }
+}
