@@ -1,0 +1,10 @@
+.add-button {
+    backgrpund: var(--bt--button--color);
+    width: 70px;
+    height: 20px;
+    border: none;
+    border-radius: 10px;
+    color:#ffff;
+    margin-left: 50px;
+    cursor: pointer;
+}
