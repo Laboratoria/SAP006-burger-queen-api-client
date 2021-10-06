@@ -15,8 +15,6 @@ function Menus () {
     const history = useHistory();
     const token = localStorage.getItem('userToken');
     const [itemsList, setItemsList] = useState([]);
-    const [table, setTable] = useState('1');
-    const [client, setClient] = useState('');
    
     useEffect(() => {
       fetch('https://lab-api-bq.herokuapp.com/products', {
@@ -102,31 +100,6 @@ function Menus () {
                 className="buttons buttons-menu" 
               /> 
             </div>
-
-            <div className="container-info">
-              <label className="info-card">Mesa:
-                <select className="select-table" onChange={(e) => setTable(e.target.value)} value={table}>
-                  <option value="1">01</option>
-                  <option value="2">02</option>
-                  <option value="3">03</option>
-                  <option value="4">04</option>
-                  <option value="5">05</option>
-                  <option value="6">06</option>
-                  <option value="7">07</option>
-                </select>  
-              </label>
-              <label className="info-card">Cliente: 
-                <input 
-                  className="input-client" 
-                  type="text" 
-                  name="nameClient" 
-                  onChange={(e) => 
-                    setClient(e.target.value)} 
-                    value={client}>
-                </input>
-              </label>
-            </div>
-
             <div className="container-btn-cardapio">
               <Button 
                 text="Café da Manhã"
@@ -153,8 +126,7 @@ function Menus () {
             <CartArea 
               arrItem={itemsList}
               removeButton={removeButton}
-              addButton={addButton}
-            >
+              addButton={addButton}>
             </CartArea>
             
             <div className="container-main-products">
@@ -171,7 +143,7 @@ function Menus () {
                             )
                           );
                         } else {
-                          setItemsList([...itemsList, { name: item.name, price: item.price, id: item.id, qtd: 1 }])
+                          setItemsList([...itemsList, { name: item.name, price: item.price, id: item.id, qtd: 1, flavor: item.flavor, complement: item.complement }])
                         }
                       }}
                   />

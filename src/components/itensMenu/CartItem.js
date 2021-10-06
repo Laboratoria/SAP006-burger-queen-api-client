@@ -8,7 +8,7 @@ export default function CartItem(props) {
     return (
       <article key={props.id} className="container-products-cart">
         <div className="container-product">
-          <p>{props.name}</p>
+          <p>{props.name} {props.flavor} {props.complement ? `+ ${props.complement}` : ''}</p>
           <p>R${(props.price) * props.qtd},00</p>
             <Button
               type='text'

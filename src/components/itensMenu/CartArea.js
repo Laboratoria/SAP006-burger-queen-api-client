@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import CartItem from './CartItem';
 import Button from '../button/Button';
-import { NewOrder } from '../../services/Products';
+import {NewOrder} from '../../services/Products';
 import './Style.css';
 
 export default function CartArea({ arrItem, removeButton, addButton }) {
@@ -15,16 +15,26 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
   const history = useHistory();
   const totalPrice = arrItem.reduce((total, item) => total + (item.price * item.qtd), 0);
   
-  const handleChange = (event) => {
+  const handleChangeClient = (event) => {
     let {name, value} = event.target;
     setValues({
         ...values,
         [name]: value, 
     })
     console.log(value);
-}
+  }
 
-  const handleSubmit = () => { 
+  const handleChangeTable = (event) => {
+    let {table, value} = event.target;
+    setValues({
+        ...values,
+        [table]: value, 
+    })
+    console.log(value);
+  }
+
+  const handleSubmit = (e) => { 
+    e.preventDefault()
     const object = {
         client: values.client,
         table: values.table,
@@ -39,22 +49,36 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
         })
     }
     NewOrder(object)
-    history.push('/orders-status');
+    history.push('/pedidos');
 }
 
   return (
     <section className="container-cart">
       <div className="cart">
         <p className="info-card text-cart">🛒 Carrinho </p>
-        
-        <label className="info-card">Cliente: 
-                <input 
-                  className="input-client" 
-                  type="text" 
-                  name="nameClient" 
-                  onChange={handleChange}>
-                </input>
-              </label>
+          <label className="info-card">Mesa:
+            <select 
+              className="select-table" 
+              onChange={handleChangeTable}
+            >
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+            </select>  
+          </label>
+          <label className="info-card">Cliente: 
+            <input 
+              className="input-client" 
+              type="text" 
+              name="nameClient" 
+              onChange={handleChangeClient}
+              >
+            </input>
+          </label>
 
           {arrItem.map((item) => {
             return (
@@ -64,6 +88,8 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
                 price={item.price}
                 image={item.image}
                 id={item.id}
+                flavor={item.flavor}
+                complement={item.complement}
                 remove={removeButton}
                 add={addButton}
                 qtd={item.qtd}

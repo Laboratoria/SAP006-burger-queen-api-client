@@ -14,6 +14,7 @@ export const NewOrder = (request) => {
     return orders ('/orders', 'POST', {
         client_name: request.client,
         table: request.table,
+        products: request.products,
     }) 
 };
 
