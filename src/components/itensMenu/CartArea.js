@@ -6,38 +6,29 @@ import {NewOrder} from '../../services/Products';
 import './Style.css';
 
 export default function CartArea({ arrItem, removeButton, addButton }) {
+
   const [itemsList, setItemsList] = useState([]);
-  const [values, setValues] = useState({
-    'table': '',
-    'client': '', 
-  })
+  const [clientName, setClientName] = useState('');
+  const [tableNumber, setTableNumber] = useState('');
 
   const history = useHistory();
   const totalPrice = arrItem.reduce((total, item) => total + (item.price * item.qtd), 0);
   
   const handleChangeClient = (event) => {
-    let {name, value} = event.target;
-    setValues({
-        ...values,
-        [name]: value, 
-    })
-    console.log(value);
+    let {value} = event.target;
+    setClientName(value)
   }
 
   const handleChangeTable = (event) => {
-    let {table, value} = event.target;
-    setValues({
-        ...values,
-        [table]: value, 
-    })
-    console.log(value);
+    let {value} = event.target;
+    setTableNumber(value)
   }
 
   const handleSubmit = (e) => { 
     e.preventDefault()
     const object = {
-        client: values.client,
-        table: values.table,
+        client: clientName,
+        table: tableNumber,
         products: itemsList.map(item => {
             const productsArray = {
                 id: item.id,
@@ -45,11 +36,11 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
                 complement: item.complement,
                 qtd: item.qtd
             }
-            return productsArray
+            return setItemsList(productsArray)
         })
     }
     NewOrder(object)
-    history.push('/pedidos');
+    history.push('/menus');
 }
 
   return (
@@ -70,6 +61,7 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
                 <option value="7">07</option>
             </select>  
           </label>
+
           <label className="info-card">Cliente: 
             <input 
               className="input-client" 

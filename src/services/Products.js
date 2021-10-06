@@ -1,21 +1,24 @@
 const host = 'https://lab-api-bq.herokuapp.com';
-const orders = (endpoint, method, body) => {
+const token = localStorage.getItem('userToken');
+
+const orders = (endpoint, method, body, token) => {
     return fetch(`${host}${endpoint}`, {
         method,
         headers: {
             'Content-Type': 'application/json',
-            'Authentication': 'Token'
+            'Authentication': token,
         },
         body: JSON.stringify (body),
     }) 
 };
 
 export const NewOrder = (request) => {
+    console.log(request);
     return orders ('/orders', 'POST', {
         client_name: request.client,
         table: request.table,
         products: request.products,
-    }) 
+    }, token ) 
 };
 
 

@@ -37,7 +37,6 @@ export default function Login() {
             const token = returnJson.token
             const name = returnJson.name
             const roleUser = returnJson.role
-            console.log(response)
 
             if (token) {
                 localStorage.setItem('userName', name)
