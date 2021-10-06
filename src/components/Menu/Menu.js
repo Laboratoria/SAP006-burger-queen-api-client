@@ -5,6 +5,7 @@ import Cards from '../Cards/Cards';
 
 import './Menu.css'
 
+
 function Menu({	products, addProducts }) {
 
 	const [showMenu, setShowMenu] = useState(true);

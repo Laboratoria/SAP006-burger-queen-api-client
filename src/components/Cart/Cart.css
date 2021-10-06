@@ -31,23 +31,63 @@ table {
   color: black;
 }
 
-table td {
-  overflow: hidden;
-  white-space: nowrap;
-  max-width: 50px;
-  padding: 10px;
-  font-size: 1rem;
+ .table-body {
+  display: block;
+  
+}
+.table-body::-webkit-scrollbar {
+  width: 16px;
 }
 
+.table-body::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.table-body::-webkit-scrollbar-thumb {
+  background-color: #d4aa70;
+  border-radius: 100px;
+ 
+}
+.table-head tr {
+  display: flex;
+  font-size: 1.2rem;
+
+}
+.table-head th {
+  width: 50%;
+
+} 
+table td {
+  overflow: hidden;
+  width: 15%;
+  padding: 5px;
+  font-size: 1rem;  
+  word-break: break-word;
+}
+
+.comp-item {
+  font-size: 12px;
+  color: rgb(49, 49, 49);
+}
 .qtd-item,
-.price-item {
+.price-item,
+.btn-remove {
   text-align: center;
 }
 
-.order-list {
+.fa-trash-alt {
+  color:#D63820
+}
+
+.table-body {
   color: black;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: bold; 
+  max-height: 45vh;
+  overflow-y: scroll;
+  overflow-x: hidden; 
+  margin-top: 20px;
 }
 
 .total-price {
@@ -63,12 +103,12 @@ table td {
   display: flex;
   flex-direction: column;
   position: absolute;
-  bottom: 0;
-  margin: 25%;
+  bottom: 10%;
+  margin-left: 15%;
 }
 
 .btn-send-order {
-  width: 20vh;
+  width: 20vw;
   height: 5vh;
   color: white;
   font-weight: bold;
