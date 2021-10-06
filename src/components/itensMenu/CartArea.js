@@ -7,7 +7,7 @@ import './Style.css';
 
 export default function CartArea({ arrItem, removeButton, addButton }) {
 
-  const [itemsList, setItemsList] = useState([]);
+  // const [itemsList, setItemsList] = useState([]);
   const [clientName, setClientName] = useState('');
   const [tableNumber, setTableNumber] = useState('');
 
@@ -15,13 +15,16 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
   const totalPrice = arrItem.reduce((total, item) => total + (item.price * item.qtd), 0);
   
   const handleChangeClient = (event) => {
+    console.log(event.target);
     let {value} = event.target;
     setClientName(value)
+    console.log(clientName);
   }
 
   const handleChangeTable = (event) => {
     let {value} = event.target;
     setTableNumber(value)
+    console.log(tableNumber);
   }
 
   const handleSubmit = (e) => { 
@@ -29,18 +32,20 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
     const object = {
         client: clientName,
         table: tableNumber,
-        products: itemsList.map(item => {
+        products: arrItem.map(item => {
             const productsArray = {
                 id: item.id,
+                name: item.name,
                 flavor: item.flavor, 
                 complement: item.complement,
                 qtd: item.qtd
             }
-            return setItemsList(productsArray)
+            return productsArray
         })
     }
     NewOrder(object)
     history.push('/menus');
+    alert('Pedido enviado para a cozinha')
 }
 
   return (
