@@ -44,8 +44,8 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
         })
     }
     NewOrder(object)
-    history.push('/menus');
     alert('Pedido enviado para a cozinha')
+    history.push('/menus');
 }
 
   return (
