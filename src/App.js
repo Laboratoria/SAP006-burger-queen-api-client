@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/Cadastro">
-          <Register />
+         <Register />
         </Route>
         <Route path exact="/">
           <Login />
@@ -20,6 +20,7 @@ function App() {
       </Switch>
     </Router>
   )
+
 }
 
 export default App;
