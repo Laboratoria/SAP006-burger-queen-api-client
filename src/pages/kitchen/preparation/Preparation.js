@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
+import Cards from '../../../components/itensMenu/Cards';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 
@@ -37,9 +37,7 @@ function Preparation () {
                 /> 
               </div>
 
-
-              
-            <p>EM CONSTRUÇÃO - PREPARAÇÃO COZINHA</p>
+            <Cards />
         </div>  
     )
 };

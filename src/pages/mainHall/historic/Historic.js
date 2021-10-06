@@ -33,19 +33,19 @@ export default function Historic () {
 
           <div className="container-btn-menu">
             <Button 
-              text="Menus" 
+              text="🍴 Menus" 
               type="submit"
               onClick={btnMenus} 
               className="buttons buttons-menu"
             /> 
             <Button 
-              text="Pedidos" 
+              text="🔔 Pedidos" 
               type="submit"
               onClick={btnRequests} 
               className="buttons buttons-menu"
             /> 
             <Button 
-              text="Histórico" 
+              text="📋 Histórico" 
               type="submit"
               onClick={btnHistoric} 
               className="buttons buttons-menu"
