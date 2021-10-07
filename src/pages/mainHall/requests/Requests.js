@@ -4,7 +4,7 @@ import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
 import Cards from '../../../components/itensMenu/Cards';
-// import {TotalOrders} from '../../services/Products';
+import { TotalOrders } from '../../../services/Products';
 
 
 import './Requests.css';
