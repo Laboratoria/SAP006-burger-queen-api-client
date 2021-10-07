@@ -2,6 +2,8 @@ import { React, useState, useEffect } from 'react'
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Products from '../components/Products';
+import CartProducts from '../components/CartProducts';
+
 // import Order from '../components/Order';
 
 import '../styles/products.css';
@@ -47,7 +49,7 @@ function Hall() {
     const selectedProducts = products.filter((produtos) => produtos.type === selectedMenu)
 
     //adicionar o produto no resumo do carrinho //find encontra o item objeto
-    const carPedidos = (e, item) => {
+    const handleAdd = (e, item) => {
         e.preventDefault();
         const element = order.find(resposta => resposta.id === item.id)
         if (element) {
@@ -60,6 +62,22 @@ function Hall() {
             item.qtd = 1
             //olhar tudo que tem no pedido e adiciona o objeto clicado da api
             setOrder([...order, item])
+        }
+    }
+ //função de remover itens do carrinho
+    const handleRemove = (e, item, index) => {
+        e.preventDefault();
+        const element = order.find(response => response.id === item.id);
+
+        if (element.qtd !== 0) {
+            element.qtd -= 1;
+        }
+        if (element.qtd === 0) {
+            // alert("banana")
+            const listOrder = order;
+            // remove 1 item do array
+            listOrder.splice(index, 1);
+            setOrder([...listOrder])
         }
     }
 
@@ -87,10 +105,8 @@ function Hall() {
                 >All Day
                 </Button>
             </div>
-            
 
                 <section className="mesas-cliente">
-
                     <select className="numero-mesas" name="Mesa" onChange={handleSubmit}>
                         <option valeu="mesa01">Mesa</option>
                         <option valeu="mesa01">01</option>
@@ -113,7 +129,6 @@ function Hall() {
                 <div className="flex-container">
                     {selectedProducts && selectedProducts.map((item, index) => (
                         <div key={index}>
-
                             <Products
                                 divClassName="flex-item"
                                 productsName={item.name}
@@ -123,37 +138,29 @@ function Hall() {
                                 productsNameKey={item.id}
                                 productsFlavor={item.flavor}
                                 productsComplement={item.complement}
-                                divOnClick={(e) => carPedidos(e, item)}
+                                addOnClick={(e) => handleAdd(e, item)}
                             />
                         </div>
                     ))}
+                <section className="container-order">
+                    {order.map((item, index) =>
+                        <div key={index}>
+                            <CartProducts
+                                divClassName="flex-item-order"
+                                productsName={item.name}
+                                productsPrice={item.price}
+                                productsFlavor={item.flavor}
+                                products={item.qtd}
+                                qtd={item.qtd}
+                                productsComplement={item.complement}
+                                removeOnClick={(e) => handleRemove(e, item, index)}
+                            />
                 
-           
-            <section className="container-order">
-                {order.map((item, index) =>
-                    <div key={index}>
-                        <Products
-                            divClassName="flex-item"
-                            carrinhoName={item.name}
-                            productsPrice={item.price}
-                            productsFlavor={item.flavor}
-                            products={item.qtd}
-                            qtd={item.qtd}
-                            productsComplement={item.complement}
-                        />
-                        {/* 
-                                <Button onClick={divOnClick} className="lixo"
-                                    style={{ 'borderRadius': '50%', backgroundColor: '#EAAF36', minWidth: '1rem', padding: '0.3rem 1rem' }}
-                                >-</Button> */}
-                    </div>
-                    
-                )} 
-                
-            </section>
+                        </div>
+                    )} 
+                </section>
             </div>
-        
         </section>
-    
     );
 }
 

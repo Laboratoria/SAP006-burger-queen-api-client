@@ -1,10 +1,10 @@
 import React from 'react';
 import Button from './Button';
 
-import '../styles/products.css';
 
 
-function Products({
+
+function CartProducts({
     qtd,
     addOnClick,
     removeOnClick,
@@ -24,9 +24,6 @@ function Products({
     return (
         <>
             <div className={divClassName} key={divKey} name={divName} id={divId} price={divPrice} qtd={qtd}>
-                <div>
-                    <img src={ImgSrc} className="img-food" alt="img-food"></img>
-                </div>
                 <h1 className="divName" key={productsNameKey}>{productsName}</h1>
                 <div className="divButton">
                     <h1 className="divPrice" key={productsPriceKey}> {divId} R${productsPrice},00</h1>
@@ -35,12 +32,18 @@ function Products({
                     <h1 className="">{qtd}</h1>
                 </div>
 
-                <Button onClick={addOnClick} className="add-button"
+                {/* <Button onClick={addOnClick} className="add-button"
                     style={{ 'borderRadius': '50%', backgroundColor: '#EAAF36', minWidth: '1rem', padding: '0.3rem 1rem' }}
-                > + </Button>
+                > + </Button> */}
+                
+                <Button onClick={removeOnClick} className="remove-button"
+                    style={{ 'borderRadius': '50%', backgroundColor: '#EAAF36', minWidth: '1rem', padding: '0.3rem 1rem' }}
+                > - </Button>
+
+                {/* incluir carrinho */}
 
             </div>
         </>
     );
 }
-export default Products;
+export default  CartProducts;
