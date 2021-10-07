@@ -1,5 +1,5 @@
 const host = 'https://lab-api-bq.herokuapp.com';
-const request = (endpoint, method, body) => {
+const auth = (endpoint, method, body) => {
     return fetch(`${host}${endpoint}`, {
         method,
         headers: {
@@ -11,14 +11,14 @@ const request = (endpoint, method, body) => {
 };
 
 export const LoginWithEmail = (users) => {
-    return request ('/auth', 'POST', {
+    return auth ('/auth', 'POST', {
         email: users.email,
         password: users.password,
     }) 
 };
 
 export const RegisterUser = (users) => {
-    return request ('/users', 'POST', {
+    return auth ('/users', 'POST', {
         name: users.name,
         email: users.email,
         password: users.password,

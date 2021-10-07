@@ -20,7 +20,6 @@
     float: right;
     flex-direction: column;
     width: 35%;
-    height: 600px;
     box-shadow: 0px 0px 20px 5px var(--shadow-color);
     border-radius: 20px;
 }
@@ -91,7 +90,7 @@
 }
 
 .products{
-    background-color: #F8EF5B;
+    background-color: #f8f05b79;
     width: 38%;
     border-radius: 20px;
     margin: 2%;
@@ -101,7 +100,7 @@
     border: solid 1px var(--red-color);
 }
 
-.name-product{
+.info-product{
     font-size: 23px;
     margin: 3%;
 }

@@ -7,51 +7,46 @@ import './Style.css';
 
 export default function CartArea({ arrItem, removeButton, addButton }) {
 
-  const [itemsList, setItemsList] = useState([]);
-  const [values, setValues] = useState({
-    'table': '',
-    'client': '', 
-  })
+  // const [itemsList, setItemsList] = useState([]);
+  const [clientName, setClientName] = useState('');
+  const [tableNumber, setTableNumber] = useState('');
 
   const history = useHistory();
   const totalPrice = arrItem.reduce((total, item) => total + (item.price * item.qtd), 0);
   
   const handleChangeClient = (event) => {
-    let {name, value} = event.target;
-    setValues({
-        ...values,
-        [name]: value, 
-    })
-    console.log(value);
+    console.log(event.target);
+    const {value} = event.target;
+    setClientName(value)
+    console.log(clientName);
   }
 
   const handleChangeTable = (event) => {
-    let {table, value} = event.target;
-    setValues({
-        ...values,
-        [table]: value, 
-    })
-    console.log(value);
+    const {value} = event.target;
+    setTableNumber(value)
+    console.log(tableNumber);
   }
 
   const handleSubmit = (e) => { 
     e.preventDefault()
     const object = {
-        client: values.client,
-        table: values.table,
-        products: itemsList.map(item => {
+        client: clientName,
+        table: tableNumber,
+        products: arrItem.map(item => {
             const productsArray = {
                 id: item.id,
+                name: item.name,
                 flavor: item.flavor, 
                 complement: item.complement,
                 qtd: item.qtd
             }
-            setItemsList(productsArray)
+            return productsArray
         })
     }
     NewOrder(object)
-    history.push('/pedidos');
-}
+    alert('Pedido enviado para a cozinha')
+    history.push('/menus');
+  }
 
   return (
     <section className="container-cart">
@@ -71,6 +66,7 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
                 <option value="7">07</option>
             </select>  
           </label>
+
           <label className="info-card">Cliente: 
             <input 
               className="input-client" 
