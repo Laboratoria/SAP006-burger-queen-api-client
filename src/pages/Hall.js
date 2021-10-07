@@ -2,10 +2,12 @@ import { React, useState, useEffect } from 'react'
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Products from '../components/Products';
+// import Order from '../components/Order';
 
 import '../styles/products.css';
 import '../global.css';
 import '../styles/hall.css'
+// import './styles/order.css';
 
 function Hall() {
 
@@ -85,7 +87,7 @@ function Hall() {
                 >All Day
                 </Button>
             </div>
-            <section>
+            
 
                 <section className="mesas-cliente">
 
@@ -105,7 +107,8 @@ function Hall() {
                         onChange={onChangeClient}
 
                     />
-                </section>
+            </section>
+               
 
                 <div className="flex-container">
                     {selectedProducts && selectedProducts.map((item, index) => (
@@ -124,14 +127,14 @@ function Hall() {
                             />
                         </div>
                     ))}
-                </div>
-            </section>
+                
+           
             <section className="container-order">
                 {order.map((item, index) =>
                     <div key={index}>
                         <Products
                             divClassName="flex-item"
-                            productsName={item.name}
+                            carrinhoName={item.name}
                             productsPrice={item.price}
                             productsFlavor={item.flavor}
                             products={item.qtd}
@@ -143,9 +146,14 @@ function Hall() {
                                     style={{ 'borderRadius': '50%', backgroundColor: '#EAAF36', minWidth: '1rem', padding: '0.3rem 1rem' }}
                                 >-</Button> */}
                     </div>
-                )}
+                    
+                )} 
+                
             </section>
+            </div>
+        
         </section>
+    
     );
 }
 
