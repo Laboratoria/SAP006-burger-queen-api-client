@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
+import Orders from '../../../components/itensMenu/Orders';
+import { TotalOrders } from '../../../services/Products';
 
 import './Requests.css';
 
 export default function Requests () {
     const history = useHistory();
+    const [allOrders, setAllOrders] = useState([]);
+    const token = localStorage.getItem('userToken');
 
       const btnMenus = (e) => {
         e.preventDefault()
@@ -18,6 +22,15 @@ export default function Requests () {
         e.preventDefault()
         history.push('/pedidos')
       }
+
+      useEffect(() => {
+            TotalOrders()
+            .then(response => response.json())
+            .then((json) => { 
+              console.log(json)                               
+              setAllOrders(json)
+            });
+      }, [token]);
 
     return(
         <div>
@@ -40,7 +53,13 @@ export default function Requests () {
                     className="buttons buttons-menu"
                 /> 
             </div>
-            
+            {allOrders.map((item) => (
+              <Orders 
+                {...item}
+                  key={item.id}
+              />
+
+            ))}
           <Footer 
             className="footer"
           />

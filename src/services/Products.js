@@ -13,7 +13,6 @@ const orders = (endpoint, method, body, token) => {
 };
 
 export const NewOrder = (request) => {
-    console.log(request);
     return orders ('/orders', 'POST', {
         client: request.client,
         table: request.table,
@@ -21,4 +20,13 @@ export const NewOrder = (request) => {
     }, token ) 
 };
 
+export const TotalOrders = () => {
+    return fetch(`${host}/orders`, {
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token,
+        },
+    }) 
+};
 

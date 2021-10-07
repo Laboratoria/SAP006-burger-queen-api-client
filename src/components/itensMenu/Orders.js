@@ -4,23 +4,29 @@ import Button from '../button/Button';
 import './Style.css';
 
 
-export default function Cards ( {id, client, table, status, name, qtd} ) { 
+export default function Orders ( {id, client, table, status, name, qtd, Products} ) { 
 
     return(
-        <div>
-            <div>
-                <p>Nº do pedido:{id}</p>
-                <p>Atendente: {localStorage.getItem("userName")} </p>
-                <p>Cliente:{client}</p>
-                <p>Mesa:{table}</p>
+        <div className="container-orders">
+            <div className="container-infos-orders">
+                <p className="number-order">Nº do pedido:{id}</p>
+                <p className="clerk-order">Atendente: {localStorage.getItem("userName")} </p>
+                <p className="client-order">Cliente:{client}</p>
+                <p className="table-order">Mesa:{table}</p>
             </div>
             <div>
-                <p>Status:{status}</p>
+                <p className="status-order">Status:{status}</p>
             </div>
             <div>
-                <p>Produto:{name} - Qtd: {qtd}</p>            
+                <p className="itens-order">Produto:{name}</p> 
+                {/* fazer um map  
+                Products.map(() => ())*/}
+                <p className="qtd-order">Qtd: {qtd}</p>                    
             </div>
-            <Button/>
+            <Button
+                text='Entregar Pedido'
+                className="btn-delivery"
+            />
         </div>
     );
 };
