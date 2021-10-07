@@ -50,14 +50,15 @@ export default function Login() {
                     history.push('/menus')
                 } else {
                     alert('Login com Cozinha')
-                    history.push('/preparacao')
+                    history.push('/cozinha')
                 }                  
             } 
             if(response.status !== 200){
                 throw new Error(response.status)  
             }
         } catch (json) {
-            history.push('/notfound') 
+            history.push('/') 
+            alert('Insira um e-mail e senha válidos')
             // colocar o modal aqui depois   
         } 
     }
