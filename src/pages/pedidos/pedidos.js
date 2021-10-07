@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-//import Input from "../../componentes/input";
+import Input from "../../componentes/input";
 import Button from "../../componentes/button";
 import Produtos from "../../componentes/produtos.js";
 import Carrinho from "../../componentes/carrinho.js";
@@ -7,11 +7,11 @@ import Carrinho from "../../componentes/carrinho.js";
 function Hall() {
   const token = localStorage.getItem("token");
 
-  /*const [client, setClient] = useState("");
+  const [client, setClient] = useState("");
   const onChangeClient = (e) => {
     const name = e.target.value;
     setClient(name);
-  };*/
+  };
 
   const [products, setProducts] = useState([]);
   const [selectedMenu, setSelectedMenu] = useState("breakfast");
@@ -43,9 +43,9 @@ function Hall() {
     }
   };
 
-  /*const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
         e.preventDefault();
-    }*/
+    }
 
   const selectedProducts = products.filter(
     (item) => item.type === selectedMenu
@@ -55,7 +55,7 @@ function Hall() {
     <section className="container">
       <h1>Salão</h1>
 
-     {/* <select name="Mesa">
+     <select name="Mesa">
         <option valeu="mesa01">Mesa 01</option>
         <option valeu="mesa02">Mesa 02</option>
         <option valeu="mesa03">Mesa 03</option>
@@ -69,7 +69,7 @@ function Hall() {
         name="client"
         value={client}
         onChange={onChangeClient}
-  />*/}
+  />
 
       <section className="buttonMenu">
         <Button
@@ -102,7 +102,7 @@ function Hall() {
                   ImgSrc={item.image}
                   productsPrice={item.price}
                   productsNameKey={item.id}
-                  onClick={(e) => adicionar(e, item)}
+                  onClick={(evento) => adicionar(evento, item)}
                 />
               </div>
             </div>
@@ -111,7 +111,6 @@ function Hall() {
         {pedidos.map((item, index) => 
           <div key={index}>
             <Carrinho 
-              divClassName = "feliz"
               produtosName={item.name}
               produtosPrice={item.price}
               qtd={item.qtd}
