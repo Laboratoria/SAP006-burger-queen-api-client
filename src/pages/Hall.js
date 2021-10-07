@@ -91,26 +91,29 @@ function Hall() {
             <section className="main-hall">
 
                 <div className="menu-container">
-                    {selectedProducts && selectedProducts.map((item) => (
+                    {selectedProducts && selectedProducts.map((item, index) => (
                     // {menuCafe && menuCafe.map((products, index) => (
-                        <Products
-                            divClassName="box-item"
-                            // divKey={Math.random()}
-                            productsName={item.name}
-                            divId={item.id}
-                            ImgSrc={item.image}
-                            productsPrice={item.price}
-                            productsNameKey={item.id}
-                        />
-                    ))}
-                </div>
-                <div className="request-container"> 
-                       <h1> COMANDA </h1>
-                </div>
+                        <div key={index}>
+                            <Products
+                                divClassName="box-item"
+                                // divKey={Math.random()}
+                                productsName={item.name}
+                                divId={item.id}
+                                ImgSrc={item.image}
+                                productsPrice={item.price}
+                                productsNameKey={item.id}
+                            />
+                        </div>  
+                        ))}
+                        
+                    </div>
+                
 
             </section>
 
-
+            <div className="request-container"> 
+                       <h1> COMANDA </h1>
+                </div>                    
 
         </section>
     );
