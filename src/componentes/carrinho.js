@@ -3,7 +3,7 @@ import Button from './button.js';
 
 
 function Carrinho({
-    divOnClick,
+    onClick,
     divClassName,
     divKey,
     divName,
@@ -28,7 +28,7 @@ function Carrinho({
                     <h1 className="divComplement"> {produtosComplement}</h1>
                     <h1>Quantidade: {qtd}</h1>
                 </div>
-                <Button buttonOnClick={divOnClick} buttonClass="add-button"> remover </Button>
+                <Button onClick={onClick} buttonClass="add-button"> remover </Button>
             </div>
         </>
     );

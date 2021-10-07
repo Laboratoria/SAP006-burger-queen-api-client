@@ -43,10 +43,22 @@ function Hall() {
     }
   };
 
-  const handleSubmit = (e) => {
-        e.preventDefault();
+  
+    const remover = (e, item, index) => {
+      e.preventDefault();
+      const elemento = pedidos.find(res => res.id === item.id);
+  
+      if (elemento.qtd !== 0) {
+        elemento.qtd -= 1;
+      }
+      if (elemento.qtd === 0) {
+        // alert("banana")
+        const listOrder = pedidos;
+        // remove 1 item do array
+        listOrder.splice(index, 1);
+        setPedidos([...listOrder])
+      }
     }
-
   const selectedProducts = products.filter(
     (item) => item.type === selectedMenu
   );
@@ -115,9 +127,10 @@ function Hall() {
               produtosPrice={item.price}
               qtd={item.qtd}
               produtosFlavor={item.flavor}
-             // onClick={(evento) => adicionar(evento, item)}
+              onClick={(evento) => remover(evento, item, index)}
             />
           </div>
+      
         )}
       </section>
     </section>
