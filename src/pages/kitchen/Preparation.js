@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Cards from '../../../components/itensMenu/Cards';
-import NavBar from '../../../components/navbar/Navbar'
-import Button from '../../../components/button/Button';
+import Cards from '../../components/itensMenu/Cards';
+import NavBar from '../../components/navbar/Navbar'
+import Button from '../../components/button/Button';
 
 import './Preparation.css';
 
