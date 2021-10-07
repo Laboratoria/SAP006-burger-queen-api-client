@@ -57,7 +57,8 @@ export default function Login() {
                 throw new Error(response.status)  
             }
         } catch (json) {
-            history.push('/notfound') 
+            history.push('/') 
+            alert('Insira um e-mail e senha válidos')
             // colocar o modal aqui depois   
         } 
     }
