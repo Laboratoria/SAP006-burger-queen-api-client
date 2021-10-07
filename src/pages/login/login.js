@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import { useHistory } from 'react-router';
 import { userLogin } from '../../services/api.js';
 import { Input } from '../../components/Input/Input.js';
@@ -8,6 +7,7 @@ import { Link } from 'react-router-dom';
 import validateLogin from './validateLogin';
 import logoMonsterGrande from '../../img/logoMonsterGrande.png';
 import './login.css';
+
 
 export function Login() {
 
@@ -41,7 +41,7 @@ export function Login() {
                 if (json.role === "salão") {
                     history.push('/Hall');
                 } else if
-                    (json.role === "cozinha") {
+                    (json.role === "cozinha") { 
                     history.push('/Kitchen');
                 }
             })
@@ -79,8 +79,7 @@ export function Login() {
                             inputValue={formValues.password} />
                         {errors.password && <p>{errors.password}</p>}
                         <Button
-                            type="submit"
-                            value="Entrar">
+                            type="submit"> Entrar
                         </Button>
                         <div className="footer-login">
                             Não tem uma conta?

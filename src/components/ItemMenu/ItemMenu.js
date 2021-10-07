@@ -1,32 +1,32 @@
 import React from "react";
 import Button from "../Button/Button.js";
-import "./CartItem.css";
+import "./ItemMenu.css";
 
-function CartItem({
+function ItemMenu({
+  imageProduct,
   nameProduct,
   flavorProduct,
   idProduct,
   complementProduct,
   priceProduct,
   divOnClick,
-  qtdProduct, 
 }) {
   return (
-    <div key={idProduct} className="cart-item">
+    <div key={idProduct} className="menu-item">
+      <img className="img-item" src={imageProduct} alt="itens menu" />
       <h2 className="name-product">{nameProduct}</h2>
       <h3 className="flavor-product">{flavorProduct}</h3>
       <h1 className="complement-product">{complementProduct}</h1>
       <h1 className="price-product">{priceProduct}</h1>
-      <h1 className="qtd-product">{qtdProduct}</h1>
       <Button
         onClick={divOnClick}
-        className="btn-remove"
+        className="btn-add"
         style={{ backgroundColor: "red" }}
       >
-        Remover
+        Adicionar
       </Button>
     </div>
   );
 }
 
-export default CartItem;
+export default ItemMenu;
