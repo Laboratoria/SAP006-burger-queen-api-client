@@ -7,6 +7,7 @@ import '../components/Products/products.css';
 import '../global.css';
 import '../styles/hall.css'
 import CartItem from '../components/CartItem/CartItem';
+// import './styles/order.css';
 
 function Hall() {
 
@@ -62,6 +63,24 @@ function Hall() {
         }
     }
 
+    const handleRemove = (e, item, index) => {
+        e.preventDefault();
+        const element = order.find(response => response.id === item.id);
+
+        if (element.qtd !== 0) {
+        element.qtd -= 1;
+        }
+        if (element.qtd === 0) {
+        // alert("banana")
+        const listOrder = order;
+        // remove 1 item do array
+        listOrder.splice(index, 1);
+        setOrder([...listOrder])
+    }
+
+    }
+
+
     return (
 
         <section className="container">
@@ -86,7 +105,7 @@ function Hall() {
                 >All Day
                 </Button>
             </div>
-            <section>
+            
 
                 <section className="mesas-cliente">
 
@@ -106,48 +125,57 @@ function Hall() {
                         onChange={onChangeClient}
 
                     />
-                </section>
+            </section>
 
-                <div className="flex-container">
-                    {selectedProducts && selectedProducts.map((item, index) => (
-                    // {menuCafe && menuCafe.map((products, index) => (
-                        <div key={index}>
-                            <Products
-                                divClassName="box-item"
-                                // divKey={Math.random()}
-                                productsName={item.name}
-                                divId={item.id}
-                                ImgSrc={item.image}
-                                productsPrice={item.price}
-                                productsNameKey={item.id}
-                                productsFlavor={item.flavor}
-                                productsComplement={item.complement}
-                                divOnClick={(e) => carPedidos(e, item)}
-                            />
-                        </div>
-                    ))}
-                </div>
-            </section>
-            <section className="container-order">
-                {order.map((item, index) =>
-                    <div key={index}>
-                        <CartItem
-                            divClassName="flex-item"
-                            productsName={item.name}
-                            productsPrice={item.price}
-                            productsFlavor={item.flavor}
-                            products={item.qtd}
-                            qtd={item.qtd}
-                            productsComplement={item.complement}
-                        />
-                        {/* 
-                                <Button onClick={divOnClick} className="lixo"
-                                    style={{ 'borderRadius': '50%', backgroundColor: '#EAAF36', minWidth: '1rem', padding: '0.3rem 1rem' }}
-                                >-</Button> */}
+               <section className="hall-main">
+
+                    <div className="menu-container">
+
+                        {selectedProducts && selectedProducts.map((item, index) => (
+                        // {menuCafe && menuCafe.map((products, index) => (
+                            <div key={index}>
+                                <Products
+                                    divClassName="box-item"
+                                    // divKey={Math.random()}
+                                    productsName={item.name}
+                                    divId={item.id}
+                                    ImgSrc={item.image}
+                                    productsPrice={item.price}
+                                    productsNameKey={item.id}
+                                    productsFlavor={item.flavor}
+                                    productsComplement={item.complement}
+                                    divOnClick={(e) => carPedidos(e, item)}
+                                />
+                            </div>
+                        ))}
                     </div>
-                )}
+            
+                    <section className="container-order">
+                        {order.map((item, index) =>
+                            <div key={index}>
+                                <CartItem
+                                    divClassName="flex-item"
+                                    carrinhoName={item.name}
+                                    productsPrice={item.price}
+                                    productsFlavor={item.flavor}
+                                    products={item.qtd}
+                                    qtd={item.qtd}
+                                    productsComplement={item.complement}
+                                    divOnClick={(e) => handleRemove(e, item, index)}
+                                />
+                                {/* <Button onClick={divOnClick} className="lixo"
+                                         style={{ 'borderRadius': '50%', backgroundColor: '#EAAF36', minWidth: '1rem', padding: '0.3rem 1rem' }}
+                                    >-</Button> */}
+                            </div>
+                            
+                        )} 
+                        
+                    </section>
+
             </section>
+            
         </section>
+    
     );
 }
 

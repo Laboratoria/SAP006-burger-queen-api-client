@@ -1,5 +1,4 @@
-.main.hall{
-    justify-content: space-between;
+.hall-main{
     width: 100%;
     display: flex;
 }
@@ -14,7 +13,7 @@
     border-radius: 10px;
     margin: 5%;
 };
-
+/*
 .request-container {
     display:flex;
     background-color: blanchedalmond;
@@ -26,12 +25,32 @@
     margin: 5%;   
     
 };
-.h2{
-      min-height: 60px;
-      border-bottom: 1px solid #ccc;
-      background: #ECECEC;
-      z-index: 2;
-        display: inline;
-        margin: 0 0 0 15px;
+
+.flex-container{
+    background-color: bisque;
+    display: flex;
+    
+}
+*/
+
+.container-order{
     background-color: brown;
+    display:flex;
+    background-color: blanchedalmond;
+    flex-wrap: wrap;
+    width: 40%;
+    height: fit-content;  
+    justify-content: center;
+    border-radius: 10px;
+    margin: 5%;
+}
+
+.h2{
+    min-height: 60px;
+    border-bottom: 1px solid #ccc;
+    background: #ECECEC;
+    z-index: 2;
+      display: inline;
+      margin: 0 0 0 15px;
+  background-color: brown;
 }
