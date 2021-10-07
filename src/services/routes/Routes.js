@@ -5,7 +5,7 @@ import Login from '../../pages/mainHall/login/Login';
 import Register from '../../pages/mainHall/register/Register';
 import Menus from '../../pages/mainHall/menus/Menus';
 import Requests from '../../pages/mainHall/requests/Requests';
-import Preparation from '../../pages/kitchen/Preparation';
+import Kitchen from '../../pages/kitchen/Kitchen';
 import NotFound from '../../pages/notFound/NotFound';
 import PrivateRoute from '../routes/PrivateRoutes';
 
@@ -19,7 +19,7 @@ function Routes(){
                 <Route path="/notfound" component={ NotFound }/>
                 <PrivateRoute path="/menus" component={ Menus }/>
                 <PrivateRoute path="/pedidos" component={ Requests }/>
-                <PrivateRoute path="/preparacao" component={ Preparation }/>
+                <PrivateRoute path="/preparacao" component={ Kitchen }/>
             </Switch>
         </BrowserRouter> 
     );  

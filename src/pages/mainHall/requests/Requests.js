@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
-import Cards from '../../../components/itensMenu/Cards';
 
 import './Requests.css';
 
@@ -18,11 +17,6 @@ export default function Requests () {
       const btnRequests = (e) => {
         e.preventDefault()
         history.push('/pedidos')
-      }
-
-      const btnHistoric = (e) => {
-        e.preventDefault()
-        history.push('/historico')
       }
 
     return(
@@ -45,14 +39,8 @@ export default function Requests () {
                     onClick={btnRequests} 
                     className="buttons buttons-menu"
                 /> 
-                <Button 
-                    text="📋 Histórico" 
-                    type="submit"
-                    onClick={btnHistoric} 
-                    className="buttons buttons-menu"
-                /> 
             </div>
-            <Cards />
+            
           <Footer 
             className="footer"
           />

@@ -43,11 +43,6 @@ function Menus () {
       history.push('/pedidos')
     }
 
-    const btnHistoric = (e) => {
-      e.preventDefault()
-      history.push('/historico')
-    }
-
     const filterMenu = (meal) => {
       const filterItensByType = allProducts.filter((item) => item.sub_type === meal);
       setSelectedProducts(filterItensByType)
@@ -93,13 +88,8 @@ function Menus () {
                 onClick={btnRequests} 
                 className="buttons buttons-menu" 
               /> 
-              <Button 
-                text="📋 Histórico" 
-                type="submit"
-                onClick={btnHistoric} 
-                className="buttons buttons-menu" 
-              /> 
             </div>
+            
             <div className="container-btn-cardapio">
               <Button 
                 text="Café da Manhã"

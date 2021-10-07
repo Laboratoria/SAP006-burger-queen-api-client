@@ -51,7 +51,7 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
   return (
     <section className="container-cart">
       <div className="cart">
-        <p className="info-card text-cart">🛒 Carrinho </p>
+        <p className="info-card text-cart"> COMANDA </p>
           <label className="info-card">Mesa:
             <select 
               className="select-table" 
