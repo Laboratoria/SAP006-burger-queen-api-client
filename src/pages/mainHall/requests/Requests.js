@@ -58,8 +58,8 @@ export default function Requests () {
                 {...item}
                   key={item.id}
               />
-
             ))}
+            
           <Footer 
             className="footer"
           />
