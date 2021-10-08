@@ -1,18 +1,18 @@
 import React from 'react';
-import NavBar from '../../components/navbar/Navbar'
+// import { useHistory } from 'react-router-dom';
+
 
 import './Kitchen.css';
 
-export default function Kitchen () {
+function Kitchen () {
+    // const history = useHistory();
+    
 
-    return (
-      <>
-          <div>
-            <NavBar />
-          </div>
-          <div>
-            <h1>Pedidos recebidos</h1>
-          </div>
-      </>
-    );
+      return(
+        <div>
+
+        </div>  
+    )
 };
+
+export default Kitchen;
