@@ -8,7 +8,6 @@ import Requests from '../../pages/mainHall/requests/Requests';
 import Kitchen from '../../pages/kitchen/Kitchen';
 import NotFound from '../../pages/notFound/NotFound';
 import PrivateRoute from '../routes/PrivateRoutes';
-import Kitchen from '../../pages/kitchen/Kitchen';
 
 function Routes(){
     

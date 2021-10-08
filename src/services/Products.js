@@ -13,20 +13,20 @@ const orders = (endpoint, method, body, token) => {
 };
 
 export const NewOrder = (request) => {
-    console.log(request);
     return orders ('/orders', 'POST', {
-        client: request.client,
+        client_name: request.client_name,
         table: request.table,
         products: request.products,
     }, token ) 
 };
 
+export const TotalOrders = () => {
+    return fetch(`${host}/orders`, {
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token,
+        },
+    }) 
+};
 
-export const TotalOrders = (request) => {
-    console.log(request);
-    return orders ('/orders', 'GET', {
-        client: request.client,
-        table: request.table,
-        products: request.products,
-    }, token ) 
-}; 
