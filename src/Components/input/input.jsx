@@ -1,6 +1,6 @@
 import React from 'react';
 
-function InputTxt({
+function InputText({
   inputType,
   inputPlaceholder,
   inputValue,
@@ -31,4 +31,4 @@ function InputTxt({
   );
 }
 
-export default InputTxt;
+export default InputText;
