@@ -15,16 +15,13 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
   const totalPrice = arrItem.reduce((total, item) => total + (item.price * item.qtd), 0);
   
   const handleChangeClient = (event) => {
-    console.log(event.target);
     let {value} = event.target;
     setClientName(value)
-    console.log(clientName);
   }
 
   const handleChangeTable = (event) => {
     let {value} = event.target;
     setTableNumber(value)
-    console.log(tableNumber);
   }
 
   const handleSubmit = (e) => { 

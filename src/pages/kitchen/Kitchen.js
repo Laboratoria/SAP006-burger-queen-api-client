@@ -25,7 +25,7 @@ export default function Kitchen () {
             </div>
 
             <div className="container-btn-menu">
-                <p className="pedidos">🔔 Pedidos </p> 
+                <p className="pedidos"> Cozinha | 🔔 Pedidos </p> 
             </div>
             {kitchenOrder.map((item) => (
               <Orders 

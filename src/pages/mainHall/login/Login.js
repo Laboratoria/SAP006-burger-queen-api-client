@@ -50,7 +50,7 @@ export default function Login() {
                     history.push('/menus')
                 } else {
                     alert('Login com Cozinha')
-                    history.push('/preparacao')
+                    history.push('/cozinha')
                 }                  
             } 
             if(response.status !== 200){

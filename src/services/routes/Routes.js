@@ -19,7 +19,7 @@ function Routes(){
                 <Route path="/notfound" component={ NotFound }/>
                 <PrivateRoute path="/menus" component={ Menus }/>
                 <PrivateRoute path="/pedidos" component={ Requests }/>
-                <PrivateRoute path="/preparacao" component={ Kitchen }/>
+                <PrivateRoute path="/cozinha" component={ Kitchen }/>
             </Switch>
         </BrowserRouter> 
     );  
