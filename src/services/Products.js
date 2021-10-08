@@ -30,3 +30,19 @@ export const TotalOrders = () => {
     }) 
 };
 
+/*export const updateOrders = async (orderId, orderStatus) => {
+    const url = `https://lab-api-bq.herokuapp.com/orders/${orderId}`;
+    const resp = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `${token}`,
+      },
+      body: JSON.stringify({
+       status : orderStatus
+      }),
+    });
+    const response = await resp.json();
+    return response;
+  
+  };*/

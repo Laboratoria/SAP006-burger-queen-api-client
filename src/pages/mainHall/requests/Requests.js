@@ -55,23 +55,8 @@ export default function Requests () {
             </div>
             {allOrders.map((item) => (
               <Orders 
-                // {...item}
-                //   key={item.id}
-                key={item.id}
-                id={item.id}
-                user_id={item.user_id}  
-                client={item.client}
-                table={item.table}
-                status={item.status}
-                processedAt={item.processedAt}
-                products={item.products}
-                
-                
-                // "status": "pending",
-                // "processedAt": null,
-                // "createdAt": "2021-10-05T21:45:05.418Z",
-                // "updatedAt": "2021-10-05T21:45:05.418Z",
-                // "Products":
+                {...item}
+                  key={item.id}
               />
 
             ))}

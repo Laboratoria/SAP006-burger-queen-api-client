@@ -5,9 +5,7 @@ import Orders from '../../components/itensMenu/Orders';
 
 import './Kitchen.css';
 
-function Kitchen () {
-    // const history = useHistory();
-    
+function Kitchen () {  
 
       return(
         <div>
