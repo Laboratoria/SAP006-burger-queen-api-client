@@ -5,6 +5,7 @@ import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
 import Orders from '../../../components/itensMenu/Orders';
 import { TotalOrders } from '../../../services/Products';
+import OrderProducts from '../../../components/itensMenu/PuxarProducts';
 
 import './Requests.css';
 
@@ -57,9 +58,18 @@ export default function Requests () {
               <Orders 
                 {...item}
                   key={item.id}
-              />
+              >
 
+                {item.Products.map((itens) => (
+                  <OrderProducts
+                    key={itens.id}
+                    {...item}
+                  />
+                ))}
+
+              </Orders>
             ))}
+            
           <Footer 
             className="footer"
           />

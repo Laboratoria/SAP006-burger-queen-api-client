@@ -8,7 +8,7 @@ export default function NavBar () {
     return(
         <div className="navbar">
             <LogoImg />
-            <label className="">Atendente: {localStorage.getItem("userName")} </label>
+            <label className="clerck">Atendente: {localStorage.getItem("userName")} </label>
             <ButtonLogout 
                 className="logout"
             />

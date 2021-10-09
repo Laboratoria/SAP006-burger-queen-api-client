@@ -136,3 +136,123 @@
     font-size: 20px;
 }
 /* FIM DOS ITENS CARRINHO(AQR:CARTITEM)*/
+
+/* COMEÇO DOS CARDS DE PEDIDOS (AQR:ORDERS)*/
+.container-orders{
+    background-color: #f8ef5b6e;
+    background-color: var(--white-color);
+    border: solid 1px var(--red-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 21px 3px var(--shadow-color);
+    margin: 2% 1%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.container-info-orders{
+    font-size: 20px;
+    padding: 0 2%;
+    width: 100%;
+}
+
+.container-products-order{
+    display: flex;
+    background-color: #f8ef5b96;
+    width: 1000%;
+    height: 100px;
+    padding: 1%;
+    margin: 1%;
+    font-family: system-ui;
+}
+
+.container-status{
+    width: 100%;
+}
+
+.status{
+    font-size: 20px;
+    width: 20%;
+    border-radius: 15pc;
+    padding: 0 1%;
+    margin: 1% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pending{
+    background-color: #ff2c2cbf;
+    color: white;
+}
+
+.processing{
+    background-color: #D79A2B;
+    color: white;
+}
+
+.ready{
+    background-color: #40C1AC;
+    color: white;
+}
+
+.done{
+    background-color: #360608;
+    color: white;
+}
+
+.time{
+    padding: 2%;
+    font-size: 18px;
+}
+
+.hour{
+    color: red;
+    font-size: 20px;
+}
+
+.container-btn-status{
+    width: 100%;
+}
+
+.btn-status{
+    font-size: 19px;
+    width: 100%;
+    border-radius: 15pc;
+    margin: 1% 0;
+    border: none;
+}
+
+.status-pending{
+    background-color: #ff2c2cbf;
+    color: white;
+}
+
+.status-processing{
+    background-color: #D79A2B;
+    color: white;
+}
+
+.status-ready{
+    background-color: #40C1AC;
+    color: white;
+}
+
+.status-done{
+    background-color: #5C3D31;
+    color: white;
+}
+
+.status-pending:hover{
+    background-color: #2e0606bf;
+}
+
+.status-processing:hover{
+    background-color: #093d34;
+}
+
+.status-ready:hover{
+    background-color: #180a04;
+}
+/* FIM DOS CARDS DE PEDIDOS (AQR:ORDERS)*/

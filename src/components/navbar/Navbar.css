@@ -25,3 +25,13 @@
     color: var(--brown-color);
     font-weight: bold;
 }*/
+
+.clerck{
+    height: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 6%;
+    background-color: #f8ef5b96;
+    padding: 1%;
+    border-radius: 15px;
+}
