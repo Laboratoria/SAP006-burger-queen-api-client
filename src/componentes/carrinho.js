@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './button.js';
 
 
-function Produtos({
+function Carrinho({
     onClick,
     divClassName,
     divKey,
@@ -15,23 +15,22 @@ function Produtos({
     produtosPriceKey,
     produtosFlavor,
     produtosComplement,
-    ImgSrc,
+    qtd,
 }) {
     return (
         <>
-            <div className={divClassName} key={divKey} name={divName} id={divId} price={divPrice}>
-                <div>
-                    <img src={ImgSrc} className="img-food" alt="img-food"></img>
-                </div>
+            <div className={divClassName} key={divKey} name={divName} id={divId} price={divPrice} qtd={qtd}>
+
                 <h1 className="divName" key={produtosNameKey}>{produtosName}</h1>
                 <div className="divButton">
                     <h1 className="divPrice" key={produtosPriceKey}> {divId} R${produtosPrice},00</h1>
                     <h1 className="divFlavor"> {produtosFlavor}</h1>
                     <h1 className="divComplement"> {produtosComplement}</h1>
+                    <h1>Quantidade: {qtd}</h1>
                 </div>
-                <Button onClick={onClick} buttonClass="add-button"> ADD </Button>
+                <Button onClick={onClick} buttonClass="add-button"> remover </Button>
             </div>
         </>
     );
 }
-export default Produtos;
+export default Carrinho;
