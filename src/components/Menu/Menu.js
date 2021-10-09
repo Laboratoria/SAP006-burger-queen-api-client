@@ -12,7 +12,7 @@ function Menu({	products, addProducts }) {
 
 	return (
 		<>
-			<div className='cards-menu'>
+			
 				<div className='btn-menu'>
 					<Button
 						buttonText='Café da manhã'
@@ -38,7 +38,7 @@ function Menu({	products, addProducts }) {
 									name={item.name}
 									flavor={item.flavor}
 									complement={item.complement}
-									price={item.price}
+									price={(item.price).toFixed(2)}
 									image={item.image}	
 									qtd={item.qtd}
 									onClick={() => addProducts(item)}							
@@ -63,7 +63,7 @@ function Menu({	products, addProducts }) {
 							}
 						</div>
 				}
-			</div>
+		
 		</>
 	);
 }
