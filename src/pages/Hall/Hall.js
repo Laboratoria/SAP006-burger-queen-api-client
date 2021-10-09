@@ -2,15 +2,15 @@ import { React, useState, useEffect } from 'react'
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import Products from '../../components/Products/Products';
-
-import '../components/Products/products.css';
-import '../global.css';
-import '../styles/hall.css'
 import CartItem from '../../components/CartItem/CartItem';
+
+import '../../global.css';
+import './hall.css'
+
 // import './styles/order.css';
 
 function Hall() {
-
+ 
     const [client, setClient] = useState('');
     const onChangeClient = (e) => {
         const name = e.target.value
