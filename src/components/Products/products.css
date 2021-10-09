@@ -16,4 +16,46 @@
         justify-content: center;
 }
 
+/* container com todos os produtos */
+.flex-container {
+        display: flex;
+        /* background-color: #F2DFBA; */
+        flex-wrap: wrap;
+        width: 58%;
+        height: fit-content;
+        /* box-shadow: 10px 5px 5px black; */
+        /* background-color: aliceblue; */
+}
 
+
+.flex-item {
+        flex-direction: column;
+           font-size: 8px;
+           width: 134px;
+           height: 141px;
+            background-color: #9B2D0A;
+            border-radius: 22px;
+            margin: 35px;
+            margin-top: 35px;
+}
+
+.button-menu {
+    display: flex;
+    justify-content: space-evenly;
+    width: 49%;
+    margin: 1%;
+}
+.menu-container {
+        display: flex;
+        background-color: blanchedalmond;
+
+}
+
+
+.container-order{
+        display: flex;
+        position: absolute;
+        right: 0;
+        /* background-color: black; */
+        flex-direction: column;
+}

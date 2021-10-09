@@ -2,10 +2,10 @@ import { React, useState } from 'react';
 import '../styles/login.css';
 import logo from '../img/logo.png'
 import { Link, useHistory } from 'react-router-dom';
-import Input from '../components/Input/Input';
-import Button from '../components/Button/Button';
-import { validation } from '../validation';
-import { loginUser, loginConfirmed } from '../auth';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
+import { validation } from '../../validation';
+import { loginUser, loginConfirmed } from '../../auth';
 
 function Login() {
     const [errors, setErrors] = useState({})
