@@ -20,7 +20,7 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
   }
 
   const handleChangeTable = (event) => {
-    let {value} = event.target;
+    const {value} = event.target;
     setTableNumber(value)
   }
 
@@ -103,3 +103,4 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
     </section> 
   )
 }
+

@@ -10,6 +10,7 @@ import NotFound from '../../pages/notFound/NotFound';
 import PrivateRoute from '../routes/PrivateRoutes';
 
 function Routes(){
+    // auth se tiver auth pegar o router e fazer redirect pra alguma rota.
     
     return (
         <BrowserRouter>

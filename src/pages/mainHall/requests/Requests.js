@@ -56,7 +56,8 @@ export default function Requests () {
               <Orders 
                 {...item}
                   key={item.id}
-              />
+              >
+              </Orders>
             ))}
             
           <Footer 
@@ -65,3 +66,5 @@ export default function Requests () {
         </div>
     );
 };
+
+// embaixo do key - linha 59 - propriedades da função e dentro delas fazer o put e o update do status allorders

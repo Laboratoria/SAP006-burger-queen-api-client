@@ -14,7 +14,7 @@ const orders = (endpoint, method, body, token) => {
 
 export const NewOrder = (request) => {
     return orders ('/orders', 'POST', {
-        client: request.client,
+        client_name: request.client_name,
         table: request.table,
         products: request.products,
     }, token ) 
@@ -30,19 +30,18 @@ export const TotalOrders = () => {
     }) 
 };
 
+// atualizar o pedido
 export const putRequestOptions = (token, status) => {
   return fetch(`${host}/orders`, {
       method:'PUT',
       headers: {
         'Authorization': token,
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST',
       },
       body: JSON.stringify({ status }),
   }) 
 };
+// passar status quando estiver passando a função na pagina que vai fazer o PUT
 
   export const UpdateOrderStatus = (index, id, status, allOrders, setAllOrders) => (
     fetch(`${host}${id}`, putRequestOptions(token, status))

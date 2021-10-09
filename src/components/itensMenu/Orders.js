@@ -2,14 +2,18 @@ import React from 'react';
 import Button from '../button/Button';
 //import {TotalOrders} from '../../services/Products';
 import {ConvertDate, ConvertTime} from '../../services/Products';
+import OrderProducts from './PuxarProducts';
 
 import './Style.css';
+
 
 
 export default function Orders ( {id, client_name, table, status, createdAt, user_id, 
     updateOrderToProcessing, 
     updateOrderToReady,
-    updateOrderToDone} ) { 
+    updateOrderToDone,
+    Products} ) {
+        
 
     const getOrderCreatedAt = new Date(createdAt);
     const getOrderProcessedAt = new Date(getOrderCreatedAt);
@@ -38,7 +42,12 @@ export default function Orders ( {id, client_name, table, status, createdAt, use
                 <p>Atendente: {user_id}</p>
             </div>
             <div className="container-products-order">
-                PRODUTOS E QUANTIDADES
+                {Products.map((itens) => (
+                    <OrderProducts
+                        key={itens.id}
+                        {...itens}
+                    />
+                    ))}
             </div>
             <div className="container-btn-status">
                 {status === 'pending'
@@ -70,3 +79,4 @@ export default function Orders ( {id, client_name, table, status, createdAt, use
 }
 
 //<hr></hr> - faz uma linha na pagina
+// para todas as funções de mudar status tem que fazer um PUT.
