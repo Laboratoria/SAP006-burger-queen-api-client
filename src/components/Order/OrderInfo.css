@@ -1,0 +1,55 @@
+.each-card-order {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+  background-color: rgba(252, 176, 86, 1);
+  font-size: 0.8rem;
+  width: 49.5vh;
+  height: 52vh;
+}
+
+.itens-order::-webkit-scrollbar {
+  width: 2vh;
+}
+
+.itens-order::-webkit-scrollbar-track {
+  background-color: #e0953e;
+  border-radius: 100px;
+}
+
+.itens-order::-webkit-scrollbar-thumb {
+  background-color: #fbae4183;
+  border-radius: 100px;
+}
+
+.all-infos {
+  display: flex;
+  flex-direction: column;
+  max-height: 40vh;
+  margin-top: 10%;
+  margin-bottom: 4%;
+}
+
+.itens-order {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 10vh;
+  margin-bottom: 7%;
+}
+
+.each-info {
+  font-size: 0.9rem;
+  padding: 2%;
+}
+
+.change-status {
+  position: absolute;
+  bottom: 0;
+  font-weight: bold;
+  align-items: center;
+}
+
+span {
+  color: black;
+}

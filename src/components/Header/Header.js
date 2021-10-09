@@ -10,6 +10,7 @@ function Header({
                 <img alt=''></img>
             </div>
             <div className='links-hall'>
+                <a href='/Hall'>Salão</a>
                 <a href='/Kitchen'>Cozinha</a>
                 <a href='/OrderReady'>Pedidos</a>
             </div>

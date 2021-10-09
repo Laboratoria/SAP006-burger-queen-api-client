@@ -18,19 +18,45 @@
 }
 
 .button-menu {
-  width: 20vw;
-  height: 8vh;
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  background-color: rgba(206, 27, 27, 0.835);
+    width: 35vh;
+    height: 8vh;
+    color: white;
+    font-weight: bold;
+    font-size: 1.0rem;
+    background-color: rgba(206, 27, 27, 0.835);
+
+  
 }
-/*
-@media screen and (max-width: 1400px) {
-    .breakfast,
-    .hamburguers {
-  display: grid;
-  grid-template-columns: 1fr 1fr ;
-  align-items: center;
+                                                                        
+
+.add-btn {
+    font-weight: bold;
+    color: white;
+    background-color: rgba(141, 31, 32, 1);
+    width: 100%;
+    height: 8vh;
+    border-radius: 0% 0% 15% 15%;
 }
-}*/
+
+li {
+    padding: 3%;
+    color: black;
+    list-style-type: none
+}
+
+.add-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.flavor, .complement li {
+    padding: 0.5%;
+}
+
+.items {
+    text-align: center;
+    margin-top: 18%;
+}
+
+
+
