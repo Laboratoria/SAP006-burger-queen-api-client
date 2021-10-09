@@ -24,6 +24,7 @@ const Kitchen = () => {
             .then((json) => {
                 if (json) {
                     const allOrders = json;
+                    allOrders.sort((a, b) => b.id - a.id)
                     setPending(allOrders.filter((item) =>
                         item.status.includes('pending')
                     ));
@@ -35,15 +36,15 @@ const Kitchen = () => {
     }, [token])
 
 
-    const handleClick = (item, index) => {       
+    const handleClick = (item, index) => {
         const orderId = item.id
-        let  statusOrder = ''
-        if(item.status === 'pending') {
-           statusOrder = { 'status': 'doing'}
-           
+        let statusOrder = ''
+        if (item.status === 'pending') {
+            statusOrder = { 'status': 'doing' }
+
         }
-        if(item.status === 'doing') {
-            statusOrder = { 'status': 'done'} 
+        if (item.status === 'doing') {
+            statusOrder = { 'status': 'done' }
         }
 
         fetch(`https://lab-api-bq.herokuapp.com/orders/${orderId}`, {
@@ -52,29 +53,25 @@ const Kitchen = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `${token}`,
             },
-            body: JSON.stringify(statusOrder)              
-            
+            body: JSON.stringify(statusOrder)
+
         }).then((response) => response.json())
-        .then((json) => {
-            if(item.status === 'pending' && json.id === pending[index].id ) {
-                pending.splice(index, 1)
-                setPending([...pending])
-                setDoing([...doing, json])   
-                           
-            }
-            console.log(json)  
-        })
+            .then((json) => {
+                if (item.status === 'pending' && json.id === pending[index].id) {
+                    pending.splice(index, 1)
+                    setPending([...pending])
+                    setDoing([...doing, json])
+
+                }
+            })
 
     }
-
-
-
     return (
         <>
+            <Header></Header>
             <section className='container-kitchen'>
-                <Header></Header>
-                <article className='prepare'>
-                    <p>PREPARAR</p>
+                <article className='prepare'>    
+                    <h2 className='title-status'>PREPARAR</h2>              
                     <div className='each-order'>
                         {pending.map((item, index) =>
                             <OrderInfo
@@ -93,19 +90,22 @@ const Kitchen = () => {
                                 ))}
                                 onClick={() => handleClick(item, index)}
                                 buttonText='Preparar Pedido'
+                                className='btn-prepare'
                             >
 
                             </OrderInfo>
                         )}
                     </div>
                 </article>
+               
                 <article className='finished'>
-                    <p>FINALIZADOS</p>
+                   <h2 className='title-status'>EM PREPARO</h2>
                     <div className='each-order'>
                         {doing.map((item, index) =>
                             <OrderInfo
                                 key={item.id}
                                 id={item.id}
+                                date={new Date(item.createdAt).toLocaleString()}
                                 client={item.client_name}
                                 table={item.table}
                                 status={item.status}
@@ -118,6 +118,8 @@ const Kitchen = () => {
                                 ))}
                                 onClick={() => handleClick(item, index)}
                                 buttonText='Finalizar Pedido'
+                                className='btn-fineshed'
+
                             >
 
                             </OrderInfo>
