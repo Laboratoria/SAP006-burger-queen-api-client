@@ -3,7 +3,7 @@ import Button from '../Button/Button';
 import './OrderInfo.css'
 
 function OrderInfo({
-  date, id, client, table, status, itens, onClick, buttonText
+  date, id, client, table, status, itens, onClick, buttonText, className
 }) {
   return (
     <>
@@ -22,8 +22,8 @@ function OrderInfo({
             <p className='each-info'><span> {itens}</span></p>
           </div>
         </div>
-        <div className='btn-prepare'>
-          <Button className='btn-change-status' buttonOnClick={onClick} buttonText={buttonText}></Button>
+        <div className='change-status'>
+          <Button className={className} buttonOnClick={onClick} buttonText={buttonText}></Button>
         </div>
       </div>
 

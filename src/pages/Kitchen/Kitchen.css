@@ -7,7 +7,7 @@
 
 .title-status {
   font-weight: bold;
-  margin-left: 5%;
+  margin-left: 7%;
   color: var(--color-red-font);
   text-align: center;
 }
@@ -15,4 +15,23 @@
 .each-order {
   display: grid;
   grid-template-columns: 1fr;
+}
+
+.btn-fineshed {
+  align-items: center;
+  display: block;
+  width: 24.2vw;
+  height: 8vh;
+  font-weight: bold;
+  color: white;
+  background: green;
+}
+
+.btn-prepare {
+  align-items: center;
+  width: 24.2vw;
+  height: 8vh;
+  font-weight: bold;
+  color: white;
+  background: rgb(216, 41, 41);
 }

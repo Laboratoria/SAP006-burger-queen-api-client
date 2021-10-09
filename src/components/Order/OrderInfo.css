@@ -43,20 +43,10 @@
   padding: 2%;
 }
 
-.logo-order {
-  background-image: url("../../img/Logo.png");
-  width: 5vh;
-  height: 5vh;
-}
-
-.btn-change-status {
+.change-status {
   position: absolute;
   bottom: 0;
   font-weight: bold;
-  color: white;
-  background-color: rgb(219, 24, 24);
-  width: 49.5vh;
-  height: 8vh;
   align-items: center;
 }
 

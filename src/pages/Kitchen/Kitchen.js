@@ -24,6 +24,7 @@ const Kitchen = () => {
             .then((json) => {
                 if (json) {
                     const allOrders = json;
+                    allOrders.sort((a, b) => b.id - a.id)
                     setPending(allOrders.filter((item) =>
                         item.status.includes('pending')
                     ));
@@ -62,7 +63,6 @@ const Kitchen = () => {
                     setDoing([...doing, json])
 
                 }
-                console.log(json)
             })
 
     }
@@ -90,6 +90,7 @@ const Kitchen = () => {
                                 ))}
                                 onClick={() => handleClick(item, index)}
                                 buttonText='Preparar Pedido'
+                                className='btn-prepare'
                             >
 
                             </OrderInfo>
@@ -98,12 +99,13 @@ const Kitchen = () => {
                 </article>
                
                 <article className='finished'>
-                   <h2 className='title-status'>FINALIZADOS</h2>
+                   <h2 className='title-status'>EM PREPARO</h2>
                     <div className='each-order'>
                         {doing.map((item, index) =>
                             <OrderInfo
                                 key={item.id}
                                 id={item.id}
+                                date={new Date(item.createdAt).toLocaleString()}
                                 client={item.client_name}
                                 table={item.table}
                                 status={item.status}
@@ -116,6 +118,8 @@ const Kitchen = () => {
                                 ))}
                                 onClick={() => handleClick(item, index)}
                                 buttonText='Finalizar Pedido'
+                                className='btn-fineshed'
+
                             >
 
                             </OrderInfo>
