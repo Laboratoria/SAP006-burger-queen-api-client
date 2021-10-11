@@ -8,6 +8,7 @@ import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title';
+import Modal from '../../../components/modal/Modal';
 import garcom from '../../../img/garcom.png';
 import cozinheiro from '../../../img/cozinheiro.png';
 
@@ -20,6 +21,8 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [role, setRole] = useState('');
+    const [modal, setModal] = useState(false);
+
     const history = useHistory();
     
     // primeiro elemento é o estado que esta querendo controlar - ex:password
@@ -136,9 +139,17 @@ export default function Register() {
                 <Button 
                     text="Cadastrar" 
                     type="submit"
-                    onClick={handleClick} 
+                    onClick={(e) => {
+                        handleClick(e)
+                        setModal(true)
+                    }}        
                     className="buttons" 
                 /> 
+                {modal ? (
+                    <Modal onClose={() => setModal(false)}>
+                        <h1>Login Efetuado com sucesso</h1>
+                    </Modal>
+                ) : null}
                 <Button 
                     text="Já tenho conta" 
                     type="submit"

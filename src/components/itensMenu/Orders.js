@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../button/Button';
 //import {TotalOrders} from '../../services/Products';
 import {ConvertDate, ConvertTime} from '../../services/Products';
-import OrderProducts from './PuxarProducts';
+import OrderProducts from './PrintOrders';
 
 import './Style.css';
 

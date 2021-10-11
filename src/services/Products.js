@@ -14,7 +14,7 @@ const orders = (endpoint, method, body, token) => {
 
 export const NewOrder = (request) => {
     return orders ('/orders', 'POST', {
-        client_name: request.client_name,
+        client: request.client,
         table: request.table,
         products: request.products,
     }, token ) 

@@ -11,6 +11,7 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
   const [clientName, setClientName] = useState('');
   const [tableNumber, setTableNumber] = useState('');
 
+
   const history = useHistory();
   const totalPrice = arrItem.reduce((total, item) => total + (item.price * item.qtd), 0);
   
@@ -41,8 +42,7 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
         })
     }
     NewOrder(object)
-    alert('Pedido enviado para a cozinha')
-    history.push('/menus');
+    history.push('/pedidos');
   }
 
   return (
@@ -98,9 +98,11 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
       <Button
         text="Fazer Pedido"
         className="buttons btn-request" 
-        onClick={handleSubmit}
-      /> 
+        onClick={(e) => {
+          handleSubmit(e)
+        }}
+      />
+      
     </section> 
   )
 }
-

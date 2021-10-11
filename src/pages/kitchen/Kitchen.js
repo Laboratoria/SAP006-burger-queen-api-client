@@ -6,7 +6,6 @@ import { TotalOrders } from '../../services/Products';
 
 export default function Kitchen () {
     const [kitchenOrder, setKitchenOrder] = useState([]);
-    
     const token = localStorage.getItem('userToken');
 
       useEffect(() => {

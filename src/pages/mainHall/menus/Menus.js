@@ -117,6 +117,7 @@ function Menus () {
               arrItem={itemsList}
               removeButton={removeButton}
               addButton={addButton}>
+              
             </CartArea>
             
             <div className="container-main-products">
