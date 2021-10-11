@@ -132,7 +132,6 @@ body{
 }
 /* FIM PÁGINA DE REGISTO */
 
-/* COMEÇO PÁGINA DE KITCHEN */
 .pedidos{
     font-weight: 600;
     font-size: 25px;
@@ -146,7 +145,6 @@ body{
     border-top: solid 1px var(--white-color);
     border-bottom: solid 1px var(--white-color);
 }
-/* FIM PÁGINA DE KITCHEN */
 
 @media screen and (max-width: 320px) {
 

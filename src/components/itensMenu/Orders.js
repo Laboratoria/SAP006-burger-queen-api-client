@@ -6,14 +6,11 @@ import OrderProducts from './OrderProducts';
 
 import './Style.css';
 
-
-
 export default function Orders ( {id, client_name, table, status, createdAt, user_id, 
     updateOrderToProcessing, 
     updateOrderToReady,
     updateOrderToDone,
-    Products} ) {
-        
+    Products} ) { 
 
     const getOrderCreatedAt = new Date(createdAt);
     const getOrderProcessedAt = new Date(getOrderCreatedAt);

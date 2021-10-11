@@ -1,8 +1,7 @@
 import React from 'react';
 import Logo from '../../img/Logo.png';
 
-export default function LogoImg ({className}) {
-
+const LogoImg = ({className}) => {
     return (
         <img 
             src={Logo}
@@ -10,4 +9,6 @@ export default function LogoImg ({className}) {
             className={className}
         />   
     );
-};
+}
+
+export default LogoImg;

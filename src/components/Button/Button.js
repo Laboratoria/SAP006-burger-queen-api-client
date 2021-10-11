@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Button ({ onClick, className, type, text, img }) {
-    
     return(
         <button 
             type={type}
@@ -10,7 +9,7 @@ export default function Button ({ onClick, className, type, text, img }) {
             image={img}
         >
             {text}     
-        </button> 
+        </button>
     );
 };
 

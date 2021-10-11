@@ -10,7 +10,6 @@
     --gray-color: #e1e0e48c;
     --eye-color: #9a999c;
     --shadow-color: #00000050;
-    --text-color: #000;
 }
 
 .container-btn-menu{
@@ -20,23 +19,9 @@
     align-items: center;
 }
 
-.btn-salon{
+.buttons-menu{
     width: 30%;
     margin: 3% 1%;
-    border-top: solid 2px var(--red-color);
-    color: var(--text-color);
-    border-bottom: solid 2px var(--red-color);
-    font-size: 25px;
-    border-left: none;
-    border-right: none;
-    background: none;
-}
-
-.btn-salon:hover{
-    background-color: var(--red-color);
-    color: var(--white-color);
-    border-top: solid 2px var(--white-color);
-    border-bottom: solid 2px var(--white-color);
 }
 
 .container-btn-cardapio{
@@ -52,10 +37,6 @@
     border-radius: 9px;
     border: none;
     margin: 0 7px;
-}
-
-.btn-cardapio:hover{
-    background-color: var(--orange-color);
 }
 
 .container-main-products{
@@ -78,7 +59,7 @@
 
 .select-table{
     border: none;
-    color: var(--text-color);
+    color: black;
     font-size: 20px;
     background: none;
 }

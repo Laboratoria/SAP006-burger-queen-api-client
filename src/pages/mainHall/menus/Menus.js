@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
@@ -8,7 +8,7 @@ import CartArea from '../../../components/itensMenu/CartArea';
 
 import './Menus.css';
 
-export default function Menus () {
+function Menus () {
 
     const [allProducts, setAllProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
@@ -36,17 +36,17 @@ export default function Menus () {
     const btnMenus = (e) => {
       e.preventDefault()
       history.push('/menus')
-    };
+    }
 
     const btnRequests = (e) => {
       e.preventDefault()
       history.push('/pedidos')
-    };
+    }
 
     const filterMenu = (meal) => {
       const filterItensByType = allProducts.filter((item) => item.sub_type === meal);
       setSelectedProducts(filterItensByType)
-    };
+    }
     
     const removeButton = (id) => {
       const item = itemsList.find((item) => item.id === id)
@@ -59,15 +59,15 @@ export default function Menus () {
         setItemsList(
           itemsList.filter((x) => x.id !== id)
         );
-      };     
-    };
+      }     
+    }
 
     const addButton = (id) => {
       setItemsList(
           itemsList.map((x) => x.id === id ? {...x, qtd: x.qtd +1 } : x
           )
         );
-    };
+    }
     
     return(
         <>
@@ -80,13 +80,13 @@ export default function Menus () {
                 text="🍴 Menus" 
                 type="submit"
                 onClick={btnMenus} 
-                className="btn-salon" 
+                className="buttons buttons-menu" 
               /> 
               <Button 
                 text="🔔 Pedidos" 
                 type="submit"
                 onClick={btnRequests} 
-                className="btn-salon" 
+                className="buttons buttons-menu" 
               /> 
             </div>
             
@@ -147,3 +147,5 @@ export default function Menus () {
         </>
     );
 };
+
+export default Menus;

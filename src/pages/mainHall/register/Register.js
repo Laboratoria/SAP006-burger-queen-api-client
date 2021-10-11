@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { RegisterUser } from '../../../services/Auth';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 import Input from '../../../components/inputs/Input';
 import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
@@ -14,7 +15,6 @@ import '../Style.css';
 
 
 export default function Register() { 
-
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,11 +22,15 @@ export default function Register() {
     const [role, setRole] = useState('');
     const history = useHistory();
     
+    // primeiro elemento é o estado que esta querendo controlar - ex:password
+    // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
+    // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
+    
     // evento de clique do olhinho
     function eyeClick (e){
         e.preventDefault()
         setShowPassword(!showPassword) 
-    };
+    }
 
     // evento de clique de cadastro
     async function handleClick (e) {
