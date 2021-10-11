@@ -24,8 +24,6 @@ export function Hall() {
   });
 
   const selectProducts = menu.filter((produtos) => produtos.type === tab);
-  // const showMenuTab = !showSummary && !loading;
-  // const total = calculateTotal(summary)
 
   const addItem = (e, item) => {
     e.preventDefault();
