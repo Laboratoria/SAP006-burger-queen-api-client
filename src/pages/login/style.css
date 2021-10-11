@@ -19,6 +19,7 @@
 }
 body{
     background-color: var(--platinum);
+
 }
 
 .img-login {
@@ -54,6 +55,7 @@ body{
     font-size: 110%;
     font-weight: 600;
     background-color: var(--azul-escuro);
+    outline: none;
     }
     
 .label-email, .label-password{
@@ -101,6 +103,7 @@ body{
     font-size: 110%;
     font-weight: 600;
     letter-spacing: 2px;
+    outline: none;
 }
 
 

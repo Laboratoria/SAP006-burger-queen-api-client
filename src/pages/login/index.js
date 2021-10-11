@@ -6,140 +6,110 @@ import './style.css';
 import { Link } from 'react-router-dom';
 
 
-export  function Login() {
-    const history = useHistory()
+export function Login() {
+  const history = useHistory()
 
-    const [form, setForm] = useState({ 'email': '', 'password': '' });
-    const handlFormChange = (e) => {
-        if (e.target.getAttribute('name') === 'femail') {
-            setForm({ 'email': e.target.value, 'password': form.password });
-        }
-        else if (e.target.getAttribute('name') === 'fpassword') {
-            setForm({ 'email': form.email, 'password': e.target.value });
-        }
+  const [form, setForm] = useState({ 'email': '', 'password': '' });
+  const handlFormChange = (e) => {
+    if (e.target.getAttribute('name') === 'femail') {
+      setForm({ 'email': e.target.value, 'password': form.password });
     }
-
-    function SingIn() {
-        return fetch('https://lab-api-bq.herokuapp.com/auth', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: form.email,
-                password: form.password,
-
-            }),
-
-        })
-            .then((res) => res.json())
-            //.then((json) => {
-            .then((json) => {
-                const token = json
-                localStorage.setItem('BOORGIR', json.token)
-                
-
-                if (json.role === "garçom") {
-                    history.push('/salão');
-                } else if (json.role === "cozinheiro") {
-                    history.push('/cozinha');
-                } else {
-                    return token
-                }
-
-
-            })
-            .catch((error) => {
-                console.log({
-                    "code": "",
-                    "message": ""
-                }
-                )
-            })
-
-
+    else if (e.target.getAttribute('name') === 'fpassword') {
+      setForm({ 'email': form.email, 'password': e.target.value });
     }
-    return (
-        <>
+  }
 
-            <div className='container'>
-                <div className='row'>
-                    <div className='co1 align-items-center flex-co1' style={{ 'backgroundColor': '#E3E3E3' }}>
-                        <img src={GIF} alt='gif' />
-                    </div>
+  function SingIn() {
+    return fetch('https://lab-api-bq.herokuapp.com/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: form.email,
+        password: form.password,
+
+      }),
+
+    })
+      .then((res) => res.json())
+      //.then((json) => {
+      .then((json) => {
+        const token = json
+        localStorage.setItem('BOORGIR', json.token);
+
+        if (json.role === "garçom") {
+          history.push('/salão');
+        } else if (json.role === "cozinheiro") {
+          history.push('/cozinha');
+        } else {
+          return token
+        }
 
 
-                    <div className='co1 align-items-center'>
-                        <div className='form-wrapper align-items-center'>
-                            <div className='form sign-in'>
-                                <p className='p-login'> Best Burger in town</p>
-                                <div className='input-group'>
-                                    <i class="far fa-envelope"></i>
-                                    <input type='email'
-                                        name="femail"
-                                        autoComplete='OFF'
-                                        value={form.email}
-                                        onChange={(e) => handlFormChange(e)}
-                                        placeholder='Digite seu e-mail'>
-                                    </input>
-                                </div>
-                                <div className='input-group'>
-                                    <i class="fas fa-lock"></i>
-                                    <input type='password'
-                                        name="fpassword"
-                                        value={form.password}
-                                        onChange={(e) => handlFormChange(e)}
-                                        placeholder='Digite sua senha'>
-                                    </input>
-                                </div>
-                                <button onClick={SingIn}>
-                                    Entrar
-                                </button>
-                                <p>
-                                    <span>
-                                        Não tem conta?
-                                    </span>
-                                    <b>
-                                        <Link className='link-class' to="/cadastrar">Cadastre-se aqui</Link>
-                                    </b>
+      })
+      .catch((error) => {
+        console.log({
+          "code": "",
+          "message": ""
+        }
+        )
+      })
 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+
+  }
+  return (
+    <>
+
+      <div className='container'>
+        <div className='row'>
+          <div className='co1 align-items-center flex-co1' style={{ 'backgroundColor': '#E3E3E3' }}>
+            <img src={GIF} alt='gif' />
+          </div>
+
+
+          <div className='co1 align-items-center'>
+            <div className='form-wrapper align-items-center'>
+              <div className='form sign-in'>
+                <p className='p-login'> Best Burger in town</p>
+                <div className='input-group'>
+                  <i class="far fa-envelope"></i>
+                  <input type='email'
+                    name="femail"
+                    autoComplete='OFF'
+                    value={form.email}
+                    onChange={(e) => handlFormChange(e)}
+                    placeholder='Digite seu e-mail'>
+                  </input>
                 </div>
-                <footer className='footer'> BOORGIR &#169;</footer>
+                <div className='input-group'>
+                  <i class="fas fa-lock"></i>
+                  <input type='password'
+                    name="fpassword"
+                    value={form.password}
+                    onChange={(e) => handlFormChange(e)}
+                    placeholder='Digite sua senha'>
+                  </input>
+                </div>
+                <button onClick={SingIn}>
+                  Entrar
+                </button>
+                <p>
+                  <span>
+                    Não tem conta?
+                  </span>
+                  <b>
+                    <Link className='link-class' to="/cadastrar">Cadastre-se aqui</Link>
+                  </b>
+
+                </p>
+              </div>
             </div>
-        </>
-    );
+          </div>
+        </div>
+        <footer className='footer'> BOORGIR &#169;</footer>
+      </div>
+    </>
+  );
 
 }
-
-
-
-/* <p>
-                                    <b>
-                                        Forgot password?
-                                    </b>
-                                </p>
-                                <p>
-                                    <span>
-                                        Don't have an account?
-                                    </span>
-                                    <b onClick={toggle}>
-                                        Sign up here
-                                    </b>  */
-/*   <header>
-                    <img className='img-login' src={GIF} alt="Gif"></img>
-                </header>
-                <main>
-                    <div className='login-class'>
-                        <label className='label-email' >Digite seu e-mail </label>
-                        <input type='text' name="femail" className='input-email' autocomplete="off" value={form.email} onChange={(e) => handlFormChange(e)}/> <br/> <br/>
-                        <label className='label-password'>Digite sua senha </label>
-                        <input type='password' name="fpassword" className='input-password' value={form.password} onChange={(e) => handlFormChange(e)}/><br/><br/>
-                        <Button>ENTRAR </Button>
-                        <button className='btn-login' onClick={(e) => SingIn(e)}>Entrar</button>
-
-                    </div>
-                </main>  */

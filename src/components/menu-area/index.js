@@ -1,17 +1,12 @@
-//import ItemCard from "../cartItens"
-
-export default function CartArea({ arrItem}) {
+const MenuArea = ({ nome, preco }) => {
   return (
-    <section >
-      {arrItem.map((item) => {
-        return (
-          <div className='area-card'
-            key={item.id}  
-            nome={item.name}
-            preco={item.price}
-          />)
-      })}
-    </section> 
+    <li className="order">
+      <div className="class-order">
+        <p className="class-p-order">{nome}</p>
+        <p className="price-item-order">R${preco},00</p>
+      </div>
+    </li>
   )
 }
 
+export default MenuArea;
