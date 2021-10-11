@@ -63,6 +63,11 @@ const Kitchen = () => {
                     setDoing([...doing, json])
 
                 }
+
+                if(item.status === 'doing' && json.id === doing[index].id){
+                    doing.splice(index, 1)
+                    setDoing([...doing])
+                }
             })
 
     }

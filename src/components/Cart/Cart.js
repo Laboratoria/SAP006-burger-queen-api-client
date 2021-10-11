@@ -44,7 +44,7 @@ function Cart({ cartItem, removeProducts, setCartItem }) {
 				console.log(json);
 				if (json.id !== undefined) {
 					setValuesClient({ client: '', table: '' })
-					setCartItem([{}])
+					setCartItem([])
 				}
 			})
 	}

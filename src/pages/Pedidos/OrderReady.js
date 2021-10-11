@@ -1,15 +1,17 @@
-import { React, useEffect, useState} from "react";
+import { React, useEffect, useState } from "react";
 import Header from '../../components/Header/Header'
 import OrderInfo from "../../components/Order/OrderInfo";
 import OrderProducts from "../../components/Order/OrderProducts";
 
 
-const OrderReady= () => {
+const OrderReady = () => {
     const token = localStorage.getItem('userToken');
 
     const [done, setDone] = useState([]);
     const [delivered, setDelivered] = useState([]);
-    
+    console.log(done);
+    console.log(delivered);
+
     useEffect(() => {
         fetch('https://lab-api-bq.herokuapp.com/orders', {
             method: 'GET',
@@ -18,30 +20,30 @@ const OrderReady= () => {
                 'Authorization': `${token}`,
             },
         })
-        .then((response) => response.json())
-        .then((json) => {
-            if(json) {
-                const allOrders = json;
-                allOrders.sort((a, b) => b.id - a.id)
-                setDone(allOrders.filter((item) =>
-                    item.status.includes('done')
-                ));
-                setDelivered(allOrders.filter((item) =>
-                    item.status.includes('delivered')
-                ))
-            }
-        })
+            .then((response) => response.json())
+            .then((json) => {
+                if (json) {
+                    const allOrders = json;
+                    allOrders.sort((a, b) => b.id - a.id)
+                    setDone(allOrders.filter((item) =>
+                        item.status.includes('done')
+                    ));
+                    setDelivered(allOrders.filter((item) =>
+                        item.status.includes('delivered')
+                    ))
+                }
+            })
     }, [token])
 
     const handleClick = (item, index) => {
         const orderId = item.id
         let statusOrder = ''
 
-        if(item.status === 'doing') {
+        if (item.status === 'doing') {
             statusOrder = { 'status': 'done' }
         }
-        if(item.status === 'done') {
-           statusOrder = { 'status': 'delivered'}
+        if (item.status === 'done') {
+            statusOrder = { 'status': 'delivered' }
         }
 
         fetch(`https://lab-api-bq.herokuapp.com/orders/${orderId}`, {
@@ -52,27 +54,32 @@ const OrderReady= () => {
             },
             body: JSON.stringify(statusOrder)
         })
-        .then((response) => response.json())
-        .then((json) => {
-             if(item.status === 'done' && json.id === done[index].id) {
-                   done.splice(index, 1)
-                   setDone([...done])
-                   setDelivered([...delivered, json])
-             }
-        })
+            .then((response) => response.json())
+            .then((json) => {
+                if (item.status === 'done' && json.id === done[index].id) {
+                    done.splice(index, 1)
+                    setDone([...done])
+                    setDelivered([...delivered, json])
+                }
+            })
     }
     return (
         <>
             <Header></Header>
             <section className='container-kitchen'>
-                <article className='prepare'>    
-                    <h2 className='title-status'>FINALIZADOS</h2>              
+                <article className='prepare'>
+                    <h2 className='title-status'>FINALIZADOS</h2>
                     <div className='each-order'>
-                        {done.map((item, index) =>
+                        {done.map((item, index) => {
+                            const updateData = new Date(item.updatedAt);
+                            const creatData = new Date(item.createdAt)
+                            const difference = Math.abs(updateData) - creatData
+                            const minutes = Math.floor(difference / 1000 / 60)
+                        return(
                             <OrderInfo
                                 key={item.id}
                                 id={item.id}
-                                date={new Date(item.createdAt).toLocaleString()}
+                                date={`${minutes} minutos`}
                                 client={item.client_name}
                                 table={item.table}
                                 status={item.status}
@@ -89,12 +96,12 @@ const OrderReady= () => {
                             >
 
                             </OrderInfo>
-                        )}
+                        )})}
                     </div>
                 </article>
-               
+
                 <article className='finished'>
-                   <h2 className='title-status'>ENTREGUES</h2>
+                    <h2 className='title-status'>ENTREGUES</h2>
                     <div className='each-order'>
                         {delivered.map((item, index) =>
                             <OrderInfo
