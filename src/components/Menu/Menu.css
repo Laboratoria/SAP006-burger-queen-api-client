@@ -1,13 +1,9 @@
 .breakfast,
-.hamburguers {
-  /*display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  
-  width: 80%;*/
-  border: 1px solid black;
+.hamburguers {  
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2%;
 }
 
 .btn-menu {
@@ -18,7 +14,7 @@
 }
 
 .button-menu {
-    width: 35vh;
+    width: 20vw;
     height: 8vh;
     color: white;
     font-weight: bold;
@@ -27,36 +23,4 @@
 
   
 }
-                                                                        
-
-.add-btn {
-    font-weight: bold;
-    color: white;
-    background-color: rgba(141, 31, 32, 1);
-    width: 100%;
-    height: 8vh;
-    border-radius: 0% 0% 15% 15%;
-}
-
-li {
-    padding: 3%;
-    color: black;
-    list-style-type: none
-}
-
-.add-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.flavor, .complement li {
-    padding: 0.5%;
-}
-
-.items {
-    text-align: center;
-    margin-top: 18%;
-}
-
-
 

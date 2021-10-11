@@ -10,7 +10,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: 600px;
-  border: 1px solid rgb(90, 1, 1);
+  
 }
 
 .menu::-webkit-scrollbar {
