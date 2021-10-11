@@ -20,7 +20,7 @@ function validateRegister(values) {
 
     if (!values.password2) {
         errors.password2 = 'Senha obrigatória';
-    } 
+    }
 
     if (values.role !== "salão" && values.role !== "cozinha") {
         errors.role = "Selecione sua área de trabalho"
