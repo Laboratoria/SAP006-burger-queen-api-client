@@ -1,0 +1,23 @@
+.menu-order{
+    display: flex;
+}
+
+.button-geral{
+    padding: 2rem;
+    font-family: Creepster;
+}
+
+.container-menu{
+    background-color: var(--verde);
+    flex-wrap: wrap;
+    display: flex;
+    width: 50%;
+    padding: 1rem;
+}
+
+.container-order{
+    background-color: black;
+    width: 45%;
+    color: white;
+}
+
