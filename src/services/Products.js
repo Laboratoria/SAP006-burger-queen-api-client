@@ -30,28 +30,41 @@ export const TotalOrders = () => {
     }) 
 };
 
+
+
+
+
+
 // atualizar o pedido
 export const putRequestOptions = (token, status) => {
-  return fetch(`${host}/orders`, {
-      method:'PUT',
-      headers: {
-        'Authorization': token,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ status }),
-  }) 
-};
-// passar status quando estiver passando a função na pagina que vai fazer o PUT
+  const options = {
+    method: 'PUT',
+    headers: {
+      Authorization: token,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ status }),
+  };
 
-  export const UpdateOrderStatus = (index, id, status, allOrders, setAllOrders) => (
-    fetch(`${host}${id}`, putRequestOptions(token, status))
-      .then((response) => response.json())
-      .then(() => {
-        const pendingOrdersList = [...allOrders];
-        pendingOrdersList[index].status = status;
-        setAllOrders(pendingOrdersList);
-      })
-  );
+  return options;
+};
+
+// passar status quando estiver passando a função na pagina que vai fazer o PUT
+export const UpdateOrderStatus = (index, id, status, allOrders, setAllOrders) => (
+  fetch(`${host}${id}`, putRequestOptions(token, status))
+    .then((response) => response.json())
+    .then(() => {
+      const pendingOrdersList = [...allOrders];
+      pendingOrdersList[index].status = status;
+      setAllOrders(pendingOrdersList);
+    })
+);
+
+
+
+
+
+
 
   export const ConvertDate = (apiDate) => {
     const date = new Date(apiDate);

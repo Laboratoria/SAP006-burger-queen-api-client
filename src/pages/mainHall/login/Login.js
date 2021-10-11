@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import { LoginWithEmail } from '../../../services/Auth';
@@ -10,7 +10,6 @@ import Title from '../../../components/title/Title';
 
 import '../Style.css';
 
-
 export default function Login() { 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,12 +20,11 @@ export default function Login() {
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
     // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
     
-
     // evento de clique do olhinho
     function eyeClick (e){
         e.preventDefault()
         setShowPassword(!showPassword) 
-    }
+    };
 
     async function handleClick (e) {
         try {
@@ -61,7 +59,7 @@ export default function Login() {
             alert('Insira um e-mail e senha válidos')
             // colocar o modal aqui depois   
         } 
-    }
+    };
 
     
     return(

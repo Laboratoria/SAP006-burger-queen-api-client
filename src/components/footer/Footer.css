@@ -1,6 +1,8 @@
 :root {
     --brown-color: #5C3D31;
     --white-color: #FFF; 
+    --orange-color: #D79A2B;
+
 }
 
 .footer{
@@ -12,4 +14,14 @@
     align-items: center;
     justify-content: center;
     margin: 0;
+}
+
+.name-footer{
+    color: var(--white-color);
+    margin: 0 1%;
+    font-size: 20px;
+}
+
+.name-footer:hover{
+    color: var(--orange-color);
 }
