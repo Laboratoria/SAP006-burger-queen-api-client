@@ -36,7 +36,7 @@ export const TotalOrders = () => {
 export const UpdateOrderStatus = (id, status) => 
   orders(`/orders/${id}`, 'PUT', {status}, token);
 
- // Converter a datae hora 
+// Converter a datae hora 
 export const ConvertDate = (apiDate) => {
   const date = new Date(apiDate);
   let day = date.getDay();

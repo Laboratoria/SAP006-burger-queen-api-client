@@ -1,14 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-const Modal = ({onClose = () => {}, children}) => {
+export default function Modal ({showModal, setShowModal, children}) {
     return (
-        <div className="modal">
-            <div className="container">
-                <button className="close" onClick={onClose}></button>
-                <div className="content">{children}</div>
+    <>
+    {showModal ? (
+        <div>
+            <div showModal={showModal}>
+            <div>
+                {children}
+            </div>
+            <div aria-label='Close Modal' onClick={() => setShowModal(prev => !prev)} />
             </div>
         </div>
-    )
-}
 
-export default Modal;
+    
+    ): null}
+        
+    </>
+    
+    )
+};
+

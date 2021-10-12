@@ -7,6 +7,8 @@ import { TotalOrders, UpdateOrderStatus } from '../../services/Products';
 export default function Kitchen () {
     const [allOrders, setAllOrders] = useState([]);
     const token = localStorage.getItem('userToken');
+    const role = localStorage.getItem('userRole');
+
     
 
     useEffect(() => {
@@ -25,7 +27,7 @@ export default function Kitchen () {
         console.log(item)
         const orderId = item.id;
         const update = () => setAllOrders([...allOrders]);
-        if (item.status === 'pending') {
+        if (item.status === 'pending' && role === 'kitchen') {
           UpdateOrderStatus(orderId, 'Preparando')
             .then((response) => {
               const exist = allOrders.find((client) => client.id === response.id);
