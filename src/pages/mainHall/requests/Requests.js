@@ -20,7 +20,7 @@ export default function Requests () {
 
       const btnRequests = (e) => {
         e.preventDefault()
-        history.push('/pedidos')
+        history.push('/historico')
       }
 
       useEffect(() => {
@@ -67,7 +67,7 @@ export default function Requests () {
                     className="btn-menu"
                 /> 
                 <Button 
-                    text="🔔 Pedidos" 
+                    text="📋 Histórico" 
                     type="submit"
                     onClick={btnRequests} 
                     className="btn-menu"
