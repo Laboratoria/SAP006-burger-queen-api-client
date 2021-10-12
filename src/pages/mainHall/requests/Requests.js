@@ -34,8 +34,8 @@ export default function Requests () {
       const updateStatus = (item) => {
         const orderId = item.id;
         const update = () => setAllOrders([...allOrders]);
-        if (item.status === 'Preparando') {
-          UpdateOrderStatus(orderId, 'Servir')
+        if (item.status === 'Ag. Servir') {
+          UpdateOrderStatus(orderId, 'Ag. Servir')
             .then((response) => {
               const exist = allOrders.find((client) => client.id === response.id);
               if (exist) {

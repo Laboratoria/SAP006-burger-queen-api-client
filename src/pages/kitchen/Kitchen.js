@@ -22,7 +22,7 @@ export default function Kitchen () {
         const orderId = item.id;
         const update = () => setAllOrders([...allOrders]);
         if (item.status === 'pending') {
-          UpdateOrderStatus(orderId, 'Preparando')
+          UpdateOrderStatus(orderId, 'Preparando...')
             .then((response) => {
               const exist = allOrders.find((client) => client.id === response.id);
               if (exist) {
@@ -30,7 +30,7 @@ export default function Kitchen () {
               }
             });
         } else {
-          UpdateOrderStatus(orderId, 'Finalizado')
+          UpdateOrderStatus(orderId, 'Ag. Servir')
             .then((response) => {
               const exist = allOrders.find((client) => client.id === response.id);
               if (exist) {
