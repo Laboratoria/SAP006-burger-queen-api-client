@@ -25,7 +25,6 @@ export default function Requests () {
 
       useEffect(() => {
             TotalOrders()
-            
             .then(response => response.json())
             .then((json) => { 
               const sortById = json.sort((itemA, itemB) => itemB.id - itemA.id);
@@ -35,6 +34,8 @@ export default function Requests () {
       }, [token]);
 
       const updateStatus = (item) => {
+        const role = localStorage.getItem('userRole');
+
         const orderId = item.id;
         const update = () => setAllOrders([...allOrders]);
         if (item.status === 'pending') {

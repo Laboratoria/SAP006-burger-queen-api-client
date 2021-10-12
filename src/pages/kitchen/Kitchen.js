@@ -28,13 +28,14 @@ export default function Kitchen () {
         const orderId = item.id;
         const update = () => setAllOrders([...allOrders]);
         if (item.status === 'pending' && role === 'kitchen') {
-          UpdateOrderStatus(orderId, 'Preparando')
+          UpdateOrderStatus(orderId, 'Preparar')
             .then((response) => {
               const exist = allOrders.find((client) => client.id === response.id);
               if (exist) {
                 update();
               }
             });
+             
         } else {
           UpdateOrderStatus(orderId, 'Finalizado')
             .then((response) => {
