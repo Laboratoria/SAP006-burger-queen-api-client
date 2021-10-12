@@ -14,12 +14,14 @@ export default function CartItem( props ) {
               type='text'
               onClick={() => props.remove(props.id)}
               text='-'
+              className="btn-qtd"
             />
-            <p type="number" name="qtd">{props.qtd}</p>
+            <p type="number" name="qtd" className="qtd">{props.qtd}</p>
             <Button
               type='text'
               onClick={() => props.add(props.id)}
               text='+'
+              className="btn-qtd"
             />
         </div>
       </article> 
