@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
+import { NewOrder } from '../../services/Products';
 import CartItem from './CartItem';
 import Button from '../button/Button';
-import {NewOrder} from '../../services/Products';
+
 import './Style.css';
 
 export default function CartArea({ arrItem, removeButton, addButton }) {
 
-  // const [itemsList, setItemsList] = useState([]);
   const [clientName, setClientName] = useState('');
   const [tableNumber, setTableNumber] = useState('');
 
@@ -41,8 +41,7 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
         })
     }
     NewOrder(object)
-    alert('Pedido enviado para a cozinha')
-    history.push('/menus');
+    history.push('/historico');
   }
 
   return (
@@ -100,6 +99,7 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
         className="buttons btn-request" 
         onClick={handleSubmit}
       /> 
+
     </section> 
   )
 }

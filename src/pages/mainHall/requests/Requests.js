@@ -32,7 +32,6 @@ export default function Requests () {
       }, [token]);
 
       const updateStatus = (item) => {
-        console.log(item)
         const orderId = item.id;
         const update = () => setAllOrders([...allOrders]);
         if (item.status === 'Preparando') {
