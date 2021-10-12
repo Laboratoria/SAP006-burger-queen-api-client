@@ -43,6 +43,11 @@ h2 {
     width: 100%;
 }
 
+.botaoCadastro:hover{
+  color:black;
+  background-color: #CACB39;
+}
+
 .botaoLogin {
     width: 100%;
 }

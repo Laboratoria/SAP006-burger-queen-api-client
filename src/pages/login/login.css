@@ -80,6 +80,11 @@ Button {
   color: #fef6d1;
 }
 
+Button:hover {
+  color:black;
+  background-color: #CACB39;
+}
+
 .tocadastro {
   color: black;
 }

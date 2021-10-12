@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import "../cadastro/cadastro.css";
 import Logo from "../../componentes/logo";
 import Input from "../../componentes/input.js";
@@ -59,6 +59,8 @@ const Cadastro = () => {
       [name]: value,
     });
   };
+
+  
   return (
     <div className="cadastro">
       <Logo />

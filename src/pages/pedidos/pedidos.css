@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #fef6d1;
+}
+
+.select-hall {
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 191px;
+  height: 56px;
+  left: 805px;
+  top: 516px;
+  background: #ff4e28;
+  border: #ff4e28;
+  border-radius: 20px;
+  font-family: Work Sans;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fef6d1;
+}
+
+h1 {
+  margin-bottom: 15px;
+  font-family: Work Sans;
+  color: #ff4e28;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+input::placeholder {
+  color: #fef6d1;
+  font-family: Work Sans;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.buttonBreakfast {
+  background-color: #ff893a;
+}
+
+.buttonAll {
+  background-color: #ff893a;
+}
+
+input {
+  border: none;
+  width: 400.1px;
+  height: 30.52px;
+  padding: 15px 20px;
+  background: #ff893a;
+  border-radius: 20px;
+  font-family: Work Sans;
+  color: #fef6d1;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+
+.products-img {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  font-family: Work Sans;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 13px;
+  padding: 20px;
+  background-color: #ff893a;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ff893a;
+  border-radius: 16px;
+  flex-wrap: wrap;
+  width: 15%;
+  height: 15%;
+  margin-top: 13px;
+  padding: 20px;
+
+}
+
+.img-food {
+  width: 150px;
+  height: 150px;
+  border-radius: 16px;
+  margin-top: 6px;
+  padding: 6px;
+}
+
+.divPrice{
+  font-family: Work Sans;
+  color: #fef6d1;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: #ff893a;
+}
+
+.divName{
+ 
+  font-family: Work Sans;
+  color: #fef6d1;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: #ff893a;
+}
+
+.divFlavor{
+  font-family: Work Sans;
+  color: #fef6d1;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: #ff893a;
+}

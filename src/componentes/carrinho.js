@@ -23,12 +23,12 @@ function Carrinho({
 
                 <h1 className="divName" key={produtosNameKey}>{produtosName}</h1>
                 <div className="divButton">
-                    <h1 className="divPrice" key={produtosPriceKey}> {divId} R${produtosPrice},00</h1>
+                <h1 className="divPrice" key={produtosPriceKey}> R${divId}{produtosPrice},00</h1>
                     <h1 className="divFlavor"> {produtosFlavor}</h1>
                     <h1 className="divComplement"> {produtosComplement}</h1>
-                    <h1>Quantidade: {qtd}</h1>
+                    <h1>QUANTIDADE: {qtd}</h1>
                 </div>
-                <Button onClick={onClick} buttonClass="add-button"> remover </Button>
+                <Button onClick={onClick} buttonClass="add-button"msg="REMOVER"> </Button>
             </div>
         </>
     );
