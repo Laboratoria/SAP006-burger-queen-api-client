@@ -9,7 +9,7 @@
     --white-color: #FFF; 
     --gray-color: #e1e0e48c;
     --eye-color: #9a999c;
-    --shadow-color: #00000050;
+    --shadow-color: #000000;
 }
 
 .container-btn-menu{
@@ -24,6 +24,7 @@
     margin: 3% 1%;
     font-weight: 600;
     font-size: 25px;
+    font-family: 'Roboto', sans-serif;
     border-top: solid 1px var(--red-color);
     border-bottom: solid 1px var(--red-color);
     border-left: none;
@@ -40,17 +41,24 @@
 
 .container-btn-cardapio{
     margin: 1% 0;
+    display: flex;
+    justify-content: space-around;
 }
 
 .btn-cardapio{
     background: var(--brown-color);
     color: var(--white-color);
-    width: 15%;
+    width: 20%;
     height: 35px;
-    font-size: 19px;
+    font-size: 23px;
+    font-family: 'Roboto', sans-serif;
     border-radius: 9px;
     border: none;
     margin: 0 7px;
+}
+
+.btn-cardapio:hover {
+    background-color: var(--red-color);
 }
 
 .container-main-products{
@@ -75,5 +83,6 @@
     border: none;
     color: var(--shadow-color);
     font-size: 20px;
+    font-family: 'Roboto', sans-serif;
     background: none;
 }

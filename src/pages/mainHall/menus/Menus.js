@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
@@ -8,7 +8,7 @@ import CartArea from '../../../components/itensMenu/CartArea';
 
 import './Menus.css';
 
-function Menus () {
+export default function Menus () {
 
     const [allProducts, setAllProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
@@ -32,11 +32,6 @@ function Menus () {
             return json;
           });
     }, [token]);
-    
-    const btnMenus = (e) => {
-      e.preventDefault()
-      history.push('/menus')
-    }
 
     const btnRequests = (e) => {
       e.preventDefault()
@@ -77,12 +72,6 @@ function Menus () {
 
             <div className="container-btn-menu">
               <Button 
-                text="🍴 Menus" 
-                type="submit"
-                onClick={btnMenus} 
-                className="btn-menu" 
-              /> 
-              <Button 
                 text="📋 Histórico" 
                 type="submit"
                 onClick={btnRequests} 
@@ -117,6 +106,7 @@ function Menus () {
               arrItem={itemsList}
               removeButton={removeButton}
               addButton={addButton}>
+              
             </CartArea>
             
             <div className="container-main-products">
@@ -147,5 +137,3 @@ function Menus () {
         </>
     );
 };
-
-export default Menus;

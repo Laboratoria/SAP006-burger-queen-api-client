@@ -1,20 +1,17 @@
 import React from 'react';
 import Button from '../button/Button';
-import { ConvertDate, ConvertTime } from '../../services/Products';
 import OrderProducts from './OrderProducts';
+import { ConvertDate, ConvertTime } from '../../services/Products';
 
 import './Style.css';
 
 export default function Orders ({ id, client_name, table, status, createdAt, user_id, item, statusClick }) { 
 
     const products = item.Products.filter((order) => order.name);
-
     const dataCreated = new Date(item.createdAt);
     const dataUpdate = new Date(item.updatedAt);
     const difference = Math.abs(dataUpdate) - dataCreated;
     const minutes = Math.floor(difference / 1000 / 60);
-    // const timeToGetOrderDone = minutes === 60 ? `${difference + 1}: 00` : `${difference}:${minutes < 10 ? '0' : `${minutes}`}`;
-
 
     return (
             <div className="container-orders">

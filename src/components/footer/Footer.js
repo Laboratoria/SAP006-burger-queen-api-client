@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Footer ({className}) {
+export default function Footer ({ className }) {
     
     return (
             <h3 className={className}>

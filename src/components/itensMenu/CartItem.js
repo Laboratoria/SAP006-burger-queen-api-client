@@ -1,9 +1,9 @@
 import React from 'react';
 import Button from '../button/Button';
+
 import './Style.css';
 
-
-export default function CartItem(props) {
+export default function CartItem( props ) {
 
     return (
       <article key={props.id} className="container-products-cart">
@@ -23,5 +23,5 @@ export default function CartItem(props) {
             />
         </div>
       </article> 
-   )
-}
+   );
+};

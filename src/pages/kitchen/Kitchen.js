@@ -1,20 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+import { TotalOrders, UpdateOrderStatus } from '../../services/Products';
 import NavBar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer';
 import Orders from '../../components/itensMenu/Orders';
-import { TotalOrders, UpdateOrderStatus } from '../../services/Products';
 
 export default function Kitchen () {
     const [allOrders, setAllOrders] = useState([]);
     const token = localStorage.getItem('userToken');
-
-      useEffect(() => {
-            TotalOrders()
-            .then(response => response.json())
-            .then((json) => { 
-              setAllOrders(json)
-            });
-      }, [token]);
+    
+    useEffect(() => {
+      TotalOrders()
+      .then(response => response.json())
+      .then((json) => { 
+        const sortById = json.sort((itemA, itemB) => itemB.id - itemA.id);
+        setAllOrders(sortById)
+        console.log(json)                               
+        
+      });
+    }, [token]);
 // ver para recarregar a pagina quando mudar o status
 
       const updateOrderToProcessing = (item) => {
@@ -29,6 +32,7 @@ export default function Kitchen () {
                 update();
               }
             });
+             
         } else {
           UpdateOrderStatus(orderId, 'Ag. Servir')
             .then((response) => {

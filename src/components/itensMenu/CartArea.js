@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { NewOrder } from '../../services/Products';
 import CartItem from './CartItem';
@@ -9,7 +9,6 @@ import './Style.css';
 
 export default function CartArea({ arrItem, removeButton, addButton }) {
   const [modal, setModal] = useState({ text: "", show: false });
-
   const [clientName, setClientName] = useState('');
   const [tableNumber, setTableNumber] = useState('');
 
@@ -113,6 +112,5 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
       ></Modal>
 
     </section> 
-  )
-}
-
+  );
+};

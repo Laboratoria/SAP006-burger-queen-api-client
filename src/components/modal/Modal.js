@@ -21,4 +21,4 @@ export default function Modal({ children, hide, setHide, callback }) {
       </div>
     </div>
   );
-}
+};

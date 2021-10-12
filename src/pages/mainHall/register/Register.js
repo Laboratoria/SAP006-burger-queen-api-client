@@ -24,7 +24,6 @@ export default function Register() {
     const [role, setRole] = useState('');
     const [modal, setModal] = useState({ text: "", show: false });
     const history = useHistory();
-    
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
     // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.

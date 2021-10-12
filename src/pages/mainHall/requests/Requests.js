@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { TotalOrders, UpdateOrderStatus } from '../../../services/Products';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
 import Orders from '../../../components/itensMenu/Orders';
-import { TotalOrders, UpdateOrderStatus } from '../../../services/Products';
 
 export default function Requests () {
     const history = useHistory();
@@ -16,20 +16,18 @@ export default function Requests () {
         history.push('/menus')
       }
 
-      const btnRequests = (e) => {
-        e.preventDefault()
-        history.push('/historico')
-      }
-
       useEffect(() => {
             TotalOrders()
             .then(response => response.json())
             .then((json) => { 
-              setAllOrders(json)
+              const sortById = json.sort((itemA, itemB) => itemB.id - itemA.id);
+              setAllOrders(sortById)
+              console.log(json)  
             });
       }, [token]);
 
       const updateStatus = (item) => {
+
         const orderId = item.id;
         const update = () => setAllOrders([...allOrders]);
         if (item.status === 'ready') {
@@ -62,12 +60,6 @@ export default function Requests () {
                     text="🍴 Menus" 
                     type="submit"
                     onClick={btnMenus} 
-                    className="btn-menu"
-                /> 
-                <Button 
-                    text="📋 Histórico" 
-                    type="submit"
-                    onClick={btnRequests} 
                     className="btn-menu"
                 /> 
             </div>
