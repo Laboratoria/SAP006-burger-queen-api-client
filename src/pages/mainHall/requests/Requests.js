@@ -24,7 +24,7 @@ export default function Requests () {
               setAllOrders(sortById)
               console.log(json)  
             });
-      }, []);
+      }, [token]);
 
       const updateStatus = (item) => {
 

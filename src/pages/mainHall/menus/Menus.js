@@ -31,7 +31,7 @@ export default function Menus () {
             setSelectedProducts(menus)
             return json;
           });
-    }, []);
+    }, [token]);
 
     const btnRequests = (e) => {
       e.preventDefault()

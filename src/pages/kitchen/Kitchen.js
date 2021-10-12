@@ -17,7 +17,7 @@ export default function Kitchen () {
         console.log(json)                               
         
       });
-    }, []);
+    }, [token]);
 // ver para recarregar a pagina quando mudar o status
 
       const updateOrderToProcessing = (item) => {
