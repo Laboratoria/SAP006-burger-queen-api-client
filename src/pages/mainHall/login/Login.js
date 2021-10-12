@@ -9,7 +9,6 @@ import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title';
 
 import '../Style.css';
-import Modal from '../../../components/modal/Modal';
 
 
 export default function Login() { 
@@ -17,7 +16,6 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [role] = useState('');
-    const [modal, setModal] = useState(false);
     const history = useHistory();
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
@@ -108,18 +106,9 @@ export default function Login() {
                 <Button 
                     text='Entrar' 
                     type="submit"
-                    onClick={(e) => {
-                        handleClick(e)
-                        setModal(true)
-                    }}
+                    onClick={handleClick}
                     className="buttons" 
                 />
-                {modal ? (
-                    <Modal onClose={() => setModal(false)}>
-                        <h1>Login Efetuado com sucesso</h1>
-                        
-                    </Modal>
-                ) : null}
 
                 <div>
                     <div className="register"> 
@@ -134,4 +123,3 @@ export default function Login() {
         </div>
     );
 };
-

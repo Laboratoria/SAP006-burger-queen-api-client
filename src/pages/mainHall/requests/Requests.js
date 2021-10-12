@@ -4,13 +4,14 @@ import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
 import Orders from '../../../components/itensMenu/Orders';
-import { TotalOrders } from '../../../services/Products';
+import { TotalOrders, UpdateOrderStatus } from '../../../services/Products';
 
 import './Requests.css';
 
 export default function Requests () {
     const history = useHistory();
     const [allOrders, setAllOrders] = useState([]);
+
     const token = localStorage.getItem('userToken');
 
       const btnMenus = (e) => {
@@ -24,12 +25,15 @@ export default function Requests () {
       }
 
       useEffect(() => {
-            TotalOrders()
-            .then(response => response.json())
-            .then((json) => { 
-              setAllOrders(json)
-            });
-      }, [token]);
+        TotalOrders()
+        .then(response => response.json())
+        .then((json) => { 
+          const sortById = json.sort((itemA, itemB) => itemB.id - itemA.id);
+          setAllOrders(sortById)
+          console.log(json)                               
+          
+        });
+  }, [token]);
 
     return(
         <div>
@@ -52,10 +56,14 @@ export default function Requests () {
                     className="buttons buttons-menu"
                 /> 
             </div>
-            {allOrders.map((item) => (
+            {allOrders.map((item, index) => (
+              (item.status === 'pending' || item.status === 'processing')
+              &&
               <Orders 
                 {...item}
                   key={item.id}
+                  updateOrderToProcessing={() => UpdateOrderStatus(index, item.id, 'processing', allOrders, setAllOrders)}
+                  updateOrderToReady={() => UpdateOrderStatus(index, item.id, 'ready', allOrders, setAllOrders)}
               >
               </Orders>
             ))}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const OrderProducts = ({ id, name, flavor, complement, qtd }) => {
+const OrderProducts = ({ id, name, flavor, complement, qtd, products }) => {
   return (
     <div>
         {id}
@@ -8,6 +8,7 @@ const OrderProducts = ({ id, name, flavor, complement, qtd }) => {
         {flavor}
         {complement}
         {qtd}
+        {products}
     </div>
   )
 }

@@ -38,7 +38,9 @@ export const putRequestOptions = (token, status) => {
         'Authorization': token,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ status }),
+      body: JSON.stringify(
+        { status }
+      ),
   }) 
 };
 // passar status quando estiver passando a função na pagina que vai fazer o PUT
@@ -53,6 +55,8 @@ export const putRequestOptions = (token, status) => {
       })
   );
 
+
+  
   export const ConvertDate = (apiDate) => {
     const date = new Date(apiDate);
     let day = date.getDay();

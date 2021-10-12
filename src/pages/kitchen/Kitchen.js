@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import NavBar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer';
 import Orders from '../../components/itensMenu/Orders';
-import { TotalOrders } from '../../services/Products';
+import { TotalOrders, UpdateOrderStatus } from '../../services/Products';
 
 export default function Kitchen () {
     const [kitchenOrder, setKitchenOrder] = useState([]);
@@ -12,30 +12,34 @@ export default function Kitchen () {
             TotalOrders()
             .then(response => response.json())
             .then((json) => { 
+              const sortById = json.sort((itemA, itemB) => itemB.id - itemA.id);
+              setKitchenOrder(sortById)
               console.log(json)                               
-              setKitchenOrder(json)
+              
             });
       }, [token]);
 
     return(
-        <div>
-
-            <div>
-                <NavBar />
-            </div>
+        <>
+            <NavBar />
 
             <div className="container-btn-menu">
                 <p className="pedidos"> Cozinha | 🔔 Pedidos </p> 
             </div>
-            {kitchenOrder.map((item) => (
-              <Orders 
+            {kitchenOrder.map((item, index) => (
+              (item.status === 'pending' || item.status === 'processing')
+              &&
+              <Orders
+                key={item.id}
                 {...item}
+                updateOrderToProcessing={() => UpdateOrderStatus(index, item.id, 'processing', kitchenOrder, setKitchenOrder)}
+                updateOrderToReady={() => UpdateOrderStatus(index, item.id, 'ready', kitchenOrder, setKitchenOrder)}
               />
             ))}
             
           <Footer 
             className="footer"
           />
-        </div>
+        </>
     );
 };

@@ -20,7 +20,7 @@ export default function Orders ( {id, client_name, table, status, createdAt, use
     const getOrderResidual = Math.abs(getOrderProcessedAt) - getOrderCreatedAt;
     const showOrderPrepTime = Math.floor((getOrderResidual / 1000) / 60);
     const timeToGetOrderDone = showOrderPrepTime === 60 ? `${getOrderResidual + 1}: 00` : `${getOrderResidual}:${showOrderPrepTime < 10 ? '0' : `${showOrderPrepTime}`}`;
-
+   
     return (
         <div className="container-orders">
             <div className="container-status">
@@ -50,29 +50,34 @@ export default function Orders ( {id, client_name, table, status, createdAt, use
                     ))}
             </div>
             <div className="container-btn-status">
-                {status === 'pending'
-                    && <Button
+                {status === 'pending' && (
+                    <Button
                     className="btn-status status-pending"
                     type='text'
                     text='Ag. Preparação'
                     onclick={updateOrderToProcessing}
-                    />}
-                {status === 'processing'
-                    && <Button
+                    />
+                )}
+                     
+                {status === 'processing' && (
+                    <Button
                     className="btn-status status-processing"
                     type='text'
                     text='Preparando'
                     onclick={updateOrderToReady}
-                    />}
-                {status === 'ready'
-                    && <Button
+                    />
+                )}
+                {status === 'ready' && (
+                    <Button
                     className="btn-status status-ready"
                     type='text'
                     text='Servir'
                     onclick={updateOrderToDone}
-                    />}
-                {status === 'done'
-                    && <p className="btn-status status-done">Pedido finalizado</p>}
+                    />
+                )}
+                {status === 'done' && (
+                   <p className="btn-status status-done">Pedido finalizado</p> 
+                )} 
             </div>
         </div>
     );
