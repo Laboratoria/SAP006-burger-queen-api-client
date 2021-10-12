@@ -43,8 +43,8 @@
 }
 
 .btn-cardapio{
-    background: #5C3D31;
-    color: white;
+    background: var(--brown-color);
+    color: var(--white-color);
     width: 15%;
     height: 35px;
     font-size: 19px;
@@ -73,7 +73,7 @@
 
 .select-table{
     border: none;
-    color: black;
+    color: var(--shadow-color);
     font-size: 20px;
     background: none;
 }

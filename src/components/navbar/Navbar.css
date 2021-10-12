@@ -2,6 +2,7 @@
     --orange-green: #D79A2B;
     --brown-color: #5C3D31;
     --white-color: #FFF; 
+    --role-color: #f8ef5b96;
 }
 
 .navbar{
@@ -19,19 +20,12 @@
     height: 65px;
 }
 
-/* .tables-title{
-    font-size: 35px;
-    margin: 6% 0 0;
-    color: var(--brown-color);
-    font-weight: bold;
-}*/
-
 .clerck{
     height: 20px;
     font-size: 20px;
     font-weight: 600;
     margin: 6%;
-    background-color: #f8ef5b96;
+    background-color: var(--role-color);
     padding: 1%;
     border-radius: 15px;
 }

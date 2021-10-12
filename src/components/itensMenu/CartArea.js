@@ -44,7 +44,10 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
     }
     NewOrder(object)
     setModal({ text: "Pedido enviado para a cozinha", show: true });
-    history.push('/menus');
+  }
+
+  const btnToHistoric = (e) => {
+    history.push('/historico')
   }
 
   return (
@@ -106,7 +109,7 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
         children={modal.text}
         hide={modal.show}
         setHide={setModal}
-        callback={() => {}}
+        callback={btnToHistoric}
       ></Modal>
 
     </section> 

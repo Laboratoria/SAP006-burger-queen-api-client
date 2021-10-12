@@ -6,8 +6,6 @@ import Footer from '../../../components/footer/Footer';
 import Orders from '../../../components/itensMenu/Orders';
 import { TotalOrders, UpdateOrderStatus } from '../../../services/Products';
 
-import './Requests.css';
-
 export default function Requests () {
     const history = useHistory();
     const [allOrders, setAllOrders] = useState([]);
@@ -34,7 +32,7 @@ export default function Requests () {
       const updateStatus = (item) => {
         const orderId = item.id;
         const update = () => setAllOrders([...allOrders]);
-        if (item.status === 'Ag. Servir') {
+        if (item.status === 'ready') {
           UpdateOrderStatus(orderId, 'Ag. Servir')
             .then((response) => {
               const exist = allOrders.find((client) => client.id === response.id);
