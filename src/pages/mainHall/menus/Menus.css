@@ -47,7 +47,7 @@
 
 .btn-cardapio{
     background: var(--brown-color);
-    color: white;
+    color: var(--white-color);
     width: 20%;
     height: 35px;
     font-size: 23px;
@@ -60,7 +60,6 @@
 .btn-cardapio:hover {
     background-color: var(--red-color);
 }
-
 
 .container-main-products{
     background-color: var(--white-color);
@@ -82,7 +81,7 @@
 
 .select-table{
     border: none;
-    color: black;
+    color: var(--shadow-color);
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
     background: none;

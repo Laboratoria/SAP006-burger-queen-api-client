@@ -145,8 +145,3 @@ body{
     border-top: solid 1px var(--white-color);
     border-bottom: solid 1px var(--white-color);
 }
-
-@media screen and (max-width: 320px) {
-
-
-}

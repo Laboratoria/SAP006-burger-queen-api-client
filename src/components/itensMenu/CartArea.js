@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { NewOrder } from '../../services/Products';
 import CartItem from './CartItem';
 import Button from '../button/Button';
+import Modal from '../modal/Modal';
 
 import './Style.css';
 
 export default function CartArea({ arrItem, removeButton, addButton }) {
-
+  const [modal, setModal] = useState({ text: "", show: false });
   const [clientName, setClientName] = useState('');
   const [tableNumber, setTableNumber] = useState('');
-
 
   const history = useHistory();
   const totalPrice = arrItem.reduce((total, item) => total + (item.price * item.qtd), 0);
@@ -42,7 +42,11 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
         })
     }
     NewOrder(object)
-    history.push('/historico');
+    setModal({ text: "Pedido enviado para a cozinha", show: true });
+  }
+
+  const btnToHistoric = (e) => {
+    history.push('/historico')
   }
 
   return (
@@ -100,7 +104,13 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
         className="buttons btn-request" 
         onClick={handleSubmit}
       /> 
+      <Modal
+        children={modal.text}
+        hide={modal.show}
+        setHide={setModal}
+        callback={btnToHistoric}
+      ></Modal>
 
     </section> 
-  )
-}
+  );
+};

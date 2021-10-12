@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 import { LoginWithEmail } from '../../../services/Auth';
@@ -9,7 +9,6 @@ import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title';
 
 import '../Style.css';
-
 
 export default function Login() { 
     const [email, setEmail] = useState('');

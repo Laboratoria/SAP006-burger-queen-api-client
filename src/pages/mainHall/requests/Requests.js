@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { TotalOrders, UpdateOrderStatus } from '../../../services/Products';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
 import Orders from '../../../components/itensMenu/Orders';
-import { TotalOrders, UpdateOrderStatus } from '../../../services/Products';
-
-import './Requests.css';
 
 export default function Requests () {
     const history = useHistory();
@@ -26,7 +24,7 @@ export default function Requests () {
               setAllOrders(sortById)
               console.log(json)  
             });
-      }, [token]);
+      }, []);
 
       const updateStatus = (item) => {
 
@@ -64,7 +62,6 @@ export default function Requests () {
                     onClick={btnMenus} 
                     className="btn-menu"
                 /> 
-
             </div>
             {allOrders.map((item) => (
               <Orders 

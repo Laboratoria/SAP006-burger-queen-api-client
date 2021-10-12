@@ -8,6 +8,8 @@ import Button from '../../../components/button/Button';
 import LogoImg from '../../../components/images/LogoImg';
 import Footer from '../../../components/footer/Footer';
 import Title from '../../../components/title/Title';
+import Modal from '../../../components/modal/Modal';
+
 import garcom from '../../../img/garcom.png';
 import cozinheiro from '../../../img/cozinheiro.png';
 
@@ -20,8 +22,8 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [role, setRole] = useState('');
+    const [modal, setModal] = useState({ text: "", show: false });
     const history = useHistory();
-    
     // primeiro elemento é o estado que esta querendo controlar - ex:password
     // e o segundo é a função que vai fazer com que você atualize esse estado - ex:setPassword
     // useState retorna um array e sempre que chama o useState, voce recebe esses 2 parâmentros dentro do array.
@@ -44,14 +46,17 @@ export default function Register() {
             if (token) {
                 localStorage.setItem('userName', token)
                 const role = returnJson.role
+                
                 if(role === 'salon') {
-                    history.push('/')
+                    setModal({ text: "Usuário cadastrado - Salao", show: true });
                 } else {
-                    history.push('/')
+                    setModal({ text: "Usuário cadastrado - Cozinha", show: true });
                 }             
-            } 
+            }                 
+
         } catch (error) {
-            console.log('errrrou')
+            setModal({ text: "Favor inserir dados validos", show: true });
+
         }
     };
 
@@ -60,6 +65,7 @@ export default function Register() {
       localStorage.clear()
       history.push('/')
     };
+
 
     // seleciona o role - se cozinha ou salão - pega value e salva no role do servidor
     function handleRoleChange (e) {
@@ -139,6 +145,12 @@ export default function Register() {
                     onClick={handleClick} 
                     className="buttons" 
                 /> 
+                <Modal
+                    children={modal.text}
+                    hide={modal.show}
+                    setHide={setModal}
+                    callback={btnBack}
+                ></Modal>
                 <Button 
                     text="Já tenho conta" 
                     type="submit"

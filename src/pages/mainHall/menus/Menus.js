@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
@@ -8,7 +8,7 @@ import CartArea from '../../../components/itensMenu/CartArea';
 
 import './Menus.css';
 
-function Menus () {
+export default function Menus () {
 
     const [allProducts, setAllProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
@@ -31,9 +31,7 @@ function Menus () {
             setSelectedProducts(menus)
             return json;
           });
-    }, [token]);
-    
-    
+    }, []);
 
     const btnRequests = (e) => {
       e.preventDefault()
@@ -139,5 +137,3 @@ function Menus () {
         </>
     );
 };
-
-export default Menus;
