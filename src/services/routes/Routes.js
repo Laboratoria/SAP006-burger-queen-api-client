@@ -19,7 +19,7 @@ function Routes(){
                 <Route path="/cadastre-se" component={Register} />
                 <Route path="/notfound" component={ NotFound }/>
                 <PrivateRoute path="/menus" component={ Menus }/>
-                <PrivateRoute path="/pedidos" component={ Requests }/>
+                <PrivateRoute path="/historico" component={ Requests }/>
                 <PrivateRoute path="/cozinha" component={ Kitchen }/>
             </Switch>
         </BrowserRouter> 

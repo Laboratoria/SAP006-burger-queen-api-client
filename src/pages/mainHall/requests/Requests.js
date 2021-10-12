@@ -11,7 +11,6 @@ import './Requests.css';
 export default function Requests () {
     const history = useHistory();
     const [allOrders, setAllOrders] = useState([]);
-
     const token = localStorage.getItem('userToken');
 
       const btnMenus = (e) => {
@@ -25,19 +24,40 @@ export default function Requests () {
       }
 
       useEffect(() => {
-        TotalOrders()
-        .then(response => response.json())
-        .then((json) => { 
-          const sortById = json.sort((itemA, itemB) => itemB.id - itemA.id);
-          setAllOrders(sortById)
-          console.log(json)                               
-          
-        });
-  }, [token]);
+            TotalOrders()
+            .then(response => response.json())
+            .then((json) => { 
+              const sortById = json.sort((itemA, itemB) => itemB.id - itemA.id);
+              setAllOrders(sortById)
+              console.log(json)  
+            });
+      }, [token]);
+
+      const updateStatus = (item) => {
+        console.log(item)
+        const orderId = item.id;
+        const update = () => setAllOrders([...allOrders]);
+        if (item.status === 'pending') {
+          UpdateOrderStatus(orderId, 'Preparando')
+            .then((response) => {
+              const exist = allOrders.find((client) => client.id === response.id);
+              if (exist) {
+                update();
+              }
+            });
+        } else {
+          UpdateOrderStatus(orderId, 'Finalizado')
+            .then((response) => {
+              const exist = allOrders.find((client) => client.id === response.id);
+              if (exist) {
+                update();
+              }
+            });
+        } 
+      };
 
     return(
         <div>
-
             <div>
                 <NavBar />
             </div>
@@ -47,25 +67,27 @@ export default function Requests () {
                     text="🍴 Menus" 
                     type="submit"
                     onClick={btnMenus} 
-                    className="buttons buttons-menu"
+                    className="btn-menu"
                 /> 
                 <Button 
                     text="🔔 Pedidos" 
                     type="submit"
                     onClick={btnRequests} 
-                    className="buttons buttons-menu"
+                    className="btn-menu"
                 /> 
             </div>
-            {allOrders.map((item, index) => (
-              (item.status === 'pending' || item.status === 'processing')
-              &&
+            {allOrders.map((item) => (
               <Orders 
-                {...item}
-                  key={item.id}
-                  updateOrderToProcessing={() => UpdateOrderStatus(index, item.id, 'processing', allOrders, setAllOrders)}
-                  updateOrderToReady={() => UpdateOrderStatus(index, item.id, 'ready', allOrders, setAllOrders)}
-              >
-              </Orders>
+                key={item.id}
+                item={item}
+                table={item.table}
+                client_name={item.client_name}
+                id={item.id}
+                createdAt={item.createdAt}
+                status={item.status}
+                user_id={item.user_id}
+                statusClick={updateStatus}
+              />
             ))}
             
           <Footer 
@@ -74,5 +96,3 @@ export default function Requests () {
         </div>
     );
 };
-
-// embaixo do key - linha 59 - propriedades da função e dentro delas fazer o put e o update do status allorders

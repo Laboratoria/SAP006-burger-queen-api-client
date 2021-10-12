@@ -29,3 +29,5 @@ test('selected salon', done => {
     const infoRole = getByPlaceholderText('kitchen');
     fireEvent.change(infoRole, { target: { value: "kitchen" } });
   });
+
+  

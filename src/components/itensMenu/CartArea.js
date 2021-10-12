@@ -42,7 +42,7 @@ export default function CartArea({ arrItem, removeButton, addButton }) {
         })
     }
     NewOrder(object)
-    history.push('/pedidos');
+    history.push('/historico');
   }
 
   return (
