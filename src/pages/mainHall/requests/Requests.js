@@ -18,11 +18,6 @@ export default function Requests () {
         history.push('/menus')
       }
 
-      const btnRequests = (e) => {
-        e.preventDefault()
-        history.push('/pedidos')
-      }
-
       useEffect(() => {
             TotalOrders()
             .then(response => response.json())
@@ -34,12 +29,11 @@ export default function Requests () {
       }, [token]);
 
       const updateStatus = (item) => {
-        const role = localStorage.getItem('userRole');
 
         const orderId = item.id;
         const update = () => setAllOrders([...allOrders]);
-        if (item.status === 'pending') {
-          UpdateOrderStatus(orderId, 'Preparando')
+        if (item.status === 'Ag. Servir') {
+          UpdateOrderStatus(orderId, 'Ag. Servir')
             .then((response) => {
               const exist = allOrders.find((client) => client.id === response.id);
               if (exist) {
@@ -70,12 +64,7 @@ export default function Requests () {
                     onClick={btnMenus} 
                     className="btn-menu"
                 /> 
-                <Button 
-                    text="🔔 Pedidos" 
-                    type="submit"
-                    onClick={btnRequests} 
-                    className="btn-menu"
-                /> 
+                
             </div>
             {allOrders.map((item) => (
               <Orders 

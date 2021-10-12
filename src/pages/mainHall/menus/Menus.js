@@ -33,10 +33,10 @@ function Menus () {
           });
     }, [token]);
     
-    const btnMenus = (e) => {
-      e.preventDefault()
-      history.push('/menus')
-    }
+    // const btnMenus = (e) => {
+    //   e.preventDefault()
+    //   history.push('/menus')
+    // }
 
     const btnRequests = (e) => {
       e.preventDefault()
@@ -76,12 +76,12 @@ function Menus () {
           </div>
 
             <div className="container-btn-menu">
-              <Button 
+              {/* <Button 
                 text="🍴 Menus" 
                 type="submit"
                 onClick={btnMenus} 
                 className="btn-menu" 
-              /> 
+              />  */}
               <Button 
                 text="📋 Histórico" 
                 type="submit"

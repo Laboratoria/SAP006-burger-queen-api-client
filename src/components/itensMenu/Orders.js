@@ -8,12 +8,6 @@ import './Style.css';
 export default function Orders ({ id, client_name, table, status, createdAt, user_id, item, statusClick }) { 
 
     const products = item.Products.filter((order) => order.name);
-    // const getOrderCreatedAt = new Date(createdAt);
-    //const getOrderProcessedAt = new Date(getOrderCreatedAt);
-    //const getOrderResidual = Math.abs(getOrderProcessedAt) - getOrderCreatedAt;
-    // const showOrderPrepTime = Math.floor((getOrderResidual / 1000) / 60);
-    //const timeToGetOrderDone = showOrderPrepTime === 60 ? `${getOrderResidual + 1}: 00` : `${getOrderResidual}:${showOrderPrepTime < 10 ? '0' : `${showOrderPrepTime}`}`;
-
 
     const dataCreated = new Date(item.createdAt);
     const dataUpdate = new Date(item.updatedAt);
@@ -27,10 +21,10 @@ export default function Orders ({ id, client_name, table, status, createdAt, use
             <div className="container-status">
                 {status === 'pending'
                     && <div className="status pending">Pendente</div>}
-                {status === 'Preparando'
-                    && <div className="status processing">Em Preparo</div>}
-                {(status === 'Servir')
-                    && <div className="status ready">Servir</div>}
+                {status === 'Preparando..'
+                    && <div className="status processing">Preparando...</div>}
+                {(status === 'Ag. Servir')
+                    && <div className="status ready">Ag. Servir</div>}
                 {(status === 'Finalizado')
                     && <div className="status done">Finalizado</div>}
 
@@ -59,7 +53,9 @@ export default function Orders ({ id, client_name, table, status, createdAt, use
                 onClick={() => statusClick(item)}
             >
                 {item.status === 'pending' ? 'Pendente' : item.status}
-                {item.status === 'Finalizado' ? 'Servido' : item.status}
+                {item.status === 'Preparando...' ? 'Preparando...' : item.status}
+                {item.status === 'Ag. Servir' ? 'Ag. Servir' : item.status}
+                {item.status === 'Finalizado' ? 'Finalizado' : item.status}
             </Button>
         </div>
     );
