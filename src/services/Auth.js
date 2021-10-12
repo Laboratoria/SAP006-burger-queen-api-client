@@ -7,7 +7,7 @@ const auth = (endpoint, method, body) => {
             'Authentication': 'Token'
         },
         body: JSON.stringify (body),
-    }) 
+    })
 };
 
 export const LoginWithEmail = (users) => {

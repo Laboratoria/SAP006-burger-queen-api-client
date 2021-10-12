@@ -53,9 +53,7 @@ export default function Login() {
                     history.push('/cozinha')
                 }                  
             } 
-            if(response.status !== 200){
-                throw new Error(response.status)  
-            }
+            
         } catch (json) {
             history.push('/') 
             alert('Insira um e-mail e senha válidos')
