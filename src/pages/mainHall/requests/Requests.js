@@ -4,7 +4,7 @@ import NavBar from '../../../components/navbar/Navbar'
 import Button from '../../../components/button/Button';
 import Footer from '../../../components/footer/Footer';
 import Orders from '../../../components/itensMenu/Orders';
-import { TotalOrders } from '../../../services/Products';
+import { TotalOrders, UpdateOrderStatus } from '../../../services/Products';
 
 import './Requests.css';
 
@@ -31,9 +31,31 @@ export default function Requests () {
             });
       }, [token]);
 
+      const updateStatus = (item) => {
+        console.log(item)
+        const orderId = item.id;
+        const update = () => setAllOrders([...allOrders]);
+        if (item.status === 'Preparando') {
+          UpdateOrderStatus(orderId, 'Servir')
+            .then((response) => {
+              const exist = allOrders.find((client) => client.id === response.id);
+              if (exist) {
+                update();
+              }
+            });
+        } else {
+          UpdateOrderStatus(orderId, 'Finalizado')
+            .then((response) => {
+              const exist = allOrders.find((client) => client.id === response.id);
+              if (exist) {
+                update();
+              }
+            });
+        } 
+      };
+
     return(
         <div>
-
             <div>
                 <NavBar />
             </div>
@@ -43,21 +65,27 @@ export default function Requests () {
                     text="🍴 Menus" 
                     type="submit"
                     onClick={btnMenus} 
-                    className="buttons buttons-menu"
+                    className="btn-menu"
                 /> 
                 <Button 
                     text="🔔 Pedidos" 
                     type="submit"
                     onClick={btnRequests} 
-                    className="buttons buttons-menu"
+                    className="btn-menu"
                 /> 
             </div>
             {allOrders.map((item) => (
               <Orders 
-                {...item}
-                  key={item.id}
-              >
-              </Orders>
+                key={item.id}
+                item={item}
+                table={item.table}
+                client_name={item.client_name}
+                id={item.id}
+                createdAt={item.createdAt}
+                status={item.status}
+                user_id={item.user_id}
+                statusClick={updateStatus}
+              />
             ))}
             
           <Footer 
@@ -66,5 +94,3 @@ export default function Requests () {
         </div>
     );
 };
-
-// embaixo do key - linha 59 - propriedades da função e dentro delas fazer o put e o update do status allorders
