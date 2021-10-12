@@ -32,7 +32,7 @@ export default function Requests () {
 
         const orderId = item.id;
         const update = () => setAllOrders([...allOrders]);
-        if (item.status === 'Ag. Servir') {
+        if (item.status === 'ready') {
           UpdateOrderStatus(orderId, 'Ag. Servir')
             .then((response) => {
               const exist = allOrders.find((client) => client.id === response.id);
@@ -64,7 +64,7 @@ export default function Requests () {
                     onClick={btnMenus} 
                     className="btn-menu"
                 /> 
-                
+
             </div>
             {allOrders.map((item) => (
               <Orders 
