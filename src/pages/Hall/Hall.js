@@ -3,6 +3,8 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import Products from '../../components/Products/Products';
 import CartItem from '../../components/CartItem/CartItem';
+import { postOrder } from '../../postAPI';
+import { useHistory } from 'react-router-dom';
 
 import '../../global.css';
 import './hall.css'
@@ -11,26 +13,35 @@ import logo from '../../img/logo.png'
 // import './styles/order.css';
 
 function Hall() {
- 
-    const [client, setClient] = useState('');
-    const onChangeClient = (e) => {
-        const name = e.target.value
-        setClient(name)
-    };
+    const token = localStorage.getItem('token');
 
     //criamos um estado inicial passamos todos os
     const [products, setProducts] = useState([]);
     const [selectedMenu, setSelectedMenu] = useState('breakfast');
-    const [order, setOrder] = useState([])
+    const [order, setOrder] = useState([]);
+    const [client, setClient] = useState('');
+    const [table, setTable] = useState('');
+
+    //sair
+    const history = useHistory();
+    const handleSignOut = (e) => {
+        e.preventDefault();
+        history.push('/login')
+        localStorage.clear();
+    }
+
+    //name do cliente
+    const onChangeClient = (e) => {
+        const client = e.target.value
+        setClient(client)
+    };
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
         fetch('https://lab-api-bq.herokuapp.com/products', {
             headers: {
                 Authorization: `${token}`,
                 accept: "application/json",
             }
-
         })
             .then((response) =>
                 response.json()
@@ -38,38 +49,35 @@ function Hall() {
             .then((json) => {
                 setProducts(json)
             })
-    })
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    }
-
-    const selectedProducts = products.filter((produtos) => produtos.type === selectedMenu)
+    }, [token]);
 
     //adicionar o produto no resumo do carrinho //find encontra o item objeto
+    const selectedProducts = products.filter((produtos) => produtos.type === selectedMenu)
     const handleAdd = (e, item) => {
         e.preventDefault();
         const element = order.find(resposta => resposta.id === item.id)
         if (element) {
-            element.qtd += 1
+            element.qtd += 1;
+            setOrder([...order])
             //adicionar os pedidos - mapeia a quantidade de hamb
             // setOrder(quant => quant.map(response => response.id === element.id ? element : response))
         }
         //se a quantidade for 0 ele cria um hamb
         else {
-            item.qtd = 1
+            item.qtd = 1;
             //olhar tudo que tem no pedido e adiciona o objeto clicado da api
-            setOrder([...order, item])
+            setOrder([...order, item]);
         }
-    }
- //função de remover itens do carrinho
+    };
+    
+    //função de remover itens do carrinho
     const handleRemove = (e, item, index) => {
         e.preventDefault();
         const element = order.find(response => response.id === item.id);
 
         if (element.qtd !== 0) {
             element.qtd -= 1;
+            setOrder([...order])
         }
         if (element.qtd === 0) {
             // alert("banana")
@@ -80,6 +88,35 @@ function Hall() {
         }
     }
 
+    const calculateTotal= (items) => {
+        const totalPrice = items.reduce((accumulator, array) => {
+            const {qtd, price} =array;
+            accumulator = Number (qtd * price + accumulator)
+            return accumulator
+        }, 0)
+        return totalPrice;
+    }
+    const total = calculateTotal(order)
+    
+    //chamar este handleSubmit no button enviar
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const pedido = ({
+            "client": client,
+            "table": table,
+            "products":
+                order.map((item) => (
+                    {
+                        id: Number(item.id),
+                        qtd: Number(item.qtd),
+                    }))
+        })
+
+        postOrder(pedido);
+        //limpa o carrinho/pedido
+        setOrder([])
+    }
 
     return (
 
@@ -89,8 +126,7 @@ function Hall() {
                 <div className="logo-menu">
                     {<img src={logo} className="logo" alt="Logo Burguer Queen" />}</div>
                 <h2 className="name-menu">Salão</h2>
-                <Button className="btn-logout"> Sair
-                </Button>
+                <Button text="Sair" className="btn-logout" onClick={handleSignOut} > Sair </Button>
             </header>
 
             
@@ -137,7 +173,7 @@ function Hall() {
                     <section className="container-order">
                         <div className="info-table-client">
                            
-                                <select className="table-select" name="Mesa" onChange={handleSubmit}>
+                                <select className="table-select" name="Mesa: " onChange={(e) => setTable(e.target.value)} >
                                     <option valeu="mesa01">Mesa</option>
                                     <option valeu="mesa01">01</option>
                                     <option valeu="mesa02">02</option>
@@ -160,21 +196,24 @@ function Hall() {
                            
                         </div>
                         <div className="box-order-itens">
-                        {order.map((item, index) =>
-                            <div key={index}>
-                                <CartItem
-                                    divClassName="order-itens"
-                                    productsName={item.name}
-                                    productsPrice={item.price}
-                                    productsFlavor={item.flavor}
-                                    products={item.qtd}
-                                    qtd={item.qtd}
-                                    productsComplement={item.complement}
-                                    removeOnClick={(e) => handleRemove(e, item, index)}
-                                />
-                    
-                            </div>
-                        )} 
+                            {order.map((item, index) =>
+                                <div key={index}>
+                                    <CartItem
+                                        divClassName="order-itens"
+                                        productsName={item.name}
+                                        productsPrice={item.price}
+                                        productsFlavor={item.flavor}
+                                        products={item.qtd}
+                                        qtd={item.qtd}
+                                        productsComplement={item.complement}
+                                        removeOnClick={(e) => handleRemove(e, item, index)}
+                                    />
+                        
+                                </div>
+                            )} 
+                            <h1>Total R$ {total},00</h1>
+                            <Button className="button" text="enviar para a cozinha" onClick={(e) => handleSubmit(e)}> Enviar </Button>
+
                         </div>
                     </section>
                 </section>

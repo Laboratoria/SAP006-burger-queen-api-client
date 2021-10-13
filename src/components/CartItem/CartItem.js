@@ -47,7 +47,6 @@ function CartItem({
                    fontWeight:'800',
                    minWidth: '30px', 
                    height: '30px',
-                   /*height:'30px',*/
                    padding: '10px',
                    margin: '5px',
                    alignItems: 'center',
