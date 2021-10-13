@@ -1,0 +1,50 @@
+.order-itens{
+    border: solid 1px #9B2D0A;
+    border-radius: 10px;
+    width: 280px;
+    height: 100px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 25%);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.item-description{
+    display: flex;
+    width: 100px;
+    height: 80%;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.divName{
+    text-align: center;
+    padding: 5px;
+}
+
+.item-complement{
+    font-size: 12px;
+    font-weight: bold;
+    color: #9B2D0A;
+}
+
+
+.number-itens{
+    padding: 5px;
+}
+.item-price{
+    width: 60px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: stretch;
+}
+.box-flavor{
+    width: 40px;
+    height: 100px;
+    align-items: center;
+}

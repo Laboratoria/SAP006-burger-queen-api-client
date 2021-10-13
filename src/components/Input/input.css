@@ -7,6 +7,9 @@ input:hover{
     box-shadow: 0 0 0 3px rgb(182, 180, 173);    
 }
 
+input{
+    border-radius: 5px;
+}
 .label{
     display: block;
     font-size: 1rem;

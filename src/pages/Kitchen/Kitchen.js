@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../global.css';
+import '../../global.css';
 
 const Kitchen = () => <h1>Cozinha</h1>;
 

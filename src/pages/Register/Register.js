@@ -1,14 +1,14 @@
 import { React, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import '../styles/register.css';
-import logo from '../img/logo.png'
-import { registerUser } from "../auth";
-import { validation } from '../validation';
-import Input from '../components/Input';
-import Button from '../components/Button';
-import '../styles/login.css';
-import '../global.css';
+import './register.css';
+import logo from '../../img/logo.png'
+import { registerUser } from "../../auth";
+import { validation } from '../../validation';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
+import '../Login/login.css';
+import '../../global.css';
 
 function Register() {
     const [errors, setErrors] = useState({})

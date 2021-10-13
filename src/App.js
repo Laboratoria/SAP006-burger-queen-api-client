@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 
 import './global.css';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import NotFound from './pages/NotFound';
-import Hall from './pages/Hall';
-import Kitchen from './pages/Kitchen';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import NotFound from './pages/NotFound/NotFound';
+import Hall from './pages/Hall/Hall';
+import Kitchen from './pages/Kitchen/Kitchen';
 // import { SettingsBackupRestore } from '@material-ui/icons';
 
 
