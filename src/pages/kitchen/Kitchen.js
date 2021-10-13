@@ -45,6 +45,8 @@ export default function Kitchen() {
       </div>
 
       {allOrders.map((item) => (
+        (item.status === STATUS.PENDING || item.status === STATUS.PROCESSING)
+        &&
         <Orders
           key={item.id}
           item={item}
@@ -57,7 +59,6 @@ export default function Kitchen() {
           statusClick={updateOrderToProcessing}
         />
       ))}
-
       <Footer className="footer" />
     </div>
   );

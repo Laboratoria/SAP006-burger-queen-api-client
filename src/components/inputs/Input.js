@@ -1,4 +1,4 @@
-import React from 'react';
+   import React from 'react';
 import './Inputs.css';
 
 export default function Input ({ name, id, placeholder, type, value, onChange, className }) {

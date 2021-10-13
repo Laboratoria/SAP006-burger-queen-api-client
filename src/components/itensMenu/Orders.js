@@ -42,7 +42,7 @@ export default function Orders({
           📅 Entrada: {ConvertDate(createdAt)} às {ConvertTime(createdAt)}
         </span>
         <span className="time">
-          🕓 Tempo de Preparo: <span className="hour">{minutes}:min</span>
+          🕓 Tempo de Preparo: <span className="hour">{minutes} min</span>
         </span>
         <hr></hr>
       </div>
@@ -66,7 +66,7 @@ export default function Orders({
         onClick={() => statusClick(item)}
       >
         {item.status === STATUS.PENDING ? "Pendente" : item.status}
-        {item.status === STATUS.PROCESSING ? "Preparando..." : item.status}
+        {item.status === STATUS.PROCESSING ? "Preparando" : item.status}
         {item.status === STATUS.READY ? "Ag. Servir" : item.status}
         {item.status === STATUS.DONE ? "Finalizado" : item.status}
       </Button>

@@ -3,12 +3,12 @@ import { render, fireEvent } from '@testing-library/react'
 import Input from '../../components/inputs/Input'
 
 describe('Input.js', () => {
-    test('Should render Input without errors', () => {
+    test('Deve renderizar a entrada sem erros', () => {
         render(<Input onChange={() => {}} />)
     })
 })
 
-test('selected salon', done => {
+  test('selecionar salon', done => {
     function handleRoleChange(e) {
       expect(e.target.value).toEqual('salon');
       done();
@@ -29,5 +29,6 @@ test('selected salon', done => {
     const infoRole = getByPlaceholderText('kitchen');
     fireEvent.change(infoRole, { target: { value: "kitchen" } });
   });
+
 
   
