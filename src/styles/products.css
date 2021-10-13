@@ -36,6 +36,7 @@
     width: 49%;
     margin: 1%;
 }
+
 .menu-container {
         display: flex;
         background-color: blanchedalmond;
@@ -43,11 +44,21 @@
 }
 
 
-.container-order{
+.carrinho{
         display: flex;
         position: absolute;
         right: 0;
         /* background-color: black; */
         flex-direction: column;
 }
+.head-menu{
+        background-color: #9B2D0A;
+}
 
+/* .container-carrinho{
+        background-color: black;
+} */
+
+/* .menu{
+        background-color: #9B2D0A;
+} */
