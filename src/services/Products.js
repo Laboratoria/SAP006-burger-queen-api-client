@@ -9,7 +9,7 @@ const orders = (endpoint, method, body, token) => {
             'Authorization': token,
         },
         body: JSON.stringify (body),
-    }) 
+    })
 };     
 
 // Fazer pedidos novos

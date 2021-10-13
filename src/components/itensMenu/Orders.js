@@ -54,6 +54,7 @@ export default function Orders ({ id, client_name, table, status, createdAt, use
                     {item.status === 'Ag. Servir' ? 'Ag. Servir' : item.status}
                     {item.status === 'Finalizado' ? 'Finalizado' : item.status}
                 </Button>
+                
             </div>
     );
 };
