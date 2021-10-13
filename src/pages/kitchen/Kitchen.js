@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { TotalOrders, UpdateOrderStatus } from "../../services/Products";
+
 import NavBar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import Orders from "../../components/itensMenu/Orders";
+
+import STATUS from "../../constants/status";
 
 export default function Kitchen() {
   const [allOrders, setAllOrders] = useState([]);
@@ -24,13 +27,10 @@ export default function Kitchen() {
 
   const updateOrderToProcessing = (item) => {
     const orderId = item.id;
-    const update = (ordersResponse) => {
-      setAllOrders();
-    };
-    if (item.status === "pending") {
-      UpdateOrderStatus(orderId, "Preparando...").then(() => updateOrders());
+    if (item.status === STATUS.PENDING) {
+      UpdateOrderStatus(orderId, STATUS.PROCESSING).then(() => updateOrders());
     } else {
-      UpdateOrderStatus(orderId, "Ag. Servir").then(() => updateOrders());
+      UpdateOrderStatus(orderId, STATUS.READY).then(() => updateOrders());
     }
   };
 

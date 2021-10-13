@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+
 import { TotalOrders, UpdateOrderStatus } from "../../../services/Products";
+
 import NavBar from "../../../components/navbar/Navbar";
 import Button from "../../../components/button/Button";
 import Footer from "../../../components/footer/Footer";
 import Orders from "../../../components/itensMenu/Orders";
+
+import STATUS from "../../../constants/status";
 
 export default function Requests() {
   const history = useHistory();
@@ -34,8 +38,8 @@ export default function Requests() {
   const updateStatus = (item) => {
     const orderId = item.id;
 
-    if (item.status === "Ag. Servir") {
-      UpdateOrderStatus(orderId, "Finalizado").then(() => updateOrders());
+    if (item.status === STATUS.READY) {
+      UpdateOrderStatus(orderId, STATUS.DONE).then(() => updateOrders());
     }
   };
 
