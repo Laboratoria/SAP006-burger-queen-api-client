@@ -2,10 +2,11 @@ import { React, useState, useEffect } from 'react'
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import Products from '../../components/Products/Products';
-import CartProducts from '../../components/CartItem/CartProducts';
+import CartItem from '../../components/CartItem/CartItem';
 
 import '../../global.css';
 import './hall.css'
+import logo from '../../img/logo.png'
 
 // import './styles/order.css';
 
@@ -84,80 +85,99 @@ function Hall() {
 
         <section className="container">
 
-            <header>
-                <h2>Salão</h2>
+            <header className="header-menu">
+                <div className="logo-menu">
+                    {<img src={logo} className="logo" alt="Logo Burguer Queen" />}</div>
+                <h2 className="name-menu">Salão</h2>
+                <Button className="bth-logout"> Sair
+                </Button>
             </header>
 
-            <div className="button-menu" >
-                <Button
-                    className="buttonMenu"
-                    onClick={() => {
-                        setSelectedMenu('breakfast')
-                    }}
-                >Breakfast
-                </Button>
-                <Button
-                    className='buttonMenu'
-                    onClick={() => {
-                        setSelectedMenu('all-day')
-                    }}
-                >All Day
-                </Button>
-            </div>
+            
 
-                <section className="mesas-cliente">
-                    <select className="numero-mesas" name="Mesa" onChange={handleSubmit}>
-                        <option valeu="mesa01">Mesa</option>
-                        <option valeu="mesa01">01</option>
-                        <option valeu="mesa02">02</option>
-                        <option valeu="mesa03">03</option>
-                        <option valeu="mesa04">04</option>
-                        <option valeu="mesa05">05</option>
-                    </select>
+                <section className="hall-main">
 
-                    <Input className="input-hall"
-                        placeholder="Insira o nome do cliente"
-                        name="client"
-                        value={client}
-                        onChange={onChangeClient}
+                    <section className="menu-container">
 
-                    />
-            </section>
+                    <div className="button-menu" 
+                        style={{width:'100%', display:'flex', justifyContent: 'space-around', marginBottom:'5%'}} >
+                        <Button
+                            className="buttonMenu"
+                            onClick={() => {
+                                setSelectedMenu('breakfast')
+                            }}
+                        >Breakfast
+                        </Button>
+                        <Button
+                            className='buttonMenu'
+                            onClick={() => {
+                                setSelectedMenu('all-day')
+                            }}
+                        >All Day
+                        </Button>
+                    </div>
 
-                <div className="flex-container">
-                    {selectedProducts && selectedProducts.map((item, index) => (
-                        <div key={index}>
-                            <Products
-                                divClassName="flex-item"
-                                productsName={item.name}
-                                divId={item.id}
-                                ImgSrc={item.image}
-                                productsPrice={item.price}
-                                productsNameKey={item.id}
-                                productsFlavor={item.flavor}
-                                productsComplement={item.complement}
-                                addOnClick={(e) => handleAdd(e, item)}
-                            />
+                        {selectedProducts && selectedProducts.map((item, index) => (
+                            <div key={index}>
+                                <Products
+                                    divClassName="box-item"
+                                    productsName={item.name}
+                                    /*divId={item.id}*/ 
+                                    ImgSrc={item.image}
+                                    productsFlavor={item.flavor}
+                                    productsComplement={item.complement}
+                                    productsPrice={item.price}
+                                    /*productsNameKey={item.id}*/
+                                    addOnClick={(e) => handleAdd(e, item)}
+                                />
+                            </div>
+                        ))}
+                    </section>
+
+                    <section className="container-order">
+                        <div className="info-table-client">
+                           
+                                <select className="table-select" name="Mesa" onChange={handleSubmit}>
+                                    <option valeu="mesa01">Mesa</option>
+                                    <option valeu="mesa01">01</option>
+                                    <option valeu="mesa02">02</option>
+                                    <option valeu="mesa03">03</option>
+                                    <option valeu="mesa04">04</option>
+                                    <option valeu="mesa05">05</option>
+                                </select>
+
+                                <Input className="input-client"
+                                    placeholder="Insira o nome do cliente"
+                                    name="client"
+                                    value={client}
+                                    onChange={onChangeClient}
+                                    style={{backgroundColor: '#9B2D0A',
+                                            borderRadius: '5px',
+                                            width: '150px',
+                                            height: '42px',
+                                            margin: '2%'}}
+                                />
+                           
                         </div>
-                    ))}
-                <section className="container-order">
-                    {order.map((item, index) =>
-                        <div key={index}>
-                            <CartProducts
-                                divClassName="flex-item-order"
-                                productsName={item.name}
-                                productsPrice={item.price}
-                                productsFlavor={item.flavor}
-                                products={item.qtd}
-                                qtd={item.qtd}
-                                productsComplement={item.complement}
-                                removeOnClick={(e) => handleRemove(e, item, index)}
-                            />
-                
+                        <div className="box-order-itens">
+                        {order.map((item, index) =>
+                            <div key={index}>
+                                <CartItem
+                                    divClassName="order-itens"
+                                    productsName={item.name}
+                                    productsPrice={item.price}
+                                    productsFlavor={item.flavor}
+                                    products={item.qtd}
+                                    qtd={item.qtd}
+                                    productsComplement={item.complement}
+                                    removeOnClick={(e) => handleRemove(e, item, index)}
+                                />
+                    
+                            </div>
+                        )} 
                         </div>
-                    )} 
+                    </section>
                 </section>
-            </div>
         </section>
     );
 }

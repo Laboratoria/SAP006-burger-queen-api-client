@@ -1,11 +1,68 @@
+.box-item {
+        font-size: 10px;
+        width: 140px;
+        height: 170px;
+        background-color: #9B2D0A;
+        border-radius: 22px;
+        margin: 14px;
+        margin-top: 50px;
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        display: block;
+}
+
+.divButton{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        width: 100%;
+}
+
 .img-food {
         width: 80px;
         height: 80px;
-        border-radius: 50%;
-        margin-left: 25%;
+        border-radius: 45%;
+        margin-left: -8px;
+        margin-top: -30px;
+        left: 0px;
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
 
-.box-item{
+.boxName{
+        background-color: blanchedalmond;
+        border-radius: 10px;
+        margin: 10px 10px 5px 10px;
+        height: 40px;
+        align-items: center;
+        display: flex;
+}
+
+.divName{
+        font-size: 14px;
+        padding: 10px;
+}
+
+.divPrice{
+        text-align: center;
+        color: whitesmoke;
+        font-size: 18px;
+        padding: 3px;
+}
+
+.divFlavor{
+        font-size: 14px;
+        text-align: center;
+        color: #DFB120;
+}
+
+.divComplement{
+        font-size: 12px;
+}
+/*.add-button{
+
+}*/
+
+
+/*.box-item{
         font-size: 10px;
         width: 120px;
         height: 150px;
@@ -14,32 +71,23 @@
         margin: 20px;
         margin-top: 15px;
         justify-content: center;
-}
+}*/
 
 /* container com todos os produtos */
-.flex-container {
+/*.flex-container {
         display: flex;
-        /* background-color: #F2DFBA; */
+        /* background-color: #F2DFBA; 
         flex-wrap: wrap;
         width: 58%;
         height: fit-content;
-        /* box-shadow: 10px 5px 5px black; */
-        /* background-color: aliceblue; */
-}
+        /* box-shadow: 10px 5px 5px black; 
+        /* background-color: aliceblue; 
+} */
 
 
-.flex-item {
-        flex-direction: column;
-           font-size: 8px;
-           width: 134px;
-           height: 141px;
-            background-color: #9B2D0A;
-            border-radius: 22px;
-            margin: 35px;
-            margin-top: 35px;
-}
 
-.button-menu {
+
+/*.button-menu {
     display: flex;
     justify-content: space-evenly;
     width: 49%;
@@ -49,13 +97,15 @@
         display: flex;
         background-color: blanchedalmond;
 
-}
+}*/
 
 
-.container-order{
+/*.container-order{
         display: flex;
         position: absolute;
         right: 0;
-        /* background-color: black; */
+        /* background-color: black;
         flex-direction: column;
-}
+} */
+
+

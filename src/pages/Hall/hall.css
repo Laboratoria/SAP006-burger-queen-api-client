@@ -1,18 +1,112 @@
+.header-menu{
+    width: 100%;
+    background-color: #9B2D0A;
+    display:flex;
+    height: 100px;
+    margin-top: -2%;
+    margin-bottom: 5%;
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    align-items: center;
+    text-align: center;
+    justify-content:space-between;
+}
+
+.logo-menu{
+    width: 200px;
+    height: auto;
+    display:flex;
+    align-items:flex-end;
+}
+
+.logo{
+    width: auto;
+    height: 100px;
+}
+
+.name-menu{
+    color: whitesmoke;
+}
+
 .hall-main{
     width: 100%;
     display: flex;
+    justify-content: space-around;
 }
 
 .menu-container{
     display:flex;
-    background-color: blanchedalmond;
+    /*background-color: blanchedalmond;*/
     flex-wrap: wrap;
-    width: 42%;
+    width: 45%;
     height: fit-content;  
     justify-content: center;
     border-radius: 10px;
-    margin: 5%;
+    margin: 2%;
+    padding: 2%;
 };
+
+.button-menu{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-order{
+    width: 40%;
+    margin: 3%;
+    border: solid 2px #9B2D0A;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.info-table-client{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10%;
+}
+
+.table-select{
+    border-radius: 5px;
+    width: 100px;
+    height: 42px;
+    margin: 2%;
+    background-color: #9B2D0A;
+    color: whitesmoke;
+    font-size: 16px;
+}
+
+.box-order-itens{
+    display: flex;
+    width: 100%;
+    padding: 5%;
+    align-items: center;
+    align-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+/*.h2{
+    min-height: 60px;
+    border-bottom: 1px solid #ccc;
+    background: #ECECEC;
+    z-index: 2;
+      display: inline;
+      margin: 0 0 0 15px;
+    background-color: brown;
+}*/
+
+/* container com todos os produtos */
+/*.flex-container {
+        display: flex;
+        /* background-color: #F2DFBA; 
+        flex-wrap: wrap;
+        width: 58%;
+        height: fit-content;
+        /* box-shadow: 10px 5px 5px black; 
+        /* background-color: aliceblue; 
+} */
 /*
 .request-container {
     display:flex;
@@ -32,25 +126,3 @@
     
 }
 */
-
-.container-order{
-    background-color: brown;
-    display:flex;
-    background-color: blanchedalmond;
-    flex-wrap: wrap;
-    width: 40%;
-    height: fit-content;  
-    justify-content: center;
-    border-radius: 10px;
-    margin: 5%;
-}
-
-.h2{
-    min-height: 60px;
-    border-bottom: 1px solid #ccc;
-    background: #ECECEC;
-    z-index: 2;
-      display: inline;
-      margin: 0 0 0 15px;
-  background-color: brown;
-}
