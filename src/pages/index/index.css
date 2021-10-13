@@ -29,18 +29,19 @@ h2 {
   height: 414px;
   left: 700px;
   top: 228px;
-  color: black;
-  font-family: Work Sans;
-  text-align: center;
-  font-weight: 700;
-  font-size: 1.1rem;
+ 
 }
 
 
 
 .botaoCadastro {
-    background-color: #ff893a;
+    background-color:var(--laranja);
     width: 100%;
+}
+
+.botaoCadastro:hover{
+  color:black;
+  background-color:var(--verde);
 }
 
 .botaoLogin {

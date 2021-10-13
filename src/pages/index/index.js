@@ -17,7 +17,7 @@ const Index = () => {
     <div className="index">
       <Logo />
       <main className="index-main">
-        <h2>ESCOLHA UMA DAS OPÇÕES</h2>
+        <h1>ESCOLHA UMA DAS OPÇÕES</h1>
         <div className="btnLogin">
           <Button
             className="botaoLogin"

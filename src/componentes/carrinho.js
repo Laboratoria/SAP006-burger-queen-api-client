@@ -19,17 +19,19 @@ function Carrinho({
 }) {
     return (
         <>
-            <div className={divClassName} key={divKey} name={divName} id={divId} price={divPrice} qtd={qtd}>
-
-                <h1 className="divName" key={produtosNameKey}>{produtosName}</h1>
-                <div className="divButton">
-                    <h1 className="divPrice" key={produtosPriceKey}> {divId} R${produtosPrice},00</h1>
-                    <h1 className="divFlavor"> {produtosFlavor}</h1>
-                    <h1 className="divComplement"> {produtosComplement}</h1>
-                    <h1>Quantidade: {qtd}</h1>
+            <div className={divClassName} 
+            key={divKey} 
+            name={divName} 
+            id={divId} 
+            price={divPrice} 
+            qtd={qtd}>
+                <p className="nameCar" key={produtosNameKey}>{produtosName}</p>
+                <p className="priceCar" key={produtosPriceKey}> R${divId}{produtosPrice},00</p>
+                    <p className="flavorCar"> {produtosFlavor}</p>
+                    <p className="complementCar"> {produtosComplement}</p>
+                    <p>QUANTIDADE: {qtd}</p>
                 </div>
-                <Button onClick={onClick} buttonClass="add-button"> remover </Button>
-            </div>
+                <Button className="removerbot" onClick={onClick} msg="X"> </Button>
         </>
     );
 }
