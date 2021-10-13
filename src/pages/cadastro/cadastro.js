@@ -67,8 +67,9 @@ const Cadastro = () => {
       <main className="cadastro-page-main">
         <form className="cadastro-form" onSubmit={handleSubmit}>
           <div className="form-group input">
-          <h2>SELECIONE ABAIXO</h2>
+          <h1 className="h1-cadastro"> SELECIONE ABAIXO </h1>
             <div className="cargo">
+              <div className="cargo-salao">
               <Input
                 type="radio"
                 onChange={handleChange}
@@ -77,6 +78,8 @@ const Cadastro = () => {
                 id="Atendente"
               />
               <SalaoIcon />
+              </div>
+              <div className="cargo-cozinha">
               <Input
                 type="radio"
                 onChange={handleChange}
@@ -85,12 +88,13 @@ const Cadastro = () => {
                 id="Cozinha"
               />
               <CozinhaIcon />
+              </div>
             </div>
             <div className="hidden"> {error.role && <p>{error.role}</p>} </div>
             <div className="form-group input">
               <Input
                 type="text"
-                placeholder="Insira aqui o seu nome"
+                placeholder="INSIRA SEU NOME"
                 onChange={handleChange}
                 value={values.name}
                 name="name"
@@ -100,7 +104,7 @@ const Cadastro = () => {
             <div className="form-group input">
               <Input
                 type="text"
-                placeholder="Insira aqui o seu email"
+                placeholder="INSIRA SEU EMAIL"
                 onChange={handleChange}
                 value={values.email}
                 name="email"
@@ -113,7 +117,7 @@ const Cadastro = () => {
             <div className="form-group input">
               <Input
                 type="password"
-                placeholder="Insira aqui a sua senha"
+                placeholder="INSIRA SUA SENHA"
                 onChange={handleChange}
                 value={values.password}
                 name="password"
@@ -123,10 +127,11 @@ const Cadastro = () => {
               {" "}
               {error.password && <p>{error.password}</p>}{" "}
             </div>
+            <div className="button-cadastro">
             <Button type="submit" onClick={handleSubmit} msg="Enviar">
               {" "}
-            </Button>
-            <span className="return-login">Já tem cadastro?</span>
+            </Button></div>
+            <span className="voltar-login">Já tem cadastro?</span>
             <Link className="tologin" to="/Login">
               {" "}
               Faça Login{" "}

@@ -1,90 +1,78 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,600&display=swap");
-*{
-  margin: 0;
-  padding: 0;   
-  background-color: #fef6d1;
-}
+@import url("../global.css");
 
 .cadastro {
-  display: flex;
-  margin-top: -150px;
+  display: grid;
+  margin-top: 170px;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 }
+
 
 .cargo {
   display:flex;
-  margin-left: -30px;
-  flex-direction:row;
   align-items:center;
-  width:43vh;
-  height: 15vh;
-}
+  padding-left: 45px;
   
-.iconSalao {
+}
+.cargo-salao {
   display:flex;
-  align-items: center;
+  margin-top: 16px;
+  align-items:center;
+  width:150px;
+}
+
+.cargo-cozinha{
+  display:flex;
+  padding-bottom: 15px;
+  margin-top: 16px;
+  margin-left: 32px;
+  align-items:center;
+  width:150px;
+}
+
+.iconSalao, .iconCozinha {
+ 
   width: 100px;
   height: 100px;
 }
 
-.iconCozinha {
-  display:flex;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-}
 
-.logo-posicao {
-  position: absolute;
-  width: 484px;
-  height: 378px;
-  left: 48px;
-  top: 120px;
-}
 
-.cadastro .cadastro-page-main .cadastro-form {
+ .cadastro-page-main{
   position: absolute;
   margin-top: 200px;
   width: 350px;
   height: 414px;
   left: 700px;
-  color: #ff4e28;
-  font-family: Work Sans;
+  color: var(--vermelho);;
   text-align: center;
-  font-weight: 700;
-  font-size: 1.1rem;
+
 }
 
 .cadastro .cadastro-page-main .form-group {
   margin-bottom: 20px;
+  
 }
 
-.cadastro .cadastro-page-main .form-group input {
-  width: 301.1px;
-  height: 30.52px;
-  padding: 15px 20px;
-  background: #ff893a;
-  border: #ff893a;
+ .form-group input {
+  background: var(--laranja);
+  border: none;
   border-radius: 20px;
-  color: #fef6d1;
-  font-family: Work Sans;
-  font-size: 1.5rem;
-  font-weight: 700;
+  color: var(--branco);
 }
 
-.cadastro .cadastro-page-main .form-group input::placeholder {
-  color: #fef6d1;
-  font-family: Work Sans;
+  input::placeholder {
+  color: var(--branco);
   text-align: center;
-  font-weight: 700;
-  font-size: 1.5rem;
+}
+
+.button-cadastro {
 }
 .tologin {
-    color: black;
+    color: var(--preto);
+
   }
 
-span {
+.voltar-login {
   display: block;
 }

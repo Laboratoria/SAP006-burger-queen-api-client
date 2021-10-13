@@ -98,88 +98,92 @@ function Hall() {
   return (
     <section className="container">
       <h1>SALÃO</h1>
-      <div className="containeriInput">
-        <div className="inputSalao">
-          <Input
-            placeholder="INSIRA O NOME DO CLIENTES"
-            name="client"
-            value={client}
-            onChange={onChangeClient}
-          />{" "}
-        </div>
-        <select
-          name="Mesa"
-          className="select-hall"
-          onChange={(event) => setMesa(event.target.value)}
-        >
-          <option value="" selected disabled>
-            MESAS{" "}
-          </option>
-          <option value="01">MESA 01</option>
-          <option value="02">MESA 02</option>
-          <option value="03">MESA 03</option>
-          <option value="04">MESA 04</option>
-          <option value="05">MESA 05</option>
-        </select>{" "}
-      </div>
-
-      <section className="selectMenu">
-        <Button
-          className="buttonBreakfast"
-          onClick={() => {
-            setSelectedMenu("breakfast");
-          }}
-          msg="BREAKFAST"
-        ></Button>
-        <Button
-          className="buttonAll"
-          onClick={() => {
-            setSelectedMenu("all-day");
-          }}
-          msg="ALL-DAY"
-        ></Button>
-      </section>
-
-      <section>
-        {selectedProducts &&
-          selectedProducts.map((item, index) => (
-            <div className="menu-container">
-              <div key={index}>
-                <Produtos
-                  divClassName="products-img"
-                  produtosName={item.name}
-                  divId={item.id}
-                  ImgSrc={item.image}
-                  produtosFlavor={item.flavor}
-                  produtosPrice={item.price}
-                  produtosNameKey={item.id}
-                  onClick={(evento) => adicionar(evento, item)}
-                />
-              </div>
+      <section className="containerGeral">
+        <div className="contPed">
+          <div className="containeriInput">
+            <div className="inputSalao">
+              <Input
+                placeholder="CLIENTE"
+                name="client"
+                value={client}
+                onChange={onChangeClient}
+              />{" "}
             </div>
-          ))}
+            <select
+              name="Mesa"
+              className="select-hall"
+              onChange={(event) => setMesa(event.target.value)}
+            >
+              <option value="" selected disabled>
+                MESAS{" "}
+              </option>
+              <option value="01">MESA 01</option>
+              <option value="02">MESA 02</option>
+              <option value="03">MESA 03</option>
+              <option value="04">MESA 04</option>
+              <option value="05">MESA 05</option>
+            </select>{" "}
+          </div>
 
-        {pedidos &&
-          pedidos.map((item, index) => (
-            <div key={index}>
-              <h1>CARRINHO</h1>
+          <section className="selectMenu">
+            <Button
+              className="buttonBreakfast"
+              onClick={() => {
+                setSelectedMenu("breakfast");
+              }}
+              msg="BREAKFAST"
+            ></Button>
+            <Button
+              className="buttonAll"
+              onClick={() => {
+                setSelectedMenu("all-day");
+              }}
+              msg="ALL-DAY"
+            ></Button>
+          </section>
 
-              <Carrinho
+          {selectedProducts &&
+            selectedProducts.map((item, index) => (
+              <Produtos
+                key={index}
+                divClassName="products-img"
                 produtosName={item.name}
-                produtosPrice={item.price}
-                qtd={item.qtd}
+                divId={item.id}
+                ImgSrc={item.image}
                 produtosFlavor={item.flavor}
-                onClick={(e) => remover(e, item, index)}
+                produtosPrice={item.price}
+                produtosNameKey={item.id}
+                onClick={(evento) => adicionar(evento, item)}
               />
-            </div>
-          ))}
-        <h1>TOTAL: R${total},00</h1>
+            ))}
+        </div>
+      </section>
+      <section className="containerCarrinho">  
+               <h2>CARRINHO</h2>
 
-        <Button
-          className="button"
-          msg="ENVIAR PARA COZINHA"
-          onClick={(e) => handleSubmit(e)}
-        />
+        <div className="contCar">
+          {pedidos &&
+            pedidos.map((item, index) => (
+                <Carrinho
+                key={index}
+                  className="cardCar"
+                  divClassName="carrinhoInfo"
+                  produtosName={item.name}
+                  produtosPrice={item.price}
+                  produtosFlavor={item.flavor}
+                  qtd={item.qtd}
+                  onClick={(e) => remover(e, item, index)}
+                />
+          
+            ))}
+          <h2>TOTAL: R${total},00</h2>
+
+          <Button
+            className="button"
+            msg="ENVIAR PARA COZINHA"
+            onClick={(e) => handleSubmit(e)}
+          />
+        </div>
       </section>
     </section>
   );

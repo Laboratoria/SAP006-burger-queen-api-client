@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,600&display=swap");
+:root {
+  --laranja: #ff893a;
+  --branco: #fef6d1;
+  --vermelho: #ff4e28;
+  --verde: #cacb39;
+  --marrom: #e8b975;
+  --preto: #000000;
+  font-family: Work Sans;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  background-color: var(--branco);
+}
+.logo-posicao {
+  position: absolute;
+  width: 484px;
+  height: 378px;
+  left: 48px;
+  top: 120px;
+}
+
+Button {
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 191px;
+  height: 56px;
+  background: var(--vermelho);
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+  color: var(--branco);
+  font-family: Work Sans;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+Button:hover {
+  color: var(--preto);
+  background-color: var(--verde);
+}
+
+h1 {
+  font-family: Work Sans;
+  font-weight: 700;
+  font-size: 1.1rem;
+  font-size: 30px ;
+}
