@@ -89,7 +89,7 @@ function Hall() {
                 <div className="logo-menu">
                     {<img src={logo} className="logo" alt="Logo Burguer Queen" />}</div>
                 <h2 className="name-menu">Salão</h2>
-                <Button className="bth-logout"> Sair
+                <Button className="btn-logout"> Sair
                 </Button>
             </header>
 
