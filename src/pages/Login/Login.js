@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import { validation } from '../../validation';
 import { loginUser, loginConfirmed } from '../../auth';
 
+
 function Login() {
     const [errors, setErrors] = useState({})
     function validationValues(values) {
@@ -71,14 +72,16 @@ function Login() {
                         <form className="forms" action="">
                             <h1 className="title">Login</h1>
 
-                       
+                           
                             <Input 
-                                label="Usuário" 
+                                label="Email" 
                                 type="email" 
                                 name="email" 
                             value={infoUser.email}
                             onChange={handleChange}
                             />
+                            
+
                             {errors.email && <span className='form-error'>{errors.email}</span>}
                         
                             <Input 
@@ -90,7 +93,8 @@ function Login() {
                             />
                             {errors.password && <span className='form-error'>{errors.password}</span>}
                         
-                            <Button 
+                            <Button
+                                className="button-global"
                                 type="submit" 
                                 onClick={handleLogin}>
                                 Entrar

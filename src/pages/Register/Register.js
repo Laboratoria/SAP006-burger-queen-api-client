@@ -127,7 +127,7 @@ function Register() {
                             </label>
 
                         </div>
-                        <Button type='submit' onClick={handleRegister}>Cadaste-se</Button>
+                        <Button className="button-global" type='submit' onClick={handleRegister}>Cadaste-se</Button>
                         <p>Já tem uma conta?</p>
                         <button type="submit">
                             <Link className="link" to="/login">Faça login </Link>
