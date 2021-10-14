@@ -57,11 +57,27 @@
 .divComplement{
         font-size: 12px;
 }
-/*.add-button{
 
-}*/
+.icon-add {
+color: #9B2D0A;
+}
+.add-button{
+        border-radius: 50%;
+        border: solid 1px;
+        background-color: #EAAF36;
+        color: #9B2D0A;
+        font-size: 10px;
+        font-weight: 800;
+        min-width: 30px;
+        height: 30px;
+        padding: 10px;
+        margin-right: -5px;
+        margin-top: -10px;
+        align-items: center;
+        box-shadow: 0px 4px rgb(0 0 0/25%);
 
-
+      
+}
 /*.box-item{
         font-size: 10px;
         width: 120px;

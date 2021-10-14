@@ -6,11 +6,11 @@ import CartItem from '../../components/CartItem/CartItem';
 import { postOrder } from '../../postAPI';
 import { useHistory } from 'react-router-dom';
 
+import { FaSignOutAlt } from 'react-icons/fa';
 import '../../global.css';
 import './hall.css'
 import logo from '../../img/logo.png'
 
-// import './styles/order.css';
 
 function Hall() {
     const token = localStorage.getItem('token');
@@ -124,28 +124,29 @@ function Hall() {
 
             <header className="header-menu">
                 <div className="logo-menu">
-                    {<img src={logo} className="logo" alt="Logo Burguer Queen" />}</div>
-                <h2 className="name-menu">Salão</h2>
-                <Button text="Sair" className="btn-logout" onClick={handleSignOut} > Sair </Button>
-            </header>
 
-            
+                    
+                    {<img src={logo} className="logo" alt="Logo Burguer Queen" />}</div>
+                <h2 className="name-menu">Menu</h2>
+
+                
+                <Button text="Sair" className="button-global" onClick={handleSignOut}><FaSignOutAlt  className="icon-signout"/></Button>
+            </header>
 
                 <section className="hall-main">
 
                     <section className="menu-container">
 
-                    <div className="button-menu" 
-                        style={{width:'100%', display:'flex', justifyContent: 'space-around', marginBottom:'5%'}} >
+                    <div className="button-menu">
                         <Button
-                            className="buttonMenu"
+                            className="button-global"
                             onClick={() => {
                                 setSelectedMenu('breakfast')
                             }}
                         >Breakfast
                         </Button>
                         <Button
-                            className='buttonMenu'
+                            className='button-global'
                             onClick={() => {
                                 setSelectedMenu('all-day')
                             }}
@@ -158,12 +159,10 @@ function Hall() {
                                 <Products
                                     divClassName="box-item"
                                     productsName={item.name}
-                                    /*divId={item.id}*/ 
                                     ImgSrc={item.image}
                                     productsFlavor={item.flavor}
                                     productsComplement={item.complement}
                                     productsPrice={item.price}
-                                    /*productsNameKey={item.id}*/
                                     addOnClick={(e) => handleAdd(e, item)}
                                 />
                             </div>
@@ -183,15 +182,10 @@ function Hall() {
                                 </select>
 
                                 <Input className="input-client"
-                                    placeholder="Insira o nome do cliente"
+                                    placeholder="Insira o nome do cliente" 
                                     name="client"
                                     value={client}
                                     onChange={onChangeClient}
-                                    style={{backgroundColor: '#9B2D0A',
-                                            borderRadius: '5px',
-                                            width: '150px',
-                                            height: '42px',
-                                            margin: '2%'}}
                                 />
                            
                         </div>
@@ -212,8 +206,7 @@ function Hall() {
                                 </div>
                             )} 
                             <h1>Total R$ {total},00</h1>
-                            <Button className="button" text="enviar para a cozinha" onClick={(e) => handleSubmit(e)}> Enviar </Button>
-
+                            <Button className="button-global" text="enviar para a cozinha" onClick={(e) => handleSubmit(e)}> Enviar </Button>
                         </div>
                     </section>
                 </section>
