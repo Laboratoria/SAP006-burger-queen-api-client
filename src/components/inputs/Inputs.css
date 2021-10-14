@@ -1,0 +1,13 @@
+:root {
+    --gray-placeholder: #C4C4C4; 
+}
+
+input::placeholder{
+    color: var(--gray-placeholder);
+}
+
+input[type=radio]{
+    cursor: pointer;
+    width: 20px;
+    margin: 10px 14px 0 16px;
+}

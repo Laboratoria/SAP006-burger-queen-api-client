@@ -1,0 +1,9 @@
+:root {
+    --white-color: #FFF; 
+}
+
+.btn-logout{
+    border: none;
+    background: var(--white-color);
+    display: flex;
+}
