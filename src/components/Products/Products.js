@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import './products.css';
+import { GrAdd } from 'react-icons/gr';
 
 
 function Products({
@@ -26,21 +27,7 @@ function Products({
             <div className={divClassName} key={divKey} name={divName} id={divId} price={divPrice} qtd={qtd}>
                 <div className="divButton">
                     <img src={ImgSrc} className="img-food" alt="img-food"></img>
-                    <Button onClick={addOnClick} className="add-button"
-                        style={{borderRadius: '50%', 
-                                border:'solid 1px',
-                                backgroundColor: '#EAAF36',
-                                color: '#9B2D0A', 
-                                fontSize: '10px',
-                                fontWeight:'800',
-                                minWidth: '30px', 
-                                height: '30px',
-                                /*height:'30px',*/
-                                padding: '10px',
-                                marginRight: '-5px',
-                                marginTop: '-10px',
-                                alignItems: 'center',
-                                boxShadow: '0px 4px 4px rgb(0 0 0 / 25%)'}} > + </Button>
+                    <Button onClick={addOnClick} className="add-button"> <GrAdd className="icon-add"/> </Button>
                 </div>
                 <div className="boxName">
                     <h1 className="divName" key={productsNameKey}>{productsName}</h1>
