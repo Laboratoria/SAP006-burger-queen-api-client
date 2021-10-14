@@ -5,6 +5,7 @@ import Products from '../../components/Products/Products';
 import CartItem from '../../components/CartItem/CartItem';
 import { postOrder } from '../../postAPI';
 import { useHistory } from 'react-router-dom';
+import { signout} from 'react-icons';
 
 import '../../global.css';
 import './hall.css'
@@ -90,7 +91,7 @@ function Hall() {
 
     const calculateTotal= (items) => {
         const totalPrice = items.reduce((accumulator, array) => {
-            const {qtd, price} =array;
+            const {qtd, price} = array;
             accumulator = Number (qtd * price + accumulator)
             return accumulator
         }, 0)
@@ -126,7 +127,7 @@ function Hall() {
                 <div className="logo-menu">
                     {<img src={logo} className="logo" alt="Logo Burguer Queen" />}</div>
                 <h2 className="name-menu">Salão</h2>
-                <Button text="Sair" className="btn-logout" onClick={handleSignOut} > Sair </Button>
+                <Button text="Sair" className="btn-logout" onClick={handleSignOut} > sair <i class="fas fa-sign-out-alt"></i> </Button>
             </header>
 
             
