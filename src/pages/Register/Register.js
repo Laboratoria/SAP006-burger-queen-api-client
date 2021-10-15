@@ -71,34 +71,34 @@ function Register() {
 
 
                         <h1 className="title">Cadastrar</h1>
-                        <p className="labelInputs">Nome</p>
+                        <p className="labelInputs"></p>
                         {errors.name && <span className='form-error'>{errors.name}</span>}
                         <Input
                             type="name"
-                            name="name"
-                            inputClass="inputName"
+                            placeholder="Name"
+                            className="input-name-register"
                             value={infoUser.name}
                             onChange={handleChange}
                         />
 
-                        <p className="labelInputs">E-mail</p>
+                        <p className="labelInputs"></p>
                         {errors.email && <span className='form-error'>{errors.email}</span>}
                         <Input
+                            className="input-email-register"
                             type="email"
-                            name="email"
-                            inputClass="inputEmail"
+                            placeholder="Email"
                             value={infoUser.email}
                             onChange={handleChange}
                         />
 
 
-                        <p className="labelInputs">Senha</p>
+                        <p className="labelInputs"></p>
                         {errors.password && <span className='form-error'>{errors.password}</span>}
 
                         <Input
                             type="password"
-                            name="password"
-                            inputClass="inputPassword"
+                            placeholder="Senha"
+                            className="input-senha-register"
                             value={infoUser.password}
                             onChange={handleChange}
                         />
@@ -108,7 +108,9 @@ function Register() {
 
 
                             <label className="roleLabel">
-                                <input type="radio"
+                                <input
+                                    className="roleLabel"
+                                    type="radio"
                                     name="role"
                                     value="salao"
                                     id="role"
@@ -118,6 +120,7 @@ function Register() {
 
                             <label className="role-cozinha">
                                 <input
+                                    className="roleLabel"
                                     type="radio"
                                     name="role"
                                     value="cozinha"
