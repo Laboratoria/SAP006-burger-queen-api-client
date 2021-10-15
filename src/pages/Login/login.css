@@ -108,7 +108,7 @@ h1{
     border-radius: 10px;
     padding: 28px;
     height: 100%
-};  */
+}  */
 
 h1 .title {
     font-weight: 700;
@@ -120,7 +120,26 @@ h1 .title {
     max-width: 30rem;
     padding: 2rem;
     margin:0 auto; 
-};
+}
 
+.input-email  {
+        border-radius: 7px;
+        width: 153px;
+        height: 29px;
+        margin-bottom: 0.3rem;
+}
+.input-senha{
+    border-radius: 7px;
+    width: 153px;
+    height: 29px;
+    margin-bottom: 1.0rem;
 
+}
+.form{
+    margin-bottom: 1.7rem;
+}
+
+.link{
+    text-decoration-line: none;
+}
 

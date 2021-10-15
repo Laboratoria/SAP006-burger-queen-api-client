@@ -206,7 +206,7 @@ function Hall() {
                                 </div>
                             )} 
                             <h1>Total R$ {total},00</h1>
-                            <Button className="button-global" text="enviar para a cozinha" onClick={(e) => handleSubmit(e)}> Enviar </Button>
+                            <Button className="button-global" text="enviar para a cozinha" onClick={(e) => handleSubmit(e)}>Enviar</Button>
                         </div>
                     </section>
                 </section>

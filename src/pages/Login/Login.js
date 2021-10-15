@@ -71,25 +71,25 @@ function Login() {
                     <div className="box-login" > 
                         <form className="forms" action="">
                             <h1 className="title">Login</h1>
-
-                           
                             <Input 
-                                label="Email" 
+                                className="input-email"
+                                placeholder="Email" 
                                 type="email" 
                                 name="email" 
-                            value={infoUser.email}
-                            onChange={handleChange}
+                                value={infoUser.email}
+                                onChange={handleChange}
                             />
                             
 
                             {errors.email && <span className='form-error'>{errors.email}</span>}
                         
-                            <Input 
-                                label="Senha" 
+                            <Input
+                                className="input-senha"
+                                placeholder="Senha"
                                 type="password" 
                                 name="password" 
-                            value={infoUser.password}
-                            onChange={handleChange}
+                                value={infoUser.password}
+                                onChange={handleChange}
                             />
                             {errors.password && <span className='form-error'>{errors.password}</span>}
                         
