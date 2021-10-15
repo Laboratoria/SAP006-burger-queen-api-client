@@ -90,7 +90,7 @@ function Hall() {
 
     const calculateTotal= (items) => {
         const totalPrice = items.reduce((accumulator, array) => {
-            const {qtd, price} =array;
+            const {qtd, price} = array;
             accumulator = Number (qtd * price + accumulator)
             return accumulator
         }, 0)
