@@ -17,11 +17,11 @@ function ItemMenu({
       <h2 className="name-product">{nameProduct}</h2>
       <h3 className="flavor-product">{flavorProduct}</h3>
       <h1 className="complement-product">{complementProduct}</h1>
-      <h1 className="price-product">{priceProduct}</h1>
+      <h1 className="price-product">R$ {priceProduct}</h1>
       <Button
         onClick={divOnClick}
         className="btn-add"
-        style={{ backgroundColor: "red" }}
+        style={{ backgroundColor: "var(--azul)" }}
       >
         Adicionar
       </Button>

@@ -1,3 +1,9 @@
-.cart-item {
-    background-color: red;
+.cart-item, h2 {
+    font-family: barlow condensed;
 }
+
+.cart-item button {  
+    background-color: black;
+    width: 3rem;
+}
+

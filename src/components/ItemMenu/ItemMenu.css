@@ -1,5 +1,5 @@
 .menu-item {
-    background-color: gray;
+    background-color: var(--cinza);
     border-radius: 10px;
     margin: 2rem;
     padding: 5%;
@@ -8,12 +8,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
+    font-family: barlow condensed;
+    text-transform: capitalize;
 }
 
 .img-item {
-    width: 180px;
-    height: auto;
+    width: 132px;
+    height: 132px;
     border-radius: 100%;
     margin-top: -50px;
     margin-bottom: 10px;
+}
+
+.name-product {
+    font-family: barlow condensed;
+    font-size: 18px;
+}
+
+.flavor-product {
+    font-size: 18px;
+}
+
+.complement-product {
+    font-size: 18px;
+}
+
+.price-product {
+    font-size: 18px;
 }

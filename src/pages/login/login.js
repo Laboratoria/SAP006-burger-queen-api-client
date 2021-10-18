@@ -36,6 +36,7 @@ export function Login() {
                 console.log(json);
 
                 const token = json.token
+                console.log(token);
                 localStorage.setItem("token", token);
 
                 if (json.role === "salão") {

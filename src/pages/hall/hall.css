@@ -1,23 +1,54 @@
-.menu-order{
+body {
+    background-color: var(--verde);
+}
+
+.menu-order {
     display: flex;
 }
 
-.button-geral{
-    padding: 2rem;
+.button-geral {
+    padding: 1rem;
     font-family: Creepster;
 }
 
-.container-menu{
+.container-menu {
     background-color: var(--verde);
     flex-wrap: wrap;
     display: flex;
-    width: 50%;
+    width: 70%;
     padding: 1rem;
 }
 
-.container-order{
-    background-color: black;
+.container-order {
+    background-color: var(--cinza);
     width: 45%;
     color: white;
+    font-family: barlow condensed;
+    border-radius: 20px;
+    padding: 2rem;
 }
 
+.title-hall { 
+    font-family: creepster;
+    background-color: var(--verde);
+}
+
+.header-hall { 
+    background-color: var(--verde);
+}
+
+.header-hall input {
+    background-color: var(--azul);
+    padding: 1.0rem;
+    border-radius: 20px;
+    border: none;
+    font-family: barlow condensed;
+    margin: 0.5rem;
+    width: 12rem;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.header-hall button {
+    font-size: 20px;
+}

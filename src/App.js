@@ -11,8 +11,8 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={(Login)} />
-        <Route exact path="/login" component={(Login)} />
+        <Route path="/" exact component={(Login)} />
+        <Route path="/login" exact component={(Login)} />
         <Route path="/register" component={(Register)} />
         <Route path="/hall" component={(Hall)} />
         <Route path="/kitchen" component={(Kitchen)} />
@@ -23,4 +23,3 @@ function App() {
 }
 
 export default App;
-
