@@ -71,7 +71,9 @@ function Login() {
                     <div className="box-login" > 
                         <form className="forms" action="">
                             <h1 className="title">Login</h1>
+                            
                             <Input 
+                                requered
                                 className="input-email"
                                 placeholder="Email" 
                                 type="email" 
@@ -84,6 +86,7 @@ function Login() {
                             {errors.email && <span className='form-error'>{errors.email}</span>}
                         
                             <Input
+                                requered
                                 className="input-senha"
                                 placeholder="Senha"
                                 type="password" 

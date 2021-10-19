@@ -2,7 +2,7 @@ import React from 'react';
 import './input.css';
 
 
-const Input = ({label, type, name, value, onChange,className,placeholder }) => {
+const Input = ({label, type, name, value, onChange, className, placeholder }) => {
     return (
         <div className='input-container'> 
             <label htmlFor={name} className='label'>
@@ -17,7 +17,6 @@ const Input = ({label, type, name, value, onChange,className,placeholder }) => {
             value={value} 
             onChange={onChange}
             />
-            {/* {error && <p className='error'> {Error}</p>} */}
         </div>
     );
 }

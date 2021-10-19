@@ -7,6 +7,7 @@ import Register from './pages/Register/Register';
 import NotFound from './pages/NotFound/NotFound';
 import Hall from './pages/Hall/Hall';
 import Kitchen from './pages/Kitchen/Kitchen';
+import HallOrder from './pages/HallOrder/HallOrder';
 // import { SettingsBackupRestore } from '@material-ui/icons';
 
 
@@ -30,6 +31,9 @@ function App(user) {
                 </Route>
                 <Route path='/cozinha'> 
                     {user ? <Kitchen /> : <Redirect to="/" />}  
+                </Route>
+                <Route path='/pedidos'>
+                    {user ? <HallOrder /> : <Redirect to="/" />}
                 </Route>
                 <Route component={NotFound}/>
             </Switch>

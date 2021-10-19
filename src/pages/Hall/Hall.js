@@ -118,6 +118,10 @@ function Hall() {
         setOrder([])
     }
 
+    const readyOrders = () => {
+        history.push('/pedidos')
+    }
+
     return (
 
         <section className="container">
@@ -132,6 +136,10 @@ function Hall() {
                 
                 <Button text="Sair" className="button-global" onClick={handleSignOut}><FaSignOutAlt  className="icon-signout"/></Button>
             </header>
+
+            <section>
+            <Button text="pedidos" className="ready-orders" onClick={readyOrders}> Pedidos prontos </Button>
+            </section>
 
                 <section className="hall-main">
 
@@ -169,6 +177,8 @@ function Hall() {
                         ))}
                     </section>
 
+                    
+
                     <section className="container-order">
                         <div className="info-table-client">
                            
@@ -205,7 +215,13 @@ function Hall() {
                         
                                 </div>
                             )} 
+
+                        <hr />
+                            <div className="ajuste-total">
+
                             <h1>Total R$ {total},00</h1>
+                            </div>
+
                             <Button className="button-global" text="enviar para a cozinha" onClick={(e) => handleSubmit(e)}>Enviar</Button>
                         </div>
                     </section>
