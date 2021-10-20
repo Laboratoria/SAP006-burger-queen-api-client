@@ -25,7 +25,8 @@ export function Kitchen() {
     
         setOrderStatus(ordersPending);
       });
-  })
+  },[token])
+
   const history = useHistory();
   const handleSignOut = (e) => {
     e.preventDefault();

@@ -107,7 +107,7 @@ export function Hall() {
             Geral
           </button>
           <button
-            className="button-geral"
+            // className="button-geral"
             style={{ backgroundColor: "var(--azul)" }}
             onClick={(e) => {
               e.preventDefault();
@@ -167,7 +167,7 @@ export function Hall() {
             ))}
             <h1>Total: R$ {total},00</h1>
             <button
-              className="button"
+              className="button-geral"
               onClick={(e) => handleSubmit(e)}
             >Enviar para a cozinha
             </button>

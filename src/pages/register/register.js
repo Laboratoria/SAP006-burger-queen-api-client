@@ -7,7 +7,7 @@ import { Button } from '../../components/Button/Button.js';
 import { Input } from '../../components/Input/Input.js';
 import { Link } from 'react-router-dom';
 import logoMonsterGrande from '../../img/logoMonsterGrande.png';
-import '../login/login.css';
+import '../register/register.css';
 
 export function Register() {
 
@@ -71,10 +71,10 @@ export function Register() {
     //console.log('***formValues', formValues);
 
     return (
-        <main>
-             <div>
+        <main className="container">
+             <div className="div-logo">
+             <h1 className="letra-logo">Monster Burguer</h1>
               <img className="imgRegister" src={logoMonsterGrande} alt="icon-register" />
-              <h1 className="letra-logo">Monster Burguer</h1>
             </div>
             <div className="container-register">
                 <form className="form" onSubmit={handleSubmit}>
@@ -86,28 +86,27 @@ export function Register() {
                             inputPlaceholder="Nome Completo"
                             inputOnChange={handleInputChange}
                             inputValue={formValues.username} />
-                        {errors.username && <p>{errors.username}</p>}
+                        {errors.username && <p className="message-error">{errors.username}</p>}
                         <Input
                             inputType="text"
                             inputName="email"
-                            inputPlaceholder="Email"
+                            inputPlaceholder="E-mail"
                             inputOnChange={handleInputChange}
                             inputValue={formValues.email} />
-                        {errors.email && <p>{errors.email}</p>}
+                        {errors.email && <p className="message-error">{errors.email}</p>}
                         <Input
                             inputType="password"
                             inputName="password"
                             inputPlaceholder="Crie sua senha"
                             inputOnChange={handleInputChange}
                             inputValue={formValues.password} />
-                        {errors.password && <p>{errors.password}</p>}
+                        {errors.password && <p className="message-error">{errors.password}</p>}
                         <Input
                             inputType="password"
                             inputName="password2"
                             inputPlaceholder="Confirme sua senha"
                             inputOnChange={handleInputChange}
                             inputValue={formValues.password2} />
-                        {errors.password2 && <p>{errors.password2}</p>}
                         <div className="select"></div>
                         <select
                             className="form-select"
@@ -118,12 +117,13 @@ export function Register() {
                             <option value=" ">Selecione sua área de trabalho</option>
                             <option value="salão">Salão</option>
                             <option value="cozinha">Cozinha</option>
-                        {errors.role && <p>{errors.role}</p>}
+                        {errors.role && <p className="message-error">{errors.role}</p>}
                         </select>
                         <Button
                             className="register-btn"
                             type="submit"
                             value="Cadastrar">
+                                Cadastrar
                         </Button>
                         <div className="footer-register">
                             Já tem uma conta cadastrada?

@@ -79,7 +79,7 @@ export function Login() {
                             inputOnChange={handleInputChange}
                             inputValue={formValues.password} />
                         {errors.password && <p>{errors.password}</p>}
-                        <Button
+                        <Button className="btn-enter"
                             type="submit"> Entrar
                         </Button>
                         <div className="footer-login">
