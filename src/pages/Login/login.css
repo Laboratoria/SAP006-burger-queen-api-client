@@ -55,7 +55,7 @@ h1{
 }
 /* tablet */ 
 
-/*@media (min-width: 768px) and (max-width: 799px) {
+@media (min-width: 768px) and (max-width: 799px) {
     .elipse-background{
         position: absolute;
         margin-top: -45%;
@@ -70,9 +70,9 @@ h1{
     .container-login{
         margin-left: 30%
     }
-}*/
+}
 
-/*@media (min-width: 320px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 768px) {
     .elipse-background{
         position: absolute;
         margin-top: -45%;
@@ -84,7 +84,7 @@ h1{
         background: #9B2D0A;
         box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     }
-}*/
+}
 
 .header-login{
     width: 100%;

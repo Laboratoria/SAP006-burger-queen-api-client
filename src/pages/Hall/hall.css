@@ -1,32 +1,4 @@
-.header-menu{
-    width: 100%;
-    background-color: #9B2D0A;
-    display:flex;
-    height: 100px;
-    margin-top: -2%;
-    margin-bottom: 5%;
-    border-radius: 30px;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    align-items: center;
-    text-align: center;
-    justify-content:space-between;
-}
 
-.logo-menu{
-    width: 200px;
-    height: auto;
-    display:flex;
-    align-items:flex-end;
-}
-
-.logo{
-    width: auto;
-    height: 100px;
-}
-
-.name-menu{
-    color: whitesmoke;
-}
 
 .hall-main{
     width: 100%;
@@ -36,7 +8,6 @@
 
 .menu-container{
     display:flex;
-    /*background-color: blanchedalmond;*/
     flex-wrap: wrap;
     width: 45%;
     height: fit-content;  
@@ -107,8 +78,20 @@
     justify-content: space-around;
     margin-bottom: 5%;    
 }
+
  .input-client::placeholder {
      color: #fff;
 
  }
 
+hr{
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #9B2D0A;
+    width: 90%;
+   }
+
+
+.ajuste-total{
+    margin-left: 62%;
+}

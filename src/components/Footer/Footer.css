@@ -1,0 +1,17 @@
+.footer-container{
+    width: 100%;
+    background-color:#9B2D0A;
+    text-align: center;
+    height: 30px;
+    position: fixed;
+    bottom : 0;
+}
+.footer-link{
+    text-decoration: none;
+    transition: 1s all;
+    color: #555555;
+}
+
+.footer-link:hover{
+    color: #ffff;
+}

@@ -96,6 +96,7 @@ function Register() {
                         {errors.password && <span className='form-error'>{errors.password}</span>}
 
                         <Input
+                            requered
                             type="password"
                             placeholder="Senha"
                             className="input-senha-register"
@@ -109,6 +110,7 @@ function Register() {
 
                             <label className="roleLabel">
                                 <input
+                                    requered
                                     className="roleLabel"
                                     type="radio"
                                     name="role"

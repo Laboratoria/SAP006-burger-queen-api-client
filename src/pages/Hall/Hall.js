@@ -4,12 +4,11 @@ import Button from '../../components/Button/Button';
 import Products from '../../components/Products/Products';
 import CartItem from '../../components/CartItem/CartItem';
 import { postOrder } from '../../postAPI';
+import Header from '../../components/Header/Header';
 import { useHistory } from 'react-router-dom';
-
-import { FaSignOutAlt } from 'react-icons/fa';
 import '../../global.css';
 import './hall.css'
-import logo from '../../img/logo.png'
+
 
 
 function Hall() {
@@ -22,13 +21,6 @@ function Hall() {
     const [client, setClient] = useState('');
     const [table, setTable] = useState('');
 
-    //sair
-    const history = useHistory();
-    const handleSignOut = (e) => {
-        e.preventDefault();
-        history.push('/login')
-        localStorage.clear();
-    }
 
     //name do cliente
     const onChangeClient = (e) => {
@@ -118,20 +110,27 @@ function Hall() {
         setOrder([])
     }
 
+    const history = useHistory();
+    const readyOrders = () => {
+        history.push('/pedidos')
+    }
+
+    const server = () => {
+        history.push('/servir')
+    }
+
     return (
 
         <section className="container">
 
-            <header className="header-menu">
-                <div className="logo-menu">
+            <Header
+            name="Menu"
+            />
 
-                    
-                    {<img src={logo} className="logo" alt="Logo Burguer Queen" />}</div>
-                <h2 className="name-menu">Menu</h2>
-
-                
-                <Button text="Sair" className="button-global" onClick={handleSignOut}><FaSignOutAlt  className="icon-signout"/></Button>
-            </header>
+            <Button text="servir" className="ready-orders" onClick={server}> Servir </Button>
+            <section>
+            <Button text="pedidos" className="ready-orders" onClick={readyOrders}> Pedidos prontos </Button>
+            </section>
 
                 <section className="hall-main">
 
@@ -169,6 +168,7 @@ function Hall() {
                         ))}
                     </section>
 
+                    
                     <section className="container-order">
                         <div className="info-table-client">
                            
@@ -205,7 +205,13 @@ function Hall() {
                         
                                 </div>
                             )} 
+
+                        <hr />
+                            <div className="ajuste-total">
+
                             <h1>Total R$ {total},00</h1>
+                            </div>
+
                             <Button className="button-global" text="enviar para a cozinha" onClick={(e) => handleSubmit(e)}>Enviar</Button>
                         </div>
                     </section>

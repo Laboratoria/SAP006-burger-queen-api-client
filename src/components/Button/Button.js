@@ -11,16 +11,3 @@ const Button = ({children, ...props}) => {
 
 export default Button;
 
-
-/*
-
-<form action="" onSubmit={handleSubmit}>
-
-    <Input label="Usuário" type="text" name="username" />
-    <Input label="Senha" type="password" name="password" />
-    <p>Error</p>
-    
-    <Button> Entrar </Button>
-</form>
-
-*/
