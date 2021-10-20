@@ -41,7 +41,13 @@ function ReadyOrders() {
                     return order;
                 });
             });
+            
     };
+    
+    const preparationTime = (deliveryTime, criationTime) => {
+        const difference = Math.abs(new Date(deliveryTime) - new Date(criationTime));
+        return Math.floor(difference / 1000 / 60 );
+    }
 
     return (
         <>
@@ -58,6 +64,8 @@ function ReadyOrders() {
                                 <p>ID: {order.id} </p>
                                 <p>Cliente: {order.client_name} </p>
                                 <p>Mesa: {order.table} </p>
+                                {order.status === "ready" || order.status === "finished" ? (<p>Tempo de preparação:{' '}{preparationTime(order.updatedAt, order.createdAt)} min</p>) : ""}
+
                                 <time>
                                     {`${new Date(order.createdAt).toLocaleDateString('pt-br')} - ${new Date(order.createdAt).toLocaleTimeString('pt-br', {
                                         hour: '2-digit',
@@ -70,7 +78,6 @@ function ReadyOrders() {
                                         <p> {items.qtd} {items.name}</p>
                                         <p>{items.flavor}</p>
                                         <p>{items.complement}</p>
-
                                     </div>
                                 ))}
 
