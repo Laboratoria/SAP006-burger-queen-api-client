@@ -41,7 +41,6 @@ function ReadyOrders() {
                     return order;
                 });
             });
-            
     };
     
     const preparationTime = (deliveryTime, criationTime) => {
@@ -54,8 +53,7 @@ function ReadyOrders() {
             <Header
                 name="Pedidos para entregar"
             />
-            
-            <section>
+            <section className="orders-container">
                 {orderStatus.map((order) => {
                     return (
                         <section className="orders" key={order.id}>
@@ -91,8 +89,6 @@ function ReadyOrders() {
             }
             </section>
         </>
-    )
-
-    
+    )   
 }
 export default ReadyOrders

@@ -30,7 +30,7 @@ function AllOrders() {
         <Header
             name="Pedidos Entregues"
         />
-             <section>
+            <section className="orders-container">
                 {orderStatus.map((order) => {
                     return (
                         <section className="orders" key={order.id}>

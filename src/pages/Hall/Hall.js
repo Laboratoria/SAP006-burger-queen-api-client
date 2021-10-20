@@ -114,7 +114,6 @@ function Hall() {
     const readyOrders = () => {
         history.push('/pedidos')
     }
-
     const server = () => {
         history.push('/servir')
     }
@@ -169,6 +168,7 @@ function Hall() {
                     </section>
 
                     
+
                     <section className="container-order">
                         <div className="info-table-client">
                            
