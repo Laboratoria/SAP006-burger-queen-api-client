@@ -1,3 +1,9 @@
+.orders-container{
+  flex-wrap: wrap;
+  display: flex;
+  width: 100%;
+}
+
 .orders-section {
     top: 10rem;
     gap: 10vh;
@@ -6,11 +12,10 @@
     flex-wrap: wrap;
   }
   
-  .orders {
-    left: 6rem;
+  .orders { 
+    left: 7rem;
     text-transform:uppercase;
     font-size: 1rem;
-    background-color: whitesmoke;
     text-align: center;
     border-radius: 1rem;
     position: relative;
@@ -18,14 +23,15 @@
     padding: 1.25rem 1.25rem;
     top: 2rem;
     font-weight: 500;
-    border: 3px solid whitesmoke;
+    border: 3px solid #9B2D0A;
+    margin: 20px;
   }
   
-  .details-client {
+  /* .details-client {
     align-items: center;
     text-align: center;
     justify-content: center;
-  }
+  } */
   
   .details-client p {
     padding: 0.1rem;
@@ -33,14 +39,14 @@
   
   .order-number {
     font-size: 1.2rem;
-    color: red;
+    color: #9B2D0A;
     font-weight: 800;
   }
   
   hr {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    border: 1px solid red;
+    border: 1px solid #9B2D0A;
   }
   
   .break-line {
@@ -103,9 +109,9 @@
   }
   
   
-  .container-order p {
+  /* .container-order p {
     padding: 0.1rem;
-  }
+  } */
   
  /* .buttons {
     display: grid;

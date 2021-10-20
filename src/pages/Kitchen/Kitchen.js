@@ -1,11 +1,8 @@
 import { React, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { FaSignOutAlt } from 'react-icons/fa';
-
 import Button from '../../components/Button/Button';
-import logo from '../../img/logo.png'
 import '../../global.css';
 import './Kitchen.css';
+import Header from '../../components/Header/Header';
 
 function Kitchen() {
 
@@ -13,16 +10,8 @@ function Kitchen() {
     const [preparerOrder, setPreparerOrder] = useState([]);
     const url = 'https://lab-api-bq.herokuapp.com/orders/';
 
-
-    const history = useHistory();
-    const handleSignOut = (e) => {
-        e.preventDefault();
-        history.push('/login')
-        localStorage.clear();
-    }
-
     useEffect(() => {
-        fetch('https://lab-api-bq.herokuapp.com/orders', {
+        fetch(url, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -33,13 +22,11 @@ function Kitchen() {
           .then((orders) => {
          
                     const ordersPending = orders.filter((itens) =>
-                      // itens.status.includes('preparing') ||
                       itens.status.includes('pending') 
             );
             setPreparerOrder(ordersPending);
           });
       })
-
 
   const handleStatusOrder = (id, newStatus) => {
     const status = { status: newStatus };
@@ -60,19 +47,15 @@ function Kitchen() {
   };
 
     return (
-        <>
-        <header className="header-menu">
-            <div className="logo-menu">
-                {<img src={logo} className="logo" alt="Logo Burguer Queen" />}
-            </div>
-                <h2 className="name-menu">Cozinha</h2>
-                <Button text="Sair" className="button-global" onClick={handleSignOut}><FaSignOutAlt  className="icon-signout"/></Button>
-        </header>
+      <>
+        <Header
+        name="Cozinha"
+        />
 
-        <section>
+        <section className="orders-container">
           {preparerOrder.map((order) => {
             return (
-              <section className="products" key={order.id}>
+              <section className="orders" key={order.id}>
                 <div className="kitchenCard">
                   <h1> {order.status.replace('pending', 'Pendente').replace('preparing', 'Em andamento')} </h1>
                   <p>ID: {order.id} </p>
@@ -93,16 +76,13 @@ function Kitchen() {
                       <hr />
                     </div>
                   ))}
-
-                  {/* <Button text="Preparar" className='button-global' onClick={() => handleStatusOrder(order.id, 'preparing')} /> */}
                   <Button text="Despachar" className='button-global' onClick={() => handleStatusOrder(order.id, 'ready')}>Pronto</Button>
-
                 </div>
               </section>
             );
         })}
         </section>
-        </>
-);
+    </>
+ );
 }
-    export default Kitchen;
+export default Kitchen;

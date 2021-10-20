@@ -6,7 +6,7 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import { validation } from '../../validation';
 import { loginUser, loginConfirmed } from '../../auth';
-
+import Footer from '../../components/Footer/Footer';
 
 function Login() {
     const [errors, setErrors] = useState({})
@@ -47,17 +47,11 @@ function Login() {
                         }
 
                     })
-
                 })
-
-            /*.catch((error) => {
-              console.log(error.message)
-            })*/
         } else {
             console.log(resultErrorsLogin, resultErrorsLogin.email, 'usuário não conectado')
         }
     };
-
 
     return (
         <section className="login-page" >
@@ -81,7 +75,6 @@ function Login() {
                                 value={infoUser.email}
                                 onChange={handleChange}
                             />
-                            
 
                             {errors.email && <span className='form-error'>{errors.email}</span>}
                         
@@ -112,6 +105,7 @@ function Login() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </section>
      );
 }
