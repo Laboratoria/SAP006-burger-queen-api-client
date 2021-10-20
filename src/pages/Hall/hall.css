@@ -6,25 +6,48 @@
     justify-content: space-around;
 }
 
+.btn-orders-conatiner{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #9B2D0A;
+}
+
+.btn-img{
+    width: 50px;
+    height: auto;
+}
+
+.btn-name{
+    font-size: 15px;
+}
+
+
 .menu-container{
-    display:flex;
+    /*display:flex;*/
     flex-wrap: wrap;
-    width: 45%;
+    width: 44%;
     height: fit-content;  
     justify-content: center;
     border-radius: 10px;
     margin: 2%;
-    padding: 2%;
+    /*padding: 2%;*/
 };
 
-.button-menu{
+.container-teste{
     width: 100%;
-    display: flex;
-    justify-content: space-around;
+    /*display: flex;*/
+    justify-content:space-between;
+    margin-bottom: 5%;   
+    background-color: green;
 }
 
+.orders-area{
+    width: 46%;
+    margin: 2%;
+}
 .container-order{
-    width: 40%;
+    width: 95%;
     margin: 3%;
     border: solid 2px #9B2D0A;
     border-radius: 10px;
@@ -34,8 +57,9 @@
 .info-table-client{
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 10%;
+    justify-content: space-evenly;
+    margin-bottom: 5%;
+    padding: 5px;
 }
 
 .table-select{
@@ -50,7 +74,7 @@
 
 .box-order-itens{
     display: flex;
-    width: 100%;
+    width: 90%;
     padding: 5%;
     align-items: center;
     align-content: space-between;
@@ -72,12 +96,6 @@
     background-color: #9B2D0A;
 }  
 
-.button-menu{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 5%;    
-}
 
  .input-client::placeholder {
      color: #fff;
@@ -95,3 +113,4 @@ hr{
 .ajuste-total{
     margin-left: 62%;
 }
+
