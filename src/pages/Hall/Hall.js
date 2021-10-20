@@ -118,7 +118,6 @@ function Hall() {
     const readyOrders = () => {
         history.push('/pedidos')
     }
-
     const server = () => {
         history.push('/servir')
     }

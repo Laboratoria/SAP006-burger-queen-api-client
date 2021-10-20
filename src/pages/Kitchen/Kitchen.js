@@ -4,6 +4,7 @@ import '../../global.css';
 import './Kitchen.css';
 import Header from '../../components/Header/Header';
 
+
 function Kitchen() {
 
     const token = localStorage.getItem('token');
