@@ -6,6 +6,10 @@ import CartItem from '../../components/CartItem/CartItem';
 import { postOrder } from '../../postAPI';
 import Header from '../../components/Header/Header';
 import { useHistory } from 'react-router-dom';
+import ordersDelivery from '../../img/ordersDelivery2.png'
+import ordersList from '../../img/ordersList2.png'
+import AllDay from '../../img/AllDay2.png'
+import breakfast from '../../img/breakfast2.png'
 import '../../global.css';
 import './hall.css'
 
@@ -121,37 +125,32 @@ function Hall() {
 
     return (
 
-        <section className="container">
-
+        <>
             <Header
             name="Menu"
             />
 
-            <Button text="servir" className="ready-orders" onClick={server}> Servir </Button>
-            <section>
-            <Button text="pedidos" className="ready-orders" onClick={readyOrders}> Pedidos prontos </Button>
-            </section>
 
                 <section className="hall-main">
 
                     <section className="menu-container">
 
-                    <div className="button-menu">
-                        <Button
-                            className="button-global"
-                            onClick={() => {
-                                setSelectedMenu('breakfast')
-                            }}
-                        >Breakfast
-                        </Button>
-                        <Button
-                            className='button-global'
-                            onClick={() => {
-                                setSelectedMenu('all-day')
-                            }}
-                        >All Day
-                        </Button>
-                    </div>
+                        <section className="container-teste">
+                            <Button
+                                className="btn-menu"
+                                onClick={() => {
+                                    setSelectedMenu('breakfast')}}><img className="btn-img" src={breakfast} alt="Pedidos prontos para servir"></img> 
+                                    <p className="btn-name"> Breakfast</p>
+                            </Button>
+                            <Button
+                                className="btn-menu"
+                                onClick={() => {
+                                    setSelectedMenu('all-day')
+                                }}><img className="btn-img" src={AllDay} alt="Pedidos prontos para servir"></img>
+                                <p className="btn-name"> All Day </p>
+                            </Button>
+                        </section>
+                      
 
                         {selectedProducts && selectedProducts.map((item, index) => (
                             <div key={index}>
@@ -168,55 +167,71 @@ function Hall() {
                         ))}
                     </section>
 
+                    <section className="orders-area"> 
+
+                        <section className="btn-orders-conatiner">
+                            <Button text="servir" className="button-orders" onClick={server}>
+                                <img className="btn-img" src={ordersDelivery} alt="Pedidos prontos para servir"></img>
+                                <p className="btn-name"> Servir </p>
+                            </Button>
+                            <Button text="pedidos" className="button-orders" onClick={readyOrders}> 
+                                <img className="btn-img" src={ordersList} alt="Pedidos prontos para servir"></img>
+                                <p className="btn-name"> Prontos </p>
+                            </Button>
+                        </section>
+
                     
-                    <section className="container-order">
-                        <div className="info-table-client">
-                           
-                                <select className="table-select" name="Mesa: " onChange={(e) => setTable(e.target.value)} >
-                                    <option valeu="mesa01">Mesa</option>
-                                    <option valeu="mesa01">01</option>
-                                    <option valeu="mesa02">02</option>
-                                    <option valeu="mesa03">03</option>
-                                    <option valeu="mesa04">04</option>
-                                    <option valeu="mesa05">05</option>
-                                </select>
+                        <section className="container-order">
+                            <div className="info-table-client">
+                            
+                                    <select className="table-select" name="Mesa: " onChange={(e) => setTable(e.target.value)} >
+                                        <option valeu="mesa01">Mesa</option>
+                                        <option valeu="mesa01">01</option>
+                                        <option valeu="mesa02">02</option>
+                                        <option valeu="mesa03">03</option>
+                                        <option valeu="mesa04">04</option>
+                                        <option valeu="mesa05">05</option>
+                                    </select>
 
-                                <Input className="input-client"
-                                    placeholder="Insira o nome do cliente" 
-                                    name="client"
-                                    value={client}
-                                    onChange={onChangeClient}
-                                />
-                           
-                        </div>
-                        <div className="box-order-itens">
-                            {order.map((item, index) =>
-                                <div key={index}>
-                                    <CartItem
-                                        divClassName="order-itens"
-                                        productsName={item.name}
-                                        productsPrice={item.price}
-                                        productsFlavor={item.flavor}
-                                        products={item.qtd}
-                                        qtd={item.qtd}
-                                        productsComplement={item.complement}
-                                        removeOnClick={(e) => handleRemove(e, item, index)}
+                                    <Input className="input-client"
+                                        placeholder="Cliente" 
+                                        name="client"
+                                        value={client}
+                                        onChange={onChangeClient}
                                     />
-                        
-                                </div>
-                            )} 
-
-                        <hr />
-                            <div className="ajuste-total">
-
-                            <h1>Total R$ {total},00</h1>
+                            
                             </div>
+                            <div className="box-order-itens">
+                                {order.map((item, index) =>
+                                    <div key={index}>
+                                        <CartItem
+                                            divClassName="order-itens"
+                                            productsName={item.name}
+                                            productsPrice={item.price}
+                                            productsFlavor={item.flavor}
+                                            products={item.qtd}
+                                            qtd={item.qtd}
+                                            productsComplement={item.complement}
+                                            removeOnClick={(e) => handleRemove(e, item, index)}
+                                        />
+                            
+                                    </div>
+                                )} 
 
-                            <Button className="button-global" text="enviar para a cozinha" onClick={(e) => handleSubmit(e)}>Enviar</Button>
-                        </div>
+                            <hr />
+                                <div className="ajuste-total">
+
+                                <h1>Total R$ {total},00</h1>
+                                </div>
+
+                                <Button className="button-global" text="enviar para a cozinha" onClick={(e) => handleSubmit(e)}>Enviar</Button>
+                            </div>
+                        </section>
                     </section>
+                    
+
                 </section>
-        </section>
+        </>
     );
 }
 
