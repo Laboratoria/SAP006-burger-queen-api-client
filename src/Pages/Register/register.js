@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../Components/Button/button";
 import InputText from "../../Components/input/input";
-
+//import Select from "../../Components/input/input";
+import "./register.css";
+import Img from "../../img/background.jpeg";
 const Register = () => {
   const [verifyInput, setVerifyInput] = useState(false);
   const [verifyPassword, setVerifyPassword] = useState(false);
@@ -20,6 +22,7 @@ const Register = () => {
     if (userPassword.length < 6) {
       setVerifyPassword(true);
     } else {
+      fetch("https:// lab-api-bq.herokuapp.com/ ");
       console.log("entrou no else");
     }
 
@@ -29,51 +32,54 @@ const Register = () => {
   return (
     <>
       <section className="container">
-        <div className="container-form">
-          <h1>Cadastro</h1>
+        <div className="register-container">
+          <form className="container-form">
+            <h1 className="text-form">Cadastro</h1>
+
+            <InputText
+              InputType="text"
+              inputPlaceholder=" Digite seu Nome"
+              inputValue={userName}
+              inputOnChange={(event) => setUserName(event.target.value)}
+              inputClassName="input-form"
+            />
+
+            <InputText
+              inputType="text"
+              inputPlaceholder=" Digite seu Email"
+              inputValue={userEmail}
+              inputOnChange={(event) => setUserEmail(event.target.value)}
+              inputClassName="input-form"
+            />
+
+            <InputText
+              InputType="password"
+              inputPlaceholder=" Senha"
+              inputValue={userPassword}
+              inputOnChange={(event) => setUserPassword(event.target.value)}
+              inputClassName="input-form"
+            />
+
+            <Button
+              buttonOnClick={(e) => passwordRegis(e)}
+              buttonClass="btn-form"
+            >
+              cadastrar
+            </Button>
+            {verifyPassword ? (
+              <div className="erro">
+                <h2>preencha o campo corretamente</h2>
+              </div>
+            ) : null}
+            {verifyInput ? (
+              <div className="erro">
+                <h2>preencha o campo corretamente</h2>
+              </div>
+            ) : null}
+          </form>
         </div>
-        <form className="formulario">
-          <InputText
-            InputType="text"
-            inputPlaceholder=" Digite seu Nome"
-            inputValue={userName}
-            inputOnChange={(event) => setUserName(event.target.value)}
-          />
-
-          <InputText
-            inputType="text"
-            inputPlaceholder=" Digite seu Email"
-            inputValue={userEmail}
-            inputOnChange={(event) => setUserEmail(event.target.value)}
-          />
-
-          <InputText
-            InputType="password"
-            inputPlaceholder=" Senha"
-            inputValue={userPassword}
-            inputOnChange={(event) => setUserPassword(event.target.value)}
-          />
-
-          <Button
-            buttonOnClick={(e) => passwordRegis(e)}
-            buttonClass="btn-form"
-          >
-            entrar
-          </Button>
-          {verifyPassword ? (
-            <div className="erro">
-              <h2>preencha o campo corretamente</h2>
-            </div>
-          ) : null}
-          {verifyInput ? (
-            <div className="erro">
-              <h2>preencha o campo corretamente</h2>
-            </div>
-          ) : null}
-          
-        </form>
       </section>
-      <Link to="/">Tenho Conta</Link>
+      <Link to="/"></Link>
     </>
   );
 };
