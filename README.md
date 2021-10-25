@@ -27,12 +27,15 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 <h4> Você pode acessar a aplicação <a href="">clicando aqui</a> e utilizar um dos logins de teste abaixo:</h4>
 
 <div align='center'>
-| #                     	|             Salão            	|           Cozinha           	|
-|:-----------------------:|:----------------------------:	|:---------------------------:	|
-| 🆔	| salao@brumag.comr | cozinha@brumag.com	        |
-| :key:                 	|            123456            	|            123456           	|
+
   
   
+  
+> |      |          Salão          |      Cozinha            |
+> |------|-------------------------|-------------------------|
+> |  📨  |     salao@brumag.com    |    cozinha@brumag.com	 |
+> |  🔐  |         123456          |         123456          |
+
   
 ## 3. A aplicação
 
@@ -41,12 +44,12 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 ## 4. Planejamento
 
 
-
+<!-- 
 - [5. Histórias de Usuários](#histórias-de-usuários)
 - [6. Protótipos](#art-protótipos)
 - [7. UI e UX](#UI-UX)
 - [8. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
-- [9. Sobre as desenvolvedoras](#desenvolvedoras)
+- [9. Sobre as desenvolvedoras](#desenvolvedoras) -->
 
 
 7.UI e UX
