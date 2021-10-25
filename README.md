@@ -42,10 +42,20 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 
 ## 4. Planejamento
 
+<p align='center'>
+<img src='src/img/Mapa mental.png' widht='40%'> 
+</p>
+
+## 6. Protótipos 
+
+
+
+
+
 
 <!-- 
 - [5. Histórias de Usuários](#histórias-de-usuários)
-- [6. Protótipos](#art-protótipos)
+
 - [7. UI e UX](#UI-UX)
 - [8. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
 - [9. Sobre as desenvolvedoras](#desenvolvedoras) -->
