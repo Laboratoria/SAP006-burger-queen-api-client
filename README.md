@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Boteco Burger :hamburger:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Índice
 
-## Available Scripts
+- [1. Proposta do Projeto](#proposta-do-produto)
+- [2. Definição do Produto](#definição-do-produto)
+- [3. A aplicação](#aplicacao)
+- [4. Planejamento](#planejamento)
+- [5. Histórias de Usuários](#histórias-de-usuários)
+- [6. Protótipos](#art-protótipos)
+- [7. UI e UX](#UI-UX)
+- [8. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
+- [9. Sobre as desenvolvedoras](#desenvolvedoras)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 1. Proposta do Projeto
+Um pequeno restaurante de hambúrgueres, que está crescendo, necessita uma interface em que se possa realizar pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso cliente nos pediu para desenvolver uma interface que se integre com a API que outra equipe de desenvolvedoras está trabalhando simultaneamente.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 2. Definição do Produto
+**_Boteco Burguer_** A partir de uma pesquisa com amigos e voluntários praticantes de uma vida boémia, entendemos que os consumidores buscam por boas experiências. Pensando na experiência de cada cliente e funcionários, desenvolvemos um produto para facilitar a vida do atendente que necessita lidar com os pedidos de cada cliente. O garçom anota os pedidos, envia para a cozinha, a cozinha marca os pedidos finalizados que retorna para o salão, o garçom consegue clicar como finalizado e ver todos os pedidos enviados.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/>
+<h4> Você pode acessar a aplicação <a href="">clicando aqui</a> e utilizar um dos logins de teste abaixo:</h4>
 
-### `npm run build`
+<div align='center'>
+| #                     	|             Salão            	|           Cozinha           	|
+|:-----------------------:|:----------------------------:	|:---------------------------:	|
+| 🆔	| salao@brumag.comr | cozinha@brumag.com	        |
+| :key:                 	|            123456            	|            123456           	|
+  
+  
+  
+## 3. A aplicação
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 4. Planejamento
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [5. Histórias de Usuários](#histórias-de-usuários)
+- [6. Protótipos](#art-protótipos)
+- [7. UI e UX](#UI-UX)
+- [8. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
+- [9. Sobre as desenvolvedoras](#desenvolvedoras)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+7.UI e UX
+Principais objetivos de UI:
+Leitura clara de todos os textos
 
-## Learn More
+Consistência e padrões para não confundir os usuários
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Design minimalista
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Navegação intuitiva
 
-### Code Splitting
+Responsivo em tablets
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Liberdade e controle do usuário
 
-### Analyzing the Bundle Size
+Principal objetivos de UX:
+Ouvir os usuários e compreender como está a sua experiência com a aplicação.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Fizemos uma pesquisa com os usuários para sabermos as opiniões sobre a usabilidade, layout e funcionalidades da aplicação e identificar as possíveis melhorias que poderíamos fazer.
+Manter a interface e o estado sincronizados com React
+Ser um SPA (Single Page App)
+Ser responsivo em tablets
+Definir a estrutura de pastas e arquivos
+Usar JavaScript (ES6+) para a lógica do projeto
