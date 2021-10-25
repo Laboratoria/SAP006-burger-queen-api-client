@@ -41,9 +41,9 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 
 
 ## 4. Planejamento
-Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos entre rotas públicas e privadas
+Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos entre rotas públicas e privadas.
 <p align='center'>
-<img src='src/img/Mapa mental.png' widht='30%'> 
+<img src='src/img/Mapa mental.png' widht='20%'> 
 </p>
 
 ## 6. Protótipos 
