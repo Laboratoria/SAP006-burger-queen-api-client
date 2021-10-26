@@ -28,7 +28,9 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 <h4> Você pode acessar a aplicação <a href="">clicando aqui</a> e utilizar um dos logins de teste abaixo:</h4>
 
 
-  
+ 
+<div align='center'>
+
   
   
 > |      |          Salão          |      Cozinha            |
@@ -36,6 +38,7 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 > |  📨  |     salao@brumag.com    |    cozinha@brumag.com	 |
 > |  🔐  |         123456          |         123456          |
 
+  </div>
   
 ## 3. A aplicação
 
