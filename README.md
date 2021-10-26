@@ -78,7 +78,7 @@ Ser um SPA (Single Page App)
 ### Paleta de cores
 
 <div align="center" >
-<img src='src/img/paleta certa.png' alt="paleta de cores" widht='10%'> 
+<img src='src/img/paleta certa.png' widht='5%'> 
 </div>
 
 ---
