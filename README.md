@@ -84,7 +84,7 @@ Ser um SPA (Single Page App)
 ---
 
 <div align="center" style="display: flex">
-  <img src='src/img/Burguer queen - protótipo.png' width='50%'> 
+  <img src='src/img/Burguer queen protótipo.png' width='50%'> 
 
 </div>
 
