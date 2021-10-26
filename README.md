@@ -7,7 +7,7 @@
 - [3. A aplicação](#aplicacao)
 - [4. Planejamento](#planejamento)
 - [5. Histórias de Usuários](#histórias-de-usuários)
-   * [5.2 Como Funciona?](#funcionálidades)
+   * [5.2 Funcionalidades?](#funcionálidades)
 - [6. Protótipos](#art-protótipos)
 - [7. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
 - [8. Sobre as desenvolvedoras](#desenvolvedoras)
@@ -58,7 +58,7 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 ---
 
 <div align="center" style="display: flex">
-  <img src='src/img/Burguer_queen_tablet-removebg-preview (2).png' width='30%'> 
+  <img src='src/img/Burguer_queen_tablet-removebg-preview (2).png' width='50%'> 
 
 </div>
 
@@ -69,7 +69,7 @@ Com os testes de úsabilidade inicial, definimos não criar uma página para as 
 
 <div align="center" style="display: flex">
   
-  <img src='src/img/historia.png' width='50%'> 
+  <img src='src/img/historia.png' width='60%'> 
  
 </div>
 
@@ -85,6 +85,8 @@ Com os testes de úsabilidade inicial, definimos não criar uma página para as 
 - Prevenção de erros no login e cadastro.
 - Navegação intuitiva.
 - Leitura clara de todos os textos.
+- Manter a interface e o estado sincronizados com React
+Ser um SPA (Single Page App)
 
  
  
@@ -98,30 +100,8 @@ Alerta para o garçom quando tem algum pedido pronto para ser entregue ao client
 Possibilidade de marcar o pedido como entregue e ver o histórico;
 Pedidos chegam para a cozinha ordenados, conforme a solicitação.
 
-- [8. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
-- [9. Sobre as desenvolvedoras](#desenvolvedoras) -->
+<!-- - [8. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
+- [9. Sobre as desenvolvedoras](#desenvolvedoras) --> -->
 
 
-7.UI e UX
-Principais objetivos de UI:
-Leitura clara de todos os textos
 
-Consistência e padrões para não confundir os usuários
-
-Design minimalista
-
-Navegação intuitiva
-
-Responsivo em tablets
-
-Liberdade e controle do usuário
-
-Principal objetivos de UX:
-Ouvir os usuários e compreender como está a sua experiência com a aplicação.
-
-Fizemos uma pesquisa com os usuários para sabermos as opiniões sobre a usabilidade, layout e funcionalidades da aplicação e identificar as possíveis melhorias que poderíamos fazer.
-Manter a interface e o estado sincronizados com React
-Ser um SPA (Single Page App)
-Ser responsivo em tablets
-Definir a estrutura de pastas e arquivos
-Usar JavaScript (ES6+) para a lógica do projeto
