@@ -81,6 +81,10 @@ Ser um SPA (Single Page App)
 <img src='src/img/paleta certa.png' widht='5%'> 
 </div>
 
+<div align="center" style="display: flex">
+  
+  <img src='src/img/paleta certa.png' alt="" width='10%'> 
+ 
 ---
 
 <div align="center" style="display: flex">
