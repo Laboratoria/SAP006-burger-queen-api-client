@@ -135,10 +135,10 @@ Com os testes de úsabilidade inicial, definimos não criar uma página para as 
 
 <div align='center'>
 
-|                             Bruna                        	      |                              Magna Dutra                                	|
+|                             Bruna Belo                       	      |                              Magna Dutra                                	|
 |:------------------------------------------------------------------------------: |:------------------------------------------------------------------------------:	|
-|<img alt="Magna" src="src/Assets/Bruna.png" height='200px'></img> | <img src="src/img/mag.jfif" alt="" height='200px'></img> 	|
-| <a href='https://github.com/leticia-aniceto'><img alt='GitHub - Leticia' src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white'></img></a> <a href='https://www.linkedin.com/in/leticia-braga-aniceto/'><img alt='LinkedIn - Leticia' src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white'></img></a>  |  <a href='https://github.com/palomacqueiroz'><img alt='GitHub - Paloma' src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white'></img></a> <a href='https://www.linkedin.com/in/palomac-queiroz/'><img alt='LinkedIn - Paloma' src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white'></img></a> 	|          	|
+|<img alt="Bruna Belo" src="src/img/Bruna.png.jfif" height='200px'></img> | <img src="src/img/mag.jfif" alt="" height='200px'></img> 	|
+| <a href='https://github.com/leticia-aniceto'><img alt='GitHub - Magna' src='https://github.com/Magnadutra'></img></a> <a href='https://www.linkedin.com/in/leticia-braga-aniceto/'><img alt='LinkedIn - Leticia' src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white'></img></a>  |  <a href='https://github.com/palomacqueiroz'><img alt='GitHub - Paloma' src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white'></img></a> <a href='https://www.linkedin.com/in/palomac-queiroz/'><img alt='LinkedIn - Paloma' src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white'></img></a> 	|          	|
 </div>
 
 
