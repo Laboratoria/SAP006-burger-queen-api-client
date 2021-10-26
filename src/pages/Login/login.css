@@ -1,95 +1,40 @@
-/*@import '../global.css';*/
-
 body {
-    background: #DFB120;
+    background-color: #DFB120;
 }
 
-.container-login{
-width: 40%;
-padding: 4rem;
-flex-direction: column;
-align-items: center;
-background-color: hsla(0, 0%, 100%, .5490196078431373);
-border-radius: 1.5rem;
-z-index: 3;
-max-width: -webkit-fit-content;
-max-width: -moz-fit-content;
-max-width: fit-content;
-margin-left: 30%
-}
-
-/* .container-login {
-    background-color: #F2DFBA;
-    height: 430px;
-    width: 40%;
-    border-radius: 36px;
-    margin-left: 30%;
-} */
-
-.box-login{
-    margin: 12%;
-}
-
-h1{
-        text-align: center;
-}
-
-@media /*screen and*/ (min-width: 1024px) {
+@media /*only screen and (min-width:321px) and*/ (max-width:1024px)  and (orientation: portrait) {
     .elipse-background{
         position: absolute;
         margin-top: -20%;
-        width: 100%;
-        height: 140%;
-        border-radius: 50%;
-        /* -moz-transform: scaleY(0.4); */
-        /* -webkit-transform: scaleY(0.4); */
-        left: -45%;
-        /* top: 0%; */
-        background: #9B2D0A;
-        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+        width: 140%;
+        height: 200%;
+        left: -20%;
+        top: -80%;
         z-index: -5;
-    }
-    .container-login{
-        margin-left: 30%
-    }
-}
-/* tablet */ 
-
-@media (min-width: 768px) and (max-width: 799px) {
-    .elipse-background{
-        position: absolute;
-        margin-top: -45%;
-        width: 150%;
-        height: 200%;
-        left: -25%;
-        border-radius: 50%;
-        -webkit-transform: scaleY(0.4);
+        border-radius: 100%;
+        /*-webkit-transform: scaleY(0.4);*/
         background: #9B2D0A;
         box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     }
-    .container-login{
-        margin-left: 30%
+} 
+
+@media /*only screen and*/  (min-width:1024px)  and (orientation: landscape)  {
+    .elipse-background{
+        position: absolute;
+        margin-top: 0%;
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 0%;
+        z-index: -5;
+        background: #9B2D0A;
     }
 }
 
-@media (min-width: 320px) and (max-width: 768px) {
-    .elipse-background{
-        position: absolute;
-        margin-top: -45%;
-        width: 150%;
-        height: 200%;
-        left: -25%;
-        border-radius: 50%;
-        -webkit-transform: scaleY(0.4);
-        background: #9B2D0A;
-        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    }
-}
 
 .header-login{
     width: 100%;
     height: 15%;
-    display: flex;
     display: flex;
     justify-content: space-around;
 }
@@ -97,49 +42,57 @@ h1{
 .header-login img{
     height: 20rem;
 }
+
 .main-login{
+    width:100%;
     display: flex;
-    justify-content: space-around;
-    /* min-height: 75vh; */
+    align-items: center;
+    flex-direction: column;
+    margin: 0rem 0rem 10rem 0rem;
 }
 
- /* .box-login {
-   color: #F2DFBA;
-    border-radius: 10px;
-    padding: 28px;
-    height: 100%
-}  */
+.container-login{
+    width: 30%;
+    display: flex;
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    background-color: hsla(0, 0%, 100%, .5490196078431373);
+    border-radius: 1.5rem;
+    z-index: 3;
+    min-height: fit-content;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* max-width: -webkit-fit-content;
+    max-width: -moz-fit-content; */
+}
 
-h1 .title {
+.form-login{
+    max-width: 40rem;
+    padding: 2rem 2rem 1rem 2rem;
+    /*margin:0 auto; */
+}
+
+
+.title-login {
     font-weight: 700;
-    padding: 2rem;
+    font-size: 1.5rem;
+    padding: 0.2rem;
+    text-align: center;
     /* color: #F2DFBA; */
-};
-
-.forms{
-    max-width: 30rem;
-    padding: 2rem;
-    margin:0 auto; 
 }
 
-.input-email  {
-        border-radius: 7px;
-        width: 153px;
-        height: 29px;
-        margin-bottom: 0.3rem;
-}
-.input-senha{
-    border-radius: 7px;
-    width: 153px;
-    height: 29px;
-    margin-bottom: 1.0rem;
 
-}
-.form{
-    margin-bottom: 1.7rem;
+.form-error {
+    color: red;
+    font-size: 12px;
+    font-weight: 800;
 }
 
-.link{
+.link-register{
     text-decoration-line: none;
 }
 
+.link-register:hover{
+    color: #9B2D0A;
+    font-weight: 900;
+}

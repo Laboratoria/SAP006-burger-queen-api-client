@@ -41,7 +41,7 @@
         padding: 10px;
 }
 
-.divPrice{
+.divPriceProducts{
         text-align: center;
         color: whitesmoke;
         font-size: 18px;
@@ -59,7 +59,7 @@
 }
 
 .icon-add {
-color: #9B2D0A;
+        color: #9B2D0A;
 }
 .add-button{
         border-radius: 50%;

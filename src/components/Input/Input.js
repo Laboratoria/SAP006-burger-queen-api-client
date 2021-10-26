@@ -11,7 +11,7 @@ const Input = ({label, type, name, value, onChange, className, placeholder }) =>
             <input 
             id={name} 
             name={name} 
-            className={className?className:"input"}
+            className={className?className:"input-standard"}
             placeholder={placeholder}
             type={type} 
             value={value} 

@@ -1,12 +1,15 @@
 import { React, useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import { MdKeyboardBackspace } from 'react-icons/md'
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
-import '../../global.css';
+import '../Kitchen/Kitchen.css'
 
 function ReadyOrders() {
     const token = localStorage.getItem('token');
     const [orderStatus, setOrderStatus] = useState([]);
     const url = 'https://lab-api-bq.herokuapp.com/orders/';
+    const history = useHistory();
 
     useEffect(() => {
         fetch(url, {
@@ -53,6 +56,13 @@ function ReadyOrders() {
             <Header
                 name="Pedidos para entregar"
             />
+
+        <Button 
+            className='button-global'
+            onClick={() => history.goBack()}> 
+            <MdKeyboardBackspace />
+        </Button>
+
             <section className="orders-container">
                 {orderStatus.map((order) => {
                     return (
