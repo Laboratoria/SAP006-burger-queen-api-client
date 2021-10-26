@@ -47,23 +47,6 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 <img src='src/img/Mapa mental.png' widht='20%'> 
 </div>
 
-## 6. Protótipos 
-
-### Paleta de cores
-
-<div align="center" >
-<img src='src/img/Paleta.JPG' widht='30%'> 
-</div>
-
----
-
-<div align="center" style="display: flex">
-  <img src='src/img/Burguer_queen_tablet-removebg-preview (2).png' width='50%'> 
-
-</div>
-
-**Testes de usabilidade**
-Com os testes de úsabilidade inicial, definimos não criar uma página para as mesas, pois com os feedbacks, entedemos que para o dia dia do atendente, não seria funcional.
 
 ## 5. Histórias de Usuários
 
@@ -88,7 +71,28 @@ Com os testes de úsabilidade inicial, definimos não criar uma página para as 
 - Manter a interface e o estado sincronizados com React
 Ser um SPA (Single Page App)
 
+---
+
+## 6. Protótipos 
+
+### Paleta de cores
+
+<div align="center" >
+<img src='src/img/Paleta.JPG' widht='30%'> 
+</div>
+
+---
+
+<div align="center" style="display: flex">
+  <img src='src/img/Burguer_queen_tablet-removebg-preview (2).png' width='50%'> 
+
+</div>
+
+**Testes de usabilidade**
+Com os testes de úsabilidade inicial, definimos não criar uma página para as mesas, pois com os feedbacks, entedemos que para o dia dia do atendente, não seria funcional.
  
+ 
+ ---
  
  4. Como funciona?
 Neste vídeo mostra um pouco as funcionalidades como:
