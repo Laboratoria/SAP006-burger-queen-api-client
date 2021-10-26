@@ -56,16 +56,14 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 
 ---
 
-
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fq3gmtRrdVR8EljxikTaOZa%2FBurguer-queen%3Fpage-id%3D0%253A1%26node-id%3D102%253A7%26viewport%3D241%252C48%252C0.47%26scaling%3Dscale-down%26starting-point-node-id%3D102%253A7%26show-proto-sidebar%3D1" allowfullscreen></iframe>
-
-
 <div align="center" style="display: flex">
 
   
-  <img src='src/img/Burguer queen tablet.png' widht='20%'> 
-  
-  
+  <img src='src/img/Burguer_queen_tablet-removebg-preview (2).png' widht='20%'> 
+ 
+<!--   
+   
+  <img src='src/img/Burguer queen tablet.png' widht='20%'>  -->
 
 </div>
 
