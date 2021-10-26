@@ -7,10 +7,10 @@
 - [3. A aplicação](#aplicacao)
 - [4. Planejamento](#planejamento)
 - [5. Histórias de Usuários](#histórias-de-usuários)
+   * [5.2 Como Funciona?](#funcionálidades)
 - [6. Protótipos](#art-protótipos)
-- [7. UI e UX](#UI-UX)
-- [8. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
-- [9. Sobre as desenvolvedoras](#desenvolvedoras)
+- [7. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
+- [8. Sobre as desenvolvedoras](#desenvolvedoras)
 
 ---
 
@@ -57,21 +57,15 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 
 ---
 
-<div  style="display: flex">
-
-  
+<div align="center" style="display: flex">
   <img src='src/img/Burguer_queen_tablet-removebg-preview (2).png' width='30%'> 
- 
-<!--   
-   
-  <img src='src/img/Burguer queen tablet.png' widht='20%'>  -->
 
 </div>
 
-
+**Testes de usabilidade**
+Com os testes de úsabilidade inicial, definimos não criar uma página para as mesas, pois com os feedbacks, entedemos que para o dia dia do atendente, não seria funcional.
 
 ## 5. Histórias de Usuários
-
 
 <div align="center" style="display: flex">
   
@@ -79,11 +73,31 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
  
 </div>
 
-  
-<!-- 
-- [5. Histórias de Usuários](#histórias-de-usuários)
 
-- [7. UI e UX](#UI-UX)
+ ### 5.2 Funcionalidades
+ 
+ Para ser entregue a melhor experiência para o úsuário, a usabilidade foi uma prioridade nesse produto, nos preocupamos com cada funcionalidade equilibrando com uma interface intuitiva. Com base nas histórias dos usuários e testes de usabilidade definimos os principais objetivos.
+ 
+**Principais objetivos:**
+
+- Leitura clara de todos os textos.
+- Responsivo em *tablets*.
+- Prevenção de erros no login e cadastro.
+- Navegação intuitiva.
+- Leitura clara de todos os textos.
+
+ 
+ 
+ 4. Como funciona?
+Neste vídeo mostra um pouco as funcionalidades como:
+
+Cadastro e Login do usuário;
+Rota direcionada para o setor cadastrado;
+Seleção dos produtos que aparecem diretamente na comanda onde se tem a opção de excluir;
+Alerta para o garçom quando tem algum pedido pronto para ser entregue ao cliente final;
+Possibilidade de marcar o pedido como entregue e ver o histórico;
+Pedidos chegam para a cozinha ordenados, conforme a solicitação.
+
 - [8. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
 - [9. Sobre as desenvolvedoras](#desenvolvedoras) -->
 
