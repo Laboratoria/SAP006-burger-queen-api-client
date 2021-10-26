@@ -59,7 +59,23 @@ Pedidos chegam para a cozinha ordenados, conforme a solicitação.
 
 
 ## 4. Planejamento
-Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos entre rotas públicas e privadas.
+Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos entre rotas públicas, privadas com cada funcionalidade separado.
+Utilizamos o Git Hub Projects como ferramente de planejamento
+
+Dessa forma, definimos:
+
+:seedling: [MVP](https://pt.wikipedia.org/wiki/Produto_vi%C3%A1vel_m%C3%ADnimo)
+
+:call_me_hand: Critérios mínimos de aceitação
+
+:label: Padronizações do código ([Code Style](https://en.wikipedia.org/wiki/Programming_style))
+
+:hammer_and_pick:  Divisão de tarefas
+
+🔐 Para *merge* no repositório (*main*), somente após [*code review*](https://en.wikipedia.org/wiki/Code_review) para revisão em pares e aprovação da *reviewer*
+
+🤝 [Daily Scrum](https://www.desenvolvimentoagil.com.br/scrum/daily_scrum)
+
 
 <div align="center" style="display: flex">
   
