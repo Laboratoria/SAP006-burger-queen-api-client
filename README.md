@@ -5,6 +5,7 @@
 - [1. Proposta do Projeto](#proposta-do-produto)
 - [2. Definição do Produto](#definição-do-produto)
 - [3. A aplicação](#aplicacao)
+ * [3.2 Como Funciona?](#como-funciona?)
 - [4. Planejamento](#planejamento)
 - [5. Histórias de Usuários](#histórias-de-usuários)
    * [5.2 Funcionalidades](#funcionálidades)
@@ -37,6 +38,23 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 
   
 ## 3. A aplicação
+
+
+
+
+
+ 4. Como funciona?
+Neste vídeo mostra um pouco as funcionalidades como:
+
+Cadastro e Login do usuário;
+Rota direcionada para o setor cadastrado;
+Seleção dos produtos que aparecem diretamente na comanda onde se tem a opção de excluir;
+Alerta para o garçom quando tem algum pedido pronto para ser entregue ao cliente final;
+Possibilidade de marcar o pedido como entregue e ver o histórico;
+Pedidos chegam para a cozinha ordenados, conforme a solicitação.
+
+
+
 
 
 
@@ -95,18 +113,23 @@ Com os testes de úsabilidade inicial, definimos não criar uma página para as 
  
  ---
  
- 4. Como funciona?
-Neste vídeo mostra um pouco as funcionalidades como:
+ ## 7. Tecnologias Utilizadas 
+ 
+ <div style="display: inline_block"><br>
+  <img align="center" alt="Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
+  <img  align="center" alt="Node" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" />
+  <img align="center" alt="React" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
+  <img align="center" alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" alt="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+  <img align="center" alt="Figma" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" />
+  <img align="center" alt="vscode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
+  <img align="center" alt="jest" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" />
+  <img align="center" alt="github" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
+  <img align="center" alt="git" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
+</div><br>
 
-Cadastro e Login do usuário;
-Rota direcionada para o setor cadastrado;
-Seleção dos produtos que aparecem diretamente na comanda onde se tem a opção de excluir;
-Alerta para o garçom quando tem algum pedido pronto para ser entregue ao cliente final;
-Possibilidade de marcar o pedido como entregue e ver o histórico;
-Pedidos chegam para a cozinha ordenados, conforme a solicitação.
 
-<!-- - [8. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
-- [9. Sobre as desenvolvedoras](#desenvolvedoras) --> -->
+## 8. Sobre as desenvolvedoras
 
 
 
