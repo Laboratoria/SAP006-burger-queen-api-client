@@ -133,3 +133,14 @@ Com os testes de úsabilidade inicial, definimos não criar uma página para as 
 
 
 
+<div align='center'>
+
+|                             Bruna                        	      |                              Magna Dutra                                	|
+|:------------------------------------------------------------------------------: |:------------------------------------------------------------------------------:	|
+|<img alt="Magna" src="src/Assets/leticiaDev.png" height='200px'></img> | <img alt="Bruna" href="https://avatars.githubusercontent.com/u/83041248?v=4" height='200px'></img> 	|
+| <a href='https://github.com/leticia-aniceto'><img alt='GitHub - Leticia' src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white'></img></a> <a href='https://www.linkedin.com/in/leticia-braga-aniceto/'><img alt='LinkedIn - Leticia' src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white'></img></a>  |  <a href='https://github.com/palomacqueiroz'><img alt='GitHub - Paloma' src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white'></img></a> <a href='https://www.linkedin.com/in/palomac-queiroz/'><img alt='LinkedIn - Paloma' src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white'></img></a> 	|          	|
+</div>
+
+
+
+
