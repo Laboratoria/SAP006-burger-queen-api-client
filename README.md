@@ -77,6 +77,9 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 <img src='src/img/historia.png' widht='10%'>
  
 </div>
+
+
+![historia.png](https://github.com/Magnadutra/SAP006-burger-queen-api-client/blob/main/src/img/historia.png =100x20)
   
 <!-- 
 - [5. Histórias de Usuários](#histórias-de-usuários)
