@@ -5,6 +5,7 @@
     height: 30px;
     position: fixed;
     bottom : 0;
+    font-size: 1em;
 }
 .footer-link{
     text-decoration: none;

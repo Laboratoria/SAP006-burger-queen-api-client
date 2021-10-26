@@ -1,8 +1,8 @@
 import { React, useState, useEffect } from 'react';
 import Button from '../../components/Button/Button';
-import '../../global.css';
-import './Kitchen.css';
 import Header from '../../components/Header/Header';
+import './Kitchen.css';
+
 
 function Kitchen() {
 

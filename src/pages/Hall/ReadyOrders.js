@@ -1,12 +1,15 @@
 import { React, useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import { MdKeyboardBackspace } from 'react-icons/md'
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
-import '../../global.css';
+import '../Kitchen/Kitchen.css'
 
 function ReadyOrders() {
     const token = localStorage.getItem('token');
     const [orderStatus, setOrderStatus] = useState([]);
     const url = 'https://lab-api-bq.herokuapp.com/orders/';
+    const history = useHistory();
 
     useEffect(() => {
         fetch(url, {
@@ -42,14 +45,25 @@ function ReadyOrders() {
                 });
             });
     };
+    
+    const preparationTime = (deliveryTime, criationTime) => {
+        const difference = Math.abs(new Date(deliveryTime) - new Date(criationTime));
+        return Math.floor(difference / 1000 / 60 );
+    }
 
     return (
         <>
             <Header
                 name="Pedidos para entregar"
             />
-            
-            <section>
+
+        <Button 
+            className='button-global'
+            onClick={() => history.goBack()}> 
+            <MdKeyboardBackspace />
+        </Button>
+
+            <section className="orders-container">
                 {orderStatus.map((order) => {
                     return (
                         <section className="orders" key={order.id}>
@@ -58,6 +72,8 @@ function ReadyOrders() {
                                 <p>ID: {order.id} </p>
                                 <p>Cliente: {order.client_name} </p>
                                 <p>Mesa: {order.table} </p>
+                                {order.status === "ready" || order.status === "finished" ? (<p>Tempo de preparação:{' '}{preparationTime(order.updatedAt, order.createdAt)} min</p>) : ""}
+
                                 <time>
                                     {`${new Date(order.createdAt).toLocaleDateString('pt-br')} - ${new Date(order.createdAt).toLocaleTimeString('pt-br', {
                                         hour: '2-digit',
@@ -70,7 +86,6 @@ function ReadyOrders() {
                                         <p> {items.qtd} {items.name}</p>
                                         <p>{items.flavor}</p>
                                         <p>{items.complement}</p>
-
                                     </div>
                                 ))}
 
@@ -84,8 +99,6 @@ function ReadyOrders() {
             }
             </section>
         </>
-    )
-
-    
+    )   
 }
 export default ReadyOrders
