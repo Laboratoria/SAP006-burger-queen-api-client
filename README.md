@@ -51,7 +51,7 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 ### Paleta de cores
 
 <p align='center'>
-<img src='src/img/paleta.JPG' widht='20%'> 
+<img src='src/img/Paleta.JPG' widht='20%'> 
 </p>
 
 ---
