@@ -48,8 +48,29 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 
 ## 6. Protótipos 
 
+### Paleta de cores
+
+<p align='center'>
+<img src='src/img/login.png' widht='20%'> 
+</p>
+
+---
 
 
+
+<div align="center" style="display: flex">
+  <img alt="prototipo-login" height="580" width="410" src="./src/img/login.png">
+  <img alt="prototipo-salao" height="580" width="410" src="./src/img/salao.png"><br><br>
+  
+  <img alt="prototipo-salao" height="600" width="750" src="./src/img/cozinha.png">
+</div>
+
+
+
+<!-- <p align='center'>
+<img src='src/img/login.png' widht='20%'> 
+</p>
+ -->
 
 
 
