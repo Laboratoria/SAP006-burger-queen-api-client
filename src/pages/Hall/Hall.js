@@ -10,7 +10,6 @@ import '../../global.css';
 import './hall.css'
 
 
-
 function Hall() {
     const token = localStorage.getItem('token');
 
@@ -221,3 +220,5 @@ function Hall() {
 }
 
 export default Hall;
+
+

@@ -4,7 +4,6 @@ import './cartitem.css';
 
 function CartItem({
     qtd,
-    addOnClick,
     removeOnClick,
     divClassName,
     divKey,

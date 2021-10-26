@@ -3,12 +3,9 @@ const STORAGE_KEY = 'token';
 export const isLogged = () => !!localStorage.getItem(STORAGE_KEY);
 
 export const isUserActive = localStorage[STORAGE_KEY]; 
-export const loginConfirmed = (token) => { //Aqui terei de chamar a função com os parametros infoUser
+export const loginConfirmed = (token) => { 
     localStorage.setItem(STORAGE_KEY, token)
 };
-// export const logout = () => {
-//     localStorage.clear()
-// };
 
 export const registerUser = async (nameUser, emailUser, passwordUser, roleUser) => {
     const url = 'https://lab-api-bq.herokuapp.com/users';
