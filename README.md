@@ -64,15 +64,15 @@ Utilizamos o Git Hub Projects como ferramente de planejamento.
 
 Dessa forma, definimos:
 
-[MVP](https://pt.wikipedia.org/wiki/Produto_vi%C3%A1vel_m%C3%ADnimo)
+- Produto viável mínimo [MVP](https://pt.wikipedia.org/wiki/Produto_vi%C3%A1vel_m%C3%ADnimo)
 
-Critérios mínimos de aceitação
+- Critérios mínimos de aceitação
 
-Divisão de tarefas
+- Divisão de tarefas
 
-Para *merge* no repositório (*main*), somente após [*code review*](https://en.wikipedia.org/wiki/Code_review) para revisão em pares e aprovação da *reviewer*
+- Para *merge* no repositório (*main*), somente após [*code review*](https://en.wikipedia.org/wiki/Code_review) para revisão em pares e aprovação da *reviewer*
 
-[Daily Scrum](https://www.desenvolvimentoagil.com.br/scrum/daily_scrum)
+- [Daily Scrum](https://www.desenvolvimentoagil.com.br/scrum/daily_scrum)
 
 
 <div align="center" style="display: flex">
