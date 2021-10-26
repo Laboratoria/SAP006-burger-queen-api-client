@@ -5,7 +5,7 @@
 - [1. Proposta do Projeto](#proposta-do-produto)
 - [2. Definição do Produto](#definição-do-produto)
 - [3. A aplicação](#aplicacao)
- * [3.2 Como Funciona?](#como-funciona?)
+   * [3.2 Como Funciona?](#como-funciona?)
 - [4. Planejamento](#planejamento)
 - [5. Histórias de Usuários](#histórias-de-usuários)
    * [5.2 Funcionalidades](#funcionálidades)
