@@ -4,6 +4,10 @@
 
 .cart-item button {  
     background-color: black;
-    width: 3rem;
+    width: 2rem;
+    border: none;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
-

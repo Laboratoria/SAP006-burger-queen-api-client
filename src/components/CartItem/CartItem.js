@@ -14,10 +14,10 @@ function CartItem({
 }) {
   return (
     <div key={idProduct} className="cart-item">
-      <h2 className="name-product">{nameProduct}</h2>
-      <h2 className="flavor-product">{flavorProduct}</h2>
-      <h2 className="complement-product">{complementProduct}</h2>
-      <h2 className="price-product">R$ {priceProduct}</h2>
+      <h3 className="name-product">{nameProduct}</h3>
+      <h3 className="flavor-product">{flavorProduct}</h3>
+      <h3 className="complement-product">{complementProduct}</h3>
+      <h3 className="price-product">R$ {priceProduct}</h3>
       <h3 className="qtd-product">Qtd {qtdProduct}</h3>
       <Button
         onClick={divOnClick}

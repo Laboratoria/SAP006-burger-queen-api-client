@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Button from "../../components/Button/Button.js";
 import { useHistory } from "react-router-dom";
+import "../kitchen/kitchen.css"
 
 export function Kitchen() {
   const token = localStorage.getItem("token");
@@ -20,7 +21,8 @@ export function Kitchen() {
       .then((orders) => {
         const ordersPending = orders.filter((itens) =>
         itens.status.includes("preparing") ||
-        itens.status.includes("pending") /*itens.status.includes('done')*/
+        itens.status.includes("pending") 
+        /*itens.status.includes('done')*/
         );
     
         setOrderStatus(ordersPending);
@@ -55,17 +57,14 @@ export function Kitchen() {
     <div className="hall">
       <section className="menu">
         <h1>Pedidos</h1>
-
-        <section className="">
-          <button text="Sair" className="button" onClick={handleSignOut} />
-          <button text="Sair" className="button" onClick={handleSignOut} />
+        <section className="exit">
+          <button text="Sair" className="button-exit" onClick={handleSignOut}> Sair </button>
         </section>
-
         <section>
           {orderStatus.map((order) => {
             return (
               <section className="menu" key={order.id}>
-                <div className="banana">
+                <div className="resume-order">
                   <h1>                 
                     {order.status
                       .replace("pending", "Pendente")
@@ -87,7 +86,7 @@ export function Kitchen() {
                     )}h`}
                   </time>
 
-                  <article className="container-order">
+                  <article className="order">
                     {order.Products.map((items, index) => (
                       <div key={index}>
                         <p>
@@ -96,18 +95,18 @@ export function Kitchen() {
                       </div>
                     ))}
                   </article>
-
+                  <section className="btn-status">
                   <button text="Preparar"
                     className="button"
                     style={{ backgroundColor: "var(--azul)" }}
                     onClick={() => setStatus(order.id, "preparing")}> Preparar
                   </button>
-
-                  <button text="Despachar"
+                  <button text="Enviar"
                     className="button"
                     style={{ backgroundColor: "var(--azul)" }}
                     onClick={() => setStatus(order.id, "done")}> Enviar        
                     </button>
+                    </section>
                 </div>
               </section>
             );

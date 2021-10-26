@@ -4,7 +4,6 @@ import "../hall/hall.css";
 import ItemMenu from "../../components/ItemMenu/ItemMenu";
 import CartItem from "../../components/CartItem/CartItem";
 import {postOrder} from "../../services/api";
-import DataTime from "../../components/DataTime/DataTime";
 
 export function Hall() {
   const [menu, setMenu] = useState([]);
@@ -95,7 +94,6 @@ export function Hall() {
       <div>
         <h1 className="title-hall">Monster Burguer</h1>
         <section className="header-hall">
-        <DataTime></DataTime>
           <button
             className="button-geral"
             style={{ backgroundColor: "var(--azul)" }}
@@ -134,6 +132,8 @@ export function Hall() {
           ></input>
         </section>
         <section className="menu-order">
+        <section className="menu-side">
+          </section>
           <section className="container-menu">
             {selectProducts &&
               selectProducts.map((item, index) => (
