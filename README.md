@@ -72,7 +72,7 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 
 ## 5. Histórias de Usuários
 
-<div>
+<div style="display: flex">
   
 <img src='src/img/historia.png' widht='10%'>
  
