@@ -51,7 +51,7 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 ### Paleta de cores
 
 <div>
-<img src='src/img/Paleta.JPG' widht='20%'> 
+<img align="center" src='src/img/Paleta.JPG' widht='30%'> 
 </div>
 
 ---
@@ -59,7 +59,7 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 <div align="center" style="display: flex">
 
   
-  <img src='src/img/Burguer_queen_tablet-removebg-preview (2).png' widht='40%'> 
+  <img src='src/img/Burguer_queen_tablet-removebg-preview (2).png' widht='50%'> 
  
 <!--   
    
