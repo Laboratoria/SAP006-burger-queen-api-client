@@ -42,6 +42,7 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 
 ## 4. Planejamento
 Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos entre rotas públicas e privadas.
+
 <div align="center">
 <img src='src/img/Mapa mental.png' widht='20%'> 
 </div>
@@ -68,6 +69,15 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 </div>
 
 
+
+## 5. Histórias de Usuários
+
+<div>
+  
+<img src='src/img/historia.png' widht='70%'>
+ 
+</div>
+  
 <!-- 
 - [5. Histórias de Usuários](#histórias-de-usuários)
 
