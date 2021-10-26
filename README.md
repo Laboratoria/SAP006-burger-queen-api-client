@@ -61,9 +61,12 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 
 
 <div align="center" style="display: flex">
- <img src='src/img/login.png' widht='20%'> 
- <img src='src/img/salao.png' widht='20%'> 
- <img src='src/img/cozinha.png' widht='20%'>
+
+  
+  <img src='src/img/Burguer queen tablet.png' widht='20%'> 
+  
+  
+
 </div>
 
 
