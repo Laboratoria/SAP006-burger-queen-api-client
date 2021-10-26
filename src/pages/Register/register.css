@@ -47,7 +47,7 @@
 
 
 .form-error {
-    color: red;
+    color: rgba(255, 0, 0, 0.66);
     font-size: 12px;
     font-weight: 800;
 }
