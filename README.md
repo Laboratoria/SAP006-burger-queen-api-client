@@ -74,7 +74,7 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 
 <div>
   
-<img src='src/img/historia.png' widht='40%'>
+<img src='src/img/historia.png' widht='30%'>
  
 </div>
   
