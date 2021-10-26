@@ -1,7 +1,7 @@
 import React from 'react';
+import { GrAdd } from 'react-icons/gr';
 import Button from '../Button/Button';
 import './products.css';
-import { GrAdd } from 'react-icons/gr';
 
 
 function Products({
@@ -34,7 +34,7 @@ function Products({
                 </div>
                     <h3 className="divFlavor"> {productsFlavor} {productsComplement}</h3>
                     <h1 className="divComplement"> </h1>
-                    <h1 className="divPrice" key={productsPriceKey}> {divId} R${productsPrice},00</h1>
+                    <h1 className="divPriceProducts" key={productsPriceKey}> {divId} R${productsPrice},00</h1>
 
                     <h1 className="">{qtd}</h1>
                 

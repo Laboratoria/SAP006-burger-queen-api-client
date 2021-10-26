@@ -1,18 +1,16 @@
 import { React, useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
+import { postOrder } from '../../postAPI';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import Products from '../../components/Products/Products';
 import CartItem from '../../components/CartItem/CartItem';
-import { postOrder } from '../../postAPI';
 import Header from '../../components/Header/Header';
-import { useHistory } from 'react-router-dom';
-import ordersDelivery from '../../img/ordersDelivery2.png'
-import ordersList from '../../img/ordersList2.png'
-import AllDay from '../../img/AllDay2.png'
-import breakfast from '../../img/breakfast2.png'
-import '../../global.css';
-import './hall.css'
-
+import ordersDelivery from '../../img/ordersDelivery2.png';
+import ordersList from '../../img/ordersList2.png';
+import AllDay from '../../img/AllDay2.png';
+import breakfast from '../../img/breakfast2.png';
+import './hall.css';
 
 
 function Hall() {
@@ -128,13 +126,10 @@ function Hall() {
             <Header
             name="Menu"
             />
-
-
                 <section className="hall-main">
 
                     <section className="menu-container">
-
-                        <section className="container-teste">
+                        <div className="box-btn-menu">
                             <Button
                                 className="btn-menu"
                                 onClick={() => {
@@ -148,27 +143,26 @@ function Hall() {
                                 }}><img className="btn-img" src={AllDay} alt="Pedidos prontos para servir"></img>
                                 <p className="btn-name"> All Day </p>
                             </Button>
+                       </div>
+
+                        <section className="products-container">
+                            {selectedProducts && selectedProducts.map((item, index) => (
+                                <div key={index}>
+                                    <Products
+                                        divClassName="box-item"
+                                        productsName={item.name}
+                                        ImgSrc={item.image}
+                                        productsFlavor={item.flavor}
+                                        productsComplement={item.complement}
+                                        productsPrice={item.price}
+                                        addOnClick={(e) => handleAdd(e, item)}
+                                    />
+                                </div>
+                            ))}
                         </section>
-                      
-
-                        {selectedProducts && selectedProducts.map((item, index) => (
-                            <div key={index}>
-                                <Products
-                                    divClassName="box-item"
-                                    productsName={item.name}
-                                    ImgSrc={item.image}
-                                    productsFlavor={item.flavor}
-                                    productsComplement={item.complement}
-                                    productsPrice={item.price}
-                                    addOnClick={(e) => handleAdd(e, item)}
-                                />
-                            </div>
-                        ))}
                     </section>
-
                     <section className="orders-area"> 
-
-                        <section className="btn-orders-conatiner">
+                        <section className="btn-orders-container">
                             <Button text="servir" className="button-orders" onClick={server}>
                                 <img className="btn-img" src={ordersDelivery} alt="Pedidos prontos para servir"></img>
                                 <p className="btn-name"> Servir </p>
@@ -177,12 +171,9 @@ function Hall() {
                                 <img className="btn-img" src={ordersList} alt="Pedidos prontos para servir"></img>
                                 <p className="btn-name"> Prontos </p>
                             </Button>
-                        </section>
-
-                    
+                        </section>                    
                         <section className="container-order">
                             <div className="info-table-client">
-                            
                                     <select className="table-select" name="Mesa: " onChange={(e) => setTable(e.target.value)} >
                                         <option valeu="mesa01">Mesa</option>
                                         <option valeu="mesa01">01</option>
@@ -191,7 +182,6 @@ function Hall() {
                                         <option valeu="mesa04">04</option>
                                         <option valeu="mesa05">05</option>
                                     </select>
-
                                     <Input className="input-client"
                                         placeholder="Cliente" 
                                         name="client"
@@ -216,19 +206,15 @@ function Hall() {
                             
                                     </div>
                                 )} 
-
                             <hr />
-                                <div className="ajuste-total">
-
-                                <h1>Total R$ {total},00</h1>
+                                <div className="total-container">
+                                    <h1 className="total">Total R$ {total},00</h1>
                                 </div>
 
                                 <Button className="button-global" text="enviar para a cozinha" onClick={(e) => handleSubmit(e)}>Enviar</Button>
                             </div>
                         </section>
                     </section>
-                    
-
                 </section>
         </>
     );

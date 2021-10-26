@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 
-import './global.css';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import NotFound from './pages/NotFound/NotFound';
@@ -9,7 +8,7 @@ import Hall from './pages/Hall/Hall';
 import Kitchen from './pages/Kitchen/Kitchen';
 import AllOrders from './pages/Hall/AllOrders';
 import ReadyOrders from './pages/Hall/ReadyOrders';
-
+import './global.css';
 
 function App(user) {
     // const user = true;

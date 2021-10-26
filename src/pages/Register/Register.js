@@ -1,14 +1,12 @@
 import { React, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-
-import './register.css';
-import logo from '../../img/logo.png'
 import { registerUser } from "../../auth";
 import { validation } from '../../validation';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import '../Login/login.css';
-import '../../global.css';
+import Footer from '../../components/Footer/Footer';
+import logo from '../../img/logo.png'
+import './register.css';
 
 function Register() {
     const [errors, setErrors] = useState({})
@@ -64,50 +62,49 @@ function Register() {
             <header className="header-register">
                 {<img src={logo} alt="Logo Burguer Queen" />}
             </header>
-            <div className="container-register">
-                <div className="main-register">
+            <div className="main-register">
+                <div className="container-register">
+                    {/*<div className="box-register">*/}
+                    <form className="form-register" action="">
 
-                    <div className="box-register">
+                        <h1 className="title-register">Cadastrar</h1>
 
-
-                        <h1 className="title">Cadastrar</h1>
-                        <p className="labelInputs"></p>
+                        {/*<p className="labelInputs"></p>*/}
                         {errors.name && <span className='form-error'>{errors.name}</span>}
                         <Input
-                            type="name"
+                            requered
                             placeholder="Name"
-                            className="input-name-register"
+                            type="name"
+                            name="name"                            
                             value={infoUser.name}
                             onChange={handleChange}
                         />
 
-                        <p className="labelInputs"></p>
+                        {/*<p className="labelInputs"></p>*/}
                         {errors.email && <span className='form-error'>{errors.email}</span>}
                         <Input
-                            className="input-email-register"
-                            type="email"
+                            requered
                             placeholder="Email"
+                            type="email"
+                            name="email"                            
                             value={infoUser.email}
                             onChange={handleChange}
                         />
 
-
-                        <p className="labelInputs"></p>
+                        {/*<p className="labelInputs"></p>*/}
                         {errors.password && <span className='form-error'>{errors.password}</span>}
 
                         <Input
-                            requered
-                            type="password"
+                            requered                     
                             placeholder="Senha"
-                            className="input-senha-register"
+                            type="password"
+                            name="password"
                             value={infoUser.password}
                             onChange={handleChange}
                         />
                         {errors.role && <span className='form-error'>{errors.role}</span>}
 
                         <div className="radio-salao" onChange={handleChange} >
-
-
                             <label className="roleLabel">
                                 <input
                                     requered
@@ -116,8 +113,7 @@ function Register() {
                                     name="role"
                                     value="salao"
                                     id="role"
-                                />
-                                &nbsp;Salão
+                                /> &nbsp;Salão
                             </label>
 
                             <label className="role-cozinha">
@@ -127,23 +123,18 @@ function Register() {
                                     name="role"
                                     value="cozinha"
                                     id="role"
-                                />
-                                &nbsp;Cozinha
+                                /> &nbsp;Cozinha
                             </label>
-
                         </div>
                         <Button className="button-global" type='submit' onClick={handleRegister}>Cadaste-se</Button>
-                        <p>Já tem uma conta?</p>
-                        <button type="submit">
-                            <Link className="link" to="/login">Faça login </Link>
-                        </button>
-                    </div>
+                    </form>
+                    <p className="question-login">Já tem uma conta?</p>
+                    <Link className="link-login" to="/login">Entrar </Link>
+                    {/*</div>*/}
                 </div>
             </div>
-
-
+            <Footer/>
         </section>
-
     );
 }
 export default Register;

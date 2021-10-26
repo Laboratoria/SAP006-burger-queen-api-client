@@ -7,9 +7,13 @@ input:hover{
     box-shadow: 0 0 0 3px rgb(182, 180, 173);    
 }
 
-input{
-    border-radius: 5px;
+.input-standard{
+    border-radius: 7px;
+    width: 153px;
+    height: 29px;
+    margin-bottom: 0.5rem;
 }
+
 .label{
     display: block;
     font-size: 1rem;
@@ -17,48 +21,10 @@ input{
     padding-bottom: 0.5rem;
 }
 
-.error{
-    color: #f31;
-    font-size: .875rem;
-    margin-top: 0.25rem;
-
-}
-.login {
-    display: grid;
-    min-height: 100vh;
-    gap: 2rem;
-}
-
-
-
-/* 
-
-.input {
-    border: 1px solid #eee;
-    display: block;
-    padding: .3rem .8rem;
-    margin-right: 1rem;
-    background: #eee;
-    transition: 0.1;
-} */
-
-
-/* .input-container {
-    margin-bottom: 1rem;
-    margin-left: 80%;
-}
-
-
-.numero-mesas{
-        padding: .3rem .8rem;
-        margin-right: 1rem;
-        margin-left: 60%;
-}  */
-
 .mesas-cliente{
     display: flex;
-      justify-content: space-evenly;
-      width: 30%;
-      margin: 1%;
-      margin-left: 60%;
+    justify-content: space-evenly;
+    width: 30%;
+    margin: 1%;
+    margin-left: 60%;
 }

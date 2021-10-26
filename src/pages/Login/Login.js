@@ -1,12 +1,12 @@
 import { React, useState } from 'react';
-import './login.css';
-import logo from '../../img/logo.png'
 import { Link, useHistory } from 'react-router-dom';
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
 import { validation } from '../../validation';
 import { loginUser, loginConfirmed } from '../../auth';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
 import Footer from '../../components/Footer/Footer';
+import logo from '../../img/logo.png'
+import './login.css';
 
 function Login() {
     const [errors, setErrors] = useState({})
@@ -55,56 +55,46 @@ function Login() {
 
     return (
         <section className="login-page" >
-                <div className="elipse-background"> </div>
-                <header className="header-login"> 
-                     {<img src={logo} alt="Logo Burguer Queen" />}
-                </header>
-            <div className="container-login">
-                <div className="main-login">
-                    
-                    <div className="box-login" > 
-                        <form className="forms" action="">
-                            <h1 className="title">Login</h1>
+            <div className="elipse-background"> </div>
+            <header className="header-login"> 
+                {<img src={logo} alt="Logo Burguer Queen" />}
+            </header>
+            <section className="main-login"> 
+                <div className="container-login"> 
+                    {/*<div className="box-login" > */}
+                        <form className="form-login" action="">
+
+                            <h1 className="title-login">Entrar</h1>
                             
+                            {errors.email && <span className='form-error'>{errors.email}</span>}
                             <Input 
                                 requered
-                                className="input-email"
                                 placeholder="Email" 
                                 type="email" 
                                 name="email" 
                                 value={infoUser.email}
                                 onChange={handleChange}
                             />
-
-                            {errors.email && <span className='form-error'>{errors.email}</span>}
-                        
+                            
+                            {errors.password && <span className='form-error'>{errors.password}</span>}
                             <Input
                                 requered
-                                className="input-senha"
                                 placeholder="Senha"
                                 type="password" 
                                 name="password" 
                                 value={infoUser.password}
                                 onChange={handleChange}
                             />
-                            {errors.password && <span className='form-error'>{errors.password}</span>}
-                        
-                            <Button
-                                className="button-global"
-                                type="submit" 
-                                onClick={handleLogin}>
-                                Entrar
-                            </Button>
+                           
+                            <Button className="button-global" type="submit" onClick={handleLogin}> Entrar </Button>
                         </form>
-                        <p>Não tem uma conta?</p> 
-                        <Link
-                            className="link" to="/Register">
-                            Cadastre-se
-                        </Link>
+                        <p className="question-register">Não tem uma conta?</p> 
+                        <Link className="link-register" to="/Register">Cadastre-se</Link>
                         
-                    </div>
-                </div>
-            </div>
+                    {/*</div>*/}
+                    
+                </div> 
+            </section>
             <Footer/>
         </section>
      );

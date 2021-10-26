@@ -4,11 +4,13 @@
     justify-content: space-around;
 }
 
-.btn-orders-conatiner{
+.btn-orders-container{
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     background-color: #9B2D0A;
+    border-radius: 0.4rem;
+    margin: 0px 0px 40px 0px;
 }
 
 .btn-img{
@@ -20,24 +22,30 @@
     font-size: 15px;
 }
 
-
 .menu-container{
-    /*display:flex;*/
-    flex-wrap: wrap;
     width: 44%;
-    height: fit-content;  
-    justify-content: center;
-    border-radius: 10px;
     margin: 2%;
-    /*padding: 2%;*/
-};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-.container-teste{
+.box-btn-menu{
     width: 100%;
-    /*display: flex;*/
-    justify-content:space-between;
-    margin-bottom: 5%;   
-    background-color: green;
+    display: flex;
+    justify-content: space-around;
+}
+
+.products-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: -moz-fit-content;
+    /* height: fit-content; */
+    justify-content: center;
+    /* border-radius: 10px; */
+    margin: 2%;
+    padding: 2%;
 }
 
 .orders-area{
@@ -50,13 +58,14 @@
     border: solid 2px #9B2D0A;
     border-radius: 10px;
     align-items: center;
+    background-color: #F2DFBA;
 }
 
 .info-table-client{
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 5%;
+    margin-top: 5%;
     padding: 5px;
 }
 
@@ -72,20 +81,17 @@
 
 .box-order-itens{
     display: flex;
-    width: 90%;
+    /* width: 90%; */
     padding: 5%;
-    align-items: center;
-    align-content: space-between;
+    /* align-items: center; */
     justify-content: space-evenly;
     flex-wrap: wrap;
-    flex-direction: column;
+    /* flex-direction: column;*/
 }
 .icon-signout {
     color: #DFB120;
     font-size: 35px;
-
 }
-
 
 .input-client{
     border-radius: 9px;
@@ -93,7 +99,6 @@
     height: 38px;
     background-color: #9B2D0A;
 }  
-
 
  .input-client::placeholder {
      color: #fff;
@@ -107,8 +112,13 @@ hr{
     width: 90%;
    }
 
+.total-container{
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    margin-left: 50%;
 
-.ajuste-total{
-    margin-left: 62%;
 }
 
+.total {
+    font-size: 22px;
+}
