@@ -7,7 +7,7 @@
 - [3. A aplicação](#aplicacao)
 - [4. Planejamento](#planejamento)
 - [5. Histórias de Usuários](#histórias-de-usuários)
-   * [5.2 Funcionalidades?](#funcionálidades)
+   * [5.2 Funcionalidades](#funcionálidades)
 - [6. Protótipos](#art-protótipos)
 - [7. Tecnologias Utilizadas](#robot-tecnologias-utilizadas)
 - [8. Sobre as desenvolvedoras](#desenvolvedoras)
@@ -81,15 +81,15 @@ Ser um SPA (Single Page App)
   
   <img src='src/img/paleta certa.png' alt="" width='50%'> 
  </div>
- 
----
+
 
 <div align="center" style="display: flex">
   <img src='src/img/Burguer queen tablet black.png' alt="protótipo" width='50%'> 
 
 </div>
 
-**Testes de usabilidade**
+### **Testes de usabilidade**
+
 Com os testes de úsabilidade inicial, definimos não criar uma página para as mesas, pois com os feedbacks, entedemos que para o dia dia do atendente, não seria funcional.
  
  
