@@ -51,7 +51,7 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 ### Paleta de cores
 
 <p align='center'>
-<img src='src/img/login.png' widht='20%'> 
+<img src='src/img/paleta de cores.png' widht='20%'> 
 </p>
 
 ---
@@ -59,10 +59,9 @@ Entendemos que o Planejamento é a alma de um projeto, no mapa mental separamos 
 
 
 <div align="center" style="display: flex">
-  <img alt="prototipo-login" height="580" width="410" src="./src/img/login.png">
-  <img alt="prototipo-salao" height="580" width="410" src="./src/img/salao.png"><br><br>
-  
-  <img alt="prototipo-salao" height="600" width="750" src="./src/img/cozinha.png">
+ <img src='src/img/login.png' widht='20%'> 
+ <img src='src/img/salao.png' widht='20%'> 
+ <img src='src/img/cozinha.png' widht='20%'>
 </div>
 
 
