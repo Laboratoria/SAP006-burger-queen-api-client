@@ -27,7 +27,7 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 <br/>
  
 <div align='center'>
-<h4> Você pode acessar a aplicação <a href="boteco-burger.vercel.app/">clicando aqui</a> e utilizar um dos logins de teste abaixo:</h4>
+<h4> Você pode acessar a aplicação <a href="https://boteco-burger.vercel.app/">clicando aqui</a> e utilizar um dos logins de teste abaixo:</h4>
 
   
  |      |          Salão          |      Cozinha            |
