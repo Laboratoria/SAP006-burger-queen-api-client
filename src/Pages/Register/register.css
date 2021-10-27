@@ -8,16 +8,16 @@
   background-image: url("../../img/background.jpeg");
   background-repeat: no-repeat;
   width: 100%;
-  height: 900px;
+  height: 999px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
 }
 
-@media only screen and (min-width: 788px) and (max-width: 979px) {
+@media only screen and (min-width: 800px) and (max-width: 979px) {
   .container {
     width: 100%;
-    height: 800px;
+    height: 200px;
   }
 }
 .text-form {
@@ -48,6 +48,7 @@
   opacity: 1.2;
   text-align: center;
   text-transform: uppercase;
+  font-weight: bold;
 }
 .register-container button:hover {
   background-color: #ff8000cc;
@@ -76,4 +77,10 @@
   border: none;
   background-color: #ffffff8c;
   box-shadow: 1px 1px 10px #696969;
+}
+
+.input-form-select {
+  padding: 1rem;
+  margin: 1rem;
+  font-weight: bold;
 }
