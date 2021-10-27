@@ -39,27 +39,39 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
   
 ## 3. A aplicação
 
+<div align="center" style="display: flex">
+  
+  <img src='src/img/login.gif' alt="" width='60%'> 
+  
+</div>
+
 
 <div align="center" style="display: flex">
   
-  <img src='src/img/cozinha.gif' alt="" width='60%'> 
+  <img src='src/img/salao.gif' alt="" width='60%'> 
   
 </div>
 
 
 
- 4. Como funciona?
-Neste vídeo mostra um pouco as funcionalidades como:
-
-Cadastro e Login do usuário;
-Rota direcionada para o setor cadastrado;
-Seleção dos produtos que aparecem diretamente na comanda onde se tem a opção de excluir;
-Alerta para o garçom quando tem algum pedido pronto para ser entregue ao cliente final;
-Possibilidade de marcar o pedido como entregue e ver o histórico;
-Pedidos chegam para a cozinha ordenados, conforme a solicitação.
+<div align="center" style="display: flex">
+  
+  <img src='src/img/cozinha.gif' alt="" width='50%'> 
+  
+</div>
 
 
+ ### 3.2 Como funciona?
+Nos Gif mostra um pouco as funcionalidades como:
 
+- Cadastro e Login do usuário;
+- Rota direcionada para o setor cadastrado;
+- Seleção dos produtos que aparecem diretamente na comanda;
+- Selecionar mesa e anotar o nome do cliente;
+- Envio dos produtos para a cozinha;
+- Pedidos chegam na cozinha, o cozinheiro consegue enviar os pedidos como pronto para o atendente.
+- O atendente consegue marcar os pedidos como entregue para o cliente;
+- O atendente consegue ver o histórico de pedidos entregues.
 
 
 
