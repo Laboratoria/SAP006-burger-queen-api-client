@@ -12,7 +12,6 @@ import AllDay from '../../img/AllDay2.png';
 import breakfast from '../../img/breakfast2.png';
 import './hall.css';
 
-
 function Hall() {
     const token = localStorage.getItem('token');
 
@@ -221,3 +220,5 @@ function Hall() {
 }
 
 export default Hall;
+
+

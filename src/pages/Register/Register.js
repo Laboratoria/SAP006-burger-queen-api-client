@@ -64,12 +64,11 @@ function Register() {
             </header>
             <div className="main-register">
                 <div className="container-register">
-                    {/*<div className="box-register">*/}
+                   
                     <form className="form-register" action="">
 
                         <h1 className="title-register">Cadastrar</h1>
 
-                        {/*<p className="labelInputs"></p>*/}
                         {errors.name && <span className='form-error'>{errors.name}</span>}
                         <Input
                             requered
@@ -80,7 +79,7 @@ function Register() {
                             onChange={handleChange}
                         />
 
-                        {/*<p className="labelInputs"></p>*/}
+                        
                         {errors.email && <span className='form-error'>{errors.email}</span>}
                         <Input
                             requered
@@ -91,7 +90,7 @@ function Register() {
                             onChange={handleChange}
                         />
 
-                        {/*<p className="labelInputs"></p>*/}
+                        
                         {errors.password && <span className='form-error'>{errors.password}</span>}
 
                         <Input
@@ -126,7 +125,7 @@ function Register() {
                                 /> &nbsp;Cozinha
                             </label>
                         </div>
-                        <Button className="button-global" type='submit' onClick={handleRegister}>Cadaste-se</Button>
+                        <Button className="button-global" type='submit' onClick={handleRegister}>Cadastre-se</Button>
                     </form>
                     <p className="question-login">Já tem uma conta?</p>
                     <Link className="link-login" to="/login">Entrar </Link>
