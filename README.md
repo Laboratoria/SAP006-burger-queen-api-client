@@ -32,7 +32,7 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
   
  |      |          Salão          |      Cozinha            |
  |------|-------------------------|-------------------------|
- |  📨  |     salao@brumag.com    |    cozinha@brumag.com	 |
+ |  📨  |     salao@boteco.com    |    cozinha@boteco.com	 |
  |  🔐  |         123456          |         123456          |
 
   </div>
