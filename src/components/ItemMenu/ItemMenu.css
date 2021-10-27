@@ -1,0 +1,49 @@
+.menu-item {
+    background-color: var(--cinza);
+    border-radius: 10px;
+    margin: 2rem;
+    padding: 5%;
+    width: 150px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-family: barlow condensed;
+    text-transform: capitalize;
+}
+
+.img-item {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin-top: -50px;
+    margin-bottom: 10px;
+}
+
+.name-product {
+    font-family: barlow condensed;
+    font-size: 18px;
+}
+
+.flavor-product {
+    font-size: 18px;
+}
+
+.complement-product {
+    font-size: 18px;
+}
+
+.price-product {
+    font-size: 18px;
+}
+
+.menu-item button {
+    align-items: center;
+    border-radius: 10px;
+    width: 5rem;
+    border-style: none;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-family: Creepster;
+}
