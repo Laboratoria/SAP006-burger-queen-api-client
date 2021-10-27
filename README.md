@@ -40,6 +40,11 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 ## 3. A aplicação
 
 
+<div align="center" style="display: flex">
+  
+  <img src='src/img/cozinha.gif' alt="" width='60%'> 
+  
+</div>
 
 
 
