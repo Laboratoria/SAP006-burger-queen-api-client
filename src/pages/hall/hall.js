@@ -4,6 +4,10 @@ import "../hall/hall.css";
 import ItemMenu from "../../components/ItemMenu/ItemMenu";
 import CartItem from "../../components/CartItem/CartItem";
 import {postOrder} from "../../services/api";
+import logoMonsterPeq from "../../img/logoMonsterPeq.png";
+import notification from "../../img/notification.png";
+import orderIcon from "../../img/orderIcon.png";
+import logout from "../../img/logout.png";
 
 export function Hall() {
   const [menu, setMenu] = useState([]);
@@ -132,7 +136,11 @@ export function Hall() {
           ></input>
         </section>
         <section className="menu-order">
-        <section className="menu-side">
+          <section className="menu-side">
+            <button className="logo-small"> <img className="logo-small" src={logoMonsterPeq} /></button>
+            <button className="logo-notification"> <img className="logo-notification" src={notification} /></button>
+            <button className="logo-order"> <img className="logo-order" src={orderIcon} /></button>
+            <button className="logo-logout"> <img className="logo-logout" src={logout} /></button>
           </section>
           <section className="container-menu">
             {selectProducts &&

@@ -22,7 +22,6 @@ function CartItem({
       <Button
         onClick={divOnClick}
         className="btn-remove"
-        style={{ backgroundImage: "red" }}
       >
         <img className="icon-trash" src={trash} /> 
       </Button>

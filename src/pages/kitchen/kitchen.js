@@ -1,91 +1,93 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Button from "../../components/Button/Button.js";
-import { useHistory } from "react-router-dom";
-import "../kitchen/kitchen.css"
+import React, { useState, useEffect } from 'react'
+import Button from '../../components/Button/Button.js'
+import { useHistory } from 'react-router-dom'
+import '../kitchen/kitchen.css'
 
 export function Kitchen() {
-  const token = localStorage.getItem("token");
-  const [orderStatus, setOrderStatus] = useState([]);
-  const url = "https://lab-api-bq.herokuapp.com/orders/";
+  const token = localStorage.getItem('token')
+  const [orderStatus, setOrderStatus] = useState([])
+  const url = 'https://lab-api-bq.herokuapp.com/orders/'
 
   useEffect(() => {
     fetch(url, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `${token}`,
-      },
+        'Content-Type': 'application/json',
+        Authorization: `${token}`
+      }
     })
-      .then((response) => response.json())
-      .then((orders) => {
-        const ordersPending = orders.filter((itens) =>
-        itens.status.includes("preparing") ||
-        itens.status.includes("pending") 
-        /*itens.status.includes('done')*/
-        );
-    
-        setOrderStatus(ordersPending);
-      });
-  },[token])
+      .then(response => response.json())
+      .then(orders => {
+        const ordersPending = orders.filter(
+          itens =>
+            itens.status.includes('preparing') ||
+            itens.status.includes('pending')
+        )
+        setOrderStatus(ordersPending)
+      })
+  }, [token])
 
-  const history = useHistory();
-  const handleSignOut = (e) => {
-    e.preventDefault();
-    history.push("/login");
-    localStorage.clear();
-  };
+  const history = useHistory()
+  const handleSignOut = e => {
+    e.preventDefault()
+    history.push('/login')
+    localStorage.clear()
+  }
 
   const setStatus = (id, newStatus) => {
-    const status = { status: newStatus };
+    const status = { status: newStatus }
     fetch(url + id, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `${token}`,
+        'Content-Type': 'application/json',
+        Authorization: `${token}`
       },
-      body: JSON.stringify(status),
-    }).then((response) => {
-      response.json().then(() => {
-        const order = orderStatus;
-        return order;
-      });
-    });
-  };
+      body: JSON.stringify(status)
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then((result) => {
+      const listOrder = orderStatus.filter((order)=> order.id !== result.id)    
+      setOrderStatus(listOrder)
+      })
+  }
 
   return (
     <div className="hall">
       <section className="menu">
         <h1>Pedidos</h1>
         <section className="exit">
-          <button text="Sair" className="button-exit" onClick={handleSignOut}> Sair </button>
+          <button text="Sair" className="button-exit" onClick={handleSignOut}>
+            {' '}
+            Sair{' '}
+          </button>
         </section>
         <section>
-          {orderStatus.map((order) => {
+          {orderStatus.map(order => {
             return (
               <section className="menu" key={order.id}>
                 <div className="resume-order">
-                  <h1>                 
+                  <h1>
                     {order.status
-                      .replace("pending", "Pendente")
-                      .replace("preparing", "Em andamento")
-                      .replace("done", "Pronto")}
+                      .replace('pending', 'Pendente')
+                      .replace('preparing', 'Em andamento')
+                      .replace('done', 'Pronto')}
                   </h1>
                   <p>ID: {order.id} </p>
                   <p>Cliente: {order.client_name} </p>
                   <p>Mesa: {order.table} </p>
                   <time>
                     {`${new Date(order.createdAt).toLocaleDateString(
-                      "pt-br"
+                      'pt-br'
                     )} - ${new Date(order.createdAt).toLocaleTimeString(
-                      "pt-br",
+                      'pt-br',
                       {
-                        hour: "2-digit",
-                        minute: "2-digit",
+                        hour: '2-digit',
+                        minute: '2-digit'
                       }
                     )}h`}
                   </time>
-
                   <article className="order">
                     {order.Products.map((items, index) => (
                       <div key={index}>
@@ -96,25 +98,31 @@ export function Kitchen() {
                     ))}
                   </article>
                   <section className="btn-status">
-                  <button text="Preparar"
-                    className="button"
-                    style={{ backgroundColor: "var(--azul)" }}
-                    onClick={() => setStatus(order.id, "preparing")}> Preparar
-                  </button>
-                  <button text="Enviar"
-                    className="button"
-                    style={{ backgroundColor: "var(--azul)" }}
-                    onClick={() => setStatus(order.id, "done")}> Enviar        
+                    <button
+                      className="button"
+                      style={{ backgroundColor: 'var(--azul)' }}
+                      onClick={() => setStatus(order.id, 'preparing')}
+                    >
+                      Preparar
                     </button>
-                    </section>
+                    <button
+                      text="Pronto"
+                      className="button"
+                      style={{ backgroundColor: 'var(--azul)' }}
+                      onClick={() => setStatus(order.id, 'ready')}
+                    >
+                      {' '}
+                      Pronto
+                    </button>
+                  </section>
                 </div>
               </section>
-            );
+            )
           })}
         </section>
       </section>
     </div>
-  );
+  )
 }
 
-export default Kitchen;
+export default Kitchen

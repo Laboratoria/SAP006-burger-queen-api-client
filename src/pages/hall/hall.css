@@ -12,26 +12,57 @@ body {
     border: none;
     border-radius: 0.5rem;
     margin-top: 0.5rem;
-
 }
 
 .menu-side {
     width: 3rem;
-    background-color: var(--cinza);
+    background-color: black;
     margin-top: 2.8rem;
     border-radius: 0.5rem;
+}
+
+button.logo-small {
+    background-color: black;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+button.logo-order {
+    background: black;
+    border: none;
+    width: 3rem;
+    padding: 0.5rem;
+}
+
+button.logo-notification {
+    background: black;
+    border: none;
+    width: 3rem;
+    padding: 0.5rem;
+}
+
+button.logo-logout {
+    background: black;
+    border: none;
+    width: 3rem;
+    padding: 0.5rem;
+}
+
+img.logo-small {
+    width: 3rem;
+    margin-top: 1rem;
 }
 
 .container-menu {
     background-color: var(--verde);
     flex-wrap: wrap;
     display: flex;
-    width: 70%;
+    width: 80%;
     padding: 1rem;
 }
 
 .container-order {
-    background-color: var(--cinza);
+    background-color: black;
     width: 40%;
     color: white;
     font-family: barlow condensed;
