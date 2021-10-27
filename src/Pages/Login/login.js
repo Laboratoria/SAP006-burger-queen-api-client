@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../Components/Button/button";
-import InputText from "../../Components/imput/imput";
+import InputText from "../../Components/input/input";
 import "./login.css";
 import Logo from '../../img/logo-img-login';
 

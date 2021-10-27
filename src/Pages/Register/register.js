@@ -42,16 +42,16 @@ function Register() {
 
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: `email=${userEmail}&passaword=${userPassword}&role=${userRole}&restaurant=konoha hamburguer&name=${name}  `,
+        body: `email=${userEmail}&password=${userPassword}&role=${userRole}&restaurant=konoha hamburguer&name=${name}  `,
       })
         .then((response) => response.json())
-        console.log(response.json);
+       
         .then((json) => {
           if (json.id === undefined) {
             console.log("não entrou");
             console.log(json.id);
           } else {
-            //  routerRegister();
+              routerRegister();
             console.log("entrar");
           }
           // console.log("foi");
