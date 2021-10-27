@@ -41,14 +41,14 @@ Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso client
 
 <div align="center" style="display: flex">
   
-  <img src='src/img/login.gif' alt="" width='60%'> 
+  <img src='src/img/login .gif' alt="" width='50%'> 
   
 </div>
 
 
 <div align="center" style="display: flex">
   
-  <img src='src/img/salao.gif' alt="" width='60%'> 
+  <img src='src/img/salao.gif' alt="" width='50%'> 
   
 </div>
 
