@@ -21,13 +21,13 @@ Um pequeno restaurante de hambúrgueres, que está crescendo, necessita uma inte
 Este projeto tem duas áreas: interface (cliente) e API (servidor). Nosso cliente nos pediu para desenvolver uma interface que se integre com a API que outra equipe de desenvolvedoras está trabalhando simultaneamente.
 
 ## 2. Definição do Produto
-**_Boteco Burguer_** A partir de uma pesquisa com amigos e voluntários praticantes de uma vida boémia, entendemos que os consumidores buscam por boas experiências. Pensando na experiência de cada cliente e funcionários, desenvolvemos um produto para facilitar a vida do atendente que necessita lidar com os pedidos de cada cliente. O garçom anota os pedidos, envia para a cozinha, a cozinha marca os pedidos finalizados que retorna para o salão, o garçom consegue clicar como finalizado e ver todos os pedidos enviados.
+**_Boteco Burguer_** A partir de uma pesquisa com amigos e voluntários praticantes de uma vida boémia, entendemos que os consumidores buscam por boas experiências. Pensando nisso, desenvolvemos um produto para facilitar a vida do atendente que necessita lidar com os pedidos de cada cliente. O garçom anota os pedidos, envia para a cozinha, a cozinha marca os pedidos finalizados que retorna para o salão, o garçom consegue clicar como finalizado e ver todos os pedidos enviados.
 
 
 <br/>
  
 <div align='center'>
-<h4> Você pode acessar a aplicação <a href="">clicando aqui</a> e utilizar um dos logins de teste abaixo:</h4>
+<h4> Você pode acessar a aplicação <a href="boteco-burger.vercel.app/">clicando aqui</a> e utilizar um dos logins de teste abaixo:</h4>
 
   
  |      |          Salão          |      Cozinha            |
@@ -113,7 +113,8 @@ Dessa forma, definimos:
 
  ### 5.2 Funcionalidades
  
- Para ser entregue a melhor experiência para o úsuário, a usabilidade foi uma prioridade nesse produto, nos preocupamos com cada funcionalidade equilibrando com uma interface intuitiva. Com base nas histórias dos usuários e testes de usabilidade definimos os principais objetivos.
+ Para ser entregue a melhor experiência para o úsuário, a usabilidade foi uma prioridade nesse produto, nos preocupamos com cada funcionalidade equilibrando com uma interface intuitiva.
+ Com base nas histórias dos usuários e testes de usabilidade definimos os principais objetivos.
  
 **Principais objetivos:**
 
@@ -121,7 +122,6 @@ Dessa forma, definimos:
 - Responsivo em *tablets*.
 - Prevenção de erros no login e cadastro.
 - Navegação intuitiva.
-- Leitura clara de todos os textos.
 - Manter a interface e o estado sincronizados com React
 Ser um SPA (Single Page App)
 
