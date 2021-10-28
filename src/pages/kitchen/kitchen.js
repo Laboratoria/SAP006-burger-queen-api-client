@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Button from '../../components/Button/Button.js'
 import { useHistory } from 'react-router-dom'
+import logoMonsterPeq from '../../img/logoMonsterPeq.png'
+import notification from '../../img/notification.png'
+import orderIcon from '../../img/orderIcon.png'
+import logout from '../../img/logout.png'
+import '../hall/hall.css'
 import '../kitchen/kitchen.css'
 
 export function Kitchen() {
@@ -18,10 +22,8 @@ export function Kitchen() {
     })
       .then(response => response.json())
       .then(orders => {
-        const ordersPending = orders.filter(
-          itens =>
-            itens.status.includes('preparing') ||
-            itens.status.includes('pending')
+        const ordersPending = orders.filter(itens =>
+          itens.status.includes('pending')
         )
         setOrderStatus(ordersPending)
       })
@@ -44,83 +46,84 @@ export function Kitchen() {
       },
       body: JSON.stringify(status)
     })
-    .then(response => {
-      return response.json()
-    })
-    .then((result) => {
-      const listOrder = orderStatus.filter((order)=> order.id !== result.id)    
-      setOrderStatus(listOrder)
+      .then(response => {
+        return response.json()
+      })
+      .then(result => {
+        const listOrder = orderStatus.filter(order => order.id !== result.id)
+        setOrderStatus(listOrder)
       })
   }
 
   return (
     <div className="hall">
-      <section className="menu">
-        <h1>Pedidos</h1>
-        <section className="exit">
-          <button text="Sair" className="button-exit" onClick={handleSignOut}>
-            {' '}
-            Sair{' '}
-          </button>
-        </section>
-        <section>
-          {orderStatus.map(order => {
-            return (
-              <section className="menu" key={order.id}>
-                <div className="resume-order">
-                  <h1>
-                    {order.status
-                      .replace('pending', 'Pendente')
-                      .replace('preparing', 'Em andamento')
-                      .replace('done', 'Pronto')}
-                  </h1>
-                  <p>ID: {order.id} </p>
-                  <p>Cliente: {order.client_name} </p>
-                  <p>Mesa: {order.table} </p>
-                  <time>
-                    {`${new Date(order.createdAt).toLocaleDateString(
-                      'pt-br'
-                    )} - ${new Date(order.createdAt).toLocaleTimeString(
-                      'pt-br',
-                      {
-                        hour: '2-digit',
-                        minute: '2-digit'
-                      }
-                    )}h`}
-                  </time>
-                  <article className="order">
-                    {order.Products.map((items, index) => (
-                      <div key={index}>
-                        <p>
-                          {items.qtd} {items.name}
-                        </p>
-                      </div>
-                    ))}
-                  </article>
-                  <section className="btn-status">
-                    <button
-                      className="button"
-                      style={{ backgroundColor: 'var(--azul)' }}
-                      onClick={() => setStatus(order.id, 'preparing')}
-                    >
-                      Preparar
-                    </button>
-                    <button
-                      text="Pronto"
-                      className="button"
-                      style={{ backgroundColor: 'var(--azul)' }}
-                      onClick={() => setStatus(order.id, 'ready')}
-                    >
-                      {' '}
-                      Pronto
-                    </button>
-                  </section>
-                </div>
-              </section>
-            )
-          })}
-        </section>
+      <section className="menu-title">
+        <h1 className="menu-kitchen">Pedidos</h1>
       </section>
+        <section className="container-kitchen">
+          <section className="menu-side">
+            <button className="logo-small">
+              <img className="logo-small" src={logoMonsterPeq} />
+            </button>
+            <button className="logo-notification">
+              <img className="logo-notification" src={notification} />
+            </button>
+            <button className="logo-order">
+              <img className="logo-order" src={orderIcon} />
+            </button>
+            <button className="logo-logout" onClick={handleSignOut} >
+              <img className="logo-logout" src={logout} />
+            </button>
+          </section>
+          <section className="container-orders">
+            {orderStatus.map(order => {
+              return (
+                <section className="box-order" key={order.id}>
+                  <div className="resume-order">
+                    <h1>
+                      {order.status
+                        .replace('pending', 'Pendente')
+                        .replace('preparing', 'Em andamento')
+                        .replace('done', 'Pronto')}
+                    </h1>
+                    <p>ID: {order.id} </p>
+                    <p>Cliente: {order.client_name} </p>
+                    <p>Mesa: {order.table} </p>
+                    <time>
+                      {`${new Date(order.createdAt).toLocaleDateString(
+                        'pt-br'
+                      )} - ${new Date(order.createdAt).toLocaleTimeString(
+                        'pt-br',
+                        {
+                          hour: '2-digit',
+                          minute: '2-digit'
+                        }
+                      )}h`}
+                    </time>
+                    <article className="order">
+                      {order.Products.map((items, index) => (
+                        <div key={index}>
+                          <p>
+                            {items.qtd} {items.name}
+                          </p>
+                        </div>
+                      ))}
+                    </article>
+                    <section className="btn-status">
+                      <button
+                        className="btn-kitchen"
+                        style={{ backgroundColor: 'var(--azul)' }}
+                        onClick={() => setStatus(order.id, 'ready')}
+                      >
+                        Pronto
+                      </button>
+                    </section>
+                  </div>
+                </section>
+              )
+            })}
+          </section>
+        </section>
     </div>
   )
 }

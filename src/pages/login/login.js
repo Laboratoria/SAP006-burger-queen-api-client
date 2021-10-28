@@ -8,7 +8,6 @@ import validateLogin from './validateLogin';
 import logoMonsterGrande from '../../img/logoMonsterGrande.png';
 import './login.css';
 
-
 export function Login() {
 
     const [formValues, setFormValues] = useState({
@@ -17,7 +16,6 @@ export function Login() {
     });
 
     const [errors, setErrors] = useState({});
-
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -33,10 +31,7 @@ export function Login() {
         userLogin(formValues)
             .then(response => response.json())
             .then((json) => {
-                console.log(json);
-
                 const token = json.token
-                console.log(token);
                 localStorage.setItem("token", token);
 
                 if (json.role === "salão") {
@@ -48,7 +43,6 @@ export function Login() {
             })
 
             .catch(errors => {
-                console.log(errors)
             })
     };
 

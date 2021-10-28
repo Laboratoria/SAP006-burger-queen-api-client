@@ -38,7 +38,6 @@ export function Register() {
     };
 
     const handleSubmit = (e) => {
-        console.log('handleSubmit');
         e.preventDefault();
         setErrors(validateRegister(formValues));
 
@@ -52,23 +51,11 @@ export function Register() {
                     history.push('/login');
                     alert("Cadastro efetuado com sucesso")
                 }
-
-                /*if (json.role === "salão") {
-                    history.push('/hall');
-                } else if
-                    (json.role === "cozinha") {
-                    history.push('/kitchen');
-                }else {
-            setErrors()
-          }*/
             })
-            /*.then(alert("Cadastro efetuado com sucesso"))*/
-
+            
             .catch(errors => {
-                console.log(errors)
             });
     };
-    //console.log('***formValues', formValues);
 
     return (
         <main className="container">

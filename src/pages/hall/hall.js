@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import Button from "../../components/Button/Button.js";
-import "../hall/hall.css";
+import { useHistory } from 'react-router-dom'
 import ItemMenu from "../../components/ItemMenu/ItemMenu";
 import CartItem from "../../components/CartItem/CartItem";
 import {postOrder} from "../../services/api";
@@ -8,6 +7,7 @@ import logoMonsterPeq from "../../img/logoMonsterPeq.png";
 import notification from "../../img/notification.png";
 import orderIcon from "../../img/orderIcon.png";
 import logout from "../../img/logout.png";
+import "../hall/hall.css";
 
 export function Hall() {
   const [menu, setMenu] = useState([]);
@@ -28,20 +28,16 @@ export function Hall() {
       .then((json) => {
         setMenu(json);
       });
-    },[token])
-  ;
+    },[token]);
 
   const selectProducts = menu.filter((produtos) => produtos.type === tab);
   
   useEffect(()=>{
-    console.log(client, table, order)
   },[client, table, order])
 
-  // chamar este handleSubmit em seu botão de enviar o pedido
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const que monta o pedido chamando os values dos inputs
     const orderClient = {
       "client": client,
       "table": table,
@@ -77,7 +73,6 @@ export function Hall() {
     }
     if (elem.qtd === 0) {
       const listOrder = order;
-      // remove 1 item do array
       listOrder.splice(index, 1);
       setOrder([...listOrder]);
     }
@@ -94,6 +89,13 @@ export function Hall() {
 
   const total = calculateTotal(order)
 
+  const history = useHistory()
+  const handleSignOut = e => {
+    e.preventDefault()
+    history.push('/login')
+    localStorage.clear()
+  }
+
     return (
       <div>
         <h1 className="title-hall">Monster Burguer</h1>
@@ -109,7 +111,6 @@ export function Hall() {
             Geral
           </button>
           <button
-            // className="button-geral"
             style={{ backgroundColor: "var(--azul)" }}
             onClick={(e) => {
               e.preventDefault();
@@ -140,7 +141,7 @@ export function Hall() {
             <button className="logo-small"> <img className="logo-small" src={logoMonsterPeq} /></button>
             <button className="logo-notification"> <img className="logo-notification" src={notification} /></button>
             <button className="logo-order"> <img className="logo-order" src={orderIcon} /></button>
-            <button className="logo-logout"> <img className="logo-logout" src={logout} /></button>
+            <button className="logo-logout"> <img className="logo-logout" src={logout} onClick={handleSignOut} /></button>
           </section>
           <section className="container-menu">
             {selectProducts &&

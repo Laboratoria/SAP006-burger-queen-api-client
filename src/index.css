@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap'); 
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap'); 
 * {
-    /* display: flex; */
-    /* flex-direction: column; */
     box-sizing: border-box;
     margin: 0;
+}
+
+body {  
+    min-height: 100vh;
 }

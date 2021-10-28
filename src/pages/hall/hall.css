@@ -4,6 +4,9 @@ body {
 
 .menu-order {
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .button-geral {
@@ -17,7 +20,7 @@ body {
 .menu-side {
     width: 3rem;
     background-color: black;
-    margin-top: 2.8rem;
+    /* margin-top: 2.8rem; */
     border-radius: 0.5rem;
 }
 
@@ -57,18 +60,22 @@ img.logo-small {
     background-color: var(--verde);
     flex-wrap: wrap;
     display: flex;
-    width: 80%;
+    width: 70%;
     padding: 1rem;
+    justify-content: center;
+    overflow: auto;
+    height: 27rem;
 }
 
 .container-order {
     background-color: black;
-    width: 40%;
+    width: 23%;
     color: white;
     font-family: barlow condensed;
     border-radius: 20px;
     padding: 1rem;
-    margin-top: 2.8rem;
+    overflow: auto;
+    height: 27rem;
 }
 
 .title-hall { 
@@ -80,7 +87,8 @@ img.logo-small {
 
 .header-hall { 
     background-color: var(--verde);
-    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 .header-hall input {

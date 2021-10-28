@@ -22,12 +22,10 @@ export function ReadyOrder() {
   }, [token])
 
   useEffect(() => {
-    console.log(orderStatus)
   }, [orderStatus])
 
 
   const handleStatus = (id, newStatus, index) => {
-    console.log(index)
     const status = { status: newStatus }
     fetch(url + id, {
       method: 'PUT',

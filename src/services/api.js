@@ -33,8 +33,5 @@ export const postOrder = (pedido) => {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `${token}` },
     body: JSON.stringify(pedido),
-    // .then(response => response.json())
-    // .then((json) => console.log(json))
-    // .catch((e) => console.log(e))
   });
 };
