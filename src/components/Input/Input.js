@@ -1,7 +1,6 @@
 import React from 'react';
 import './input.css';
 
-
 const Input = ({label, type, name, value, onChange, className, placeholder }) => {
     return (
         <div className='input-container'> 
@@ -20,7 +19,6 @@ const Input = ({label, type, name, value, onChange, className, placeholder }) =>
         </div>
     );
 }
-
 
 export default Input;
 
