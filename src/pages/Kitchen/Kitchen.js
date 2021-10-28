@@ -56,9 +56,9 @@ function Kitchen() {
             <section className="orders" key={order.id}>
               <div className="kitchenCard">
                 <h1> {order.status.replace('pending', 'Pendente').replace('preparing', 'Em andamento')} </h1>
-                <p>ID: {order.id} </p>
-                <p>Cliente: {order.client_name} </p>
-                <p>Mesa: {order.table} </p>
+                <p className="details-client">ID: {order.id} </p>
+                <p className="details-client">Cliente: {order.client_name} </p>
+                <p className="details-client">Mesa: {order.table} </p>
                 <time>
                   {`${new Date(order.createdAt).toLocaleDateString('pt-br')} - ${new Date(order.createdAt).toLocaleTimeString('pt-br', {
                     hour: '2-digit',

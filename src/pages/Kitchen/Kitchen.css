@@ -1,14 +1,10 @@
-body {
-  background-color: #DFB120;
-} 
-
 .orders-container{
   flex-wrap: wrap;
   display: flex;
   width: 90%;
   padding: 4rem;
   justify-content: center;
-}  
+}
 
 .orders { 
   text-transform: uppercase;
@@ -22,76 +18,12 @@ body {
   background-color: #F2DFBA;
 }
   
-.details-client p {
+.details-client {
   padding: 0.1rem;
 }
-
-.order-number {
-  font-size: 1.2rem;
-  color: #9B2D0A;
-  font-weight: 800;
-}
   
-hr.break-line {
+hr {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   border: 1px solid #9B2D0A;
-}
-  
-.break-line {
-  margin-bottom: 2rem;
-}
-  
-.pending-orders {
-  background-color: royalblue;
-  width: 12rem;
-  height: 2.5rem;
-  margin: 0.3rem;
-  padding-top: 0.4rem;
-  border-radius: 1.5rem;
-  display:inline-block;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.pending-orders:hover {
-  background-color: red;
-}
-
-.order-up {
-  background-color: var(--sea-green);
-  width: 12rem;
-  height: 2.5rem;
-  margin: 0.3rem;
-  padding-top: 0.5rem;
-  border-radius: 1.5rem;
-  margin-bottom: 1rem;
-  display:inline-block;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-}
-  
-.order-up:hover {
-  background-color: var(--spanish-green);
-}
-  
-.historic-orders {
-  margin-bottom: 1.5rem;
-  background-color: var(--jet);
-  width: 12rem;
-  height: 2.5rem;
-  margin: 0.3rem;
-  padding-top: 0.5rem;
-  border-radius: 1.5rem;
-  display:inline-block;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-}
-  
-.historic-orders:hover {
-  background-color: var(--eerie-black-darker);
 }
