@@ -39,7 +39,8 @@ function Kitchen() {
       body: JSON.stringify(status),
     })
       .then((response) => {
-        response.json().then(() => {
+        response.json()
+      .then(() => {
           const order = preparerOrder;
           return order;
         });
