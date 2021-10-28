@@ -10,11 +10,12 @@ import './login.css';
 
 function Login() {
     const [errors, setErrors] = useState({})
-    function validationValues(values) {
+        function validationValues(values) {
         const errorsResult = validation(values)
         setErrors(errorsResult)
         return errorsResult;
     }
+ 
 
     const [infoUser, setInfoUser] = useState({ email: '', password: '' });
 
@@ -32,7 +33,7 @@ function Login() {
     const handleLogin = (e) => { //handleSubmit?
         e.preventDefault();//previne o comportamento padrão o carregamento 
 
-        const resultErrorsLogin = validationValues(infoUser);
+        const resultErrorsLogin = validationValues(infoUser)
 
         if (!resultErrorsLogin.email && !resultErrorsLogin.password) {
 
@@ -51,7 +52,7 @@ function Login() {
         } else {
             console.log(resultErrorsLogin, resultErrorsLogin.email, 'usuário não conectado')
         }
-    };
+    }
 
     return (
         <section className="login-page" >
