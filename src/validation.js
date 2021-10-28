@@ -6,7 +6,7 @@ export const validation = (values) => {
     }
 
     if (!values.email.includes('@')) {
-        errors.email = 'Por favor, insira um email válido com @!'//errors é o valor
+        errors.email = 'Por favor, insira um email válido com @!'
     }
     if (values.email === '') {
         errors.email = 'Por favor, insira um email!'

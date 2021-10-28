@@ -61,6 +61,7 @@
 .icon-add {
         color: #9B2D0A;
 }
+
 .add-button{
         border-radius: 50%;
         border: solid 1px;
@@ -75,53 +76,4 @@
         margin-top: -10px;
         align-items: center;
         box-shadow: 0px 4px rgb(0 0 0/25%);
-
-      
 }
-/*.box-item{
-        font-size: 10px;
-        width: 120px;
-        height: 150px;
-        background-color: #9B2D0A;
-        border-radius: 20px;
-        margin: 20px;
-        margin-top: 15px;
-        justify-content: center;
-}*/
-
-/* container com todos os produtos */
-/*.flex-container {
-        display: flex;
-        /* background-color: #F2DFBA; 
-        flex-wrap: wrap;
-        width: 58%;
-        height: fit-content;
-        /* box-shadow: 10px 5px 5px black; 
-        /* background-color: aliceblue; 
-} */
-
-
-
-
-/*.button-menu {
-    display: flex;
-    justify-content: space-evenly;
-    width: 49%;
-    margin: 1%;
-}
-.menu-container {
-        display: flex;
-        background-color: blanchedalmond;
-
-}*/
-
-
-/*.container-order{
-        display: flex;
-        position: absolute;
-        right: 0;
-        /* background-color: black;
-        flex-direction: column;
-} */
-
-

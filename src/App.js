@@ -12,7 +12,6 @@ import './global.css';
 
 function App(user) {
     // const user = true;
-    
     return (
         <BrowserRouter>
             <Switch>
@@ -31,7 +30,7 @@ function App(user) {
                 <Route path='/cozinha'> 
                     {user ? <Kitchen /> : <Redirect to="/" />}  
                 </Route>
-                <Route path='/pedidos'>
+                <Route path='/finalizados'>
                     {user ? <AllOrders /> : <Redirect to="/" />}
                 </Route>
                 <Route path='/servir'>

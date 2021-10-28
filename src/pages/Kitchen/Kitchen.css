@@ -8,212 +8,90 @@ body {
   width: 90%;
   padding: 4rem;
   justify-content: center;
-}
+}  
 
-/*.orders-section {
-    top: 10rem;
-    gap: 10vh;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }*/ 
-  
 .orders { 
-  /* left: 6rem; */
   text-transform: uppercase;
-  /* font-size: 1rem; */
   text-align: center;
   border-radius: 1rem; 
-  /* position: relative; */
   width: 28vw; 
   padding: 1.25rem 1.25rem;
-  /* top: 2 rem; */ 
   font-weight: 500; 
   border: 3px solid #9B2D0A; 
   margin: 20px; 
   background-color: #F2DFBA;
 }
   
-  /* .details-client {
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  } */
+.details-client p {
+  padding: 0.1rem;
+}
+
+.order-number {
+  font-size: 1.2rem;
+  color: #9B2D0A;
+  font-weight: 800;
+}
   
-  .details-client p {
-    padding: 0.1rem;
-  }
+hr.break-line {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #9B2D0A;
+}
   
-  .order-number {
-    font-size: 1.2rem;
-    color: #9B2D0A;
-    font-weight: 800;
-  }
+.break-line {
+  margin-bottom: 2rem;
+}
   
-  hr {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid #9B2D0A;
-  }
+.pending-orders {
+  background-color: royalblue;
+  width: 12rem;
+  height: 2.5rem;
+  margin: 0.3rem;
+  padding-top: 0.4rem;
+  border-radius: 1.5rem;
+  display:inline-block;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.pending-orders:hover {
+  background-color: red;
+}
+
+.order-up {
+  background-color: var(--sea-green);
+  width: 12rem;
+  height: 2.5rem;
+  margin: 0.3rem;
+  padding-top: 0.5rem;
+  border-radius: 1.5rem;
+  margin-bottom: 1rem;
+  display:inline-block;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
   
-  .break-line {
-    margin-bottom: 2rem;
-  }
+.order-up:hover {
+  background-color: var(--spanish-green);
+}
   
+.historic-orders {
+  margin-bottom: 1.5rem;
+  background-color: var(--jet);
+  width: 12rem;
+  height: 2.5rem;
+  margin: 0.3rem;
+  padding-top: 0.5rem;
+  border-radius: 1.5rem;
+  display:inline-block;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
   
-  .pending-orders {
-    background-color: royalblue;
-    width: 12rem;
-    height: 2.5rem;
-    margin: 0.3rem;
-    padding-top: 0.4rem;
-    border-radius: 1.5rem;
-    display:inline-block;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-  
-  .pending-orders:hover {
-    background-color: red;
-  }
-  
-  .order-up {
-    background-color: var(--sea-green);
-    width: 12rem;
-    height: 2.5rem;
-    margin: 0.3rem;
-    padding-top: 0.5rem;
-    border-radius: 1.5rem;
-    margin-bottom: 1rem;
-    display:inline-block;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  }
-  
-  .order-up:hover {
-    background-color: var(--spanish-green);
-  }
-  
-  .historic-orders {
-    margin-bottom: 1.5rem;
-    background-color: var(--jet);
-    width: 12rem;
-    height: 2.5rem;
-    margin: 0.3rem;
-    padding-top: 0.5rem;
-    border-radius: 1.5rem;
-    display:inline-block;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  }
-  
-  .historic-orders:hover {
-    background-color: var(--eerie-black-darker);
-  }
-  
-  
-  /* .container-order p {
-    padding: 0.1rem;
-  } */
-  
- /* .buttons {
-    display: grid;
-    justify-content: center;
-  }
-  
-  .serve-button {
-    position: absolute;
-    left: 30%;
-    bottom: 0.4rem;
-  }
-  
-  .delete-btn {
-    position: absolute;
-    bottom: 0.5rem;
-    left: 45%;
-      height: 2.6rem;
-      width: 2.6rem;
-      background-color: var(--eerie-black-darker);
-      font-size: 1.8rem;
-      border-radius: 2.6rem;
-    border-style: none;
-  }
-  
-  .delete-btn:hover {
-      background-color: var(--eerie-black);
-    color: var(--champagne-pink);
-  }
-  
-  .trash-icon {
-    margin: 0.2rem;
-    height: 1.9rem;
-      width: 1.9rem;
-    display: flex;
-      align-content: center;
-      justify-content: center;
-      text-align: center;
-      margin-top: 0.2rem;
-    margin-left: 0.3rem;
-  }
-  
-  .icon-trash {
-    margin: 0.2rem;
-    height: 1.9rem;
-      width: 1.9rem;
-    display: flex;
-      align-content: center;
-      justify-content: center;
-      text-align: center;
-      margin-top: 0.2rem;
-    margin-left: 0.3rem;
-  }
-  
-  .btn-delete {
-      height: 2.6rem;
-      width: 2.6rem;
-      background-color: var(--eerie-black);
-      font-size: 1.8rem;
-      border-radius: 2.6rem;
-    border-style: none;
-  }
-  
-  .btn-delete:hover {
-      background-color: var(--eerie-black);
-    color: var(--champagne-pink);
-  }
-  
-  .icontrash {
-    margin: 0.2rem;
-    height: 1.9rem;
-      width: 1.9rem;
-    display: flex;
-      align-content: center;
-      justify-content: center;
-      text-align: center;
-      margin-top: 0.2rem;
-    margin-left: 0.3rem;
-    position: absolute;
-    bottom: 0.2rem;
-  }
-  
-  .btndelete {
-      height: 2.6rem;
-      width: 2.6rem;
-      background-color: var(--eerie-black);
-      font-size: 1.8rem;
-    left:45%;
-      border-radius: 2.6rem;
-    border-style: none;
-    padding-top: 2rem;
-    position:absolute;
-    bottom: 0.3rem;
-  }
-  
-  .btndelete:hover {
-      background-color: var(--eerie-black);
-    color: var(--champagne-pink);
-  }*/
+.historic-orders:hover {
+  background-color: var(--eerie-black-darker);
+}
