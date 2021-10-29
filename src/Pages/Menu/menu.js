@@ -1,8 +1,14 @@
+/* eslint-disable*/
 import React from "react";
+import { useHistory } from "react-router-dom";
+import Header from "../../Components/Header/header";
+//import Button from "../../Components/Button/button";
 
 function menu() {
     return (
-        <h1>MENU EM CONSTRUÇÃO</h1>
-    )
+<>
+    <Header></Header>
+</>
+ )
 }
 export default menu;

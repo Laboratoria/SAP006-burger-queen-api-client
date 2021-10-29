@@ -113,17 +113,17 @@ function Register() {
             </Button>
             {verifyPassword ? (
               <div className="erro">
-                <h2>preencha a senha com seis digitos</h2>
+                <h1>preencha a senha com seis digitos</h1>
               </div>
             ) : null}
             {verifyInput ? (
               <div className="erro">
-                <h2>preencha o campo corretamente</h2>
+                <h1>preencha o campo corretamente</h1>
               </div>
             ) : null}
             {verifyInput ? (
               <div className="erro">
-                <h2>Preecha todos os campos</h2>
+                <h1>Preecha todos os campos</h1>
               </div>
             ) : null}
           </form>
