@@ -4,7 +4,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 //import Button from "../../Components/Button/button";
 import Konoha from '../../img/konoha.png';
-
+import Voltar from '../../img/voltar.png';
 import "./header.css";
 
 
@@ -24,10 +24,18 @@ function Header() {
    return (
     <>
       <header>
-       <div className= "konoha-menu">
-       <img className="logo-header" src={Konoha} alt="Logo Konoha Burguer" />
-       <img className="logo-header" src={Konoha} alt="Logo Konoha Burguer" />
-       </div>
+        <div className= "konoha-menu">
+          <img className="logo-voltar" src={Voltar} alt="Seta Konoha Burguer" />
+          <h1>Konoha Burguer</h1>
+          <blockquote class="quote-externo">
+					<p>Café da manhã & lanches</p>
+          </blockquote>
+        
+         </div>
+     
+
+          
+
        
       </header>
     </>
