@@ -25,13 +25,12 @@ function Header() {
     <>
       <header>
         <div className= "konoha-menu">
-          <img className="logo-voltar" src={Voltar} alt="Seta Konoha Burguer" />
+           <img className="logo-voltar" src={Voltar} alt="Seta Konoha Burguer" />
           <h1>Konoha Burguer</h1>
           <blockquote class="quote-externo">
 					<p>Café da manhã & lanches</p>
           </blockquote>
-        
-         </div>
+        </div>
      
 
           
