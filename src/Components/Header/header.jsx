@@ -26,6 +26,7 @@ function Header() {
       <header>
        <div className= "konoha-menu">
        <img className="logo-header" src={Konoha} alt="Logo Konoha Burguer" />
+       <img className="logo-header" src={Konoha} alt="Logo Konoha Burguer" />
        </div>
        
       </header>
