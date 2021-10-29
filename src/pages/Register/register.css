@@ -59,9 +59,7 @@
 
 .link-login{
     text-decoration-line: none;
+    color: #9B2D0A;
+    font-weight: bold;
 }
 
-.link-login:hover{
-    color: #9B2D0A;
-    font-weight: 900;
-}

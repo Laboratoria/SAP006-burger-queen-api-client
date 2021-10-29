@@ -1,10 +1,10 @@
 import { fireEvent, render } from '@testing-library/react';
-import Input from '../components/Input';
+import Input from './Input';
 
 
 test('selected hall', done => {
     function handleChange(e) {
-        expect(e.target.value).toEqual('salão');
+        expect(e.target.value).toEqual('salao');
         done();
     }
     const { getByPlaceholderText } = render(
