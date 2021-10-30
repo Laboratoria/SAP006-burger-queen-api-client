@@ -1,0 +1,41 @@
+
+.konoha-menu {
+  position: fixed;
+	top: 0;
+	width: 100%;
+  padding: 15px 0;
+	z-index: 10;
+ background: rgb(104,153,250);
+background: linear-gradient(0deg, rgba(104,153,250,0.8071603641456583) 9%, rgba(249,194,129,1) 51%, rgba(253,170,45,0.7539390756302521) 100%);
+}
+
+.logo-voltar {
+  margin-left: 5%;
+
+
+ }
+ h1{
+   text-align: center;
+ }
+
+ .quote-externo {
+	max-width: 720px;
+	margin: 0 auto;
+	margin-bottom: 15px; /* Margem para baixo para ajustar o botão de "Orçamento" para baixo */
+	color: #fff
+}
+
+.quote-externo p {
+	font-style: italic;
+  text-align: center;
+  font-size: 20px;
+}
+
+.quote-externo p:before, .quote-externo p:after {
+	content: "";
+	display: block;
+	width: 70px;
+	height: 3px;
+	background: #fff;
+	margin: 14px auto 10px auto;
+}
