@@ -7,10 +7,11 @@ import '../Kitchen/Kitchen.css'
 
 
 function AllOrders() {
-    const token = localStorage.getItem('token');
-    const [orderStatus, setOrderStatus] = useState([]);
-    const url = 'https://lab-api-bq.herokuapp.com/orders/';
     const history = useHistory();
+    const token = localStorage.getItem('token');
+    const url = 'https://lab-api-bq.herokuapp.com/orders/';
+
+    const [orderStatus, setOrderStatus] = useState([]);
 
     useEffect(() => {
         fetch(url, {
@@ -30,18 +31,13 @@ function AllOrders() {
     })
 
     return (
-    <>
-        <Header
-            name="Pedidos Entregues"
-        />
-        
-        <Button 
-            className='button-global'
-            onClick={() => history.goBack()}> 
-            <MdKeyboardBackspace /> 
-        
-        </Button>
-
+        <>
+            <Header name="Pedidos Entregues" />
+            <Button
+                className='button-global'
+                onClick={() => history.goBack()}>
+                <MdKeyboardBackspace />
+            </Button>
             <section className="orders-container">
                 {orderStatus.map((order) => {
                     return (
@@ -63,14 +59,13 @@ function AllOrders() {
                                         <p> {items.qtd} {items.name}</p>
                                         <p>{items.flavor}</p>
                                         <p>{items.complement}</p>
-
                                     </div>
                                 ))}
                             </div>
                         </section>
                     );
                 })}
-            </section> 
+            </section>
         </>
     )
 }

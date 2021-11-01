@@ -34,9 +34,7 @@
 
 .button-orders:hover{
     outline: none;
-    /* box-shadow: 0 0 0 0px; */
-    background-color: #EAAF36;;
-
+    background-color: #EAAF36;
 }
 
 .btn-menu{
@@ -55,6 +53,6 @@
 
 .btn-menu:hover{
     outline: none;
-    background-color: #EAAF36;
+    background-color: #9B2D0A;
 }
 

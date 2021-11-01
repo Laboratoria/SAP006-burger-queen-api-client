@@ -28,16 +28,9 @@ function CartItem({
                 <div className="item-price">
                     <h1 className="divPrice" key={productsPriceKey}> {divId} R${productsPrice},00</h1>
                 </div>
-                {/* <div classname="box-flavor"></div>*/}
                 <div className="box-qtd">  
                     <h1 className="qtd-itens">{qtd}</h1>
                 </div>
-                    
-
-
-                {/* <Button onClick={addOnClick} className="add-button"
-                    style={{ 'borderRadius': '50%', backgroundColor: '#EAAF36', minWidth: '1rem', padding: '0.3rem 1rem' }}
-                > + </Button> */}
                 <div className="box-btn-remove">
                     <Button onClick={removeOnClick} className="remove-button"
                     style={{borderRadius: '50%', 
@@ -52,9 +45,6 @@ function CartItem({
                     alignItems: 'center',
                     boxShadow: '0px 4px 4px rgb(0 0 0 / 25%)'}} > - </Button>
                 </div>
-
-                {/* incluir carrinho */}
-
             </div>
         </>
     );

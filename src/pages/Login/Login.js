@@ -29,10 +29,10 @@ function Login() {
     }
 
     const history = useHistory()
-    const handleLogin = (e) => { //handleSubmit?
-        e.preventDefault();//previne o comportamento padrão o carregamento 
+    const handleLogin = (e) => {
+        e.preventDefault();
 
-        const resultErrorsLogin = validationValues(infoUser);
+        const resultErrorsLogin = validationValues(infoUser)
 
         if (!resultErrorsLogin.email && !resultErrorsLogin.password) {
 
@@ -41,63 +41,54 @@ function Login() {
                     responseLogin.json().then((user) => {
                         loginConfirmed(user.token)
                         console.log(user, user.token)
-                      
+
                         if (user.role) {
                             history.push(`/${user.role}`)
                         }
-
                     })
                 })
         } else {
             console.log(resultErrorsLogin, resultErrorsLogin.email, 'usuário não conectado')
         }
-    };
+    }
 
     return (
         <section className="login-page" >
             <div className="elipse-background"> </div>
-            <header className="header-login"> 
+            <header className="header-login">
                 {<img src={logo} alt="Logo Burguer Queen" />}
             </header>
-            <section className="main-login"> 
-                <div className="container-login"> 
-                    {/*<div className="box-login" > */}
-                        <form className="form-login" action="">
-
-                            <h1 className="title-login">Entrar</h1>
-                            
-                            {errors.email && <span className='form-error'>{errors.email}</span>}
-                            <Input 
-                                requered
-                                placeholder="Email" 
-                                type="email" 
-                                name="email" 
-                                value={infoUser.email}
-                                onChange={handleChange}
-                            />
-                            
-                            {errors.password && <span className='form-error'>{errors.password}</span>}
-                            <Input
-                                requered
-                                placeholder="Senha"
-                                type="password" 
-                                name="password" 
-                                value={infoUser.password}
-                                onChange={handleChange}
-                            />
-                           
-                            <Button className="button-global" type="submit" onClick={handleLogin}> Entrar </Button>
-                        </form>
-                        <p className="question-register">Não tem uma conta?</p> 
-                        <Link className="link-register" to="/Register">Cadastre-se</Link>
-                        
-                    {/*</div>*/}
-                    
-                </div> 
+            <section className="main-login">
+                <div className="container-login">
+                    <form className="form-login" action="">
+                        <h1 className="title-login">Entrar</h1>
+                        {errors.email && <span className='form-error'>{errors.email}</span>}
+                        <Input
+                            requered
+                            placeholder="Email"
+                            type="email"
+                            name="email"
+                            value={infoUser.email}
+                            onChange={handleChange}
+                        />
+                        {errors.password && <span className='form-error'>{errors.password}</span>}
+                        <Input
+                            requered
+                            placeholder="Senha"
+                            type="password"
+                            name="password"
+                            value={infoUser.password}
+                            onChange={handleChange}
+                        />
+                        <Button className="button-global" type="submit" onClick={handleLogin}> Entrar </Button>
+                    </form>
+                    <p className="question-register">Não tem uma conta?</p>
+                    <Link className="link-register" to="/Register">Cadastre-se</Link>
+                </div>
             </section>
-            <Footer/>
+            <Footer />
         </section>
-     );
+    );
 }
 
 export default Login;

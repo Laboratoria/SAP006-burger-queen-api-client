@@ -10,7 +10,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    /*background-color: #EAAF36;*/
 }
 
 .item-description{
@@ -46,11 +45,6 @@
     color: #9B2D0A;
     font-size: 17px;
 }
-/*.box-flavor{
-    width: 40px;
-    height: 100px;
-    align-items: center;
-}*/
 
 .box-qtd{
     width: 30px;

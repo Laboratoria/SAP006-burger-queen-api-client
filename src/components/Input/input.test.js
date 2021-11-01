@@ -13,8 +13,6 @@ test('selected hall', done => {
     fireEvent.change(rolekitchen, { target: { value: "salao" } });
 });
 
-
-
 test('selected kitchen', done => {
     function handleChange(e) {
         expect(e.target.value).toEqual('cozinha');

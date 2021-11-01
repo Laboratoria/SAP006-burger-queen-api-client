@@ -6,10 +6,12 @@ import Button from '../../components/Button/Button';
 import '../Kitchen/Kitchen.css'
 
 function ReadyOrders() {
-    const token = localStorage.getItem('token');
-    const [orderStatus, setOrderStatus] = useState([]);
-    const url = 'https://lab-api-bq.herokuapp.com/orders/';
+
     const history = useHistory();
+    const url = 'https://lab-api-bq.herokuapp.com/orders/';
+    const token = localStorage.getItem('token');
+
+    const [orderStatus, setOrderStatus] = useState([]);
 
     useEffect(() => {
         fetch(url, {
@@ -22,7 +24,7 @@ function ReadyOrders() {
             .then((response) => response.json())
             .then((orders) => {
                 const status = orders.filter((itens) =>
-                    itens.status.includes('ready') 
+                    itens.status.includes('ready')
                 );
                 setOrderStatus(status);
             });
@@ -45,24 +47,20 @@ function ReadyOrders() {
                 });
             });
     };
-    
+
     const preparationTime = (deliveryTime, criationTime) => {
         const difference = Math.abs(new Date(deliveryTime) - new Date(criationTime));
-        return Math.floor(difference / 1000 / 60 );
+        return Math.floor(difference / 1000 / 60);
     }
 
     return (
         <>
-            <Header
-                name="Pedidos para entregar"
-            />
-
-        <Button 
-            className='button-global'
-            onClick={() => history.goBack()}> 
-            <MdKeyboardBackspace />
-        </Button>
-
+            <Header name="Pedidos para entregar" />
+            <Button
+                className='button-global'
+                onClick={() => history.goBack()}>
+                <MdKeyboardBackspace />
+            </Button>
             <section className="orders-container">
                 {orderStatus.map((order) => {
                     return (
@@ -73,7 +71,6 @@ function ReadyOrders() {
                                 <p>Cliente: {order.client_name} </p>
                                 <p>Mesa: {order.table} </p>
                                 {order.status === "ready" || order.status === "finished" ? (<p>Tempo de preparação:{' '}{preparationTime(order.updatedAt, order.createdAt)} min</p>) : ""}
-
                                 <time>
                                     {`${new Date(order.createdAt).toLocaleDateString('pt-br')} - ${new Date(order.createdAt).toLocaleTimeString('pt-br', {
                                         hour: '2-digit',
@@ -88,17 +85,15 @@ function ReadyOrders() {
                                         <p>{items.complement}</p>
                                     </div>
                                 ))}
-
                                 <hr className="break-line" />
-
                                 <Button text="Servir" className='button-global' onClick={() => setStatus(order.id, 'delivered')}>servir</Button>
                             </div>
                         </section>
                     );
                 })
-            }
+                }
             </section>
         </>
-    )   
+    )
 }
 export default ReadyOrders
