@@ -19,7 +19,7 @@
   color: var(--branco);
 }
 
-h1 {
+.h1-salao {
   display: flex;
   margin-bottom: 150px;
   height: 10vh;
@@ -27,7 +27,6 @@ h1 {
   color: var(--vermelho);
   justify-content: center;
   align-items: center;
-  background-color: red;
   width: 100%;
   
 }

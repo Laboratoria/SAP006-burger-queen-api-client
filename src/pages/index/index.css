@@ -17,9 +17,7 @@
   left: 48px;
   top: 120px;
 }
-h2 {
-    margin-bottom: 15px;
-  }
+
   
 .index-main {
   display: row;
@@ -29,7 +27,6 @@ h2 {
   height: 414px;
   left: 700px;
   top: 228px;
- 
 }
 
 
@@ -45,5 +42,6 @@ h2 {
 }
 
 .botaoLogin {
+  margin-top: auto;
     width: 100%;
 }

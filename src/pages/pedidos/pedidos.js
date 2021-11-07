@@ -97,7 +97,7 @@ function Hall() {
 
   return (
     <section className="container">
-      <h1>SALÃO</h1>
+ <h1 className="h1-salao">SALÃO</h1>
       <section className="containerGeral">
         <div className="contPed">
           <div className="containeriInput">

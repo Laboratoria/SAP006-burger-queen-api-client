@@ -24,6 +24,7 @@
 .form-group {
   display: grid;
   margin-bottom: 20px;
+
 }
 
 input::placeholder {
@@ -33,6 +34,7 @@ input::placeholder {
 
 .botao-login {
   padding-left: 90px;
+  
 }
 
 .tocadastro {
