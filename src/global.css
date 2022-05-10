@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Open+Sans&family=Roboto&display=swap');
+
+*{
+    font-family: 'Bree Serif', serif; 
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #DFB120;
+    scrollbar-width: thin;
+}

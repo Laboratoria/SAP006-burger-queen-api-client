@@ -1,0 +1,30 @@
+
+input:focus, 
+input:hover{
+    outline:none; 
+    border-color: #fb1;
+    background:white;
+    box-shadow: 0 0 0 3px rgb(182, 180, 173);    
+}
+
+.input-standard{
+    border-radius: 7px;
+    width: 153px;
+    height: 29px;
+    margin-bottom: 0.5rem;
+}
+
+.label{
+    display: block;
+    font-size: 1rem;
+    line-height: 1;
+    padding-bottom: 0.5rem;
+}
+
+.mesas-cliente{
+    display: flex;
+    justify-content: space-evenly;
+    width: 30%;
+    margin: 1%;
+    margin-left: 60%;
+}
